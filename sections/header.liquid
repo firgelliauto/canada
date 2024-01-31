@@ -1,3 +1,26 @@
+<style>
+  .itg--nav{
+   width: auto !important; 
+    
+  }
+
+  .widgetButton {
+    background-image: linear-gradient(to right, #0e91eb 0%, #0e91eb 30%, #0e91eb 50%, #0e91eb 100%);
+    padding: 9px 17px;
+    border-radius: 14px;
+    cursor: pointer;
+    border: none;
+    white-space: normal;
+    max-width: 220px;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    max-height: 55px;
+}
+</style>
+
+
+
 {% unless template contains 'product' %}
 {{ 'jquery.js' | asset_url | script_tag }}
 {% endunless %}
