@@ -39,23 +39,22 @@
   </nav>
 </section>
 <section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header">
-  <header class="" role="banner">
+  <header class="bannerHeight" role="banner">
     {% include 'nav-topper' %}
     {% include 'nav-topper-mobile' %}
-    <div id="FAbanner" class="fg-navbar-container uk-navbar-container" style="visibility: hidden">
-      <nav role="navigation" class="fg-nav uk-container uk-flex-middle" uk-navbar>
-        <div class="uk-navbar uk-flex-column fg-logo-container logoBoxitg">
+    <div id="banner" class="fg-navbar-container uk-navbar-container" style="visibility: hidden">
+      <nav role="navigation" class="fg-nav uk-container uk-flex-middle" uk-navbar style="place-content: space-between;">
+        <div style="display: flex;">
+        <div class="uk-navbar uk-flex-column fg-logo-container">
           {% include 'logo' %}
         </div>
-        <a style="padding-left: 50px; place-self: center;" class="selectorButton" href="https://www.firgelliauto.ca/pages/linear-actuator-selector"><button class="widgetButton"><div style="float: left;
+        
+      <a style="padding-left: 50px; place-self: center;" class="selectorButton" href="https://www.firgelliauto.ca/pages/linear-actuator-selector"><button class="widgetButton"><div style="float: left;
         width: 25px"><img alt="linear actuator calculator image" src="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/screwdriver.png?v=1633383820" width="40" height="45"></div>
      <span style="color: white; font-size: 14px; text-decoration: none; width: 110px;">Linear Actuator 
-     Selector Tool</span></button></a>
-        
+     Calculator Tool</span></button></a>
+    </div>
 		{% include 'header-desktop-megamenu' %}
-       
-{% comment %} {% include 'responsive-header-desktop' %}{% endcomment %}
-        
         {% include 'responsive-header-mobile' %}
         <!-- End Custom Menu -->
       </nav>
@@ -63,10 +62,9 @@
   </header>
 </section>
 
-
-  <script>
-  $("#FAbanner").css('visibility', 'visible');
-  </script>
+<script> //navigation bar
+  $("#banner").css('visibility', 'visible');
+</script>
 
 {% schema %}
   {
