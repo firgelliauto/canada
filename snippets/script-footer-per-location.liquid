@@ -1,0 +1,30 @@
+{% if shop.address.country  == 'United States' %}
+  <script type="text/javascript">
+    var _learnq = _learnq || [];
+
+    _learnq.push(['account', 'PsvhiM']);
+
+    (function () {
+      var b = document.createElement('script'); b.type = 'text/javascript'; b.async = true;
+      b.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'a.klaviyo.com/media/js/analytics/analytics.js';
+      var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(b, a);
+    })();
+  </script>
+
+  {% include 'criteo-tracking' %}
+
+  <script type="text/javascript">
+    var wto = wto || [];
+    wto.push(['setWTID', 'wt-706dc785-b165-43f3-9f32-06ae13fea1ee']);
+    wto.push(['webTraxs']);
+    (function () {
+      var wt = document.createElement('script');
+      wt.src = document.location.protocol + '//www.webtraxs.com/wt.php';
+      wt.type = 'text/javascript';
+      wt.async = true;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wt, s);
+    })();
+  </script>
+  <noscript><img src="https://www.webtraxs.com/webtraxs.php?id=wt-706dc785-b165-43f3-9f32-06ae13fea1ee&st=img" alt="" /></noscript>
+{% endif %}

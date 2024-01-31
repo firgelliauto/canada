@@ -1,0 +1,95 @@
+
+  {% if product.images.size > 1 %}
+  <div class="fg-slick-nav uk-width-1-5@m">
+    <span class="js-prev-arrow" uk-icon="icon: chevron-up; ratio: 2"></span>
+    <div class="js-slider-nav">
+      {% for image in product.images %}
+        <a href="#" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail>
+          <img class="product-single__thumbnail-image" data-src="{{ image.src | img_url: '400x' }}" alt="{{ image.alt | escape }}" uk-img>
+        </a>
+      {% endfor %}
+    </div>
+    <span class="js-next-arrow" uk-icon="icon: chevron-down; ratio: 2"></span>
+  </div>
+  {% endif %}
+  <div class="fg-slick-image js-slider-for uk-width-4-5@m">
+    {% for product_image in product.images %}
+      {% capture wrapper_class %}
+        {%- unless featured_image == image -%}
+          hide
+        {%- endunless -%}
+      {% endcapture %}
+      {% include 'responsive-product-image' with image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
+    {% endfor %}
+  </div>
+  {% comment %} Resource links desktop {% endcomment %}
+  <div class="js-product-downloads-container fg-product-downloads-container uk-width-4-5@m uk-grid">
+    {% render 'form-link-wiring-diagram' with tags: product.tags, class_name: 'uk-visible@m' %}
+    {% if  product.metafields.custom_fields['display_custom_product_tabs'] > 0 %}
+      {% render 'custom-fields-product-resources' with custom_class: 'uk-visible@m' %}
+    {% else %}
+      <div>
+        <ul class="fg-product-downloads js-product-tutorials"></ul>
+      </div>
+      <div>
+        <ul class="fg-product-downloads js-product-downloads"></ul>
+      </div>
+    {% endif %}
+</div>
+
+<script>
+  (function ($) {
+    $('.js-slider-for').on('init', function(slick){
+      $('.js-slick-container').removeClass('fg-transparent');
+    });
+
+    $('.js-slider-for').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: true,
+      fade: true,
+      infinite: true,
+      asNavFor: '.js-slider-nav'
+    });
+
+    $('.js-slider-nav').slick({
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      asNavFor: '.js-slider-for',
+      prevArrow: '.js-prev-arrow',
+      nextArrow: '.js-next-arrow',
+      dots: false,
+      centerMode: true,
+      focusOnSelect: true,
+      vertical: true,
+      adaptiveHeight: true,
+      infinite: true,
+      // the magic
+      responsive: [{
+        breakpoint: 639,
+        settings: {
+          slidesToShow: 3,
+          dots: true,
+          arrows: false,
+          vertical: false
+        },
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 3,
+          dots: true,
+          arrows: false,
+          vertical: false
+        }
+      }]
+    });
+
+    $('.slick-track > a').click(function(e){
+      e.preventDefault();
+    });
+
+    {% comment %} $('.slick-track > a').mouseover(function(e){
+      $(this).trigger('click');
+    }); {% endcomment %}
+
+  })(jQuery);
+</script>

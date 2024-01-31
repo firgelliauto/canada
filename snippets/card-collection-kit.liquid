@@ -1,0 +1,66 @@
+<div class="text-center"
+  data-define="{
+    item{{ item_index }}: {
+
+      lineItem: {{ item_index }},
+      productID: {{ product.id }},
+      variantId: 'select option',
+      variantTitle: '',
+      avaliable: {},
+      quantity: {{ quantity_value }},
+      max: ''
+    }
+  }"
+>
+  <div class="fg-card js-card uk-card uk-card-default uk-card-hover uk-card-small uk-flex uk-flex-column">
+    <div class="fg-card-media-top__collection uk-align-center">
+      <a href="{{ product.url | collection }}">
+        {%- assign image_object = product.image | default: product.featured_image -%}
+        {% include 'responsive-card-image' with image: image_object, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height: 1024 %}
+      </a>
+    </div>
+    <div class="fg-card__footer uk-padding-remove-left">
+      <div class="uk-card-body">
+        <h4 class="uk-text-center">
+          <a class="product-title" href="{{ product.url | collection }}">
+            {{ product.title }}
+          </a>
+        </h4>
+      </div>
+      <div class="uk-card-body">
+        <div class="uk-margin">
+          <label for="variant">Select a Variant
+            <select class="uk-select" data-bind="item{{ item_index }}.variantId" data-bind-event-change="updateCtx(item{{ item_index }}.variantId, item{{ item_index }}.lineItem )" name="variant" id="product-variant-{{ item_index }}" >
+              <option value="select option" disabled selected>Select your option</option>
+              {% for variant in product.variants %}
+              {% if variant.available %}
+                <option
+                    value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}
+                </option>
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                </option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+        <div class="uk-margin fg-product-form fg-kit-quantity-increment">
+          <span data-step="down" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_down" data-bind-event-click="quantityStep('minus', item{{ item_index }}.lineItem)">
+            <span class="fg-svg-reset" uk-icon="minus"></span>
+          </span>
+            {% assign context_quantity = forloop.index | append: '.quantity' %}
+          <input data-bind="item{{ item_index }}.quantity" data-bind-event-change="updateCtx(item{{ item_index }}.variantId, item{{ item_index }}.lineItem  )" name="quantity" class="uk-input fg-button-swatch__number" type="number" min="1" value="item{{ item_index }}.quantity" qty-index="{{ item_index }}" />
+
+          <span data-step="up" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_up" data-bind-event-click="quantityStep('add', item{{ item_index }}.lineItem)">
+            <span class="fg-svg-reset" uk-icon="plus"></span>
+          </span>
+        </div>
+      </div>
+      <a class="fg-button" href="{{ product.url | collection }}">
+        Learn more
+      </a>
+    </div>
+  </div>
+</div>

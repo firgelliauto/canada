@@ -1,0 +1,88 @@
+
+      {% assign productVariables = product.selected_or_first_available_variant.title | split: '/' %}
+      var named = document.getElementById("productVariables"); 
+      var tags = named.getElementsByTagName("input");
+
+      let soldoutCount = [];
+      {% for variables in productVariables %}
+      {% assign finalVariable = variables | remove: ' ' %}
+    
+    	var divID = document.getElementById('{{finalVariable}}');
+		
+        if(!(document.getElementById('{{finalVariable}}-button').classList.contains('soldout'))){
+        	
+        	$(divID).click();
+    		soldoutCount.push(' ');
+			/* function click first available */
+  		}
+        else{
+             soldoutCount.push('sold out');
+			
+        }
+      {% endfor %}
+
+		const soldoutarray = document.getElementsByClassName("soldout");
+    	for(let i = 0; i < soldoutarray.length; i++) {
+		soldoutarray[i].classList.remove("available");
+		
+		};
+                                               
+        if(soldoutCount[1] == "sold out"){
+          //console.log("option1 is sold out");
+          var fieldsetID = document.getElementById('1-fieldset').getElementsByClassName("available")[0];;
+          $(fieldsetID).click();
+        }
+                                               
+                                               
+                                               
+                                               
+                                               
+                                               
+        
+        {% assign productVariables = product.selected_or_first_available_variant.title | split: '/' %}                                       
+        //console.log('{{productVariables}}');                             
+                                               
+        const fieldset = document.getElementById("productVariables");
+        const actives = fieldset.getElementsByClassName("active");
+    	const activeCount = actives.length;
+        
+        for(let i = 0; i < activeCount; i++) {
+          
+          if(soldoutCount[i] != 'sold out'){
+        	actives[0].className = actives[0].className.replace("active", "");
+          }
+        }
+      var counter = 0;                                 
+      {% for variables in productVariables %}
+      {% assign finalVariable = variables | remove: ' ' %}
+		counter++;
+        var buttonID = document.getElementById('{{finalVariable}}-button');
+        if(!(buttonID).classList.contains('soldout')){
+        	buttonID.classList.add("active");
+        }
+        else if(counter == 1){
+			{% for variables in product.variants %}
+                {% comment %}{% if variables.option2 == and variables.option1 == %}
+                
+                {% endif %} {% endcomment %}
+            {% endfor %}
+
+		}
+                            
+        else{
+                                       
+        }
+
+      {% endfor %}
+
+
+
+	var activeElements = document.getElementsByClassName('active');
+      //console.log(activeElements);
+                               
+      for (var i = 0; i < activeElements.length; i++) {
+		//console.log(activeElements.length);
+        activeElements[i].click();
+        
+      }
+	

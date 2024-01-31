@@ -1,0 +1,135 @@
+<div class="uk-grid-small" uk-grid>
+  {% if product.available %}
+    {% if no_sku == false %}
+      <div class="fg-label_sku" data-bind-show="selectedVariant.sku">
+        Model #<span class="fg-label_sku uk-label" data-bind="selectedVariant.sku"></span>
+      </div>
+    {% endif %}
+  {% else %}
+    {% assign first_variant = product.variants | first %}
+      <div class="fg-label_sku">
+        Model #<span class="fg-label_sku uk-label">{{ first_variant.sku }}</span>
+      </div>
+  {% endif %}
+
+  <div class="js-product-price-wrap uk-margin-remove-top uk-h2" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+    <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+    {% if product.available %}
+      <link itemprop="availability" href="http://schema.org/InStock" />
+    {% else %}
+      <link itemprop="availability" href="http://schema.org/OutOfStock" />
+    {% endif %}
+  </div>
+</div>
+
+<div class="var-msg"></div>
+
+<form class="fg-product-form" data-cart-submit="data-cart-submit">
+  <fieldset id="productVariables" class="fg-product-form__variant-group uk-fieldset js-product-variants">
+    
+    {% if product.variants.size == 1%}
+      {% for variant in product.variants %}
+        <input type="hidden" name="id" value="{{ variant.id }}" />
+      {% endfor %}
+    {% else %}
+      <div class="select clearfix"{% if hide_default_title %} {% endif %} style="display:none;" hidden>
+        <select id="product-select-{{product.id}}" class='single-option-selector js-data-price' name="id" data-bind="variant_id">
+          {% for variant in product.variants %}
+
+          <option id="{{ variant.id }}" value="{{ variant.id }}" data-price='{{ variant.price | money_with_currency }}'>{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% if product.variants.size > 1 %}
+        {% for option in product.options %}
+          {% include 'swatch' with option %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+
+    {% if product.available %}
+      <fieldset class="uk-fieldset">
+        <legend class="fg-legend uk-legend uk-form-horizontal header" for="product-quantity-{{product.id}}">Quantity </legend>
+        <div class="uk-width-1-5@s uk-flex">
+          <div class="fg-product-form__increment-group uk-form-controls">
+            {% if qty_limit_one %}
+              <input disabled class="uk-input fg-button-swatch__number" type="number" id="product-quantity-{{product.id}}" name="quantity" value="1" min="1" data-bind="quantity" data-bind-event-keyup="_customProductHelper.updatePrice()" data-bind-event-change="_customProductHelper.updatePrice()"/>
+            {% else %}
+              <span data-step="down" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_down" data-bind-event-click="_customProductHelper.quantityStep('minus')"><span class="fg-svg-reset" uk-icon="minus"></span></span>
+              <input class="uk-input fg-button-swatch__number" type="number" id="product-quantity-{{product.id}}" name="quantity" value="1" min="1" data-bind="quantity" data-bind-event-keyup="_customProductHelper.updatePrice()" data-bind-event-change="_customProductHelper.updatePrice()" onclick="changeURL()" />
+              <span data-step="up" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_up" data-bind-event-click="_customProductHelper.quantityStep('add')"><span class="fg-svg-reset" uk-icon="plus"></span></span>
+            {% endif %}
+          </div>
+        </div>
+        {% if qty_limit_one %}
+          <span class="fg-legend uk-legend">Limited to one per order</span>
+        {% endif %}
+      </fieldset>
+    {% endif %}
+  </fieldset>
+
+  <fieldset class="fg-product-form__cta-group uk-fieldset">
+    <div class="uk-grid-small" uk-grid>
+      {% if product.available %}
+        {% assign add_cart_status = '' %}
+        {% assign stock_message = '' %}
+        {% assign add_cart_text = 'Add to Cart' %}
+        {% assign add_cart_icon = 'plus' %}
+      {% else %}
+        {% assign add_cart_status = 'disabled' %}
+        {% assign add_cart_icon = '' %}
+        {% assign add_cart_text = 'Out of Stock' %}
+        {% capture stock_message %}<p><strong>Sorry, this product is temporarily out of stock.</strong></p>
+        {% endcapture %}
+      {% endif %}
+      {% if product.type contains 'Actuator' and settings.discount_tier_count > 1 %}
+        <div class="uk-width-1-1@s uk-width-2-3@m">
+          {% include 'section-bulk-discount' %}
+        </div>
+      {% endif %}
+      <div class="uk-width-1-1@s uk-width-2-3@m">
+        {{ stock_message }}
+        <span class="fg-shadow-wrap fg-button-box-shadow-hover-large fg-button-box-shadow-small js-shadow-wrap">
+
+          <button disabled id="submit-button" type="submit" dh="{{ freeProCount }}" class="fg-button js-submit" {{ add_cart_status }}><span class="js-submit-icon" uk-icon="{{ add_cart_icon }}"></span> {{ add_cart_text }}</button>
+        </span>
+      </div>
+
+      <div class="uk-width-1-1 uk-width-auto@s">
+        <span class="fg-alert js-submit-notice uk-animation-slide-top-small"></span>
+        <span class="fg-alert js-warning-qty-limit uk-animation-slide-top-small uk-alert-warning">qty limit</span>
+        <span class="fg-alert js-warning-cart-limit uk-animation-slide-top-small uk-alert-warning">cart limit</span>
+      </div>
+      <div class="uk-width-1-1 uk-grid-margin uk-grid-small" uk-grid>
+        <div>
+          <a href="{{ shop.url | append: '/cart' }}" class="js-veiw-cart uk-button uk-button-default">
+            <span uk-icon="cart"></span> View Cart <span class="js-cart-item-count_form uk-badge fg-cart__badge_form">
+          {{ cart.item_count }}</span></a>
+        </div>
+        <div class="fg-display-none js-button-frequent-container fg-button-frequent-container">
+          <a class="fg-button-frequent fg-arrow-down-hover uk-button uk-button-default uk-width-1-1@s uk-animation-slide-top-small" href="#cbb-frequently-bought-box" uk-icon="icon:chevron-down" uk-scroll>Frequently Bought</a>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
+{% render 'form-link-wiring-diagram' with tags: product.tags, class_name: 'uk-hidden@m' %}
+
+<script>
+
+  
+  
+  
+  for  (let i = 0; i < actives.length; i++) {
+  actives[i].className = current[0].className.replace(" active", "");
+ 
+  }
+  var fieldset = document.getElementById("productVariables");
+  var actives = fieldset.getElementsByClassName("active");
+  
+
+  
+
+
+
+</script>

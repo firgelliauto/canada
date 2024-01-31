@@ -1,0 +1,149 @@
+{% assign storeCountry = shop.address.country %}
+<script>
+(function ($) {
+  'use-strict'
+  $(document).ready(function() {
+    var storeLocation = '{{ storeCountry }}';
+    var template = '{{ template }}';
+    
+    function validatingJSON (json) {
+      var checkedjson;
+      try {
+        checkedjson = JSON.parse(json)
+      } catch (e) {
+        checkedjson = false;
+      }
+      return checkedjson;
+    }
+
+    var cache = validatingJSON(localStorage.getItem('firgelliLocation'));
+
+    var cacheExpires;
+    if( cache === null ) {
+      cacheExpires = 0;
+    } else {
+      cacheExpires = cache.expires || 0;
+    }
+    if( template !== 'blog' && template !== 'article' ) {
+      if ( cache === false || cacheExpires < Math.floor( Date.now()/1000) ) {
+        var options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
+        };
+
+        var mapBoxEndpoint = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
+        var mapBoxToken = 'pk.eyJ1IjoiZmlyZ2VsbGkiLCJhIjoiY2s1MzBoZW5xMDNuNjNscXZtZG5nODExNSJ9.PJIwZOS4h6i8dEHUnjY_Yw';
+
+        function success(pos) {
+          var crd = pos.coords;
+          var lat = crd.latitude;
+          var long = crd.longitude;
+          var mapboxHttps = mapBoxEndpoint + long + ',' + lat + '.json?access_token=' + mapBoxToken + '&types=country';
+
+          getCountry(mapboxHttps, locationNotification);
+
+        }
+
+        function error(err) {
+          console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+
+        function getCountry(Url, cb){
+          $.ajax({
+            url: Url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+              var firgelliLocation = {
+                'country': data.features[0].place_name,
+                'expires': Math.floor( Date.now()/1000 + 2592000 )
+              };
+
+              localStorage.setItem('firgelliLocation', JSON.stringify(firgelliLocation));
+              return cb();
+            },
+            error: function(data) {
+              console.log('getCountry error', data);
+            }
+          })
+        }
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      }
+    }
+
+    function countryToPath(string) {
+      return string.toLowerCase().split(' ').join('-');
+    }
+
+    function displayLocationNotification() {
+      $('[data="user-location-section"]').addClass('fg-display');
+    }
+
+    function locationNotification() {
+      var USHttp = 'https://www.firgelliauto.com';
+      var CAHttp = 'https://www.firgelliauto.ca';
+      var AUHttp = 'https://www.firgelliauto.com.au';
+      var $url = $('<a>').attr({
+        class : 'uk-button uk-button-primary uk-margin'
+      });
+
+      var firgelliLocation = JSON.parse(localStorage.getItem('firgelliLocation'));
+      var customerLocation = firgelliLocation.country;
+      var customerLocationCacheExpire = firgelliLocation.expires;
+
+      var titleOutsideUs = 'We have detected your location to be from outside of '+ storeLocation +', would you like to go to our ';
+
+      if(customerLocation !== storeLocation) {
+        if(customerLocation !== 'Canada' && customerLocation !== 'Australia') {
+          if(storeLocation !== 'United States') {
+            setTimeout(displayLocationNotification, 1000);
+            $url = $url
+            .attr({
+              href : USHttp,
+              title : 'Go to Firgelli Automations USA website'
+            })
+            .addClass('fg-icon-flag_location fg-united-states')
+            .html('Please take me to the United States website');
+
+            $('[data="user-location-stay-button"]')
+            .addClass('fg-icon-flag_location fg-' + countryToPath(storeLocation))
+            .html('Thanks! Keep me on the '+ storeLocation + ' website');
+
+            $('[data="location-option-heading"]').html(titleOutsideUs + 'United States' + ' store?');
+          }
+        }
+        else {
+          setTimeout(displayLocationNotification, 1000);
+          $('[data="user-location-stay-button"]')
+          .addClass('fg-icon-flag_location fg-' + countryToPath(storeLocation))
+          .html('Thanks! Keep me on the '+ storeLocation + ' website');
+
+          if (customerLocation === 'Canada' || customerLocation == 'Australia') {
+            var locationHttp;
+            if (customerLocation === 'Canada') {
+              locationHttp = CAHttp;
+            } else if (customerLocation == 'Australia') {
+              locationHttp = AUHttp;
+            }
+            $url = $url
+              .attr({
+                href : locationHttp,
+                title : 'Go to Firgelli Automations '+ customerLocation +' website'
+              })
+              .addClass('fg-icon-flag_location fg-'+ countryToPath(customerLocation))
+              .html('Please take me to the '+ customerLocation +' website');
+              $('[data="location-option-heading"]').html(titleOutsideUs + customerLocation + ' store?');
+          }
+        }
+        $('[data="user-location-away-button"]').append($url);
+      }
+    }
+
+    UIkit.util.on('#location-option', 'hide', function () {
+      $('[data="user-location-section"]').removeClass('fg-display');
+    });
+  })
+})(jQuery);
+</script>

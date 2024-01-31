@@ -1,0 +1,444 @@
+<script  src="{{ 'jquery.js' | asset_url }}"></script>
+
+<style>
+  
+  h2{
+   margin-bottom: 0px; 
+  }
+  @media only screen and (max-width: 1250px) {
+  	.mobileHidden{
+      display: none; {% comment %} it does work on mobile, just needs styling{% endcomment %}
+    }
+  }
+  .sliderBox{
+    width: 50px; 
+    height: 23px; 
+    margin-bottom: 7px; 
+    
+    border-color: rgb(148, 176, 202);
+    border-width: 1px;
+    border-style: solid;
+    
+  }
+</style>
+
+
+
+<script async src="{{ 'jquery.min.js' | asset_url }}"></script>
+<section id="collection-grid-section" class="uk-section">
+  <div class="uk-container">
+    
+    <div class="collectionDescription">
+      {% assign productDescription = collection.description | split:"<!--SEO-->"%}
+     
+      {% if collection.description contains '<!--SEO-->' %}
+      {{ productDescription | last}}
+      {% endif %}
+      
+      {%comment%}{{ collection.description | truncate: 320 }}{%endcomment%}
+    </div>
+
+
+
+<div class="uk-container mobileHidden">
+  <form id="WidgetForm" style="">
+    <div class="">
+      
+      <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
+           
+        <div style="display: flex; align-items: center; width: 15%">
+        <div style="max-width: 150px">
+        <h2 style="font-size: 23px; padding-right: 20px"><strong>Feedback</strong></h2>
+          <a href="https://www.firgelliauto.com/blogs/news/don-t-buy-a-feedback-linear-actuator-until-you-read-these-important-tips" style="color: #1e87f0; font-size: 15px">What is feedback? click here</a>
+        </div>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
+		
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
+          <label class="uk-form-label" for="Yes">Yes</label>
+        </div>
+
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
+          <label class="uk-form-label" for="No">No</label>
+        </div>
+        </div>
+        </div>
+        
+
+   
+		
+        <div class="custom-range-slider uk-width-1-1@s uk-width-1-4@m" style="text-align: -webkit-center; padding-top: 10px; align-self: center; margin: 0 15px 0 20px">
+          <center><h2 style="font-size: 23px;"><strong>Stroke (Inches)</strong></h2></center>
+          <div style="display: flex">
+ 
+          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
+
+
+          
+		  
+          <div id="StrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+          {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
+          </div>
+        </div>
+        
+    
+
+		<div class="custom-range-slider uk-width-1-1@s uk-width-1-4@m" style="text-align: -webkit-center; padding-top: 10px; align-self: center; padding-left: 10px; margin-left: 25px;">
+		  <center><h2 style="font-size: 23px;"><strong>Force (lb's)</strong></h2></center>
+          <div style="display: flex">
+          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
+
+          
+          
+		  
+          <div id="ForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+        </div>
+        </div>
+
+        
+      </fieldset>
+    </div>
+    <input id="hiddenSubmit" type="button" value="Submit" hidden>
+  </form> 
+</div>
+       
+
+
+    
+    	{% include 'loop-collection' %}
+
+  </div>
+</section>
+
+
+
+<script>
+  
+var rangeSlidersTrack = document.querySelectorAll('.custom-range-slider .custom-range-slider__track');
+var rangeSlidersInputFrom = document.querySelectorAll('.custom-range-slider .custom-range-slider__input--from');
+var rangeSlidersInputTo = document.querySelectorAll('.custom-range-slider .custom-range-slider__input--to');
+var rangeSliderInputs = [];
+for(var i = 0; i < rangeSlidersTrack.length; i++) {
+    rangeSliderInputs.push([rangeSlidersInputFrom[i], rangeSlidersInputTo[i]]);
+}
+let sliderMax = 30;
+let startOne = 3;
+let startTwo = 15;
+
+  
+[].slice.call(rangeSlidersTrack).forEach(function(slider, index) {
+  if(slider.id == 'StrokeSlider'){
+
+    
+    
+  }
+  else{
+    sliderMax = 500;
+    startOne = 40;
+    startTwo = 200;
+  }
+
+  
+  
+    noUiSlider.create(slider, {
+        start: [0, sliderMax],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': sliderMax,
+            '10%': [startOne],
+            '50%': [startTwo]
+        },
+        pips: {mode: 'count', values: 4}
+      	
+    });
+    
+    
+    slider.noUiSlider.on('update', function(values, handle) {
+        rangeSliderInputs[index][handle].value = parseInt(values[handle]); //rangeSliderInputs[0][0].value + " " + rangeSliderInputs[0][1].value
+		//checkStroke(rangeSliderInputs[0][0].value, rangeSliderInputs[0][1].value);
+    });
+  
+  	slider.noUiSlider.on('set', function(values, handle){
+      //checkStroke(rangeSliderInputs[0][0].value, rangeSliderInputs[0][1].value);
+      filter();
+    });
+  
+  	slider.noUiSlider.on('slide', function(values, handle){
+      filter();
+    });
+
+    function setSliderHandle(i, value) {
+        var r = [null,null];
+        r[i] = value;
+        slider.noUiSlider.set(r);
+    }
+
+    rangeSliderInputs[index].forEach(function(input, handle) {
+
+        input.addEventListener('change', function(){
+            setSliderHandle(handle, this.value);
+        });
+      
+
+
+        input.addEventListener('keydown', function(e) {
+
+            var values = slider.noUiSlider.get();
+            var value = Number(values[handle]);
+
+            // [[handle0_down, handle0_up], [handle1_down, handle1_up]]
+            var steps = slider.noUiSlider.steps();
+
+            // [down, up]
+            var step = steps[handle];
+
+            var position;
+
+            // 13 is enter,
+            // 38 is key up,
+            // 40 is key down.
+            switch (e.which) {
+
+                case 13:
+                    setSliderHandle(handle, this.value);
+                    break;
+
+                case 38:
+
+                    // Get step to go increase slider value (up)
+                    position = step[1];
+
+                    // false = no step is set
+                    if ( position === false ) {
+                        position = 1;
+                    }
+
+                    // null = edge of slider
+                    if ( position !== null ) {
+                        setSliderHandle(handle, value + position);
+                    }
+
+                    break;
+
+                case 40:
+
+                    position = step[0];
+
+                    if ( position === false ) {
+                        position = 1;
+                    }
+
+                    if ( position !== null ) {
+                        setSliderHandle(handle, value - position);
+                    }
+
+                    break;
+            }
+        });
+    });
+});  
+  
+  
+var filter_IDs = ['#12v', '#24v', '#Rod', '#Track', '#Column', '#Yes', '#No'];
+
+$(document).ready(function() {
+
+    $.ajax({
+        type: "GET",
+        url: '{{ 'final_widget_data_2.csv' | asset_url }}',
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+  });
+var lines = [];
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr.push(data[j]);
+            }
+          	
+            //console.log(tarr[6] + " " + testData);
+          if(document.getElementById(tarr[6])){
+            lines.push(tarr);
+          }
+          	
+        }
+    }
+    
+}
+  
+  
+  function filter(){
+    let minStroke = rangeSliderInputs[0][0].value;
+    let maxStroke = rangeSliderInputs[0][1].value;
+    let minForce = rangeSliderInputs[1][0].value;
+    let maxForce = rangeSliderInputs[1][1].value;
+    
+   //console.log(minForce, maxForce);
+    for (var i=0; i<lines.length; i++) {
+       let productHandle = lines[i][6];
+     
+       document.getElementById(productHandle).removeAttribute("hidden");
+      
+    }
+    checkForce(minForce, maxForce);
+    checkFilter();
+    checkStroke(minStroke, maxStroke);
+    
+  }
+  
+  
+  
+  function checkForce(minForce, maxForce){
+    
+    
+	 let Forces = 0;
+     let showHandles = [];
+     for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+      let betweenMinMaxForce = false; 
+      Forces = lines[i][4];
+         if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
+           showHandles.push(productHandle);
+           betweenMinMaxForce = true;
+		 }
+		
+      if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
+         document.getElementById(productHandle).setAttribute("hidden", "hidden");
+      }
+      if(betweenMinMaxForce == true &&  document.getElementById(productHandle).hasAttribute("hidden")){
+        document.getElementById(productHandle).removeAttribute("hidden");
+      }
+       
+       
+       
+     }
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+   function checkFilter(productHandle){
+	
+	for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+
+      if($(filter_IDs[5]).is(":checked") == true && lines[i][3] == ''){ //yes
+        if($(filter_IDs[6]).is(":checked") == true){
+        }
+        else{
+        	document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      if($(filter_IDs[6]).is(":checked") == true && lines[i][3] != ''){ //no
+        if($(filter_IDs[5]).is(":checked") == true){
+        }
+        else{
+        	document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      
+
+      
+    }
+   }
+  
+  
+  
+
+
+  
+  function checkStroke(minStroke, maxStroke){
+	
+	 let Strokes = [];
+    
+     for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+      let betweenMinMax = false; 
+      Strokes = lines[i][0].split('_');
+      
+       for (var x = 0; x < Strokes.length; x++){
+         //console.log(Strokes[x] + " MinValue: " + minStroke + " MaxValue: " + maxStroke);
+         if (~~Strokes[x] >= ~~minStroke && ~~Strokes[x] <= ~~maxStroke){
+           
+           betweenMinMax = true;
+		   break
+         }
+       }
+       if(betweenMinMax == false){
+         document.getElementById(productHandle).setAttribute("hidden", "hidden");
+       }
+      }
+
+    
+  }
+  
+  
+  function submitFunction(id){
+   	for(var z=0; z<filter_IDs.length; z++){
+    	//alert(filter_IDs[z] + " " + $(filter_IDs[z]).is(":checked"));
+        filter();
+     }
+    
+  }
+  
+
+  
+  
+  
+  
+</script>
+
+
+
+
+{% comment %}
+{% for product in collection.products %}
+	{{product.handle}}
+{% endfor %}
+{% endcomment %}
+
+{% schema %}
+  {
+    "name": "Linear Actuators Filter",
+    "settings": [
+      
+	  {
+        "type": "header",
+        "content": "CSV data"
+      },
+      {
+        "type": "header",
+        "content": "Recommended Products Collection"
+      },
+      {
+        "id"   : "recommended_collection",
+        "type" : "collection",
+        "label": "Select a collection"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Cards",
+        "category": "Static Collection"
+      }
+    ]
+  } 
+
+{% endschema %}

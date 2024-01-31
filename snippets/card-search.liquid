@@ -1,0 +1,22 @@
+{% if card_item.object_type == 'article' %}
+  <div>
+    {% render 'card-article' with card_item: card_item, search_types: search_types %}
+  </div>
+{% elsif card_item.object_type == 'product' %}
+  <div class="">
+    {% render 'card-product-content' with card_item: card_item, search_types: search_types %}
+  </div>
+{% elsif card_item.object_type == 'page' %}
+  <div>
+    <div class="fg-card uk-card uk-card-default uk-card-hover uk-card-small uk-flex uk-flex-column">
+      <div class="fg-card__pages">
+        <h3 class="">{{ card_item.title | highlight: search_terms }}
+        </h3>
+        <div class="fg-card__footer uk-padding-remove-left">
+          <a href="{{ card_item.url }}" class="fg-button-default uk-button uk-button-default">SEE PAGE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endif %}

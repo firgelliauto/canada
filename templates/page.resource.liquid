@@ -1,0 +1,23 @@
+{% section 'page-header' %}
+<section class="uk-section">
+  <div class="uk-container">
+    <div class="uk-grid" uk-grid>
+      <div class="fg-resource-content uk-width-1-1" data="resource-content">
+        <div class="fg-resource_intro">
+        	{{ page.content}}
+				</div>
+        {% if page.metafields.custom_fields['display_resource_content'] > 0 %}
+          <div class="uk-visible@s">
+            {% render 'custom-fields-resource-content' %}
+          </div>
+          <div class="uk-hidden@s">
+            {% render 'custom-fields-resource-content-mobile' %}
+          </div>
+        {% else %}
+          {% render 'script-resources' %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% section 'section-full-width' %}

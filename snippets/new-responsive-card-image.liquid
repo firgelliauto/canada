@@ -1,0 +1,27 @@
+<style>
+
+  
+
+ @media screen and (max-width: 640px) {  
+  .fg-card-image-containers{
+    padding: 20px;
+  }
+  .fg-responsive-image__absolute-wrappers {
+    position: relative;
+  }
+ }
+
+  
+</style>
+
+
+<div id="" data-image-id="{{ image_src.id }}" class="fg-card-image-containers {{ card_sidebar_style }}" style="height: 100%">
+  <div class="fg-responsive-image__absolute-wrappers" style="height: 100%">
+    <div class="fg-responsive-image__flex-column-wrapper">
+      <img loading="lazy" style="max-width: none" class="" src="{{ image_src | img_url: '300x300' }}" alt="{{ image_src.alt | escape }}">
+    </div>
+  </div>
+</div>
+<noscript>
+  <img style="max-width: none" class="" src="{{ image_src | img_url: '300x300' }}" alt="{{ image_src.alt | escape }}">
+</noscript>

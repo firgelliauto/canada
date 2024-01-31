@@ -1,0 +1,17 @@
+{% if settings.display_checkout_shipping_message == true %}
+  <script type="text/javascript">
+    if(Shopify.Checkout.step == 'shipping_method') {
+      document.addEventListener('page:load', function(){
+        var messageElement = document.createElement('p'); 
+        var shippingMessage = document.createTextNode("{{ settings.checkout_shipping_message }}");
+        messageElement.appendChild(shippingMessage);
+        messageElement.style.color = 'red';
+        
+        var shippingHeaderDom = document.getElementsByClassName('section--shipping-method')[0].firstElementChild;
+        
+        shippingHeaderDom.appendChild( messageElement);
+        
+      });
+    }
+  </script>
+{% endif %}

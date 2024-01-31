@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/firgelli-canada.myshopify.com/products/configure/192195/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["wiring_diagram_title"] != blank %}
+  <div class="custom-field custom-field__wiring-diagram-title custom-field__type--text">
+    <h3 class="custom-field--title">Wiring Diagram Title</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["wiring_diagram_title"] }}
+    </div>
+  </div>
+{% endif %}

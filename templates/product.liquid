@@ -1,0 +1,207 @@
+<style>
+  .uk-switcher{
+    padding: 0 40px;
+  }
+  .slick-list{
+    height: 100%;
+  }
+  .slick-track{
+    height: 100%;
+  }
+  .fg-responsive-image__image {
+    object-fit: initial;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+  }
+  /*fix the layout issue with frequently bought together app...*/
+  .cbb-frequently-bought-product > a{
+    height: auto !important;
+  }
+  .cbb-frequently-bought-add-button{
+  	padding: 0px 10px !important;  
+  }
+</style>
+
+
+<script> //set frequently bought together to hidden so we can fix it up before it displays
+  
+</script>
+
+{% include 'nav-bread-crumbs' %}
+{% assign qty_limit_one = false %}
+{% assign no_contact = false %}
+{% assign no_sku = false %}
+{% assign delivery_time = false %}
+{% for tag in product.tags %}
+  {% if tag == "free-gift-limit-1" %}
+    {% assign qty_limit_one = true %}
+  {% endif %}
+  {% if tag == "no-contact" %}
+    {% assign no_contact = true %}
+  {% endif %}
+  {% if tag == "no-sku" %}
+    {% assign no_sku = true %}
+  {% endif %}
+  {% if tag contains "delivery time" %}
+    {% assign delivery_time = tag | downcase | replace_first: 'delivery time', 'Current lead time for delivery is ' %}
+    {% assign delivery_time_split = delivery_time | split: ' ' %}
+    {% assign delivery_time_last = delivery_time_split | last %}
+    {% assign delivery_time_split = delivery_time_split | join: ' ' | remove: delivery_time_last %}
+    {% assign delivery_time_last = delivery_time_last | capitalize %}
+    {% assign delivery_time = delivery_time_split | append: ' ' | append: delivery_time_last %}
+  {% endif %}
+{% endfor %}
+<section class="fg-product-padding-top uk-section">
+  <div class="uk-container">
+    <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+      <h1 class="fg-product-title_mobile uk-h2 uk-text-center uk-hidden@s ">{{ product.title }}</h1>
+      <div class="uk-flex-middle" uk-grid>
+        <div class="uk-width-2-3@l uk-width-1-2@m js-slick-container fg-slick-container fg-transparent" uk-grid>
+          {% include 'loop-product-slider' %}
+        </div>
+        <div class="uk-width-1-3@l uk-width-1-2@m">
+          <h1 class="uk-visible@s">{{ product.title }}</h1>
+          <div class="js-product-main-details">
+            <div class="fg-product-meta uk-grid-small" uk-grid>
+              <div class="fg-product-price uk-h2">
+                {% include 'form-product__price' %}
+              </div>
+              <div class="">
+                {% section 'social-share' %}
+              </div>
+            </div>
+            {% if delivery_time %}
+              <p class="uk-h3">*{{ delivery_time }}</p>
+            {% endif %}
+            {% include 'form-product' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} 
+      ADDITIONAL CONTENT
+      variable renderProductDescription will trigger client render from product-all.js
+    {% endcomment %}
+    {% if  product.metafields.custom_fields['display_custom_product_tabs'] > 0 %}
+      {% assign product_tab_list = 'description, specifications, tech_drawing, wiring_diagram,performance_graph, video, video_comparison, video_demo' %}
+
+      {% assign product_tab_list = product_tab_list | split: ',' %}
+        {% comment %} Include counter to output {{ number_of_resources }} variable {% endcomment %}
+        {% include 'custom-fields-product-content-counter' %}
+        {% if number_of_resources > 1 %}
+          <div class="fg-product-additional-content">
+            {% render 'custom-fields-product-content' with product_tab_list: product_tab_list %}
+            {% render 'custom-fields-product-content-mobile' with product_tab_list: product_tab_list %}
+          </div>
+        {% elsif  number_of_resources == 1 %}
+          <div class="uk-container-small uk-margin-top uk-margin-auto-left uk-margin-auto-right">
+            {% render 'custom-fields-product-content-single' with product_tab_list: product_tab_list %}
+          </div>
+        {% endif %}
+      <script>
+        var renderProductDescription = false;
+      </script>
+    {% else %}
+      <script>
+        var renderProductDescription = true;
+      </script>
+      
+      <div class="fg-product-additional-content rte js-product-additional-content">
+        <div class="fg-no-js">
+          <script async>
+            {{ product.description }}
+          </script>
+        </div>
+    
+      </div>
+    
+    {% endif %}
+    <div id="shopify-product-reviews" data-id="{{product.id}}"></div>
+  </div>
+</section>
+<section
+  class="js-frequently-bought-container fg-display-none uk-section fg-section__muted-blue">
+  <div id="cbb-frequently-bought-box" class="uk-container">
+  </div>
+</section>
+
+{% section 'section-full-width' %}
+{%- include 'social-pin-board' -%}
+<script>
+
+  {% if product.variants.size > 1 %}
+  jQuery(function ($) {
+    var $product = $('#prod-' + {{ product.id }});
+    new Shopify.OptionSelectors("product-select-{{product.id}}", { product: {{ product | json }}, onVariantSelected: selectCallback });
+    {% if product.available and product.options.size > 1 %}
+      Shopify.linkOptionSelectors({{ product | json }});
+    {% endif %}
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)', $product).prepend('<label>{{ product.options.first }}</label>');
+    {% endif %}
+
+    {% assign found_one_in_stock = false %}
+    {% for variant in product.variants %}
+      {% if variant.available and found_one_in_stock == false %}
+        {% assign found_one_in_stock = true %}
+        {% for option in product.options %}
+          $('.single-option-selector:eq({{ forloop.index0 }})', $product).val({{ variant.options[forloop.index0] | json }}).trigger('change');
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+      });
+  {% endif %}
+</script>
+
+<script>
+  var productID = {{ product.id }};
+  var productTitle = "{{ product.title | escape }}";
+  var freeOne = {{ qty_limit_one }};
+  var contextProduct = {{ product | json }};
+  var contextOptionCount = {{ product.options.size }};
+  var contextOptionTitle = {{ product.options | json }}.map(_.lowerCase);
+  var contextVariant = {{ product.variants | json }};
+
+  var descProduct = {{ product.description | json}};
+
+  var availableList = [];
+  {% for v in product.variants %}
+    if({{v.available}} == true ) {
+      availableList.push({
+        id : {{ v.id }},
+        {% if product.options[0] %}
+          option1 : "{{ v.option1 | escape }}",
+        {% else %}
+          option1 : undefined,
+        {% endif %}
+        {% if product.options[1] %}
+          option2 : "{{ v.option2 | escape }}",
+        {% else %}
+          option2 : undefined,
+        {% endif %}
+        {% if product.options[2] %}
+          option3 : "{{ v.option3 | escape }}",
+        {% else %}
+          option3 : undefined,
+        {% endif %}
+        {% if v.inventory_quantity %}
+          inventory : "{{v.inventory_quantity}}",
+        {% endif %}
+        {% if v.sku %}
+          sku : "{{v.sku}}",
+        {% endif %}
+        {% if v.compare_at_price %}
+          compare : "{{ v.compare_at_price }}",
+        {% else %}
+          compare : null,
+        {% endif %}
+        price : "{{ v.price }}"
+      })
+    }
+  {% endfor %};
+
+
+  
+</script>
+

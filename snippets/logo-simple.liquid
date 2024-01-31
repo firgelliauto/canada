@@ -1,0 +1,14 @@
+{% case shop.address.country  %}
+  {% when 'Canada' %}
+    {% assign logo_geo = 'firgelli-logo-ca.svg' %}
+  {% when 'United States' %}
+    {% assign logo_geo = 'firgelli-logo.svg' %}
+  {% when 'Australia' %}
+    {% assign logo_geo = 'firgelli-logo-au.svg' %}
+{% endcase %}
+<a href="/" class="fg-logo-image">
+    <img  class="fg-logo-image__svg uk-preserve"
+          uk-img="data-src:{{ logo_geo | asset_url }}"
+          alt="{{ shop.name }} logo"
+          itemprop="logo" uk-svg>
+</a>

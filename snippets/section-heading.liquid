@@ -1,0 +1,17 @@
+{% if section.settings.title != blank %}
+  {% if section.settings.heading_margin == true %}
+    {% assign heading_margin = 'fg-heading-margin' %}
+  {% else  %}
+    {% assign heading_margin = '' %}
+  {% endif %}
+  <div class="uk-flex uk-flex-center uk-child-width-2-3@s" uk-grid>
+    <div class="{{ heading_margin }} uk-text-center uk-width-2-3@l">
+      {% if section.settings.title != blank %}
+        <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.sub_title != blank %}
+        {{ section.settings.sub_title }}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

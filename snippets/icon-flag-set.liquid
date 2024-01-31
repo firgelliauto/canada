@@ -1,0 +1,8 @@
+{% case shop.address.country  %}
+  {% when 'Canada' %}
+      {% include  'icon-CA-flag' %}
+  {% when 'United States' %}
+      {% include  'icon-USA-flag' %}
+  {% when 'Australia' %}
+      {% include  'icon-AU-flag' %}
+{% endcase %}

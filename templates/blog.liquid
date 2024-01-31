@@ -1,0 +1,24 @@
+{% include 'nav-bread-crumbs' %}
+{%- assign blog_title = blog.title -%}
+
+{% if current_tags %}
+  {% capture blog_title %}{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}{% endcapture %}
+{% endif %}
+<section class="uk-text-center uk-section uk-padding-remove-bottom">
+  <h1 class="uk-margin-medium-top">{{ blog_title | capitalize }}</h1>
+</section>
+{% section 'blog-cards' %}
+<!-- Common followup sections -->
+{% section 'featured-collection-slider' %}
+
+{% if collection.description != blank %}
+  {% include 'section-full-width' %}
+{% endif %}
+
+{%- if blog.handle == 'tutorials' -%}
+  {% section 'section-chess-tutorials' %}
+{%- else -%}
+  {% section 'section-chess' %}
+{%- endif -%}
+
+{% section 'section-full-width' %}

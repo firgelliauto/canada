@@ -1,0 +1,57 @@
+<div class="uk-container">
+  <ul class="fg-breadcrumb uk-breadcrumb">
+    <li>
+      <a href="/" class="homepage-link" title="Back to the home page">Home</a>
+    </li>
+    {% if template contains "product" %}
+    	{% if product.title contains "Linear Actuator" or "Mini Actuator" or "Rod Actuator" or "Heavy Duty Actuator" or "Potentiometer" or "Track Actuator" or "Column Lift"%}
+    		<li>
+              <a href="/collections/linear-actuators" title="Back to Linear Actuators">Linear Actuators</a>
+    		</li>
+    	{% endif %}
+      <li>
+        <span> {{ product.title | truncate: 40 }}</span>
+      </li>
+    {% elsif template == "blog" %}    
+      <li>  
+        <span> {{ blog.title }}</span>
+      </li>
+      {% if current_tags %}
+        <li>
+          <a class="current" href="#">{{current_tags.first}}</a>
+        </li>
+      {% endif %}   
+    {% elsif template == "article" %}
+      <li>
+        {{ blog.title | link_to: blog.url }}
+      </li>
+      <li>   
+        <span>{{ article.title | truncate: 40 }}</span>
+      </li>
+    {% elsif template contains "collection" %}
+        
+      {% if current_tags.size > 0 %}
+        {% if collection.url !="" %}
+        <li>
+          > {{ collection.title | link_to: collection.url }}
+        </li>
+        {% else %}
+        <li>
+          <a href="/collections/all"> {{ collection.title | escape }}</a>
+        </li>
+        {% endif %}
+        <li>
+          <a class="current" href="#"> {{ current_tags.first }}</a>
+        </li>
+      {% else %}
+        <li>
+          <a class="current" href="{{collection.url}}"> {{ collection.title | truncate: 40 }}</a>  
+        </li>
+      {% endif %}
+    {% else %}
+      <li>
+        <span> {{ page_title | truncate: 40 }}</span>      
+      </li>
+    {% endif %}
+  </ul>
+</div>

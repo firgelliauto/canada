@@ -1,0 +1,59 @@
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(event) {
+  (function ($) {
+    $(document).ready(function () {
+      'use strict';
+      var currentProductID = {{ product.id }};
+      var free = {{ qty_limit_one }};
+      var hasProduct;
+      var limitCurrentProduct = false;
+
+      function checkFreeLimit() {
+        if (free === true && hasProduct !== undefined ) {
+          limitCurrentProduct = true;
+          $('.js-shadow-wrap').addClass('fg-disabled');
+          $('.js-submit').prop('disabled', true);
+        }
+      }
+
+      function loadSpinner() {
+        $('.js-submit').toggleClass('fg-disabled').attr('uk-spinner', '');
+        $('.js-veiw-cart').toggleClass('fg-disabled');
+        $('.js-veiw-cart_nav').toggleClass('fg-disabled');
+        $('.js-submit-icon').toggle();
+      }
+
+      function stopSpinner() {
+        $('.js-submit').removeAttr('uk-spinner');
+        $('.js-submit').toggleClass('uk-spinner fg-disabled');
+        $('.js-veiw-cart').toggleClass('fg-disabled');
+        $('.js-veiw-cart_nav').toggleClass('fg-disabled');
+        $('.js-submit-icon').toggle();
+      }
+
+      $(document).on('cart.ready', function(event, cart) {
+        hasProduct = _.find(CartJS.cart.items, { 'product_id': currentProductID } );
+        checkFreeLimit();
+      });
+
+      $(document).on('cart.requestStarted', function(event, cart) {
+        loadSpinner();
+      });
+
+      $(document).on('cart.requestComplete', function(event, cart) {
+        hasProduct = _.find(CartJS.cart.items, { 'product_id': currentProductID } );
+        $('.js-cart-item-count').html(cart.item_count);
+        $('.js-cart-item-count_form').html(cart.item_count);
+        if (free === true && hasProduct !== undefined ) {
+          stopSpinner();
+          checkFreeLimit();
+        } else {
+          setTimeout(function(){
+            stopSpinner();
+          }, 1500);
+        }
+      })
+    });
+  })(jQuery);
+});
+</script>

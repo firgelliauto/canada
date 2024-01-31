@@ -1,0 +1,27 @@
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(event) {
+    (function ($) {
+      $(document).ready(function () {
+        'use strict';
+
+        $('.js-search-button').on('click', function(){
+          if( $('input.fg-search-form__input').hasClass('active') ||
+              $('input.fg-search-form__input').parents().hasClass('template-search') ){
+
+            if( $(this).attr('data') == 'desktop' ) {
+              $('.js-search')[0].submit();
+            }
+
+            if( $(this).attr('data') == 'mobile' ) {
+              $('.js-search_mobile')[0].submit();
+            }
+
+          } else {
+            $('input.fg-search-form__input').addClass('active');
+            $('input.fg-search-form__input').focus();
+          }
+        })
+      });
+    })(jQuery);
+  });
+</script>

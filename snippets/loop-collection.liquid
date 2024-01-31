@@ -1,0 +1,96 @@
+{% paginate collection.products by 24 %}
+  {% if section.settings.disable_filter == false %}
+    {% assign show_filter = true %}
+    {% assign js_card_filter = 'js-card-filter' %}
+  {% else %}
+    {% assign show_filter = false %}
+    {% assign js_card_filter = '' %}
+  {% endif %}
+
+  {% if collection.handle contains 'actuator' or collection.handle contains 'tv' %}
+    {% assign show_filter = true %}
+    {% assign js_card_filter = 'js-card-filter' %}
+  {% else %}
+    {% assign show_filter = false %}
+    {% assign js_card_filter = '' %}
+  {% endif %}
+  {% assign display_stock = true %}
+  <div class="js-filter-container fg-collection-filter-nav" uk-filter="target: .js-filter">
+    {% if show_filter == true %} {% comment %}
+      <a class="fg-filter-toggle" uk-toggle="target: .fg-toggle-el; animation: uk-animation-fade">
+        <span class="">Filter</span>
+        <span uk-icon="icon: settings"></span>
+      </a>
+      <div class="fg-toggle-el js-filter-nav uk-grid-small uk-grid-divider uk-margin" uk-grid hidden>
+        <div class="uk-width-1-1@m">
+          <ul class="uk-subnav uk-subnav-pill" uk-margin>
+            <li class="uk-active" uk-filter-control>
+              <a href="#">All {{ collection.title }}</a>
+            </li>
+            <li class="fg-collection-subnav__reset" uk-filter-control>
+              <a href="#" uk-icon="icon:close">RESET</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="fg-toggle-el fg-collection-scroll-container" hidden>
+        <hr>
+        <a class="fg-collection-scroll fg-arrow-down-hover" href="#fg-collection-grid" uk-scroll="duration: 500;" uk-icon="icon: chevron-down">scroll</a>
+      </div>
+    {% endcomment %}{% endif %}
+    <div style="place-content: center;" id="fg-collection-grid" class="fg-collection-grid js-filter uk-margin-small-top uk-grid-small uk-grid-match" uk-grid>
+      {% if show_filter == true %}
+        <div class="js-filter__message fg-container-full-width">
+          <span class="js-filter__message-text uk-text-lead uk-text-center">
+          
+          </span>
+        </div>
+      {% endif %}
+      {% for product in collection.products %}
+        {% assign hidden_tag = '' %}
+        {%- for tag in product.tags -%}
+          {%- if tag == 'hidden' -%}
+            {% assign hidden_tag = 'hidden' %}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if hidden_tag != 'hidden' -%}
+          {% assign card_item = product %}
+          {% if forloop.first == true %}
+            {% assign card_item_first = true %}
+          {% else %}
+            {% assign card_item_first = false %}
+          {% endif %}
+          {% comment %} {% include 'card-product' %} {% endcomment %}
+          <div id={{product.handle}} class="{{ js_card_filter }}">
+            {% render 'card-product-content' with card_item: card_item index_first: card_item_first %}
+          </div>
+        {%- endif -%}
+      {% else %}
+        {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+          {% for i in (1..8) %}
+            <a href="#">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+            </a>
+            <p>
+              <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+            </p>
+            <p>
+              {{ 1999 | money }}
+            </p>
+          {% endfor %}
+        {% else %}
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% if paginate.pages > 1 %}
+  {% include 'pagination' %}
+{% endif %}
+{% endpaginate %}
+{% if show_filter == true %}
+  <script>
+    var collectionsJson = {{ collection.products | json}};
+  </script>
+{% endif %}

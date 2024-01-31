@@ -1,0 +1,30 @@
+<div class="fg-card__body-price-container">
+  {% if product.compare_at_price > product.price %}
+    <span class="uk-text-meta fg-card__body-price-meta">Regular Price <s>{{ product.compare_at_price | money }}</s></span>
+   
+  {% endif %}
+
+  {% if product.compare_at_price > product.price %}
+
+    {% if product.price_varies %}
+      {%- assign sale_price = product.price | money -%}
+      <span class="fg-card__body-price-text">On Sale from <span class="uk-h4">{{ product.price | money }}</span></span>
+    {% else %}
+      <span class="fg-card__body-price-text">On Sale <span class="uk-h4">{{ product.price | money }}</span></span>
+    {% endif %}
+
+  {% else %}
+
+    {% if product.price_varies %}
+      {%- assign price = product.price | money -%}
+      <span class="fg-card__body-price-text">From <span class="uk-h4">{{ product.price | money }}</span></span>
+    {% else %}
+      <span class="uk-h2 fg-card__body-price-text">{{ product.price | money }}</span>
+    {% endif %}
+
+  {% endif %}
+
+  {% unless product.available %}
+    <em class="uk-text-small uk-text-danger">{{ 'products.product.sold_out' | t }}</em>
+  {% endunless %}
+</div>

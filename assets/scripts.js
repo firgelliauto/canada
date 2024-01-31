@@ -1,0 +1,1 @@
+"use strict";!function(i){i(document).ready(function(){function t(){var t=n.width();t>640&&i("div.js-slider-for").attr("uk-lightbox","animation: fade"),t<=640&&i(".js-fg-lightbox").click(function(i){i.preventDefault()})}var n=i(window);t(),i(window).resize(t)})}(jQuery);

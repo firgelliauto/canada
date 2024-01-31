@@ -1,0 +1,175 @@
+{% if has_filter == true %}
+  <div uk-filter="target: .js-filter">
+    <ul class="fg-collection-list uk-subnav uk-subnav-pill uk-flex uk-flex-center fg-heading-border">
+      <li class="uk-active" uk-filter-control=".js-filter-all"><a href="#">ALL</a></li>
+      <li uk-filter-control=".js-filter-actuators"><a href="#">ACTUATORS</a></li>
+      <li uk-filter-control=".js-filter-lifts"><a href="#">LIFTS</a></li>
+      <li uk-filter-control=".js-filter-accessories"><a href="#">ACCESSORIES</a></li>
+    </ul>
+{% else %}
+  <div>
+{% endif %}
+{%- if collection_grid_size != 'uk-child-width-1-2' -%}
+  {% assign collection_grid_size = 'uk-child-width-1-2 uk-child-width-1-4@s uk-child-width-1-5@m uk-child-width-1-6@l'  %}
+{%- endif -%}
+{% assign christmas_colors = '' %}
+{%- if settings.christmas_colors_collection == true -%}
+  {% assign christmas_colors = 'fg-christmas-collection' %}
+{%- endif -%}
+{% assign warm_collection_icons = '' %}
+{%- if settings.warm_collection_icons == true -%}
+  {% assign warm_collection_icons = 'fg-warm-collection' %}
+{%- endif -%}
+  <ul class="uk-flex uk-flex-center js-filter uk-grid-small {{ collection_grid_size }} uk-grid-match {{ warm_collection_icons }} {{ christmas_colors }} {{ ripple_effect }}" uk-grid>
+    {% for block in section.blocks %}
+      {% assign icon_image = icon_image_base_url | append: block.settings.collection_type  %}
+      {%- if section.settings.image_type == 'image_type_static' -%}
+        {% assign static_mod = 'fg-card__collection-icon_static' %}
+        {% assign icon_image = icon_image | append: '-kinetic@2x.png'  %}
+      {%- elsif section.settings.image_type == 'image_type_animate' -%}
+        {% assign static_mod = '' %}
+        {% assign icon_image = icon_image | append: '-kinetic.svg'  %}
+      {%- elsif section.settings.image_type == 'image_type_sprite' -%}
+        {% assign collection_sprite_class = 'fg-card__collection-icon-sprite fg-card__collection-icon-sprite_' | append: block.settings.collection_type %}
+      {% endif %}
+      {% assign icon_url = collection_path_base_url | append: block.settings.collection_url %}
+      {% assign collection_title =  block.settings.collection_title %}
+      {% if block.settings.collection_title_seo != blank %}
+        {% assign link_title = block.settings.collection_title_seo | prepend: 'See our collection of ' %}
+      {% else %}
+        {% assign link_title =  block.settings.collection_title | prepend: 'See our collection of ' %}
+      {% endif %}
+      <li class="uk-grid-match">
+      {% if section.settings.image_type == 'image_type_sprite' %}
+        <a title="{{ link_title }}" class="fg-card-collection-icon" {% if block.settings.alternative_url != blank %} href="{{ block.settings.alternative_url }}" {% else %} href="{{ icon_url }}" {% endif %}>
+          <div class="fg-card__collection-icon {{ static_mod }} {{ collection_sprite_class }}">
+          <div class="fg-card-collection-icon__title">{{ collection_title }}</div>
+          </div>
+        </a>
+      {% else %}
+        <div class="fg-card__collection-icon {{ static_mod }} {{ collection_sprite_class }}">
+          <a title="{{ link_title }}" class="fg-card-collection-icon" {% if block.settings.alternative_url != blank %} href="{{ block.settings.alternative_url }}" {% else %} href="{{ icon_url }}" {% endif %}>
+            {% include 'card-collection-icon' %}
+          </a>
+        </div>
+      {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% if section.settings.image_type == 'image_type_sprite' %}
+  <style>
+    .fg-card__collection-icon-sprite::after {
+      content: '';
+      background-image: url({{ 'collection-icon-sprites.svg' | asset_url }});
+      background-size: cover;
+      width: 120px;
+      height: 120px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 20% auto;
+      display: block;
+    }
+
+    .fg-card__collection-icon-sprite_premium::after {
+      background-position: 0;
+    }
+
+    .fg-card__collection-icon-sprite_bullet::after {
+      background-position: calc(120px * -1);
+    }
+
+    .fg-card__collection-icon-sprite_table::after {
+      background-position: calc(120px * -2);
+    }
+
+    .fg-card__collection-icon-sprite_controller::after {
+      background-position: calc(120px * -3);
+    }
+
+    .fg-card__collection-icon-sprite_feedback::after {
+      background-position: calc(120px * -4);
+    }
+
+    .fg-card__collection-icon-sprite_linear::after {
+      background-position: calc(120px * -5);
+    }
+
+    .fg-card__collection-icon-sprite_track::after {
+      background-position: calc(120px * -6);
+    }
+
+    .fg-card__collection-icon-sprite_tv::after {
+      background-position: calc(120px * -7);
+    }
+
+    .fg-card__collection-icon-sprite_slide::after {
+      background-position: calc(120px * -8);
+    }
+
+    .fg-card__collection-icon-sprite_column::after {
+      background-position: calc(120px * -9);
+    }
+
+    .fg-card__collection-icon-sprite_bracket::after {
+      background-position: calc(120px * -10);
+    }
+
+    .fg-card__collection-icon-sprite_switch::after {
+      background-position: calc(120px * -11);
+    }
+
+    .fg-card__collection-icon-sprite_power_supply::after {
+      background-position: calc(120px * -12);
+    }
+
+    .fg-card__collection-icon-sprite_robotic::after {
+      background-position: calc(120px * -13);
+    }
+
+    .fg-card__collection-icon-sprite_cable::after {
+      background-position: calc(120px * -14);
+    }
+
+    .fg-card__collection-icon-sprite_motor::after {
+      background-position: calc(120px * -15);
+    }
+
+    .fg-card__collection-icon-sprite_remote::after {
+      background-position: calc(120px * -16);
+    }
+
+    .fg-card__collection-icon-sprite_relay::after {
+      background-position: calc(120px * -17);
+    }
+
+    .fg-card__collection-icon   {
+      padding-top: 100%;
+    }
+
+    .fg-card-collection-icon {
+      padding: 0;
+    }
+
+    .fg-card-collection-icon__title {
+      padding-bottom: 15px;
+    }
+
+    @media (min-width: 1200px) {
+      .fg-card__collection-icon {
+        padding-top: 90%
+      }
+    }
+
+    {% comment %} @media (min-width: 960px) {
+
+    }
+
+    @media (min-width: 640px) {
+
+    } {% endcomment %}
+
+  </style>
+{% endif %}

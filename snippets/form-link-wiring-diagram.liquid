@@ -1,0 +1,11 @@
+{% for tag in tags %}
+  {% if tag == "wiring diagram widget" %}
+    <ul class="uk-list uk-width-1-1 uk-margin-small-bottom {{ class_name }}">
+      <li>
+        <a href="/pages/wiring-diagram-generator" target="_blank" class="fg-button-frequent uk-button uk-button-default fg-icon-hover">
+          Wiring Diagram Generator {% render 'icon-circuit' %}
+        </a>
+      </li>
+    </ul>
+  {% endif %}
+{% endfor %}

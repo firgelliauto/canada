@@ -1,0 +1,38 @@
+<div class="uk-inline uk-width-auto uk-width-1-1">
+  <a href="#" >{{ settings.discount_title }} <i uk-icon="icon: question"></i></a>
+  <div uk-dropdown="mode: click; pos: bottom-right;">
+    <div class="">
+      <p>
+        <i class="uk-text-meta">
+          {{ settings.discount_message }}
+        </i>
+      </p>
+      <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-striped">
+          <tr>
+            <th>
+              Min. Quantity
+            </th>
+            <th>
+              Discount
+            </th>
+          </tr>
+          {% for i in (1..settings.discount_tier_count) %}
+            {% assign quanity =  "discount_quantity_" | append: i %}
+            {% assign percent =  "discount_percent_" | append: i %}
+            <tr>
+              <td>
+                {{ settings[quanity] }}
+              </td>
+              <td>
+                {{ settings[percent] }} % OFF
+              </td>
+            </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

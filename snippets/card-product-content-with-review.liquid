@@ -1,0 +1,86 @@
+{% assign card_url = card_item.url %}
+<div class="fg-card js-card">
+  {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+  <div class="fg-card-media-top">
+    {% if card_item.featured_image != blank %}
+      <a class="fg-card__image_url" href="{{ card_url }}">
+        {% render 'responsive-card-image' with image_src: card_item.featured_image, index_first: index_first %}
+      </a>
+    {% endif %}
+    <div class="fg-card__body">
+      <a class="fg-card__product-title" href="{{ card_url }}">{{ card_item.title }}</a>
+      {% if card_item.available %}
+        <em class="fg-text_in-stock">In Stock</em>
+      {% else %}
+        <em class="fg-text_out-stock">Out of Stock</em>
+      {% endif %}
+      {% assign product_type = card_item.type | downcase %}
+      {% if template.name == 'collection' %}
+        {% if product_type contains 'actuator' or product_type contains 'tv' or product_type contains 'column' %}
+          {% assign option_one_array = "" %}
+          {% assign option_two_array = "" %}
+          {% assign option_three_array = "" %}
+          {% for variant in card_item.variants %}
+            {% if variant.option1 %}
+              {% assign option_one_value =  variant.option1 | split: ", "  %}
+              {% assign option_one_array = option_one_array | concat: option_one_value %}
+              {% assign option_one_array = option_one_array | uniq  %}
+            {% endif %}
+            {% if variant.option2 %}
+              {% assign option_two_value =  variant.option2 | split: ", "  %}
+              {% assign option_two_array = option_two_array | concat: option_two_value %}
+              {% assign option_two_array = option_two_array | uniq  %}
+            {% endif %}
+            {% if variant.option3 %}
+              {% assign option_three_value =  variant.option3 | split: ", "  %}
+              {% assign option_three_array = option_three_array | concat: option_three_value %}
+              {% assign option_three_array = option_three_array | uniq  %}
+            {% endif %}
+          {% endfor %}
+          {% if option_one_array %}
+            <ul class="fg-card__option-list">
+              {% if option_one_array != empty %}
+                {% assign option_one_type = card_item.options_with_values[0].name | downcase %}
+                {% render 'card-option-range' with array: option_one_array; option: option_one_type %}
+              {% endif %}
+              {% if option_two_array != empty %}
+                {% assign option_two_type = card_item.options_with_values[1].name | downcase %}
+                {% render 'card-option-range' with array: option_two_array; option: option_two_type %}
+              {% endif %}
+              {% if option_three_array != empty %}
+                {% assign option_three_type = card_item.options_with_values[2].name | downcase %}
+                {% render 'card-option-range' with array: option_three_array; option: option_three_type %} 
+              {% endif %}
+            </ul>
+          {% endif %}
+        {% endif %}
+      {% endif %}
+      <style>
+        .spr-summary-caption{
+          font-size: 13px;
+          display: block;
+          pointer-events: none;
+        }
+        .spr-summary-actions{
+          font-size: 0px;
+        }
+        .spr-container{
+          margin-top: 0px !important;
+        }
+      </style>
+      <div id="shopify-product-reviews" data-id="{{product.id}}"></div>
+      {% assign device_type = 'uk-hidden@s' %}
+      {% render 'card-price' with card_item: card_item, device_type: device_type %}
+    </div>
+  </div>
+  <div class="fg-card__footer">
+    {% assign device_type = 'uk-visible@s' %}
+    {% render 'card-price' with card_item: card_item, device_type: device_type %}
+    {% if card_item.available and buy_now_text != 'LEARN MORE' %}
+      {% assign buy_now_text = 'BUY NOW' %}
+    {% else %}
+      {% assign buy_now_text = 'LEARN MORE' %}
+    {% endif %}
+    <a href="{{ card_url }}" class="fg-button">{{ buy_now_text }}</a>
+  </div>
+</div>

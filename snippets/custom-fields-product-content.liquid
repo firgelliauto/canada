@@ -1,0 +1,66 @@
+{% comment %} Generate tab titles {% endcomment %}
+{% if product.metafields.custom_fields['display_custom_product_tabs'] %}
+  <ul class="uk-visible@m" uk-switcher="animation: uk-animation-slide-left-small, uk-animation-slide-left-small" uk-tab>
+    {% for tab in product_tab_list %}
+      {% assign tab_title_default  = tab | split: '_' %}
+      {% assign default_title = '' %}
+
+      {% for default in tab_title_default %}
+        {% assign format_default = default | strip %}
+        {% assign format_default = format_default | capitalize %}
+        {% assign default_title = default_title | append: format_default %}
+        {% comment %} {% assign default_title = default_title | strip %} {% endcomment %}
+        {% if forloop.last != true %}
+          {% assign default_title = default_title | append: ' ' %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign tab_title = tab | strip | append: '_title' %}
+      {% assign tab_content = tab | strip | append: '_content' %}
+      {% if product.metafields.custom_fields[tab_content] != blank %}
+        <li>
+          <a href="#">
+          {% if product.metafields.custom_fields[tab_title] != blank %}
+              {{ product.metafields.custom_fields[tab_title] }}
+          {% else %}
+              {{  default_title }}
+          {% endif %}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <ul class="uk-margin-medium-top uk-switcher uk-visible@m">
+    {% for tab in product_tab_list %}
+      {% assign tab_title_default  = tab | split: '_' %}
+      {% assign default_title = '' %}
+
+      {% for default in tab_title_default %}
+        {% assign format_default = default | strip %}
+        {% assign format_default = format_default | capitalize %}
+        {% assign default_title = default_title | append: format_default %}
+        {% if forloop.last != true %}
+          {% assign default_title = default_title | append: ' ' %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign tab_title = tab | strip | append: '_title' %}
+      {% assign tab_content = tab | strip | append: '_content' %}
+      {% if product.metafields.custom_fields[tab_content] != blank %}
+        <li>
+          <h2>
+            {% if product.metafields.custom_fields[tab_title] != blank %}
+              {{ product.metafields.custom_fields[tab_title] }}
+            {% else %}
+              {{  default_title }}
+            {% endif %}
+          </h2>
+          {% if product.metafields.custom_fields[tab_content] != blank %}
+            {{ product.metafields.custom_fields[tab_content] }}
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}

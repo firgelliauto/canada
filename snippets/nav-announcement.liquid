@@ -1,0 +1,25 @@
+{%- if settings.announcement_display -%}
+  {%- if settings.announcement_threat_level == 'pandemic' -%}
+    {% assign announcement_btn_color = 'uk-button-danger' %}
+  {%- elsif settings.announcement_threat_level == 'warning' -%}
+    {% assign announcement_btn_color = 'uk-button-primary' %}
+  {%- elsif settings.announcement_threat_level == 'normal' -%}
+    {% assign announcement_btn_color = 'uk-button-default' %}
+  {%- endif -%}
+
+  <button class="uk-button {{ announcement_btn_color }} uk-margin-small-right" type="button" uk-toggle="target: #modal-pandemic">{{ settings.announcement_btn_text }}</button>
+  <div id="modal-pandemic" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+      <div class="uk-modal-header">
+        <p>
+          <b class="uk-modal-title">{{ settings.announcement_title }}</b>
+        </p>
+      </div>
+      <div class="uk-modal-body">
+        {{ settings.announcement_body }}
+        {{ settings.announcement_footer }}
+      </div>
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+    </div>
+  </div>
+{%- endif -%}

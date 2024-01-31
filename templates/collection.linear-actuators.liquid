@@ -1,0 +1,145 @@
+<style>
+  .youtube2{
+    max-width: 600px !important;
+    padding-top: 24%;
+    
+  }
+  
+    @media only screen and (max-width: 650px){
+    #FAQ {
+        display: none;
+	}
+  }
+  
+  .accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 25px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin-top: 20px;
+  border-radius: 15px 15px 0px 0px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\25BC';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\25B2";
+}
+
+.accordionText {
+  padding: 0px 18px;
+  border: none;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  font-size: 18px;
+  border-radius: 0px 0px 15px 15px;
+  border: 1px solid black;
+  border-top: none;
+}
+</style>
+
+
+{% assign text_color = 'uk-light fg-text-shadow_collection-header' %}
+{% if collection.image %}
+  {% assign collection_image = collection.image %}
+{% else %}
+  {% assign collection_image = collections[settings.collection].image %}
+{% endif %}
+  {% assign background_image = collection_image.src | img_url: '1920x'  %}
+  {% assign title = collection.title %}
+{% include 'section-header-collection' %}
+
+
+
+
+
+{% if collection.handle == 'micro-linear-actuators'%}
+	{% section 'collection-cards-micro-linear-actuators' %}
+{% elsif collection.handle =='premium-linear-actuators' %}
+	{% section 'collection-cards-premium-linear-actuators' %}
+{% elsif collection.handle == 'bullet-actuators' %}
+	{% section 'collection-cards-bullet-actuators' %}
+{% elsif collection.handle == 'rod-actuators' %}
+	{% section 'collection-cards-rod-actuators' %}
+{% elsif collection.handle == 'feedback-actuators' %}
+	{% section 'collection-cards-feedback-actuators' %}
+{% elsif collection.handle == 'track-linear-actuators' %}
+	{% section 'collection-cards-track-linear-actuators' %}
+{% elsif collection.handle == 'mini-linear-actuators' %}
+	{% section 'collection-cards-mini-linear-actuators' %}
+{% else %}
+	{% section 'collection-cards-linear-actuators' %}
+{% endif %}
+
+
+
+
+
+
+{% assign section_collection_description_image = false %}
+{%- include 'section-description-collection' -%}
+{% section  'recommend-collection' %}
+{% if shop.address.country == 'United States' %}
+  {% section 'section-blog' %}
+{% else %}
+  {% section 'section-blog_manual' %}
+{% endif %}
+{% section 'testimonial' %}
+{% if collection.handle == 'drawer-slides'%}
+{% section 'manual-blog-drawer-slides' %}
+{% endif %}
+{% if collection.handle == 'linear-actuators'%}
+{% section 'manual-blog-linear-actuators' %}
+{% endif %}
+{% if collection.handle == 'tv-lifts'%}
+{% section 'manual-blog-tv-lifts' %}
+{% endif %}
+{% if collection.handle == 'brackets'%}
+{% section 'manual-blog-mounting-brackets' %}
+{% endif %}
+{% if collection.handle == 'slide-rails'%}
+{% section 'manual-blog-slide-rails' %}
+{% endif %}
+{% if collection.handle == 'mini-linear-slide-rails'%}
+{% section 'manual-blog-slide-rails' %}
+{% endif %}
+{% if collection.handle == 'desk-lifts'%}
+{% section 'manual-blog-sit-stand-desks' %}
+{% endif %}
+{% section 'WhyFirgelli'%}
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var accordionText= this.nextElementSibling;
+    if (accordionText.style.maxHeight) {
+      accordionText.style.maxHeight = null;
+    } else {
+      accordionText.style.maxHeight = accordionText.scrollHeight + "px";
+    } 
+  });
+}
+</script>

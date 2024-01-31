@@ -1,0 +1,202 @@
+{%- if section.settings.display_full_width_section == true -%}
+  {% for block in section.blocks %}
+    {% if block.settings.uk_light == true %}
+      {% assign text_color = "uk-light" %}
+    {% else %}
+      {% assign text_color = "uk-dark" %}
+    {% endif %}
+    {% if block.settings.image_type == 'background' %}
+      {% capture backgroud_image %}
+        style="background-image: url({{ block.settings.image.src | img_url: '1920x' }} );
+      {% endcapture %}
+      {% assign backgroud_color = '' %}
+    {% else %}
+      {% assign backgroud_color = block.settings.background_color %}
+      {% assign backgroud_image = '' %}
+    {% endif %}
+    {% if block.settings.light_button == true %}
+      {% assign button_color = 'uk-button-default uk-light' %}
+    {% else %}
+      {% assign button_color = 'uk-button-primary' %}
+    {% endif %}
+    <!-- Full image background Layout -->
+    <section  id="collection-icon-section" class="fg-section-full-width uk-section uk-background-cover {{ backgroud_color }}" {{ backgroud_image }}>
+      <div class="uk-container">
+        {% if block.settings.image_type == 'background' or block.settings.image_type == 'none' %}
+          <div class="uk-flex uk-flex-center" uk-grid>
+            <div class="uk-width-2-3@s fg-section-content__text uk-text-center" >
+              {% if block.settings.title != blank%}
+                <h2 class="uk-h2 {{ text_color }}">{{ block.settings.title }}</h2>
+              {% endif %}
+              <div class="{{ text_color }}">{{ block.settings.section_text }}</div>
+
+              {% if block.settings.link_text != blank or block.settings.custom_link_url != blank %}
+                {% if block.settings.enable_custom_url == true %}
+                  {% assign link = block.settings.custom_link_url %}
+                {% else %}
+                  {% assign link = block.settings.link_url %}
+                {% endif %}
+                <div class="fg-section-content__link">
+                  <a href="{{ link }}" class="uk-button {{ button_color }}">
+                    {{ block.settings.link_text }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% elsif block.settings.image_type != 'none' %}
+          <div class="uk-flex uk-flex-center uk-flex-middle" uk-grid>
+            <div class="uk-width-1-1 uk-width-1-2@s fg-section-content__text">
+              {% if block.settings.title != blank%}
+                <h3 class="uk-h2 {{ text_color }}">{{ block.settings.title }}</h3>
+              {% endif %}
+              <div class="{{ text_color }}">{{ block.settings.section_text }}</div>
+              {% if block.settings.link_text != blank or block.settings.custom_link_url != blank %}
+                {% if block.settings.enable_custom_url == true %}
+                  {% assign link = block.settings.custom_link_url %}
+                {% else %}
+                  {% assign link = block.settings.link_url %}
+                {% endif %}
+                <div class="fg-section-content__link">
+                  <a href="{{ link }}" class="uk-button {{ button_color }}">
+                    {{ block.settings.link_text }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+            {%- if block.settings.image_type == 'left_side' -%}
+              {% assign image_pos = 'uk-flex-first' %}
+            {% else %}
+              {% assign image_pos = 'uk-flex-last' %}
+            {%- endif -%}
+            <div class="uk-width-1-1 uk-width-1-3@s {{ image_pos }}">
+              {% if block.settings.image.src != blank %}
+                <img class="" data-src="{{ block.settings.image.src | img_url: '1400x1400' }}"
+                  data-srcset="{% include 'responsive-srcset-image', image: block.settings.image.src %}" data-sizes="auto"
+                  alt="{{ block.settings.image.src.alt | escape }}" data-aspectratio="{{ block.settings.image.src.aspect_ratio }}"
+                  data-sizes="auto" uk-img>
+              {% else %}
+                <img class="" data-src="{{ 'collection-group-actuator.png' | asset_url }}" uk-img>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  {% endfor %}
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Full Width Section",
+    "max_blocks": 2,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_full_width_section",
+        "label": "Display Section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Section",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "uk_light",
+            "label": "Light Coloured Text"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "default": "Full Width Section Title",
+            "label": "Section Title"
+          },
+          {
+             "type":      "radio",
+             "id":        "image_type",
+             "label":     "Image",
+             "options": [
+               { "value": "none", "label": "None" },
+               { "value": "background", "label": "Background" },
+               { "value": "left_side", "label": "Left Side" },
+               { "value": "right_side", "label": "Right Side" }
+             ],
+             "default":   "left_side",
+             "info":      "Include Image"
+          },
+          {
+            "type":      "select",
+            "id":        "background_color",
+            "label":     "Background Colour",
+            "options": [
+             {
+               "value": "uk-background-primary",
+               "label": "Primary"
+             },
+             {
+               "value": "uk-background-secondary",
+               "label": "Secondary"
+             },
+             {
+               "value": "fg-background-gentle-blue",
+               "label": "Muted Blue"
+             },
+             {
+               "value": "uk-background-muted",
+               "label": "Muted"
+             },
+             {
+               "value": "fg-background-gradient",
+               "label": "Gradient"
+             }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Section Image"
+          },
+          {
+             "type": "richtext",
+             "id": "section_text",
+             "default": "<p>Full width section text goes here</p>",
+             "label": "Section Text"
+          },
+          {
+            "type": "checkbox",
+            "id": "light_button",
+            "label": "Light Coloured Button"
+          },
+          {
+             "type": "text",
+             "id": "link_text",
+             "default": "Button Text",
+             "label": "Link Text"
+          },
+          {
+             "type": "url",
+             "id": "link_url",
+             "label": "Link Url"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_custom_url",
+            "label": "Use a custom Url"
+          },
+          {
+             "type": "text",
+             "id": "custom_link_url",
+             "label": "Custom Link Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Full Width Section",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,14 @@
+{{ 'rivets-cart.min.js' | asset_url | script_tag }}
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(event) {
+  jQuery(function() {
+    CartJS.init({{ cart | json }}, {
+        "moneyFormat": "{{ shop.money_format }}",
+        "moneyWithCurrencyFormat": "{{ shop.money_with_currency_format }}"
+      }
+    );
+  });
+});
+
+ 
+</script>

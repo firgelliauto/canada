@@ -1,0 +1,39 @@
+<style>
+  {%- assign font_family_normal = settings.font_family | font_modify: 'weight', 'normal' -%}
+  {%- assign font_family_normal_italic = font_family_normal | font_modify: 'style', 'italic' -%}
+  {%- assign font_family_light = settings.font_family | font_modify: 'weight', 'lighter' -%}
+  {%- assign font_family_light_italic = font_family_light | font_modify: 'style', 'italic' -%}
+
+  {%- assign font_family_bolder = settings.font_family | font_modify: 'weight', 'bolder' -%}
+  {%- assign font_family_bolder_italic = font_family_bolder | font_modify: 'style', 'italic' -%}
+  {%- assign font_family_black = settings.font_family | font_modify: 'weight', '900' -%}
+  {%- assign font_family_black_italic = font_family_black | font_modify: 'style', 'italic' -%}
+
+  {{ font_family_light | font_face }}
+  {{ font_family_light_italic | font_face }}
+  {{ font_family_normal | font_face }}
+  {{ font_family_normal_italic | font_face }}
+  {{ font_family_bolder | font_face }}
+  {{ font_family_bolder_italic | font_face }}
+  {{ font_family_black | font_face }}
+  {{ font_family_black_italic | font_face }}
+
+  html,
+  *,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .uk-h1,
+  .uk-h2,
+  .uk-h3,
+  .uk-h4,
+  .uk-h5,
+  .uk-h6,
+  .cbb-frequently-bought-forme  * {
+    font-family: {{ settings.font_family.family }}, {{ settings.font_family.fallback_families }} !important;
+  }
+
+</style>

@@ -1,0 +1,83 @@
+<div class="uk-navbar-right uk-visible@l">
+  {%- include 'nav-announcement' -%}
+  {% for block in section.blocks %}
+    <ul class="fg-navbar-nav uk-navbar-nav">
+      {% for link in linklists[block.settings.linklist].links %}
+        <li class="fg-navbar-nav__list-item">
+          {% if link.links != empty %}
+            {% assign has_icon = 'uk-icon="chevron-down"' %}
+            {% assign has_parent = 'fg-nav-item-parent' %}
+
+            <span class="uk-link {{ has_parent }} {% if link.child_active %}
+                active
+              {% endif %}" {{ has_icon }}>{{ link.title }}</span>
+          {% else %}
+            {% assign has_icon = '' %}
+            {% assign has_parent = '' %}
+
+            <a href="{{ link.url }}" class="{{ has_parent }}
+              {% if link.active %}
+                active
+              {% endif %}
+
+
+            " {{ has_icon }}>{{ link.title }}</a>
+          {% endif %}
+
+          {% if link.links != empty %}
+            <div class="uk-navbar-dropdown" uk-dropdown="mode: click">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                {% for childlink in link.links %}
+                  <li>
+                    <a href="{{ childlink.url }}">
+                      {{ childlink.title }}
+                    </a>
+                    {% if childlink.links != empty %}
+                      <ul>
+                        {% for extrachildlink in childlink.links %}
+                          <li>
+                            <a href="{{ extrachildlink.url }}">
+                              {{ extrachildlink.title }}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+      {%- if settings.display_holiday_hours == true -%}
+        <li class="fg-navbar-nav__list-item fg-holiday-button">
+          {%- if settings.display_holly == true -%}
+            {%- include 'icon-holly' -%}
+          {%- endif -%}
+          <a href="#holiday-hours" uk-toggle>
+            Holiday Hours
+          </a>
+        </li>
+      {%- endif -%}
+      <li class="fg-navbar-nav__list-item">
+        <a  href="/cart"
+            class="fg-nav__topper_icon-align js-veiw-cart_nav
+                    {% if template.name == 'cart' %}
+                      active
+                    {% endif %}">
+          <span uk-icon="icon: cart; ratio: 1.5" class="fg-icon-left"></span>
+          {% if template contains 'cart' %}
+            <span class="js-cart-item-count uk-badge fg-cart__badge-overlay" data-cart-view="data-cart-view">
+              { cart.item_count }
+            </span>
+          {% else %}
+            <span class="js-cart-item-count uk-badge fg-cart__badge-overlay">
+              {{ cart.item_count }}
+            </span>
+          {% endif %}
+        </a>
+      </li>
+    </ul>
+  {% endfor %}
+</div>

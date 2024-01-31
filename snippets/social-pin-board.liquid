@@ -1,0 +1,21 @@
+  {% assign board_handle = '' %}
+{%- if template.name == 'index' and settings.pin_board_homepage == true -%}
+  {% assign board_handle = settings.pin_board_home_url %}
+{%- elsif template.name == 'collection' and settings.pin_board_collectionpage == true -%}
+  {% assign board_handle = settings.pin_board_collection_url %}
+{%- elsif template.name == 'product' and settings.pin_board_productpag == true -%}
+  {% assign board_handle = settings.pin_board_product_url %}
+{%- endif -%}
+
+{%- if board_handle != '' -%}
+{% assign pin_url = 'https://www.pinterest.com/' | append: settings.pinterest_board_url | append: '/' | append: board_handle | append: '/' %}
+<section class="uk-section">
+  <div class="uk-container">
+    <div class="fg-pin-board">
+      <a data-pin-do="embedBoard"
+        href="{{pin_url}}">
+      </a>
+    </div>
+  </div>
+</section>
+{%- endif -%}

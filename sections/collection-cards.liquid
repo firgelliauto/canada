@@ -1,0 +1,64 @@
+<section id="collection-grid-section" class="uk-section uk-background-muted">
+  <div class="uk-container">
+    
+    <div class="collectionDescription">
+      {% assign productDescription = collection.description | split:"<!--SEO-->"%}
+     
+      {% if collection.description contains '<!--SEO-->' %}
+      {{ productDescription | last}}
+      {% endif %}
+      
+      {%comment%}{{ collection.description | truncate: 320 }}{%endcomment%}
+    </div>
+    
+    <style>
+      .collectionDescription {
+        position: relative;
+        display: inline-block;
+        margin: 0 0 30px;
+      }
+      .collectionDescription h2 {
+        font-size: 22px;
+      }
+      .collectionDescription p {
+        font-size: 16px;
+        margin: 0 0 6px;
+      }
+      section#collection-grid-section {
+        padding-top: 20px;
+      }
+    </style>
+    
+    {% include 'loop-collection' %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Collection Cards",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "disable_filter",
+        "default": false,
+        "info": "Certain collections will automatically generate a custom filter with extra data displayed for each product aswell.",
+        "label": "Disable Filter"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Cards",
+        "category": "Static Collection"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+
+{% endjavascript %}

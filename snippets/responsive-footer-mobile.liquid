@@ -1,0 +1,55 @@
+<style>
+
+.footerNav{
+  display: contents !important; 
+  display: grid !important; 
+  grid-template-columns: repeat(2, 1fr); 
+  text-align: center;
+  }
+
+
+</style>
+
+
+
+<div class="uk-section uk-hidden@m">
+  <div class="uk-container">
+    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+      {% for block in section.blocks %}
+        {% assign linklist_heading = block.settings.linklist | split: '-' %}
+        {% capture linklist_title %}
+          {% for word in linklist_heading %}
+            {{ word | capitalize }}
+          {% endfor %}
+        {% endcapture %}
+        <li class="uk-parent uk-nav-divider" style="border-top: 0px;">
+          {% comment %}<a href="#">{{ linklist_title }}</a>{% endcomment %}
+          <ul class="uk-nav footerNav" id="footer">
+            {% for link in linklists[block.settings.linklist].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="uk-width-1-2@s">  
+      {% if section.settings.background_color == true %}
+        {% include 'logo-alt' %}
+      {% else %}
+        {% include 'logo' %}
+      {% endif %}
+      {% include 'social-follow' %}
+    </div>
+  </div>
+</div>
+
+<script>
+
+document.getElementById('footer').removeAttribute("hidden");
+
+
+
+
+
+
+</script>

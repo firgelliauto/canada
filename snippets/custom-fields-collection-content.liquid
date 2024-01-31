@@ -1,0 +1,64 @@
+{% assign collection_content = 'collection_content_1, collection_content_2, collection_content_3, collection_content_4' %}
+{% assign collection_content = collection_content | split: ',' %}
+
+{% if collection.metafields.custom_fields['lazy_load_images'] > 0 %}
+  {% assign lazy_load_images = true %}
+{% else %}
+  {% assign lazy_load_images = false %}
+{% endif %}
+
+{% for content in collection_content %}
+  {% assign content_item = content | strip %}
+  {% assign content_item = collection.metafields.custom_fields[content_item] %}
+  {% assign featured_image_src = 'collection_image_featured_' | append: forloop.index %}
+  {% assign featured_image_alt = 'collection_image_alt_' | append: forloop.index %}
+  {% assign featured_image_url = 'collection_image_url_' | append: forloop.index %}
+
+  {% assign featured_image_src = collection.metafields.custom_fields[featured_image_src] %}
+  {% assign featured_image_alt =  collection.metafields.custom_fields[featured_image_alt] %}
+  {% assign featured_image_url = collection.metafields.custom_fields[featured_image_url] %}
+
+  {% if content_item != blank %}
+    <div class="fg-section-chess__content uk-flex uk-flex-middle uk-flex-center uk-child-width-1-2@s" uk-grid>
+    {% assign loop_modulo =  forloop.index | modulo: 2 %}
+
+      {% if loop_modulo == 0 %}
+        {% assign flex_order = 'uk-flex-last@s' %}
+      {% else %}
+        {% assign flex_order = '' %}
+      {% endif %}
+
+      {% if featured_image_src != blank %}
+        <div class="fg-section-chess__image uk-first-column uk-scrollspy-inview {{ flex_order }}">
+          {% assign featured_image_src = featured_image_src | split: 'files/' %}
+          {% assign featured_image_src = featured_image_src | last | split: '?v=' %}
+          {% assign featured_image_src = featured_image_src | first %}
+          {% assign featured_image_src = images[featured_image_src] %}
+          <figure>
+            {% if featured_image_url != blank %}
+              {% assign new_url = featured_image_url | split: '>' %}
+              {% assign open_url =  new_url | first | append: '>' %}
+              {% assign label_url =  new_url | last | remove: '</a>' %}
+
+              {{ open_url }}
+            {% endif %}
+              {% render 'responsive-collection-image' with image_src: featured_image_src, image_alt: featured_image_alt,  lazy_load_images: lazy_load_images %}
+            {% if featured_image_url != blank %}
+              </a>
+            {% endif %}
+          </figure>
+          {% if featured_image_url != blank %}
+            <figcaption class="uk-text-small uk-text-center">
+              {{label_url}}
+            </figcaption>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="aa fg-section-chess__content-inner uk-scrollspy-inview">
+        <div>
+          {{ content_item }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

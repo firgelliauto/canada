@@ -1,0 +1,147 @@
+{% assign file_extension = 'jpg' %}
+
+{% if swatch == blank %}
+  <div class="swatch error">
+    <p>You must include the snippet swatch.liquid with the name of a product option.</p> 
+    <p>Use: <code>{% raw %}{% include 'swatch' with 'name of your product option here' %}{% endraw %}</code></p>
+    <p>Example: <code>{% raw %}{% include 'swatch' with 'Color' %}{% endraw %}</code></p>
+  </div>
+{% else %}
+
+  {% assign found_option = false %}
+  {% assign is_color = false %}
+  {% assign option_index = 0 %}
+
+  {% for option in product.options %}
+    {% if option == swatch %}
+      {% assign found_option = true %}
+      {% assign option_index = forloop.index0 %}
+      <style>
+        label[for="product-select-option-{{ option_index }}"] { display: none; }
+        #product-select-option-{{ option_index }} { display: none; }
+        #product-select-option-{{ option_index }} + .custom-style-select-box { display: none !important; }
+      </style>
+      <script>
+        $(window).on('load', function() { 
+          $('.selector-wrapper:eq({{ option_index }})').hide(); 
+        });
+      </script>
+      {% assign downcased_option = swatch | downcase %}
+      {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+        {% assign is_color = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% unless found_option %}
+    <div class="swatch error">
+      <p>You included the snippet swatch.liquid with the name of a product option — <code>'{{ swatch }}'</code> — that does not belong to your product.</p>
+      <p>Use <code>{% raw %}{% include 'swatch' with 'name of your product option here' %}{% endraw %}</code></p>
+      <p>Example: <code>{% raw %}{% include 'swatch' with 'Color' %}{% endraw %}</code></p>
+      <p><strong>This is case-sensitive!</strong> Do not put in <code>'color'</code> if your product option name is <code>'Color'</code>.</p>
+    </div>
+  {% else %}
+    <fieldset id="{{ option_index }}-fieldset" class="swatch uk-fieldset" data-option-index="{{ option_index }}"> 
+      <legend class="fg-legend uk-legend uk-form-horizontal header ">{{ swatch }}</legend>
+      <div class="uk-flex uk-flex-wrap">
+        {% assign values = '' %}
+        {% for variant in product.variants %}
+          {% assign value = variant.options[option_index] %}
+          {% unless values contains value %}
+            {% assign values = values | join: ',' %}
+            {% assign values = values | append: ',' | append: value %} 
+            {% assign values = values | split: ',' %}
+            <div  onclick="changeURL()" id="{{ value | escape | remove: ' '}}-button"
+                  data-value="{{ value | escape }}" 
+                  focus-value="{{ value | handle }}"
+                  class="fg-button-swatch swatch-element {% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
+              {% if is_color %}
+                <div class="tooltip">{{ value }}</div>
+              {% endif %}
+              <input id='{{ value | escape | remove: ' '}}' type="radio" name="option-{{ option_index }}" value="{{ value | replace: '"', '&quot;' | escape }}"
+              {% if forloop.first %} 
+                checked
+              {% endif %} 
+              {% unless variant.available %}
+                disabled 
+              {% endunless %}
+
+              data-bind="option_state_{{option_index | plus: 1 }}"
+              data-bind-event-change="_customProductHelper.updatePrice()"/>
+              {% if is_color and value == 'White'%}
+                <center><label for="{{ value | escape | remove: ' '}}" style=" height: 100px; width: 50px; background-image: url({{ 'white.jpg' | asset_img_url: }});">
+                  </label></center>
+              {% elsif is_color and value == 'Grey'%}
+              	<label for="{{ value | escape | remove: ' '}}" style=" height: 100px; width: 50px; background-image: url({{ 'grey.jpg' | asset_img_url: }});">
+                </label>
+              {% else %}
+                <label for="{{ value | escape | remove: ' '}}">
+                  {{ value }}
+                </label>
+              {% endif %}
+             
+              {% if variant.available %}
+                <script>
+                  (function ($) {
+                    $(document).ready(function () {
+                      'use strict';
+
+                    $('.swatch[data-option-index="{{ option_index }}"] .{{ value | handle }}').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');
+                      $('body .swatch-element input').each(function(){
+                      	
+                        
+                        if($(this).prop('checked')){
+                          $(this).parent().addClass('active');
+                        } else{
+                          $(this).parent().removeClass('active');
+                        }
+                      });
+                    });
+                  })(jQuery);
+                </script>
+              {% endif %}
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </fieldset>
+  {% endunless %}
+{% endif %}
+<span style="display:none" id="currentVarient" data-bind="selectedVariant.id"></span>
+<script>
+
+
+    function changeURL() {
+    //document.getElementById("submit-button").disabled = true;
+    {% assign productVariables = product.first_available_variant.id | split: '/' %}                                       
+          
+                    
+                    
+    
+      if(document.getElementById('currentVarient').textContent == {{productVariables}}){
+         window.history.replaceState(null," ",location.pathname);
+      }
+  	  else{
+        window.history.replaceState(null," ","?variant=" + document.getElementById('currentVarient').textContent);
+      }
+      
+      
+	window.addEventListener("load", function(event) {
+      	document.getElementById("submit-button").disabled = false;
+      
+        {% assign productVariables = product.first_available_variant.id | split: '/' %}
+      
+        if(document.getElementById('currentVarient').textContent == {{productVariables}}){
+         window.history.replaceState(null," ",location.pathname);
+      	}
+        else{
+         window.history.replaceState(null," ","?variant=" + document.getElementById('currentVarient').textContent);                  
+        }
+        
+	  });
+    }
+  
+  
+
+
+</script>

@@ -1,0 +1,73 @@
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(event) {
+  (function ($) {
+
+      'use strict';
+      $(window.anime).ready(function() {
+
+        function fgLogoAnimate () {
+          var tlogo = anime.timeline({
+            easing: 'easeOutExpo',
+            duration: 1
+          });
+
+          tlogo
+          .add({
+            targets: '.fg-logo-anime__logo-solid',
+            opacity: 1
+          })
+          .add({
+            targets: '.fg-logo-anime__logo-solid .fg-logo-anime__logo-text-automations.fg-logo-anime__stroke',
+            opacity: 0,
+            translateY: 5
+          })
+          .add({
+            targets: '.fg-logo-anime__logo-solid .fg-logo-anime__fill',
+            opacity: 0,
+          })
+          .add({
+            targets: '.fg-logo-anime__logo-solid .fg-logo-anime__logo-icon.fg-logo-anime__stroke, .fg-logo-anime__logo-solid .fg-logo-anime__logo-text-firgelli.fg-logo-anime__stroke',
+            strokeDashoffset: [anime.setDashoffset, 0],
+            easing: 'easeInOutSine',
+            duration: 200,
+            delay: function (el, i) {
+              return i * 100
+            },
+            direction: 'normal'
+          })
+          .add({
+            targets: '.fg-logo-anime__logo-solid .fg-logo-anime__logo-text-automations.fg-logo-anime__stroke',
+            easing: 'easeOutElastic',
+            opacity: 1,
+            translateY: 0,
+            duration: 1000,
+            delay: function (el, i) {
+              return i * 50
+            },
+            direction: 'normal'
+          },'-=500')
+          .add({
+            targets: '.fg-logo-anime__logo-solid  .fg-logo-anime__logo-icon.fg-logo-anime__fill, .fg-logo-anime__logo-solid  .fg-logo-anime__logo-text-firgelli.fg-logo-anime__fill',
+            opacity: 1,
+            duration: 2000,
+            delay: function (el, i) {
+              return i * 100
+            },
+            direction: 'normal'
+          }, '-=2000')
+          .add({
+            targets: ' .fg-logo-anime__logo-solid  .fg-logo-anime__logo-text-automations.fg-logo-anime__fill',
+            opacity: 1,
+            duration: 1000,
+            delay: function (el, i) {
+              return i * 60
+            },
+            direction: 'normal'
+          }, '-=2200');
+        }
+        fgLogoAnimate();
+      })
+
+  })(jQuery);
+});
+</script >

@@ -1,0 +1,28 @@
+<div class="fg-card__body-price-container {{ device_type }}">
+  {% if card_item.compare_at_price > card_item.price %}
+    {% if card_item.price_varies %}
+      {% assign sale_text = 'On Sale From' %}
+    {% else %}
+      {% assign sale_text = 'On Sale ' %}
+    {% endif %}
+      {{ sale_text }}
+      <span class="uk-h4 fg-card__body-price-text_num">
+        {{ card_item.price | money_with_currency }}
+      </span>
+  {% else %}
+    {% if card_item.price_varies %}
+      {% assign sale_text = 'From ' %}
+    {% else %}
+      {% assign sale_text = '' %}
+    {% endif %}
+    {{ sale_text }}
+    <span class="uk-h4 fg-card__body-price-text_num">
+      {{ card_item.price | money_with_currency }}
+    </span>
+  {% endif %}
+  {% unless card_item.available %}
+    <em class="uk-text-small uk-text-danger">
+      Sold Out
+    </em>
+  {% endunless %}
+</div>

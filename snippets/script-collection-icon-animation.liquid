@@ -1,0 +1,399 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function(event) {
+    (function ($) {
+      $(document).ready(function () {
+        'use strict';
+
+          window.addEventListener('load', function() {
+            const svgs = document.querySelectorAll('svg[svg-lazy]');
+            const svgsLen = svgs.length;
+            for (let i = 0; i < svgsLen; ++i) {
+              var url = svgs[i].getAttribute('svg-lazy');
+              svgs[i].removeAttribute('svg-lazy');
+              fetchSVG(url, svgs[i]);
+            }
+          });
+
+          var fetchSVG = async function(url, el) {
+          var response = await fetch(url);
+          var data = await response.text();
+          var parser = new DOMParser();
+          var parsed = parser.parseFromString(data, 'image/svg+xml');
+          var svg = parsed.getElementsByTagName('svg');
+          if (svg.length) {
+            svg = svg[0];
+            var attr = svg.attributes;
+            var attrLen = attr.length;
+            for (let i = 0; i < attrLen; ++i) {
+              if (attr[i].specified) {
+                if ('class' === attr[i].name) {
+                  var classes = attr[i].value.replace(/\s+/g, ' ').trim().split(' ');
+                  var classesLen = classes.length;
+                  for (var j = 0; j < classesLen; ++j) {
+                    el.classList.add(classes[j]);
+                  }
+                }
+                else {
+                  el.setAttribute(attr[i].name, attr[i].value);
+                }
+              }
+            }
+            while (svg.childNodes.length) {
+              el.appendChild(svg.childNodes[0]);
+            }
+          }
+        };
+
+        $('shopify:section:load').ready(function(){
+
+          $('.fg-card-collection-icon').mouseenter( function(e){
+            var $svg = $(this).find('svg').data('name');
+            var svgData = 'svg[data-name="'+ $svg +'"]';
+            if ($svg === 'column-kinetic' || $svg === 'table-kinetic') {
+              var tl = anime.timeline({
+                duration: 250,
+                easing: 'easeOutExpo'
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-rod-1, ' + svgData + ' .js-rod-2',
+                translateY: -8
+              })
+              .add({
+                targets: svgData + ' .js-rod-2',
+                translateY: -20
+              });
+            }
+            else if ($svg === 'switch-kinetic') {
+              anime({
+                duration: 500,
+                easing: 'easeOutExpo',
+                targets: svgData + ' .js-rod',
+                transformOrigin: ("13px 55px 0"),
+                rotate: '16deg'
+              });
+            }
+            else if ($svg === 'robotic-kinetic') {
+              var tl = anime.timeline({
+                duration: 250,
+                easing: 'easeOutExpo'
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-l-arm',
+                rotate: '180deg'
+              })
+              .add({
+                targets: svgData + ' .js-r-arm',
+                rotate: '-180deg'
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                duration: 250,
+                opacity: 0
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                duration: 250,
+                opacity: 1
+              });
+            }
+            else if ($svg === 'motor-kinetic') {
+              var tl = anime.timeline({
+                easing: 'easeOutExpo',
+                transformOrigin: ("125px 22px 0px"),
+                loop: 2
+              });
+              tl
+              .add({
+                duration: 20,
+                targets: svgData + ' .js-rod',
+                transformOrigin: ("125px 22px 0px"),
+                rotate: '180deg'
+              })
+              .add({
+                duration: 250,
+                targets: svgData + ' .js-rod',
+                transformOrigin: ("125px 22px 0px"),
+                rotate: '180deg'
+              })
+              .add({
+                duration: 20,
+                targets: svgData + ' .js-rod',
+                transformOrigin: ("125px 22px 0px"),
+                rotate: '0deg'
+              })
+              .add({
+                duration: 350,
+                targets: svgData + ' .js-rod',
+                transformOrigin: ("125px 22px 0px"),
+                rotate: '0deg'
+              })
+              ;
+            }
+            else if ($svg === 'power_supply-kinetic') {
+              var tl = anime.timeline({
+                easing: 'easeOutExpo',
+                transformOrigin: ("56px 8px 0px"),
+                loop: 2
+              });
+              tl
+              .add({
+                opacity: 1,
+                duration: 20,
+                transformOrigin: ("56px 8px 0px"),
+                targets: svgData + ' .js-blink',
+                rotate: '180deg'
+              })
+              .add({
+                duration: 500,
+                targets: svgData + ' .js-blink',
+                transformOrigin: ("56px 8px 0px"),
+                rotate: '180deg'
+              })
+              .add({
+                opacity: 1,
+                duration: 20,
+                targets: svgData + ' .js-blink',
+                transformOrigin: ("56px 8px 0px"),
+                rotate: '0deg'
+              })
+              .add({
+                duration: 500,
+                targets: svgData + ' .js-blink',
+                transformOrigin: ("56px 8px 0px"),
+                rotate: '0deg'
+              })
+              ;
+            }
+            else if ($svg === 'sale-kinetic') {
+              anime({
+                duration: 1000,
+                easing: 'easeOutExpo',
+                transformOrigin: ("70px 10px 0"),
+                targets: svgData + ' .js-rod',
+                rotate: '-45deg'
+              });
+            }
+            else if ($svg === 'bracket-kinetic') {
+              var tl = anime.timeline({
+                duration: 250,
+                easing: 'easeOutExpo'
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-rod-1, ' + svgData + ' .js-rod-2',
+                translateY: -20,
+              })
+              .add({
+                targets: svgData + ' .js-rod-2',
+                translateX: 20
+              });
+            }
+            else if ($svg === 'controller-kinetic' || $svg === 'relay-kinetic') {
+              var tl = anime.timeline({
+                duration: 250,
+                easing: 'easeOutExpo'
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-wires > stroke-rod-midtone',
+                opacity: 0,
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                opacity: 0,
+              })
+              .add({
+                targets: svgData + ' .js-wires > .stroke-rod-midtone',
+                strokeDashoffset: [anime.setDashoffset, 0],
+                easing: 'easeInOutSine',
+                opacity: 1,
+                duration: 300,
+                direction: 'normal'
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                duration: 500,
+                opacity: 1,
+                direction: 'alternate',
+                loop: 4
+              });
+            }
+            else if ($svg === 'remote-kinetic') {
+              var tl = anime.timeline({
+                easing: 'easeOutExpo',
+                duration: 250,
+                loop: 2
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-down-blink',
+                opacity: 0
+              })
+              .add({
+                targets: svgData + ' .js-up-blink',
+                opacity: 0
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                opacity: 0
+              })
+              ;
+            }
+            else if($svg === 'cable-kinetic') {
+              anime({
+                targets: svgData + ' .js-rod',
+                translateY: -20,
+                delay: anime.stagger(100, {direction: 'reverse'})
+              });
+            }
+            else if($svg === 'track-kinetic') {
+              anime({
+                duration: 500,
+                easing: 'easeOutExpo',
+                targets: svgData + ' .js-rod',
+                translateY: -50
+              });
+            }
+            else {
+              anime({
+                duration: 500,
+                easing: 'easeOutExpo',
+                targets: svgData + ' .js-rod',
+                translateY: -20
+              });
+            }
+          })
+
+          $('.fg-card-collection-icon').mouseleave(function(e){
+            var $svg = $(this).find('svg').data('name');
+            var svgData = 'svg[data-name="'+ $svg +'"]';
+            if ($svg === 'column-kinetic' || $svg === 'table-kinetic') {
+              var tl = anime.timeline({
+                duration: 250
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-rod-1, ' + svgData + ' .js-rod-2',
+                translateY: 0
+              })
+              .add({
+                targets: svgData + ' .js-rod-2',
+                translateY: 0
+              });
+            }
+            else if ($svg === 'switch-kinetic') {
+              anime({
+                duration: 500,
+                targets: svgData + ' .js-rod',
+                transformOrigin: ("13px 55px 0"),
+                rotate: '0deg'
+              });
+            }
+            else if ($svg === 'robotic-kinetic') {
+              var tl = anime.timeline({
+                duration: 250,
+                easing: 'easeOutExpo'
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-l-arm',
+                rotate: '0'
+              })
+              .add({
+                targets: svgData + ' .js-r-arm',
+                rotate: '0'
+              });
+            }
+            else if ($svg === 'motor-kinetic') {
+              anime({
+                duration: 20,
+                targets: svgData + ' .js-rod',
+                rotate: '0deg'
+              });
+            }
+            else if ($svg === 'power_supply-kinetic') {
+              anime({
+                duration: 20,
+                opacity: 0,
+                targets: svgData + ' .js-blink',
+                rotate: '0deg'
+              });
+            }
+            else if ($svg === 'sale-kinetic') {
+              anime({
+                duration: 500,
+                transformOrigin: ("70px 10px 0"),
+                targets: svgData + ' .js-rod',
+                rotate: '0deg'
+              });
+            }
+            else if ($svg === 'bracket-kinetic') {
+              var tl = anime.timeline({
+                duration: 250
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-rod-2',
+                translateX: 0
+              })
+              .add({
+                targets: svgData + ' .js-rod-1, ' + svgData + ' .js-rod-2',
+                translateY: 0
+              });
+            }
+            else if ($svg === 'controller-kinetic') {
+              var tl = anime.timeline({
+                duration: 250
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-wires > *',
+                opacity: 1
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                opacity: 1
+              });
+            }
+            else if ($svg === 'remote-kinetic') {
+              var tl = anime.timeline({
+                duration: 250
+              });
+              tl
+              .add({
+                targets: svgData + ' .js-down-blink',
+                opacity: 1
+              })
+              .add({
+                targets: svgData + ' .js-up-blink',
+                opacity: 1
+              })
+              .add({
+                targets: svgData + ' .js-blink',
+                opacity: 1
+              })
+              ;
+            }
+            else if($svg === 'cable-kinetic') {
+              anime({
+                targets: svgData + ' .js-rod',
+                translateY: 0,
+                easing: 'easeOutElastic(1, 2)',
+                delay: anime.stagger(100, {direction: 'reverse'})
+              });
+            }
+            else {
+              anime({
+                duration: 500,
+                targets: svgData + ' .js-rod',
+                translateY: 0
+              });
+            }
+          })
+        });
+      });
+    })(jQuery);
+  });
+</script>

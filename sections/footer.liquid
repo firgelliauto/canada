@@ -1,0 +1,65 @@
+{% if section.settings.background_color == true %}
+  {% assign background_color = 'uk-background-primary' %}
+  {% assign text_color = 'uk-light' %}
+{% else %}
+  {% assign background_color = 'uk-background-muted' %}
+  {% assign text_color = 'uk-dark' %}
+{% endif %}
+<footer class="{{ background_color }}  {{ text_color }}">
+  <div class="uk-container">
+    {% include 'responsive-footer-desktop' %}
+    {% include 'responsive-footer-mobile' %}
+    <div class="uk-flex uk-flex-center">
+      <div class="uk-width-1-1 uk-width-1-4@s" style="padding-top: 10px;">
+        <span class="uk-dark">Payments we accept:</span>
+        <div class="uk-background-default fg-padding-xs uk-margin-bottom">
+          {% include 'icon-payment-icon-group' %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fg-background-primary-dark uk-text-center">
+    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}.</small>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "max_blocks": 3,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "background_color",
+        "label": "Background Brand Color",
+        "info" : "Defaults to primary muted grey colour"
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "select",
+        "name": "Add Link List",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "linklist",
+            "label": "Footer Menu"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Footer",
+        "category": "Global"
+      }
+    ]
+  }
+
+{% endschema %}

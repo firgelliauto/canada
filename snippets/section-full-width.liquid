@@ -1,0 +1,38 @@
+{% if section_revert == true %}
+  {% assign section_style = '' %}
+{% else %}
+    {% if section_style = '' %}
+      {% assign section_style = 'uk-section uk-background-muted' %}
+    {% endif %}
+{% endif %}
+
+{% if collection.handle contains 'actuator' and settings.image_actuators != empty %}
+  {% assign image = settings.image_actuators.src %}
+{% elsif collection.handle contains 'lifts' or collection.handle contains 'desk' and settings.image_lifts != empty %}
+  {% assign image = settings.image_lifts.src %}
+{% elsif settings.image_accessories != empty %}
+  {% assign image = settings.image_accessories.src %}
+{% endif %}
+
+<section  id="collection-icon-section" class="fg-section-full-width uk-section fg-background-gentle-blue uk-background-cover">
+  <div class="uk-container">
+    <div class="uk-flex uk-flex-center uk-flex-middle" uk-grid
+      uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150">
+      <div class="uk-width-1-1 uk-width-1-2@s fg-section-content__text">
+        <div class="collection-description">{{ collection.description }}</div>
+      </div>
+      {% if section_collection_description_image == true %}
+        <div class="uk-width-1-1 uk-width-1-3@s">
+          {% if image != null %}
+            <img class="" data-src="{{ image.src | img_url: '1400x1400' }}"
+              data-srcset="{% include 'responsive-srcset-image', image: image.src %}" data-sizes="auto"
+              alt="{{ image.src.alt | escape }}" data-aspectratio="{{ image.src.aspect_ratio }}"
+              data-sizes="auto" uk-img>
+          {% else %}
+            <img class="" data-src="{{ 'collection-group-actuator.png' | asset_url }}" uk-img>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

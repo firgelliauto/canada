@@ -1,0 +1,255 @@
+<section id="collection-icon-section" class="uk-section" hidden>
+  <div class="uk-container" style="min-height: 748px">
+    {% assign shop_url = shop.url %}
+    {% assign icon_image_base_url =  'collection_' %}
+    {% assign collection_path_base_url =  shop_ur | append: '/collections/' %}
+    {% assign product_path_base_url = shop_ur | append: '/products/' %}
+
+    {% assign actuator_suffix =  '-actuators' %}
+    {% assign lift_suffix =  '-lifts' %}
+    {% if section.settings.filter_enable == true %}
+      {% assign has_filter = true %}
+      {% assign has_border = '' %}
+    {% else %}
+      {% assign has_filter = false %}
+      {% assign has_border = 'fg-heading-border fg-heading-margin' %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+      <div class="uk-text-center {{ has_border }} ">
+        <h1 class="uk-text-center">{{ section.settings.title }}</h1>
+        {% if section.settings.sub_title != blank and has_filter == false %}
+          <p class="uk-text-center">{{ section.settings.sub_title }}</p>
+        {% endif %}
+        {%- if settings.display_holly_collection == true -%}
+          <span class="fg-collection-holiday">
+            {%- include 'icon-holly' -%}
+          </span>
+        {%- endif -%}
+      </div>
+    {% endif %}
+    {%- if section.settings.display_collection_section == true -%}
+      {% assign ripple_effect = section.settings.hover_effect  %}
+      <!-- Collection icon section currently includes a filter -->
+      {% include 'loop-collection-icons' %}
+
+      {% if section.blocks.size == 0 %}
+      {% include 'no-blocks' %}
+      {% endif %}
+    {%- endif -%}
+  </div>
+</section>
+
+{%- if section.settings.image_type == 'image_type_animate' -%}
+  {% include 'script-collection-icon-animation' %}
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Collection list",
+    "max_blocks": 18,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_collection_section",
+        "label": "Display Collection Sections"
+      },
+      {
+        "type":      "select",
+        "id":        "image_type",
+        "label":     "Select Image Type",
+        "options": [
+          {
+            "value": "image_type_static",
+            "label": "static"
+          },
+          {
+            "value": "image_type_sprite",
+            "label": "sprite sheet"
+          },
+          {
+            "value": "image_type_animate",
+            "label": "animated"
+          }
+        ],
+        "default": "image_type_animate"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Sprite Sheet"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title",
+        "default": "Our Collection"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Section Sub-Title"
+      },
+      {
+        "type":      "select",
+        "id":        "hover_effect",
+        "label":     "Optional mouseover effects",
+        "options": [
+          {
+            "value": "",
+            "label": "no effect"
+          },
+          {
+            "value": "fg-card_ripple",
+            "label": "ripple"
+          },
+          {
+            "value": "fg-card_slide-overlay",
+            "label": "slide"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Collection Icon",
+        "settings": [
+          {
+            "type":      "select",
+            "id":        "collection_type",
+            "label":     "Select Collection Icon",
+            "options": [
+             {
+               "group": "actuators",
+               "value": "super_duty",
+               "label": "Super Duty"
+             },
+             {
+               "group": "actuators",
+               "value": "premium",
+               "label": "Premium"
+             },
+             {
+               "group": "actuators",
+               "value": "bullet",
+               "label": "Bullet"
+             },
+             {
+               "group": "actuators",
+               "value": "linear",
+               "label": "Linear"
+             },
+             {
+               "group": "actuators",
+               "value": "feedback",
+               "label": "Feedback"
+             },
+             {
+               "group": "actuators",
+               "value": "track",
+               "label": "Track "
+             },
+             {
+               "group": "actuators",
+               "value": "column",
+               "label": "Column"
+             },
+             {
+               "group": "actuators",
+               "value": "slide",
+               "label": "Slide Rail"
+             },
+             {
+               "group": "lifts",
+               "value": "table",
+               "label": "Table"
+             },
+             {
+               "group": "lifts",
+               "value": "tv",
+               "label": "TV"
+             },
+             {
+               "group": "accessories",
+               "value": "bracket",
+               "label": "Brackets"
+             },
+             {
+               "group": "accessories",
+               "value": "switch",
+               "label": "Switches"
+             },
+             {
+               "group": "accessories",
+               "value": "controller",
+               "label": "Controllers"
+             },
+             {
+               "group": "accessories",
+               "value": "remote",
+               "label": "Remotes"
+             },
+             {
+               "group": "accessories",
+               "value": "relay",
+               "label": "Relays"
+             },
+             {
+               "group": "accessories",
+               "value": "motor",
+               "label": "Motors"
+             },
+             {
+               "group": "accessories",
+               "value": "robotic",
+               "label": "Robotics"
+             },
+             {
+               "group": "accessories",
+               "value": "cable",
+               "label": "Cable Management"
+             },
+             {
+               "group": "accessories",
+               "value": "power_supply",
+               "label": "Power Supplies"
+             }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "collection_title",
+            "label": "Collection Icon Title"
+          },
+          {
+            "type": "text",
+            "id": "collection_title_seo",
+            "label": "SEO Collection Icon Title"
+          },
+          {
+            "id"   : "alternative_url",
+            "type" : "text",
+            "label": "Alternative Link"
+          },
+          {
+            "id"   : "collection_url",
+            "type" : "collection",
+            "label": "Collection Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection List Icons",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  $(document).ready(function () {
+    $("#collection-icon-section").removeAttr('hidden');
+  });
+</script>

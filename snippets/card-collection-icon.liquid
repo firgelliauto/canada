@@ -1,0 +1,6 @@
+{%- if section.settings.image_type == 'image_type_static' -%}
+  <img data-src="{{ icon_image | asset_url }}" alt="" uk-img>
+{%- elsif section.settings.image_type == 'image_type_animate' -%}
+  <svg svg-lazy="{{ icon_image | asset_url }}"></svg>
+{%- endif -%}
+<div class="fg-card-collection-icon__title">{{ collection_title }}</div>

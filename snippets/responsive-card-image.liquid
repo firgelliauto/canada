@@ -1,0 +1,31 @@
+<div id="" data-image-id="{{ image_src.id }}" class="fg-card-image-container {{ card_sidebar_style }}">
+  <div class="fg-responsive-image__absolute-wrapper">
+    <div class="fg-responsive-image__flex-column-wrapper">
+      <img id="Image-{{ image_src.id }}-{{ responsive_image_counter }}"
+        class="fg-responsive-image__image_card"
+        width="300" height="300"
+        {% if index_first == true %}
+          srcset="
+            {%- if image_src.width > 180 -%}{{ image_src | img_url: '180x' }} 180w,{%- endif -%}
+            {%- if image_src.width > 300 -%}{{ image_src | img_url: '300x' }} 300w {%- endif -%}
+            "
+        {% else %}
+          data-src="{{ image_src | img_url: '300x' }}"
+          data-srcset="
+            {%- if image_src.width > 180 -%}{{ image_src | img_url: '180x' }} 180w, {%- endif -%}
+            {%- if image_src.width > 300 -%}{{ image_src | img_url: '300x' }} 300w {%- endif -%}
+            "
+          uk-img
+        {% endif %}
+        src="{{ image_src | img_url: '300x' }}"
+        data-aspectratio="{{ image_src.aspect_ratio }}"
+        data-sizes="auto"
+        tabindex="-1"
+        alt="{{ image_src.alt | escape }}"
+     >
+    </div>
+  </div>
+</div>
+<noscript>
+  <img class="" src="{{ image_src | img_url: '300x300' }}" alt="{{ image_src.alt | escape }}">
+</noscript>

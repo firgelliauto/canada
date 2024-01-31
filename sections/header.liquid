@@ -1,0 +1,79 @@
+{% unless template contains 'product' %}
+{{ 'jquery.js' | asset_url | script_tag }}
+{% endunless %}
+<section data="user-location-section" class="fg-section-location-option uk-animation-slide-top">
+  <nav class="fg-nav uk-container fg-section-location-option_nav uk-flex-center uk-navbar uk-section-xsmall">
+    <div id="location-option">
+      <p class="uk-text-lead" data="location-option-heading"></p>
+      <div class="uk-grid-medium uk-flex-center" uk-grid data="user-location-button-group">
+        <div>
+          <button data="user-location-stay-button" class="uk-button uk-button-primary" type="button" uk-toggle="target: #location-option; animation: uk-animation-fade"></button>
+        </div>
+        <div data="user-location-away-button"></div>
+      </div>
+
+    </div>
+  </nav>
+</section>
+<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header">
+  <header class="" role="banner">
+    {% include 'nav-topper' %}
+    {% include 'nav-topper-mobile' %}
+    <div id="FAbanner" class="fg-navbar-container uk-navbar-container" style="visibility: hidden">
+      <nav role="navigation" class="fg-nav uk-container uk-flex-middle" uk-navbar>
+        <div class="uk-navbar uk-flex-column fg-logo-container logoBoxitg">
+          {% include 'logo' %}
+        </div>
+        
+        
+		{% include 'header-desktop-megamenu' %}
+       
+{% comment %} {% include 'responsive-header-desktop' %}{% endcomment %}
+        
+        {% include 'responsive-header-mobile' %}
+        <!-- End Custom Menu -->
+      </nav>
+    </div>
+  </header>
+</section>
+
+
+  <script>
+  $("#FAbanner").css('visibility', 'visible');
+  </script>
+
+{% schema %}
+  {
+    "name": "Header",
+    "max_blocks": 1,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_holiday_hours",
+        "info": "Add holiday hours link in navigation that displays a modal window of holiday hours.",
+        "label": "Holiday Hours Nav Button",
+        "default": false
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "select",
+        "name": "Add Link List",
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "linklist",
+            "label": "Header Nav Menu"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Header",
+        "category": "Global"
+      }
+    ]
+  }
+
+{% endschema %}

@@ -1,0 +1,80 @@
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(event) {
+    $(document).ready(function() {
+      (function parseArticleGist() {
+        var allAtags = $('a[href^="https://gist.github.com"]');
+        if (allAtags.length !== 0) {
+          $.each(allAtags, function(i, val) {
+            var hash = val.href.substring(val.href.lastIndexOf('/') + 1);
+            getGistFile(hash, parseGist);
+          })
+        }
+      })();
+
+      function getGistFile(gist, cb) {
+        $.ajax({
+          url: 'https://api.github.com/gists/' + gist,
+          type: 'GET',
+          dataType: 'jsonp',
+          success: function(data) {
+            return cb(data.data.files, gist);
+          },
+          error: function(data) {
+            console.log('error', data);
+          }
+        })
+      }
+
+      var codeFormatted;
+      var snippetContainer;
+      var contentBody;
+      var hashCache;
+      function print (content, hash, lastIndex) {
+        codeFormatted = Prism.highlight(content, Prism.languages.arduino, 'arduino');
+        codeFormatted = $('<code/>').addClass('language-arduino ').append(codeFormatted)
+        codeFormatted = $('<pre/>').addClass('fg-pre-format-code').append(codeFormatted);
+        codeFormatted = $('<div/>').addClass('fg-snippet-container ')
+          .append(codeFormatted);
+        codeFormatted = $(codeFormatted).prepend($('<span/>').html('COPY').attr('data-copy', '').addClass('fg-copy'));
+        snippetContainer = $('<div/>').addClass('uk-margin-medium-top uk-margin-medium-bottom');
+        contentBody = $('<div/>').addClass('uk-accordion-content js-arduino_code');
+        snippetContainer = snippetContainer.append(codeFormatted);
+        contentBody.append(snippetContainer);
+
+        if(hashCache !== hash) {
+          $('a[href$="'+ hash +'"]').after($('<div/>').attr('data-id', hash));
+        }
+
+        $('body div[data-id="'+ hash +'"]').append(contentBody[0].innerHTML);
+
+        hashCache = hash
+      }
+
+
+      function parseGist(gist, hash) {
+        var index = 0;
+        var last = false;
+        for (let [key, value] of Object.entries(gist)) {
+          index++;
+
+          if(Object.entries(gist).length === index) {
+            last = true;
+          }
+          print(value.content, hash, last);
+        }
+      }
+
+      $(document).on("click", "span[data-copy]" , function() {
+        copyValue = $(this).next().text();
+        $copyBuffer = $("<textarea>");
+        $("body").append($copyBuffer);
+        $copyBuffer.val(copyValue).select();
+        document.execCommand("copy");
+        $copyBuffer.remove();
+        $('span[data-copy]').removeAttr('uk-tooltip');
+        $(this).attr('uk-tooltip', 'copied!');
+        UIkit.tooltip(this).show();
+      });
+    })
+  })
+</script>

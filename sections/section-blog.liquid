@@ -1,0 +1,104 @@
+{%- if section.settings.display_blog -%}
+  {% for block in section.blocks %}
+    {% assign blog = blogs[block.settings.blog_id] %}
+    {% assign article_amount = 'uk-child-width-1-' | append: section.settings.article_count | append: '@l' %}
+    {% assign remove_date = true %}
+
+    {% assign featured_tag = 'feature-collection-' | append: collection.handle %}
+    {% if collection.handle contains 'actuator' %}
+      {% assign featured_group_tag = 'feature-collection-' | append: 'actuator' %}
+    {% endif %}
+
+    {% unless collection.handle contains 'actuator' or collection.handle contains 'lift' %}
+      {% assign featured_group_tag = 'feature-collection-' | append: 'accessory' %}
+    {% endunless %}
+
+    {% assign article_array = '' %}
+    {% if blog.handle != 'tutorials' %}
+      {% for article in blog.articles %}
+        {% for tag in article.tags %}
+          {% if tag == featured_tag or tag == featured_group_tag %}
+            {% assign article_array = article_array | append: article.handle | append: ',' %}
+          {% endif %}
+        {% endfor%}
+      {% endfor %}
+    {% else %}
+      {% for article in blog.articles %}
+        {% assign article_array = article_array | append: article.handle | append: ',' %}
+      {% endfor %}
+    {% endif %}
+
+    {% assign article_array = article_array | split: ',' %}
+    {% assign array_size = article_array | size %}
+    {% if array_size > 0 %}
+      <section class="uk-section">
+        <div class="uk-container">
+          {% if section.settings.title != blank %}
+            <div class="fg-heading-section uk-width-3-5@l">
+              {% if section.settings.title != blank %}
+                <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+              {% endif %} {% if section.settings.sub_title != blank %}
+                <div class="uk-text-center">{{ section.settings.sub_title }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+          <div class="uk-section">
+            <div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m {{ article_amount }} uk-grid-small" uk-grid="masonry: true">
+              {% for article_id in article_array %} {% assign card_item = articles[article_id] %} {% include 'card-article' %} {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Blog Cards",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "display_blog",
+      "default": true,
+      "label": "Display Blog Section"
+    },
+    { "type" : "text",
+    "id" : "title",
+    "label": "Section Title"
+    },
+    {
+      "type" : "richtext",
+      "id" : "sub_title",
+      "label": "Section Sub-Title"
+    },
+    {
+      "type": "range",
+      "id": "article_count",
+      "label": "Article Amount",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add Section",
+      "settings": [
+        { "type": "blog",
+          "id": "blog_id",
+          "label": "Select a Blog"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Blog Section",
+      "category": "Section"
+    }
+  ]
+}
+{% endschema %}

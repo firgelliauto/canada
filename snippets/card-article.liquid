@@ -1,0 +1,36 @@
+<div>
+  <div class="fg-card uk-flex uk-flex-column">
+    {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+    <div class="uk-card-media-top">
+{% comment %} -----| card_item.image = {{ card_item.image }}|---------
+-----| card_item.image.src = {{ card_item.images.src }}|--------- {% endcomment %}
+    {% comment %} card_item.image >>>> {{ card_item.image }} {% endcomment %}
+      {% if card_item.image != blank %}
+        {% render 'responsive-card-image' with image_src: card_item.image, index_first: index_first %}
+      {% endif %}
+      <div class="fg-card__body_article">
+        <a class=" fg-card__blog-title 
+        {% if remove_date != true %}
+        uk-margin-remove-bottom
+        {% endif %}" href="{{ card_item.url }}">
+          {{ card_item.title | highlight: search.terms }}
+        </a>
+        {% if remove_date != true %}
+          {% capture date %}{{ card_item.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+          <p class="uk-article-meta">
+            {{ 'blogs.article.author_on_date_html' | t: author: card_item.author, date: date }}
+          </p>
+        {% endif %}
+        {% if card_item.excerpt.size > 0 %}
+          <div class="rte">
+            {{ card_item.excerpt | truncatewords: 15 | highlight: search.terms }}
+          </div>
+        {% endif %}
+        <div class="fg-card__footer uk-margin-small-top">
+          <a href="{{ card_item.url }}" class="fg-button-default uk-button uk-button-default">READ MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

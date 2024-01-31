@@ -1,0 +1,71 @@
+{% include 'nav-bread-crumbs' %}
+<section class="uk-section">
+  <div class="uk-container">
+    <div class="fg-register-account uk-flex-center uk-child-width-1-2@s uk-grid-small"uk-grid>
+      <div>
+        <h1>{{ 'customer.register.title' | t }}</h1>
+        {% form 'create_customer' %}
+          {{ form.errors | default_errors }}
+          <div class="uk-margin">
+            <label for="FirstName" class="uk-form-label">
+              {{ 'customer.register.first_name' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input  type="text" 
+                      class="uk-input uk-form-width-large"
+                      name="customer[first_name]"
+                      id="FirstName"
+                      placeholder="{{ 'customer.register.first_name' | t }}"
+                      autofocus
+                      {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label for="LastName" class="uk-form-label">
+              {{ 'customer.register.last_name' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input  type="text" 
+                      class="uk-input uk-form-width-large" 
+                      name="customer[last_name]"
+                      id="LastName"
+                      placeholder="{{ 'customer.register.last_name' | t }}"
+                      {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label for="Email" class="uk-form-label">
+              {{ 'customer.register.email' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input  type="email" 
+                      name="customer[email]"
+                      id="Email"
+                      class="uk-input uk-form-width-large {% if form.errors contains 'email' %}input-error{% endif %}"
+                      placeholder="{{ 'customer.register.email' | t }}"
+                      value="{% if form.email %}{{ form.email }}{% endif %}"
+                      spellcheck="false"
+                      autocomplete="off"
+                      autocapitalize="off">
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label for="CreatePassword" class="uk-form-label">
+              {{ 'customer.register.password' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input  type="password" 
+                      name="customer[password]"
+                      id="CreatePassword"
+                      class="uk-input uk-form-width-large {% if form.errors contains 'password' %}input-error{% endif %}"
+                      placeholder="{{ 'customer.register.password' | t }}">
+            </div>
+          </div>
+          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="uk-button uk-button-primary uk-margin-small">
+
+          <a class="uk-button fg-button-default" href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>

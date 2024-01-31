@@ -1,0 +1,22 @@
+<div class="{{ js_card_filter }}">
+  <div class="fg-card js-card uk-card uk-card-default uk-card-hover uk-card-small uk-flex uk-flex-column">
+    <div class="fg-card-media-top__collection">
+      {% if collection.image != blank or collection.products.first != blank %}
+        {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
+        <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
+          {% include 'responsive-card-image' with image: image_object, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height: 1024 %}
+        </a>
+      {% else %}
+      <img src="{{ 'collection-group-actuator.png' | asset_img_url: '800x' }}" alt="placeholder image of actuators">
+      {% endif %}
+    </div>
+    <div class="fg-card__footer uk-padding-remove-left">
+      <div class="fg-card__title_collection">
+        <h4 class="uk-margin-remove-top uk-margin-remove-bottom">
+          <a class="uk-text-emphasis" href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">{{ collection.title }}</a>
+        </h4>
+      </div>
+      <a href="{{ collection.url }}" class="fg-button uk-button uk-button-primary uk-box-shadow-hover-large fg-button-box-shadow-small fg-button">Learn More</a>
+    </div>
+  </div>
+</div>

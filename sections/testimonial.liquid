@@ -1,0 +1,167 @@
+{% for block in section.blocks %}
+
+  {% if block.settings.uk_light == true %}
+    {% assign text_color = "uk-light" %}
+  {% else %}
+    {% assign text_color = "uk-dark" %}
+  {% endif %}
+  {% if block.settings.background_type == true %}
+    {% capture backgroud_image %}
+      style="background-image: url({{ block.settings.image.src | img_url: '1920x' }} );
+    {% endcapture %}
+    {% assign backgroud_color = '' %}
+  {% else %}
+    {% assign backgroud_color = block.settings.background_color %}
+    {% assign backgroud_image = '' %}
+  {% endif %}
+
+  {% if block.settings.light_button == true %}
+    {% assign button_color = 'uk-button-default uk-light' %}
+  {% else %}
+    {% assign button_color = 'uk-button-primary' %}
+  {% endif %}
+
+  <section  id="collection-icon-section" class=" fg-section-full-width uk-section uk-background-cover uk-box-shadow-xlarge {{ backgroud_color }}" {{ backgroud_image }}>
+    <div class="uk-container">
+      <div class="uk-flex uk-flex-center" uk-grid>
+        <div class="uk-width-2-3@s fg-section-testimonial" >
+          <p class="{{ text_color }} fg-section-testimonial__quote fg-text-lead-mobile">{{ block.settings.section_text }}</p>
+          <span class="{{ text_color }} fg-section-testimonial__name">
+            {{ block.settings.customer_name }}
+          </span>
+          <span class="{{ text_color }} fg-section-testimonial__name_company">
+            {{ block.settings.company_name }}
+          </span>
+          {% if block.settings.link_text != blank or block.settings.custom_link_url != blank %}
+            {% if block.settings.enable_custom_url == true %}
+              {% assign link = block.settings.custom_link_url %}
+            {% else %}
+              {% assign link = block.settings.link_url %}
+            {% endif %}
+            <div class="fg-section-content__link">
+              <a href="{{ link }}" class="uk-button {{ button_color }}">
+                {{ block.settings.link_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div> 
+      </div>
+    </div>
+  </section>
+  {% if block.settings.enable_customer_logo == true %}
+    {% include 'section-social-proof' %}
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Testimonial",
+    "max_blocks": 2,
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Section",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "uk_light",
+            "label": "Light Coloured Text"
+          },
+          {
+             "type": "textarea",
+             "id": "section_text",
+             "default": "Full width section text goes here",
+             "label": "Testimonial Text"
+          },
+          {
+            "type": "text",
+            "id": "customer_name",
+            "label": "Customer Name"
+          },
+          {
+            "type": "text",
+            "id": "company_name",
+            "label": "Company Name"
+          },
+          {
+            "type": "checkbox",
+            "id": "light_button",
+            "label": "Light Coloured Button"
+          },
+          {
+             "type": "text",
+             "id": "link_text",
+             "default": "Button Text",
+             "label": "Link Text"
+          },
+          {
+             "type": "url",
+             "id": "link_url",
+             "label": "Link Url"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_custom_url",
+            "label": "Use a custom Url"
+          },
+          {
+             "type": "text",
+             "id": "custom_link_url",
+             "label": "Custom Link Url"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_customer_logo",
+            "default": true,
+            "label": "Show Customer Logo Banner"
+          },
+          {
+             "type": "text",
+             "id": "custom_banner_title",
+             "label": "Custom Banner Title"
+          },
+          {
+            "type": "checkbox",
+            "id": "background_type",
+            "info": "If image is not used for background then defualts to the selected colour.",
+            "label": "Use image for background"
+          },
+          {
+            "type":      "select",
+            "id":        "background_color",
+            "label":     "Background Colour",
+            "options": [
+             {
+               "value": "uk-background-primary",
+               "label": "Primary"
+             },
+             {
+               "value": "uk-background-secondary",
+               "label": "Secondary"
+             },
+             {
+               "value": "uk-background-muted",
+               "label": "Muted"
+             },
+             {
+               "value": "fg-background-gradient",
+               "label": "Gradient"
+             }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Section Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Testimonial",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,17 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/firgelli-canada.myshopify.com/pages/configure/192296/edit
+{% endcomment %}
+{% if page.metafields.custom_fields["display_resource_tech_drawings"] != blank %}
+  <div class="custom-field custom-field__display-resource-tech-drawings custom-field__type--checkbox">
+    <h3 class="custom-field--title">Display Technical Drawings</h3>
+    <div class="custom-field--value">
+      {% if page.metafields.custom_fields["display_resource_tech_drawings"] == 1 %}
+        TRUE
+      {% else %}
+        FALSE
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

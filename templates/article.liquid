@@ -1,0 +1,222 @@
+{%- comment -%}
+  In order to avoid showing "success" message when we post comments
+  with invalid format (eg. blank fields), we added logic to make sure it doesn't show.
+
+  Comment help page:
+  http://docs.shopify.com/themes/liquid-variables/comment
+{%- endcomment -%}
+{% include 'nav-bread-crumbs' %}
+<section class="uk-section">
+  <div class="uk-container fg-container_article">
+    <div uk-grid>
+      {%- assign new_comment = false -%}
+      {%- assign number_of_comments = article.comments_count -%}
+
+      {%- if comment and comment.created_at -%}
+        {%- assign new_comment = true -%}
+        {%- assign new_comment_id = comment.id -%}
+      {%- endif -%}
+
+      {%- if new_comment -%}
+        {%- comment -%}
+          When you refresh the page with submitted comment, the comment is duplicated
+          so we added a flag to avoid this situation.
+        {%- endcomment -%}
+        {%- assign duplicate_comment = false -%}
+        {%- for comment in article.comments -%}
+          {%- if comment.id == new_comment_id -%}
+            {%- assign duplicate_comment = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- unless duplicate_comment -%}
+          {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+        {%- endunless -%}
+      {%- endif -%}
+
+      <article role="article" class="uk-article uk-width-2-3@m uk-margin-medium-bottom">
+
+        {% if article.image %}
+          <div class="hero-banner hero-banner--article lazyload" data-bgset="{% include 'responsive-bg-image', image: article.image %}"></div>
+
+          <noscript>
+            {%- assign image_size = article.image.width | append: 'x' -%}
+            <div class="hero-banner hero-banner--article" style="background-image: {{ article.image | img_url: image_size }}"></div>
+          </noscript>
+        {% endif %}
+
+        <header role="banner">
+          <h1 class="uk-article-title">{{ article.title }}</h1>
+          {% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+          <p class="uk-article-meta">{{ 'blogs.article.author_on_date_html' | t: author: article.author, date: date }}</p>
+        </header>
+        {% for tag in article.tags %}
+            {% if tag contains 'Force Calculator' %}
+              {% include 'form-calculator' %}
+            {% endif %}
+        {% endfor %}
+        <div class="rte fg-article__content uk-section">
+          {{ article.content }}
+        </div>
+        {% for tag in article.tags %}
+            {% if tag contains 'force-calculator-bottom' %}
+              {% include 'form-calculator' %}
+            {% endif %}
+        {% endfor %}
+        {% if article.tags.size > 0 %}
+          <h5>Tags:</h5>
+          <ul class="fg-list_horizontal">
+            {% for tag in article.tags %}
+              <li>
+                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if settings.social_sharing_blog %}
+          <h4>Share this article</h4>
+          {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
+        {% endif %}
+
+      </article>
+      <!-- First sidebar -->
+      <div class="uk-width-1-3@m" id="sticky-container">
+        {% section 'collection-list-sidebar' %}
+      </div>
+      <div class="uk-width-2-3@m">
+        <!-- Comments Section -->
+        {% if blog.comments_enabled? %}
+          <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+
+          {% paginate article.comments by 5 %}
+
+          <div id="comments">
+            {% if comment and comment.status and comment.id != blank and paginate.current_page == 1 %}
+              <p class="form-success">
+                {% if blog.moderated? and comment.status != 'published' %}
+                  {{ 'blogs.comments.success_moderated' | t }}
+                {% else %}
+                  {{ 'blogs.comments.success' | t }}
+                {% endif %}
+              </p>
+            {% endif %}
+
+            {% if number_of_comments > 0 %}
+              <ul class="uk-comment-list">
+                {% comment %}
+                  Display comment from URL parameters if it is waiting moderation
+                  We added "comment.id" check to make sure we don't display markup if there are form errors
+                {% endcomment %}
+                {% if comment and comment.status != 'published' and comment.id != blank %}
+                  <li id="{{ comment.id }}">
+                    <article class="uk-commen uk-comment-primary uk-visible-toggle" tabindex="-1">
+                      <header class="uk-comment-header uk-position-relative">
+                          <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                              <div class="uk-width-expand">
+                                  <h4 class="uk-comment-title uk-margin-remove">{{ comment.author }}</h4>
+                                  <p class="uk-comment-meta uk-margin-remove-top">{{ comment.created_at | time_tag: format: 'month_day_year' }}</p>
+                              </div>
+                          </div>
+                      </header>
+                      <div class="uk-comment-body rte">
+                        Comment approval pending
+                      </div>
+                    </article>
+                  </li>
+                {% endif %}
+                {% for comment in article.comments %}
+                  <li id="{{ comment.id }}">
+                    <article class="uk-comment uk-comment-primary uk-visible-toggle" tabindex="-1">
+                      <header class="uk-comment-header uk-position-relative">
+                          <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                              <div class="uk-width-expand">
+                                  <h4 class="uk-comment-title uk-margin-remove">{{ comment.author }}</h4>
+                                  <p class="uk-comment-meta uk-margin-remove-top">{{ comment.created_at | time_tag: format: 'month_day_year' }}</p>
+                              </div>
+                          </div>
+                      </header>
+                      <div class="uk-comment-body rte">
+                        {{ comment.content }}
+                      </div>
+                    </article>
+                  </li>
+                {% endfor %}
+              </ul>
+              {% if paginate.pages > 1 %}
+                {% include 'pagination' %}
+              {% endif %}
+            {% endif %}
+          </div>
+
+          {% endpaginate %}
+          <div class="uk-flex uk-flex-center" uk-grid>
+            {% form 'new_comment', article, class: 'uk-width-2-3@s uk-width-1-2@m' %}
+              <h3>{{ 'blogs.comments.title' | t }}</h3>
+
+              {{ form.errors | default_errors }}
+              <div class="uk-margin">
+                <label for="CommentAuthor" class="uk-form-label label-hidden">
+                  {{ 'blogs.comments.name' | t }}
+                </label>
+                <div class="uk-form-control">
+                  <input type="text"
+                         name="comment[author]"
+                         id="CommentAuthor"
+                         class="uk-input uk-form-width-large {% if form.errors contains 'author' %}input-error{% endif %}"
+                         placeholder="{{ 'blogs.comments.name' | t }}"
+                         value="{{ form.author }}"
+                         autocapitalize="words">
+                </div>
+              </div>
+              <div class="uk-margin">
+                <label for="CommentEmail" class="uk-form-label label-hidden">
+                  {{ 'blogs.comments.email' | t }}
+                </label>
+                <div class="uk-form-control">
+                  <input type="email"
+                         name="comment[email]"
+                         id="CommentEmail"
+                         class="uk-input uk-form-width-large {% if form.errors contains 'email' %}input-error{% endif %}"
+                         placeholder="{{ 'blogs.comments.email' | t }}"
+                         value="{{ form.email }}"
+                         spellcheck="false"
+                         autocomplete="off"
+                         autocapitalize="off">
+                </div>
+              </div>
+              <div class="uk-margin">
+                <label for="CommentBody" class="uk-form-label label-hidden">
+                  {{ 'blogs.comments.message' | t }}
+                </label>
+                <div class="uk-form-control">
+                  <textarea
+                    name="comment[body]"
+                    id="CommentBody"
+                    class="uk-textarea uk-form-width-large {% if form.errors contains 'body' %}input-error{% endif %}"
+                    placeholder="{{ 'blogs.comments.message' | t }}"
+                    rows="6">
+                    {{- form.body -}}
+                  </textarea>
+                </div>
+              </div>
+              {% if blog.moderated? %}
+                <p>
+                <i>{{ 'blogs.comments.moderated' | t }}</i>
+                </p>
+              {% endif %}
+
+              <input type="submit" class="uk-button uk-button-primary" value="{{ 'blogs.comments.post' | t }}">
+            {% endform %}
+          </div>
+        {% endif %}
+      </div><!-- End Comments Section -->
+      <div class="uk-width-1-3@m">
+        {% section 'product-sidebar' %}
+      </div>
+    </div> <!-- End Main Grid -->
+  </div>
+</section>
+{% include 'script-ajax-gist' %}
+{% section 'section-full-width' %}

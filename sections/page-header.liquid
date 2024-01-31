@@ -1,0 +1,33 @@
+{% if section.settings.uk_light == true %}
+  {% assign text_color = 'uk-light fg-text-shadow_collection-header' %}
+{% else %}
+  {% assign text_color = 'uk-dark' %}
+{% endif %}
+
+{% assign background_image = section.settings.image.src | img_url: '1920x'  %}
+{% assign title = page.title %}
+{% include 'section-header-collection' %}
+
+{% schema %}
+  {
+    "name": "Page Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "uk_light",
+        "label": "Light Coloured Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Section Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Header",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}

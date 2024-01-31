@@ -1,0 +1,28 @@
+<div class="fg-card__body-price-container uk-visible@s">
+  {% if product.compare_at_price > product.price %}
+    {% if product.price_varies %}
+      {% assign sale_text = 'On Sale From' %}
+    {% else %}
+      {% assign sale_text = 'On Sale ' %}
+    {% endif %}
+      {{ sale_text }}
+      <span class="uk-h4 fg-card__body-price-text_num">
+        {{ product.price | money_with_currency }}
+      </span>
+  {% else %}
+    {% if product.price_varies %}
+      {% assign sale_text = 'From ' %}
+    {% else %}
+      {% assign sale_text = '' %}
+    {% endif %}
+    {{ sale_text }}
+    <span class="uk-h4 fg-card__body-price-text fg-card__body-price-text_num">
+      {{ product.price | money_with_currency }}
+    </span>
+  {% endif %}
+  {% unless product.available %}
+    <em class="uk-text-small uk-text-danger">
+      {{ 'products.product.sold_out' | t }}
+    </em>
+  {% endunless %}
+</div>

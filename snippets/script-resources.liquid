@@ -1,0 +1,175 @@
+<script>
+	(function ($) {
+		$(document).ready(function () {
+			'use strict';
+			var resourceJson = {{ blogs.Resources.articles | json }};
+			var resource3dContent = `{% include 'resource-3d-model' | json  %}`;
+			var index3d = resourceJson.findIndex(function(el){
+				return el.handle === '3d-files'
+			})
+			resourceJson[index3d].body_html = resource3dContent;
+			var $domNav;
+			var $domContent;
+			var resourceTitle;
+			var resourceIcon;
+			var browserWidth = $( window ).width();
+			var mobileBrowserWidth = (browserWidth <= 639 ? true : false);
+			var hasIcon = '_w-icon';
+			var mainAccordionContent;
+			var accordionContentList;
+			var mobileAccordion;
+
+			var $heading, $content;
+			var helper = {
+				appendDom($dom, el){
+					$dom.append(el);
+				},
+				makeAccordionContent(title, body, dl, icon) {
+					dl = (dl === null ? '' : dl);
+					icon = (icon === null ? '' : icon);
+					$heading = $("<a/>")
+		        .attr('href', '#').attr('uk-icon', 'chevron-down')
+		        .addClass("fg-accordian-title"+ icon +" uk-accordion-title")
+		        .append($('<h3/>').html(title).addClass('fg-accordion-h3'));
+					$content = $("<div/>").addClass(dl + ' uk-accordion-content').attr('id', title.split(' ').join('-')).append(body);
+					return [$heading, $content ]
+				}
+			};
+
+			if(mobileBrowserWidth) {
+				mobileAccordion = $("<ul/>").addClass('js-accordion fg-accordion uk-accordion')
+          .attr("uk-accordion", "").attr('data', 'accordian');
+			} else {
+				$domNav = $("<ul/>").addClass('uk-subnav uk-subnav-pill')
+          .attr("uk-switcher", "animation: uk-animation-fade").attr('data', 'switch-nav');
+        $domContent = $('<ul/>').addClass('uk-switcher').attr('data', 'switch-content');
+			}
+
+			var resourceTitleListArray = [
+				'3d',
+				'drawing',
+				'manual',
+				'pdf',
+				'spec',
+				'wiring'
+			];
+
+			$.each(resourceJson, function(i, val){
+				resourceTitle = val['title'].toLowerCase();
+				resourceIcon = _.find(resourceTitleListArray, function(title) {
+					return resourceTitle.includes(title); 
+				})
+
+				_.remove(resourceTitleListArray, function(el) {
+					return el === resourceIcon;
+				})
+
+				if(mobileBrowserWidth) {
+					mainAccordionContent = helper.makeAccordionContent(val['title'], val['body_html'], 'fg-resource-download', hasIcon);
+					accordionContentList = $('<li/>').addClass('fg-accordian-list-item fg-resource__title_icon-' + resourceIcon);
+					accordionContentList.append(mainAccordionContent[0]);
+					accordionContentList.append(mainAccordionContent[1]);
+					mobileAccordion.append(accordionContentList)
+
+				} else {
+					helper.appendDom( $domNav, $('<li/>').addClass('fg-resource__title_icon-' + resourceIcon + '_btn').append($('<a/>').attr('href', '#').html(val['title'])) );
+					helper.appendDom( $domContent, $('<li/>').addClass('fg-resource-download').append(val['body_html'].replace(/(?:&nbsp;|<br>|<\/?span[^>]*>)/g,'')) );
+				}
+			})
+
+			if (show_arduino) {
+				var mainTitle = repo_name.split('-').join(' ');
+				var snippetWidth = (browserWidth - 110) + 'px';
+				var accordion = $('<ul/>').addClass('fg-accordion uk-width-1-1').attr('uk-accordion', '');
+				var url;
+				var imgContainer;
+				var codeFormatted;
+				var snippetContainer;
+				var contentBody;
+				var copyValue, $copyBuffer;
+				var arduinoArr = _.map(snippet_array, function(val){
+					return [val, val.split(' ').join('-')];
+				});
+
+				$.each(arduinoArr, function(i, val){
+					var arduinoContentList = $('<li/>').addClass('fg-accordian-list-item');
+					arduinoContentList = arduinoContentList.append( $('<a/>').addClass('fg-accordian-title uk-accordion-title').attr('uk-icon', 'chevron-down').attr('href', '#').attr('data-url', val[1]).html(val[0]) );
+					url = val[1] + '/' + val[1] + '.ino';
+					url = url.toLowerCase();
+
+					$.ajax({
+						method: 'GET',
+						url: 'https://api.allorigins.win/get?url=https://raw.githubusercontent.com/firgelliauto/'+ repo_name + '/master/' + url,
+						dataType: 'jsonp',
+						success: function(res) {
+							codeFormatted = Prism.highlight(res.contents, Prism.languages.arduino, 'arduino');
+							codeFormatted = $('<code/>').addClass('language-arduino '+ val[1]).append(codeFormatted)
+							codeFormatted = $('<pre/>').addClass('fg-pre-format-code').append(codeFormatted);
+							codeFormatted = $('<div/>').addClass('fg-snippet-container ' + 
+								(snippet_diagram[i] !== ' ' ? "uk-width-1-2@m uk-width-2-3@l" : "uk-width-2-3@m"))
+								.append(codeFormatted);
+							codeFormatted = $(codeFormatted).prepend($('<span/>').html('COPY').attr('data-copy', val[1]).addClass('fg-copy'));
+							snippetContainer = $('<div/>').addClass('fg-snippet-img-container uk-grid uk-grid-small').attr('uk-grid', '');
+							contentBody = $('<div/>').addClass('uk-accordion-content js-arduino_code').append(snippet_content[i]);
+							snippetContainer = snippetContainer.append(codeFormatted);
+
+							if(snippet_diagram[i] !== ' ') {
+								imgContainer = $('<div/>').addClass('uk-width-1-2@m uk-width-1-3@l').append($('<img/>').attr({
+									'data-src': snippet_diagram[i],
+									'alt': snippet_diagram_alt[i],
+									'uk-img': ''
+								}));
+								imgContainer = imgContainer.append($('<a/>').addClass('fg-resource-download__btn').attr({
+									'href': 'https:' + snippet_diagram[i],
+									'title': 'Download ' + snippet_diagram_alt[i],
+									'target': '_blank'
+								}).html('download diagram'));
+								snippetContainer = snippetContainer.append(imgContainer);
+							}
+							contentBody.append(snippetContainer);
+							arduinoContentList.append(contentBody);
+							return accordion.append(arduinoContentList);
+						}
+					}).done(function(){
+						if ((i + 1) === arduinoArr.length) {
+							Prism.highlightAll();
+						}
+					});
+				})
+
+				$(document.head).append('<style> .fg-pre-format-code {max-width: '+ snippetWidth +'} </style>');
+				
+				$(document).on("click", "span[data-copy]" , function() {
+					copyValue = $(this).next().text();
+	        $copyBuffer = $("<textarea>");
+          $("body").append($copyBuffer);
+          $copyBuffer.val(copyValue).select();
+          document.execCommand("copy");
+          $copyBuffer.remove();
+          $('span[data-copy]').removeAttr('uk-tooltip');
+          $(this).attr('uk-tooltip', 'copied!');
+          UIkit.tooltip(this).show();
+        });
+
+				if(mobileBrowserWidth) {
+					var arduinoAccordionContent = helper.makeAccordionContent(mainTitle, accordion, null, hasIcon);
+					var arduinoContentListMobile = $('<li/>').addClass('fg-accordian-list-item fg-resource__title_icon-code');
+					arduinoContentListMobile.append(arduinoAccordionContent[0]);
+					arduinoContentListMobile.append(arduinoAccordionContent[1]);
+					mobileAccordion.append(arduinoContentListMobile);
+
+				} else {
+					helper.appendDom($domNav, $('<li/>').addClass('fg-resource__title_icon-code_btn').append($('<a/>').attr('href', '#').html(mainTitle)));
+					helper.appendDom( $domContent,  $('<li/>').addClass('fg-resource__content  uk-width-1-1').append(snippet_section_heading ).append(accordion));
+				}
+			}
+
+			if(mobileBrowserWidth) {
+				helper.appendDom($('[data=resource-content'), mobileAccordion);
+			} else {
+				helper.appendDom($('[data=resource-content'), $domNav);
+				helper.appendDom($('[data=resource-content'), $domContent);
+			}
+		});
+	})(jQuery);
+</script>

@@ -1,0 +1,62 @@
+<style>
+  .mobileFont{
+    font-size: 30px;
+  }
+
+</style>
+<a href="{{block.settings.url}}" style="text-decoration: none">
+<div style="padding: 20px 0">
+
+  <div class="fg-card uk-flex" style="flex-direction: row; cursor: pointer">
+
+
+    {% if card_item.image != blank %}
+        {% render 'new-responsive-card-image' with image_src: card_item.image, index_first: index_first %}
+      {% endif %}
+    {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+    
+    <div class="uk-card-media-top">
+      
+{% comment %} -----| card_item.image = {{ card_item.image }}|---------
+-----| card_item.image.src = {{ card_item.images.src }}|--------- {% endcomment %}
+    {% comment %} card_item.image >>>> {{ card_item.image }} {% endcomment %}
+      
+      <div class="" style="padding-top: 15px">
+        <div class=" fg-card__blog-title mobileFont
+        {% if remove_date != true %}
+        uk-margin-remove-bottom
+        {% endif %}" href="{{ card_item.url }}" style="padding: 0 20px;">
+          {{ card_item.title | highlight: search.terms }}
+        </div>
+        {% if remove_date != true %}
+          {% capture date %}{{ card_item.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+          
+            <p class="uk-article-meta">Posted by <a href="/pages/robbie-dickson">{{card_item.author}}</a> on {{ date }}</p>
+          
+        {% endif %}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        {% if card_item.excerpt.size > 0 %}
+          <div class="rte" style="padding: 0 20px; font-size: 20px">
+            
+            {{ card_item.excerpt | truncatewords: 100 | highlight: search.terms }}
+          </div>
+        {% endif %}
+        <div class="fg-card__footer uk-margin-small-top" style="width: 140px; padding-left: 20px; padding-bottom: 10px;">
+          <a href="{{ card_item.url }}" class="fg-button-default uk-button uk-button-default">READ MORE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</a>
+

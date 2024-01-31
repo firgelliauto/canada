@@ -1,0 +1,67 @@
+<div>
+  <h2>Email Us</h2>
+  <ul class="uk-list">
+    
+    {% for block in section.blocks %}
+      <li>
+        {% if block.settings.email_type != 'other' %}
+          {% assign email_title = block.settings.email_type %}
+        {% else %}
+          {% assign email_title = block.settings.other_title %}
+        {% endif %}
+        <span uk-icon="icon: mail" class="fg-icon-left"></span>
+        {{ email_title }} :
+        <a href = "mailto: {{ block.settings.email_address }}">{{ block.settings.email_address }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Email",
+    "blocks" : [
+      {
+        "type": "select",
+        "name": "Add Email",
+        "settings": [
+          {
+            "type":      "radio",
+            "id":        "email_type",
+            "label":     "Email Type",
+            "options": [
+             { "value": "General Inquiries", "label": "General Inquiries" },
+             { "value": "Technical Support", "label": "Technical Support" },
+             { "value": "other", "label": "Other" }
+            ]
+          },
+          {
+            "type": "text",
+            "id":   "other_title",
+            "label": "*Other type"
+          },
+          {
+            "type": "text",
+            "id":   "email_address",
+            "label": "Email"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Email",
+        "category": "Static Contact Email"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+
+{% endjavascript %}

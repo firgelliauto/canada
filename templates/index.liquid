@@ -1,0 +1,96 @@
+{{ content_for_index }}
+
+{%- include 'social-pin-board' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ shop.name }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ shop.url }}/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "url": "{{ shop.url }}{{ page.url }}"
+    }
+  </script>
+
+<script type="application/ld+json">
+		{
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+                "name": "Linear Actuator Questions and Answers",
+		"mainEntity": [
+		{
+			 "@type": "Question",
+			 "name": "What is a Linear Actuator?",
+			 "acceptedAnswer": {
+			 "@type": "Answer",
+			 "text": "&lt;p&gt;A linear actuator is a device that converts the rotational motion of an electric motor into linear motion – that is, it will provide both push and pull movements where the force is related to the power of the motor and the gear ratio used.&lt;/p&gt;&lt;p&gt;
+
+When Actuators create pushing and pulling forces, it is possible to lift, drop, slide, adjust, tilt, push or pull any object simply by pushing a button.&lt;/p&gt;&lt;p&gt;
+
+Additionally, Linear Actuators provide a safe and clean movement with accurate motion control that you have full control over. They are energy efficient and have a long lifetime with little or no maintenance required. Read our Blog post Linear Actuators 101 to learn more in greater detail.&lt;/p&gt;"
+             }},{
+			 "@type": "Question",
+			 "name": "How do linear actuators work?",
+			 "acceptedAnswer": {
+			 "@type": "Answer",
+			 "text": "&lt;p&gt;The Linear motion is created by using a screw or Lead-screw that turns either clockwise or counter-clock-wise and this causes the shaft to extend and retract. This principle is basically a nut on the screw to move up and down the screw as the lead-screw turns. This is what creates the linear motion.&lt;/p&gt;&lt;p&gt;
+
+The motors used are either AC or DC powered, most however run on 12v dc, but other voltages are optional.  To make the Actuator go the other direction you simple reverse the wires from the Actuator (reverse polarity) from the actuator controller or power supply. This is typically done through a switch that automatically reverses the polarity to the motor for you.&lt;/p&gt;&lt;p&gt;
+
+Firgelli created a Technical article you can visit here to read. How do linear actuators work?&lt;/p&gt;"
+             }},{
+			 "@type": "Question",
+			 "name": "What are the different types of Actuators?",
+			 "acceptedAnswer": {
+			 "@type": "Answer",
+			 "text": "&lt;p&gt;There are many different types sizes and styles of Linear Actuators. the Most common type is a Rod style where a Rod shaft slides in and out of the body. These create the linear motion required to be called a Linear Actuator. Other types include, Track Actuators, Column Actuators, and within each type there will be different control methods. For more detail read our Blog posts titled Types of Electric Linear Actuators&lt;/p&gt;"
+			 } 			 
+			 }]
+}
+</script>
+{% comment %}
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "{{- shopName -}}",
+    "sameAs": [
+    "{{ settings.social_twitter_link }}",
+    "{{ settings.social_facebook_link }}",
+    "{{ settings.social_instagram_link }}",
+    "{{ settings.social_snapchat_link }}",
+    "{{ settings.social_youtube_link }}",
+    "https://www.firgelliauto.com",
+   	"https://www.firgelliauto.com.au/",
+    "https://www.tvliftkit.com/"
+  ],
+    "url": "{{ shop.url }}{{ page.url }}",
+    "contactPoint": {
+ 		"@type": "ContactPoint",
+ 		"contactType": "customer support",
+ 		"telephone": "[+1 866-226-0465]",
+ 		"email": "support@firgelliauto.com"
+ },
+    "founder": {
+    		"@type": "Person",
+            "name": "Robbie Dickson",
+            "gender": "Male",
+            "image": "https://cdn.shopify.com/s/files/1/0615/2193/files/robbie_dickson_image.jpg?v=1611794966",
+			"sameAs": [
+            	"https://en.wikipedia.org/wiki/Robbie_Dickson",
+                "https://www.instagram.com/robbie_dickson/?hl=en",
+                "https://ca.linkedin.com/in/robbie-dickson?trk=pub-pbmap",
+                "https://robbiedickson.com/",
+                "https://www.firgelliauto.com/pages/robbie-dickson"
+                ]
+    },
+
+   "logo": "https://cdn.shopify.com/s/files/1/0615/2193/files/logo.png?v=1517313319"
+  
+
+  }
+</script>
+{% endcomment %}

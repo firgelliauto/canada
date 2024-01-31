@@ -1,0 +1,22 @@
+  {% assign number_of_resources = 0 %}
+  {% for tab in product_tab_list %}
+    {% assign tab_title_default  = tab | split: '_' %}
+    {% assign default_title = '' %}
+
+    {% for default in tab_title_default %}
+      {% assign format_default = default | strip %}
+      {% assign format_default = format_default | capitalize %}
+      {% assign default_title = default_title | append: format_default %}
+      {% comment %} {% assign default_title = default_title | strip %} {% endcomment %}
+      {% if forloop.last != true %}
+        {% assign default_title = default_title | append: ' ' %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign tab_title = tab | strip | append: '_title' %}
+    {% assign tab_content = tab | strip | append: '_content' %}
+    {% if product.metafields.custom_fields[tab_content] != blank %}
+      {% assign number_of_resources = number_of_resources | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  

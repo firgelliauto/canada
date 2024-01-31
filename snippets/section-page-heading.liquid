@@ -1,0 +1,26 @@
+  <div class="uk-flex uk-flex-center uk-child-width-2-3@s" uk-grid>
+    <div class="fg-heading-margin uk-text-center uk-width-2-3@l">
+      <h1 class="">{{ page.title }}</h1>
+    <div class="rte">
+      {{ page.content }}
+    </div>
+    </div>
+  </div>
+
+<section class="fg-collection-header fg-background-primary">
+  {% if collection.image %}
+    <div class="uk-child-width-1-1" uk-grid>
+      <div class="uk-visible@s uk-background-top-right uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center" style="background-image: url({{ collection.image | img_url: '1920x' }});">
+          <h1 class=" uk-position-large uk-position-center">{{ collection.title }}</h1>
+      </div>
+    </div>
+    {% else %}
+    <div class="fg-collection-header__title_padding uk-visible@s">
+      <h1 class="uk-margin-medium-top uk-text-center">{{ page.title }}</h1>
+    </div>
+  
+  {% endif %}
+</section>
+<section class="fg-collection-header uk-text-center uk-section uk-padding-remove-bottom uk-hidden@s">
+  <h1 class="uk-margin-medium-top">{{ page.title }}</h1>
+</section>

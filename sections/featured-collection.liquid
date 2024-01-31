@@ -1,0 +1,74 @@
+{%- comment -%}
+  This is a required section for the Shopify Theme Store.
+  It is available in the "Featured Collection" section in the theme editor.
+
+  Theme Store required settings
+  - Collection
+
+  Theme Store optional settings
+  - Heading: title of the featured collection section
+{%- endcomment -%}
+<section class="featured-collection uk-section">
+  <div class="uk-container">
+    {% if section.settings.title != blank %}
+      <div class="fg-heading-margin uk-text-center">
+        {% if section.settings.title != blank %}
+          <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+        {% endif %}
+        {% if section.settings.sub_title != blank %}
+          <p class="uk-text-center">{{ section.settings.sub_title }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {%- assign collection = collections[section.settings.collection] -%}
+    {% assign limit_count = section.settings.limit_count %}
+    <div class="fg-collection-grid js-filter uk-grid-small uk-grid-match" uk-grid>
+      {% for product in collection.products limit: limit_count %}
+        {% assign card_item = product %}
+        {% include 'card-product' %}
+        {% comment %}{% include 'card-product-with-review' %}{% endcomment %}
+      
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Featured Collection",
+    "settings": [
+      {
+        "type" : "text",
+        "id"   : "title",
+        "label": "Section Title"
+      },
+      {
+        "type" : "text",
+        "id"   : "sub_title",
+        "label": "Section Sub-Title"
+      },
+      {
+        "type" :  "range",
+        "id"   :  "limit_count",
+        "min"  :  4,
+        "max"  :  12,
+        "step" :  1,
+        "unit" :  "pc",
+        "label":  "Limit Product Amount",
+        "default":8
+      },
+      {
+        "id"   : "collection",
+        "type" : "collection",
+        "label": "Collection"
+      }
+    ],
+    "presets": [
+      {
+        "name"    : "Featured Collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

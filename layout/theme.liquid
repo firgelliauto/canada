@@ -1,0 +1,230 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}" overflow: -moz-scrollbars-vertical;  overflow-y:scroll;>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1">  
+<meta charset="utf-8">  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XYND6XDHVQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XYND6XDHVQ');
+</script>
+  
+  
+{% render 'script-header-favicon' %}  
+{% if template contains 'index' %}
+{% include 'IndexBanner' %}
+{% endif %}
+  {% if template contains 'product' %}
+
+	{% include 'CustomProductSEO' %}
+
+    <script src="{{ 'uikit.min.js' | asset_url }}"></script>
+  {% else if template contains 'collection' %}
+  	{% include 'CustomCollectionSEO' %}
+  	<script async src="{{ 'uikit.min.js' | asset_url }}"></script>
+  {% else %}
+    <script async src="{{ 'uikit.min.js' | asset_url }}"></script>
+    
+  {% endif %}
+  {% unless template == 'index' %}
+  {{ 'header-all.js' | asset_url | script_tag }}
+  {% include 'script-header-per-location' %}
+  {% endunless %}
+  
+  {% if template contains 'product' or template contains 'cart'%}
+    <script async src="{{ 'option_selection.js' | shopify_asset_url }}" ></script>
+  {% endif %}
+  
+  
+  
+  {%  if template contains 'product' %}
+  
+  	{{ 'product-all.js' | asset_url | script_tag }}
+  
+  
+
+  {% endif %}
+  {%- comment -%}smartseo{%- endcomment -%}
+   <title>{{ page_title }}</title>
+   <meta name="description" content="{{ page_description }}">
+   <meta name="referrer" content="origin">
+  
+  
+  {% case shop.address.country  %}
+    {% when 'United States' %}
+      {%- comment -%}smartseo_integration_begin{%- endcomment -%}
+      {% include 'smartseo' %}
+    {% when 'Canada' %}
+      {% include 'fa-seo' %}
+      
+
+    {% when 'Australia' %}
+      {% include 'fa-seo' %}
+      
+
+  {% endcase %}
+  
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <meta http-equiv="Expires" content="max-age=2628000" />
+  <meta property="al:android:package" content="google-app-package">
+  <meta property="al:android:app_name" content="Firgelli Automations app">
+  <link rel="canonical" href="{{ canonical_url }}">
+  {% include 'fa-hreflang-router' %}
+  {% include 'social-meta-tags' %}
+  {% include 'script-g-optimize' %}
+  {% include 'css-typography' %}
+
+  
+  
+  {%- if template == 'index' and settings.let_snow -%}
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" async defer></script>
+  {%- endif -%}
+
+  {%- if template == 'index' or template == 'cart' or template == 'article' -%}
+  {%- endif -%}
+
+  <script async>
+    document.documentElement.className = document.documentElement.className.replace("no-js","js");
+
+    window.theme = {
+      strings: {
+        addToCart: {{ 'products.product.add_to_cart' | t | json }},
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }}
+      },
+      moneyFormat: {{ shop.money_format | json }}
+    };
+  </script>
+
+  {% if template == 'page.calculator' %}
+    {% include 'calculator-links' %}
+  {% endif %}
+
+  {{ content_for_header }}
+  {%- render 'bold-common' -%}
+
+{% include 'pagefly-header' %}
+  
+ </head> 
+{% assign style_mod = '' %}
+{%- if settings.warm_buttons == true -%}
+  {% assign style_mod = 'fg-warm-buttons' %}
+{%- endif -%}
+<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {{ style_mod }}" data-curr-format="{{shop.money_format}}" data-curr-code="{{shop.currency}}" >
+  
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {% section 'header' %}
+
+  
+
+  {%- if settings.display_holiday_hours == true -%}
+    {% section 'holiday-hours' %}
+  {%- endif -%}
+
+  
+  
+  
+  {% if template contains 'collection' %}
+      <link rel="stylesheet" type="text/css" href="{{ 'nouislider.css' | asset_url }}" >
+      <script src="{{ 'nouislider.js' | asset_url }}"></script>  
+  {% endif %}
+  
+  
+  
+  
+  
+  
+  <main role="main" id="MainContent">
+    {{ content_for_layout }}
+    {% if template contains 'product' %}
+    
+    {{ 'twine.min.js' | asset_url | script_tag }}
+  	{% endif %}
+  </main>
+    
+  <a class="fg-totop" href="#" uk-totop uk-scroll></a>
+  {% section 'footer' %}
+
+    
+ 
+{% comment %} temporary enclosure for collections {% endcomment %}
+  {% if template contains 'collection' or template  == 'index' %}
+    {{ 'jquery.min.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {% if template contains 'collection' %}
+  	
+    {{ 'collections.min.js' | asset_url | script_tag }}
+  	
+  	
+  {% endif %}
+  {% if template contains 'article' %}
+    {% for tag in article.tags %}
+        {% if tag contains 'twine' %}
+          {{ 'twine.min.js' | asset_url | script_tag }}
+        {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  
+
+
+  {% include 'script-search' %}
+  <script src="{{ 'scripts.js' | asset_url }}" async></script>
+
+  {% if template.directory == 'customers' %}
+    <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    <script src="{{ 'customer_area.js' | shopify_asset_url }}" defer="defer"></script>
+  {% endif %}
+
+  {% include 'script-cart-rivet' %}
+  
+  {% if template contains 'resource' or template contains 'article' %}
+    {{ 'prism-all.js' | asset_url | script_tag }}
+  {% endif %}
+  {% include 'script-footer-per-location' %}
+
+  {% if template == 'page.calculator' %}
+    {% include 'calculator-scripts' %}
+  {% endif %}
+
+  {% if template == 'page.wiring-diagram' %}
+    {{ 'twine.min.js' | asset_url | script_tag }}
+    <script src="{{ 'wiring-diagram.min.js' | asset_url }}"></script>
+  {% endif %}
+
+  {%- if template.name == 'index' and settings.pin_board_homepage == true or
+        template.name == 'collection' and  settings.pin_board_collectionpage == true or
+        template.name == 'product' and settings.pin_board_productpage == true -%}
+    <script async src="//assets.pinterest.com/js/pinit.js"></script>
+  {%- endif -%}
+
+  {% if template contains 'product' %}
+   	
+    {{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'bold-upsell.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    
+    {% include 'script-product-cart' %}
+    {{ 'swatch-option.js' | asset_url | script_tag }}
+    {% include 'firstFrequentlyBoughtTogether' %}
+  {% endif %}
+<script>
+  $(document).ready(function () {
+    $("#cart").show();
+    {% if template contains 'product' %}
+    {% include 'productVarient' %}
+             
+  	{% endif %}
+  });
+</script>  
+{% include 'script-location' %}  
+{% include 'OrganizationSchema' %}
+<script src="{{ 'searchBarBrandFix.js' | asset_url }}"></script>
+</body>
+</html>

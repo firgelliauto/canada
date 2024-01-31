@@ -1,0 +1,12 @@
+<div data-bind-show="price" class="fg-price-container"> 
+  {% if product.compare_at_price > product.price %} 
+    <span data-bind="price" class="js-product-price on-sale" itemprop="price"></span>
+    <span class="fg-currency-type">{{ shop.currency }}</span>
+    <del data-bind="price_compare" class="fg-product-price_compare js-product-compare-price"></del>
+  {% else %}
+    <span class="js-product-price" itemprop="price" data-bind="price"></span>
+    <span class="fg-currency-type">{{ shop.currency }}</span>
+  {% endif %}
+</div>
+
+<script>//product = current_variant?</script>

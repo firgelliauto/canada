@@ -1,0 +1,34 @@
+{% if collection.metafields.custom_fields["display_collections_content"]  > 0 %}
+  <script>
+    var renderCollectionDescription = false;
+  </script>
+  <section class="uk-section uk-position-relative fg-section-chess">
+    <div class="uk-container">
+      {% render 'custom-fields-collection-content'  %}
+    </div>
+  </section>
+{% else %}
+
+  <script>
+    var renderCollectionDescription = true;
+  </script>
+  {% if collection.description != '' %}
+    <section class="uk-section uk-position-relative fg-section-chess js-section-chess-collection">
+      <div class="uk-container js-description-content">
+         
+      {% assign productDescription = collection.description | split:"<!--SEO-->"%}
+     
+      {% if collection.description contains '<!--SEO-->' %}
+      {{ productDescription | first}}
+        {% else %}
+         {{ collection.description }}
+      {% section 'section-full-width' %}
+
+      {% endif %}
+      
+        
+       
+      </div>
+    </section>
+  {% endif %}
+{% endif %}

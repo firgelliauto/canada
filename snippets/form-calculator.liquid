@@ -1,0 +1,94 @@
+<section class="uk-section uk-background-muted"> 
+  <div class="uk-container">
+    <div class="uk-flex-center" uk-grid>
+      <form class="uk-width-1-3@s">
+        <fieldset class="uk-fieldset uk-margin-left uk-margin-right">
+          <legend class="uk-legend">Calculator</legend>
+          <div class="uk-margin">
+            <label class="uk-form-label">Weight of hatch (lbs)</label>
+            <input data-bind="weight" class="uk-input" type="number">
+          </div>
+          <div class="uk-margin">
+            
+            <label class="uk-form-label">Length of hatch (inches)</label>
+            <input data-bind="length" class="uk-input" type="number">
+          </div>
+          <div class="uk-margin">
+            
+            <label class="uk-form-label">Distance from Hinge (inches)</label>
+            <input data-bind="hingeDistance" class="uk-input" type="number">
+          </div>
+          <div class="uk-margin">
+            
+            <label class="uk-form-label">Angle of Thrust (degrees)</label>
+            <input data-bind="thrustAngle" class="uk-input" type="number">
+          </div>
+
+          <input class="js-prevent-default uk-button uk-button-primary" type="submit" value="Calculate" data-bind-event-click="calc()" >
+        </fieldset>
+      </form>
+      <div class="uk-width-1-3@s uk-margin-left uk-margin-right">
+        <span class="uk-legend">Results</span>
+        <table class="uk-table uk-table-divider"> 
+          <tr>
+            <th>Actuator Force Required</th>
+            <td data-bind="reqForceFormat"></td>
+          </tr>
+          <tr>
+            <th>Force with Safety Factor of 1.5</th>
+            <td data-bind="forceSafeXOneAndHalfFormat"></td>
+          </tr>
+          <tr>
+            <th>Force with Safety Factor of 2</th>
+            <td data-bind="forceSafeXTwoFormat"></td>
+          </tr>
+          <tr>
+            <th>Center of Mass <br> <small class="uk-text-muted">(Ideal point to attach the end of Actuator)</small></th>
+            <td data-bind="centerMassFormat"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(event) {
+    (function ($) {
+      $(document).ready(function () {
+        'use strict';
+        var context = {};
+        var nbsp = String.fromCharCode(160);
+        Twine.reset(context).bind().refresh();
+
+        $('input.js-prevent-default').click(function(e){
+          e.preventDefault();
+        })
+
+        context.calc = function(){
+          if(context.weight != '' && context.length != '' &&  context.hingeDistance != '' && context.thrustAngle != '') {
+            context.centerMass = context.length / 2;
+            context.torque = context.weight * context.centerMass;
+            context.reqVerticalLift = context.torque / context.hingeDistance;
+            context.radian = context.thrustAngle * (Math.PI / 180);
+            context.sinAngle = Math.sin(context.radian);
+
+            context.reqForce = Math.round((context.reqVerticalLift / context.sinAngle) * 100) / 100;
+
+            context.forceSafeXOneAndHalf = Math.round((context.reqForce * 1.5) * 100 )/ 100;
+            context.forceSafeXTwo =  Math.round((context.reqForce * 2) * 100) / 100 ;
+
+            context.reqForceFormat = context.reqForce + nbsp + 'lb';
+            context.forceSafeXOneAndHalfFormat = context.forceSafeXOneAndHalf + nbsp +'lb';
+            context.forceSafeXTwoFormat = context.forceSafeXTwo + nbsp + 'lb';
+            context.centerMassFormat = context.centerMass + nbsp + 'Inches';
+          }else {
+            context.reqForceFormat = '';
+            context.forceSafeXOneAndHalfFormat = '';
+            context.forceSafeXTwoFormat = '';
+            context.centerMassFormat = '';
+          }
+        }
+      });
+    })(jQuery);
+  });
+</script>

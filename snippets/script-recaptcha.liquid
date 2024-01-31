@@ -1,0 +1,8 @@
+{% case shop.address.country  %}
+  {% when 'United States' %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LcUsKwUAAAAAAz89qelyBUAFYiJJgXKuqX2TnYj"></script>
+  {% when 'Canada' %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdasKwUAAAAABue8Qlvns-ahrv60V829SzrIosC"></script>
+  {% when 'Australia' %}
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdksKwUAAAAAPzL1kdpAQNGOY6rmKquFjp6sqtl"></script>
+{% endcase %}

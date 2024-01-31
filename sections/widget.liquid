@@ -1,0 +1,658 @@
+<style>
+.cbb-frequently-bought-total-price-price, .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, h1, h2, h3, h4, h5, h6 {
+  margin: 0px !important;
+  
+}
+  .box {
+	padding-bottom: 15px;
+}
+.box select {
+  background-color: #2171d6;
+  color: white;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+.box::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+}
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor:pointer;
+}
+.box select option {
+  padding: 30px;
+}  
+  
+.submitButton{
+  padding: 12px;
+  width: 250px;
+  
+  font-size: 20px;
+  
+  opacity: 0.9;
+ 
+  cursor:pointer;
+  
+}
+.submitButton:hover {
+  opacity: 1
+
+}  
+  
+.strokeButton {
+  border-radius: 50%;
+  width: 23px;
+}
+  
+@media screen and (max-width: 1130px) {
+  @media screen and (min-width: 960px) {
+    .productpadding{
+      padding-left: 40px;
+      
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .legend{
+    font-size: 12px;
+  }
+  
+}
+</style>
+
+<section class="uk-section">
+  
+  <div class="uk-container">
+    
+    
+    <div class="uk-grid">
+      
+
+    
+      
+      
+      <div class="uk-width-1-1@s uk-width-1-6@m" style="width: 373px; border: 1px solid grey;">
+      <form id="WidgetForm" style="">
+        <div class="uk-margin-left" style="width: 250px">
+        <h2 style="font-size: 25px; padding: 10px 0"><strong>Advanced Features</strong></h2>
+        <div class="fg-checkbox-group" style="padding: 0 0 10px 20px">
+                
+                <div class="uk-grid fg-label-checkbox-group" style="">
+                  
+                  <div>
+                    <input class="uk-checkbox" type="checkbox" name="Actuator-Voltage" value="Actuator-Voltage">
+                    <label class="uk-form-label" for="Actuator-Voltage">Actuator Voltage</label>
+                  </div>
+                  <br>
+                  <div>
+                    <input class="uk-checkbox" type="checkbox" name="Actuator-Feedback" value="Actuator-Feedback">
+                    <label class="uk-form-label" for="Actuator-Feedback">Actuator Feedback</label>
+                  </div>
+                  <p></p>
+                  <div>
+                    <input class="uk-checkbox" type="checkbox" name="Actuator-Type" value="Actuator-Type">
+                    <label class="uk-form-label" for="Actuator-Type">Actuator Type</label>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <fieldset class="uk-fieldset uk-margin-left uk-margin-right">
+          <div id="Stroke-Length" style="padding-bottom: 10px">
+            <h2 style="padding-bottom: 10px; font-size: 25px">Stroke Length</h2>
+            <button class="strokeButton" type='button' onclick="minus()">-</button><input id="input" type="range" min="0" value="0" max="60" step="1" ><button style="" class="strokeButton" type='button' onclick="plus()">+</button>
+            
+            <span id="output" style="font-size: 15.5px">1 Inches</span><br>
+            
+          </div>
+          <div id="Actuator-Voltage" class="fg-checkbox-group" style="padding: 15px 0">
+                <h2 style="font-size: 25px"><strong>Actuator Voltage</strong></h2>
+                <div class="fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="radio" id="12v" name="Voltage" value="12v"
+                          checked >
+                    <label class="uk-form-label" for="12v">12v</label>
+                  </div>
+                  <div>
+                    <input class="uk-checkbox" type="radio" id="24v" name="Voltage" value="24v">
+                    <label class="uk-form-label" for="24v">24v</label>
+                  </div>
+                </div>
+          </div>
+          <div id="Actuator-Feedback" hidden style="padding: 5px 0 15px 0">
+          <div class="fg-checkbox-group">
+                <h2 style="font-size: 25px"><strong>Actuator Feedback?</strong></h2>
+                <div class="fg-label-checkbox-group" onchange="sensorChange();">
+                  <div>
+                    <input checked="checked" class="uk-checkbox" type="radio" id="none" name="Sensor" value="none" data-bind="Sensor">
+                    <label class="uk-form-label" for="none">No</label>
+                  </div>
+                  <div>
+                    <input class="uk-checkbox" type="radio" id="yes" name="Sensor" value="yes" data-bind="Sensor">
+                    <label class="uk-form-label" for="yes">Yes</label>
+                  </div>
+                </div>
+          </div>
+ 
+          	<div id="ifYes" hidden="hidden" class="fg-label-checkbox-group" style="padding-bottom: 10px">
+              <div class="fg-checkbox-group">
+                <label class="uk-form-label"><strong style="font-size: 25px">Actuator Sensor Type</strong></label>
+                <div class="fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="checkbox" name="SensorType" value="Pot" checked>
+                    <label class="uk-form-label" for="Pot">Potentiometer</label>
+                  </div>
+                </div>
+              </div>
+                  <div class="fg-checkbox-group">
+               
+                <div class="fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="checkbox"  name="xgfsdfg" value="Optical">
+                    <label class="uk-form-label" for="Optical">Optical</label>
+                  </div>
+                 </div>
+                </div>  
+                  <div class="fg-checkbox-group">
+               
+                <div class="fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="checkbox"  name="SenssdfsdforType" value="Hall"
+                         >
+                    <label class="uk-form-label" for="Hall">Hall</label>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      	<div id="Actuator-Force">
+          <h2 style="font-size: 25px">Force</h2>
+          <div class="box">
+			<select name="Force" onchange="" style="cursor:pointer;">
+              	 
+				 <option value="22-40" selected><div id="22-40">22 - 40 Lb's</div></option>
+              	 <option value="40-100"><div id="40-100">40 - 100 Lb's</div></option>
+              	 <option value="100-150"><div id="100-150">100 - 150 Lb's</div></option>
+                 <option value="150-224"><div id="150-224">150 - 224 Lb's</div></option>
+                 <option value="224-400"><div id="224-400">224 - 400 Lb's</div></option>
+				 <option value="400-500"><div id="400-500">400 - 500 Lb's</div></option>
+                 <option value="500-674"><div id="500-674">500 - 674 Lb's</div></option>
+                 <option value="1000-2200"><div id="1000-2200">1000 - 2200 Lb's</div></option>
+                 
+            </select>
+          </div>
+          </div>
+          <div id="Actuator-Type">
+          <h2 style="font-size: 25px">Type</h2>
+          <div class="box">
+			<select name="Style" onchange="" style="cursor:pointer;">
+                 
+				 <option value="Rod" selected><div id="Rod">Rod</div></option>
+              	 <option value="Track"><div id="Track">Track</div></option>
+              	 <option value="Column"><div id="Column">Column</div></option>
+            </select>
+          </div>
+          </div>
+          
+			
+            <img src="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/SubmitButton.jpg?v=1624907445" class="submitButton" id="submit"> 
+         
+        </fieldset>
+      </form>
+      </div>
+      <div class="uk-width-1-1@s uk-width-2-3@m">
+      <h2>{{ page.title }}</h2>
+      <legend class="uk-legend uk-margin-bottom" style="font-size: 18px">{{ page.content }}
+        
+        
+      </legend>
+      </div>
+      <div class="uk-width-1-1@s uk-width-1-1@m" style="padding-top: 40px;">
+        <h2>Recommended Products</h2>
+        <h2 id="ActuatorResults"></h2>
+    <div class="uk-grid uk-grid-small productpadding" >
+      
+        
+        
+        <div class="uk-grid uk-grid-small uk-grid-match" >
+          {% assign productList = '' %}
+          {% assign buy_now_text = 'learn more' %}
+           
+          {% for card_item in collections[section.settings.recommended_collection].products %}
+          {% assign productList = productList | append: card_item.handle %}
+          {% if forloop.last == false %}
+              {% assign productList = productList | append: ',' %}
+            {% endif %}
+          	
+          
+            <div class="fg-card js-card" id="{{ card_item.url }}" hidden="hidden" style="margin: 10px 30px">
+            {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+            <div class="fg-card-media-top">
+            
+            {% if card_item.featured_image != blank %}
+              <a class="fg-card__image_url" href="{{ card_item.url }}">
+                {% render 'responsive-card-image' with image_src: card_item.featured_image, index_first: index_first %}
+              </a>
+            {% endif %}  
+              
+              
+              
+              
+            <div class="fg-card__body">
+      		<a class="fg-card__product-title" href="{{ card_item.url }}" >{{ card_item.title }}</a>
+          	{% if card_item.available %}
+        	<em class="fg-text_in-stock">In Stock</em>
+      		{% else %}
+        	<em class="fg-text_out-stock">Out of Stock</em>
+      		{% endif %}
+            </div>
+            </div>
+            <div class="fg-card__footer">
+              {% assign device_type = 'uk-visible@s' %}
+              {% render 'card-price' with card_item: card_item, device_type: device_type %}
+              
+            </div>  
+            </div>
+            {% endfor %}
+          
+    </div>
+  </div>
+ </div>
+
+    </div>
+  </div>
+</section>
+       
+  
+    
+
+
+
+<script> 
+  function sensorChange(){
+  if ($('input[name="Sensor"]:checked').val() != 'none'){
+    document.getElementById('ifYes').removeAttribute("hidden");
+  }
+    else{
+      document.getElementById('ifYes').setAttribute("hidden", "hidden");
+    }
+  }
+</script>
+
+
+
+<script>
+var staticfeatures = ['Stroke-Length', 'Actuator-Voltage', 'Actuator-Feedback', 'Actuator-Force', 'Actuator-Type'];
+var features = [];
+var current = [];
+var values = [1,2,3,4,5,6,7,8,9,10,12,12,14,14,15,17,18,18,18,19,20,20,22,22,24,24,25,28,28,28,30,30,32,32,34,34,35,36,36,38,38,39,40,50,50,50,50,50,50,50,50,50,50,60,60,60,60,60,60,60,60,60,60];
+var uniqueValues = [1,2,3,4,5,6,7,8,9,10,12,14,15,17,18,19,20,22,23,24,25,27,28,29,30,32,34,35,36,38,39,40,50,60]
+  //4_17_18_19_20_23_24_27_28_29_30
+  var input = document.getElementById('input'), 
+    output = document.getElementById('output'),
+    value = 1
+  
+  
+  function changeAttributes(){
+    for(var z=0; z<staticfeatures.length; z++){
+      if(z != '0' && z != '3'){
+       document.getElementById(staticfeatures[z]).setAttribute("display", "hidden");
+		
+      }
+       
+       //alert(staticfeatures[z])
+     }
+    
+    
+     for(var z=0; z<features.length; z++){
+       document.getElementById(features[z]).removeAttribute("hidden");
+ 
+     }
+  }
+  
+  
+  
+  
+input.oninput = function(){
+  value = values[this.value];
+  
+  
+  
+  output.innerHTML = values[this.value] + " Inches";
+  current = showValues();
+  changeAttributes();
+  //document.getElementById("input").value = values[this.value];
+};
+
+  
+function plus(){
+   
+  newValue = value; //value currently selected
+  if(newValue == 0){
+    newValue = 1;
+  }
+  
+  if(newValue != 60){
+  // alert("value: " + newValue + " index: " + (uniqueValues.indexOf(newValue)));
+
+    
+   document.getElementById("input").value = uniqueValues[(uniqueValues.indexOf(newValue)) + 1];
+   output.innerHTML = uniqueValues[uniqueValues.indexOf(newValue) + 1] + " Inches";
+  
+
+   value = uniqueValues[uniqueValues.indexOf(newValue) + 1]
+
+   newValue = parseInt(document.getElementById("input").value);
+  
+   
+   current = showValues();
+   changeAttributes();
+  }
+   
+   
+   
+   //run();
+}
+function minus(){
+    newValue = value; //value currently selected
+
+  
+   if(newValue != 1){
+   
+    
+    
+   document.getElementById("input").value = uniqueValues[(uniqueValues.indexOf(newValue)) - 1];
+   output.innerHTML = uniqueValues[uniqueValues.indexOf(newValue) - 1] + " Inches";
+  
+
+   value = uniqueValues[uniqueValues.indexOf(newValue) - 1]
+
+   newValue = parseInt(document.getElementById("input").value);
+   
+   
+   current = showValues();
+   changeAttributes();
+  }
+}
+  
+  
+function showValues() { 
+    var fields = $( ":input" ).serializeArray();
+    current = [];
+    features = [];
+    $( "#results" ).empty();
+    jQuery.each( fields, function( i, field ) {
+      if(i == '1'){
+        $( "#results" ).append(value + ",");
+        current.push(value);
+      }
+      if(field.value != ''){
+        if(field.value != 'Actuator-Voltage' && field.value != 'Actuator-Feedback' && field.value != 'Actuator-Type'){
+          $( "#results" ).append( field.value + "," );
+          current.push(field.value);
+        }
+      else{
+        features.push(field.value);
+      }
+      }
+      });
+
+
+  changeAttributes();
+  if(alert.length == 0){
+    
+  }
+  return current;
+  }
+  
+  $( ":checkbox, :radio" ).click( showValues );
+  $( "select" ).change( showValues );
+  current = showValues();
+  
+  
+  
+  function checkStroke(data, input){
+    var stringInput = input.toString();
+    var numberArray = data.split("_");
+    return numberArray.includes(stringInput);
+  }
+  function checkVoltage(data, input){
+    if(data[1].includes(input) || data[2].includes(input)){ //maybe change this to data[1] == input or data[2] == input
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  
+  function checkSensor(data, input1, input2){
+    if (data[3] == '' && input1 == 'none'){
+      return true;
+    }
+    else if(data[3] == input2 && input1 != 'none'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  function checkSensor2(data, input1, input2, input3){
+    if (data[3] == '' && input1 == 'none'){
+      return true;
+    }
+    else if(data[3] == input2 && input1 != 'none'){
+      return true;
+    }
+    else if(data[3] == input3 && input1 != 'none'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  function checkSensor3(data, input1, input2, input3, input4){
+    if (data[3] == '' && input1 == 'none'){
+      return true;
+    }
+    else if(data[3] == input2 && input1 != 'none'){
+      return true;
+    }
+    else if(data[3] == input3 && input1 != 'none'){
+      return true;
+    }
+    else if(data[3] == input4 && input1 != 'none'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  function checkForce(data, input){
+    var ForceArray = input.split("-");
+    
+    if(Number(data[4]) >= Number(ForceArray[0]) && Number(data[4]) <= Number(ForceArray[1])){
+    	return true; 
+    }
+    else{
+      return false;
+    }
+    
+  }
+
+  
+  
+</script>        
+              
+
+
+
+
+              
+<script>
+  var productList = "{{ productList }}";
+  productList = productList.split(',');
+  
+
+  $(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: '{{ 'final_widget_data_2.csv' | asset_url }}',
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+  });
+var lines = [];
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr.push(data[j]);
+            }
+
+            lines.push(tarr);
+
+        }
+    }
+
+}
+
+ document.getElementById('submit').onclick = function check(){
+   //console.log(lines)
+   for(var z=0; z<lines.length; z++){
+     var ID = "/products/" + lines[z][6];
+ 
+     if((document.getElementById(ID)) == null){
+       lines.splice(z, 1);
+       continue;
+     }
+     document.getElementById(ID).setAttribute("hidden", "hidden");
+     
+   }
+   
+   const valid = lines;
+   var results = [];
+   if(current.length == 5){
+     current.splice(3, 0, 'none');
+   }
+
+
+   for (var i=0; i<valid.length; i++) {
+     result = checkStroke(valid[i][0], current[0]) //checks stroke with all data and proceeds if data row has the stroke we need.
+     if(result == true){
+       result2 = checkVoltage(valid[i], current[1]) //checked voltage with all data that have the correct stroke.
+       if(result2 == true || document.getElementById("Actuator-Voltage").hasAttribute("hidden")){
+         if(current.length == 6){
+          	result3 = checkSensor(valid[i], current[2], current[3])
+         }
+         else if(current.length == 7){
+           result3 = checkSensor2(valid[i], current[2], current[3], current[4]) 
+         }
+         else if(current.length == 8){
+           result3 = checkSensor3(valid[i], current[2], current[3], current[4], current[5])
+         }
+        
+         if(result3 == true || document.getElementById("Actuator-Feedback").hasAttribute("hidden")){
+           result4 = checkForce(valid[i], current[current.length - 2])
+           if(result4 == true){
+             if(valid[i][5] == current[current.length - 1] || document.getElementById("Actuator-Type").hasAttribute("hidden")){ //checks Type
+                
+                results.push(valid[i][6]);
+             }
+           }
+         }
+       } 
+     }
+   }
+   
+   for(var j=0; j<results.length; j++){
+     var ID = "/products/" + results[j]
+     document.getElementById(ID).removeAttribute("hidden");
+   }
+   if(results.length == 0){
+     document.getElementById("ActuatorResults").innerHTML = "No products found, please try different features";
+   }
+   else{
+     document.getElementById("ActuatorResults").innerHTML = "";
+   }
+   
+ }
+
+
+
+
+  
+</script>
+
+
+
+
+
+
+
+
+<style>
+img :not(.uk-preserve) {
+  height: 300px;
+}
+.fg-responsive-image__absolute-wrapper{
+ height: auto; 
+}
+.fg-card-image-container{
+  padding-top: 300px;
+}
+.uk-grid-match>*>:not([class*=uk-width]){
+  width: 300px;
+}
+.uk-grid-small>* {
+  padding-left: 0px;
+}
+@media (min-width: 1200px){
+.uk-grid>* {
+  padding-right: 0px;
+	}
+}
+</style>
+
+
+{% schema %}
+  {
+    "name" : "Widget Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "CSV data"
+      },
+      {
+        "type": "header",
+        "content": "Recommended Products Collection"
+      },
+      {
+        "id"   : "recommended_collection",
+        "type" : "collection",
+        "label": "Select a collection"
+      }
+      
+    ]
+   
+  }
+{% endschema %}

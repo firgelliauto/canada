@@ -1,0 +1,17 @@
+<nav class="fg-nav__topper fg-nav uk-container">
+  <div class="fg-container-full-width">
+    <ul class="fg-login-container uk-iconnav uk-text-small uk-flex-center">
+      {% include 'nav-login' %}
+      <li>
+        {% include 'form-search' %}
+      </li>
+      <li>
+        <a href="tel:{% include 'nav-phone' %}">
+          <span>Toll Free: {% include 'nav-phone' %}</span>
+          <span uk-icon="icon: receiver" class="fg-icon-left"></span>
+        </a>
+      </li>
+      {%- include 'nav-country-links' -%}
+    </ul>
+  </div>
+</nav>

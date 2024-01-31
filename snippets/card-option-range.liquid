@@ -1,0 +1,44 @@
+{% assign option_type = '' %}
+{% if option contains 'inch' or option contains 'stroke' or option contains 'length' %}
+  {% assign option_type = 'Stroke' %}
+  {% assign metric = ' Inches' %}
+{% elsif option contains 'force' or  option contains 'lb' %}
+  {% assign option_type = 'Force' %}
+  {% assign metric = ' lb' %}
+{% endif %}
+{% if option_type == 'Stroke' or option_type == 'Force' %}
+{% assign option_array = '' %}
+  {% for option in array %}
+    {% if option != '' %}
+      {% assign option = option | downcase %}
+      {% assign clean_option = option | remove: "lb" | remove: '"' | remove: "inch" | remove: "es" | remove: "s" | strip %}
+      {% assign clean_option = clean_option | split: ", " %}
+      {% assign option_array = option_array | concat: clean_option %}
+    {% endif %}
+  {% endfor %}
+  {% assign lowest = 0 %}
+  {% assign highest = 0 %}
+  {% for option in option_array %}
+    {% assign num = option | abs %}
+    {% if lowest == 0 %}
+      {% assign lowest = num %}
+    {% endif %}
+    {% if highest == 0 %}
+      {% assign highest = num %}
+    {% endif %}
+    {% if num > highest %}
+      {% assign highest = num %}
+    {% endif %}
+    {% if num < lowest %}
+      {% assign lowest = num %}
+    {% endif %}
+  {% endfor %}
+  {% if lowest != highest %}
+    {% assign range = option_type | append: ' ' | append: lowest | append: '–' | append: highest | append:  metric %}
+  {% else %}
+    {% assign range = option_type | append: ' ' | append: lowest | append: ' ' | append:  metric %}
+  {% endif %}
+  <li>
+  {{ range }}
+  </li>
+{% endif %}

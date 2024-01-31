@@ -1,0 +1,13 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/firgelli-canada.myshopify.com/products/configure/192198/edit
+{% endcomment %}
+{% if product.metafields.custom_fields["performance_graph_title"] != blank %}
+  <div class="custom-field custom-field__performance-graph-title custom-field__type--text">
+    <h3 class="custom-field--title">Performance Graph Title</h3>
+    <div class="custom-field--value">
+      {{ product.metafields.custom_fields["performance_graph_title"] }}
+    </div>
+  </div>
+{% endif %}

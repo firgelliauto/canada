@@ -1,0 +1,149 @@
+<!-- Chess Layout -->
+{%- if section.blocks != empty -%}
+  {% assign section_padding = ''  %}
+  {% if section.settings.section_padding == true %}
+    {% assign section_padding = 'uk-section'  %}
+  {% endif %}
+  <section id="collection-icon-section" class="{{ section_padding }} uk-position-relative fg-section-chess">
+    {% for block in section.blocks %}
+
+      {% if block.settings.uk_light == true %}
+        {% assign text_color = "uk-light" %}
+      {% else %}
+        {% assign text_color = "uk-dark" %}
+      {% endif %}
+
+      {% if block.settings.first_order == true %}
+        {% assign first_order = "uk-flex-first" %}
+      {% else %}
+        {% assign first_order = "" %}
+      {% endif %}
+      <div class="uk-container">
+        <div class="fg-section-chess__content uk-flex uk-flex-middle uk-child-width-1-2@s" uk-grid
+          uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150">
+          <div class="fg-section-chess__image">
+            {%  include 'responsive-chess-image' with
+                image_caption: block.settings.image_caption,
+                image_url: block.settings.image_link_url,
+                image_url_title: block.settings.image_link_url_title %}
+          </div>
+          <div class="fg-section-chess__content-inner {{first_order}}">
+            {% if block.settings.title != blank%}
+              <h2 class="{{ text_color }}">{{ block.settings.title }}</h2>
+            {% endif %}
+            <div class="fg-section-content__text {{ text_color }}" >
+              <p class="">{{ block.settings.section_text }}</p>
+            </div>
+            {% if block.settings.link_url != blank or block.settings.custom_link_url != blank %}
+              {% if block.settings.enable_custom_url == true %}
+                {% assign link = block.settings.custom_link_url %}
+              {% else %}
+                {% assign link = block.settings.link_url %}
+              {% endif %}
+            {% endif %}
+            {% if block.settings.link_text != blank %}
+              <a class="fg-button-default uk-button uk-button-default" href="{{ link }}">
+                {{ block.settings.link_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </section>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Chess Collection Section",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "section_padding",
+        "default": true,
+        "label": "Add padding to section"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Section",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "uk_light",
+            "label": "Light Coloured Text"
+          },
+          {
+            "type": "checkbox",
+            "id": "first_order",
+            "label": "Text left and Image right"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Section Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "info": "Optimal aspect ratio is 16:9. Max 700px:400px",
+            "label": "Section Image"
+          },
+          {
+            "type": "text",
+            "id": "image_caption",
+            "label": "Image Caption"
+          },
+          {
+            "type": "text",
+            "id": "image_title",
+            "label": "Image Title"
+          },
+          {
+             "type": "url",
+             "id": "image_link_url",
+             "label": "Image Link Url"
+          },
+          {
+            "type": "text",
+            "id": "image_link_url_title",
+            "label": "Image Link Url Title"
+          },
+          {
+             "type": "richtext",
+             "id": "section_text",
+             "label": "Section Text"
+          },
+          {
+             "type": "text",
+             "id": "link_text",
+             "label": "Link Text"
+          },
+          {
+             "type": "url",
+             "id": "link_url",
+             "label": "Link Url"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_custom_url",
+            "label": "Use a custom Url"
+          },
+          {
+             "type": "text",
+             "id": "custom_link_url",
+             "label": "Custom Link Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Chess Collection Section",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,164 @@
+{% assign shop_url = shop.url %}
+{% assign icon_image_base_url =  'icon-widget_' %}
+{% assign widget_path_base_url =  shop_url | append: '/pages/linear-actuator-calculator' %}
+<!-- Primary Description Section -->
+{% if section.settings.primary_section == true %}
+  <section class="uk-section fg-section__muted-blue fg-heading-border">
+    <div class="uk-container">
+      <div class="uk-flex uk-grid uk-flex-between">
+        <div class="uk-width-2-3@s uk-width-2-3@m uk-width-1-2@l">
+          <h2 class="collection-list__title">{{ section.settings.primary_heading }}</h2>
+          <div class="">
+            {% if section.settings.primary_description != blank %}
+              {{ section.settings.primary_description }}
+            {% endif %}
+          </div>
+        </div>
+      {% if section.settings.primary_bullet_points != blank %}
+        <div class="uk-width-1-3@s uk-width-1-3@m">
+          <ul class="uk-list uk-list-bullet">{{ section.settings.primary_bullet_points }}</ul>
+        </div>
+      {% endif %}
+      </div> 
+    </div>
+  </section>
+{% endif %}
+
+<!-- Widget Cards -->
+<section class="uk-section">
+  <div class="uk-container">
+
+    <div class="uk-text-center fg-heading-margin">
+      <h3 class="collection-list__title uk-text-center">
+        Choose a Calculator
+      </h3>
+    </div>
+    {% include 'loop-widget-cards' %}
+  </div>
+</section>
+
+<!-- Secondary Description Section -->
+{% if section.settings.secondary_section == true %}
+  <section class="uk-section">
+    <div class="uk-container">
+      <div class="uk-flex uk-grid uk-flex-between">
+        <div class="uk-width-2-3@s uk-width-2-3@m uk-width-1-2@l">
+          <h2 class="collection-list__title">{{ section.settings.secondary_heading }}</h2>
+          <div class="">
+            {% if section.settings.secondary_description != blank %}
+              {{ section.settings.secondary_description }}
+            {% endif %}
+          </div>
+        </div>
+      {% if section.settings.secondary_bullet_points != blank %}
+        <div class="uk-width-1-3@s uk-width-1-3@m">
+          <ul class="uk-list uk-list-bullet">{{ section.settings.secondary_bullet_points }}</ul>
+        </div>
+      {% endif %}
+      </div> 
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Calculator Landing Page",
+    "max_blocks": 25,
+    "settings": [
+      {
+        "type": "header",
+        "info": "Descriptive content to be displayed on Linear Actuator Calculator landing page",
+        "content": "Landing Page Descriptions"
+      },
+      {
+         "type": "checkbox",
+         "id": "primary_section",
+         "default": true,
+         "label": "Display Primary Descriptions"
+      },
+      {
+        "type": "text",
+        "id": "primary_heading",
+        "label": "Primary Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "primary_description",
+        "label": "Primary Description"
+      },
+      {
+        "type": "html",
+        "id": "primary_bullet_points",
+        "label": "Primary Bullet Points"
+      },
+      {
+         "type": "checkbox",
+         "id": "secondary_section",
+         "default": true,
+         "label": "Display Secondary Descriptions"
+      },
+      {
+        "type": "text",
+        "id": "secondary_heading",
+        "label": "Secondary Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "secondary_description",
+        "label": "Secondary Description"
+      },
+      {
+        "type": "html",
+        "id": "secondary_bullet_points",
+        "label": "Secondary Bullet Points"
+      },
+      {
+        "type": "header",
+        "info": "Add card and descriptive content for each widget",
+        "content": "Widget Descriptions"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Widget Card",
+        "settings": [
+          {
+             "type": "checkbox",
+             "id": "hide_widget",
+             "default": false,
+             "label": "Hide this widget for now"
+          },
+          {
+             "type": "select",
+             "id": "widget_type",
+             "options": [
+                { "value": "standard-hatch-lift", "label": "Standard"},
+                { "value": "stair-hatch-lift", "label": "Staircase"},
+                { "value": "window-hatch-lift", "label": "Window"},
+                { "value": "more-coming", "label": "More Coming"}
+             ],
+             "label": "Widget Type",
+             "info": "Select a widget type to generate an icon and url."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Widget Name"
+          },
+          {
+            "type": "html",
+            "id": "applications",
+            "label": "Common Applciations"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Calculator Landing Page",
+        "category": "Widgets"
+      }
+    ]
+  }
+{% endschema %}

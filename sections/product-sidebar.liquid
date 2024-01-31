@@ -1,0 +1,62 @@
+{%- if section.settings.display_product_sidebar == true -%}
+  {% if section.settings.title != blank %}
+      <h3>{{ section.settings.title }}</h3>
+      {% if section.settings.sub_title != blank %}
+        <p>{{ section.settings.sub_title }}</p>
+      {% endif %}
+  {% endif %}
+  {% assign card_sidebar_style = 'fg-sidebar' %}
+  <div class="uk-grid-small uk-grid-match" uk-grid>
+    {%- for block in section.blocks -%}
+      {% assign card_item = all_products[block.settings.product] %}
+      <div>
+        {% include 'card-product-content' %}
+      </div>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Featured Product",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_product_sidebar",
+        "label": "Display Product Sidebar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Sidebar Title",
+        "default": "Featured Products"
+      },
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sidebar Sub-Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Product",
+        "category": "Sidebar"
+      }
+    ]
+  }
+{% endschema %}

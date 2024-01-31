@@ -1,0 +1,10 @@
+{%- if image != blank -%}
+  {%- if image.width > 180 -%}{{ image | img_url: '180x' }} 180w 101h,{%- endif -%}
+  {%- if image.width > 360 -%}{{ image | img_url: '360x' }} 360w 202h,{%- endif -%}
+  {%- if image.width > 540 -%}{{ image | img_url: '540x' }} 540w 304h,{%- endif -%}
+  {%- if image.width > 720 -%}{{ image | img_url: '720x' }} 720w 405h,{%- endif -%}
+  {%- if image.width > 900 -%}{{ image | img_url: '900x' }} 900w 506h,{%- endif -%}
+
+  {%- assign image_size = image.width | append: 'x' -%}
+  {{ image | img_url: image_size }} {{ image.width }}w {{ image.height }}h
+{%- endif -%}

@@ -1,0 +1,57 @@
+{% assign resource_categories = 'resource_manuals, resource_tech_drawings, resource_spec_sheet, resource_3d_file' %}
+{% assign resource_categories = resource_categories | split: ',' %}
+
+{% comment %} Resource subnav {% endcomment %}
+{% assign first_active = true %}
+<ul class="fg-accordion uk-accordion" uk-accordion>
+  {% for resource in resource_categories %}
+    {% assign resource_item = resource | strip %}
+    {% assign display_resource_item = 'display_' | append: resource_item %}
+    {% assign title_resource_item = 'title_' | append: resource_item %}
+    
+    {% assign resource_content = page.metafields.custom_fields[resource_item] %}
+    {% assign display_resource_item = page.metafields.custom_fields[display_resource_item] %}
+    {% assign title_resource_item = page.metafields.custom_fields[title_resource_item] %}
+
+    {% assign nav_class = 'fg-resource__title_icon-' %}
+    
+    {% if display_resource_item > 0 %}
+      {% if first_active == true %}
+        {% assign active_state = 'uk-active' %}
+        {% assign aria_expanded = 'true' %}
+        {% assign first_active = false %}
+      {% else %}
+        {% assign active_state = '' %}
+        {% assign aria_expanded = 'false' %}
+      {% endif %}
+
+      {% if title_resource_item == blank %}
+        {% if resource_item contains 'resource_manuals' %}
+          {% assign title_resource_item = 'Instruction Manuals' %}
+          {% assign nav_class = nav_class | append: 'manual' %}
+        {% elsif resource_item contains 'resource_tech_drawings' %}
+          {% assign title_resource_item = 'Technical Drawings' %}
+          {% assign nav_class = nav_class | append: 'drawing' %}
+        {% elsif resource_item contains 'resource_spec_sheet' %}
+          {% assign title_resource_item = 'Specification Sheets' %}
+          {% assign nav_class = nav_class | append: 'spec' %}
+        {% elsif resource_item contains 'resource_3d_file' %}
+          {% assign title_resource_item = '3D Files' %}
+          {% assign nav_class = nav_class | append: '3d' %}
+        {% endif %}
+      {% endif %}
+      {% comment %} Tab title {% endcomment %}
+      <li class="fg-accordian-list-item {{ nav_class }} {{ active_state }}">
+        <a href="#" uk-icon="chevron-down" class="fg-accordian-title_w-icon uk-accordion-title">
+          <p class="fg-accordion-h3">
+            {{ title_resource_item }}
+          </p>
+        </a>
+        <div class="fg-resource-download uk-accordion-content">
+          {{ resource_content }}
+        </div>
+      </li>
+    {% endif %}
+
+  {% endfor %}
+</ul>

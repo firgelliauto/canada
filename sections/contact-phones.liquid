@@ -1,0 +1,206 @@
+<div>
+  <h2>Phone Us</h2>
+  <ul class="uk-list">
+    {% if section.settings.display_phone_notice == true %}
+      <li class="uk-text-danger">
+        {{ section.settings.phone_notice }}
+      </li>
+    {% endif %}
+    <li>
+      Office Hours: {{ section.settings.office_hours_open }} - {{ section.settings.office_hours_close }} PST
+    </li>
+    <li>
+      Office Days: {{ section.settings.office_day_start }} - {{ section.settings.office_day_end }}
+    </li>
+    
+    {% for block in section.blocks %}
+      {% assign phone = block.settings.phone_number | split: '' %}
+      {% capture phone %}{{ phone[0] }}-{{ phone[1] }}{{ phone[2] }}{{ phone[3] }}-{{ phone[4] }}{{ phone[5] }}{{ phone[6] }}-{{ phone[7] }}{{ phone[8] }}{{ phone[9] }}{{ phone[10] }}{% endcapture %}
+      <li>
+        {% if block.settings.phone_or_fax == 'Phone' %}
+          <span uk-icon="icon: receiver" class="fg-icon-left"></span>
+        {% else %}
+          <span uk-icon="icon: print" class="fg-icon-left"></span>
+        {% endif %}
+
+        {{ block.settings.phone_or_fax }} :
+        <a href="tel:{{ phone }}">
+          <span class="lmc_firgelli">{{ phone }}</span>
+        </a>
+      </li>
+    {% endfor %}
+    {% if section.settings.phone_ext_one != blank %}
+      <li>Extension 1: {{ section.settings.phone_ext_one }}</li>
+    {% endif %}
+    {% if section.settings.phone_ext_two != blank %}
+      <li>Extension 2: {{ section.settings.phone_ext_two }}
+        <br>
+        <i>{{ section.settings.phone_footer }}</i>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Phone",
+    "settings": [
+      {
+         "type":      "select",
+         "id":        "office_hours_open",
+         "label":     "Office Hours Open",
+         "options": [
+           {
+             "value": "7AM",
+             "label": "7AM"
+           },
+           {
+             "value": "8AM",
+             "label": "8AM"
+           }
+         ],
+         "default":   "8AM",
+         "info":      "Select a office hours open time"
+      },
+      {
+         "type":      "select",
+         "id":        "office_hours_close",
+         "label":     "Office Hours close",
+         "options": [
+           {
+             "value": "4PM",
+             "label": "4PM"
+           },
+           {
+             "value": "5PM",
+             "label": "5PM"
+           }
+         ],
+         "default":   "4PM",
+         "info":      "Select office hours close time"
+      },
+      {
+         "type":      "select",
+         "id":        "office_day_start",
+         "label":     "Office Day Start",
+         "options": [
+           {
+             "value": "Monday",
+             "label": "Monday"
+           },
+           {
+             "value": "Tuesday",
+             "label": "Tuesday"
+           },
+           {
+             "value": "Wednesday",
+             "label": "Wednesday"
+           },
+           {
+             "value": "Thursday",
+             "label": "Thursday"
+           },
+           {
+             "value": "Friday",
+             "label": "Friday"
+           }
+         ],
+         "default":   "Monday"
+      },
+      {
+         "type":      "select",
+         "id":        "office_day_end",
+         "label":     "Office Day End",
+         "options": [
+           {
+             "value": "Monday",
+             "label": "Monday"
+           },
+           {
+             "value": "Tuesday",
+             "label": "Tuesday"
+           },
+           {
+             "value": "Wednesday",
+             "label": "Wednesday"
+           },
+           {
+             "value": "Thursday",
+             "label": "Thursday"
+           },
+           {
+             "value": "Friday",
+             "label": "Friday"
+           }
+         ],
+         "default":   "Friday"
+      },
+      {
+        "type": "text",
+        "id":   "phone_ext_one",
+        "label": "Extension 1"
+      },
+      {
+        "type": "text",
+        "id":   "phone_ext_two",
+        "label": "Extension 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_phone_notice",
+        "label": "Display Phone Notice",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id":   "phone_notice",
+        "default": "Important Notice",
+        "label": "Phone important notice"
+      },
+      {
+        "type": "text",
+        "id":   "phone_footer",
+        "default" : "*Technical Support is available Monday - Wednesday only",
+        "label": "Phone footer note"
+      }
+    ],
+    "blocks" : [
+      {
+        "type": "select",
+        "name": "Add phone",
+        "settings": [
+          {
+            "type":      "radio",
+            "id":        "phone_or_fax",
+            "label":     "Phone or Fax",
+            "options": [
+             { "value": "Phone", "label": "Phone" },
+             { "value": "Fax", "label": "Fax" }
+            ],
+            "default":   "Phone"
+          },
+          {
+            "type": "text",
+            "id":   "phone_number",
+            "label": "Phone Number"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Contact Phone",
+        "category": "Page"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+
+{% endjavascript %}

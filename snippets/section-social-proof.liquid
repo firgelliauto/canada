@@ -1,0 +1,21 @@
+{% assign logo_array = 'bc-hydro boeing honeywell nasa tesla yotel' | split: ' ' %}
+<section  id="collection-icon-section" class="fg-section-full-width uk-section uk-background-cover fg-background-grey">
+  <div class="uk-container">
+    {% if block.settings.custom_banner_title != blank %}
+    <div class="fg-heading-margin uk-text-center">
+      <span class="uk-text-lead uk-light">
+        {{ block.settings.custom_banner_title }}
+      </span>
+    </div>
+    {% endif %}
+    <div class="uk-flex uk-flex-center uk-flex-middle" uk-grid
+      uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150">
+      {% for logo in logo_array %}
+        <div class="uk-width-1-3 uk-width-1-6@s fg-section-social-proof__logo" >
+          {% assign icon_logo = 'icon-logo-' | append: logo %}
+          {% include icon_logo %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

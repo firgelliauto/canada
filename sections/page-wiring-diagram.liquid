@@ -1,0 +1,308 @@
+<section class="uk-section">
+  <div class="uk-container">
+    <h1 class="uk-margin-left">{{ page.title }}</h1>
+    <div class="uk-grid">
+      <form class="fg-product-form uk-width-1-1@s uk-width-1-2@m" name="wiringSeach">
+        <fieldset class="fg-wiring-diagram-fieldset uk-fieldset uk-margin-left uk-margin-right">
+          <legend class="uk-legend uk-margin-bottom">{{ page.content }}</legend>
+          <div class="uk-grid uk-child-width-1-3">
+            <div>
+              <div class="fg-checkbox-group">
+                <label class="uk-form-label"><strong>Number of Actuators</strong></label>
+                <div class="uk-grid fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="radio"  name="count_actuator" value="1"
+                          checked data-bind="count_actuator">
+                    <label class="uk-form-label" for="1">1</label>
+                  </div>
+                  <div>
+                    <input class="uk-checkbox" type="radio" name="count_actuator" value="2" data-bind="count_actuator">
+                    <label class="uk-form-label" for="2">2</label>
+                  </div>
+                  {%- comment -%} input 3-4 {%- endcomment -%}
+                  <div>
+                    <input class="uk-checkbox" type="radio" name="count_actuator" value="3" data-bind="count_actuator">
+                    <label class="uk-form-label" for="3">3</label>
+                  </div>
+                  <div>
+                    <input class="uk-checkbox" type="radio" name="count_actuator" value="4" data-bind="count_actuator">
+                    <label class="uk-form-label" for="4">4</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-bind-show="count_actuator > 1">
+              <div class="fg-checkbox-group">
+                <label class="uk-form-label"><strong>Move Actuators Separately?</strong></label>
+                <div class="uk-grid fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="radio" name="move_together" value="" data-bind="move_together">
+                    <label class="uk-form-label" for="no">Yes</label>
+                  </div>
+                  <div>
+                    <input class="uk-checkbox" type="radio"  name="move_together" value="yes"
+                          checked data-bind="move_together">
+                    <label class="uk-form-label" for="yes">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div data-bind-show="count_actuator > 1 && move_together == 'yes'">
+              <div class="fg-checkbox-group">
+                <label class="uk-form-label"><strong>Synchronous Control?</strong></label>
+                <div class="uk-grid fg-label-checkbox-group">
+                  <div>
+                    <input class="uk-checkbox" type="radio"  name="move_sync" value="yes"
+                          checked data-bind="move_sync">
+                    <label class="uk-form-label" for="yes">Yes</label>
+                  </div>
+                  <div>
+                    <input class="uk-checkbox" type="radio" name="move_sync" value="" data-bind="move_sync">
+                    <label class="uk-form-label" for="no">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label"><strong>Control Options</strong></label>
+            <div class="uk-flex uk-flex-wrap">
+              <div class="fg-button-swatch swatch-element available" data-bind-class="{'soldout': (count_actuator == 2 && move_together == '')}">      
+                <input type="checkbox" name="option_toggle_switch" value="yes">
+                <label for="option_toggle_switch" data="control_options">
+                  Rocker Switch
+                </label>
+              </div>
+              <div class="fg-button-swatch swatch-element available" data-bind-class="{'soldout': (count_actuator == 2 && move_together == '')}">      
+                <input type="checkbox" name="option_2_channel_remote_control" value="yes" >
+                <label for="option_2_channel_remote_control" data="control_options">
+                  2 Channel Remote Control
+                </label>
+              </div>
+              <div class="fg-button-swatch swatch-element available" data-bind-class="{'soldout': count_actuator == 1 || (count_actuator == 2 && move_together == 'yes')}">      
+                <input type="checkbox" name="option_4_channel_remote_control" value="yes">
+                <label for="option_4_channel_remote_control" data="control_options">
+                  4 Channel Remote Control
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label"><strong>Additional Features</strong></label>
+            <div class="uk-flex uk-flex-wrap">
+              <div class="fg-button-swatch swatch-element available">      
+                <input type="checkbox" name="option_over_current_protection" value="yes">
+                <label for="option_over_current_protection" data="control_options">
+                  Over Current Protection
+                </label>
+              </div>
+              <div class="fg-button-swatch swatch-element available">      
+                <input type="checkbox" name="option_external_limit_switches" value="yes">
+                <label for="option_external_limit_switches" data="control_options">
+                  External Limit Switch
+                </label>
+              </div>
+              <div class="fg-button-swatch swatch-element available" data-bind-class="{'soldout': (count_actuator == 2 && move_together == 'yes')}">      
+                <input type="checkbox" name="option_speed_control" value="yes">
+                <label for="option_speed_control" data="control_options">
+                  Speed Control
+                </label>
+              </div>
+            </div>
+          </div>
+          <input class="uk-button fg-button" type="submit" value="Get diagram">
+          
+          <div id="wiring-diagram-legend" class="uk-modal-container" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+              <button class="uk-modal-close-default uk-close-large" type="button" uk-close></button>
+              <caption><h2 class="uk-modal-title">{{ section.settings.wiring_diagram_legend_heading }}</h2></caption>
+              <table class="uk-table uk-table-divider uk-table-middle uk-table-responsive">
+                <tbody>
+                  {% for block in section.blocks %}
+                    {% if block.settings.display_legend_item %}
+                    <tr>
+                      <td class="uk-text-center">
+                        <img data-src="{{ block.settings.legend_image.src | img_url: '150x' }}"
+                        alt="{{ block.settings.legend_image.alt }}" uk-img>
+                      </td>
+                      <td>
+                        {{ block.settings.legend_text }}
+                      </td>
+                    </tr>
+                    {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+              <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+              </p>
+            </div>
+          </div>
+          <div class="js-success-buttons fg-button-group-wrap uk-flex uk-flex-wrap" style="display:none;">
+            <a class="js-download fg-button-download uk-animation-fade" download="Download custom wiring diagram" href="" target="_blank" title="Download custom wiring diagram" uk-icon="icon:download; ratio: 1.2">
+              download
+            </a>
+            <a class="js-recommend-scroll uk-button uk-button-default fg-arrow-down-hover uk-animation-fade" href="#recommended-products" uk-icon="icon:chevron-down; ratio: 1.2" uk-scroll>
+              Reommended Products
+            </a>
+          </div>
+        </fieldset>
+      </form>
+      <div class="uk-width-1-1@s uk-width-1-2@m">
+        <div class="uk-card uk-card-default uk-card-body uk-text-center">
+          <p class="uk-h3 js-diagram-message uk-animation-fade" style="display:none;">
+            {{ section.settings.wiring_diagram_no_result_message }}
+          </p>
+          <div class="js-spinner" uk-spinner="ratio: 3" style="display:none;"></div>
+          <img class="js-diagram-image uk-animation-fade" src="" alt="" style="display:none;">
+          <img class="js-diagram-image_placeholder fg-diagram-image_placeholder uk-animation-fade" src="{{ section.settings.wiring_diagram_placeholder_image.src | img_url : '700x' }}" alt="">
+          
+        </div>
+        <a href="#wiring-diagram-legend" uk-toggle><button class="button3"> Legend <i class="uk-icon" uk-icon="icon: question"></i></button></a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="recommended-products" class="uk-section js-recommend-products uk-animation-fade" style="display:none;">
+  <div class="uk-container">
+    <h2>Recommended Products</h2>
+    <div class="uk-grid uk-grid-small">
+      <div class="uk-width-2-3@m">
+        <div class="uk-grid uk-grid-small uk-grid-match">
+          {% assign productList = '' %}
+          {% assign buy_now_text = 'learn more' %}
+          {% for card_item in collections[section.settings.recommended_collection].products %}
+            {% assign productList = productList | append: card_item.handle %}
+            {% if forloop.last == false %}
+              {% assign productList = productList | append: ',' %}
+            {% endif %}
+            <div class="js-recommended-product uk-animation-fade uk-grid-margin uk-width-1-2@s uk-width-1-3@m" data-handle="{{card_item.handle}}" style="display:none;">
+              {% include 'card-product-content' with buy_now_text: 'LEARN MORE' %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="uk-width-1-3@m uk-margin js-recommend-list" style="display:none;">
+        <table class="uk-table uk-table-divider fg-wiring-diagram-fieldset">
+          <thead>
+            <tr>
+              <th><span class="uk-h3">Products</span></th>
+              <th><span class="uk-h3">Price</span></th>
+            </tr>
+          </thead>
+          <tbody class="js-recommend-list-body"></tbody>
+          <tfoot class="js-recommend-list-foot">
+            <tr>
+              <th>
+                <span class="uk-h4">
+                  Total Quantity  <span data-bind="cart.total.quantity"></span>
+                </span>
+              </th>
+              <th>
+                <span class="uk-h4" data-bind="cart.total.price"></span>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+        <div class="fg-shadow-wrap fg-button-box-shadow-hover-large fg-button-box-shadow-small">
+          <button class="js-submit fg-button uk-animation-slide-top-small" data-bind-event-click="addCart()"
+          data-bind-show="cart.total.quantity > 0"
+          ><span class="js-submit-icon" uk-icon="plus"></span>Add to card</button>
+        </div>
+        <div class="uk-margin">
+          <a href="{{ shop.url | append: '/cart' }}" class="js-veiw-cart uk-button uk-button-default">
+            <span uk-icon="cart"></span> View Cart <span class="js-cart-item-count uk-badge fg-cart__badge_form">
+            {{ cart.item_count }}</span>
+          </a>
+        </div>
+        <div class="uk-margin">
+          <div class="fg-alert uk-alert-primary uk-alert-primary js-submit-notice uk-animation-slide-top-small"></div>
+          <div class="fg-alert uk-alert-primary uk-alert-danger js-submit-notice_error uk-animation-slide-top-small">Problem adding product(s) to your cart!<ul class="js-submit-notice_error-description"></ul> Please contact <a href="/pages/contact-us">support</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  var productList = "{{ productList }}";
+  productList = productList.split(',');
+  var wiringGlobal = {
+    productList: productList,
+    csv: '{{section.settings.wiring_diagram_csv}}',
+    shopUrl: '{{ shop.url }}',
+    currency: '{{ shop.currency }}',
+    locale: 'en'
+  }
+  var wiringDiagramCsv = "{{section.settings.wiring_diagram_csv}}";
+</script>
+{% schema %}
+  {
+    "name" : "Wiring Diagram Page",
+    "settings": [
+      {
+        "type": "header",
+        "content": "CSV data"
+      },
+      {
+        "id": "wiring_diagram_csv",
+        "type": "url",
+        "label": "Enter Url of csv file"
+      },
+      {
+        "type": "header",
+        "content": "Recommended Products Collection"
+      },
+      {
+        "id"   : "recommended_collection",
+        "type" : "collection",
+        "label": "Select a collection"
+      },
+      {
+        "type": "header",
+        "content": "Diagram Placeholder"
+      },
+      {
+        "id": "wiring_diagram_placeholder_image",
+        "type": "image_picker",
+        "label": "Select image when no diagram is displayed"
+      },
+      {
+        "type": "text",
+        "id": "wiring_diagram_no_result_message",
+        "label": "Wiring Diagram No Results Messsage"
+      },
+      {
+        "type": "header",
+        "content": "Legend"
+      },
+      {
+        "type": "text",
+        "id": "wiring_diagram_legend_heading",
+        "label": "Legend Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Legend Item",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "display_legend_item",
+            "label": "Display Legend Item"
+          },
+          {
+            "type": "image_picker",
+            "id": "legend_image",
+            "label": "Upload Legend Image"
+          },
+          {
+            "type": "richtext",
+            "id": "legend_text",
+            "label": "Legend Information"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

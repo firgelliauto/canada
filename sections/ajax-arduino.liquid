@@ -1,0 +1,117 @@
+{% assign repo_name = section.settings.arduino_section_title | downcase | split: ' ' %}
+{% assign repo_name = repo_name | join: '-' %}
+
+{% assign snippet_array = '' %}
+{% for block in section.blocks %}
+    {% assign snippet_array = snippet_array | append: block.settings.snippet %}
+    {% unless forloop.last %}
+      {% assign snippet_array = snippet_array | append: ',' %}
+   {% endunless %}
+ {% endfor %}
+{% assign snippet_array = snippet_array | split: ',' %}
+
+{% assign snippet_content = '' %}
+{% for block in section.blocks %}
+    {% assign snippet_content = snippet_content | append: block.settings.snippet_intro %}
+    {% unless forloop.last %}
+      {% assign snippet_content = snippet_content | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign snippet_content = snippet_content | split: ',' %}
+
+{% assign snippet_diagram = '' %}
+{% for block in section.blocks %}
+    {% if block.settings.diagram %}
+      {% assign img = block.settings.diagram | img_url: '720x720' %}
+      {% assign snippet_diagram = snippet_diagram | append: img %}
+    {% else %}
+      {% assign snippet_diagram = snippet_diagram | append: ' ' %}
+    {% endif %}
+    {% unless forloop.last %}
+      {% assign snippet_diagram = snippet_diagram | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign snippet_diagram = snippet_diagram | split: ',' %}
+
+{% assign snippet_diagram_alt = '' %}
+{% for block in section.blocks %}
+    {% if block.settings.diagram %}
+      {% assign alt = block.settings.diagram.alt | escape %}
+      {% assign snippet_diagram_alt = snippet_diagram_alt | append: alt %}
+    {% else %}
+      {% assign snippet_diagram_alt = snippet_diagram_alt | append: ' ' %}
+    {% endif %}
+    {% unless forloop.last %}
+      {% assign snippet_diagram_alt = snippet_diagram_alt | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign snippet_diagram_alt = snippet_diagram_alt | split: ',' %}
+
+{% capture snippet_section_heading %}
+<h2>{{section.settings.arduino_section_title}}</h2>
+{{ section.settings.arduino_section_subtitle }}
+{% endcapture %}
+
+<script>
+  var show_arduino = {{ section.settings.show_arduino_examples | json }};
+  var repo_name = {{ repo_name | json }};
+  var snippet_section_heading = {{ snippet_section_heading | json }};
+  var snippet_array = {{ snippet_array | json }};
+  var snippet_content = {{ snippet_content | json }};
+  var snippet_diagram = {{ snippet_diagram | json }};
+  var snippet_diagram_alt = {{ snippet_diagram_alt | json }};
+
+</script>
+{% schema %}
+  {
+    "name": "Arduino Examples",
+    "max_blocks": 25,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_arduino_examples",
+        "label": "Show Arduino Examples"
+      },
+      {
+        "type": "text",
+        "id": "arduino_section_title",
+        "label": "Arduino Examples Title",
+        "info": "Use the name of the repository to pull from"
+      },
+      {
+        "type": "richtext",
+        "id": "arduino_section_subtitle",
+        "label": "Arduino Sub Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Code",
+        "settings": [
+          {
+            "type": "text",
+            "id": "snippet",
+            "label": "Snippet Name"
+          },
+          {
+            "type": "richtext",
+            "id": "snippet_intro",
+            "label": "Additional Content"
+          },
+          {
+            "type": "image_picker",
+            "id": "diagram",
+            "label": "Image Diagram"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Arduino Example Snippets",
+        "category": "Ajax Requests"
+      }
+    ]
+  }
+{% endschema %}

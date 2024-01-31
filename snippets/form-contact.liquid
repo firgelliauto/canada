@@ -1,0 +1,64 @@
+<div class="fg-contact__form">
+  {% form 'contact' %}
+    {% if form.posted_successfully? %}
+      <p class="fg-form-success">
+        {{ 'contact.form.post_success' | t }}
+      </p>
+    {% endif %}
+
+    {{ form.errors | default_errors }}
+    <div class="uk-margin">
+      <label class="uk-form-label" for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+      <div class="uk-form-controls">
+        <input type="text"
+          class="uk-input uk-form-width-large"
+          name="contact[name]"
+          id="ContactFormName"
+          placeholder="{{ 'contact.form.name' | t }}"
+          value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+      <div class="uk-form-controls">
+        <input type="email"
+          class="uk-input uk-form-width-large" 
+          name="contact[email]"
+          id="ContactFormEmail"
+          placeholder="{{ 'contact.form.email' | t }}"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          spellcheck="false"
+          autocomplete="off"
+          autocapitalize="off">
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+      <div class="uk-form-controls">
+        <input type="tel"
+          class="uk-input uk-form-width-large" 
+          name="contact[phone]"
+          id="ContactFormPhone"
+          placeholder="{{ 'contact.form.phone' | t }}"
+          value="{% if form[phone] %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          pattern="[0-9\-]*">
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+      <div class="uk-form-controls">
+        <textarea rows="10"
+          class="uk-textarea uk-form-width-large"
+          name="contact[body]"
+          id="ContactFormMessage"
+          placeholder="{{ 'contact.form.message' | t }}">
+          {%- if form.body -%}
+            {{- form.body -}}
+          {%- endif -%}
+        </textarea>
+      </div>
+    </div>
+    <input type="submit" class="js-submit uk-margin-small uk-button uk-button-primary" value="{{ 'contact.form.send' | t }}">
+  {% endform %}
+</div>
+{% include 'script-recaptcha' %}

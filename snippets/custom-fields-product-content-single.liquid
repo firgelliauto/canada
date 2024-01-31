@@ -1,0 +1,31 @@
+{% render 'custom-fields-product-resources' with custom_class: 'uk-hidden@m' %}
+
+{% for tab in product_tab_list %}
+  {% assign tab_title_default  = tab | split: '_' %}
+  {% assign default_title = '' %}
+
+  {% for default in tab_title_default %}
+    {% assign format_default = default | strip %}
+    {% assign format_default = format_default | capitalize %}
+    {% assign default_title = default_title | append: format_default %}
+    {% if forloop.last != true %}
+      {% assign default_title = default_title | append: ' ' %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign tab_title = tab | strip | append: '_title' %}
+  {% assign tab_content = tab | strip | append: '_content' %}
+  {% if product.metafields.custom_fields[tab_content] != blank %}
+    <h2>
+      {% if product.metafields.custom_fields[tab_title] != blank %}
+        {{ product.metafields.custom_fields[tab_title] }}
+      {% else %}
+        {{  default_title }}
+      {% endif %}
+    </h2>
+    {% if product.metafields.custom_fields[tab_content] != blank %}
+      {{ product.metafields.custom_fields[tab_content] }}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+

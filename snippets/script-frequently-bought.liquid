@@ -1,0 +1,83 @@
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+  (function ($) {
+    $(document).ready(function () {
+      'use strict';
+
+      productID = productID.toString();
+
+      var counter = 0;
+      var waitForEl = function(selector, callback) {
+        counter++;
+        if ($(selector).length) {
+          callback();
+        } else {
+          if (counter !== 30) {
+            setTimeout(function() {
+              waitForEl(selector, callback);
+            }, 100);
+          }
+        }
+      };
+
+      waitForEl('.cbb-frequently-bought-selector-input', function() {
+        $('.js-button-frequent-container').removeClass('fg-display-none');
+        $('.js-frequently-bought-container').addClass('uk-section uk-section-muted')
+        var $freqInput = $('.cbb-frequently-bought-selector-input');
+        var $freqProduct = $('.cbb-frequently-bought-product');
+        var $freqProductInner = $('.cbb-frequently-bought-product a');
+        var $freqTitle = $('.cbb-frequently-bought-title').html()  + ' with ' + productTitle;
+
+        $.each($freqInput, function(i, val){
+          var $selectedInput = $(val).attr('name');
+          if( $selectedInput.includes(productID)) {
+            $(val).trigger('click');
+            $(val).closest('li').hide();
+            $('.cbb-frequently-bought-product')[0].remove();
+          }
+        })
+        $($freqProduct[0]).hide();
+        $('h1.cbb-frequently-bought-title').replaceWith(function(){
+          return $('<h2/>').html($freqTitle).addClass(this.className);
+        })
+
+        var $freqBoughtSelect = $('.cbb-frequently-bought-selector-list li a h3');
+
+        $.each($freqProductInner, function(i, val){
+          if(i > 0) {
+            var $div = $('<div/>').addClass('fg-frequent-bought-body js-frequent-bought-body');
+            var $h4 = $('<h5/>');
+
+            var productTitle = $($freqBoughtSelect[i - 1]).html();
+            productTitle = $h4.append(productTitle); 
+            $div.append(productTitle);
+
+            $(val).append($div);
+          }
+        })
+
+
+        $.each($freqProductInner, function(i, val){
+          var $body = $(val).find('.js-frequent-bought-body');
+          $($body).append('<button class="uk-button uk-button-primary fg-button uk-box-shadow-hover-large fg-button-box-shadow-small  uk-width-1-1">LEARN MORE</button>');
+
+        });
+
+        $('.cbb-frequently-bought-selector-list').insertBefore('.cbb-frequently-bought-total-price-box');
+
+        $('.cbb-frequently-bought-add-button').addClass('uk-button uk-button-primary fg-button uk-box-shadow-hover-large fg-button-box-shadow-small');
+
+        $('.cbb-frequently-bought-product a').addClass('uk-card-hover');
+
+        $('input[type="checkbox"].cbb-frequently-bought-selector-input').addClass('uk-checkbox fg-cbb-checkbox');
+
+        $.each($('.cbb-frequently-bought-selector-list li > .cbb-frequently-bought-selector-label-compare-at-price'), function(i, val) {
+          if($(val).text().length === 0){
+            $(val).addClass('fg-display-none')
+          }
+        })
+      });
+    });
+  })(jQuery);
+});
+</script>

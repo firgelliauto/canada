@@ -1,0 +1,119 @@
+{% assign product_tab_list = 'description, specifications, tech_drawing, wiring_diagram,performance_graph, video, video_comparison, video_demo' %}
+{% assign product_tab_list = product_tab_list | split: ',' %}
+{% comment %} Generate tab titles {% endcomment %}
+{% if product.metafields.custom_fields['display_custom_product_tabs'] %}
+  <ul uk-switcher="animation: uk-animation-slide-left-small, uk-animation-slide-left-small" uk-tab>
+    {% for tab in product_tab_list %}
+      {% assign tab_title_default  = tab | split: '_' %}
+      {% assign default_title = '' %}
+
+      {% for default in tab_title_default %}
+        {% assign format_default = default | strip %}
+        {% assign format_default = format_default | capitalize %}
+        {% assign default_title = default_title | append: format_default %}
+        {% comment %} {% assign default_title = default_title | strip %} {% endcomment %}
+        {% if forloop.last != true %}
+          {% assign default_title = default_title | append: ' ' %}
+        {% endif %}
+      {% endfor %}
+
+
+
+
+      {% assign tab_title = tab | strip | append: '_title' %}
+      {% assign tab_content = tab | strip | append: '_content' %}
+      {% if product.metafields.custom_fields[tab_content] != blank %}
+        <li>
+          {% if product.metafields.custom_fields[tab_title] != blank %}
+            <a href="#">
+              {{ product.metafields.custom_fields[tab_title] }}
+            </a>
+          {% else %}
+            <a href="#">
+              {{  default_title }}
+            </a>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <ul class="uk-margin-medium-top uk-switcher">
+    {% for tab in product_tab_list %}
+
+
+      {% assign tab_title_default  = tab | split: '_' %}
+      {% assign default_title = '' %}
+
+      {% for default in tab_title_default %}
+        {% assign format_default = default | strip %}
+        {% assign format_default = format_default | capitalize %}
+        {% assign default_title = default_title | append: format_default %}
+        {% comment %} {% assign default_title = default_title | strip %} {% endcomment %}
+        {% if forloop.last != true %}
+          {% assign default_title = default_title | append: ' ' %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign tab_title = tab | strip | append: '_title' %}
+      {% assign tab_content = tab | strip | append: '_content' %}
+      {% if product.metafields.custom_fields[tab_content] != blank %}
+        <li>
+          <h2>
+            {% if product.metafields.custom_fields[tab_title] != blank %}
+              {{ product.metafields.custom_fields[tab_title] }}
+            {% else %}
+              {{  default_title }}
+            {% endif %}
+          </h2>
+          {% if product.metafields.custom_fields[tab_content] != blank %}
+            <a href="#">
+              {{ product.metafields.custom_fields[tab_content] }}
+            </a>
+          {% endif %}
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% comment %} Tutorials  {% endcomment %}
+  {% if product.metafields.custom_fields['display_tutorial_links'] > 0 %}
+    <div>
+      <span class="fg-downloads-title">
+        Tutorials
+      </span>
+      <ul class="fg-product-downloads fg-product-button-icon fg-product-button-icon_tutorial">
+        {% assign array_tutorials = product.metafields.custom_fields['tutorial_link'] | split: '|' %}
+        {% for article_handle in array_tutorials %}
+          {% assign handle = article_handle | replace: '.', '/' %}
+          <li>
+            {{ articles[handle].title | link_to:  articles[handle].url }}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% comment %} Download  {% endcomment %}
+  {% if product.metafields.custom_fields['display_download_files'] > 0 %}
+    {% assign download_content = 'download_1, download_2, download_3, download_4, download_5, download_6' %}
+    {% assign download_content = download_content | split: ',' %}
+    <div>
+        <span class="fg-downloads-title">
+          Downloads
+        </span>
+      <ul class="fg-product-downloads fg-product-button-icon fg-product-button-icon_download">
+        {% for download in download_content %}
+          {% assign download_item = download | strip %}
+          {% if product.metafields.custom_fields[download_item] != blank %}
+            <li>
+            {{ product.metafields.custom_fields[download_item] }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+
+
+{% endif %}

@@ -1,0 +1,17 @@
+{% if section.settings.show_share_buttons %}
+  {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Social Share",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

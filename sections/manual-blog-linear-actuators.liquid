@@ -1,0 +1,114 @@
+<style>
+ .uk-section{
+   padding-top: 10px !important;
+ }
+ @media screen and (max-width: 640px) {
+  .hiddenMobile{
+    display: none;
+  }
+  .fg-card__image_url {
+    width: 100% !important;
+  }
+  .mobileFont{
+    font-size: 10px
+  }
+} 
+ @media screen and (min-width: 641px) {
+   .desktopHidden{
+     display: none;
+   }
+ }
+
+</style>
+
+{%- if section.settings.display_blog_manual -%}
+  <section class="uk-section">
+    <div class="uk-container">
+      {% if section.settings.title != blank %}
+        <div class="fg-heading-section uk-width-3-5@l">
+          {% if section.settings.title != blank %}
+            <h2 class="featured-collection__title">{{ section.settings.title }}</h2>
+          {% endif %}
+          {% if section.settings.sub_title != blank %}
+            <div class="uk-text-center">{{ section.settings.sub_title }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% assign article_amount = 'uk-child-width-1-' | append: section.settings.article_count | append: '@l' %}
+      {% assign remove_date = true %}
+      <div class="uk-section">
+        <div class="">
+          {% for block in section.blocks %}
+            {% assign card_item = block.settings %}
+          		<div class="hiddenMobile">
+            	{% include 'new-card-article' %}
+          		</div>
+          		<div class="desktopHidden">
+                {% include 'mobile-card-article' %}
+          		</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+{% schema %}
+  {
+    "name": "Blog Cards",
+    "max_blocks": 5,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_blog_manual",
+        "default": true,
+        "label": "Display Blog Section"
+      },
+      {
+        "type" : "text",
+        "id"   : "title",
+        "label": "Section Title"
+      },
+      {
+        "type" : "richtext",
+        "id"   : "sub_title",
+        "label": "Section Sub-Title"
+      }
+      
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Section",
+        "settings": [
+          {
+            "type":   "text",
+            "id":     "title",
+            "label":  "Blog title"
+          },
+          {
+            "type":   "richtext",
+            "id":     "excerpt",
+            "label":  "Blog Excerpt"
+          },
+          {
+            "type":   "url",
+            "id":     "url",
+            "label":  "Blog url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Blog image (make sure it is 220px x 220px)"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog Section Manual",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}
+

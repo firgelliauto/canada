@@ -1,0 +1,28 @@
+<script type="text/javascript">
+   document.getElementsByClassName('js-frequently-bought-container')[0].style.display = 'none';
+
+     function freqboughttogether(){
+var firstImage = document.querySelector(".cbb-frequently-bought-product-image");
+var imageTitle = firstImage.getAttribute('aria-label');
+  
+  $(firstImage).after('<div class="fg-frequent-bought-body js-frequent-bought-body"><h5>' + imageTitle + '</h5><button class="fg-button uk-width-1-1">LEARN MORE</button></div>');
+
+
+const allTitles = document.getElementsByTagName("h5");  
+const allImages = document.getElementsByClassName("cbb-frequently-bought-product-image");
+
+for (let i = 0; i < allImages.length; i++) {
+	var imageTitle = allImages[i].getAttribute('aria-label');
+	allTitles[i + (allTitles.length - 4)].innerHTML = imageTitle; //assumes they are always the last 4 <h5> tags
+}
+document.getElementsByClassName('js-frequently-bought-container')[0].style.display = 'inherit';       
+console.log("Frequently Bought Together Loaded.");
+     }
+  
+window.addEventListener("load", function(event) {
+  console.log('loaded, start countdown');
+  setTimeout(freqboughttogether,1000);
+  
+});
+  
+</script>

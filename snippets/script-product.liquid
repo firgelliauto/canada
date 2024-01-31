@@ -1,0 +1,333 @@
+<!-- Initialize product price, context and updater -->
+<script>
+'use strict';
+var context = {};
+/***
+****
+**** Custom Helper functions for products
+****
+***/
+var _customProductHelper = {
+  // Update Price with data-bind-event-change on swatch input
+  updatePrice: function(triggered) {
+    var quantity = Number(context.quantity);
+    var compare;
+    var $submitBtn = $('.js-submit');
+    var $submitBtnShadow = $('.js-shadow-wrap');
+    var displayClasses = 'uk-display-block';
+    var matchVar = _customProductHelper.matchVariant();
+    var inventory = Number(matchVar.inventory);
+    var price = Number(matchVar.price);
+    var selectedCartItem = _.filter(CartJS.cart.items, [ 'id', matchVar.id ]);
+    var selectedCartItemCount = (selectedCartItem.length > 0)
+                                  ? selectedCartItem[0].quantity
+                                  : '';
+    var warning = 'We have ' 
+                    + inventory
+                    + ' of these in stock';
+    var cartLimitHtml =   warning 
+                            + '<br> and you currently have '
+                            + selectedCartItemCount + ' in your cart.';
+    var quantityLimitHtml = warning;
+    var $cartLimit = $('.js-warning-cart-limit')
+                      .html(cartLimitHtml);
+    var $quantityLimit = $('.js-warning-qty-limit')
+                          .html(quantityLimitHtml);
+
+    if (selectedCartItem.length > 0) {
+      if((quantity + selectedCartItemCount) > inventory){
+        $cartLimit.addClass(displayClasses);
+
+        $submitBtn.prop('disabled', true);
+        $submitBtnShadow.addClass('fg-disabled');
+        $quantityLimit.removeClass(displayClasses);
+      }else {
+        $submitBtn.prop('disabled', false);
+        $submitBtnShadow.removeClass('fg-disabled');
+        $cartLimit.removeClass(displayClasses);
+      }
+    }else {
+      $cartLimit.removeClass(displayClasses);
+      if (quantity > inventory) {
+        $quantityLimit
+          .addClass(displayClasses);
+        $submitBtn.prop('disabled', true);
+        $submitBtnShadow.addClass('fg-disabled');
+        $cartLimit.removeClass(displayClasses);
+      }else if(quantity <= inventory) {
+        $submitBtn.prop('disabled', false);
+        $submitBtnShadow.removeClass('fg-disabled');
+        $quantityLimit.removeClass(displayClasses);
+      }
+    }
+
+    compare = (matchVar.compare != null) 
+      ? (matchVar.compare *  quantity) / 100
+      : null;
+
+    price = (price *  quantity) / 100;
+
+    if( matchVar.id != '' ) {
+      $('.js-product-price').html('$' + price);
+      // $('.js-product-sku').html(matchVar.sku);
+      (compare != null) 
+        ? $('.js-product-compare-price').html('$' + compare)
+        : $('.js-product-compare-price').html('');
+    }
+  },
+  matchVariant: function(){
+    _customProductHelper.refreshInputState();
+    var currentVariant = {
+      option1 : context.option_state_1,
+      option2 : context.option_state_2,
+      option3 : context.option_state_3
+    };
+    var match = _.filter(context.available, currentVariant);
+    var result;
+    if(match[0] === undefined){
+      result = context.available[0];
+    } else if(match[0] != undefined) {
+      result = match[0];
+    }
+
+    context.selectedVariant = result;
+    return result;
+  },
+  refreshInputState: function(){
+    window.context.option_state_1 = $('[data-option-index=0]').find('input:checked').val();
+    window.context.option_state_2 = $('[data-option-index=1]').find('input:checked').val();
+    window.context.option_state_3 = $('[data-option-index=2]').find('input:checked').val();
+  },
+  whiteListOptions: function(el){
+      var list = ['stroke', 'force', 'voltage'];
+      return _.includes(list, el)
+  },
+  quantityStep: function(increment) {
+    if(increment === 'add'){
+      context.quantity = ++context.quantity;
+    } else if (!(context.quantity <= 1)) {
+      context.quantity = --context.quantity;
+    }
+    return _customProductHelper.updatePrice()
+  }
+};
+
+/***
+****
+**** Main Functions for Products
+****
+***/
+(function ($) {
+  $(document).ready(function () {
+    Twine.reset(context).bind().refresh();
+
+    context.product = contextProduct;
+    context.optionCount = contextOptionCount;
+    context.optionTitle = contextOptionTitle;
+    context.variant = contextVariant;
+    context.selectedID = '';
+
+    // Store available product details into context
+    (function initPrice(){
+      var id = '';
+      var price ='';
+      var available = '';
+    
+      context.available = availableList;
+      context.selectedVariant = context.available[0];
+    })();
+
+
+    // Store current available default variants
+    (function(){
+      if(context.available.length > 0){
+        for(var i = 0; i < context.optionCount; i++){
+          $.each($('[data-option-index=' + i +']'), function(index, val){
+            var current =  'option' + (i + 1);
+            var currentOption = context.available[0][current];
+            var checked = $(val).find('input[value="' + currentOption + '"]').val();
+            context['option_state_' + (i + 1)] = checked;
+          })
+        }
+        context.selectedID = context.available[0].id;
+      }
+    })();
+    
+    // Update the input after dynamic change
+    $(".js-product-variants input").click(function(){
+      var parentNode = $(this).closest('[data-option-index]');
+      var allChildren = $(parentNode).find('input:checked');
+      $(allChildren).trigger('change');
+      _customProductHelper.refreshInputState();
+    });
+
+    $('.js-submit').click(function(){
+      var quantity = Number(context.quantity);
+      var displayClasses = 'uk-display-block';
+      var matchVar = _customProductHelper.matchVariant();
+      var inventory = Number(matchVar.inventory);
+      var selectedCartItem = _.filter(CartJS.cart.items, [ 'id', matchVar.id ]);
+      
+      var selectedCartItemCount = (selectedCartItem.length > 0)
+                                ? selectedCartItem[0].quantity
+                                : '';
+      var submitNoticeHtml = quantity + ' Item(s) have been added to the cart';
+      var $submitNotice = $('.js-submit-notice');
+      if(Number.isInteger(quantity) === false) {
+        submitNoticeHtml = 'Invalid quantity selected<br>Please select a whole number for quantity';
+        $submitNotice.html(submitNoticeHtml);
+        $submitNotice.addClass(displayClasses + ' uk-alert-danger');
+        setTimeout(function(){
+          $submitNotice.removeClass(displayClasses + ' uk-alert-danger')
+        }, 4000);
+
+      }else{
+        if((quantity + selectedCartItemCount) > inventory ){
+          _customProductHelper.updatePrice();
+        } else {
+          $submitNotice.html(submitNoticeHtml)
+          $submitNotice.addClass(displayClasses + ' uk-alert-primary');
+          setTimeout(function(){
+            $submitNotice.removeClass(displayClasses + ' uk-alert-primary')
+          }, 4000);
+          setTimeout(function(){
+            _customProductHelper.updatePrice();
+          }, 4000);
+        }
+      }
+    });
+
+    // Format Product Description
+    (function() {
+
+      var downloadableContent =  descProduct.match(/<h6>(.*?)<\/h6>/g);
+      var trimmedH6 = descProduct.replace(/<h6>(.*?)<\/h6>/g, '');
+
+      var splitDesc =   trimmedH6.split(/<h[4-6]>(.*?)<\/h[4-6]>/g);
+      var mainDesc = splitDesc[0];
+      mainDesc = mainDesc.replace(/<h2>(.*?)<\/h2>/g, '');
+
+      var additionalContent = splitDesc.slice(1);
+      var chunkContent = _.chunk(additionalContent, 2);
+      
+      $('.js-product-description').append(mainDesc);
+      /*** 
+      *** Create elements and append to DOM
+      ***/
+      if ( $(window).width() > 640) {
+        // Downloads Content
+        if (downloadableContent) {
+          var $downloadTitle = $('<span/>').addClass('fg-downloads-title').html('Downloads');
+          $('.js-product-downloads-container').prepend($downloadTitle);
+          
+          $.each(downloadableContent, function(i, val){
+            var $downloadElement = $(val).find('a').unwrap();
+            $downloadElement = $('<li/>').append($downloadElement);
+            $('.js-product-downloads').append($downloadElement);
+          })
+        }
+
+        // Additional Content
+        if(additionalContent.length > 0) {
+          var $ulNavSwitcher = 
+            $("<ul/>")
+            .attr("uk-tab", "animation: uk-animation-slide-left-small, uk-animation-slide-left-small");
+
+          var $ulSwitcher =
+            $("<ul/>")
+            .addClass("js-uk-switcher uk-switcher uk-margin-medium-top");
+
+          $.each(chunkContent, function(i, val){
+            var heading = $("<a/>").attr('href', '#').html(val[0]);
+            var content = val[1];
+            var $heading = $("<li/>").append(heading);
+            var $content = $("<li/>").addClass('uk-overflow-auto').append(content);
+
+            $ulNavSwitcher.append($heading);
+            $ulSwitcher.append($content);
+          });
+          
+          $('.js-product-additional-content').append($ulNavSwitcher);
+          $('.js-product-additional-content').append($ulSwitcher);
+
+          // Add some class to existing DOM table Elements
+          $('table').addClass('uk-table uk-table-striped uk-table-small uk-table-divider');
+        } else {
+          $('.js-product-additional-content').remove();
+        }
+
+      } else if ( $(window).width() <= 639) {
+        $('.js-product-downloads-container').remove();
+        var $ulDownload = $('<ul/>').addClass('fg-product-downloads');
+        var $ulAccordian = 
+          $("<ul/>").addClass('fg-accordion uk-accordion')
+          .attr("uk-accordion", "");
+
+        // Additional Content Mobile
+        if(additionalContent.length > 0) {
+
+          $.each(chunkContent, function(i, val){
+            var $h3 = $('<h3/>').html(val[0]).addClass('fg-accordion-h3');
+            var $anchor = _.camelCase(val[0]);
+            var $heading = $("<a/>")
+              .attr('href', '#'+ $anchor).attr('uk-icon', 'chevron-down')
+              .addClass("fg-accordian-title uk-accordion-title")
+              .append($h3);
+            var $content = $("<div/>").addClass('uk-accordion-content').attr('id', $anchor).append(val[1]);
+            var $listItem = $("<li/>").addClass('fg-accordian-list-item');
+            $listItem.append($heading);
+            $listItem.append($content);
+
+            $ulAccordian.append($listItem );
+          });
+        }
+        // Download Content
+        if (downloadableContent) {
+          var $downloadTitle = $('<span/>').addClass('fg-downloads-title').html('Downloads');
+          $('.js-product-downloads-container').prepend($downloadTitle);
+
+          $.each(downloadableContent, function(i, val){
+            var $downloadElement = $(val).find('a').unwrap();
+            $downloadElement = $('<li/>').append($downloadElement);
+            $ulDownload.append($downloadElement);
+          });
+
+          var $h3 = $('<h3/>').html('Downloads').addClass('fg-accordion-h3');
+          var $heading = $("<a/>")
+            .attr('href', '#').attr('uk-icon', 'chevron-down').attr('href', '#downloads').addClass("fg-accordian-title uk-accordion-title").append($h3);
+          var $content = $("<div/>").addClass('uk-accordion-content').attr('id', 'downloads').append($ulDownload);
+          var $listItem = $("<li/>").addClass('fg-accordian-list-item');;
+          $listItem.append($heading);
+          $listItem.append($content);
+
+          $($ulAccordian).prepend($listItem);
+        }
+        
+        if(additionalContent.length > 0 || $ulDownload.length > 0) {
+          $('.js-product-additional-content').append($ulAccordian);
+          var tableResponsiveWrap = $('<div/>').addClass('uk-overflow-auto');
+          $('.js-product-additional-content table').addClass('uk-table uk-table-striped uk-table-small uk-table-divider').wrap(tableResponsiveWrap);
+
+        } else {
+          $('.js-product-additional-content').remove();
+        }
+      }
+
+      // TODO remove css 
+      $('.js-product-main-details').css('display', 'none');
+      $('.js-product-main-details').fadeIn('slow');
+    })();
+
+    // Add to Cart button UI interaction
+    $('.js-shadow-wrap').on('click', function(){
+      var $this = $(this);
+      $this.toggleClass('fg-submit-active');
+      setTimeout(function(){
+        $this.toggleClass('fg-submit-active');
+      }, 400)
+    })
+    
+  });
+})(jQuery);
+
+</script>

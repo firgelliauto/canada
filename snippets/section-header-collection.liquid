@@ -1,0 +1,37 @@
+{% if template contains "collection" %}
+  {% assign breadcrumb_current_page = collection.handle | split: '-' %}
+{% elsif template contains "page" %}
+  {% assign breadcrumb_current_page = page.handle | split: '-' %}
+{% endif %}
+
+{% assign current_page = '' %}
+{% for string in breadcrumb_current_page %}
+  {% assign new_string = string | capitalize %}
+  {% assign current_page = current_page | append: new_string %}
+  {% unless forloop.last %}
+    {% assign current_page = current_page | append: ' ' %}
+  {% endunless %}
+{% endfor %}
+
+<style>
+  .headertextsize {
+  font-size: 500%;
+}
+</style>
+<section class="uk-visible@s fg-collection-header"
+style="background-image: url({{ background_image }}); background-size: cover;" >
+  <div>
+    <div class="uk-container">
+      <a href="/" class="homepage-link fg-collection-header__breadcrumb" title="Back to the home page">Home</a><span class="uk-light"> / {{ current_page }}</span>
+      <h1 class="{{ text_color }} uk-h1 uk-text-uppercase fg-collection-title headertextsize">{{ title }}</h1>
+    </div> 
+  </div>
+</section>
+<section class="uk-hidden@s fg-collection-header fg-background-primary">
+  <div>
+    <div class="uk-container">
+      <a href="/" class="homepage-link fg-collection-header__breadcrumb" title="Back to the home page">Home</a><span class="uk-light"> / {{ current_page }}</span>
+      <h1 class="{{ text_color }} uk-h1 uk-text-uppercase fg-collection-title">{{ title }}</h1>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+{% assign firgelli_url = 'https://www.firgelliauto' %}
+{% assign usa_url = firgelli_url | append: '.com' %}
+{% assign ca_url = firgelli_url | append: '.ca' %}
+{% assign au_url = usa_url | append: '.au' %}
+
+{% case shop.address.country  %}
+  {% when 'United States' %}
+    {% assign current_flag = 'fg-united-states' %}
+    {% assign alt_1_flag = 'fg-canada' %}
+    {% assign alt_1_name = 'Canada' %}
+    {% assign alt_1_url = ca_url %}
+    {% assign alt_2_flag = 'fg-australia' %}
+    {% assign alt_2_name = 'Australia' %}
+    {% assign alt_2_url = au_url %}
+  {% when 'Canada' %}
+    {% assign current_flag = 'fg-canada' %}
+    {% assign alt_1_flag = 'fg-united-states' %}
+    {% assign alt_1_name = 'United States' %}
+    {% assign alt_1_url = usa_url %}
+    {% assign alt_2_flag = 'fg-australia' %}
+    {% assign alt_2_name = 'Australia' %}
+    {% assign alt_2_url = au_url %}
+  {% when 'Australia' %}
+    {% assign current_flag = 'fg-australia' %}
+    {% assign alt_1_flag = 'fg-united-states' %}
+    {% assign alt_1_name = 'United States' %}
+    {% assign alt_1_url = us_url %}
+    {% assign alt_2_flag = 'fg-canada' %}
+    {% assign alt_2_name = 'Canada' %}
+    {% assign alt_2_url = ca_url %}
+{%- endcase -%}
+
+<li class="fg-navbar-nav__list-item">
+  <span class="uk-link fg-nav-item-parent fg-flag_left fg-icon-flag_location {{ current_flag }}" uk-icon="chevron-down"></span>
+  <div class="uk-navbar-dropdown fg-country-option" uk-dropdown="mode: click">
+    <ul class="uk-nav">
+      <li>
+        <span>Change Country</span>
+      </li>
+      <li>
+        <a href="{{ alt_1_url }}" title="Go to {{ alt_1_name }} website" class="fg-flag_left fg-icon-flag_location {{ alt_1_flag }}">
+          {{ alt_1_name }}
+        </a>
+      </li>
+      <li>
+        <a href="{{ alt_2_url }}" title="Go to {{ alt_2_name }} website" class="fg-flag_left fg-icon-flag_location {{ alt_2_flag }}">
+          {{ alt_2_name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>

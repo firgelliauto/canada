@@ -1,0 +1,112 @@
+
+<section class="fg-product-padding-top uk-section">
+  <div class="uk-container">
+    <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+      <h1 class="uk-text-center uk-hidden@s">{{ product.title }}</h1>
+      <div class="uk-child-width-1-2@m" uk-grid>
+        <div>
+          <div class="js-slider-for">
+            {% for product_image in product.images %}
+              {% capture wrapper_class %}
+                {%- unless featured_image == image -%}
+                  hide
+                {%- endunless -%}
+              {% endcapture %}
+              {% include 'responsive-product-image' with image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500 %}
+            {% endfor %}
+          </div>
+          {% if product.images.size > 1 %}
+            <div class="js-slider-nav">
+              {% for image in product.images %}
+                  <a href="#" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail>
+                    <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '200x200' }}" alt="{{ image.alt | escape }}">
+                  </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        <div>
+          <h1 class="uk-visible@s">{{ product.title }}</h1>
+          <div class="js-product-main-details">
+            <div class="fg-product-meta uk-hidden@s" uk-grid>
+              <div class="fg-product-price uk-h2 uk-width-1-3">
+                {% if product.compare_at_price > product.price %}
+                  <span class="js-product-price on-sale" itemprop="price">{{ product.price | money }}</span>&nbsp;<del class="js-product-compare-price">{{ product.compare_at_price_max | money }}</del>
+                {% else %}
+                  <span class="js-product-price" itemprop="price">{{ product.price | money }}</span>&nbsp;<span class="js-product-compare-price"></span>
+                {% endif %}
+              </div>
+              <div class="uk-width-2-3">
+                {% if section.settings.show_share_buttons %}
+                  {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+                {% endif %}
+              </div>
+            </div>
+
+
+            <div class="js-product-meta" uk-grid>
+              <div class="uk-width-2-3@s uk-visible@s">
+                {% if section.settings.show_share_buttons %}
+                  {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+                {% endif %}
+              </div>
+            </div>
+            <h2 class="uk-h3">Description</h2>
+            <div class="js-product-description"></div>
+            {% include 'form-product' %}
+          </div>
+        </div>
+      </div>
+      <div class="fg-product-downloads js-product-downloads"></div>
+      <div class="fg-product-additional-content rte js-product-additional-content">
+      </div>
+    </div>
+  </div>
+</section>
+<section class="uk-section uk-section-muted"><div id="cbb-frequently-bought-box" class="uk-container"></div></section>
+<script>
+  {% if product.variants.size > 1 %}
+    document.addEventListener('DOMContentLoaded', function(event) {
+      jQuery(function($) {
+        var $product = $('#prod-' + {{product.id}});
+        new Shopify.OptionSelectors("product-select-{{product.id}}", { product: {{ product | json }}, onVariantSelected: selectCallback });
+        {% if product.available and product.options.size > 1 %}
+        Shopify.linkOptionSelectors({{ product | json }});
+        {% endif %}
+        // Add label if only one product option and it isn't 'Title'.
+        {% if product.options.size == 1 and product.options.first != 'Title' %}
+          $('.selector-wrapper:eq(0)',$product).prepend('<label>{{ product.options.first }}</label>');
+        {% endif %}
+
+        // Auto-select first available variant on page load.
+        {% assign found_one_in_stock = false %}
+        {% for variant in product.variants %}
+          {% if variant.available and found_one_in_stock == false %}
+            {% assign found_one_in_stock = true %}
+            {% for option in product.options %}
+              $('.single-option-selector:eq({{ forloop.index0 }})',$product).val({{ variant.options[forloop.index0] | json }}).trigger('change');
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      });
+    {% endif %}
+  });
+  
+  
+  
+</script>
+
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

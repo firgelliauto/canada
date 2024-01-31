@@ -1,0 +1,41 @@
+{% if settings.show_social %}
+  <ul class="fg-social-icon-row uk-flex uk-flex-center js-filter uk-child-width-1-5 uk-child-width-1-5@s uk-child-width-1-5@m uk-child-width-1-6@l" uk-grid>
+    {% if settings.share_facebook %}
+      <li>
+        <a href="{{ settings.facebook_link }}" title="Facebook" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="facebook">
+        </a>
+      </li>
+    {% endif %}
+    {% if settings.share_twitter %}
+      <li>
+        <a href="{{ settings.twitter_link }}" title="Twitter" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="twitter">
+        </a>
+      </li>   
+    {% endif %}
+    {% if settings.share_pinterest %}
+      <li>
+        <a href="{{ settings.pinterest_link }}" title="LinkedIn" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="pinterest"></a>
+      </li>                 
+    {% endif %}
+    {% if settings.share_linkedin %}
+      <li>
+        <a href="{{ settings.linkedin_link }}" title="LinkedIn" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="linkedin"></a>
+      </li>   
+    {% endif %}
+    {% if settings.share_youtube %}
+      <li>
+        <a href="{{ settings.youtube_link }}" title="Youtube" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="youtube"></a>
+      </li>
+    {% endif %}
+    {% if settings.social_sharing_blog %}
+      <li>
+        <a href='/blogs/news.atom' title="RSS" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="rss"></a>
+      </li> 
+    {% endif %}
+    {% if settings.share_instagram %}
+      <li>
+        <a href="{{settings.instagram_link}}" title="Instagram" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="instagram"></a>
+      </li> 
+    {% endif %}
+  </ul>
+{% endif %} 

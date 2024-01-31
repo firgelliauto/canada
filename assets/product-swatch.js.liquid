@@ -1,0 +1,132 @@
+   // product variant callback  
+
+   var currencyFormat = $('body').data('curr-format');  
+   var shopCurrency = $('body').data('curr-code');  
+    selectCallback = function(variant, selector) {
+
+      var $product = $('#prod-' + selector.product.id);
+      $('.var-msg', $product).html('').hide();
+      if (variant) {
+         if (variant.available) {
+            // Selected a valid variant that is available
+            // enable buy button
+            $('.purchase', $product).removeClass('disabled').removeAttr('disabled');
+            
+            {% if settings.show_preorder %}
+               // If item is backordered yet can still be ordered, we'll show special message
+               if (variant.inventory_management && variant.inventory_quantity <= 0) {
+                 $('.var-msg', $product).html("{{settings.preorder_msg}}").fadeIn(200);
+               }            
+            {% endif %}
+         } else {
+            // Variant is sold out
+            $('.var-msg', $product).html("{{settings.prd_out_stock_msg}}").fadeIn(200);
+            $('.purchase', $product).addClass('disabled').attr('disabled', 'disabled');
+         }
+         
+         // Whether the variant is in stock or not, we can update the prices
+         $('.product-price', $product).html(Shopify.formatMoney(variant.price, currencyFormat));          
+         if ( variant.compare_at_price > variant.price ) {
+            $('.product-compare-price', $product).html(Shopify.formatMoney(variant.compare_at_price, currencyFormat));
+         }else{
+            $('.product-compare-price', $product).html('');
+         }           
+      } else {
+         // variant doesn't exist.
+         $('.var-msg', $product).html("UNAVAILABLE").fadeIn(200);
+         $('.purchase', $product).addClass('disabled').attr('disabled', 'disabled');         
+      }
+           
+      {% if settings.show_multiple_currencies %}  
+        var newCurrency = $('#currencies option:selected').val();
+        if (newCurrency != shopCurrency){
+           Currency.convertAll(shopCurrency, newCurrency); 
+        }
+      {% endif %}
+      // BEGIN SWATCHES
+      if (variant) {
+        var form = jQuery('#' + selector.domIdPrefix).closest('form');
+        for (var i=0,length=variant.options.length; i<length; i++) {
+          var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+          if (radioButton.length) {
+            radioButton.get(0).checked = true;
+          }
+        }
+      }
+      // END SWATCHES
+               
+   };   
+
+   /******************* GSSI Functions *****************************/
+ 
+ $('.swatch :radio').change(function() {
+  
+    var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+    var optionValue = jQuery(this).val();
+         
+    $(this)
+      .closest('form')
+      .find('.single-option-selector')
+      .eq(optionIndex)
+      .val(optionValue)
+      .trigger('change');
+  }); 
+    
+   $('.tabs ul, .social-tabs ul').each(function(){
+      var active, content, links = $(this).find('a');
+      active = links.first().addClass('active');
+      content = $(active.attr('href'));
+      links.not(':first').each(function () {
+        $($(this).attr('href')).hide();
+      });
+      $(this).find('a').click(function(e){
+        
+        e.preventDefault();
+        active.removeClass('active');
+        content.hide();
+        active = $(this);
+        content = $($(this).attr('href'));
+        active.addClass('active');
+        content.show();
+        return false;
+      });
+    });
+
+    $('.filter-group:first-child').show().next().show();
+    $('.has_group_selected').next().show();
+  
+    //Options 
+
+    $('.swatch-element').on('click', function(){
+      if(!$(this).hasClass('soldout')){
+        $(this).siblings('.swatch-element').removeClass('active');
+      }
+
+      $('.swatch-element input').each(function(){
+          if($(this).prop('checked')){
+            $(this).parent().addClass('active');
+         } else{
+            $(this).parent().removeClass('active');
+         }
+       
+      });
+    });
+
+    $('.product-variants input:checked').parent().addClass('active');
+      
+      $(".product-variants input").click(function(){
+          var price= $(this).attr('data-price');
+          $('.product-price').html(price);
+    });
+
+    //Options Dropdown
+
+    $('.collection-container.selected').children('div').each(function(i){
+      var selText=$(this).children('a').text();
+      $(this).parents('ul').prev('.filter-menu-value').text(selText);
+    });
+  
+    $('.filter-menu-value').on('click',function(){
+      $(this).parent().siblings().children('.filter-menu-value').next('ul').removeClass('active');
+      $(this).next('ul').toggleClass('active');
+    });

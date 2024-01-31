@@ -1,0 +1,19 @@
+<div id="fg-order-summer-anchor" class="uk-section uk-section-muted">
+  <div class="uk-container">
+    <h2>Order Summary</h2>
+    <hr>
+    <div uk-grid class="uk-flex">
+      <div class="uk-width-1-3@s uk-flex-last@s">
+        {% include 'form-order-summary' %}
+      </div>
+      <div class="uk-width-1-3@s">
+        <hr class="fg-desktop-hidden">
+        {% include 'form-order-note' %}
+      </div>
+      <div class="uk-width-1-3@s uk-flex-first@s">
+        <hr class="fg-desktop-hidden">
+        {% include 'form-shipping-calculator' %}
+      </div>
+    </div>
+  </div>
+</div>

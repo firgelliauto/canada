@@ -1,0 +1,139 @@
+
+{% assign descriptions_title = '' %}
+{% for block in section.blocks %}
+    {% assign descriptions_title = descriptions_title | append: block.settings.title %}
+    {% unless forloop.last %}
+      {% assign descriptions_title = descriptions_title | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign descriptions_title =  descriptions_title | split: ',' %}
+
+{% assign data_title = '' %}
+{% for block in section.blocks %}
+    {% assign handle_title = block.settings.title | handleize %}
+    {% assign data_title = data_title | append: handle_title %}
+    {% unless forloop.last %}
+      {% assign data_title = data_title | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign data_title =  data_title | split: ',' %}
+
+{% assign descriptions_sub_title = '' %}
+{% for block in section.blocks %}
+    {% assign descriptions_sub_title = descriptions_sub_title | append: block.settings.sub_title %}
+    {% unless forloop.last %}
+      {% assign descriptions_sub_title = descriptions_sub_title | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign descriptions_sub_title =  descriptions_sub_title | split: ',' %}
+
+{% assign descriptions_applications = '' %}
+{% for block in section.blocks %}
+    {% assign descriptions_applications = descriptions_applications | append: block.settings.applications %}
+    {% unless forloop.last %}
+      {% assign descriptions_applications = descriptions_applications | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign descriptions_applications =  descriptions_applications | split: ',' %}
+
+{% assign descriptions_general_tips = '' %}
+{% for block in section.blocks %}
+    {% assign descriptions_general_tips = descriptions_general_tips | append: block.settings.general_tips %}
+    {% unless forloop.last %}
+      {% assign descriptions_general_tips = descriptions_general_tips | append: ',' %}
+   {% endunless %}
+{% endfor %}
+{% assign descriptions_general_tips =  descriptions_general_tips | split: ',' %}
+
+<script>
+  var shopUrl = `{{ shop.url }}`;
+  var inputMessageStatic = `{{ section.settings.form_input }}`;
+  var generalTipsStatic = `{{ section.settings.general_tips_static }}`;``;
+  var product_data_csv = `{{ section.settings.product_data_csv }}`;
+  var data_title = {{ data_title | json }};
+  var descriptions_title = {{ descriptions_title | json }};
+  var descriptions_sub_title = {{ descriptions_sub_title | json }};
+  var descriptions_applications = {{ descriptions_applications | json }};
+  var descriptions_general_tips = {{ descriptions_general_tips | json }};
+  var descriptionArr = [];
+
+   descriptions_title.forEach(function(val, index){
+      descriptionArr[index] = {
+        title: val,
+        data: data_title[index],
+        subTitle: descriptions_sub_title[index],
+        applications: descriptions_applications[index],
+        generalTips: descriptions_general_tips[index]
+      };
+   })
+</script>
+
+{% schema %}
+  {
+    "name": "Calculator Descriptions",
+    "max_blocks": 25,
+    "settings": [
+      {
+        "type": "header",
+        "info": "Descriptive content to be displayed in all widgets",
+        "content": "Static Content"
+      },
+      {
+        "type": "richtext",
+        "id": "form_input",
+        "label": "Message for User Input Section"
+      },
+      {
+        "type": "html",
+        "id": "general_tips_static",
+        "info": "Content in general tips for all widgets",
+        "label": "Static General Tips"
+      },
+      {
+        "id": "product_data_csv",
+        "type": "url",
+        "info": "Add the url for the product data csv",
+        "label": "Product Data CSV"
+      },
+      {
+        "type": "header",
+        "info": "Descriptive content for each widget",
+        "content": "Widget Descriptions"  
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Description",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Widget Name"
+          },
+          {
+            "type": "richtext",
+            "id": "sub_title",
+            "label": "Subheading"
+          },
+          {
+            "type": "html",
+            "id": "applications",
+            "label": "Common Applciations"
+          },
+          {
+            "type": "html",
+            "id":  "general_tips",
+            "label": "General Tips"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Calculator Descriptions",
+        "category": "Widgets"
+      }
+    ]
+  }
+{% endschema %}

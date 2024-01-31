@@ -1,0 +1,167 @@
+<div class="js-logo-animate fg-logo-loader-bg">  
+  {% include 'icon-logo-firgelli_animate' %}
+</div>
+<form class="js-cart-form fg-transparent" style="display: none;" action="/cart" method="post" novalidate data-cart-view="data-cart-view">
+  <div class="uk-section">
+    <div class="uk-container">
+      <div class="fg-cart-heading">
+        <h1>{{ settings.cart_page_heading }}</h1>
+        <div class="fg-cart-button-group uk-grid-small" uk-grid>
+          <div>
+            <a href="/" class="fg-button-default uk-button uk-visible@s">
+              <span uk-icon="icon:chevron-left"></span>
+              Continue Shopping
+            </a>
+          </div>
+          <div>
+            <a href="#fg-order-summer-anchor" class="fg-button-default fg-arrow-down-hover uk-button" uk-scroll="duration: 400; offset: 160" uk-icon="icon:chevron-down; ratio: 1.2">
+              Order Summary
+            </a>
+          </div>
+        </div>
+      </div>
+      <table class="fg-cart-table uk-table uk-table-divider uk-table-responsive">
+        <thead>
+          <tr>
+            <th colspan="2"><span class="uk-h4">Item</span></th>
+            <th><span class="uk-h4">Price</span></th>
+            <th><span class="uk-h4">Quantity</span></th>
+            <th><span class="uk-h4">Total Price</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fg-cart-table__tr" rv-each-item="cart.items">
+            <td class="fg-cart-table__image fg-cart-table__td-first">
+              <div class="fg-cart-table__image-container">
+                <img class="uk-margin-right" rv-src="item.image | productImageSize 'small'" />
+                <a class="uk-display-block uk-visible@s" rv-href="item.url">See Item</a>
+              </div>
+              <div class="fg-cart-table__td-show-s">
+                <div class="fg-cart-table___td-show-s_title">
+                  <strong class="fg-cart-item__title-s uk-h5 uk-margin-remove" rv-text="item.title"></strong>
+                  <a class="js-cart-remove-line_item uk-text-danger" href="#" rv-data-cart-remove="index | plus 1" uk-tooltip="title: Are you sure that you want to remove this item?; pos: bottom-left"> remove</a>
+                </div>
+                <div rv-hide="item.propertyArray | empty">
+                  <span rv-each-property="item.propertyArray < properties">
+                    <small class="text-muted">{property.name}: {property.value}</small>
+                  </span>
+                </div>
+                <div class="fg-cart-table___td-show-s_price" rv-if="item.discounts | length | gt 0">
+                  <span class="uk-text-meta">Discount Price { item.discounted_price | money Currency.currentCurrency } <span class="uk-text-meta">{{ shop.currency }}</span></span>
+                  <br>
+                  <span class="uk-text-meta">Original Price <s>{ item.price | money Currency.currentCurrency } <span class="uk-text-meta">{{ shop.currency }}</span></s></span>
+                  <div rv-each-discount="item.discounts">
+                    <span class="uk-alert-primary uk-animation-fade uk-text-primary" rv-text="discount.title"></span>
+                  </div>
+                </div>
+                <div rv-if="item.discounts | length | lt 1 ">
+                  <span class="uk-text-meta">Item Price { item.price | money Currency.currentCurrency } <span class="uk-text-meta">{{ shop.currency }}</span></span>
+                </div>
+                <div class="fg-cart-table___td-show-s_total-price">
+                  <strong class="fg-responsive-th">Total Price</strong>
+                  <strong>{ item.line_price | money Currency.currentCurrency } <span>{{ shop.currency }}</span></strong>
+                  <div rv-if="item.discounts | length | gt 0">
+                    <div rv-each-discount="item.discounts">
+                      <span class="uk-alert-primary uk-animation-fade uk-text-primary">Save { discount.amount  | money Currency.currentCurrency } <span class="uk-text-small uk-text-primary">{{ shop.currency }}</span></span>
+                    </div>
+                  </div>
+                </div>
+                <a class="uk-display-block uk-hidden@s" rv-href="item.url">See Item</a>
+              </div>
+            </td>
+            <td class="uk-flex uk-flex-middle fg-cart-table__title fg-cart-table__td-show-l">
+              <strong class="uk-h5 uk-margin-remove" rv-text="item.title"></strong>
+              <a class="js-cart-remove-line_item uk-text-danger" href="#" rv-data-cart-remove="index | plus 1" uk-tooltip="title: Are you sure that you want to remove this item?; pos: bottom-left"> remove</a>
+              <div rv-hide="item.propertyArray | empty">
+                <span rv-each-property="item.propertyArray < properties">
+                  <small class="text-muted">{property.name}: {property.value}</small>
+                </span>
+              </div>
+            </td>
+            <td class="fg-cart-table__price fg-cart-table__td-show-l">
+              <div rv-if="item.discounts | length | gt 0">
+                <span>Discount Price { item.discounted_price | money Currency.currentCurrency } <span class="uk-text-small">{{ shop.currency }}</span></span>
+                <br>
+                <span>Original Price <s>{ item.price | money Currency.currentCurrency } <span class="uk-text-small">{{ shop.currency }}</span></s></span>
+                <div rv-each-discount="item.discounts">
+                  <span class="uk-alert-primary uk-animation-fade uk-text-primary" rv-text="discount.title"></span>
+                </div>
+              </div>
+              <div rv-if="item.discounts | length | lt 1 ">
+                { item.price | money Currency.currentCurrency } <span class="uk-text-small">{{ shop.currency }}</span>
+              </div>  
+            </td>
+            <td class="fg-cart-table__quantity">
+              <div class="fg-cart-table__quantity-toggle">
+                <span class="js-item-id" data-id="item.id " style="display:none;">{ item.id }</span>
+                <a rv-hide="item.sku | free_limit" class="js-cart-quanity-toggle fg-cart-quantity-toggle__minus" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | minus 1"><span class="fg-svg-reset" uk-icon="minus"></span></a>
+                <span class="js-cart-item-quantity fg-cart-quantity-toggle__text" rv-text="item.quantity" >
+                </span>
+                <a rv-hide="item.sku | free_limit" class="js-cart-quanity-toggle fg-cart-quantity-toggle__plus" href="#" rv-data-cart-update="index | plus 1" rv-data-cart-quantity="item.quantity | plus 1"><span class="fg-svg-reset" uk-icon="plus"></span></a>
+                <span class="js-max-quantity-warning uk-alert-warning uk-animation-fade" style="display:none;"></span>
+              </div>
+            </td>
+            <td class="fg-cart-table__total-price fg-cart-table__td-show-l">
+              <span class="fg-responsive-th">Total Price</span>
+              <span>{ item.line_price | money Currency.currentCurrency } <span class="uk-text-small">{{ shop.currency }}</span></span>
+              <div rv-if="item.discounts | length | gt 0">
+                <div rv-each-discount="item.discounts">
+                  <span class="uk-alert-primary uk-animation-fade uk-text-primary">Save { discount.amount  | money Currency.currentCurrency } <span class="uk-text-small uk-text-primary">{{ shop.currency }}</span></span>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr rv-show="cart.item_count | lt 1">
+            <td colspan="5">You don't have any items in your cart.</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/" class="fg-button-default uk-button uk-visible@s">
+        <span uk-icon="icon:chevron-left"></span>
+        Continue Shopping
+      </a>
+    </div>
+  </div>
+  {% include 'form-cart-footer' %}
+</form>
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+  (function ($) {
+    $(document).ready(function () {
+      'use strict';
+      console.log('this is cart script is running!')
+      $('.js-cart-form').addClass('uk-display-block');
+      {% comment %} $('.js-cart-form').addClass('uk-display-block'); {% endcomment %}
+
+      var $quantityWarning, $arrayInventroy, foundID, inventory;
+      var arrayInvID = [];
+
+      rivets.formatters.length = function(value){
+        return value.length;
+      }
+
+      rivets.formatters.weight_to_lb = function(grams){
+        return (grams * 0.00220462).toFixed(CartJS.settings.weightPrecision) + ' lb'
+      }
+
+      rivets.formatters.free_limit = function(value){
+        if(value == 'FA-MULTI-TOOL'){
+          return true;
+        } else {
+          return false;
+        }
+      }
+
+      $(document).on('cart.ready', function(event, cart) {
+        setTimeout(function(){
+          console.log('cart.ready!!');
+          $('.js-logo-animate').addClass('fg-display-none');
+          $('.js-cart-form').addClass('fg-animated-fade')
+          $('body').removeClass('fg-scroll-none');
+        } , 1500);
+      });
+    });
+  })(jQuery);
+});
+</script>
+

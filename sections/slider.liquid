@@ -1,0 +1,669 @@
+<style>
+  .uk-slideshow-items{
+
+  }
+  
+  .mainBanner{
+    width: 100%;
+    aspect-ratio: 1674/337;
+    
+    position: absolute;
+    top: 0;
+
+
+  }
+  .fg-responsive-font.uk-h1.fg-slider {
+    font-size: 2vw;
+}
+  @media only screen and (max-width: 639px) {
+   
+    .sub-title{
+     font-size: 4vw !important;
+    }
+    
+    .mobileTextWidth{
+     width: 100% !important;
+    }
+    
+    .mainBanner{
+      min-height: 100px !important;
+      aspect-ratio: 358/313;
+      
+      
+    }
+    
+    .mobileText{
+      text-align: center;
+      padding-right: 0px !important;
+    }
+  }
+  .fg-animated-fade{
+  	animation: none;  
+  }
+  
+  .fg-button-hero_featured {
+    font-size: 0.8rem;
+    line-height: 40px;
+    padding: 0 20px;
+  }
+  .MobileHidden{
+   display: none; 
+  }
+  
+  @media (min-width:640px){
+    .fg-slider-view-port{
+   		min-height: 22vw !important;
+  	}
+  }
+  @media (max-width:639px){
+    .fg-slider-view-port{
+   		min-height: 84vw !important;
+  	}
+  }
+  
+  
+  @media only screen and (min-width: 657px) {
+    .mainImage{
+      display: none;
+    }
+  }
+
+  
+</style>
+
+
+
+
+
+
+{% if section.settings.display_slider == true %}
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js"></script>
+
+  {% if section.settings.text_transition == true %}
+    {% assign text_transition =  'uk-scrollspy="cls: uk-animation-slide-left-medium ; target: > * ; delay: 250; "' %}
+  {% else %}
+     {% assign text_transition = '' %}
+  {% endif %}
+
+  {% if section.settings.ken_burns == true %}
+    {% assign bg_transition = 'uk-scrollspy="cls: uk-animation-kenburns uk-animation-reverse; repeat: true"' %}
+  {% else %}
+     {% assign bg_transition = '' %}
+  {% endif %}
+  {%- if settings.let_snow -%}
+    <div id="particles-js"></div>
+  {%- endif -%}
+  <div
+    class="fg-hero uk-position-relative uk-invisible"
+    tabindex="-1"
+    uk-slideshow="
+      animation: {{ section.settings.animation_type }};
+      autoplay: {{ section.settings.auto_play}};
+      autoplay-interval: {{ section.settings.auto_play_timer }}000
+      ">
+    <ul class="fg-slider-view-port uk-slideshow-items">
+      {% for block in section.blocks %}
+        {%- if block.settings.hide_slide == false -%}
+          {% if forloop.first == true %}
+            {% assign src = 'src' %}
+            {% assign srcset = 'srcset' %}
+            {% assign lazy_class = '' %}
+          {% else %}
+            {% assign src = 'data-src' %}
+            {% assign srcset = 'data-srcset' %}
+            {% assign lazy_class = 'lazy' %}
+          {% endif %}
+          <li class="uk-flex uk-flex-middle ">
+          {% if block.settings.content_type == 'image' or block.settings.content_type == 'background_color'  %}
+            {% if block.settings.content_type == 'image' %}
+            
+              <picture class="mainBanner">
+				{% comment %}<source media="(max-width: 639px)" srcset="{{ block.settings.image_mobile.src | img_url: '1920x' }}">
+                
+                
+               
+                  
+                    <img class="mainBanner mainImage" src="{{ block.settings.image.src | img_url: '1920x'}}">{% endcomment %}
+                      <div>
+                        <div class="uk-container">
+							<div style="padding-right: {{ block.settings.padding_right}}; padding-left: {{ block.settings.padding_left}};" 
+                                 class="
+              mobileText                          
+              fg-hero-content
+              uk-position-center
+              {{ block.settings.text_align }}
+                {% if block.settings.gradient_filter == true %}
+                  fg-hero-slider-gradient-bg
+                {% endif %}
+              "
+              >
+              {% if block.settings.text_box_shadow != 'shadow_none' %}
+                {% if block.settings.text_box_shadow== 'shadow_dark' %}
+                  {% assign shadow_strong = 'fg-text-shadow_strong' %}
+                  {% assign shadow_subtle = 'fg-text-shadow_subtle' %}
+                {% elsif block.settings.text_box_shadow == 'shadow_light' %}
+                  {% assign shadow_strong = 'fg-text-shadow_strong_light' %}
+                  {% assign shadow_subtle = 'fg-text-shadow_subtle_light' %}
+                {% endif %}
+              {% else %}
+                {% assign shadow_strong = '' %}
+                {% assign shadow_subtle = '' %}
+              {% endif %}
+
+              <div class="fg-hero-container">
+                <div class="uk-flex" uk-grid>
+                  {%- if block.settings.smaller_heading == true -%}
+                    {% assign slider_text_width = 'uk-width-1-3@m' %}
+                    {% assign heading_text_size = '' %}
+                  {%- else -%}
+                    {% assign slider_text_width = 'uk-width-4-4@m' %}
+                    {% assign heading_text_size = 'fg-responsive-font' %}
+
+                  {%- endif -%}
+                  <div class="mobileTextWidth uk-width-3-3@s {{ slider_text_width }} mobileText desktopTextWidth" {{ text_transition }} style="width: {{block.settings.text_width}}">
+                    {%- if settings.santa_hat -%}
+                      {%- include 'icon-santa-hat-dk' -%}
+                    {%- endif -%}
+                    {% if block.settings.sub_title != blank %}
+                      <div class="fg-slide__sub-title uk-margin-remove-bottom {{ shadow_subtle }} {{ block.settings.text_color }} sub-title" style="color: {{block.settings.text_color_2}}">{{ block.settings.sub_title }}</div>
+                    {% endif %}
+                    {% if forloop.first == true %}
+                      <span class="fg-slide__title uk-h1 uk-margin-small-bottom sub-title {{ heading_text_size }} fg-slider {{ shadow_strong }} {{ block.settings.text_color }} uk-margin-remove-top" style="color: {{block.settings.text_color_2}}">{{ block.settings.heading }}</span>
+                    {% else %}
+                      <span class="sub-title uk-h1 {{ heading_text_size }} fg-slider {{ shadow_strong }} {{ block.settings.text_color }} uk-margin-remove-top" style="color: {{block.settings.text_color_2}}">{{ block.settings.heading }}</span>
+                    {% endif %}
+                    <div class="fg-slide__section-text {{ shadow_subtle }} {{ block.settings.text_color }}" style="color: black !important">
+                      {{ block.settings.section_text }}
+                    </div>
+                    {% if block.settings.cta != 'no_cta' %}
+                      <div class="uk-button-group fg-slide__btn-group" >
+                        {% case block.settings.cta  %}
+                          {% when 'Our Collections' %}
+                            <div class="js-hero-buttons">
+                              <a class="fg-arrow-down-hover fg-button-hero_featured" href="#custom_scroll" uk-scroll="duration: 400; offset: 80">{{ block.settings.cta_text }}
+                                {%- if settings.collection_btn_icon != "default" -%}
+                                  <span class="fg-cta-icon" uk-icon="icon:chevron-down; ratio: 1.2"></span>
+                                  <span class="fg-cta-icon_hidden" uk-icon="icon:{{settings.collection_btn_icon}}; ratio: 1.2"></span>
+                                {%- else -%}
+                                  <span uk-icon="icon:chevron-down; ratio: 1.2"></span>
+                                {%- endif -%}
+                              </a>
+                            </div>
+                          {% when 'About Us' %}
+                            {{ block.settings.cta_text | link_to: 'https://www.firgelliauto.com/pages/about-us','A link to About Us' | replace: '<a', '<a class="fg-button-hero_featured"' }}
+                          {% when 'cta_custom' %}
+                            {{ block.settings.cta_text | link_to: block.settings.cta_custom_url, '' | replace: '<a', '<a class="fg-button-hero_featured"' }}
+                          {% else %}
+                        {% endcase %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+                          
+                        </div> 
+                      </div>
+                    
+              </picture>
+            
+            {% else %}
+              <section class="fg-hero__image_color {{ block.settings.background_color }}"></section>
+            {% endif %}
+           
+          {% endif %}
+          {% if block.settings.content_type == 'video'  %}
+            <iframe class="fg-hero-video" width="1920" height="1080" src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen uk-responsive uk-video></iframe>
+          {% endif %}
+        </li>
+        {%- endif -%}
+      {% endfor %}
+    </ul>
+    {% if section.settings.navigation %}
+      <a style="padding-top:45px;" class="uk-position-center-left uk-position-small uk-hidden-hover MobileHidden" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+      <a style="padding-top:45px;" class="uk-position-center-right uk-position-small uk-hidden-hover MobileHidden" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+    {% endif %}
+  </div>
+
+{% endif %}
+
+<script>
+    $().ready(function () {
+      // $(window.UIkit).ready(function() {
+        if ( $( window ).width() <= 640 ){
+          UIkit.slideshow('.fg-hero', {
+            ratio: '640:560'
+          });
+        }
+        if ( $( window ).width() > 640 && $( window ).width() < 1400) {
+          UIkit.slideshow('.fg-hero', {
+            ratio: '3000:640'
+          });
+        }
+        else if ( $( window ).width() >= 1400 ) {
+          UIkit.slideshow('.fg-hero', {
+            ratio: '3000:600'
+          });
+        };
+
+        $(UIkit.slideshow).ready(function () {
+          $('.fg-hero').removeClass('uk-invisible');
+          $('.fg-hero').addClass('fg-animated-fade');
+        });
+
+        var collectionID = $('#collection-icon-section').parent().attr("id");
+        var heroButtons = $('.js-hero-buttons').find('a[href="#custom_scroll"]');
+        heroButtons.attr('href', '#' + collectionID );
+      // });
+
+      var lazyLoadInstance = new LazyLoad({
+        elements_selector: ".lazy"
+        // ... more custom settings?
+      });
+
+      {%- if settings.let_snow -%}
+        {%- if settings.snow_level == 'subtle' -%}
+          {% assign snow_volume = 400 %}
+          {% assign snow_speed = 1 %}
+        {%- elsif settings.snow_level == 'snowy' -%}
+          {% assign snow_volume = 600 %}
+          {% assign snow_speed = 4 %}
+        {%- elsif settings.snow_level == 'blizzard' -%}
+          {% assign snow_volume = 2000 %}
+          {% assign snow_speed = 10 %}
+        {%- endif -%}
+        // $(window.particlesJS).ready(function() {
+        // Disable particle snow on IE and Edge
+        var showParticle = true;
+        if( navigator.userAgent.search('MSIE') > 0
+            || navigator.userAgent.search('Trident') > 0
+            || navigator.userAgent.search('Edge') > 0) {
+          showParticle = false;
+        }
+        if(showParticle) {
+          particlesJS("particles-js", {
+            "particles": {
+              "number": {
+                "value": {{ snow_volume }},
+                "density": {
+                  "enable": true,
+                  "value_area": 800
+                }
+              },
+              "color": {
+                "value": "#ffffff"
+              },
+              "shape": {
+                "type": "image",
+                "stroke": {
+                  "width": 3,
+                  "color": "#fff"
+                },
+                "polygon": {
+                  "nb_sides": 5
+                },
+                "image": {
+                  "src": "http://www.dynamicdigital.us/wp-content/uploads/2013/02/starburst_white_300_drop_2.png",
+                  // "src": "{{ 'snow-flake@2x.png' | asset_url }}",
+                  "width": 100,
+                  "height": 100
+                }
+              },
+              "opacity": {
+                "value": 0.7,
+                "random": false,
+                "anim": {
+                  "enable": false,
+                  "speed": 1,
+                  "opacity_min": 0.1,
+                  "sync": false
+                }
+              },
+              "size": {
+                "value": 5,
+                "random": true,
+                "anim": {
+                  "enable": false,
+                  "speed": 20,
+                  "size_min": 0.1,
+                  "sync": false
+                }
+              },
+              "line_linked": {
+                "enable": false,
+                "distance": 50,
+                "color": "#ffffff",
+                "opacity": 0.6,
+                "width": 1
+              },
+              "move": {
+                "enable": true,
+                "speed": {{ snow_speed }},
+                "direction": "bottom-right",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                  "enable": true,
+                  "rotateX": 300,
+                  "rotateY": 1200
+                }
+              }
+            },
+            "retina_detect": true
+          });
+        }
+        // })
+      {% endif %}
+    })
+ 
+</script>
+<style>
+  .shopify-section {
+    position: relative;
+  }
+  #particles-js {
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 40% 40%;
+    z-index: 100;
+    animation:  fadeIn 5s ease;
+    animation-fill-mode: forwards;
+  }
+
+</style>
+
+{% schema %}
+  {
+    "name": "Hero Slider",
+    "max_blocks": 6,
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slider Options"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slider",
+        "default": true,
+        "label": "Display Hero Slider"
+      },
+      {
+        "type": "checkbox",
+        "id": "auto_play",
+        "default": true,
+        "label": "Enable Slider Auto-play"
+      },
+      {
+        "type": "checkbox",
+        "id": "navigation",
+        "default": false,
+        "label": "Enable Navigation Buttons"
+      },
+      {
+        "type":      "range",
+        "id":        "auto_play_timer",
+        "min":        6,
+        "max":        20,
+        "step":       2,
+        "unit":       "s",
+        "label":     "Slider Timer",
+        "default":   10
+      },
+      {
+        "type": "radio",
+        "id": "animation_type",
+        "options": [
+          { "value": "slide", "label": "Slide"},
+          { "value": "fade", "label": "Fade"},
+          { "value": "scale", "label": "Scale"},
+          { "value": "pull", "label": "Pull"},
+          { "value": "push", "label": "Push"}
+        ],
+        "label": "Transition Type"
+      },
+      {
+        "type": "checkbox",
+        "id": "text_transition",
+        "default": false,
+        "label": "Enable Text Transition Effects"
+      },
+      {
+        "type": "checkbox",
+        "id": "ken_burns",
+        "default": false,
+        "label": "Enable Ken Burns Effect on Background Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Content for Slider",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "hide_slide",
+            "default": false,
+            "label": "Hide this slide but keep content for later"
+          },
+          {
+            "type": "header",
+            "content": "Text Content"
+          },
+          {
+            "id": "heading",
+            "type": "text",
+            "label": "Title",
+            "default": "Title"
+          },
+          {
+            "type": "text",
+            "id": "sub_title",
+            "default": "SubTitle",
+            "label": "Sub Title"
+          },
+          {
+            "id": "section_text",
+            "type": "richtext",
+            "label": "Text",
+            "default": "<p>Add your text here</p>"
+          },
+          {
+            "type": "radio",
+            "id": "text_align",
+            "options": [
+              { "value": "uk-text-center", "label": "Center"},
+              { "value": "uk-text-left", "label": "Left"}
+            ],
+              "label": "Text Alignment"
+          },
+          {
+            "id": "text_color_2",
+            "type": "text",
+            "label": "Text Color",
+            "info": "type the color you want to move the text to be",
+            "default": "Black"
+          },
+          {
+            "id": "padding_right",
+            "type": "text",
+            "label": "Padding Left %",
+            "info": "type the % you want to move the text Left, eg 10%",
+            "default": "0%"
+          },
+          {
+            "id": "padding_left",
+            "type": "text",
+            "label": "Padding Right %",
+            "info": "type the % you want to move the text Right, eg 10%",
+            "default": "0%"
+          },
+          {
+            "id": "text_width",
+            "type": "text",
+            "label": "text width %",
+            "info": "type the % you want to alter the width to, eg 10% will make the width of the text box 10%",
+            "default": "100%"
+          },
+          {
+            "type": "checkbox",
+            "id": "smaller_heading",
+            "default": false,
+            "label": "Minimize the heading section and heading text"
+          },
+          {
+            "type": "radio",
+            "id": "text_color",
+            "options": [
+              { "value": "uk-dark", "label": "Dark"},
+              { "value": "uk-light", "label": "Light"}
+            ],
+              "label": "Text Color"
+          },
+          {
+            "type": "radio",
+            "id": "text_box_shadow",
+            "options": [
+              { "value": "shadow_none", "label": "None"},
+              { "value": "shadow_dark", "label": "Dark"},
+              { "value": "shadow_light", "label": "Light"}
+            ],
+              "label": "Text Shadow"
+          },
+          {
+            "type": "header",
+            "content": "Call to Action"
+          },
+          {
+            "type": "radio",
+            "id": "cta",
+            "options": [
+              { "value": "no_cta", "label": "No Action"},
+              { "value": "Our Collections", "label": "Scroll to Collections Icon"},
+              { "value": "About Us", "label": "About Us Url"},
+              { "value": "cta_custom", "label": "Custom Url"}
+            ],
+            "label": "Add a Call to Action Button"
+          },
+          {
+            "id": "cta_text",
+            "type": "text",
+            "label": "CTA Text"
+          },
+          {
+            "id": "cta_custom_url",
+            "type": "text",
+            "label": "Custom CTA Url"
+          },
+          {
+            "type": "header",
+            "content": "Background Content"
+          },
+          {
+            "type": "radio",
+            "id": "content_type",
+            "options": [
+              { "value": "image", "label": "Image"},
+              { "value": "video", "label": "Video"},
+              { "value": "background_color", "label": "Background Colour"}
+            ],
+            "label": "Image or Video"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "info" : "Aspect ratio appears 1920px by 640px. Upload 3840px by 1350px for retina displays.",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "info": "Include a mobile version at 640x560. If no mobile version is uploaded then the main image will be cropped for mobile.",
+            "label": "Image for Mobile"
+          },
+          {
+            "type": "checkbox",
+            "id": "gradient_filter",
+            "default": false,
+            "label": "Gradient Background"
+          },
+          {
+            "id": "video_url",
+            "type": "video_url",
+            "label": "Video URL",
+            "accept": ["youtube"],
+            "info": "Add a youtube Url"
+          },
+          {
+            "type":      "select",
+            "id":        "background_color",
+            "label":     "Background Colour",
+            "options": [
+             {
+               "value": "uk-background-muted",
+               "label": "Muted"
+             },
+             {
+               "value": "",
+               "label": "Transparent"
+             },
+             {
+               "value": "fg-background-gradient",
+               "label": "Gradient"
+             }
+            ]
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Slider",
+        "category": "Hero"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+  iframe.fg-hero-video {
+    width: 100vw
+    height: calc(100vw/1.77);
+  }
+
+  .fg-hero-slider-gradient-bg {
+    align-items: center;
+    background: rgba(0, 26, 41, 0.47);
+    background: -moz-linear-gradient(90deg, rgba(0,24,38,1) 0%, rgba(0,24,38,0.5) 55%, rgba(0,24,38,0) 71%, rgba(0, 24, 38, 0.92) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0,24,38,1) 0%, rgba(0,24,38,0.5) 55%, rgba(0,24,38,0) 71%, rgba(0, 24, 38, 0.92) 100%);
+    background: linear-gradient(90deg, rgba(0,24,38,1) 0%, rgba(0,24,38,0.5) 55%, rgba(0,24,38,0) 71%, rgba(0, 24, 38, 0.92) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001826",endColorstr="#001826",GradientType=1);
+    display: flex;
+    height: 100%;
+  }
+
+  @media (max-width: 639px) {
+    .fg-hero-slider-gradient-bg {
+      background: -moz-linear-gradient(90deg, rgba(0,24,58,1) 0%, rgba(0,24,58,0.4) 55%, rgba(0,24,58,0) 71%);
+      background: -webkit-linear-gradient(90deg, rgba(0,24,58,1) 0%, rgba(0,24,58,0.4) 55%, rgba(0,24,58,0) 71%);
+      background: linear-gradient(90deg, rgba(0,24,58,1) 0%, rgba(0,24,58,0.4) 55%, rgba(0,24,58,0.3) 71%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#001826",endColorstr="#001826",GradientType=1);
+    }
+  }
+
+  .fg-hero-slider-gradient-bg .fg-button-hero_featured {
+    box-shadow: 0px 6px 10px rgba(0, 32, 51, 0.7) !important;
+  }
+
+  .fg-hero-slider-gradient-bg .fg-button-hero_featured:hover {
+    box-shadow: 0px 10px 28px rgba(0, 32, 51, 0.7) !important;
+    transition: 260ms;
+  }
+{% endstylesheet %}

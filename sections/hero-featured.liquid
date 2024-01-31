@@ -1,0 +1,338 @@
+{% if section.settings.display_hero_featured == true %}
+  {% for block in section.blocks %}
+    {% assign collection_path_base_url =  shop_ur | append: '/collections/' %}
+    {% if block.settings.uk_light == true %}
+      {% assign text_color = "uk-light" %}
+    {% else %}
+      {% assign text_color = "uk-dark" %}
+    {% endif %}
+
+    {% if block.settings.text_shadow == true %}
+      {% assign shadow_strong = 'fg-text-shadow_strong' %}
+      {% assign shadow_subtle = 'fg-text-shadow_subtle' %}
+    {% else %}
+      {% assign shadow_strong = '' %}
+      {% assign shadow_subtle = '' %}
+    {% endif %}
+
+    {% if block.settings.enable_image_overlay == true %}
+      {% case block.settings.image_overlay_color %}
+        {% when 'light' %}
+          {% assign image_overlay_color = '(90deg, rgba(254,254,254,1) 0%, rgba(254,254,254,0.5) 40%, rgba(254,254,254,0) 100%)' %}
+        {% when 'dark' %}
+          {% assign image_overlay_color = '(90deg, rgba(3, 28, 45,1) 0%, rgba(3, 28, 45,0.5) 70%, rgba(3, 28, 45,0) 100%)' %}
+      {% endcase %}
+    {% else %}
+      {% assign image_overlay_color = "" %}
+    {% endif %}
+
+
+
+    {% if block.settings.text_center == true %}
+      {% assign text_center = "uk-text-center" %}
+    {% else %}
+      {% assign text_center = "" %}
+    {% endif %}
+
+    <!-- Gradient overlay -->
+    {% if block.settings.background_type == true %}
+      {% if block.settings.enable_image_overlay == true %}
+        {% capture backgroud_image %}
+          style="background: -moz-linear-gradient{{ image_overlay_color }}, url({{ block.settings.image.src | img_url: '1920x' }}) left top / cover no-repeat;
+          background: -webkit-linear-gradient{{ image_overlay_color }}, url({{ block.settings.image.src | img_url: '1920x' }}) left top / cover no-repeat;
+          background: linear-gradient{{ image_overlay_color }}, url({{ block.settings.image.src | img_url: '1920x' }}) left top / cover no-repeat;"
+        {% endcapture %}
+      {% else %}
+        {% capture backgroud_image %}
+          style="background: url({{ block.settings.image.src | img_url: '1920x' }}) left top / cover no-repeat;"
+        {% endcapture %}
+        {% assign backgroud_color = '' %}
+      {% endif %}
+    {% else %}
+      {% assign backgroud_color = block.settings.background_color %}
+      {% assign backgroud_image = '' %}
+    {% endif %}
+
+    {% assign product = all_products[block.settings.product] %}
+    <!-- Full image background Layout -->
+    <section class="fg-section-hero-featured uk-background-cover uk-panel uk-flex uk-flex-middle {{ backgroud_color }} uk-section" {{ backgroud_image }} >
+      <div class="uk-container fg-container-full-width">
+        <div class="uk-flex uk-flex-middle {{ block.settings.position_content }}" uk-grid>
+          <div class="uk-width-2-3@s uk-width-2-3@m fg-hero-section-content__text {{ text_center }}" >
+
+            {% if block.settings.sub_title_position == true %}
+              {% assign margin_title = 'uk-margin-remove-top' %}
+              <span class="uk-text-lead uk-margin-remove-bottom {{ text_color }} {{ shadow_subtle }}">{{ block.settings.sub_title }}</span>
+            {% else %}
+              {% assign margin_title = 'uk-margin-remove-bottom' %}
+            {% endif %}
+            
+            {% if block.settings.title != blank%}
+              <h1 class="uk-h1 fg-responsive-font {{ text_color }} {{ shadow_strong }} {{ margin_title }}">{{ block.settings.title }}</h1>
+            {% else %}
+              <h1  class="uk-h1 fg-responsive-font {{ text_color }} {{ shadow_strong }} {{ margin_title }}">{{ product.title }}</h1>
+            {% endif %}
+
+            {% if block.settings.sub_title_position == false %}
+              <span class="uk-text-lead uk-margin-remove-top {{ text_color }} {{ shadow_subtle }}">{{ block.settings.sub_title }}</span>
+            {% endif %}
+            <span class="uk-text-lead fg-text-lead-mobile {{ text_color }} {{ shadow_subtle }}">{{ block.settings.section_text }}</span>
+            <div class="fg-section-content__link js-hero-buttons">
+              {% if block.settings.shop_now_link_text != blank %}
+                <a href="{{ shop.url | append: collection_path_base_url | append: block.settings.collection }}" class="fg-button-hero uk-button uk-button-primary uk-box-shadow-hover-large fg-button-box-shadow-small fg-button">
+                  {{ block.settings.shop_now_link_text }}
+                </a>
+              {% endif %}
+              {% if block.settings.secondary_link_text != blank %}
+                {% if enable_custom_url == true %}
+                  {% assign secondary_link = block.settings.custom_link_url %}
+                  {% assign scroll = '' %}
+                {% else %}
+                  {% assign secondary_link = '#custom_scroll' %}
+                  {% assign scroll = 'uk-scroll' %}
+                {% endif %}
+
+                <a href="{{ secondary_link }}" class="fg-button-hero uk-button uk-button-default uk-box-shadow-hover-large fg-button-box-shadow-small fg-button" {{ scroll }}>
+                  {{ block.settings.secondary_link_text }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+          {% if block.settings.display_featured_product %}
+            <div class="uk-width-1-3@s uk-width-1-4@m">
+              <div class="uk-card uk-card-default fg-hero-shadow">
+                {% if block.settings.featured_product_badge %}
+                  <span class="fg-badge uk-card-badge uk-label fg-button-box-shadow-small">{{ block.settings.featured_product_badge }}</span>
+                {% endif %}
+                {% if product.featured_image != blank %}
+                  <a href="{{ product.url }}">
+                    <div class="uk-card-media-top">
+                      <img class="" 
+                        data-src="{{ product.featured_image | img_url: '1920x' }}" 
+                        data-srcset="{% include 'responsive-srcset-image', image: product.featured_image %}" 
+                        data-sizes="auto" alt="{{ product.image.alt | escape }}"
+                        data-aspectratio="{{ image.aspect_ratio }}"
+                        data-sizes="auto"
+                        tabindex="-1" uk-img>
+                    </div>
+                    <div class="uk-card-body uk-card-small fg-card__body">
+                      <div class="fg-card__body-details">
+                        <div class="fg-card__body-details--upper">
+                          <div class="fg-card__body-title">
+                            <h4 class="uk-h3 uk-margin-remove-top">
+                              <span class="uk-text-emphasis">{{ product.title }}</span>
+                            </h4>
+                          </div>
+                        </div>
+                        {% include 'card-price-featured' %}
+                      </div>
+                      <div class="fg-card__footer uk-card-footer uk-padding-remove-left">
+                        <a href="{{ product.url }}" class="uk-button uk-button-primary fg-button-hero_featured uk-box-shadow-hover-large fg-button-box-shadow-small fg-button">BUY NOW</a>
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+  <script>
+  document.addEventListener('DOMContentLoaded', function(event) {
+    (function ($) {
+        $(document).ready(function () {
+          'use strict';
+
+          var collectionID = $('#collection-icon-section').parent().attr("id");
+
+          console.log('collectionID', collectionID);
+          var heroButtons = $('.js-hero-buttons').find('a[href="#custom_scroll"]');
+          console.log('herobutton', heroButtons);
+          heroButtons.attr('href', '#' + collectionID );
+        });
+      })(jQuery);
+    });
+  </script>
+{% endif %}
+{% schema %}
+  {
+    "name": "Hero Featured",
+    "max_blocks": 2,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_hero_featured",
+        "default": true,
+        "label": "Display Hero Featured"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Section",
+        "settings": [
+          {
+            "type": "radio",
+            "id": "position_content",
+            "options": [
+              { "value": "uk-flex-center", "label": "Center"},
+              { "value": "uk-flex-left", "label": "Left"},
+              { "value": "uk-flex-right", "label": "Right"}
+            ],
+            "label": "Position Content"
+          },
+          {
+            "type": "checkbox",
+            "id": "text_center",
+            "label": "Center Text"
+          },
+          {
+            "type": "checkbox",
+            "id": "uk_light",
+            "label": "Light Coloured Text"
+          },
+          {
+            "type": "checkbox",
+            "id": "text_shadow",
+            "label": "Add Text Shadow",
+            "info": "Helpful for when contrast is needed."
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "default": "Section Title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "sub_title",
+            "default": "Section SubTitle",
+            "label": "Sub Title"
+          },
+          {
+            "type": "checkbox",
+            "id": "sub_title_position",
+            "label": "Sub-title Position Above Main Title"
+          },
+          {
+             "type": "textarea",
+             "id": "section_text",
+             "default": "Full width section text goes here",
+             "label": "Section Text"
+          },
+          {
+             "type": "text",
+             "id": "shop_now_link_text",
+             "default": "Shop Now",
+             "label": "Shop Now CTA Text"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "info": "Choose a collection link",
+            "label": "Collection Link"
+          },
+          {
+             "type": "text",
+             "id": "secondary_link_text",
+             "default": "See Collecion",
+             "label": "Secondary CTA Text"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_custom_url",
+            "info": "Scroll to Collection by Default",
+            "label": "Enable Custom Url for Secondary Button"
+          },
+          {
+             "type": "text",
+             "id": "custom_link_url",
+             "label": "Custom Link Url"
+          },
+          {
+            "type": "checkbox",
+            "id": "background_type",
+            "info": "If image is not used for background then defualts to the selected colour.",
+            "label": "Use image for background"
+          },
+          {
+            "type":      "select",
+            "id":        "background_color",
+            "label":     "Background Colour",
+            "options": [
+             {
+               "value": "uk-background-primary",
+               "label": "Primary"
+             },
+             {
+               "value": "uk-background-secondary",
+               "label": "Secondary"
+             },
+             {
+               "value": "uk-background-muted",
+               "label": "Muted"
+             },
+             {
+               "value": "fg-mute-background-blue",
+               "label": "Mute Blue"
+             },
+             {
+               "value": "fg-background-gradient",
+               "label": "Gradient"
+             },
+             {
+               "value": "",
+               "label": "None"
+             }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Section Image"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_image_overlay",
+            "label": "Add Gradient overlay on background image"
+          },
+          {
+             "type":      "radio",
+             "id":        "image_overlay_color",
+             "label":     "Overlay Colour",
+             "options": [
+               { "value": "light", "label": "Light" },
+               { "value": "dark", "label": "Dark" }
+             ],
+             "default":   "light"
+          },
+          {
+             "type": "text",
+             "id": "featured_product_badge",
+             "default": "Featured Actuator",
+             "label": "Featured Product Badge Text"
+          },
+          {
+            "type": "checkbox",
+            "id": "display_featured_product",
+            "label": "Display Featured Product"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Featured Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Featured",
+        "category": "Hero"
+      }
+    ]
+  }
+{% endschema %}

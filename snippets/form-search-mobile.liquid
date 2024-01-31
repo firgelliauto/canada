@@ -1,0 +1,10 @@
+<form class="fg-search-form js-search_mobile" action="/search">
+  <span   class="fg-search-button fg-nav-search-icon js-search-button"
+            uk-icon="icon: search; ratio: 1.5"  data="mobile"></span>
+  <input  class="fg-search-form__input uk-input uk-form-width-medium" 
+          type="search"
+          name="q"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+          name="q"
+          value="{{ search.terms | escape }}"  />
+</form>

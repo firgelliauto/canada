@@ -1,0 +1,31 @@
+{% if shop.customer_accounts_enabled %}
+  {% if customer %}
+    <li class="uk-nav-divider">
+      {% if customer.first_name != blank %}
+        {% capture first_name %}<a href="/account"><span class="fg-nav__topper_icon-align " uk-icon="icon: user" class="fg-icon-left"></span>{{ customer.first_name }}</a>{% endcapture %}
+        <a href="/account" class="fg-nav__topper_icon-align">
+          <span class="">Logged in as {{ customer.first_name }}</span>
+          <span uk-icon="icon: user" class="fg-icon-left"></span>
+        </a>
+      {% else %}
+        <a href="/account" class="fg-nav__topper_icon-align">
+          <span class="">Logged In</span>
+          <span uk-icon="icon: user" class="fg-icon-left"></span>
+        </a>
+      {% endif %}
+    </li>
+    <li class="">
+      <a href="/account/logout" class="fg-nav__topper_icon-align">
+        <span class="">Logout</span>
+        <span uk-icon="icon: sign-out" class="fg-icon-left"></span>
+      </a>
+    </li>
+  {% else %}
+    <li class="uk-nav-divider">
+      <a href="/account/login" class="fg-nav__topper_icon-align">
+        <span class="">Login or Create Account</span>
+        <span uk-icon="icon: user" class="fg-icon-left"></span>
+      </a>
+    </li>
+  {% endif %}
+{% endif %}

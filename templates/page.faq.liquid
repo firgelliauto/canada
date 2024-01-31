@@ -1,0 +1,53 @@
+{% include 'nav-bread-crumbs' %}
+<section class="uk-section">
+  <div class="uk-container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</section>
+<section class="uk-section uk-padding-remove-top">
+  <div class="uk-container">
+    <div class="" uk-grid>
+      <div class="js-faq-content uk-width-3-5@l">
+        <div class="fg-heading js-faq-heading">
+        </div>
+      </div>
+      <div class="uk-width-2-5@l">
+        <div class="uk-background-muted uk-padding">
+          <h2>Have more questions?</h2>
+          <p class="uk-legend">Send Us a Message</p>
+          {% include 'form-contact' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% section 'section-full-width' %}
+<script>
+  (function ($) {
+    $(document).ready(function () {
+      'use strict';
+
+      var faqContent = {{ page.content | json }};
+      var faqContentH2 =  faqContent.match(/<h2>(([\s]*)(.*?))<\/h2>/g);
+      var splitFaqContent = faqContent.split(/<h[3-6]>(.*?)<\/h[3-6]>/g);
+      var faqHeading = splitFaqContent[0];
+      splitFaqContent = splitFaqContent.slice(1);
+      var chunkContent = _.chunk(splitFaqContent, 2);
+
+      var $jsAccordion = $('<ul/>').addClass('fg-accordion').attr('uk-accordion', 'multiple: true');
+
+      $.each(chunkContent, function(i, val) {
+        var $listItem = $('<li/>').addClass('fg-accordian-list-item');
+        var $question = $('<a/>').addClass('fg-accordian-title uk-accordion-title').attr('uk-icon', 'chevron-down').attr('href', '#').html(val[0]);
+        var $answer = $('<div/>').addClass('uk-accordion-content').append(val[1]);
+        $listItem.append($question);
+        $listItem.append($answer);
+        $jsAccordion.append($listItem);
+      });
+
+      $('.js-faq-heading').append(faqHeading);
+      $('.js-faq-content').append($jsAccordion);
+      
+    });
+  })(jQuery);
+</script>

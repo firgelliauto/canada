@@ -1,0 +1,110 @@
+{% for block in section.blocks %}
+
+  {% if block.settings.uk_light == true %}
+    {% assign text_color = "uk-light" %}
+  {% else %}
+    {% assign text_color = "uk-dark" %}
+  {% endif %}
+  {% if block.settings.background_type == true %}
+    {% capture backgroud_image %}
+      style="background-image: url({{ block.settings.image.src | img_url: '1920x' }} );
+    {% endcapture %}
+    {% assign backgroud_color = '' %}
+  {% else %}
+    {% assign backgroud_color = block.settings.background_color %}
+    {% assign backgroud_image = '' %}
+  {% endif %}
+
+  {% if block.settings.light_button == true %}
+    {% assign button_color = 'uk-button-default uk-light' %}
+  {% else %}
+    {% assign button_color = 'uk-button-primary' %}
+  {% endif %}
+
+  <!-- Full image background Layout -->
+  <section  id="collection-icon-section" class="fg-section-full-width uk-section uk-background-cover {{ backgroud_color }}" {{ backgroud_image }}>
+    <div class="uk-container">
+      <div class="uk-flex uk-flex-center" uk-grid>
+        <div class="{{ text_color }} uk-width-2-3@s fg-section-content__text uk-text-center" >
+          {% if block.settings.title != blank%}
+            <h1>{{ block.settings.title }}</h1>
+          {% else %}
+            <h1>{{ page.title }}</h1>
+          {% endif %}
+        </div>    
+      </div>
+    </div>
+  </section>
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Page Header Section",
+    "max_blocks": 1,
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Section",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "uk_light",
+            "label": "Light Coloured Text"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "default": "Full Width Section Title",
+            "label": "Page Title"
+          },
+          {
+            "type": "checkbox",
+            "id": "background_type",
+            "info": "If image is not used for background then defualts to the selected colour.",
+            "label": "Use image for background"
+          },
+
+          {
+            "type":      "select",
+            "id":        "background_color",
+            "label":     "Background Colour",
+            "options": [
+             {
+               "value": "uk-background-primary",
+               "label": "Primary"
+             },
+             {
+               "value": "uk-background-secondary",
+               "label": "Secondary"
+             },
+             {
+               "value": "uk-background-muted",
+               "label": "Muted"
+             },
+             {
+               "value": "fg-background-gradient",
+               "label": "Gradient"
+             }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Section Image"
+          },
+          {
+            "type": "checkbox",
+            "id": "light_button",
+            "label": "Light Coloured Button"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Page Header Section",
+        "category": "Section"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,45 @@
+<div>
+  <h2>Location</h2>
+  <ul class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+    
+    {% for block in section.blocks %}
+      <li class="fg-location-list">
+        {{ block.settings.location }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+  {
+    "name": "Location",
+    "blocks" : [
+      {
+        "type": "select",
+        "name": "Add Location",
+        "settings": [
+          {
+            "type": "richtext",
+            "id":   "location",
+            "label": "Location Address"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Location",
+        "category": "Static Contact Location"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+
+{% endjavascript %}

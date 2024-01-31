@@ -1,0 +1,70 @@
+<div class="uk-hidden@l uk-width-1-1">
+  <div class="uk-navbar uk-flex uk-flex-right uk-flex-middle">
+    <a href="/cart" class="fg-cart__badge fg-nav__topper_icon-align uk-margin-small-right js-veiw-cart_nav">
+      <span uk-icon="icon: cart; ratio: 1.5" class="fg-icon-left"></span>
+      <span class="js-cart-item-count fg-cart__badge-overlay uk-badge">
+          {{ cart.item_count }}
+        </span>
+    </a>
+    <a class="fg-nav-toggle uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav-primary"></a>
+  </div>
+  <div id="offcanvas-nav-primary" uk-offcanvas="overlay: true; mode: push;">
+    <div class="fg-offcanvas-bar uk-offcanvas-bar uk-flex uk-flex-column">
+      {% include 'form-search-mobile' %}
+      {%- include 'nav-announcement' -%}
+      {% include 'logo-alt' %}
+      {% for block in section.blocks %}
+        <ul class="fg-mobile-nav-list uk-nav-default uk-nav-parent-icon" uk-nav>
+          {%- if settings.display_holiday_hours == true -%}
+          <li>
+            <a href="#holiday-hours" class="uk-margin-small-right" uk-toggle>
+              Holiday Hours
+            </a>
+          </li>
+          {%- endif -%}
+          {% for link in linklists[block.settings.linklist].links %}
+            {% if link.levels > 0 %}
+              <li class="uk-parent uk-nav-divider">
+            {% else %}
+              <li class="uk-nav-divider">
+            {% endif %}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+              {% if link.links != empty %}
+                <ul class="fg-mobile-nav-list__sub-nav uk-nav-sub">
+                  {% for childlink in link.links %}
+                    <li class="uk-nav-divider">
+                      <a href="{{ childlink.url }}">
+                        {{ childlink.title }}
+                      </a>
+                      {% if childlink.links != empty %}
+                        <ul class="uk-nav-sub">
+                          {% for extrachildlink in childlink.links %}
+                            <li class="uk-nav-divider">
+                              <a href="{{ extrachildlink.url }}">
+                                {{ extrachildlink.title }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+          <li class="uk-flex-inline uk-nav-divider">
+            {% include 'cart' %}
+          </li>
+          {% include 'nav-login' %}
+          <li class="uk-nav-divider">
+            <a href="tel:{{ phone }}">
+              <span>{{ phone }}</span>
+              <span uk-icon="icon: receiver" class="fg-icon-left"></span>
+            </a>
+          </li>
+        </ul>
+      {% endfor %}
+    </div>
+  </div>
+</div>

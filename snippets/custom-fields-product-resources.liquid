@@ -1,0 +1,38 @@
+{% comment %} Tutorials  {% endcomment %}
+{% if product.metafields.custom_fields['display_tutorial_links'] > 0 %}
+  <div class="{{ custom_class }}">
+    <span class="fg-downloads-title">
+      Tutorials
+    </span>
+    <ul class="fg-product-downloads fg-product-button-icon fg-product-button-icon_tutorial">
+      {% assign array_tutorials = product.metafields.custom_fields['tutorial_link'] | split: '|' %}
+      {% for article_handle in array_tutorials %}
+        {% assign handle = article_handle | replace: '.', '/' %}
+        <li>
+          {{ articles[handle].title | link_to:  articles[handle].url }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+{% comment %} Download  {% endcomment %}
+{% if product.metafields.custom_fields['display_download_files'] > 0 %}
+  {% assign download_content = 'download_1, download_2, download_3, download_4, download_5, download_6' %}
+  {% assign download_content = download_content | split: ',' %}
+  <div class="{{ custom_class }}">
+    <span class="fg-downloads-title">
+      Downloads
+    </span>
+    <ul class="fg-product-downloads fg-product-button-icon fg-product-button-icon_download">
+      {% for download in download_content %}
+        {% assign download_item = download | strip %}
+        {% if product.metafields.custom_fields[download_item] != blank %}
+          <li>
+          {{ product.metafields.custom_fields[download_item] }}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

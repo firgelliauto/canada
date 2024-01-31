@@ -1,0 +1,404 @@
+<script>
+(function ($) {
+  $(document).ready(function () {
+    'use strict';
+    var context = {};
+
+    Twine.reset(context).bind().refresh();
+
+    var collectionsArray = [];
+
+    context.allForce = [];
+    context.allVoltage = [];
+    context.allStroke = [];
+
+    context.optionRange = [];
+    context.product = [];
+
+    /**  
+    *** Custom Helper Methods
+    **/
+    var _customCollectionHelper = {
+      firstAndLast: function(array) {
+        var result = [];
+        if(array.length > 1) {
+          result = [ array[0], array[array.length - 1] ];
+        }else {
+          result = [array[0]];
+        }
+        return result;
+      },
+      // Divide array of options into 4 arrays consisting of lowest and highest
+      divideOption: function(arr, type){
+        var arrayLength = arr.length;
+        var strokeInterval = Math.round(arr.length / 3);
+        var altstrokeInterval = Math.round(arr.length / 2);
+        var newArr = [];
+        var strokeSection;
+
+        for(var i = 0; i < 4; i++){
+          if(arr.length > 0 && !(arrayLength <= 4)){
+            strokeSection = _customCollectionHelper.firstAndLast(arr.splice(0, strokeInterval));
+            newArr.push(strokeSection);
+          } if (arr.length > 0 && arrayLength <=4) {
+            strokeSection = _customCollectionHelper.firstAndLast(arr.splice(0, altstrokeInterval));
+            newArr.push(strokeSection);
+          }
+        }
+
+        var obj = {};
+        obj[type] = newArr;
+        context.optionRange.push(obj);
+      },
+      // Takes an array and compares it to the second argument
+      // Returns a string of two numbers with a dash between or a single number if only one element is in array
+      inRange: function(arr, compare) {
+        var rangeDom;
+
+        function compared(el){
+          var lastNum;
+          var firstNum = parseInt(compare[0]);
+
+          if(compare.length > 1 ){
+            lastNum = parseInt(compare[1]);
+          }
+          if(compare.length > 1 ){
+            if(el >= firstNum && el <= lastNum){
+              return true;
+            }
+          }else if(el >= firstNum) {
+            return true;
+          }
+        }
+
+        if ( arr.some(compared )){
+          if(compare.length > 1){
+            rangeDom = compare[0] + '–' + compare[1];
+          }else {
+            rangeDom = compare[0];
+          }
+        }else {
+          rangeDom = false;
+        }
+
+        return rangeDom;
+      },
+      // Check if Array is within the range of provided option array
+      // And Create a style class for the product
+      checkOptionsRange: function(arr, option) {
+        var filterClassArr = [];
+        var range;
+
+        if(option == 'stroke') {
+          range = context.optionRange[0][option];
+        }
+        if(option == 'voltage' || option == 'input') {
+          range = context.optionRange[1][option];
+        }
+        if(option == 'force') {
+          range = context.optionRange[2][option];
+        }
+        $.each(range, function(index, val){
+          var hasRange = _customCollectionHelper.inRange(arr, val);
+          if(hasRange){
+            filterClassArr.push( option + '–' + hasRange);
+          }
+        })
+
+        return filterClassArr;
+      },
+      //Simply creates a option range 
+      createRange: function(arr){
+        if(arr.length > 1){
+          return arr[0] + '–' + arr[arr.length-1];
+        }else if(arr.length === 1) {
+          return arr[0].toString();
+        }
+      }
+    };
+
+    /**
+    *** Iterate and prepare product data
+    ***
+    **/
+    (function initProductData(){
+      $.each(collectionsJson, function(i, val){
+        var id = val.id;
+        var title = val.title;
+        var optionGroup = val.options;
+        var options = [];
+        var optionLength = val.options.length;
+        var optionArr = [];
+
+        for(var i = 0; i < optionLength; i++){
+          var variantOption = 'option' + ( i + 1);
+          var variantArr = [];
+          $.each(val.variants, function(i, el){
+            variantArr.push(el[variantOption]);
+          })
+
+          var uniqueOptions = _.uniq(variantArr);
+          optionArr.push(uniqueOptions);
+        }
+
+        var obj = {
+          id : id,
+          titld : title,
+          optionsType : optionGroup,
+          options : optionArr,
+          optionCount : optionLength
+        };
+
+        context.product.push(obj);
+
+      })
+
+      $.each( context.product, function(i, el){
+        var optionElement = [];
+        $.each( el.options, function(i, val){
+          var filterNum = val.map(function(element, i){
+            var numOnly = element.replace(/[^0-9.]/g,'');
+            return numOnly;
+          })
+          optionElement[i] = filterNum;
+        })
+        el.options = optionElement;
+      })
+
+      $.each(context.product, function(index, val){
+        var optionLength = val.optionCount;
+        for(var i = 0; i < optionLength; i++){
+          var optionName = val.optionsType[i].toLowerCase()
+          var selectOption = val.options[i];
+          if(optionName.includes('voltage') || optionName.includes('input')){
+            selectOption = selectOption.map(Number);
+            context.allVoltage = _.concat(context.allVoltage, selectOption);
+          }
+          if(optionName.includes('stroke')){
+            selectOption = selectOption.map(Number);
+            context.allStroke = _.concat(context.allStroke, selectOption);
+
+          }
+          if(optionName.includes('force')){
+            selectOption = selectOption.map(Number);
+            context.allForce = _.concat(context.allForce, selectOption);
+          }
+        }
+      })
+
+      context.allVoltage = _.sortBy(_.uniq(context.allVoltage));
+      context.allStroke = _.sortBy(_.uniq(context.allStroke));
+      context.allForce = _.sortBy(_.uniq(context.allForce));
+    })();
+
+    // Creates a range between two numbers and creates a style class to be injected to DOM
+    // **** ONLY RUNS ONCE!!!!
+    (function initFilterClass(){
+      _customCollectionHelper.divideOption(context.allStroke, 'stroke');
+      _customCollectionHelper.divideOption(context.allVoltage, 'voltage');
+      _customCollectionHelper.divideOption(context.allForce, 'force');
+      var allStrokeClass = [];
+      var allForceClass = [];
+      var allVoltageClass = [];
+
+      $.each(context.product, function(index, val){
+        var array = [];
+        var objRange = [];
+
+        for(var i = 0; i < val.optionsType.length; i++){
+          var option = val.optionsType[i].toLowerCase()
+          var optionArr = val.options[i];
+          var arrayOfClasses;
+          var optionRange;
+
+          if(option.includes('stroke')){
+            arrayOfClasses = _customCollectionHelper.checkOptionsRange(optionArr, 'stroke');
+            array.push({
+              stroke : arrayOfClasses
+            });
+            optionRange = _customCollectionHelper.createRange(optionArr);
+            objRange.push({
+              stroke : optionRange
+            });
+            allStrokeClass = allStrokeClass.concat(arrayOfClasses);
+          }
+          if(option.includes('voltage') || option.includes('input')){
+            arrayOfClasses = _customCollectionHelper.checkOptionsRange(optionArr, 'voltage');
+            array.push({
+              voltage : arrayOfClasses
+            });
+            optionRange = _customCollectionHelper.createRange(optionArr);
+            objRange.push({
+              voltage: optionRange
+            })
+            allVoltageClass =  allVoltageClass.concat(arrayOfClasses);
+          }
+          if(option.includes('force')){
+            arrayOfClasses = _customCollectionHelper.checkOptionsRange(optionArr, 'force');
+            array.push({
+              force : arrayOfClasses
+            });
+            optionRange = _customCollectionHelper.createRange(optionArr);
+            objRange.push({
+              force : optionRange
+            })
+            allForceClass =  allForceClass.concat(arrayOfClasses);
+          }
+        }
+        val.optionRange = objRange;
+        val.classes = array;
+      })
+
+      allStrokeClass = _.uniq(allStrokeClass);
+      allForceClass = _.uniq(allForceClass);
+      allVoltageClass = _.uniq(allVoltageClass);
+    })();
+
+    /** 
+    *** Final DOM Manipulations
+    **/
+    (function injectFilterDom(){
+      var strokeFilterArr = [];
+      var forceFilterArr = [];
+      var voltageFilterArr = [];
+      // Inject option ranges to product cards list in the DOM
+      $('.js-list-range').each(function(i, el){
+        var fullList = [];
+        var optionTypeArr = context.product[i];
+        var data;
+        var voltage;
+        var stroke;
+        var force;
+
+        if(optionTypeArr.optionsType.length > 0){
+          $.each(optionTypeArr.optionsType, function(index, val){
+            if(val.includes("Voltage")){
+              data = optionTypeArr.optionRange[index].voltage;
+              voltage = 'Voltage: ' + data + ' V';
+              fullList.push(voltage);
+            }
+            if(val.includes("Stroke")){
+              data = optionTypeArr.optionRange[index].stroke;
+              stroke = 'Stroke: ' + data + ' Inches';
+              fullList.push(stroke);
+            }
+            if(val.includes("Force")){
+              data = optionTypeArr.optionRange[index].force;
+              force = 'Force: ' + data + ' lb';
+              fullList.push(force);
+            }
+          })
+        }
+
+        $.each(fullList, function(i, val){
+          var list = $('<li/>').html(val);
+          $(el).prepend(list);
+        })
+      })
+
+      // Combines array of classes to a single string of Classes to be injected into product data in DOM for filter
+      $('.js-card-filter').each(function(i, el){
+        $.each(context.product[i].classes, function(index, val){
+          var stringClass;
+          if(val.hasOwnProperty('stroke')){
+            stringClass = val.stroke.join(' ');
+            $(el).attr('data-stroke', stringClass + ' all-stroke');
+          }
+          if(val.hasOwnProperty('force')){
+            stringClass = val.force.join(' ');
+            $(el).attr('data-force', stringClass + ' all-force');
+          }
+          if(val.hasOwnProperty('voltage')){
+            stringClass = val.voltage.join(' ');
+            $(el).attr('data-voltage', stringClass + ' all-voltage');
+          }
+        })
+      })
+
+      // Creates the option nav fitler data 
+      $.each(context.optionRange, function(i, val){
+        if(val.hasOwnProperty('stroke')){
+          $.each(val.stroke, function(index, el){
+            strokeFilterArr.push(_customCollectionHelper.createRange(el));
+          })
+        }
+        if(val.hasOwnProperty('voltage')){
+          $.each(val.voltage, function(index, el){
+            voltageFilterArr.push(_customCollectionHelper.createRange(el));
+          })
+        }
+        if(val.hasOwnProperty('force')){
+          $.each(val.force, function(index, el){
+            forceFilterArr.push(_customCollectionHelper.createRange(el));
+          })
+        }
+      })
+
+      context.optionFilter = {
+        stroke : strokeFilterArr,
+        voltage : voltageFilterArr,
+        force : forceFilterArr
+      }
+
+      // Create filter nav and appends data
+      $.each(context.optionFilter, function(index, el){
+        if(el.length != 0) {
+          var filterTitle = index;
+          var $filterTitle = $('<span/>').addClass('fg-collection-subnav__title').html(filterTitle);
+          var $ul = $('<ul/>').attr('uk-margin', '').addClass("fg-collection-subnav__ul uk-subnav uk-subnav-pill");
+          var $filterGroup = $('<div/>').addClass("uk-width-auto").append($filterTitle);
+          $.each(el, function(i, val){
+            var $a;
+            var suffix;
+
+            suffix = (i < 3)
+              ? ((index.includes('stroke'))
+                  ? ' inches' 
+                  : (index.includes('force'))
+                  ? ' lb' 
+                  : (index.includes('volt'))
+                  ? 'V' 
+                  : '')
+              : ' & OVER';
+            
+            var $html = val + suffix;
+            $a = $("<a/>")
+                  .attr('href', '#')
+                  .html($html);
+            var $thisListNav = $('<li/>')
+                                .attr("uk-filter-control", "filter: [data-" + index + "*='" + index + '–' + val + "']; group: " + index );
+            $thisListNav.append($a);
+            $ul.append($thisListNav);
+          })
+
+          $filterGroup.append($ul);
+          $('.js-filter-nav').append($filterGroup);
+        }
+      })
+    })();
+
+    // Returns a dynamic message for the Collection Filter
+    (function filterCollectionMessage(){
+      var $cardCount;
+      var $countText;
+      var $fitlerMessage = $('.js-filter__message-text');
+      var $noResults = '<h4 class="uk-animation-slide-bottom-small">There are no products that match your filter</h4>';
+
+      $('[uk-filter]').on('afterFilter', function(){
+        $cardCount = $('.js-card-filter:visible').length;
+        $countText = $cardCount + ' items';
+        $fitlerMessage.html($countText);
+        if( $cardCount === 0 ) {
+          $fitlerMessage.html($countText + '<br>' +  $noResults);
+        }
+      })
+
+    })();
+
+    // Debug
+    console.log('context', context);
+    console.log('collectionsJson', collectionsJson);
+  });
+})(jQuery);
+
+</script>

@@ -1,0 +1,37 @@
+<section class="uk-section">
+  <div class="uk-container">
+    {% include 'loop-blog' %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Blog Cards",
+    "settings": [
+      {
+        "type": "range",
+        "id": "grid_size",
+        "label": "Card Grid Maximum Count",
+        "min": 4,
+        "max": 6,
+        "step": 1,
+        "default": 4
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog Cards",
+        "category": "Static Collection"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+
+{% endjavascript %}

@@ -1,0 +1,110 @@
+{% include 'nav-bread-crumbs' %}
+<section class="uk-section">
+  <div class="uk-container">
+    <div class="fg-login-account uk-child-width-1-2@s uk-grid-small" uk-grid>
+      <div id="CustomerLoginForm">
+        <h1>{{ 'customer.login.title' | t }}</h1>
+        {% form 'customer_login' %}
+          {{ form.errors | default_errors | replace: 'class="errors', 'class="errors uk-width-1-1 uk-width-1-2@s"'}}
+          <div class="uk-margin">
+            <label for="CustomerEmail" class="uk-form-label">
+              {{ 'customer.login.email' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input type="email"
+                     name="customer[email]"
+                     id="CustomerEmail"
+                     class="uk-input uk-form-width-large {% if form.errors contains 'email' %}input-error{% endif %}"
+                     placeholder="{{ 'customer.login.email' | t }}"
+                     spellcheck="false"
+                     autocomplete="off"
+                     autocapitalize="off"
+                     autofocus>
+            </div>
+          </div>
+          {% if form.password_needed %}
+          <div class="uk-margin">
+            <label for="CustomerPassword" class="uk-form-label">
+              {{ 'customer.login.password' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input type="password"
+                   name="customer[password]"
+                   id="CustomerPassword"
+                   class="uk-input uk-form-width-large {% if form.errors contains 'password' %}input-error{% endif %}"
+                   placeholder="{{ 'customer.login.password' | t }}">
+            </div>
+          </div>
+          {% endif %}
+          <input class="uk-button uk-button-primary uk-margin-small" type="submit" class="button" value="{{ 'customer.login.sign_in' | t }}">
+          <a class="uk-button uk-button-primary uk-margin-small" href="/account/register">
+            {{ 'layout.customer.create_account' | t }}
+          </a>
+          <a class="uk-button fg-button-default uk-margin-small" href="/collections/linear-actuators" title="Continue shopping">Continue shopping</a>
+        {% endform %}
+
+      </div>
+
+      <div id="RecoverPasswordForm" class="hide">
+        <h2 class="uk-h1">{{ 'customer.recover_password.title' | t }}</h2>
+        <p>{{ 'customer.recover_password.subtext' | t }}</p>
+
+        {% form 'recover_customer_password' %}
+          {{ form.errors | default_errors }}
+
+          {% if form.posted_successfully? %}
+            <span class="hide reset-password-success"></span>
+          {% endif %}
+          <div class="uk-margin">
+            <label for="RecoverEmail" class="uk-form-label">
+              {{ 'customer.recover_password.email' | t }}
+            </label>
+            <div class="uk-form-controls">
+              <input 
+                      class="uk-input uk-form-width-large"
+                      type="email"
+                      name="email"
+                      id="RecoverEmail"
+                      placeholder="{{ 'customer.recover_password.email' | t }}"
+                      spellcheck="false"
+                      autocomplete="off"
+                      autocapitalize="off">
+            </div>
+          </div>
+          <input type="submit" class="uk-margin-small uk-button uk-button-primary" value="{{ 'customer.recover_password.submit' | t }}">
+          <button type="button" id="HideRecoverPasswordLink" class="uk-margin-small uk-button fg-button-default">
+            {{ 'customer.recover_password.cancel' | t }}
+          </button>
+        {% endform %}
+
+      </div>
+    </div>
+    {% if shop.checkout.guest_login %}
+      <h2>{{ 'customer.login.guest_title' | t }}</h2>
+
+      {% form 'guest_login' %}
+        <input type="submit" class="button" value="{{ 'customer.login.guest_continue' | t }}">
+      {% endform %}
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  $(document).ready(function () {
+    $('form[action="/account/recover"]').on('submit', function(e) {
+        e.preventDefault();
+        console.log('this', this);
+        $.ajax({
+            url : $(this).attr('action') || window.location.pathname,
+            type: "POST",
+            data: $(this).serialize(),
+            success: function (data) {
+                alert('ok');
+            },
+            error: function (jXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+    });
+});
+</script>

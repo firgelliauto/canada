@@ -1,0 +1,102 @@
+{% assign holiday_arr = 'holiday_date_1,holiday_date_2,holiday_date_3,holiday_date_4,holiday_date_5' | split: ','  %}
+<div id="holiday-hours" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body fg-modal">
+      <div class="fg-display-block_child">
+        {% include 'logo-simple' %}
+      </div>
+        <h2 class="uk-modal-title">{{ section.settings.holiday_heading }}</h2>
+        <div class="uk-text-lead">
+          {{ section.settings.holiday_subheading }}
+        </div>
+        <ul class="uk-list">
+          {%- for block in section.blocks -%}
+          <li>
+            <b>
+              {{ block.settings.holiday_name }}
+            </b>
+          </li>
+          <ul>
+            {%- for holiday_item in holiday_arr -%}
+              {% if block.settings[holiday_item] != '' %}
+                <li>
+                  {{ block.settings[holiday_item] }}
+                </li>
+              {% endif %}
+            {%- endfor -%}
+          </ul>
+          {%- endfor -%}
+        </ul>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">close</button>
+        </p>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Holiday Hours",
+    "max_blocks": 25,
+    "settings": [
+      {
+        "type": "header",
+        "info": "Setting for holiday navigation link that displays this content will be available in the header section settings.",
+        "content": "Holiday Hours Content"
+      },
+      {
+        "type": "text",
+        "id": "holiday_heading",
+        "label": "Holiday Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "holiday_subheading",
+        "label": "Holiday Sub Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "select",
+        "name": "Add Description",
+        "settings": [
+          {
+            "type": "text",
+            "id": "holiday_name",
+            "label": "Holiday Name"
+          },
+          {
+            "type": "text",
+            "id":  "holiday_date_1",
+            "label": "Holiday Date Line 1"
+          },
+          {
+            "type": "text",
+            "id":  "holiday_date_2",
+            "label": "Holiday Date Line 2"
+          },
+          {
+            "type": "text",
+            "id":  "holiday_date_3",
+            "label": "Holiday Date Line 3"
+          },
+          {
+            "type": "text",
+            "id":  "holiday_date_4",
+            "label": "Holiday Date Line 4"
+          },
+          {
+            "type": "text",
+            "id":  "holiday_date_5",
+            "label": "Holiday Date Line 5"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Holiday Hours",
+        "category": "Global"
+      }
+    ]
+  }
+
+{% endschema %}

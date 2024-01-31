@@ -1,0 +1,14 @@
+{% case shop.address.country  %}
+  {% when 'United States' %}
+    <meta name="msvalidate.01" content="023E9C8AEC9204E906AB2ABBEA547F3D" />
+    <meta name="p:domain_verify" content="e64ecd4ee67b9e8efe5f6e4c0861ace6"/>
+    <meta name="apple-itunes-app" content="app-id=1150308435">
+
+    <meta name="google-site-verification" content="pAF_BpoVNZks7L6XNjQ2RpT9UVSV45WwlVgT8HEFdrM" />
+    <meta name="google-site-verification" content="_a3RsO_YBtFGEjoEdvqXR-02ym2p6JHTHyGG8kWdG_E" />
+    <script type='text/javascript'>var jiltStorefrontParams = {{ shop.metafields.jilt_storefront | json }}; {% if customer %}jiltStorefrontParams.customerID = {{ customer.id }};{% endif %}</script>
+  {% when 'Canada' %}
+    <meta name="google-site-verification" content="ZpF_vITd3mD8qfekMp3ogUEJj4CoH--Z_fNBeLIJz24" />
+  {% when 'Australia' %}
+    <meta name="google-site-verification" content="3omGmo4ueOhkwjZ3avs-bWNk5F_LU7BLvh5wYwQsD1Q" />
+{% endcase %}

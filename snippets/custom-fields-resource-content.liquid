@@ -1,0 +1,79 @@
+{% assign resource_categories = 'resource_manuals, resource_tech_drawings, resource_spec_sheet, resource_3d_file' %}
+{% assign resource_categories = resource_categories | split: ',' %}
+
+{% comment %} Resource subnav {% endcomment %}
+{% assign first_active = true %}
+<ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-fade">
+  {% for resource in resource_categories %}
+    {% assign resource_item = resource | strip %}
+    {% assign display_resource_item = 'display_' | append: resource_item %}
+    {% assign title_resource_item = 'title_' | append: resource_item %}
+    
+    {% assign resource_content = page.metafields.custom_fields[resource_item] %}
+    {% assign display_resource_item = page.metafields.custom_fields[display_resource_item] %}
+    {% assign title_resource_item = page.metafields.custom_fields[title_resource_item] %}
+
+    {% assign pill_nav_class = 'fg-resource__title_icon-' %}
+    {% assign pill_nav_class_end = '_btn' %}
+    
+    {% if display_resource_item > 0 %}
+      {% if first_active == true %}
+        {% assign active_state = 'uk-active' %}
+        {% assign aria_expanded = 'true' %}
+        {% assign first_active = false %}
+      {% else %}
+        {% assign active_state = '' %}
+        {% assign aria_expanded = 'false' %}
+      {% endif %}
+
+      {% if title_resource_item == blank %}
+        {% if resource_item contains 'resource_manuals' %}
+          {% assign title_resource_item = 'Instruction Manuals' %}
+          {% assign pill_nav_class = pill_nav_class | append: 'manual' | append: pill_nav_class_end %}
+        {% elsif resource_item contains 'resource_tech_drawings' %}
+          {% assign title_resource_item = 'Technical Drawings' %}
+          {% assign pill_nav_class = pill_nav_class | append: 'drawing' | append: pill_nav_class_end %}
+        {% elsif resource_item contains 'resource_spec_sheet' %}
+          {% assign title_resource_item = 'Specification Sheets' %}
+          {% assign pill_nav_class = pill_nav_class | append: 'spec' | append: pill_nav_class_end %}
+        {% elsif resource_item contains 'resource_3d_file' %}
+          {% assign title_resource_item = '3D Files' %}
+          {% assign pill_nav_class = pill_nav_class | append: '3d' | append: pill_nav_class_end %}
+        {% endif %}
+      {% endif %}
+      {% comment %} Tab title {% endcomment %}
+      <li class="{{ pill_nav_class }} {{ active_state }}" aria-expanded="{{ aria_expanded }}">
+        <a href="#">
+          {{ title_resource_item }}
+        </a>
+      </li>
+    {% endif %}
+
+  {% endfor %}
+</ul>
+
+{% comment %} Resource Switcher {% endcomment %}
+{% assign first_active = true %}
+<ul class="uk-switcher">
+  {% for resource in resource_categories %}
+    {% assign resource_item = resource | strip %}
+    {% assign display_resource_item = 'display_' | append: resource_item %}
+    
+    {% assign resource_content = page.metafields.custom_fields[resource_item] %}
+    {% assign display_resource_item = page.metafields.custom_fields[display_resource_item] %}
+
+    {% if display_resource_item > 0 %}
+      {% if first_active == true %}
+        {% assign active_state = 'uk-active' %}
+        {% assign first_active = false %}
+      {% else %}
+        {% assign active_state = '' %}
+      {% endif %}
+      {% comment %} Switcher content {% endcomment %}
+      <li class="fg-resource-download {{ active_state }}">
+        {{ resource_content }}
+      </li>
+    {% endif %}
+
+  {% endfor %}
+</ul>

@@ -1,0 +1,61 @@
+<div rv-show="cart.item_count | gt 0">
+  <legend class="uk-h3"><span rv-html="cart.item_count"></span> Total Items</legend>
+  <table class="uk-table uk-table-small uk-table-justify uk-table-striped">
+    <thead>
+      <th class="uk-form-label">Item</th>
+      <th class="uk-form-label uk-float-right">Quantity</th>
+    </thead>
+    <tbody>
+      <tr rv-each-item="cart.items">
+        <td>
+          <p rv-text="item.title"></p>
+        </td>
+        <td>
+          <strong class="uk-float-right">
+            { item.quantity }
+          </strong>
+        </td>
+      </tr>
+      <tr class="uk-text-bold">
+        <td>
+          <strong>
+            Estimated Total Weight: 
+          </strong>
+        </td>
+        <td class="uk-float-right">
+          <strong rv-html="cart.total_weight | weight_to_lb "></strong>
+        </td>
+      </tr>
+      <tr class="uk-text-bold">
+        <td>
+          <strong>
+            Subtotal: 
+          </strong>
+        </td>
+        <td class="uk-float-right">
+          <strong rv-html="cart.original_total_price | money Currency.currentCurrency"></strong>
+        </td>
+      </tr>
+      <tr class="uk-text-bold" rv-show="cart.total_discount | gt 0">
+        <td class="uk-text-primary">Total Discount: </td>
+        <td class="uk-float-right uk-text-primary" rv-html="cart.total_discount | money Currency.currentCurrency">
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="uk-h3">
+        <td>Total Price: </td>
+        <td class="uk-float-right">
+          <strong rv-html="cart.total_price | money Currency.currentCurrency"></strong>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  {% if settings.checkout_submit_button_label != empty %}
+    {% assign checkout_label = settings.checkout_submit_button_label %}
+  {% else %}
+    {% assign checkout_label = 'checkout now' %}
+  {% endif %}
+  <input class="fg-button uk-button uk-button-primary uk-margin-small" type="submit" value="{{ checkout_label }}" name="checkout"/>
+  <i class="uk-display-block">{{ settings.checkout_submit_footer_note }}</i>
+</div>

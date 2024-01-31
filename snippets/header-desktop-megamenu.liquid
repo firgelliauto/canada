@@ -1,0 +1,452 @@
+<a style="margin-left: 2px" class="selectorButton" href="https://www.firgelliauto.ca/pages/linear-actuator-selector"><img loading="lazy" style="width: 180px; margin-left: 30px" src="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/linear-actuator-selector-tool_731819f6-6968-4c01-bc13-b23487b60cf8.png?v=1626365507"></a>
+<nav role="navigation" class="itg--nav">
+  <ul class="itg_main ">
+     {%- for block in section.blocks -%}
+    {%- for link in linklists[block.settings.linklist].links -%}
+
+    
+      <li class="itg_main_link {{ link.handle }}" id="{{ link.handle }}">
+        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %} class="uk-icon">
+          {{ link.title }}
+           {%- if link.links != blank -%}
+          {% comment %}<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg>{% endcomment %}
+          {% endif %}
+        </a>
+
+        {%- if link.links != blank -%}
+          <ul class="ul-{{ link.handle }} itg_child {%-if child_link.links != blank-%}megamenu{%-endif-%}" id="ul-{{ link.handle }}">
+            {%- for child_link in link.links -%}
+              <li class="itg_child_link {{ child_link.handle }}">
+                <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                  {{ child_link.title }}
+                </a>
+
+                {%- if child_link.links != blank -%}
+                  <ul class="itg_grandchild {{ child_link.handle }}">
+                    {%- for grandchild_link in child_link.links -%}
+                      {% if grandchild_link.handle == "mounting-brackets" or grandchild_link.handle == "micro-motors" or grandchild_link.handle == "robotic-parts" or grandchild_link.handle == "b-drawer-slides-b" or grandchild_link.handle == "b-mini-linear-slide-rails-b" %}
+                      <li class="itg_grandchild_link {{ grandchild_link.handle }}">
+                        <a style="padding: 8px 5px 0 0" href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                          {{ grandchild_link.title }}
+                        </a>
+                      </li>
+                    {% else %}
+                    	<li class="itg_grandchild_link {{ grandchild_link.handle }}">
+                        	<a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                          		{{ grandchild_link.title }}
+                        	</a>
+                      </li>
+                    {% endif %}
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+      </li>
+    {%- endfor -%}
+     {%- endfor -%}
+     <li class="fg-navbar-nav__list-item">
+        <a href="/cart"
+            class="fg-nav__topper_icon-align js-veiw-cart_nav
+                    {% if template.name == 'cart' %}
+                      active
+                    {% endif %}">
+          <span uk-icon="icon: cart; ratio: 1.5" class="fg-icon-left"></span>
+          
+          {% if template contains 'cart' %}
+            <span id="cart" style="display:none" class="js-cart-item-count uk-badge fg-cart__badge-overlay" data-cart-view="data-cart-view">
+              { cart.item_count }
+            </span>
+          {% else %}
+            <span id="cart" style="display:none" class="js-cart-item-count uk-badge fg-cart__badge-overlay">
+              {{ cart.item_count }}
+            </span>
+          {% endif %}
+          
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+<style>
+
+
+  
+  
+  
+  .selectorButton{
+    z-index: 1000000;
+
+    
+
+  }
+  
+  
+  .selectorButton:hover{
+   
+    cursor: pointer;
+    
+    opacity: 0.75;
+  }
+  
+  .fg-logo-image{
+    width: 250px;
+  }
+  
+  ul.itg_main {
+    display: flex;
+    list-style-type: none;
+  }
+  li.itg_main_link {
+    padding: 0 15px;
+    position: relative;
+  }
+  /* .itg_main_link ul.itg_child {
+  position: absolute;
+  background: red;
+  width: 100%;
+  left: 0;
+  top: 0;
+  //opacity: 0;
+  } */
+  /*   li.itg_main_link.products {
+  position: inherit;
+  } */
+  li.itg_main_link.products ul.itg_child {
+    display: flex;
+    position: absolute;
+    background: #fff;
+    left: 0;
+    /*    text-align: center; */
+    width: 0;
+    opacity: 0;
+    transition: opacity .5s ease-out;
+    /*     left: 100%; */
+    font-size: 0;
+  }
+  nav.itg--nav {
+    width: 80%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding: 35px 0;
+  }
+  .itg_main li.itg_main_link.products:hover ul.itg_child {
+    opacity: 1;
+    left: 0;
+    font-size: initial;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    right: 0;
+  }
+
+  
+  
+
+  /*   li.itg_child_link {
+  list-style-type: none;
+  width: 20%;
+  padding: 0 25px;
+  } */
+  ul.itg_grandchild {
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0;
+  }
+  li.itg_child_link.linear-actuators a, li.itg_child_link.actuator-controls a,
+  li.itg_child_link.tv-lifts a, li.itg_child_link.sit-stand-desk-lifts a,
+  li.itg_child_link.linear-bearing-slides a {
+    font-weight: bold;
+    color: #000 ;
+    text-decoration: none;
+  }
+  li.itg_child_link li.itg_grandchild_link a {
+    font-weight: 400 !important;
+    color: #6f7f94 !important;
+    padding: 2.5px 0 2.5px 5px;
+    display: inline-block;
+  }
+  li.itg_main_link ul.itg_child {
+    position: absolute;
+    width: 200px;
+    background: #fff;
+    padding: 10px;
+    left: 0;
+    top: 65px;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.3s linear;
+    
+  }
+  li.itg_main_link:hover ul.itg_child { /*all except first link*/
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0s, opacity 0.3s linear;
+    
+  }
+
+  ul.itg_main {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+  }  
+  ul.itg_main li.itg_main_link a {
+    text-decoration: none;
+  }
+  .itg_main li.itg_main_link.products:hover ul.itg_child, .itg_main li.itg_main_link.products:hover ul.itg_child:hover {
+    opacity: 1;
+    left: 0;
+    font-size: initial;
+    width: 90%;
+    max-width: 100%;
+    padding: 0;
+    right: 0;
+    margin:0 auto;
+  }
+ul.itg_main li.itg_main_link> a {
+    padding: 44px 0;
+    display: inline;
+    font-size: 16px;
+    font-weight: 550;
+    text-transform: uppercase;
+}
+  .itg_child_link>a {
+    padding: 8px 0;
+    display: inline-block;
+  }
+  /* div#shopify-section-1551468985699 {
+  max-width: 100%;
+  overflow: hidden;
+  }
+  .fg-navbar-container.uk-navbar-container {
+  max-width: 100%;
+  overflow: hidden;
+  } */
+
+
+  nav.itg--nav ul li {
+    list-style: none;
+  }
+  li.itg_main_link.products ul.itg_child {
+    width: 100%;
+    left: 0;
+    right: 0;
+    position: fixed;
+    top: 170px;
+    /*     display: none; */
+    opacity: 0;
+    transition: all 1.5s ease;
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    /*transition: visibility 0s, opacity 0.3s linear;*/
+    transition: all 0s ease 0.5s;
+  }
+
+  .itg_main li.itg_main_link.products:hover ul.itg_child, .itg_main li.itg_main_link.products:hover ul.itg_child:hover {
+    opacity: 1;
+    left: 0;
+    font-size: initial;
+    width: 90%;
+    max-width: 100%;
+    padding: 0;
+    right: 0;
+    /*     display: flex; */
+    transition: all 1.5s ease;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.0s linear;
+  }
+
+.itg_child_link>a {
+    color: #6f7f94 !important;
+}
+/* li.itg_grandchild_link.mounting-brackets {
+    font-size: 19px;
+    font-weight: 800 !important;
+  color: #6f7f94
+  
+} */
+.itg_grandchild li.itg_grandchild_link.mounting-brackets a,
+.itg_grandchild li.itg_grandchild_link.micro-motors a,
+.itg_grandchild li.itg_grandchild_link.robotic-parts a {
+    font-size: 18px;
+    font-weight: 600 !important;
+    color: #6f7f94 !important;
+}
+
+
+ul.itg_main a:hover, li.itg_child_link li.itg_grandchild_link a:hover {
+    color: #0d90e8 !important;
+}
+
+
+.itg_main>li>a {
+    position: relative;
+  display: block;
+}
+.itg_main>li>a:after {
+  content: "";
+    display: block;
+    transition: transform .3s;
+    transform: scaleX(0);
+    transform-origin: left;
+    width: 100%;
+    margin-top: -5px;
+      margin-top: -5px;
+    bottom: 25px;
+    position: absolute;
+}
+.itg_main>li:hover>a:after {
+    transition: transform .3s;
+    transform: scaleX(1);
+  border-bottom: 5px solid #0d90e8;
+}
+
+span.js-cart-item-count.uk-badge.fg-cart__badge-overlay {
+    top: 5px;
+    right: -15px;
+}
+
+li.fg-navbar-nav__list-item a::after {
+    bottom: -45px;
+}
+
+/* ul.itg_grandchild.sit-stand-desk-lifts li {
+    list-style: decimal;
+  padding-left: 5px;
+}
+ul.itg_grandchild.sit-stand-desk-lifts {
+    padding-left: 20px;
+}
+
+ul.itg_grandchild.sit-stand-desk-lifts li:last-child {
+    list-style: none;
+    margin-left: -30px;
+    margin-top: 6px;
+} */
+
+  
+  
+  nav.itg--nav {
+    width: 90%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding: 35px 0;
+    /*position: absolute; Makes header come together and looks nicer, BUT hyperlink in logo stops working*/
+    right: 130px;
+}
+nav.fg-nav.uk-navbar {
+    height: 100px;
+    position: relative;
+}
+li.itg_main_link.products {
+    position: inherit;
+}
+.itg_main li.itg_main_link.products:hover ul.itg_child, .itg_main li.itg_main_link.products:hover ul.itg_child:hover {
+    position: absolute;
+    width: 100%;
+    top: 59px;
+}
+  .products li.itg_child_link {
+    list-style-type: none;
+    width: 20%;
+    padding: 10px 20px 18px 20px;
+}
+  
+  
+  
+  @media only screen and (max-width: 1205px){
+      .selectorButton {
+        display: none;
+    	}
+  }
+  
+  @media screen and (max-width: 1199px) {
+
+    nav.itg--nav {
+      display: none;
+    }
+    a.fg-cart__badge.js-veiw-cart_nav {
+      position: relative;
+    }
+    span.js-cart-item-count.uk-badge.fg-cart__badge-overlay {
+      top: -4px;
+      right: -10px;
+    }
+
+  }
+  
+  li.itg_main_link ul.ul-about-us{
+    transition-delay: 0.5s;
+  }
+  li.itg_main_link ul.ul-resources{
+    transition-delay: 0.5s;
+  }
+  li.itg_main_link ul.ul-products{
+    
+    display: flex;
+    position: absolute !important;
+    margin-top: 41px !important;
+  }
+
+ /*.ul-products{
+    display: flex;
+    position: absolute;
+    margin-top: 41px; 
+ }*/
+  
+</style>
+
+<script>
+
+
+let resourcesElement = document.getElementById("resources");
+let aboutUsElement = document.getElementById("about-us");
+let ULresourcesElement = document.getElementById("ul-resources");
+let ULaboutUsElement = document.getElementById("ul-about-us");
+  
+let productsElement = document.getElementById("products");
+let ULproductsElement = document.getElementById("ul-products");  
+resourcesElement.addEventListener("mouseover", function( event ) {
+  
+  ULaboutUsElement.style.display = 'none';
+  ULproductsElement.style.display = 'none';
+  ULresourcesElement.style.display = 'unset';
+  
+  
+});
+
+aboutUsElement.addEventListener("mouseover", function( event ) {
+  
+  ULresourcesElement.style.display = 'none';
+  ULproductsElement.style.display = 'none';
+  ULaboutUsElement.style.display = 'unset';
+  
+  
+});
+  
+productsElement.addEventListener("mouseover", function( event ) {
+  
+  ULaboutUsElement.style.display = 'none';
+  ULresourcesElement.style.display = 'none';
+  ULproductsElement.style.display = 'flex';
+  
+  
+}); 
+  
+  
+  
+  
+
+
+</script>

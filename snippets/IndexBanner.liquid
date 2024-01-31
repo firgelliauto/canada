@@ -1,0 +1,62 @@
+{{ 'jquery.min.js' | asset_url | script_tag }}
+<style>
+
+  @media only screen and (max-width:972px){
+    .fg-slide__sub-title{
+      font-size: 2vw !important;
+    }
+  }
+  
+  body {
+    overflow: scroll; /* Show scrollbars */
+  }
+
+  @media only screen and (max-width: 640px) {
+  .mobileBanner{
+    margin-top: 136px !important;
+  }
+  }
+  @media only screen and (max-width: 639px) {  
+    .firstSliderPrint{
+   		/*visibility: hidden;*/
+  	}
+  }
+  @media (min-width: 748px) and (max-width: 1040px) {  
+    .mobileBanner{
+   		margin-top: 191px !important;
+  	}
+  }
+  
+  @media (min-width: 640px) and (max-width: 747px) {  
+    .mobileBanner{
+   		margin-top: 222px !important;
+  	}
+  }
+  
+</style>
+
+<picture class="firstSliderPrint" style="z-index: 1000000" id="firstSliderID">
+    <source media="(min-width: 640px)" srcset="//cdn.shopify.com/s/files/1/0615/2193/files/Banner_for_adjustable_limit_switch_actuator_1920x.jpg?v=1653673823">
+
+    <img class="mobileBanner" src="//cdn.shopify.com/s/files/1/0615/2193/files/adjustable-2_2_1_1920x.jpg?v=1653673837" alt="MobileBanner" style="position: absolute; width: 100%; height: auto; margin-top: 170px; left: 0; top: 0">
+</picture>
+
+<script>
+
+
+
+
+ //temporary
+  if ($(window).width() < 640) {
+  
+  $( window ).on( "load", function() {
+
+
+  // document.getElementById("firstSliderID").style.display = 'none';
+  });
+
+  
+  
+  }
+
+</script>

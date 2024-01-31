@@ -1,0 +1,167 @@
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function(event) {
+    $(document).ready(function() {
+      console.log('twine', Twine);
+      'use strict';
+      var context = {};
+      Twine.reset(context).bind().refresh();
+
+      var $allLineItem = $('[data-line-item]');
+      context.product = $allLineItem;
+      context.allSelected = false;
+      context.variantStock = JSON.parse(variantStock);
+      context.variantTitles = JSON.parse(variantTitles);
+      var lineNum;
+
+      context.updateCtx = function(id, line) {
+        lineNum = 'item'+ line;
+        context[lineNum].max = context.variantStock[id];
+        context[lineNum].variantTitle = context.variantTitles[id];
+        if (context[lineNum].quantity > context[lineNum].max) {
+          context[lineNum].quantity = context[lineNum].max
+        }
+        checkSelected();
+      };
+      context.quantityStep = function(increment, line) {
+        lineNum = 'item'+ line;
+        if(increment === 'minus' && context[lineNum].quantity > 1) {
+          context[lineNum].quantity--
+        }
+        else if (increment === 'add' && context[lineNum].quantity < context[lineNum].max) {
+          context[lineNum].quantity++
+        }
+        checkSelected();
+      }
+
+      context.addCart = function() {
+        var properties = {discount_type: 'bundle'};
+        $.each(context, function(i, val) {
+          if (val.hasOwnProperty('lineItem')) {
+            if (val.quantity > 0 && val.variantId !== 'select option') {
+              push_to_queue(val.variantId, val.quantity, properties, val.productID, Shopify.moveAlong);
+            }
+          }
+        })
+        Shopify.moveAlong();
+      }
+
+      context.clearCart = function() {
+        clearCart();
+      }
+
+      var allItems = (Object.keys(context).map(function(val) {
+        if (val.includes('item')) {
+          return val
+        }
+      })).filter(function(val) {
+        return val != null
+      });
+
+      var checkSelected = function() {
+        var counter = 0;
+        var totalQty = 0;
+        $.each(allItems, function(i, val) {
+          if (context[val].variantId !== 'select option' && context[val].quantity > 0) {
+            counter++;
+            totalQty = totalQty + parseInt(context[val].quantity);
+          }
+          if(counter === allItems.length) {
+            context.allSelected = true;
+          } else {
+            context.allSelected = false;
+          }
+          context.totalQty = totalQty;
+        })
+      }
+
+      function getCart(cb) {
+        $.ajax({
+          type: 'GET',
+          url: '/cart.js',
+          dataType: 'json',
+          success: function(res){
+            console.log('success', res.items);
+            if(cb) {
+              console.log('get cartjs', res.item_count);
+              $('.js-cart-item-count').html(res.item_count);
+              $('.js-cart-item-count_form').html(res.item_count);
+            }
+          }
+        });
+      }
+      getCart();
+
+      function clearCart() {
+        $.ajax({
+          type: 'POST',
+          url: '/cart/clear.js',
+          dataType: 'json',
+          success: function(res){
+            $('.js-cart-item-count').html(res.item_count);
+            $('.js-cart-item-count_form').html(res.item_count);
+          }
+        });
+      }
+
+      function displayMsg(res) {
+        if(res.status === 422) {
+          console.log('display mess 422', res.description);
+
+        } else {
+          console.log('display mess', res);
+          getCart(true);
+        }
+      }
+
+      Shopify.queue = [];
+      Shopify.moveAlong = function() {
+        if (Shopify.queue.length) {
+          var req = Shopify.queue.shift();
+          Shopify.addItem(req.variantId,
+                          req.quantity,
+                          req.properties,
+                          req.productID,
+                          Shopify.moveAlong);
+        }
+      };
+      Shopify.addItem = function( id,
+                                  qty,
+                                  properties,
+                                  productID,
+                                  callback) {
+        var params = {
+          quantity: qty,
+          id: id
+        };
+        var proID = productID;
+        if(properties !== false){
+          params.properties = properties;
+        };
+        $.ajax({
+          type: 'POST',
+          url: '/cart/add.js',
+          dataType: 'json',
+          data: params,
+          success: function(res){
+            getCart();
+            if(typeof callback === 'function'){
+              callback();
+            }
+            displayMsg(res);
+          },
+          error: function(err){
+            displayMsg(err.responseJSON);
+          }
+        });
+      }
+      function push_to_queue(variantID, quantity, properties, productID, callback) {
+        Shopify.queue.push({
+          variantId: variantID,
+          quantity: quantity,
+          properties: properties,
+          productID: productID
+        });
+      }
+    });
+  });
+</script>
