@@ -14,7 +14,7 @@
         </a>
 
         {%- if link.links != blank -%}
-          <ul class="ul-{{ link.handle }} itg_child {%-if child_link.links != blank-%}megamenu{%-endif-%}" id="ul-{{ link.handle }}">
+        <ul style="background-color: #fafafa; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 11px; margin-left: auto; margin-right: 0;" class="ul-{{ link.handle }} itg_child {%-if child_link.links != blank-%}megamenu{%-endif-%}" id="ul-{{ link.handle }}">
             {%- for child_link in link.links -%}
               <li class="itg_child_link {{ child_link.handle }}">
                 <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
