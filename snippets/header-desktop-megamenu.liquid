@@ -1,4 +1,4 @@
-<a style="margin-left: 2px" class="selectorButton" href="https://www.firgelliauto.ca/pages/linear-actuator-selector"><img loading="lazy" style="width: 180px; margin-left: 30px" src="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/linear-actuator-selector-tool_731819f6-6968-4c01-bc13-b23487b60cf8.png?v=1626365507"></a>
+
 <nav role="navigation" class="itg--nav">
   <ul class="itg_main ">
      {%- for block in section.blocks -%}
@@ -24,7 +24,7 @@
                 {%- if child_link.links != blank -%}
                   <ul class="itg_grandchild {{ child_link.handle }}">
                     {%- for grandchild_link in child_link.links -%}
-                      {% if grandchild_link.handle == "mounting-brackets" or grandchild_link.handle == "micro-motors" or grandchild_link.handle == "robotic-parts" or grandchild_link.handle == "b-drawer-slides-b" or grandchild_link.handle == "b-mini-linear-slide-rails-b" %}
+                      {% if grandchild_link.handle == "rotary-actuators" or grandchild_link.handle == "linear-bearing-slide-rails" or grandchild_link.handle == "standing-desks" or grandchild_link.handle == "micro-motors" or grandchild_link.handle == "actuator-accessories" or grandchild_link.handle == "robotic-parts" or grandchild_link.handle == "b-drawer-slides-b" or grandchild_link.handle == "b-mini-linear-slide-rails-b" or grandchild_link.handle == "b-actuator-controls-b"%}
                       <li class="itg_grandchild_link {{ grandchild_link.handle }}">
                         <a style="padding: 8px 5px 0 0" href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
                           {{ grandchild_link.title }}
@@ -74,13 +74,38 @@
 
 
 <style>
+  #ul-products{
+    width: 867px;
+  }
 
+  .widgetButton{
+  
+    background-image: linear-gradient(to right, #0e91eb 0%, #0e91eb 30%, #0e91eb 50%, #0e91eb 100%);
+    padding: 9px 17px;
+    border-radius: 14px;
+    cursor: pointer;
+    border: none;
+    white-space: normal;
+    max-width: 220px;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    max-height: 55px;
+  }
+  .widgetButton:hover{
+    opacity: 0.6;
+  }
 
   
   
-  
+
   .selectorButton{
     z-index: 1000000;
+    text-decoration: none;
+    transition: opacity .7s ease-out;
+    -moz-transition: opacity .7s ease-out;
+    -webkit-transition: opacity .7s ease-out;
+    -o-transition: opacity .7s ease-out;
 
     
 
@@ -91,8 +116,10 @@
    
     cursor: pointer;
     
-    opacity: 0.75;
+    opacity: 0.55;
   }
+  
+  
   
   .fg-logo-image{
     width: 250px;
@@ -133,22 +160,23 @@
     width: 80%;
     align-items: center;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between !important;
     padding: 35px 0;
   }
   .itg_main li.itg_main_link.products:hover ul.itg_child {
     opacity: 1;
     left: 0;
     font-size: initial;
-    width: 100%;
-    max-width: 100%;
+    width: 95%;
+    max-width: 95%;
     padding: 0;
     right: 0;
+  } 
+  .products li.itg_child_link {
+    list-style-type: none;
+    width: 33%;
+    padding: 40px 25px;
   }
-
-  
-  
-
   /*   li.itg_child_link {
   list-style-type: none;
   width: 20%;
@@ -159,17 +187,18 @@
     text-align: left;
     padding-left: 0;
   }
-  li.itg_child_link.linear-actuators a, li.itg_child_link.actuator-controls a,
+  
+  li.itg_child_link.all-linear-actuators a, li.itg_child_link.actuator-controls a,
   li.itg_child_link.tv-lifts a, li.itg_child_link.sit-stand-desk-lifts a,
-  li.itg_child_link.linear-bearing-slides a {
+  li.itg_child_link.mounting-brackets a, li.itg_child_link.rotary-actuators a {
     font-weight: bold;
     color: #000 ;
     text-decoration: none;
   }
   li.itg_child_link li.itg_grandchild_link a {
     font-weight: 400 !important;
-    color: #6f7f94 !important;
-    padding: 2.5px 0 2.5px 5px;
+    color: #6f7f94;
+    padding: 6.5px 0 2.5px 5px;
     display: inline-block;
   }
   li.itg_main_link ul.itg_child {
@@ -182,13 +211,11 @@
     opacity: 0;
     visibility: hidden;
     transition: visibility 0s, opacity 0.3s linear;
-    
   }
-  li.itg_main_link:hover ul.itg_child { /*all except first link*/
+  li.itg_main_link:hover ul.itg_child {
     opacity: 1;
     visibility: visible;
     transition: visibility 0s, opacity 0.3s linear;
-    
   }
 
   ul.itg_main {
@@ -206,7 +233,7 @@
     left: 0;
     font-size: initial;
     width: 90%;
-    max-width: 100%;
+    max-width: 95%;
     padding: 0;
     right: 0;
     margin:0 auto;
@@ -236,7 +263,7 @@ ul.itg_main li.itg_main_link> a {
     list-style: none;
   }
   li.itg_main_link.products ul.itg_child {
-    width: 100%;
+    width: 95%;
     left: 0;
     right: 0;
     position: fixed;
@@ -247,8 +274,8 @@ ul.itg_main li.itg_main_link> a {
     z-index: 10;
     visibility: hidden;
     opacity: 0;
-    /*transition: visibility 0s, opacity 0.3s linear;*/
     transition: all 0s ease 0.5s;
+    margin: auto;
   }
 
   .itg_main li.itg_main_link.products:hover ul.itg_child, .itg_main li.itg_main_link.products:hover ul.itg_child:hover {
@@ -256,7 +283,7 @@ ul.itg_main li.itg_main_link> a {
     left: 0;
     font-size: initial;
     width: 90%;
-    max-width: 100%;
+    max-width: 95%;
     padding: 0;
     right: 0;
     /*     display: flex; */
@@ -267,7 +294,7 @@ ul.itg_main li.itg_main_link> a {
   }
 
 .itg_child_link>a {
-    color: #6f7f94 !important;
+    color: #6f7f94;
 }
 /* li.itg_grandchild_link.mounting-brackets {
     font-size: 19px;
@@ -277,10 +304,14 @@ ul.itg_main li.itg_main_link> a {
 } */
 .itg_grandchild li.itg_grandchild_link.mounting-brackets a,
 .itg_grandchild li.itg_grandchild_link.micro-motors a,
-.itg_grandchild li.itg_grandchild_link.robotic-parts a {
-    font-size: 18px;
-    font-weight: 600 !important;
-    color: #6f7f94 !important;
+.itg_grandchild li.itg_grandchild_link.actuator-accessories a,
+.itg_grandchild li.itg_grandchild_link.standing-desks a,
+.itg_grandchild li.itg_grandchild_link.linear-bearing-slide-rails a,
+.itg_grandchild li.itg_grandchild_link.robotic-parts a,
+.itg_grandchild li.itg_grandchild_link.rotary-actuators a {
+    font-size: 16px;
+    font-weight: 700 !important;
+    color: rgb(50,58,66) !important;
 }
 
 
@@ -354,18 +385,18 @@ li.itg_main_link.products {
 }
 .itg_main li.itg_main_link.products:hover ul.itg_child, .itg_main li.itg_main_link.products:hover ul.itg_child:hover {
     position: absolute;
-    width: 100%;
+    width: 74%;
     top: 59px;
 }
   .products li.itg_child_link {
     list-style-type: none;
-    width: 20%;
-    padding: 10px 20px 18px 20px;
+    width: 33%;
+    padding: 15px 18px 40px 18px;
 }
   
   
   
-  @media only screen and (max-width: 1205px){
+  @media only screen and (max-width: 1215px){
       .selectorButton {
         display: none;
     	}
@@ -399,12 +430,16 @@ li.itg_main_link.products {
     margin-top: 41px !important;
   }
 
- /*.ul-products{
-    display: flex;
-    position: absolute;
-    margin-top: 41px; 
- }*/
   
+  ul.itg_main li.itg_main_link a {
+    color: #323a42;
+  }
+  li.itg_child_link li.itg_grandchild_link a {
+    color: #323a42;
+  }
+  .itg_child_link a:hover {
+    color: #1e87f0 !important;
+  }
 </style>
 
 <script>
