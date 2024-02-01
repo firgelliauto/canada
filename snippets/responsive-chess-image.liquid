@@ -8,9 +8,9 @@
 <img  class=""
       data-src="{{ block.settings.image.src | img_url: '700x400' }}"
       data-srcset="{% include 'responsive-srcset-image-standard', image: block.settings.image %}"
-      data-sizes="auto" alt="{{ block.settings.image.alt | escape }}"
+      alt="{{ block.settings.image.alt | escape }}"
       data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-      data-sizes="auto"
+      
       uk-img>
 {%- if image_url -%}
   </a>
