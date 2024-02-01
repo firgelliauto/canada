@@ -24,7 +24,7 @@
                 {%- if child_link.links != blank -%}
                   <ul class="itg_grandchild {{ child_link.handle }}">
                     {%- for grandchild_link in child_link.links -%}
-                      {% if grandchild_link.handle == "mounting-brackets" or grandchild_link.handle == "micro-motors" or grandchild_link.handle == "robotic-parts" or grandchild_link.handle == "b-drawer-slides-b" or grandchild_link.handle == "b-mini-linear-slide-rails-b" %}
+                      {% if grandchild_link.handle == "rotary-actuators" or grandchild_link.handle == "linear-bearing-slide-rails" or grandchild_link.handle == "standing-desks" or grandchild_link.handle == "micro-motors" or grandchild_link.handle == "actuator-accessories" or grandchild_link.handle == "robotic-parts" or grandchild_link.handle == "b-drawer-slides-b" or grandchild_link.handle == "b-mini-linear-slide-rails-b" or grandchild_link.handle == "b-actuator-controls-b"%}
                       <li class="itg_grandchild_link {{ grandchild_link.handle }}">
                         <a style="padding: 8px 5px 0 0" href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
                           {{ grandchild_link.title }}
