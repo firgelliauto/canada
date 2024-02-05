@@ -169,8 +169,8 @@
             "type": "select",
             "settings": {
               "hide_slide": false,
-              "heading": "FIRGELLI New Product",
-              "sub_title": "Super Duty Linear Actuators",
+              "heading": "Super Duty Linear Actuators",
+              "sub_title": "FIRGELLI New Product",
               "section_text": "",
               "text_align": "uk-text-left",
               "text_color_2": "Black !important",
