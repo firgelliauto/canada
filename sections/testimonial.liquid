@@ -21,7 +21,7 @@
     {% assign button_color = 'uk-button-primary' %}
   {% endif %}
 
-  <section  id="collection-icon-section" class=" fg-section-full-width uk-section uk-background-cover uk-box-shadow-xlarge {{ backgroud_color }}" {{ backgroud_image }}>
+  <section  id="testimonial" class=" fg-section-full-width uk-section uk-background-cover uk-box-shadow-xlarge {{ backgroud_color }}" {{ backgroud_image }} hidden>
     <div class="uk-container">
       <div class="uk-flex uk-flex-center" uk-grid>
         <div class="uk-width-2-3@s fg-section-testimonial" >
@@ -165,3 +165,8 @@
     ]
   }
 {% endschema %}
+<script>
+  $(document).ready(function () {
+    $("#testimonial").removeAttr('hidden');
+  });
+</script>
