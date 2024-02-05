@@ -8,7 +8,7 @@
   Theme Store optional settings
   - Heading: title of the featured collection section
 {%- endcomment -%}
-<section id="featured-collection" class="featured-collection uk-section" hidden>
+<section id="featured-collection" class="featured-collection uk-section">
   <div class="uk-container" style="min-height: 770px" >
     {% if section.settings.collection == collection.handle %}
       {% assign title = section.settings.title_alt %}
@@ -129,6 +129,6 @@
 {% endschema %}
 <script>
   $(document).ready(function () {
-    $("#featured-collection").removeAttr('hidden');
+    //$("#featured-collection").removeAttr('hidden');
   });
 </script>
