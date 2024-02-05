@@ -14,7 +14,7 @@
 
     {%- assign collection = collections[section.settings.collection] -%}
     {% assign limit_count = section.settings.limit_count %}
-    <div class="fg-collection-grid js-filter uk-grid-small uk-grid-match" uk-grid>
+    <div class="fg-collection-grid js-filter uk-grid-small uk-grid-match uk-grid" uk-grid>
       {% for product in collection.products limit: limit_count %}
         {% assign card_item = product %}
         {% include 'card-product' %}
