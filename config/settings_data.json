@@ -1,1 +1,1770 @@
-{"current":{"pluginseo_pageTitleTruncateChars":"999","pluginseo_pageTitleEnableAppender":true,"pluginseo_pageTitleAppenderTemplate":"| %% shop.name %%","pluginseo_pageTitleAppenderTargetLength":"70","pluginseo_pageTitleTemplateApplyToAll":false,"pluginseo_pageTitleDefaultTemplate":"%% page_title %%","pluginseo_pageTitleIndexTemplate":"%% shop.name %%","pluginseo_pageTitlePageTemplate":"","pluginseo_pageTitleSearchTemplate":"Buy %% search.terms %% from %% shop.name %%","pluginseo_pageTitleProductTemplate":"","pluginseo_pageTitleCollectionTemplate":"","pluginseo_pageTitleBlogTemplate":"","pluginseo_pageTitleArticleTemplate":"","pluginseo_pageTitle404Template":"","pluginseo_metaDescriptionTruncateChars":"170","pluginseo_metaDescriptionTemplateApplyToAll":false,"pluginseo_metaDescriptionDefaultTemplate":"%% page_description %%","pluginseo_metaDescriptionIndexTemplate":"Shop online for our range of Linear Actuators, TV lifts, sit stand desks, drop down TV lifts","pluginseo_metaDescriptionPageTemplate":"","pluginseo_metaDescriptionSearchTemplate":"","pluginseo_metaDescriptionProductTemplate":"","pluginseo_metaDescriptionCollectionTemplate":"","pluginseo_metaDescriptionBlogTemplate":"","pluginseo_metaDescriptionArticleTemplate":"","pluginseo_metaDescription404Template":"","pluginseo_structuredDataDisplayLogo":true,"pluginseo_structuredDataSocialProfileLinks":"https:\/\/www.facebook.com\/FirgelliAuto\/\nhttps:\/\/twitter.com\/firgelliauto\nhttps:\/\/www.youtube.com\/channel\/UCdHMSmuYajOcVu_2OlzP2aw\nhttps:\/\/www.instagram.com\/firgelli\/","favicon":"shopify:\/\/shop_images\/firgelli-favicon-min_d514039b-aaa4-41ad-b14c-b5523a75d044.png","display_holiday_hours":false,"let_snow":false,"snow_level":"snowy","santa_hat":false,"display_holly":false,"display_holly_collection":false,"christmas_colors_collection":false,"warm_buttons":false,"warm_collection_icons":false,"collection_btn_icon":"default","tagline":"","tagline_letter_spacing":1,"tagline_style":"fg-tagline_line","announcement_display":false,"announcement_threat_level":"pandemic","announcement_title":"The health and wellbeing of our community is what matters most","announcement_body":"<p><b>With things changing by the minute, we are making some important changes. <\/b>\n<\/p>\n<p>\nEffective immediately until further notice:\n<\/p>\n<ul>\n<li>\nNo order pickups at any of our locations\n<\/li>\n<li>\nWe are not accepting any visitors at any locations\n<\/li>\n<li>\nWe are unable to inspect and process returns until the end of July\n<\/li>\n<li>\nExpect delays for international shipments\n<\/li>\n<li>\nExpect up to 3 weeks delay for ground shipments\n<\/li>\n<li>\n<b>Effective March 26, 2020 and until further notice, UPS Suspension of Service Guarantee for all shipments from any origin to any destination. <\/b>(meaning that overnight, 2 day, and 3 day select may or may not be delivered within those timeframes)\n<\/li>\n<\/ul>","announcement_footer":"<p>As a community we can work together to take the steps required to minimize the duration and impact of this global crisis. \n<\/p>\n<p>Thank you for your continued patience and support as we all work through this unprecedented situation together.\n<\/p>","announcement_btn_text":"COVID-19 Notice","share_image":"","show_social":true,"social_sharing_blog":true,"share_facebook":true,"share_twitter":true,"share_pinterest":true,"share_snapchat":true,"share_linkedin":false,"share_youtube":true,"twitter_link":"https:\/\/twitter.com\/firgelliauto","facebook_link":"https:\/\/www.facebook.com\/FirgelliAuto\/","pinterest_link":"https:\/\/www.pinterest.com\/firgelliGroup\/","instagram_link":"https:\/\/www.instagram.com\/firgelli\/","linkedin_link":"","snapchat_link":"","tumblr_link":"","youtube_link":"https:\/\/www.youtube.com\/user\/FirgelliAuto\/","vimeo_link":"","pinterest_board_url":"firgelliGroup","pin_board_homepage":false,"pin_board_home_url":"ideas-for-the-house","pin_board_collectionpage":false,"pin_board_collection_url":"ideas-for-the-house","pin_board_productpage":false,"pin_board_product_url":"ideas-for-the-house","font_family":"roboto_n4","collection":"premium-linear-actuators","image_actuators":"shopify:\/\/shop_images\/collection-group-actuator.png","image_lifts":"shopify:\/\/shop_images\/collection-group-lift.png","image_accessories":"shopify:\/\/shop_images\/collection-group-accessories.png","about_title":"","about_text":"<p>Write some basic information about the company.<\/p>","cart_page_heading":"Your Cart","cart_notes_enable":true,"checkout_submit_footer_note":"Shipping will be calculated in Checkout","checkout_submit_button_label":"proceed to checkout","shipping_calculator_heading":"Shipping Cost Estimator","shipping_calculator_submit_button_label":"Estimate","enable_discount_message":true,"show_multiple_currencies":false,"currency_format":"money_with_currency_format","supported_currencies":"CAD USD EUR","default_currency":"CAD","digi_cert":"","discount_title":"Bulk Discount","discount_message":"Save on your order when purchasing our Actuators in large volumes. Discount will be calculated at checkout.","discount_tier_count":4,"discount_percent_1":20,"discount_quantity_1":11,"discount_percent_2":25,"discount_quantity_2":31,"discount_percent_3":30,"discount_quantity_3":50,"discount_percent_4":40,"discount_quantity_4":200,"discount_percent_5":0,"discount_quantity_5":0,"display_checkout_shipping_message":true,"checkout_shipping_message":"*Due to circumstances related to COVID-19, additional delays may occur with carriers delivering on our behalf and therefore delivery times will not be guaranteed.","checkout_header_image":"","checkout_logo_image":"","checkout_logo_position":"left","checkout_logo_size":"medium","checkout_body_background_image":"","checkout_body_background_color":"#ffffff","checkout_input_background_color_mode":"white","checkout_sidebar_background_image":"","checkout_sidebar_background_color":"#fafafa","checkout_heading_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_body_font":"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'","checkout_accent_color":"#197bbd","checkout_button_color":"#197bbd","checkout_error_color":"#e32c2b","homepage_h1":"Motorize your idea's with Firgelli Linear Actuators. TV Lifts, Standind Desk Lifts, and Slide rails","homepage_h2":"Firgelli Automations manufactures Premium Linear Actuators, TV Lifts, and Desk lifts for every Industry. Shop online and we ship same day.","social_twitter_link":"http:\/\/twitter.com\/FirgelliAuto","social_facebook_link":"http:\/\/www.facebook.com\/FirgelliAuto","social_pinterest_link":"http:\/\/pinterest.com\/","social_instagram_link":"https:\/\/www.instagram.com\/firgelli\/","social_snapchat_link":"","social_tumblr_link":"http:\/\/tumblr.com\/","social_youtube_link":"https:\/\/www.youtube.com\/user\/FirgelliAuto\/","social_vimeo_link":"http:\/\/vimeo.com\/","collection_desc_position":true,"font_heading":"roboto_n4","font_heading_base_size":26,"font_body":"roboto_n4","font_body_base_size":16,"sections":{"footer":{"type":"footer","blocks":{"1554155228503":{"type":"select","settings":{"linklist":"about-firgelli"}},"1554157396308":{"type":"select","disabled":true,"settings":{"linklist":"firgelli-products"}}},"block_order":["1554155228503","1554157396308"],"settings":{"show_payment_icons":false,"background_color":true}},"1551468985699":{"type":"slider","blocks":{"1551468988735":{"type":"select","settings":{"hide_slide":false,"heading":"Precision Engineered Linear Actuators","sub_title":"","section_text":"<p>Motorize your ideas with Electric  Linear Actuators<\/p>","text_align":"uk-text-left","text_color_2":"Black !important","padding_right":"6%","padding_left":"0%","text_width":"55%","smaller_heading":false,"text_color":"uk-dark","text_box_shadow":"shadow_none","cta":"cta_custom","cta_text":"See Our Linear Actuators","cta_custom_url":"https:\/\/www.firgelliauto.ca\/collections\/linear-actuators","content_type":"image","image":"shopify:\/\/shop_images\/banner_without_text_838063f3-826d-4764-9d87-be55e7be2924.jpg","image_mobile":"shopify:\/\/shop_images\/mobilebanner.webp","gradient_filter":false,"video_url":"https:\/\/youtu.be\/UessAh9I-2o","background_color":"fg-background-gradient"}}},"block_order":["1551468988735"],"settings":{"display_slider":true,"auto_play":false,"navigation":true,"auto_play_timer":6,"animation_type":"slide","text_transition":false,"ken_burns":false}},"1551726336660":{"type":"collection-list","blocks":{"0d9f4d90-9251-433d-bbe9-5fb36c588eb0":{"type":"select","settings":{"collection_type":"super_duty","collection_title":"Super Duty","collection_title_seo":"Super Duty Actuators","alternative_url":"https:\/\/www.firgelliauto.ca\/products\/super-duty-actuators","collection_url":""}},"1551726340350":{"type":"select","settings":{"collection_type":"premium","collection_title":"Premium","collection_title_seo":"premium actuators","alternative_url":"","collection_url":"premium-linear-actuators"}},"1551726343005":{"type":"select","settings":{"collection_type":"bullet","collection_title":"Bullet","collection_title_seo":"bullet series actuators","alternative_url":"","collection_url":"bullet-actuators"}},"1551726348724":{"type":"select","settings":{"collection_type":"linear","collection_title":"Linear","collection_title_seo":"linear actuators","alternative_url":"","collection_url":"linear-actuators"}},"1551726356148":{"type":"select","settings":{"collection_type":"feedback","collection_title":"feedback","collection_title_seo":"feedback actuators","alternative_url":"","collection_url":"feedback-actuators"}},"1551820436379":{"type":"select","settings":{"collection_type":"track","collection_title":"track","collection_title_seo":"track actuators","alternative_url":"","collection_url":"track-actuators"}},"1551820447702":{"type":"select","settings":{"collection_type":"column","collection_title":"column","collection_title_seo":"column lifts","alternative_url":"","collection_url":"column-lifts"}},"1551820467302":{"type":"select","settings":{"collection_type":"bracket","collection_title":"brackets","collection_title_seo":"","alternative_url":"","collection_url":"brackets"}},"1551820482941":{"type":"select","settings":{"collection_type":"switch","collection_title":"Accessories","collection_title_seo":"","alternative_url":"","collection_url":"accessories"}},"1551822108858":{"type":"select","settings":{"collection_type":"slide","collection_title":"Slides","collection_title_seo":"slide rails","alternative_url":"","collection_url":"slide-rails"}},"1551822201329":{"type":"select","settings":{"collection_type":"tv","collection_title":"Tv lifts","collection_title_seo":"","alternative_url":"","collection_url":"tv-lifts"}},"1551822213451":{"type":"select","settings":{"collection_type":"table","collection_title":"table lifts","collection_title_seo":"","alternative_url":"","collection_url":"desk-lifts"}},"1552586646270":{"type":"select","settings":{"collection_type":"controller","collection_title":"Arduinos","collection_title_seo":"Arduino microcontrollers","alternative_url":"","collection_url":"control-systems"}},"1560803830245":{"type":"select","settings":{"collection_type":"motor","collection_title":"Micromotors","collection_title_seo":"","alternative_url":"","collection_url":"micro-motors"}}},"block_order":["0d9f4d90-9251-433d-bbe9-5fb36c588eb0","1551726340350","1551726343005","1551726348724","1551726356148","1551820436379","1551820447702","1551820467302","1551820482941","1551822108858","1551822201329","1551822213451","1552586646270","1560803830245"],"settings":{"display_collection_section":true,"image_type":"image_type_static","title":"FIRGELLI® Electric Linear Actuator Technology","sub_title":"Linear Actuators - TV Lifts - Linear Slides - Actuator Controllers","hover_effect":""}},"1551983715707":{"type":"featured-collection","settings":{"title":"Featured Products","sub_title":"","limit_count":10,"collection":"featured"}},"1552001990728":{"type":"featured-collection-slider","settings":{"title":"Linear Actuators","sub_title":"","display_stock":true,"limit_count":8,"grid_size":4,"collection":"linear-actuators","title_alt":"","sub_title_alt":"","collection_alt":""}},"product":{"type":"product","settings":{"show_share_buttons":true}},"1552411717585":{"type":"section-chess","blocks":{"1552411721488":{"type":"select","settings":{"uk_light":false,"first_order":false,"title":"About Us","image":"shopify:\/\/shop_images\/chess_imagesAbout_Us.jpg","image_caption":"","image_title":"","section_text":"<p><strong>Firgelli Automations was founded in 2002 by Robbie Dickson who invented the first Linear Actuators that were light, compact and durable enough to be sold and shipped online to the general public.<\/strong><\/p><p><\/p><p>The brand is now recognized word-wide as a leading manufacturer of<a href=\"https:\/\/www.firgelliauto.com\/collections\/linear-actuators\" title=\" Linear Actuators\" target=\"_blank\"> Linear Actuators<\/a>, <a href=\"https:\/\/www.firgelliauto.com\/collections\/tv-lifts\" title=\"TV Lifts\" target=\"_blank\">TV Lifts<\/a> and many other products to support a wide range of industries and applications. We have a large inventory of Actuators for every purpose and we continue to develop and design new models to add to our catalogue. Our team consists of Engineers and Customer\/Tech Support staff dedicated to providing the best products and knowledge to our customers. We enjoy listening to customer feedback and are always excited to discovered what our customers are doing with our actuators.<\/p>","link_text":"Learn More","link_url":"shopify:\/\/pages\/about-us","enable_custom_url":false,"custom_link_url":""}},"1552411808045":{"type":"select","settings":{"uk_light":false,"first_order":true,"title":"Our Industries","image":"shopify:\/\/shop_images\/chess_imagesOur_Industries.jpg","image_caption":"","image_title":"","section_text":"<p><strong>Our products have been used in every application you can imagine from home automation to space exploration.<\/strong><\/p><p>Home automation has increased in popularity over the past few years with new smart home products and software emerging for many applications. The barrier for entry to your utopian home or any “smart” application is the high cost as these solutions, though convenient, are quite expensive for the average consumer. With our range of actuators, accessories and world-class tech support, you’ll be able to experience the benefits of automation at the fraction of the cost. Whether you need to save space by lifting a TV in and out of view or save lives by lifting heavy, bullet proof windows on your armored vehicles, Firgelli Automations has the best products for your project.<\/p>","link_text":"Our Actuators","link_url":"shopify:\/\/collections\/linear-actuators","enable_custom_url":false,"custom_link_url":""}},"1552411853234":{"type":"select","settings":{"uk_light":false,"first_order":false,"title":"Customization","image":"shopify:\/\/shop_images\/colors-customized-anodized-actuator.jpg","image_caption":"Customized electric Linear Actuators","image_title":"Customized electric Linear Actuators","section_text":"<p>We can develop custom motion control solutions according to your requirements<\/p><p>We create custom linear actuators that suit specific application requirements of customers. We have in-house modeling and testing capabilities, where linear actuators and Controllers can be customized to your specifications. Customizing settings such as the stroke length, the connector or the rod ends can always be accommodated to support manufacturers special needs.<\/p>","link_text":"Customized electric Linear Actuators","link_url":"https:\/\/www.firgelliauto.com\/pages\/custom-linear-actuators","enable_custom_url":false,"custom_link_url":""}},"1553722962585":{"type":"select","settings":{"uk_light":false,"first_order":true,"title":"Customer Support","image":"shopify:\/\/shop_images\/chess_imagesCustomer_Support.jpg","image_caption":"","image_title":"","section_text":"<p><strong>Our knowledgeable support team are highly trained in our products with many years of experience helping customers find the right actuators for their projects.<br\/> <\/strong><\/p><p>We’re committed to customer satisfaction with a readiness to answer your questions whether you’re a seasoned engineer or an entry-level hobbyist. Give us a call or email us your questions and we can begin helping you get your project in motion.<\/p>","link_text":"Contact Support","link_url":"shopify:\/\/pages\/support","enable_custom_url":false,"custom_link_url":""}}},"block_order":["1552411721488","1552411808045","1552411853234","1553722962585"],"settings":{"section_padding":true}},"1552414619197":{"type":"section-full-width","blocks":{"1552414642249":{"type":"select","settings":{"uk_light":false,"title":"Need Help Finding what you're looking for?","image_type":"left_side","background_color":"uk-background-muted","image":"shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg","section_text":"<p><strong>We are committed to excellent customer service to help get you&#x27;r project in motion. Let our friendly staff help you select the best actuator for you projects. <\/strong><\/p>","light_button":false,"link_text":"Contact Us","link_url":"shopify:\/\/pages\/contact-us","enable_custom_url":false,"custom_link_url":""}}},"block_order":["1552414642249"],"settings":{"display_full_width_section":false}},"section-chess":{"type":"section-chess","blocks":{"1552605004875":{"type":"select","settings":{"uk_light":false,"first_order":false,"title":"Internet of Things","image":"shopify:\/\/shop_images\/chess_imagesCustomizations.jpg","image_caption":"","image_title":"","section_text":"<p><strong>Firgelli was built around the concept of &lsquo;the internet of things&rsquo;.<\/strong><\/p>\n<p>Our inventory includes everything needed to integrate our actuators into your real-world projects. We carry a large assortment of custom mounting brackets and slide rails to install our actuators to just about any surface. We also carry power supplies, Arduino microcontrollers, motors and switches so you can get started immediately on getting your project in motion.<\/p>","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"1553632957505":{"type":"select","settings":{"uk_light":false,"first_order":true,"title":"Variety and Same Day Shipping","image":"shopify:\/\/shop_images\/chess_imagesOur_Industries.jpg","image_caption":"","image_title":"","section_text":"<p><strong>We provide clients with a wide range of linear actuators, varying in speed, stroke, length, force, and size.<\/strong><\/p>\n<p>&nbsp;They are UL recognized, and because we are the manufacturer you get direct manufacturers pricing. We accept all major credit cards and with same day shipping availlable<\/p>","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}}},"block_order":["1552605004875","1553632957505"],"settings":{"section_padding":true}},"section-full-width":{"type":"section-full-width","blocks":{"1553028044960":{"type":"select","settings":{"uk_light":true,"title":"Need Help Finding the Right Actuator?","image_type":"left_side","background_color":"fg-background-gradient","image":"shopify:\/\/shop_images\/Fig-A_force_calculator_large_59c14f72-9132-4499-9f4d-eef2683ca598.png","section_text":"<p><strong>We precision engineer and manufacture our products so you get direct manufacturers pricing. We offer same day shipping and&nbsp;knowledgeable customer support.<\/strong><\/p>\n<p><strong>Give us a call or email us and we'll be happy to help&nbsp;you find the best actuator for your project.<\/strong><\/p>","light_button":false,"link_text":"Contact Us","link_url":"shopify:\/\/pages\/contact-us","enable_custom_url":false,"custom_link_url":""}}},"block_order":["1553028044960"],"settings":{"display_full_width_section":false}},"featured-collection-slider":{"type":"featured-collection-slider","settings":{"title":"You Might Also Like These","sub_title":"","display_stock":true,"limit_count":7,"grid_size":5,"collection":"brackets","title_alt":"Linear Actuators","sub_title_alt":"","collection_alt":"linear-actuators"}},"social-share":{"type":"social-share","settings":{"show_share_buttons":true}},"1553102910116":{"type":"hero-featured","blocks":{"1553102949632":{"type":"select","settings":{"position_content":"uk-flex-left","text_center":false,"uk_light":true,"text_shadow":true,"title":"Linear Actuators  for Every Application","sub_title":"Precision Engineered","sub_title_position":true,"section_text":"We manufacturer the largest inventory of Linear Actuators.\nSame day shipping at manufacturers pricing.","shop_now_link_text":"Shop Now","collection":"linear-actuators","secondary_link_text":"All Collections","enable_custom_url":false,"custom_link_url":"","background_type":true,"background_color":"fg-mute-background-blue","image":"shopify:\/\/shop_images\/hero-narrow.jpg","enable_image_overlay":true,"image_overlay_color":"light","featured_product_badge":"Featured Actuator","display_featured_product":true,"product":"premium-linear-actuators"}}},"block_order":["1553102949632"],"settings":{"display_hero_featured":false}},"1553185368562":{"type":"testimonial","blocks":{"1553185373277":{"type":"select","settings":{"uk_light":false,"section_text":"I have been very pleased with the mechanical action of the actuators.  They seem to have little or no backlash, which seems to be attributable to their plastic worm gear on metal worm, plastic nut on the screw, and good overall design and construction.  We've been able to reliably run them at very low voltages (~2V) and still get good, smooth motion.","customer_name":"Scott","company_name":"NASA Research Center","light_button":false,"link_text":"Customer Feedback","link_url":"shopify:\/\/pages\/customer-feedback","enable_custom_url":false,"custom_link_url":"","enable_customer_logo":false,"custom_banner_title":"Trusted by these top brands","background_type":false,"background_color":"uk-background-muted"}}},"block_order":["1553185373277"],"settings":{}},"section-three-col":{"type":"section-three-col","blocks":{"1553206596297":{"type":"select","settings":{"title":"We Promise","section_text":"<ul>\n<li>First Class Service<\/li>\n<li>Top Grade Quality<\/li>\n<li>A Business First Approach<\/li>\n<\/ul>","image":"shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"1553206645946":{"type":"select","settings":{"title":"By Providing","section_text":"<ul>\n<li>Friendly and Helpful Staff<\/li>\n<li>Tested and Proven Product<\/li>\n<li>Support for Special Applications<\/li>\n<\/ul>","image":"shopify:\/\/shop_images\/Hero_smiling_couple_2x_14d5b72c-0c13-4cfe-bcbf-135344e34687.jpg","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"1553206697737":{"type":"select","settings":{"title":"So You Achieve","section_text":"<ul>\n<li>Quick and Simple Solutions<\/li>\n<li>A Reliable Care-free Experience<\/li>\n<li>A Higher Return on Investment<\/li>\n<\/ul>","image":"shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}}},"block_order":["1553206596297","1553206645946","1553206697737"],"settings":{"title":"What We Aim For","sub_title":"<p>Since its inception in 2004, Firgelli Automations as developed a wide range of products to match an ever-changing landscape of applications, all to offer you the best possible return on investment. We seek to provide high quality commodities which serve you best, backed by first-rate customer service.\nWe stock our products in a secure facility, and offer same day shipping on orders placed prior to our shipping cut-off. Let Firgelli Automations 'Put Your Dreams in Motion'.<\/p>","heading_margin":true,"enable_card":false,"center_text":false}},"page-heading":{"type":"page-heading","blocks":{"1553620894437":{"type":"select","settings":{"uk_light":false,"title":"","background_type":true,"background_color":"uk-background-primary","image":"shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg","light_button":false}}},"block_order":["1553620894437"],"settings":{}},"collection-list-cards":{"type":"collection-list-cards","blocks":{"1553622683910":{"type":"select","settings":{"collection_type":"linear","card_width":"uk-width-1-1@s","collection_title":"Linear Actuators","collection_text":"<p>We provide clients with a wide range of linear actuators, varying in speed, stroke, length, force, and size. For your convenience, we have divided this vast product line-up into several categories for quick and easy procurement:<\/p>\n<ul>\n<li>Rod-Style Actuators<\/li>\n<li>Track-Type Actuators<\/li>\n<li>Mini Actuators<\/li>\n<li>Feedback Actuators<\/li>\n<li>Column Lifts<\/li>\n<\/ul>","collection_url":"linear-actuators"}},"1553629616688":{"type":"select","settings":{"collection_type":"tv","card_width":"uk-width-1-2@s","collection_title":"TV Lifts","collection_text":"<p>\nSometimes having a big screen isn't enough. If you are anything like the thousands of people who have decided to take their entertainment to a new level (pun intended) you may be interested in attaching your television screen to a Firgelli Automations TV lift. We carry lift systems to drop your screen down from your ceiling, as well as push up through your floor, cabinet, or other structure. Easy to install and shipped with all the equipment you will need to install your TV as well as run the unit: from universal mounting brackets, control boxes, remote controls, sensors, to power adaptors - we have you covered.\n<\/p>","collection_url":"tv-lifts"}},"1553630377781":{"type":"select","settings":{"collection_type":"column","card_width":"uk-width-1-2@s","collection_title":"Column Lifts","collection_text":"<p>\nThe latest addition to the Firgelli Automations product family is our column lift units. Featuring the latest in linear motion technology with quieter motors, programmable extended lengths, telescopic capabilities, and plug and play ease. These units are ideal for applications with automated home furniture, custom vehicles, in-air entertainment, large scale robotics, and more.\n<\/p>","collection_url":""}},"1553630331624":{"type":"select","settings":{"collection_type":"table","card_width":"uk-width-1-1@s","collection_title":"","collection_text":"<p>\nCurrently trending at the workplace and at home is the use of the electric table lift. Our kits make it easy to convert our existing desk or table into an electric marvel in no time at all. Electric table lifts will change the working height of your surface allowing you to stand or sit while using your desk, reducing the effects of back pain, neck strain, wrist damage, and promoting proper blood circulation throughout your body.\n<\/p>","collection_url":""}},"1553629568617":{"type":"select","settings":{"collection_type":"controller","card_width":"uk-width-1-1@s","collection_title":"Control Systems","collection_text":"<p>\nAll linear motion devices, whether meant to lift a tonneau cover on a truck, a boat hatch on a yacht, or a flat screen TV, require an electrical system to tell it what to do. Firgelli Automations provides an extensive array of simple and complex control systems to meet needs of a diverse range of applications.\n\n<\/p>","collection_url":"control-systems"}},"1553630427523":{"type":"select","settings":{"collection_type":"slide","card_width":"uk-width-1-2@s","collection_title":"","collection_text":"<p>\nIn keeping with the theme of linear motion, Firgelli Automations offers three lines of linear slide rails, also known as guide rails, which clients often utilize to stabilize their automation projects and applications. Used for applications ranging from electric roofs for off-road trucks, to sliding bookshelves, vertical doors, automated paintings, cabinets, adjustable computer monitors, custom TV lifts, and so much more. Wherever you see linear motion, there is a component being used to keep it steady. \n<\/p>","collection_url":""}},"1553630467806":{"type":"select","settings":{"collection_type":"bracket","card_width":"uk-width-1-2@s","collection_title":"Mounting Brackets","collection_text":"<p>\nOften forgotten by suppliers, is the need to easily mount and install your products. When making the step to invest in your new linear motion solution, consider this: your mounting brackets must be as versatile as your application. We understand that your project is as strong as its weakest component. Keeping this in mind, we have developed a select range of brackets which are specifically designed with their respective actuators. Most brackets utilize the strength of clevis-type mounting, however some will go as far as attaching to the body of the linear actuator itself; this provides flexibility in mounting and gives you the most valuable commodity known to man: options. \n<\/p>","collection_url":""}},"1553630495568":{"type":"select","settings":{"collection_type":"accessory","card_width":"uk-width-2-3@s","collection_title":"","collection_text":"<p>\nSometimes the control systems, brackets, and innovative linear actuators aren't enough. This is the category where you will find all that your automation project is lacking. The little odds and ends are as important as the whole, and at Firgelli Automations we do not overlook the small stuff. Limit switches, relays, pulley cables, all of which can be vital to the design and operation of an industrial or home automation system.\n<\/p>","collection_url":""}}},"block_order":["1553622683910","1553629616688","1553630377781","1553630331624","1553629568617","1553630427523","1553630467806","1553630495568"],"settings":{"title":"Products We Offer","sub_title":"asdfasdfasdf","enable_card":true}},"collection-cards":{"type":"collection-cards","settings":{"disable_filter":false}},"contact-phones":{"type":"contact-phones","blocks":{"1554148281153":{"type":"select","settings":{"phone_or_fax":"Phone","phone_number":"16045428945"}},"1554148296781":{"type":"select","settings":{"phone_or_fax":"Phone","phone_number":"18662260465"}}},"block_order":["1554148281153","1554148296781"],"settings":{"office_hours_open":"8AM","office_hours_close":"4PM","office_day_start":"Monday","office_day_end":"Friday","phone_ext_one":"Sales","phone_ext_two":"","display_phone_notice":false,"phone_notice":"Due to the COVID-19 pandemic phone support will be temporarily unavailable. Please contact us via email for technical support.","phone_footer":""}},"contact-email":{"type":"contact-email","blocks":{"1554150702465":{"type":"select","settings":{"email_type":"General Inquiries","other_title":"","email_address":"sales@firgelliauto.com"}},"1554150952026":{"type":"select","settings":{"email_type":"Technical Support","other_title":"","email_address":"support@firgelliauto.com"}}},"block_order":["1554150702465","1554150952026"],"settings":{}},"contact-address":{"type":"contact-address","blocks":{"1554151910425":{"type":"select","settings":{"location":"<p><strong>Canada<\/strong><\/p>\n<p>Firgelli Automations<\/p>\n<p>116-15272 Croydon Drive<\/p>\n<p>Surrey, BC V3S&nbsp;0Z5<\/p>\n<p>Canada<\/p>"}}},"block_order":["1554151910425"],"settings":{}},"header":{"type":"header","blocks":{"1555456527223":{"type":"select","settings":{"linklist":"itg-menu"}}},"block_order":["1555456527223"],"settings":{"display_holiday_hours":true}},"section-blog":{"type":"section-blog","settings":{"display_blog":false,"title":"","sub_title":"","article_count":5}},"section-blog_manual":{"type":"section-blog_manual","blocks":{"1557184190846":{"type":"select","settings":{"title":"Actuator Force Calculator","excerpt":"<p>We've created our own custom tool to help you calculate and select right Linear Actuator force.&nbsp; Whilst this particular Calculator is based on lifting a Hatch of some form.&nbsp; The same calculation can be used for many other applications including: Boat Hatch,&nbsp;<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/linear-actuator-force-calculator","image":"shopify:\/\/shop_images\/Fig-A_force_calculator_large_59c14f72-9132-4499-9f4d-eef2683ca598.png"}},"1557184246599":{"type":"select","settings":{"title":"Don’t Buy a Linear Actuator Until You Read This","excerpt":"<p>Are you tired of wasting your time and money searching for the best quality linear actuator?&nbsp;&nbsp; Frustrated by actuators that look identical but in reality are not the same? here are our 5 Steps to Buying a Quality Linear Actuator Online, and we cover The Main Pitfalls of Buying a Linear Actuator Online<\/p>","url":"","image":"shopify:\/\/shop_images\/inside_a_linear_actuator_-_cut_away_view_large_3ae168a5-f183-45c6-b5a0-fbffc5e92f02.jpg"}},"1557184282589":{"type":"select","settings":{"title":"Inner Workings of a Linear Actuator","excerpt":"<p>We thought you would like to understand exactly how a linear actuator work<\/p>","url":"","image":"shopify:\/\/shop_images\/linear_actuator_exploded_view_large_1d2e61fb-d8b0-48ae-a4b7-93e417a99ea3.png"}},"1557184310319":{"type":"select","settings":{"title":"How to Use an External Limit Switch with a Linear Actuator","excerpt":"<p>An external limit switch is a very handy and cost effective means of controlling the travel of a linear actuator. In this article, we will go over how to use an external limit switch with a linear actuator<\/p>","url":"","image":"shopify:\/\/shop_images\/limit_switch_540x_bca6d920-b3b1-4fb8-a442-f87eac3a4141.png"}}},"block_order":["1557184190846","1557184246599","1557184282589","1557184310319"],"settings":{"display_blog_manual":false,"title":"Checkout these Useful Resources","sub_title":"","article_count":5}},"holiday-hours":{"type":"holiday-hours","blocks":{"1581370181919":{"type":"select","settings":{"holiday_name":"BC Family Day","holiday_date_1":"Monday February 17, 2020","holiday_date_2":"","holiday_date_3":"","holiday_date_4":"","holiday_date_5":""}}},"block_order":["1581370181919"],"settings":{"holiday_heading":"Holiday Schedule","holiday_subheading":"<p>We will be closed during the dates listed below<\/p>"}},"recommend-collection":{"type":"recommend-collection","settings":{"display_recommended":true,"title":"","sub_title":"","any_actuator":false,"collection_on_actuator":"","display_stock":true,"limit_count":8,"grid_size":4}},"section-chess-collection":{"type":"section-chess-collection","blocks":{"1579028429235":{"type":"select","settings":{"uk_light":false,"first_order":false,"title":"Our Products","image":"shopify:\/\/shop_images\/our-actuators-frigelli-automations.jpg","image_caption":"Popular products and accessories.","image_title":"","image_link_url":"","image_link_url_title":"","section_text":"<p>Our premium DC actuators are IP66 rated making them dust and water resistance, great for environments that require enhanced corrosion protection. For situations where you may need to move a heavy load, our&nbsp;industrial series is capable of pushing thousands of pounds with ease. We also have our mini and bullet series for those projects where space is limited. No matter which model you choose, all units are quality tested and precision engineered for efficiency and performance with a 12 month warranty including same-day shipping.<\/p>","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"1579028481385":{"type":"select","settings":{"uk_light":false,"first_order":true,"title":"Industries We Serve","image":"shopify:\/\/shop_images\/linear-actuator-blumen-lumen-firgelli-auotmations.jpg","image_caption":"Blumen Lumen art installation 2014","image_title":"","image_link_url":"","image_link_url_title":"","section_text":"<p>Our 12 volt actuators are used in many different applications from DIY hobby projects, home automations, marine &amp; automotive, robotics &amp; animatronics, installation art, experimental fashion, handicap accessibility, industrial and construction machinery.<\/p>\n<p>We&rsquo;re always excited to discover what our customers are doing with our products.<\/p>\n<p>A recent customer converted a vehicle into a fully armored one and required a stronger lift for ballistic glass with a thickness of 39mm. They chose to use our&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/collections\/linear-actuators\/products\/deluxe-rod-actuator\" title=\"https:\/\/www.firgelliauto.com\/collections\/linear-actuators\/products\/deluxe-rod-actuator\">deluxe linear actuators<\/a>&nbsp;as the best lift because of the strength and reliability our products are known for.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/armored-and-bullet-proof-vehicles\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/armored-and-bullet-proof-vehicles\">See Ballistic Window<\/a><\/p>\n<p>We love hearing about projects that help to improve the lives of people living with a physical handicap. We&rsquo;ve had a customer use one of our electric actuators to modify a wheelchair&nbsp;to allow it to adjust angles making it adapt to more situations such as improving balance on hills and overcoming side walk curbs.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/wheelchair-demo-uses-only-one-actuator\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/wheelchair-demo-uses-only-one-actuator\">See modified wheelchair<\/a><\/p>\n<p>TV lifts are a popular home automation application and with our TV lift kits, many of our customers are able to easily setup a motorized, remote-controlled mechanism to hide or showcase a large TV with minimal cost and effort.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/flip-down-tv-lift\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/flip-down-tv-lift\">How to setup tv lift.<\/a><\/p>\n<p>Not only have our products contributed to the practical, we&rsquo;ve also seen our them used in creative art installation projects. Premiered at Burning Man 2014 by San Francisco art collective &shy;&mdash;&nbsp;<a href=\"https:\/\/www.foldhaus.com\/blumen-lumen\" title=\"https:\/\/www.foldhaus.com\/blumen-lumen\">FoldHaus<\/a>,&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/18064215-blumen-lumen-high-tech-art-featured-at-burning-man-2014\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/18064215-blumen-lumen-high-tech-art-featured-at-burning-man-2014\">Blumen Lumen<\/a>&nbsp;was an art installation that used our DC actuators to create &ldquo;a garden of ten giant origami flowers that bloom in the presence of people and move with the wind, creating a magical experience for their visitors&rdquo;.<\/p>","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"1579028535236":{"type":"select","settings":{"uk_light":false,"first_order":false,"title":"Our Accessories","image":"shopify:\/\/shop_images\/accessories-firgelli-automations.jpg","image_caption":"Remote control devices, arduino and wires","image_title":"","image_link_url":"","image_link_url_title":"","section_text":"<p>Whether you&rsquo;re looking to create a remote-controlled, motorized sliding door to let your cat out on the balcony or you need to adjust the angle of your snow blower shute and blade with a push of a button to save downtime, we carry all the components to make it possible. Our selection includes mounting brackets, power supplies, control systems and many more.<\/p>","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"1579028582927":{"type":"select","settings":{"uk_light":false,"first_order":true,"title":"Our Resources & Tools","image":"shopify:\/\/shop_images\/linear-actuator-tutorial-firgelli-automations.jpg","image_caption":"Restricting motion with external limit switches","image_title":"","image_link_url":"https:\/\/www.firgelliauto.com\/blogs\/tutorials\/restricting-motion-with-external-limit-switches","image_link_url_title":"Tutorial on restricting motion with external limit switches","section_text":"<p>We understand that integrating linear motion into your project can be a challenging task, that&rsquo;s why we continuously developed new resources to help you complete your project. Our repository of resources includes informational articles, tutorial blogs, instruction manuals, technical drawings, product specification sheets and 3d files.&nbsp;<\/p>\n<p>If you&rsquo;re a beginner and would like to know how to wire a linear actuator to a switch or remote control, interface actuators with Arduino or use any of our other products we have a comprehensive collection of&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\" title=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\">tutorials<\/a>.<\/p>\n<p><\/p>\n<p>Selecting the correct specifications from our broad range of 12V linear actuators can be a bit overwhelming so we&rsquo;ve developed a free web application to calculate the position and strength required to lift a hatch door with our electric actuators. Based on the data you provide our web application will handle the complicated physics to calculate the optimal mounting positions while recommending the exact actuator. This is the same tool we utilize in house to help customers with their projects and now we&rsquo;ve packaged it into a powerful and user friendly web based app.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/pages\/about-linear-actuator-calculator\" title=\"https:\/\/www.firgelliauto.com\/pages\/about-linear-actuator-calculator\">See our Linear Actuator Calculator<\/a><\/p>","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}}},"block_order":["1579028429235","1579028481385","1579028535236","1579028582927"],"settings":{"section_padding":true}},"testimonial":{"type":"testimonial","settings":{}},"page-wiring-diagram":{"type":"page-wiring-diagram","blocks":{"1595460747205":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/2_Channel_Remote-min.png","legend_text":"<p><strong>2CH-REM<\/strong><\/p><p><strong>2 Channel Remote System<\/strong><\/p><p>DO NOT reverse the red and black connections; red must be connected to 12V+ and black to GND<\/p>"}},"1595460778345":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/4_Channel_Remote-min.png","legend_text":"<p><strong>4CH-RC<\/strong><\/p><p><strong>4 Channel Remote System<\/strong><\/p><p>DO NOT reverse the red and black connections; red must be connected to 12V+ and black to GND<\/p>"}},"1595460856943":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/Overcurrent_Protection_Board-min.png","legend_text":"<p><strong>FA-POCT<\/strong><\/p><p><strong>Over Current Protection Module<\/strong><\/p>"}},"1595460913868":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/Synchronous_Control_Board-min.png","legend_text":"<p><strong>FA-SYNC-2<\/strong><\/p><p>DO NOT reverse the power connections; VIN must be connected to 12V+ and GND to GND<\/p>"}},"1595460972746":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/Single_Limit_Switch-min.png","legend_text":"<p><strong>EL-KIT<\/strong><\/p><p><strong>External Limit Switch with Diode<\/strong><\/p>"}},"1595461000280":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/diode-min.jpg","legend_text":"<p><strong>Diode IN4007<\/strong><\/p><p>We do not sell these, you’ll need to purchase them from a different retailer<\/p>"}},"1595461034151":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/DPDT_Switch-min.png","legend_text":"<p><strong>DPDT Rocker Switch<\/strong><\/p><p><strong>MAN-RS, MAN-RS2, WPRS-SUS, WPRS-MOM<\/strong><\/p>"}},"1595461071321":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/Ground-min.png","legend_text":"<p><strong>Ground<\/strong><\/p>"}},"1595461089355":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/12V_Power-min.png","legend_text":"<p><strong>12V+<\/strong><\/p>"}},"a28b11d7-db4f-416b-9c5a-2f0db7c740c6":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/FA-SYNC-4.png","legend_text":"<p><strong>FA-SYNC-4<\/strong><\/p>"}},"ab86c035-1db0-4b49-bf2f-0c1e91e69cc1":{"type":"select","settings":{"display_legend_item":true,"legend_image":"shopify:\/\/shop_images\/FA-SC1.png","legend_text":"<p><strong>FA-SC1<\/strong><\/p><p><strong>Speed Controller<\/strong><\/p>"}}},"block_order":["1595460747205","1595460778345","1595460856943","1595460913868","1595460972746","1595461000280","1595461034151","1595461071321","1595461089355","a28b11d7-db4f-416b-9c5a-2f0db7c740c6","ab86c035-1db0-4b49-bf2f-0c1e91e69cc1"],"settings":{"wiring_diagram_csv":"https:\/\/cdn.shopify.com\/s\/files\/1\/0742\/4613\/files\/wiring-diagram-data-us-1-0.csv?v=1616196329","recommended_collection":"wiring-diagram-recommended","wiring_diagram_placeholder_image":"shopify:\/\/shop_images\/wiring-diagram-placeholder.jpg","wiring_diagram_no_result_message":"No wiring diagram found. Please select atleast 1 control option..","wiring_diagram_legend_heading":"Legend"}},"calculator-descriptions":{"type":"calculator-descriptions","blocks":{"1595527952878":{"type":"select","settings":{"title":"Linear Actuator Calculator","sub_title":"<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>","applications":"<li>Trapdoor hatch<\/li>\n<li>Tonneau cover<\/li>","general_tips":""}},"1595527962979":{"type":"select","settings":{"title":"Stair Hatch Lift","sub_title":"<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch to a staircase.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>","applications":"<li>Automated basement hatch<\/li>\n<li>Hidden underground chamber<\/li>","general_tips":""}},"1595527962975":{"type":"select","settings":{"title":"Window Hatch Lift","sub_title":"<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch for a window.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>","applications":"<li>Window Hatch<\/li>\n<li>Flip Down TV Hatch<\/li>","general_tips":""}},"1595527962974":{"type":"select","settings":{"title":"Window Hatch Lift","sub_title":"<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch for a window.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>","applications":"<li>Window Hatch<\/li>\n<li>Flip Down TV Hatch<\/li>","general_tips":""}}},"block_order":["1595527952878","1595527962979","1595527962975","1595527962974"],"settings":{"form_input":"<p>Enter your specific requirements and experiment with our selection of actuators to see potential mounting positions.<\/p>","general_tips_static":"<li>This tool automatically factors in a multiplicative factor of 1.2 in the load requirements as a minimum safety factor (actuators should not be run at 100% their maximum rated load).<\/li>\n<li>Defaults to a recommended two actuators (one mounted on either side of the hatch), for added stability. Never push a hatch open from just one side. Option available to select one actuator but requires mounting in center of hatch.<\/li>","product_data_csv":"https:\/\/cdn.shopify.com\/s\/files\/1\/0742\/4613\/files\/calculator-linear-actuator-product-data-ca.csv?v=1595462323"}},"calculator-landing-page-header":{"type":"calculator-landing-page-header","settings":{"uk_light":true,"title":"Linear Actuator Calculator Tools","image":"shopify:\/\/shop_images\/firgelli-automations-bullet-actuators-collection.jpg"}},"calculator-landing-page":{"type":"calculator-landing-page","blocks":{"1595528570734":{"type":"select","settings":{"hide_widget":false,"widget_type":"standard-hatch-lift","title":"Standard Hatch","applications":"<h5>Calculate mount position and force required for a top raising Hatch Lift<\/h5>\n<ul>\n<li>Hidden compartments<\/li>\n<li>Automated basement trapdoor<\/li>\n<li>Electric Actuated Boat Hatch<\/li>\n<\/ul>"}},"1595528592764":{"type":"select","settings":{"hide_widget":false,"widget_type":"stair-hatch-lift","title":"Staircase Hatch","applications":"<h5>Calculate mount position and required force to lift a door to a staircase<\/h5>"}},"1595528605438":{"type":"select","settings":{"hide_widget":false,"widget_type":"window-hatch-lift","title":"Window Hatch Lift","applications":"<p>Calculate mount position and required force to a Window Hatch Lift<\/p>"}},"1595528605439":{"type":"select","settings":{"hide_widget":false,"widget_type":"more-coming","title":"More Coming","applications":"<p><b>We're working hard to bring you more calculators.<\/b>\n<a href=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\" title=\"See our Tutorials\"><\/a><\/p><p><a href=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\" title=\"See our Tutorials\">See our tutorials page<\/a> to learn more about the different components that you might need for your project.<\/p>"}}},"block_order":["1595528570734","1595528592764","1595528605438","1595528605439"],"settings":{"primary_section":true,"primary_heading":"Prototyping Made Simple","primary_description":"<p>Deciding on&nbsp;the best mounting position and force required from our collection of linear actuators can be overwhelming. When you include the weight, angle and length&nbsp;of the object that you're trying to move, things can get more complicated.<\/p>\n<p>That's why we've packaged the same tool, that we utilize in house to help customers with their projects, into a powerful and user-friendly web based application. You'll&nbsp;be able to use our calculator to&nbsp;experiment with&nbsp;multiple&nbsp;iterations of your linear motion project using real-time generated diagrams help to illustrate your plans. With the help of our calculator, determining the&nbsp;optimal configuration and best electric actuator becomes straightforward and precise for engineers or hobbyist of any skill level.<\/p>","primary_bullet_points":"<h3>Key Features<\/h3>\n<li>Simplify your workflow by automatically calculating the complicated physics<\/li>\n<li>Real-time calculation with illustrative feedback diagram<\/li>\n<li>Explore which actuators will be sufficient for your setup<\/li>\n<li>Evaluate a new design to enhance precision<\/li>","secondary_section":false,"secondary_heading":"","secondary_description":"","secondary_bullet_points":""}},"widget":{"type":"widget","settings":{"recommended_collection":"widget-collection"}},"manual-blog-linear-actuators":{"type":"manual-blog-linear-actuators","blocks":{"e2dc7cae-ccf0-435f-bf2b-a6b98ab60eaa":{"type":"select","settings":{"title":"Linear Actuators 101 - Everything you need to know about Actuators","excerpt":"<p>This article will give you a basic understanding of how actuators work and the terminology used to describe them. When you understand the basics it will be much easier for you to select your own electric linear actuator.<\/p>","url":"https:\/\/www.firgelliauto.com\/pages\/news-actuators","image":"shopify:\/\/shop_images\/linear-actuators_300x300_1bf13cf6-78d4-4e92-bea4-d4fb6fdd4dea.jpg"}},"0dae3f7e-24cb-4586-84a3-c379008fc7a0":{"type":"select","settings":{"title":"Firgelli complete guide to IP Ratings","excerpt":"<p>IP ratings are given to any product that requires electricity or has moving parts or both. The IP rating contains a range of information within it, with each letter and number possessing its own meaning, and each refers to its ability to withstand the elements during \"use\". This is very important for some products in some applications. But not in all.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/actuators\/your-complete-guide-to-ip-ratings","image":"shopify:\/\/shop_images\/ip_rating_blog_thumbnail_300x300_64684178-f1c8-46b6-af25-f3d85482511c.jpg"}},"b50e5d7c-a1bc-48ed-a7e3-28979da81bd4":{"type":"select","settings":{"title":"How do you mount a Linear Actuator","excerpt":"<p>The most common method to mount your linear actuator is to use what is called the Clevis end mounting brackets. These common mounting methods consist of mounting the Brackets at each end of the linear actuator where both ends are free to rotate and pivot around the Clevis holes on each of the the actuator.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/how-do-you-mount-a-linear-actuator","image":"shopify:\/\/shop_images\/clevisMountingBracket_480x480_1_300x300_67748593-644e-43a6-8260-a3acd90b84f9.jpg"}},"2862aa44-832b-421e-ad4d-d54f02b68ff9":{"type":"select","settings":{"title":"Controlling a Linear Actuator with a arduino","excerpt":"<p><a href=\"https:\/\/www.firgelliauto.com\/collections\/arduino\" target=\"_blank\" title=\"Arduinos\">Arduino<\/a> are an open source electronics prototyping platform based on flexible, easy-to-use hardware and software. It's intended for DIY projects, artists, designers, hobbyists, and anyone interested in creating interactive projects. Arduinos are microcontroller boards that contain everything you need to easily interface with the microcontroller.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/all-about-actuators-the-simple-guide-copy","image":"shopify:\/\/shop_images\/arduino_thumbnail_300x300_c72cd8a7-833f-4add-a7f7-2fbf739fb1d1.jpg"}},"18c5ab95-3a25-4861-8c88-c741e0dcc3f0":{"type":"select","settings":{"title":"What is an Actuator and How They Work","excerpt":"<p>From automotive to machinery to home improvement, actuators are becoming more commonplace worldwide. This is most true in developing countries going through their industrial revolution. To answer the question \"What is an Actuator?\" We look at some examples of actuators and how they work. Read on to learn more.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/actuators\/examples-of-actuators-and-how-they-work","image":"shopify:\/\/shop_images\/converting_rotational_servo_motor_to_linear_motion_520x500_1_300x300_3ec142ed-94d2-4946-9f35-cb3bc7680075.jpg"}}},"block_order":["e2dc7cae-ccf0-435f-bf2b-a6b98ab60eaa","0dae3f7e-24cb-4586-84a3-c379008fc7a0","b50e5d7c-a1bc-48ed-a7e3-28979da81bd4","2862aa44-832b-421e-ad4d-d54f02b68ff9","18c5ab95-3a25-4861-8c88-c741e0dcc3f0"],"settings":{"display_blog_manual":true,"title":"Firgelli Top Related Blogs","sub_title":"<p>Here are the top blog posts related to linear actuators, on our main website.<\/p>"}},"WhyFirgelli":{"type":"WhyFirgelli","blocks":{"5509697b-9d8f-4805-aeb5-e7918fc4f436":{"type":"select","settings":{"title":"Top Grade Quality","section_text":"Our products are tested rigorously to provide you with a reliable care-free experience","widget_type":"icon-widget_checklist","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"eaa51828-4d49-4236-aede-ed31b9de163c":{"type":"select","settings":{"title":"Custom Orders","section_text":"We create custom linear actuators to suit specific application requirements of our customers","widget_type":"icon-widget_actuator","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}},"9762e52d-89d7-433c-8519-a7306db3f0d8":{"type":"select","settings":{"title":"Lifetime Customer Support","section_text":"We provide first class service with our friendly and helpful staff who can help you achieve quick and simple solutions for your project","widget_type":"icon-widget_customerSupport","link_text":"","link_url":"","enable_custom_url":false,"custom_link_url":""}}},"block_order":["5509697b-9d8f-4805-aeb5-e7918fc4f436","eaa51828-4d49-4236-aede-ed31b9de163c","9762e52d-89d7-433c-8519-a7306db3f0d8"],"settings":{"title":"FIRGELLI® Provides","sub_title":"","heading_margin":false,"enable_card":false,"center_text":false}},"manual-blog-mounting-brackets":{"type":"manual-blog-mounting-brackets","blocks":{"a9883fa7-7402-43ff-92e1-c689c6ba5d7e":{"type":"select","settings":{"title":"How do you mount a Linear Actuator - Linear Actuator Brackets","excerpt":"<p>The most common method to mount your linear actuator is to use what is called the Clevis end mounting brackets. These common mounting methods consist of mounting the Brackets at each end of the linear actuator where both ends are free to rotate and pivot around the Clevis holes on each of the the actuator.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/how-do-you-mount-a-linear-actuator","image":"shopify:\/\/shop_images\/mounting-bracket_300x300_e20567f3-7aa1-4318-aded-00c4bf2718ee.jpg"}},"b723b17b-bb07-438d-a434-edae65137302":{"type":"select","settings":{"title":"Common Mounting Brackets for Linear Actuators","excerpt":"<p>While determining and selecting the right linear actuator gets most of the attention, choosing the right mounting brackets for your linear actuator is a sometimes forgotten or hastily decided. But finding the right mounting brackets can make a huge difference in how successfully your next project is.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/common-mounting-brackets-for-linear-actuators","image":"shopify:\/\/shop_images\/clevis-bracket_300x300_56b1892c-cb28-4594-9212-d70249f81015.jpg"}}},"block_order":["a9883fa7-7402-43ff-92e1-c689c6ba5d7e","b723b17b-bb07-438d-a434-edae65137302"],"settings":{"display_blog_manual":true,"title":"Top Mounting Brackets Blogs","sub_title":"<p>Here are the top blog posts related to moutning brackets, on our main website.<\/p>"}},"manual-blog-tv-lifts":{"type":"manual-blog-tv-lifts","blocks":{"274fdc52-a1e4-4e61-90af-fd86b04825d0":{"type":"select","settings":{"title":"How to Build a TV Lift Cabinet - For under $300","excerpt":"<p>Want to make the perfect TV Lift Cabinet? Have you found the perfect spot for your TV but don't want it showing all the time? Maybe you need to save on space but can't find the right TV stand. There's great news! By installing a TV lift, you can have the best of both worlds.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/tv-lifts\/how-to-build-a-tv-lift-cabinet","image":"shopify:\/\/shop_images\/HOW_TO_MAKE_520x500_1_300x300_2d3eb642-9ec4-45eb-b38c-f111ede23635.png"}},"8eb26590-a152-45d3-a1cf-c7c927391e68":{"type":"select","settings":{"title":"How to make a Drop down TV Lift using a Track Actuator","excerpt":"<p>Here is a customer example of a Drop down TV lifts using a Firgelli Track Actuator instead of the Firgelli Drop down TV lift kit. This will save you money however you still need to spend the time to built the TV mount, which is included with the Drop Down TV lift Kit.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/tv-lifts\/18649311-how-to-use-a-track-actuator-to-lift-and-lower-a-tv-thats-mounted-to-a-wall","image":"shopify:\/\/shop_images\/track-drop-down-tv_300x300_9504e648-05f5-49dd-ad8f-3047cf90dffa.jpg"}},"560ca01d-2f68-4875-b1bf-b7d3ac5edd45":{"type":"select","settings":{"title":"How to build a Flip Down Tv Lift","excerpt":"<p>We talk with a lot of professionals who are designing homes for clients that are fortunate enough to have an attic. But what if you don't?, Firgelli TV Lift Kit has a product that will work in both applications, with or without space in the ceiling above to hide your TV.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/how-to-install-a-motorized-flip-down-tv-lift","image":"shopify:\/\/shop_images\/resized-image-Promo_6_300x300_098a4cd8-175e-459d-97b0-5fce5e634c36.jpg"}},"8688a927-610f-44c7-a8ab-7f9bc4323cff":{"type":"select","settings":{"title":"What are the different types of TV Lift systems","excerpt":"<p>You can transform a room from an elegant living space to the ultimate movie theater or sports den by simply having a TV rising out of a fireplace. But before you rush out and grab any old TV lift, you’re going to need to know the different type of TV lifts and what they do for you.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/tv-lifts\/what-are-the-different-types-of-tv-lifts","image":"shopify:\/\/shop_images\/TV-Lift-systems_300x300_a812c4a4-6d62-4a08-ae8a-6d5d08364eff.jpg"}},"7679d217-d34e-4257-a44a-b0371fd65d2e":{"type":"select","settings":{"title":"How to Build a Pop Up Drawer in Your Wine Cellar That Provides Hidden Storage","excerpt":"<p>Building a hidden pop up drawer is an easy and affordable way to create a one of a kind, distinctive, and original wine cellar. This same idea can be used for any cabinet around your home for a variety of purposes: storage, security, design or convenience! Check out this video to see the finished product.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/how-to-build-a-pop-up-drawer-in-your-wine-cellar-that-provides-hidden-storage","image":"shopify:\/\/shop_images\/popup_1_300x300_4dc25557-e0f1-4a20-9c87-22fee1430929.png"}}},"block_order":["274fdc52-a1e4-4e61-90af-fd86b04825d0","8eb26590-a152-45d3-a1cf-c7c927391e68","560ca01d-2f68-4875-b1bf-b7d3ac5edd45","8688a927-610f-44c7-a8ab-7f9bc4323cff","7679d217-d34e-4257-a44a-b0371fd65d2e"],"settings":{"display_blog_manual":true,"title":"Top Blog Posts for TV-Lifts","sub_title":"<p>Here are the top blog posts related to our TV Lifts, on our main website.<\/p>"}},"manual-blog-sit-stand-desks":{"type":"manual-blog-sit-stand-desks","blocks":{"8ff9c3b9-d7ab-4302-8419-d946746ca7d5":{"type":"select","settings":{"title":"What Are the Different Types of Standing Desk Lifts?","excerpt":"<p>A standing desk lift is a mechanism that allows you to convert your regular sitting desk into a standing desk. These mechanisms have risen in popularity as more people become aware of the risks of prolong sitting and the benefits to standing.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/what-are-the-different-types-of-standing-desk-lifts","image":"shopify:\/\/shop_images\/different-standing-desks_300x300_1e637c84-1470-45e7-83f0-f89eb0e192a5.jpg"}},"ca3e5e9e-fd71-4bd6-8e05-3d9c145fe639":{"type":"select","settings":{"title":"What Standing Desk Lift Do I Need?","excerpt":"<p>With more individuals having the ability to choose to work remotely and the rising concern of the negative health effects of sitting too much, standing desks are coming more popular and vital for our health.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/what-standing-desk-lift-do-i-need","image":"shopify:\/\/shop_images\/3-standing-desks_300x300_f4b06b0c-ba84-4b27-af1e-965d869bb857.jpg"}},"f29dc047-8107-446a-952a-ef93d01b417d":{"type":"select","settings":{"title":"Are Standing Desks really good for you?","excerpt":"<p>Studies show that standing at least every hour has many health benefits, in fact there is evidence to support this theory since the Apple I-watch has a built in health monitor that even reminds you every hour to stand up and walk around if it notices you have been sitting for too long.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/are-standing-desks-really-good-for-you","image":"shopify:\/\/shop_images\/4-column-table_300x300_3ec8728c-0dae-4672-9df3-8dd08bb034cc.jpg"}},"26062fa5-66c6-4fb2-9cff-7e5a386fa71a":{"type":"select","settings":{"title":"Why You Should Be Using A Standing Desk","excerpt":"<p>Before you run out and quit your desk job, consider this simple solution: an electric Sit Stand Desk will allow you to decrease the amount of time you spend sitting every day while still getting your work done.  At the push of a button you can change your position from sitting to standing and potentially add years to your life.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/why-you-should-be-using-a-sit-stand-desk","image":"shopify:\/\/shop_images\/standing-desk-cartoon_300x300_7feca843-5e5f-44e7-af85-4efadbf67c38.jpg"}}},"block_order":["8ff9c3b9-d7ab-4302-8419-d946746ca7d5","ca3e5e9e-fd71-4bd6-8e05-3d9c145fe639","f29dc047-8107-446a-952a-ef93d01b417d","26062fa5-66c6-4fb2-9cff-7e5a386fa71a"],"settings":{"display_blog_manual":true,"title":"Top Blogs for Standing Desks","sub_title":"<p>Here are the top blog posts related to standing desks, on our main website.<\/p>"}},"manual-blog-slide-rails":{"type":"manual-blog-slide-rails","blocks":{"20fba337-5264-4ce3-8bb9-a6f26c2ca9ed":{"type":"select","settings":{"title":"Linear Guides VS Drawer Slides","excerpt":"<p>In many Linear Actuator applications, you may need additional supports to help move your desired object or to protect your linear actuator from uneven loads. Generally, you’ll have two choices of supports you have to pick from; Linear Guides and Drawer Slides. But what is the difference?<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/linear-guides-vs-drawer-slides","image":"shopify:\/\/shop_images\/sliderails_300x300_c8823a37-40fc-4ef9-930b-a1c8285d3a48.jpg"}},"8ac427e9-1aef-4622-86e8-fae039825d54":{"type":"select","settings":{"title":"How are Linear Slides Used?","excerpt":"<p>Linear Guides or linear rail slides are support devices that are used to help carry loads and ensure straight and level linear motion. Linear guides will usually consist of two components; the sliding carriage and the rail. The sliding carriage is the element that moves along the rail and supports the attached load.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/how-are-linear-guides-used","image":"shopify:\/\/shop_images\/linear-slide_300x300_a45ff52f-c70e-4ed0-98e5-c3cf15c7a603.jpg"}},"4cab07e6-4f10-4772-af91-9b94023afa48":{"type":"select","settings":{"title":"How to adjust friction on Slide Rails","excerpt":"<p>In this Tutorial, we show you how to adjust the central bearing on Firgelli Automations heavy duty (FA-SGR-35) and mini linear track rail (FA-SGR-15N). Adjusting the tension of your slide rails may be an important detail that needs to be carefully controlled. We go into detail on how to achieve this.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/how-are-linear-guides-used","image":"shopify:\/\/shop_images\/heavy-slide-rails_300x300_ac149d2e-de4a-46b6-9d47-2facca1853b9.jpg"}},"21326d13-feec-417c-9f68-73148ff40f08":{"type":"select","settings":{"title":"What are the easiest Drawer Slides to install?","excerpt":"<p>Drawer slides can be as easy or as hard as you allow them, and it all depends on what type of slide you choose. In this guide we are going to cover the many different types of Drawer slides on the market, the many different ways a slide can be fitted into a cabinet, and then some help tips for you to decide which is the ideal type you need for your application.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/what-are-the-easiest-drawer-slides-to-install","image":"shopify:\/\/shop_images\/center-mount-slide-rail_300x300_cc380203-de25-495f-b12d-ba36409865fc.jpg"}}},"block_order":["20fba337-5264-4ce3-8bb9-a6f26c2ca9ed","8ac427e9-1aef-4622-86e8-fae039825d54","4cab07e6-4f10-4772-af91-9b94023afa48","21326d13-feec-417c-9f68-73148ff40f08"],"settings":{"display_blog_manual":true,"title":"Top Blog Posts on Linear Bearing Slide Rails","sub_title":"<p>Here are the top blog posts related to linear bearing slide rails, on our main website.<\/p>"}},"manual-blog-drawer-slides":{"type":"manual-blog-drawer-slides","blocks":{"583525f8-115e-471e-abfa-78d4fd000b4d":{"type":"select","settings":{"title":"Drawer Slides Complete Guide","excerpt":"<p>Drawer slides can be as easy or as hard as you allow them, and it all depends on what type of slide you choose. In this guide we are going to cover the many different types of Drawer slides on the market, the many different ways a slide can be fitted into a cabinet, and then some help tips for you to decide which is the ideal type you need for your application.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/what-are-the-easiest-drawer-slides-to-install","image":"shopify:\/\/shop_images\/drawerslide.jpg"}},"ba048f6c-56f4-4116-9413-83c4cc47d9a7":{"type":"select","settings":{"title":"Linear Guides VS Drawer Slides","excerpt":"<p>In many linear actuator applications, you may need additional supports to help move your desired object or to protect your linear actuator from uneven loads. Generally, you’ll have two choices of supports you have to pick from; Linear Guides and Drawer Slides. But what is the difference? Why choose one over the other and how do you know which one is best for your application? The goal of this blog is to explain the differences between these two devices and help you decide which one to use for your next project.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/linear-guides-vs-drawer-slides","image":"shopify:\/\/shop_images\/drawer-slides_300x300_abe66fb7-072b-42d0-8768-7c7aebd6a67b.jpg"}},"759711e5-72c0-4d74-ab80-3e95437c343a":{"type":"select","settings":{"title":"Drawer Slides used in heavy duty applications","excerpt":"<p>You will typically see at least one pair of drawer slides in used everyday whether they are used around your home, in use at your office, or maybe in your RV or camper. But do you know if drawer slides are used in industrial and commercial applications? The short answer is yes, but you maybe wondering where? This blog will highlight some applications where you may see drawer slides in an industrial or commercial setting.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/news\/industrial-uses-of-drawer-slides","image":"shopify:\/\/shop_images\/Industrial-Drawer-Slide_300x300_675f7421-e872-4511-a7f8-4cc401d0e11c.jpg"}},"beaabea4-dbec-47fa-b6ae-8b73213cf01e":{"type":"select","settings":{"title":"How to install drawer slides - The easy way","excerpt":"<p>Installation of drawer slides will vary slightly depending on the style and options of your selected draw slides. Some drawer slides that you purchase may come with a installation guide, like this one, but if not, there are some simple steps you can follow to install any drawer slides. Luckily, the installation of the two most common types of drawer slides, Roller Slides and Ball-Bearing Slides, are quite similar and you can use this guide to install either of them.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/how-to-install-drawer-slides","image":"shopify:\/\/shop_images\/install-drawer-slide_300x300_55270f78-a42e-4ecc-af02-863d96f8d0be.jpg"}},"9367ff39-6704-4a5f-8795-51a968694dc0":{"type":"select","settings":{"title":"Drawer Slides 101 - Everything you need to know about Drawer Slides","excerpt":"<p>This blog will help you understand what drawer slides are as well as some of the terminology and considerations you should be conscious of when selecting a drawer slide to incorporate into your next project. Once you have an understanding of the basics, you should have a much easier time identifying what drawer slide is best for your application.<\/p>","url":"https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/what-is-a-drawer-slide-drawer-slide-101","image":"shopify:\/\/shop_images\/Drawer-Slide-2_300x300_16c52d8e-da29-4143-8072-3eec1a7d91c4.jpg"}}},"block_order":["583525f8-115e-471e-abfa-78d4fd000b4d","ba048f6c-56f4-4116-9413-83c4cc47d9a7","759711e5-72c0-4d74-ab80-3e95437c343a","beaabea4-dbec-47fa-b6ae-8b73213cf01e","9367ff39-6704-4a5f-8795-51a968694dc0"],"settings":{"display_blog_manual":true,"title":"Top 5 Blog Posts about Drawer Slides","sub_title":"<p>Here are the top blog posts related to drawer slides, on our main website.<\/p>"}},"collection-cards-linear-actuators":{"type":"collection-cards-linear-actuators","settings":{"recommended_collection":""}}},"content_for_index":["1551468985699","1553102910116","1551726336660","1552001990728","1551983715707","1552411717585","1553185368562","1552414619197"],"blocks":{"11724500921838622758":{"type":"shopify:\/\/apps\/frequently-bought-together\/blocks\/app-embed-block\/b1a8cbea-c844-4842-9529-7c62dbab1b1f","disabled":false,"settings":{}}}},"presets":{"Default":{}}}
+{
+  "current": {
+    "pluginseo_pageTitleTruncateChars": "999",
+    "pluginseo_pageTitleEnableAppender": true,
+    "pluginseo_pageTitleAppenderTemplate": "| %% shop.name %%",
+    "pluginseo_pageTitleAppenderTargetLength": "70",
+    "pluginseo_pageTitleTemplateApplyToAll": false,
+    "pluginseo_pageTitleDefaultTemplate": "%% page_title %%",
+    "pluginseo_pageTitleIndexTemplate": "%% shop.name %%",
+    "pluginseo_pageTitlePageTemplate": "",
+    "pluginseo_pageTitleSearchTemplate": "Buy %% search.terms %% from %% shop.name %%",
+    "pluginseo_pageTitleProductTemplate": "",
+    "pluginseo_pageTitleCollectionTemplate": "",
+    "pluginseo_pageTitleBlogTemplate": "",
+    "pluginseo_pageTitleArticleTemplate": "",
+    "pluginseo_pageTitle404Template": "",
+    "pluginseo_metaDescriptionTruncateChars": "170",
+    "pluginseo_metaDescriptionTemplateApplyToAll": false,
+    "pluginseo_metaDescriptionDefaultTemplate": "%% page_description %%",
+    "pluginseo_metaDescriptionIndexTemplate": "Shop online for our range of Linear Actuators, TV lifts, sit stand desks, drop down TV lifts",
+    "pluginseo_metaDescriptionPageTemplate": "",
+    "pluginseo_metaDescriptionSearchTemplate": "",
+    "pluginseo_metaDescriptionProductTemplate": "",
+    "pluginseo_metaDescriptionCollectionTemplate": "",
+    "pluginseo_metaDescriptionBlogTemplate": "",
+    "pluginseo_metaDescriptionArticleTemplate": "",
+    "pluginseo_metaDescription404Template": "",
+    "pluginseo_structuredDataDisplayLogo": true,
+    "pluginseo_structuredDataSocialProfileLinks": "https:\/\/www.facebook.com\/FirgelliAuto\/\nhttps:\/\/twitter.com\/firgelliauto\nhttps:\/\/www.youtube.com\/channel\/UCdHMSmuYajOcVu_2OlzP2aw\nhttps:\/\/www.instagram.com\/firgelli\/",
+    "favicon": "shopify:\/\/shop_images\/firgelli-favicon-min_d514039b-aaa4-41ad-b14c-b5523a75d044.png",
+    "display_holiday_hours": false,
+    "let_snow": false,
+    "snow_level": "snowy",
+    "santa_hat": false,
+    "display_holly": false,
+    "display_holly_collection": false,
+    "christmas_colors_collection": false,
+    "warm_buttons": false,
+    "warm_collection_icons": false,
+    "collection_btn_icon": "default",
+    "tagline": "",
+    "tagline_letter_spacing": 1,
+    "tagline_style": "fg-tagline_line",
+    "announcement_display": false,
+    "announcement_threat_level": "pandemic",
+    "announcement_title": "The health and wellbeing of our community is what matters most",
+    "announcement_body": "<p><b>With things changing by the minute, we are making some important changes. <\/b>\n<\/p>\n<p>\nEffective immediately until further notice:\n<\/p>\n<ul>\n<li>\nNo order pickups at any of our locations\n<\/li>\n<li>\nWe are not accepting any visitors at any locations\n<\/li>\n<li>\nWe are unable to inspect and process returns until the end of July\n<\/li>\n<li>\nExpect delays for international shipments\n<\/li>\n<li>\nExpect up to 3 weeks delay for ground shipments\n<\/li>\n<li>\n<b>Effective March 26, 2020 and until further notice, UPS Suspension of Service Guarantee for all shipments from any origin to any destination. <\/b>(meaning that overnight, 2 day, and 3 day select may or may not be delivered within those timeframes)\n<\/li>\n<\/ul>",
+    "announcement_footer": "<p>As a community we can work together to take the steps required to minimize the duration and impact of this global crisis. \n<\/p>\n<p>Thank you for your continued patience and support as we all work through this unprecedented situation together.\n<\/p>",
+    "announcement_btn_text": "COVID-19 Notice",
+    "share_image": "",
+    "show_social": true,
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "share_snapchat": true,
+    "share_linkedin": false,
+    "share_youtube": true,
+    "twitter_link": "https:\/\/twitter.com\/firgelliauto",
+    "facebook_link": "https:\/\/www.facebook.com\/FirgelliAuto\/",
+    "pinterest_link": "https:\/\/www.pinterest.com\/firgelliGroup\/",
+    "instagram_link": "https:\/\/www.instagram.com\/firgelli\/",
+    "linkedin_link": "",
+    "snapchat_link": "",
+    "tumblr_link": "",
+    "youtube_link": "https:\/\/www.youtube.com\/user\/FirgelliAuto\/",
+    "vimeo_link": "",
+    "pinterest_board_url": "firgelliGroup",
+    "pin_board_homepage": false,
+    "pin_board_home_url": "ideas-for-the-house",
+    "pin_board_collectionpage": false,
+    "pin_board_collection_url": "ideas-for-the-house",
+    "pin_board_productpage": false,
+    "pin_board_product_url": "ideas-for-the-house",
+    "font_family": "roboto_n4",
+    "collection": "premium-linear-actuators",
+    "image_actuators": "shopify:\/\/shop_images\/collection-group-actuator.png",
+    "image_lifts": "shopify:\/\/shop_images\/collection-group-lift.png",
+    "image_accessories": "shopify:\/\/shop_images\/collection-group-accessories.png",
+    "about_title": "",
+    "about_text": "<p>Write some basic information about the company.<\/p>",
+    "cart_page_heading": "Your Cart",
+    "cart_notes_enable": true,
+    "checkout_submit_footer_note": "Shipping will be calculated in Checkout",
+    "checkout_submit_button_label": "proceed to checkout",
+    "shipping_calculator_heading": "Shipping Cost Estimator",
+    "shipping_calculator_submit_button_label": "Estimate",
+    "enable_discount_message": true,
+    "show_multiple_currencies": false,
+    "currency_format": "money_with_currency_format",
+    "supported_currencies": "CAD USD EUR",
+    "default_currency": "CAD",
+    "digi_cert": "",
+    "discount_title": "Bulk Discount",
+    "discount_message": "Save on your order when purchasing our Actuators in large volumes. Discount will be calculated at checkout.",
+    "discount_tier_count": 4,
+    "discount_percent_1": 20,
+    "discount_quantity_1": 11,
+    "discount_percent_2": 25,
+    "discount_quantity_2": 31,
+    "discount_percent_3": 30,
+    "discount_quantity_3": 50,
+    "discount_percent_4": 40,
+    "discount_quantity_4": 200,
+    "discount_percent_5": 0,
+    "discount_quantity_5": 0,
+    "display_checkout_shipping_message": true,
+    "checkout_shipping_message": "*Due to circumstances related to COVID-19, additional delays may occur with carriers delivering on our behalf and therefore delivery times will not be guaranteed.",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "homepage_h1": "Motorize your idea's with Firgelli Linear Actuators. TV Lifts, Standind Desk Lifts, and Slide rails",
+    "homepage_h2": "Firgelli Automations manufactures Premium Linear Actuators, TV Lifts, and Desk lifts for every Industry. Shop online and we ship same day.",
+    "social_twitter_link": "http:\/\/twitter.com\/FirgelliAuto",
+    "social_facebook_link": "http:\/\/www.facebook.com\/FirgelliAuto",
+    "social_pinterest_link": "http:\/\/pinterest.com\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/firgelli\/",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "http:\/\/tumblr.com\/",
+    "social_youtube_link": "https:\/\/www.youtube.com\/user\/FirgelliAuto\/",
+    "social_vimeo_link": "http:\/\/vimeo.com\/",
+    "collection_desc_position": true,
+    "font_heading": "roboto_n4",
+    "font_heading_base_size": 26,
+    "font_body": "roboto_n4",
+    "font_body_base_size": 16,
+    "sections": {
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1554155228503": {
+            "type": "select",
+            "settings": {
+              "linklist": "about-firgelli"
+            }
+          },
+          "1554157396308": {
+            "type": "select",
+            "disabled": true,
+            "settings": {
+              "linklist": "firgelli-products"
+            }
+          }
+        },
+        "block_order": [
+          "1554155228503",
+          "1554157396308"
+        ],
+        "settings": {
+          "show_payment_icons": false,
+          "background_color": true
+        }
+      },
+      "1551468985699": {
+        "type": "slider",
+        "blocks": {
+          "1551468988735": {
+            "type": "select",
+            "settings": {
+              "hide_slide": false,
+              "heading": "Precision Engineered Linear Actuators",
+              "sub_title": "",
+              "section_text": "<p>Motorize your ideas with Electric  Linear Actuators<\/p>",
+              "text_align": "uk-text-left",
+              "text_color_2": "Black !important",
+              "padding_right": "6%",
+              "padding_left": "0%",
+              "text_width": "40%",
+              "smaller_heading": false,
+              "text_color": "uk-dark",
+              "text_box_shadow": "shadow_none",
+              "cta": "cta_custom",
+              "cta_text": "See Our Linear Actuators",
+              "cta_custom_url": "https:\/\/www.firgelliauto.ca\/collections\/linear-actuators",
+              "content_type": "image",
+              "image": "shopify:\/\/shop_images\/banner_without_text_838063f3-826d-4764-9d87-be55e7be2924.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/mobilebanner.webp",
+              "gradient_filter": false,
+              "video_url": "https:\/\/youtu.be\/UessAh9I-2o",
+              "background_color": "fg-background-gradient"
+            }
+          }
+        },
+        "block_order": [
+          "1551468988735"
+        ],
+        "settings": {
+          "display_slider": true,
+          "auto_play": false,
+          "navigation": true,
+          "auto_play_timer": 6,
+          "animation_type": "slide",
+          "text_transition": false,
+          "ken_burns": false
+        }
+      },
+      "1551726336660": {
+        "type": "collection-list",
+        "blocks": {
+          "0d9f4d90-9251-433d-bbe9-5fb36c588eb0": {
+            "type": "select",
+            "settings": {
+              "collection_type": "super_duty",
+              "collection_title": "Super Duty",
+              "collection_title_seo": "Super Duty Actuators",
+              "alternative_url": "https:\/\/www.firgelliauto.ca\/products\/super-duty-actuators",
+              "collection_url": ""
+            }
+          },
+          "1551726340350": {
+            "type": "select",
+            "settings": {
+              "collection_type": "premium",
+              "collection_title": "Premium",
+              "collection_title_seo": "premium actuators",
+              "alternative_url": "",
+              "collection_url": "premium-linear-actuators"
+            }
+          },
+          "1551726343005": {
+            "type": "select",
+            "settings": {
+              "collection_type": "bullet",
+              "collection_title": "Bullet",
+              "collection_title_seo": "bullet series actuators",
+              "alternative_url": "",
+              "collection_url": "bullet-actuators"
+            }
+          },
+          "1551726348724": {
+            "type": "select",
+            "settings": {
+              "collection_type": "linear",
+              "collection_title": "Linear",
+              "collection_title_seo": "linear actuators",
+              "alternative_url": "",
+              "collection_url": "linear-actuators"
+            }
+          },
+          "1551726356148": {
+            "type": "select",
+            "settings": {
+              "collection_type": "feedback",
+              "collection_title": "feedback",
+              "collection_title_seo": "feedback actuators",
+              "alternative_url": "",
+              "collection_url": "feedback-actuators"
+            }
+          },
+          "1551820436379": {
+            "type": "select",
+            "settings": {
+              "collection_type": "track",
+              "collection_title": "track",
+              "collection_title_seo": "track actuators",
+              "alternative_url": "",
+              "collection_url": "track-actuators"
+            }
+          },
+          "1551820447702": {
+            "type": "select",
+            "settings": {
+              "collection_type": "column",
+              "collection_title": "column",
+              "collection_title_seo": "column lifts",
+              "alternative_url": "",
+              "collection_url": "column-lifts"
+            }
+          },
+          "1551820467302": {
+            "type": "select",
+            "settings": {
+              "collection_type": "bracket",
+              "collection_title": "brackets",
+              "collection_title_seo": "",
+              "alternative_url": "",
+              "collection_url": "brackets"
+            }
+          },
+          "1551820482941": {
+            "type": "select",
+            "settings": {
+              "collection_type": "switch",
+              "collection_title": "Accessories",
+              "collection_title_seo": "",
+              "alternative_url": "",
+              "collection_url": "accessories"
+            }
+          },
+          "1551822108858": {
+            "type": "select",
+            "settings": {
+              "collection_type": "slide",
+              "collection_title": "Slides",
+              "collection_title_seo": "slide rails",
+              "alternative_url": "",
+              "collection_url": "slide-rails"
+            }
+          },
+          "1551822201329": {
+            "type": "select",
+            "settings": {
+              "collection_type": "tv",
+              "collection_title": "Tv lifts",
+              "collection_title_seo": "",
+              "alternative_url": "",
+              "collection_url": "tv-lifts"
+            }
+          },
+          "1551822213451": {
+            "type": "select",
+            "settings": {
+              "collection_type": "table",
+              "collection_title": "table lifts",
+              "collection_title_seo": "",
+              "alternative_url": "",
+              "collection_url": "desk-lifts"
+            }
+          },
+          "1552586646270": {
+            "type": "select",
+            "settings": {
+              "collection_type": "controller",
+              "collection_title": "Arduinos",
+              "collection_title_seo": "Arduino microcontrollers",
+              "alternative_url": "",
+              "collection_url": "control-systems"
+            }
+          },
+          "1560803830245": {
+            "type": "select",
+            "settings": {
+              "collection_type": "motor",
+              "collection_title": "Micromotors",
+              "collection_title_seo": "",
+              "alternative_url": "",
+              "collection_url": "micro-motors"
+            }
+          }
+        },
+        "block_order": [
+          "0d9f4d90-9251-433d-bbe9-5fb36c588eb0",
+          "1551726340350",
+          "1551726343005",
+          "1551726348724",
+          "1551726356148",
+          "1551820436379",
+          "1551820447702",
+          "1551820467302",
+          "1551820482941",
+          "1551822108858",
+          "1551822201329",
+          "1551822213451",
+          "1552586646270",
+          "1560803830245"
+        ],
+        "settings": {
+          "display_collection_section": true,
+          "image_type": "image_type_static",
+          "title": "FIRGELLI® Electric Linear Actuator Technology",
+          "sub_title": "Linear Actuators - TV Lifts - Linear Slides - Actuator Controllers",
+          "hover_effect": ""
+        }
+      },
+      "1551983715707": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Featured Products",
+          "sub_title": "",
+          "limit_count": 10,
+          "collection": "featured"
+        }
+      },
+      "1552001990728": {
+        "type": "featured-collection-slider",
+        "settings": {
+          "title": "Linear Actuators",
+          "sub_title": "",
+          "display_stock": true,
+          "limit_count": 8,
+          "grid_size": 4,
+          "collection": "linear-actuators",
+          "title_alt": "",
+          "sub_title_alt": "",
+          "collection_alt": ""
+        }
+      },
+      "product": {
+        "type": "product",
+        "settings": {
+          "show_share_buttons": true
+        }
+      },
+      "1552411717585": {
+        "type": "section-chess",
+        "blocks": {
+          "1552411721488": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": false,
+              "title": "About Us",
+              "image": "shopify:\/\/shop_images\/chess_imagesAbout_Us.jpg",
+              "image_caption": "",
+              "image_title": "",
+              "section_text": "<p><strong>Firgelli Automations was founded in 2002 by Robbie Dickson who invented the first Linear Actuators that were light, compact and durable enough to be sold and shipped online to the general public.<\/strong><\/p><p><\/p><p>The brand is now recognized word-wide as a leading manufacturer of<a href=\"https:\/\/www.firgelliauto.com\/collections\/linear-actuators\" title=\" Linear Actuators\" target=\"_blank\"> Linear Actuators<\/a>, <a href=\"https:\/\/www.firgelliauto.com\/collections\/tv-lifts\" title=\"TV Lifts\" target=\"_blank\">TV Lifts<\/a> and many other products to support a wide range of industries and applications. We have a large inventory of Actuators for every purpose and we continue to develop and design new models to add to our catalogue. Our team consists of Engineers and Customer\/Tech Support staff dedicated to providing the best products and knowledge to our customers. We enjoy listening to customer feedback and are always excited to discovered what our customers are doing with our actuators.<\/p>",
+              "link_text": "Learn More",
+              "link_url": "shopify:\/\/pages\/about-us",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1552411808045": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": true,
+              "title": "Our Industries",
+              "image": "shopify:\/\/shop_images\/chess_imagesOur_Industries.jpg",
+              "image_caption": "",
+              "image_title": "",
+              "section_text": "<p><strong>Our products have been used in every application you can imagine from home automation to space exploration.<\/strong><\/p><p>Home automation has increased in popularity over the past few years with new smart home products and software emerging for many applications. The barrier for entry to your utopian home or any “smart” application is the high cost as these solutions, though convenient, are quite expensive for the average consumer. With our range of actuators, accessories and world-class tech support, you’ll be able to experience the benefits of automation at the fraction of the cost. Whether you need to save space by lifting a TV in and out of view or save lives by lifting heavy, bullet proof windows on your armored vehicles, Firgelli Automations has the best products for your project.<\/p>",
+              "link_text": "Our Actuators",
+              "link_url": "shopify:\/\/collections\/linear-actuators",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1552411853234": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": false,
+              "title": "Customization",
+              "image": "shopify:\/\/shop_images\/colors-customized-anodized-actuator.jpg",
+              "image_caption": "Customized electric Linear Actuators",
+              "image_title": "Customized electric Linear Actuators",
+              "section_text": "<p>We can develop custom motion control solutions according to your requirements<\/p><p>We create custom linear actuators that suit specific application requirements of customers. We have in-house modeling and testing capabilities, where linear actuators and Controllers can be customized to your specifications. Customizing settings such as the stroke length, the connector or the rod ends can always be accommodated to support manufacturers special needs.<\/p>",
+              "link_text": "Customized electric Linear Actuators",
+              "link_url": "https:\/\/www.firgelliauto.com\/pages\/custom-linear-actuators",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1553722962585": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": true,
+              "title": "Customer Support",
+              "image": "shopify:\/\/shop_images\/chess_imagesCustomer_Support.jpg",
+              "image_caption": "",
+              "image_title": "",
+              "section_text": "<p><strong>Our knowledgeable support team are highly trained in our products with many years of experience helping customers find the right actuators for their projects.<br\/> <\/strong><\/p><p>We’re committed to customer satisfaction with a readiness to answer your questions whether you’re a seasoned engineer or an entry-level hobbyist. Give us a call or email us your questions and we can begin helping you get your project in motion.<\/p>",
+              "link_text": "Contact Support",
+              "link_url": "shopify:\/\/pages\/support",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1552411721488",
+          "1552411808045",
+          "1552411853234",
+          "1553722962585"
+        ],
+        "settings": {
+          "section_padding": true
+        }
+      },
+      "1552414619197": {
+        "type": "section-full-width",
+        "blocks": {
+          "1552414642249": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "title": "Need Help Finding what you're looking for?",
+              "image_type": "left_side",
+              "background_color": "uk-background-muted",
+              "image": "shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg",
+              "section_text": "<p><strong>We are committed to excellent customer service to help get you&#x27;r project in motion. Let our friendly staff help you select the best actuator for you projects. <\/strong><\/p>",
+              "light_button": false,
+              "link_text": "Contact Us",
+              "link_url": "shopify:\/\/pages\/contact-us",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1552414642249"
+        ],
+        "settings": {
+          "display_full_width_section": false
+        }
+      },
+      "section-chess": {
+        "type": "section-chess",
+        "blocks": {
+          "1552605004875": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": false,
+              "title": "Internet of Things",
+              "image": "shopify:\/\/shop_images\/chess_imagesCustomizations.jpg",
+              "image_caption": "",
+              "image_title": "",
+              "section_text": "<p><strong>Firgelli was built around the concept of &lsquo;the internet of things&rsquo;.<\/strong><\/p>\n<p>Our inventory includes everything needed to integrate our actuators into your real-world projects. We carry a large assortment of custom mounting brackets and slide rails to install our actuators to just about any surface. We also carry power supplies, Arduino microcontrollers, motors and switches so you can get started immediately on getting your project in motion.<\/p>",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1553632957505": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": true,
+              "title": "Variety and Same Day Shipping",
+              "image": "shopify:\/\/shop_images\/chess_imagesOur_Industries.jpg",
+              "image_caption": "",
+              "image_title": "",
+              "section_text": "<p><strong>We provide clients with a wide range of linear actuators, varying in speed, stroke, length, force, and size.<\/strong><\/p>\n<p>&nbsp;They are UL recognized, and because we are the manufacturer you get direct manufacturers pricing. We accept all major credit cards and with same day shipping availlable<\/p>",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1552605004875",
+          "1553632957505"
+        ],
+        "settings": {
+          "section_padding": true
+        }
+      },
+      "section-full-width": {
+        "type": "section-full-width",
+        "blocks": {
+          "1553028044960": {
+            "type": "select",
+            "settings": {
+              "uk_light": true,
+              "title": "Need Help Finding the Right Actuator?",
+              "image_type": "left_side",
+              "background_color": "fg-background-gradient",
+              "image": "shopify:\/\/shop_images\/Fig-A_force_calculator_large_59c14f72-9132-4499-9f4d-eef2683ca598.png",
+              "section_text": "<p><strong>We precision engineer and manufacture our products so you get direct manufacturers pricing. We offer same day shipping and&nbsp;knowledgeable customer support.<\/strong><\/p>\n<p><strong>Give us a call or email us and we'll be happy to help&nbsp;you find the best actuator for your project.<\/strong><\/p>",
+              "light_button": false,
+              "link_text": "Contact Us",
+              "link_url": "shopify:\/\/pages\/contact-us",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1553028044960"
+        ],
+        "settings": {
+          "display_full_width_section": false
+        }
+      },
+      "featured-collection-slider": {
+        "type": "featured-collection-slider",
+        "settings": {
+          "title": "You Might Also Like These",
+          "sub_title": "",
+          "display_stock": true,
+          "limit_count": 7,
+          "grid_size": 5,
+          "collection": "brackets",
+          "title_alt": "Linear Actuators",
+          "sub_title_alt": "",
+          "collection_alt": "linear-actuators"
+        }
+      },
+      "social-share": {
+        "type": "social-share",
+        "settings": {
+          "show_share_buttons": true
+        }
+      },
+      "1553102910116": {
+        "type": "hero-featured",
+        "blocks": {
+          "1553102949632": {
+            "type": "select",
+            "settings": {
+              "position_content": "uk-flex-left",
+              "text_center": false,
+              "uk_light": true,
+              "text_shadow": true,
+              "title": "Linear Actuators  for Every Application",
+              "sub_title": "Precision Engineered",
+              "sub_title_position": true,
+              "section_text": "We manufacturer the largest inventory of Linear Actuators.\nSame day shipping at manufacturers pricing.",
+              "shop_now_link_text": "Shop Now",
+              "collection": "linear-actuators",
+              "secondary_link_text": "All Collections",
+              "enable_custom_url": false,
+              "custom_link_url": "",
+              "background_type": true,
+              "background_color": "fg-mute-background-blue",
+              "image": "shopify:\/\/shop_images\/hero-narrow.jpg",
+              "enable_image_overlay": true,
+              "image_overlay_color": "light",
+              "featured_product_badge": "Featured Actuator",
+              "display_featured_product": true,
+              "product": "premium-linear-actuators"
+            }
+          }
+        },
+        "block_order": [
+          "1553102949632"
+        ],
+        "settings": {
+          "display_hero_featured": false
+        }
+      },
+      "1553185368562": {
+        "type": "testimonial",
+        "blocks": {
+          "1553185373277": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "section_text": "I have been very pleased with the mechanical action of the actuators.  They seem to have little or no backlash, which seems to be attributable to their plastic worm gear on metal worm, plastic nut on the screw, and good overall design and construction.  We've been able to reliably run them at very low voltages (~2V) and still get good, smooth motion.",
+              "customer_name": "Scott",
+              "company_name": "NASA Research Center",
+              "light_button": false,
+              "link_text": "Customer Feedback",
+              "link_url": "shopify:\/\/pages\/customer-feedback",
+              "enable_custom_url": false,
+              "custom_link_url": "",
+              "enable_customer_logo": false,
+              "custom_banner_title": "Trusted by these top brands",
+              "background_type": false,
+              "background_color": "uk-background-muted"
+            }
+          }
+        },
+        "block_order": [
+          "1553185373277"
+        ],
+        "settings": {
+        }
+      },
+      "section-three-col": {
+        "type": "section-three-col",
+        "blocks": {
+          "1553206596297": {
+            "type": "select",
+            "settings": {
+              "title": "We Promise",
+              "section_text": "<ul>\n<li>First Class Service<\/li>\n<li>Top Grade Quality<\/li>\n<li>A Business First Approach<\/li>\n<\/ul>",
+              "image": "shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1553206645946": {
+            "type": "select",
+            "settings": {
+              "title": "By Providing",
+              "section_text": "<ul>\n<li>Friendly and Helpful Staff<\/li>\n<li>Tested and Proven Product<\/li>\n<li>Support for Special Applications<\/li>\n<\/ul>",
+              "image": "shopify:\/\/shop_images\/Hero_smiling_couple_2x_14d5b72c-0c13-4cfe-bcbf-135344e34687.jpg",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1553206697737": {
+            "type": "select",
+            "settings": {
+              "title": "So You Achieve",
+              "section_text": "<ul>\n<li>Quick and Simple Solutions<\/li>\n<li>A Reliable Care-free Experience<\/li>\n<li>A Higher Return on Investment<\/li>\n<\/ul>",
+              "image": "shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1553206596297",
+          "1553206645946",
+          "1553206697737"
+        ],
+        "settings": {
+          "title": "What We Aim For",
+          "sub_title": "<p>Since its inception in 2004, Firgelli Automations as developed a wide range of products to match an ever-changing landscape of applications, all to offer you the best possible return on investment. We seek to provide high quality commodities which serve you best, backed by first-rate customer service.\nWe stock our products in a secure facility, and offer same day shipping on orders placed prior to our shipping cut-off. Let Firgelli Automations 'Put Your Dreams in Motion'.<\/p>",
+          "heading_margin": true,
+          "enable_card": false,
+          "center_text": false
+        }
+      },
+      "page-heading": {
+        "type": "page-heading",
+        "blocks": {
+          "1553620894437": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "title": "",
+              "background_type": true,
+              "background_color": "uk-background-primary",
+              "image": "shopify:\/\/shop_images\/Hero_Solar_2x_b99aa320-b086-4b57-bfd2-b2fcb3bf2030.jpg",
+              "light_button": false
+            }
+          }
+        },
+        "block_order": [
+          "1553620894437"
+        ],
+        "settings": {
+        }
+      },
+      "collection-list-cards": {
+        "type": "collection-list-cards",
+        "blocks": {
+          "1553622683910": {
+            "type": "select",
+            "settings": {
+              "collection_type": "linear",
+              "card_width": "uk-width-1-1@s",
+              "collection_title": "Linear Actuators",
+              "collection_text": "<p>We provide clients with a wide range of linear actuators, varying in speed, stroke, length, force, and size. For your convenience, we have divided this vast product line-up into several categories for quick and easy procurement:<\/p>\n<ul>\n<li>Rod-Style Actuators<\/li>\n<li>Track-Type Actuators<\/li>\n<li>Mini Actuators<\/li>\n<li>Feedback Actuators<\/li>\n<li>Column Lifts<\/li>\n<\/ul>",
+              "collection_url": "linear-actuators"
+            }
+          },
+          "1553629616688": {
+            "type": "select",
+            "settings": {
+              "collection_type": "tv",
+              "card_width": "uk-width-1-2@s",
+              "collection_title": "TV Lifts",
+              "collection_text": "<p>\nSometimes having a big screen isn't enough. If you are anything like the thousands of people who have decided to take their entertainment to a new level (pun intended) you may be interested in attaching your television screen to a Firgelli Automations TV lift. We carry lift systems to drop your screen down from your ceiling, as well as push up through your floor, cabinet, or other structure. Easy to install and shipped with all the equipment you will need to install your TV as well as run the unit: from universal mounting brackets, control boxes, remote controls, sensors, to power adaptors - we have you covered.\n<\/p>",
+              "collection_url": "tv-lifts"
+            }
+          },
+          "1553630377781": {
+            "type": "select",
+            "settings": {
+              "collection_type": "column",
+              "card_width": "uk-width-1-2@s",
+              "collection_title": "Column Lifts",
+              "collection_text": "<p>\nThe latest addition to the Firgelli Automations product family is our column lift units. Featuring the latest in linear motion technology with quieter motors, programmable extended lengths, telescopic capabilities, and plug and play ease. These units are ideal for applications with automated home furniture, custom vehicles, in-air entertainment, large scale robotics, and more.\n<\/p>",
+              "collection_url": ""
+            }
+          },
+          "1553630331624": {
+            "type": "select",
+            "settings": {
+              "collection_type": "table",
+              "card_width": "uk-width-1-1@s",
+              "collection_title": "",
+              "collection_text": "<p>\nCurrently trending at the workplace and at home is the use of the electric table lift. Our kits make it easy to convert our existing desk or table into an electric marvel in no time at all. Electric table lifts will change the working height of your surface allowing you to stand or sit while using your desk, reducing the effects of back pain, neck strain, wrist damage, and promoting proper blood circulation throughout your body.\n<\/p>",
+              "collection_url": ""
+            }
+          },
+          "1553629568617": {
+            "type": "select",
+            "settings": {
+              "collection_type": "controller",
+              "card_width": "uk-width-1-1@s",
+              "collection_title": "Control Systems",
+              "collection_text": "<p>\nAll linear motion devices, whether meant to lift a tonneau cover on a truck, a boat hatch on a yacht, or a flat screen TV, require an electrical system to tell it what to do. Firgelli Automations provides an extensive array of simple and complex control systems to meet needs of a diverse range of applications.\n\n<\/p>",
+              "collection_url": "control-systems"
+            }
+          },
+          "1553630427523": {
+            "type": "select",
+            "settings": {
+              "collection_type": "slide",
+              "card_width": "uk-width-1-2@s",
+              "collection_title": "",
+              "collection_text": "<p>\nIn keeping with the theme of linear motion, Firgelli Automations offers three lines of linear slide rails, also known as guide rails, which clients often utilize to stabilize their automation projects and applications. Used for applications ranging from electric roofs for off-road trucks, to sliding bookshelves, vertical doors, automated paintings, cabinets, adjustable computer monitors, custom TV lifts, and so much more. Wherever you see linear motion, there is a component being used to keep it steady. \n<\/p>",
+              "collection_url": ""
+            }
+          },
+          "1553630467806": {
+            "type": "select",
+            "settings": {
+              "collection_type": "bracket",
+              "card_width": "uk-width-1-2@s",
+              "collection_title": "Mounting Brackets",
+              "collection_text": "<p>\nOften forgotten by suppliers, is the need to easily mount and install your products. When making the step to invest in your new linear motion solution, consider this: your mounting brackets must be as versatile as your application. We understand that your project is as strong as its weakest component. Keeping this in mind, we have developed a select range of brackets which are specifically designed with their respective actuators. Most brackets utilize the strength of clevis-type mounting, however some will go as far as attaching to the body of the linear actuator itself; this provides flexibility in mounting and gives you the most valuable commodity known to man: options. \n<\/p>",
+              "collection_url": ""
+            }
+          },
+          "1553630495568": {
+            "type": "select",
+            "settings": {
+              "collection_type": "accessory",
+              "card_width": "uk-width-2-3@s",
+              "collection_title": "",
+              "collection_text": "<p>\nSometimes the control systems, brackets, and innovative linear actuators aren't enough. This is the category where you will find all that your automation project is lacking. The little odds and ends are as important as the whole, and at Firgelli Automations we do not overlook the small stuff. Limit switches, relays, pulley cables, all of which can be vital to the design and operation of an industrial or home automation system.\n<\/p>",
+              "collection_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1553622683910",
+          "1553629616688",
+          "1553630377781",
+          "1553630331624",
+          "1553629568617",
+          "1553630427523",
+          "1553630467806",
+          "1553630495568"
+        ],
+        "settings": {
+          "title": "Products We Offer",
+          "sub_title": "asdfasdfasdf",
+          "enable_card": true
+        }
+      },
+      "collection-cards": {
+        "type": "collection-cards",
+        "settings": {
+          "disable_filter": false
+        }
+      },
+      "contact-phones": {
+        "type": "contact-phones",
+        "blocks": {
+          "1554148281153": {
+            "type": "select",
+            "settings": {
+              "phone_or_fax": "Phone",
+              "phone_number": "16045428945"
+            }
+          },
+          "1554148296781": {
+            "type": "select",
+            "settings": {
+              "phone_or_fax": "Phone",
+              "phone_number": "18662260465"
+            }
+          }
+        },
+        "block_order": [
+          "1554148281153",
+          "1554148296781"
+        ],
+        "settings": {
+          "office_hours_open": "8AM",
+          "office_hours_close": "4PM",
+          "office_day_start": "Monday",
+          "office_day_end": "Friday",
+          "phone_ext_one": "Sales",
+          "phone_ext_two": "",
+          "display_phone_notice": false,
+          "phone_notice": "Due to the COVID-19 pandemic phone support will be temporarily unavailable. Please contact us via email for technical support.",
+          "phone_footer": ""
+        }
+      },
+      "contact-email": {
+        "type": "contact-email",
+        "blocks": {
+          "1554150702465": {
+            "type": "select",
+            "settings": {
+              "email_type": "General Inquiries",
+              "other_title": "",
+              "email_address": "sales@firgelliauto.com"
+            }
+          },
+          "1554150952026": {
+            "type": "select",
+            "settings": {
+              "email_type": "Technical Support",
+              "other_title": "",
+              "email_address": "support@firgelliauto.com"
+            }
+          }
+        },
+        "block_order": [
+          "1554150702465",
+          "1554150952026"
+        ],
+        "settings": {
+        }
+      },
+      "contact-address": {
+        "type": "contact-address",
+        "blocks": {
+          "1554151910425": {
+            "type": "select",
+            "settings": {
+              "location": "<p><strong>Canada<\/strong><\/p>\n<p>Firgelli Automations<\/p>\n<p>116-15272 Croydon Drive<\/p>\n<p>Surrey, BC V3S&nbsp;0Z5<\/p>\n<p>Canada<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1554151910425"
+        ],
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1555456527223": {
+            "type": "select",
+            "settings": {
+              "linklist": "itg-menu"
+            }
+          }
+        },
+        "block_order": [
+          "1555456527223"
+        ],
+        "settings": {
+          "display_holiday_hours": true
+        }
+      },
+      "section-blog": {
+        "type": "section-blog",
+        "settings": {
+          "display_blog": false,
+          "title": "",
+          "sub_title": "",
+          "article_count": 5
+        }
+      },
+      "section-blog_manual": {
+        "type": "section-blog_manual",
+        "blocks": {
+          "1557184190846": {
+            "type": "select",
+            "settings": {
+              "title": "Actuator Force Calculator",
+              "excerpt": "<p>We've created our own custom tool to help you calculate and select right Linear Actuator force.&nbsp; Whilst this particular Calculator is based on lifting a Hatch of some form.&nbsp; The same calculation can be used for many other applications including: Boat Hatch,&nbsp;<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/linear-actuator-force-calculator",
+              "image": "shopify:\/\/shop_images\/Fig-A_force_calculator_large_59c14f72-9132-4499-9f4d-eef2683ca598.png"
+            }
+          },
+          "1557184246599": {
+            "type": "select",
+            "settings": {
+              "title": "Don’t Buy a Linear Actuator Until You Read This",
+              "excerpt": "<p>Are you tired of wasting your time and money searching for the best quality linear actuator?&nbsp;&nbsp; Frustrated by actuators that look identical but in reality are not the same? here are our 5 Steps to Buying a Quality Linear Actuator Online, and we cover The Main Pitfalls of Buying a Linear Actuator Online<\/p>",
+              "url": "",
+              "image": "shopify:\/\/shop_images\/inside_a_linear_actuator_-_cut_away_view_large_3ae168a5-f183-45c6-b5a0-fbffc5e92f02.jpg"
+            }
+          },
+          "1557184282589": {
+            "type": "select",
+            "settings": {
+              "title": "Inner Workings of a Linear Actuator",
+              "excerpt": "<p>We thought you would like to understand exactly how a linear actuator work<\/p>",
+              "url": "",
+              "image": "shopify:\/\/shop_images\/linear_actuator_exploded_view_large_1d2e61fb-d8b0-48ae-a4b7-93e417a99ea3.png"
+            }
+          },
+          "1557184310319": {
+            "type": "select",
+            "settings": {
+              "title": "How to Use an External Limit Switch with a Linear Actuator",
+              "excerpt": "<p>An external limit switch is a very handy and cost effective means of controlling the travel of a linear actuator. In this article, we will go over how to use an external limit switch with a linear actuator<\/p>",
+              "url": "",
+              "image": "shopify:\/\/shop_images\/limit_switch_540x_bca6d920-b3b1-4fb8-a442-f87eac3a4141.png"
+            }
+          }
+        },
+        "block_order": [
+          "1557184190846",
+          "1557184246599",
+          "1557184282589",
+          "1557184310319"
+        ],
+        "settings": {
+          "display_blog_manual": false,
+          "title": "Checkout these Useful Resources",
+          "sub_title": "",
+          "article_count": 5
+        }
+      },
+      "holiday-hours": {
+        "type": "holiday-hours",
+        "blocks": {
+          "1581370181919": {
+            "type": "select",
+            "settings": {
+              "holiday_name": "BC Family Day",
+              "holiday_date_1": "Monday February 17, 2020",
+              "holiday_date_2": "",
+              "holiday_date_3": "",
+              "holiday_date_4": "",
+              "holiday_date_5": ""
+            }
+          }
+        },
+        "block_order": [
+          "1581370181919"
+        ],
+        "settings": {
+          "holiday_heading": "Holiday Schedule",
+          "holiday_subheading": "<p>We will be closed during the dates listed below<\/p>"
+        }
+      },
+      "recommend-collection": {
+        "type": "recommend-collection",
+        "settings": {
+          "display_recommended": true,
+          "title": "",
+          "sub_title": "",
+          "any_actuator": false,
+          "collection_on_actuator": "",
+          "display_stock": true,
+          "limit_count": 8,
+          "grid_size": 4
+        }
+      },
+      "section-chess-collection": {
+        "type": "section-chess-collection",
+        "blocks": {
+          "1579028429235": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": false,
+              "title": "Our Products",
+              "image": "shopify:\/\/shop_images\/our-actuators-frigelli-automations.jpg",
+              "image_caption": "Popular products and accessories.",
+              "image_title": "",
+              "image_link_url": "",
+              "image_link_url_title": "",
+              "section_text": "<p>Our premium DC actuators are IP66 rated making them dust and water resistance, great for environments that require enhanced corrosion protection. For situations where you may need to move a heavy load, our&nbsp;industrial series is capable of pushing thousands of pounds with ease. We also have our mini and bullet series for those projects where space is limited. No matter which model you choose, all units are quality tested and precision engineered for efficiency and performance with a 12 month warranty including same-day shipping.<\/p>",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1579028481385": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": true,
+              "title": "Industries We Serve",
+              "image": "shopify:\/\/shop_images\/linear-actuator-blumen-lumen-firgelli-auotmations.jpg",
+              "image_caption": "Blumen Lumen art installation 2014",
+              "image_title": "",
+              "image_link_url": "",
+              "image_link_url_title": "",
+              "section_text": "<p>Our 12 volt actuators are used in many different applications from DIY hobby projects, home automations, marine &amp; automotive, robotics &amp; animatronics, installation art, experimental fashion, handicap accessibility, industrial and construction machinery.<\/p>\n<p>We&rsquo;re always excited to discover what our customers are doing with our products.<\/p>\n<p>A recent customer converted a vehicle into a fully armored one and required a stronger lift for ballistic glass with a thickness of 39mm. They chose to use our&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/collections\/linear-actuators\/products\/deluxe-rod-actuator\" title=\"https:\/\/www.firgelliauto.com\/collections\/linear-actuators\/products\/deluxe-rod-actuator\">deluxe linear actuators<\/a>&nbsp;as the best lift because of the strength and reliability our products are known for.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/armored-and-bullet-proof-vehicles\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/armored-and-bullet-proof-vehicles\">See Ballistic Window<\/a><\/p>\n<p>We love hearing about projects that help to improve the lives of people living with a physical handicap. We&rsquo;ve had a customer use one of our electric actuators to modify a wheelchair&nbsp;to allow it to adjust angles making it adapt to more situations such as improving balance on hills and overcoming side walk curbs.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/wheelchair-demo-uses-only-one-actuator\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/wheelchair-demo-uses-only-one-actuator\">See modified wheelchair<\/a><\/p>\n<p>TV lifts are a popular home automation application and with our TV lift kits, many of our customers are able to easily setup a motorized, remote-controlled mechanism to hide or showcase a large TV with minimal cost and effort.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/flip-down-tv-lift\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/flip-down-tv-lift\">How to setup tv lift.<\/a><\/p>\n<p>Not only have our products contributed to the practical, we&rsquo;ve also seen our them used in creative art installation projects. Premiered at Burning Man 2014 by San Francisco art collective &shy;&mdash;&nbsp;<a href=\"https:\/\/www.foldhaus.com\/blumen-lumen\" title=\"https:\/\/www.foldhaus.com\/blumen-lumen\">FoldHaus<\/a>,&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/news\/18064215-blumen-lumen-high-tech-art-featured-at-burning-man-2014\" title=\"https:\/\/www.firgelliauto.com\/blogs\/news\/18064215-blumen-lumen-high-tech-art-featured-at-burning-man-2014\">Blumen Lumen<\/a>&nbsp;was an art installation that used our DC actuators to create &ldquo;a garden of ten giant origami flowers that bloom in the presence of people and move with the wind, creating a magical experience for their visitors&rdquo;.<\/p>",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1579028535236": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": false,
+              "title": "Our Accessories",
+              "image": "shopify:\/\/shop_images\/accessories-firgelli-automations.jpg",
+              "image_caption": "Remote control devices, arduino and wires",
+              "image_title": "",
+              "image_link_url": "",
+              "image_link_url_title": "",
+              "section_text": "<p>Whether you&rsquo;re looking to create a remote-controlled, motorized sliding door to let your cat out on the balcony or you need to adjust the angle of your snow blower shute and blade with a push of a button to save downtime, we carry all the components to make it possible. Our selection includes mounting brackets, power supplies, control systems and many more.<\/p>",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "1579028582927": {
+            "type": "select",
+            "settings": {
+              "uk_light": false,
+              "first_order": true,
+              "title": "Our Resources & Tools",
+              "image": "shopify:\/\/shop_images\/linear-actuator-tutorial-firgelli-automations.jpg",
+              "image_caption": "Restricting motion with external limit switches",
+              "image_title": "",
+              "image_link_url": "https:\/\/www.firgelliauto.com\/blogs\/tutorials\/restricting-motion-with-external-limit-switches",
+              "image_link_url_title": "Tutorial on restricting motion with external limit switches",
+              "section_text": "<p>We understand that integrating linear motion into your project can be a challenging task, that&rsquo;s why we continuously developed new resources to help you complete your project. Our repository of resources includes informational articles, tutorial blogs, instruction manuals, technical drawings, product specification sheets and 3d files.&nbsp;<\/p>\n<p>If you&rsquo;re a beginner and would like to know how to wire a linear actuator to a switch or remote control, interface actuators with Arduino or use any of our other products we have a comprehensive collection of&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\" title=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\">tutorials<\/a>.<\/p>\n<p><\/p>\n<p>Selecting the correct specifications from our broad range of 12V linear actuators can be a bit overwhelming so we&rsquo;ve developed a free web application to calculate the position and strength required to lift a hatch door with our electric actuators. Based on the data you provide our web application will handle the complicated physics to calculate the optimal mounting positions while recommending the exact actuator. This is the same tool we utilize in house to help customers with their projects and now we&rsquo;ve packaged it into a powerful and user friendly web based app.&nbsp;<a href=\"https:\/\/www.firgelliauto.com\/pages\/about-linear-actuator-calculator\" title=\"https:\/\/www.firgelliauto.com\/pages\/about-linear-actuator-calculator\">See our Linear Actuator Calculator<\/a><\/p>",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "1579028429235",
+          "1579028481385",
+          "1579028535236",
+          "1579028582927"
+        ],
+        "settings": {
+          "section_padding": true
+        }
+      },
+      "testimonial": {
+        "type": "testimonial",
+        "settings": {
+        }
+      },
+      "page-wiring-diagram": {
+        "type": "page-wiring-diagram",
+        "blocks": {
+          "1595460747205": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/2_Channel_Remote-min.png",
+              "legend_text": "<p><strong>2CH-REM<\/strong><\/p><p><strong>2 Channel Remote System<\/strong><\/p><p>DO NOT reverse the red and black connections; red must be connected to 12V+ and black to GND<\/p>"
+            }
+          },
+          "1595460778345": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/4_Channel_Remote-min.png",
+              "legend_text": "<p><strong>4CH-RC<\/strong><\/p><p><strong>4 Channel Remote System<\/strong><\/p><p>DO NOT reverse the red and black connections; red must be connected to 12V+ and black to GND<\/p>"
+            }
+          },
+          "1595460856943": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/Overcurrent_Protection_Board-min.png",
+              "legend_text": "<p><strong>FA-POCT<\/strong><\/p><p><strong>Over Current Protection Module<\/strong><\/p>"
+            }
+          },
+          "1595460913868": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/Synchronous_Control_Board-min.png",
+              "legend_text": "<p><strong>FA-SYNC-2<\/strong><\/p><p>DO NOT reverse the power connections; VIN must be connected to 12V+ and GND to GND<\/p>"
+            }
+          },
+          "1595460972746": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/Single_Limit_Switch-min.png",
+              "legend_text": "<p><strong>EL-KIT<\/strong><\/p><p><strong>External Limit Switch with Diode<\/strong><\/p>"
+            }
+          },
+          "1595461000280": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/diode-min.jpg",
+              "legend_text": "<p><strong>Diode IN4007<\/strong><\/p><p>We do not sell these, you’ll need to purchase them from a different retailer<\/p>"
+            }
+          },
+          "1595461034151": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/DPDT_Switch-min.png",
+              "legend_text": "<p><strong>DPDT Rocker Switch<\/strong><\/p><p><strong>MAN-RS, MAN-RS2, WPRS-SUS, WPRS-MOM<\/strong><\/p>"
+            }
+          },
+          "1595461071321": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/Ground-min.png",
+              "legend_text": "<p><strong>Ground<\/strong><\/p>"
+            }
+          },
+          "1595461089355": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/12V_Power-min.png",
+              "legend_text": "<p><strong>12V+<\/strong><\/p>"
+            }
+          },
+          "a28b11d7-db4f-416b-9c5a-2f0db7c740c6": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/FA-SYNC-4.png",
+              "legend_text": "<p><strong>FA-SYNC-4<\/strong><\/p>"
+            }
+          },
+          "ab86c035-1db0-4b49-bf2f-0c1e91e69cc1": {
+            "type": "select",
+            "settings": {
+              "display_legend_item": true,
+              "legend_image": "shopify:\/\/shop_images\/FA-SC1.png",
+              "legend_text": "<p><strong>FA-SC1<\/strong><\/p><p><strong>Speed Controller<\/strong><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1595460747205",
+          "1595460778345",
+          "1595460856943",
+          "1595460913868",
+          "1595460972746",
+          "1595461000280",
+          "1595461034151",
+          "1595461071321",
+          "1595461089355",
+          "a28b11d7-db4f-416b-9c5a-2f0db7c740c6",
+          "ab86c035-1db0-4b49-bf2f-0c1e91e69cc1"
+        ],
+        "settings": {
+          "wiring_diagram_csv": "https:\/\/cdn.shopify.com\/s\/files\/1\/0742\/4613\/files\/wiring-diagram-data-us-1-0.csv?v=1616196329",
+          "recommended_collection": "wiring-diagram-recommended",
+          "wiring_diagram_placeholder_image": "shopify:\/\/shop_images\/wiring-diagram-placeholder.jpg",
+          "wiring_diagram_no_result_message": "No wiring diagram found. Please select atleast 1 control option..",
+          "wiring_diagram_legend_heading": "Legend"
+        }
+      },
+      "calculator-descriptions": {
+        "type": "calculator-descriptions",
+        "blocks": {
+          "1595527952878": {
+            "type": "select",
+            "settings": {
+              "title": "Linear Actuator Calculator",
+              "sub_title": "<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>",
+              "applications": "<li>Trapdoor hatch<\/li>\n<li>Tonneau cover<\/li>",
+              "general_tips": ""
+            }
+          },
+          "1595527962979": {
+            "type": "select",
+            "settings": {
+              "title": "Stair Hatch Lift",
+              "sub_title": "<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch to a staircase.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>",
+              "applications": "<li>Automated basement hatch<\/li>\n<li>Hidden underground chamber<\/li>",
+              "general_tips": ""
+            }
+          },
+          "1595527962975": {
+            "type": "select",
+            "settings": {
+              "title": "Window Hatch Lift",
+              "sub_title": "<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch for a window.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>",
+              "applications": "<li>Window Hatch<\/li>\n<li>Flip Down TV Hatch<\/li>",
+              "general_tips": ""
+            }
+          },
+          "1595527962974": {
+            "type": "select",
+            "settings": {
+              "title": "Window Hatch Lift",
+              "sub_title": "<p>A tool to help determine the required stroke length and force needed to raise and lower a hatch for a window.<\/p>\n<p>See our&nbsp;<a href=\"https:\/\/firgelliautomation.myshopify.com\/blogs\/news\/how-to-use-the-linear-actuator-calculator\" title=\"How to Use the Linear Actuator Calculator\">tutorial<\/a>&nbsp;for an in depth guide.<\/p>",
+              "applications": "<li>Window Hatch<\/li>\n<li>Flip Down TV Hatch<\/li>",
+              "general_tips": ""
+            }
+          }
+        },
+        "block_order": [
+          "1595527952878",
+          "1595527962979",
+          "1595527962975",
+          "1595527962974"
+        ],
+        "settings": {
+          "form_input": "<p>Enter your specific requirements and experiment with our selection of actuators to see potential mounting positions.<\/p>",
+          "general_tips_static": "<li>This tool automatically factors in a multiplicative factor of 1.2 in the load requirements as a minimum safety factor (actuators should not be run at 100% their maximum rated load).<\/li>\n<li>Defaults to a recommended two actuators (one mounted on either side of the hatch), for added stability. Never push a hatch open from just one side. Option available to select one actuator but requires mounting in center of hatch.<\/li>",
+          "product_data_csv": "https:\/\/cdn.shopify.com\/s\/files\/1\/0742\/4613\/files\/calculator-linear-actuator-product-data-ca.csv?v=1595462323"
+        }
+      },
+      "calculator-landing-page-header": {
+        "type": "calculator-landing-page-header",
+        "settings": {
+          "uk_light": true,
+          "title": "Linear Actuator Calculator Tools",
+          "image": "shopify:\/\/shop_images\/firgelli-automations-bullet-actuators-collection.jpg"
+        }
+      },
+      "calculator-landing-page": {
+        "type": "calculator-landing-page",
+        "blocks": {
+          "1595528570734": {
+            "type": "select",
+            "settings": {
+              "hide_widget": false,
+              "widget_type": "standard-hatch-lift",
+              "title": "Standard Hatch",
+              "applications": "<h5>Calculate mount position and force required for a top raising Hatch Lift<\/h5>\n<ul>\n<li>Hidden compartments<\/li>\n<li>Automated basement trapdoor<\/li>\n<li>Electric Actuated Boat Hatch<\/li>\n<\/ul>"
+            }
+          },
+          "1595528592764": {
+            "type": "select",
+            "settings": {
+              "hide_widget": false,
+              "widget_type": "stair-hatch-lift",
+              "title": "Staircase Hatch",
+              "applications": "<h5>Calculate mount position and required force to lift a door to a staircase<\/h5>"
+            }
+          },
+          "1595528605438": {
+            "type": "select",
+            "settings": {
+              "hide_widget": false,
+              "widget_type": "window-hatch-lift",
+              "title": "Window Hatch Lift",
+              "applications": "<p>Calculate mount position and required force to a Window Hatch Lift<\/p>"
+            }
+          },
+          "1595528605439": {
+            "type": "select",
+            "settings": {
+              "hide_widget": false,
+              "widget_type": "more-coming",
+              "title": "More Coming",
+              "applications": "<p><b>We're working hard to bring you more calculators.<\/b>\n<a href=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\" title=\"See our Tutorials\"><\/a><\/p><p><a href=\"https:\/\/www.firgelliauto.com\/blogs\/tutorials\" title=\"See our Tutorials\">See our tutorials page<\/a> to learn more about the different components that you might need for your project.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1595528570734",
+          "1595528592764",
+          "1595528605438",
+          "1595528605439"
+        ],
+        "settings": {
+          "primary_section": true,
+          "primary_heading": "Prototyping Made Simple",
+          "primary_description": "<p>Deciding on&nbsp;the best mounting position and force required from our collection of linear actuators can be overwhelming. When you include the weight, angle and length&nbsp;of the object that you're trying to move, things can get more complicated.<\/p>\n<p>That's why we've packaged the same tool, that we utilize in house to help customers with their projects, into a powerful and user-friendly web based application. You'll&nbsp;be able to use our calculator to&nbsp;experiment with&nbsp;multiple&nbsp;iterations of your linear motion project using real-time generated diagrams help to illustrate your plans. With the help of our calculator, determining the&nbsp;optimal configuration and best electric actuator becomes straightforward and precise for engineers or hobbyist of any skill level.<\/p>",
+          "primary_bullet_points": "<h3>Key Features<\/h3>\n<li>Simplify your workflow by automatically calculating the complicated physics<\/li>\n<li>Real-time calculation with illustrative feedback diagram<\/li>\n<li>Explore which actuators will be sufficient for your setup<\/li>\n<li>Evaluate a new design to enhance precision<\/li>",
+          "secondary_section": false,
+          "secondary_heading": "",
+          "secondary_description": "",
+          "secondary_bullet_points": ""
+        }
+      },
+      "widget": {
+        "type": "widget",
+        "settings": {
+          "recommended_collection": "widget-collection"
+        }
+      },
+      "manual-blog-linear-actuators": {
+        "type": "manual-blog-linear-actuators",
+        "blocks": {
+          "e2dc7cae-ccf0-435f-bf2b-a6b98ab60eaa": {
+            "type": "select",
+            "settings": {
+              "title": "Linear Actuators 101 - Everything you need to know about Actuators",
+              "excerpt": "<p>This article will give you a basic understanding of how actuators work and the terminology used to describe them. When you understand the basics it will be much easier for you to select your own electric linear actuator.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/pages\/news-actuators",
+              "image": "shopify:\/\/shop_images\/linear-actuators_300x300_1bf13cf6-78d4-4e92-bea4-d4fb6fdd4dea.jpg"
+            }
+          },
+          "0dae3f7e-24cb-4586-84a3-c379008fc7a0": {
+            "type": "select",
+            "settings": {
+              "title": "Firgelli complete guide to IP Ratings",
+              "excerpt": "<p>IP ratings are given to any product that requires electricity or has moving parts or both. The IP rating contains a range of information within it, with each letter and number possessing its own meaning, and each refers to its ability to withstand the elements during \"use\". This is very important for some products in some applications. But not in all.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/actuators\/your-complete-guide-to-ip-ratings",
+              "image": "shopify:\/\/shop_images\/ip_rating_blog_thumbnail_300x300_64684178-f1c8-46b6-af25-f3d85482511c.jpg"
+            }
+          },
+          "b50e5d7c-a1bc-48ed-a7e3-28979da81bd4": {
+            "type": "select",
+            "settings": {
+              "title": "How do you mount a Linear Actuator",
+              "excerpt": "<p>The most common method to mount your linear actuator is to use what is called the Clevis end mounting brackets. These common mounting methods consist of mounting the Brackets at each end of the linear actuator where both ends are free to rotate and pivot around the Clevis holes on each of the the actuator.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/how-do-you-mount-a-linear-actuator",
+              "image": "shopify:\/\/shop_images\/clevisMountingBracket_480x480_1_300x300_67748593-644e-43a6-8260-a3acd90b84f9.jpg"
+            }
+          },
+          "2862aa44-832b-421e-ad4d-d54f02b68ff9": {
+            "type": "select",
+            "settings": {
+              "title": "Controlling a Linear Actuator with a arduino",
+              "excerpt": "<p><a href=\"https:\/\/www.firgelliauto.com\/collections\/arduino\" target=\"_blank\" title=\"Arduinos\">Arduino<\/a> are an open source electronics prototyping platform based on flexible, easy-to-use hardware and software. It's intended for DIY projects, artists, designers, hobbyists, and anyone interested in creating interactive projects. Arduinos are microcontroller boards that contain everything you need to easily interface with the microcontroller.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/all-about-actuators-the-simple-guide-copy",
+              "image": "shopify:\/\/shop_images\/arduino_thumbnail_300x300_c72cd8a7-833f-4add-a7f7-2fbf739fb1d1.jpg"
+            }
+          },
+          "18c5ab95-3a25-4861-8c88-c741e0dcc3f0": {
+            "type": "select",
+            "settings": {
+              "title": "What is an Actuator and How They Work",
+              "excerpt": "<p>From automotive to machinery to home improvement, actuators are becoming more commonplace worldwide. This is most true in developing countries going through their industrial revolution. To answer the question \"What is an Actuator?\" We look at some examples of actuators and how they work. Read on to learn more.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/actuators\/examples-of-actuators-and-how-they-work",
+              "image": "shopify:\/\/shop_images\/converting_rotational_servo_motor_to_linear_motion_520x500_1_300x300_3ec142ed-94d2-4946-9f35-cb3bc7680075.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "e2dc7cae-ccf0-435f-bf2b-a6b98ab60eaa",
+          "0dae3f7e-24cb-4586-84a3-c379008fc7a0",
+          "b50e5d7c-a1bc-48ed-a7e3-28979da81bd4",
+          "2862aa44-832b-421e-ad4d-d54f02b68ff9",
+          "18c5ab95-3a25-4861-8c88-c741e0dcc3f0"
+        ],
+        "settings": {
+          "display_blog_manual": true,
+          "title": "Firgelli Top Related Blogs",
+          "sub_title": "<p>Here are the top blog posts related to linear actuators, on our main website.<\/p>"
+        }
+      },
+      "WhyFirgelli": {
+        "type": "WhyFirgelli",
+        "blocks": {
+          "5509697b-9d8f-4805-aeb5-e7918fc4f436": {
+            "type": "select",
+            "settings": {
+              "title": "Top Grade Quality",
+              "section_text": "Our products are tested rigorously to provide you with a reliable care-free experience",
+              "widget_type": "icon-widget_checklist",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "eaa51828-4d49-4236-aede-ed31b9de163c": {
+            "type": "select",
+            "settings": {
+              "title": "Custom Orders",
+              "section_text": "We create custom linear actuators to suit specific application requirements of our customers",
+              "widget_type": "icon-widget_actuator",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          },
+          "9762e52d-89d7-433c-8519-a7306db3f0d8": {
+            "type": "select",
+            "settings": {
+              "title": "Lifetime Customer Support",
+              "section_text": "We provide first class service with our friendly and helpful staff who can help you achieve quick and simple solutions for your project",
+              "widget_type": "icon-widget_customerSupport",
+              "link_text": "",
+              "link_url": "",
+              "enable_custom_url": false,
+              "custom_link_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "5509697b-9d8f-4805-aeb5-e7918fc4f436",
+          "eaa51828-4d49-4236-aede-ed31b9de163c",
+          "9762e52d-89d7-433c-8519-a7306db3f0d8"
+        ],
+        "settings": {
+          "title": "FIRGELLI® Provides",
+          "sub_title": "",
+          "heading_margin": false,
+          "enable_card": false,
+          "center_text": false
+        }
+      },
+      "manual-blog-mounting-brackets": {
+        "type": "manual-blog-mounting-brackets",
+        "blocks": {
+          "a9883fa7-7402-43ff-92e1-c689c6ba5d7e": {
+            "type": "select",
+            "settings": {
+              "title": "How do you mount a Linear Actuator - Linear Actuator Brackets",
+              "excerpt": "<p>The most common method to mount your linear actuator is to use what is called the Clevis end mounting brackets. These common mounting methods consist of mounting the Brackets at each end of the linear actuator where both ends are free to rotate and pivot around the Clevis holes on each of the the actuator.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/how-do-you-mount-a-linear-actuator",
+              "image": "shopify:\/\/shop_images\/mounting-bracket_300x300_e20567f3-7aa1-4318-aded-00c4bf2718ee.jpg"
+            }
+          },
+          "b723b17b-bb07-438d-a434-edae65137302": {
+            "type": "select",
+            "settings": {
+              "title": "Common Mounting Brackets for Linear Actuators",
+              "excerpt": "<p>While determining and selecting the right linear actuator gets most of the attention, choosing the right mounting brackets for your linear actuator is a sometimes forgotten or hastily decided. But finding the right mounting brackets can make a huge difference in how successfully your next project is.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/common-mounting-brackets-for-linear-actuators",
+              "image": "shopify:\/\/shop_images\/clevis-bracket_300x300_56b1892c-cb28-4594-9212-d70249f81015.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "a9883fa7-7402-43ff-92e1-c689c6ba5d7e",
+          "b723b17b-bb07-438d-a434-edae65137302"
+        ],
+        "settings": {
+          "display_blog_manual": true,
+          "title": "Top Mounting Brackets Blogs",
+          "sub_title": "<p>Here are the top blog posts related to moutning brackets, on our main website.<\/p>"
+        }
+      },
+      "manual-blog-tv-lifts": {
+        "type": "manual-blog-tv-lifts",
+        "blocks": {
+          "274fdc52-a1e4-4e61-90af-fd86b04825d0": {
+            "type": "select",
+            "settings": {
+              "title": "How to Build a TV Lift Cabinet - For under $300",
+              "excerpt": "<p>Want to make the perfect TV Lift Cabinet? Have you found the perfect spot for your TV but don't want it showing all the time? Maybe you need to save on space but can't find the right TV stand. There's great news! By installing a TV lift, you can have the best of both worlds.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/tv-lifts\/how-to-build-a-tv-lift-cabinet",
+              "image": "shopify:\/\/shop_images\/HOW_TO_MAKE_520x500_1_300x300_2d3eb642-9ec4-45eb-b38c-f111ede23635.png"
+            }
+          },
+          "8eb26590-a152-45d3-a1cf-c7c927391e68": {
+            "type": "select",
+            "settings": {
+              "title": "How to make a Drop down TV Lift using a Track Actuator",
+              "excerpt": "<p>Here is a customer example of a Drop down TV lifts using a Firgelli Track Actuator instead of the Firgelli Drop down TV lift kit. This will save you money however you still need to spend the time to built the TV mount, which is included with the Drop Down TV lift Kit.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/tv-lifts\/18649311-how-to-use-a-track-actuator-to-lift-and-lower-a-tv-thats-mounted-to-a-wall",
+              "image": "shopify:\/\/shop_images\/track-drop-down-tv_300x300_9504e648-05f5-49dd-ad8f-3047cf90dffa.jpg"
+            }
+          },
+          "560ca01d-2f68-4875-b1bf-b7d3ac5edd45": {
+            "type": "select",
+            "settings": {
+              "title": "How to build a Flip Down Tv Lift",
+              "excerpt": "<p>We talk with a lot of professionals who are designing homes for clients that are fortunate enough to have an attic. But what if you don't?, Firgelli TV Lift Kit has a product that will work in both applications, with or without space in the ceiling above to hide your TV.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/how-to-install-a-motorized-flip-down-tv-lift",
+              "image": "shopify:\/\/shop_images\/resized-image-Promo_6_300x300_098a4cd8-175e-459d-97b0-5fce5e634c36.jpg"
+            }
+          },
+          "8688a927-610f-44c7-a8ab-7f9bc4323cff": {
+            "type": "select",
+            "settings": {
+              "title": "What are the different types of TV Lift systems",
+              "excerpt": "<p>You can transform a room from an elegant living space to the ultimate movie theater or sports den by simply having a TV rising out of a fireplace. But before you rush out and grab any old TV lift, you’re going to need to know the different type of TV lifts and what they do for you.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/tv-lifts\/what-are-the-different-types-of-tv-lifts",
+              "image": "shopify:\/\/shop_images\/TV-Lift-systems_300x300_a812c4a4-6d62-4a08-ae8a-6d5d08364eff.jpg"
+            }
+          },
+          "7679d217-d34e-4257-a44a-b0371fd65d2e": {
+            "type": "select",
+            "settings": {
+              "title": "How to Build a Pop Up Drawer in Your Wine Cellar That Provides Hidden Storage",
+              "excerpt": "<p>Building a hidden pop up drawer is an easy and affordable way to create a one of a kind, distinctive, and original wine cellar. This same idea can be used for any cabinet around your home for a variety of purposes: storage, security, design or convenience! Check out this video to see the finished product.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/how-to-build-a-pop-up-drawer-in-your-wine-cellar-that-provides-hidden-storage",
+              "image": "shopify:\/\/shop_images\/popup_1_300x300_4dc25557-e0f1-4a20-9c87-22fee1430929.png"
+            }
+          }
+        },
+        "block_order": [
+          "274fdc52-a1e4-4e61-90af-fd86b04825d0",
+          "8eb26590-a152-45d3-a1cf-c7c927391e68",
+          "560ca01d-2f68-4875-b1bf-b7d3ac5edd45",
+          "8688a927-610f-44c7-a8ab-7f9bc4323cff",
+          "7679d217-d34e-4257-a44a-b0371fd65d2e"
+        ],
+        "settings": {
+          "display_blog_manual": true,
+          "title": "Top Blog Posts for TV-Lifts",
+          "sub_title": "<p>Here are the top blog posts related to our TV Lifts, on our main website.<\/p>"
+        }
+      },
+      "manual-blog-sit-stand-desks": {
+        "type": "manual-blog-sit-stand-desks",
+        "blocks": {
+          "8ff9c3b9-d7ab-4302-8419-d946746ca7d5": {
+            "type": "select",
+            "settings": {
+              "title": "What Are the Different Types of Standing Desk Lifts?",
+              "excerpt": "<p>A standing desk lift is a mechanism that allows you to convert your regular sitting desk into a standing desk. These mechanisms have risen in popularity as more people become aware of the risks of prolong sitting and the benefits to standing.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/what-are-the-different-types-of-standing-desk-lifts",
+              "image": "shopify:\/\/shop_images\/different-standing-desks_300x300_1e637c84-1470-45e7-83f0-f89eb0e192a5.jpg"
+            }
+          },
+          "ca3e5e9e-fd71-4bd6-8e05-3d9c145fe639": {
+            "type": "select",
+            "settings": {
+              "title": "What Standing Desk Lift Do I Need?",
+              "excerpt": "<p>With more individuals having the ability to choose to work remotely and the rising concern of the negative health effects of sitting too much, standing desks are coming more popular and vital for our health.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/what-standing-desk-lift-do-i-need",
+              "image": "shopify:\/\/shop_images\/3-standing-desks_300x300_f4b06b0c-ba84-4b27-af1e-965d869bb857.jpg"
+            }
+          },
+          "f29dc047-8107-446a-952a-ef93d01b417d": {
+            "type": "select",
+            "settings": {
+              "title": "Are Standing Desks really good for you?",
+              "excerpt": "<p>Studies show that standing at least every hour has many health benefits, in fact there is evidence to support this theory since the Apple I-watch has a built in health monitor that even reminds you every hour to stand up and walk around if it notices you have been sitting for too long.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/are-standing-desks-really-good-for-you",
+              "image": "shopify:\/\/shop_images\/4-column-table_300x300_3ec8728c-0dae-4672-9df3-8dd08bb034cc.jpg"
+            }
+          },
+          "26062fa5-66c6-4fb2-9cff-7e5a386fa71a": {
+            "type": "select",
+            "settings": {
+              "title": "Why You Should Be Using A Standing Desk",
+              "excerpt": "<p>Before you run out and quit your desk job, consider this simple solution: an electric Sit Stand Desk will allow you to decrease the amount of time you spend sitting every day while still getting your work done.  At the push of a button you can change your position from sitting to standing and potentially add years to your life.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/standing-desks\/why-you-should-be-using-a-sit-stand-desk",
+              "image": "shopify:\/\/shop_images\/standing-desk-cartoon_300x300_7feca843-5e5f-44e7-af85-4efadbf67c38.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "8ff9c3b9-d7ab-4302-8419-d946746ca7d5",
+          "ca3e5e9e-fd71-4bd6-8e05-3d9c145fe639",
+          "f29dc047-8107-446a-952a-ef93d01b417d",
+          "26062fa5-66c6-4fb2-9cff-7e5a386fa71a"
+        ],
+        "settings": {
+          "display_blog_manual": true,
+          "title": "Top Blogs for Standing Desks",
+          "sub_title": "<p>Here are the top blog posts related to standing desks, on our main website.<\/p>"
+        }
+      },
+      "manual-blog-slide-rails": {
+        "type": "manual-blog-slide-rails",
+        "blocks": {
+          "20fba337-5264-4ce3-8bb9-a6f26c2ca9ed": {
+            "type": "select",
+            "settings": {
+              "title": "Linear Guides VS Drawer Slides",
+              "excerpt": "<p>In many Linear Actuator applications, you may need additional supports to help move your desired object or to protect your linear actuator from uneven loads. Generally, you’ll have two choices of supports you have to pick from; Linear Guides and Drawer Slides. But what is the difference?<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/linear-guides-vs-drawer-slides",
+              "image": "shopify:\/\/shop_images\/sliderails_300x300_c8823a37-40fc-4ef9-930b-a1c8285d3a48.jpg"
+            }
+          },
+          "8ac427e9-1aef-4622-86e8-fae039825d54": {
+            "type": "select",
+            "settings": {
+              "title": "How are Linear Slides Used?",
+              "excerpt": "<p>Linear Guides or linear rail slides are support devices that are used to help carry loads and ensure straight and level linear motion. Linear guides will usually consist of two components; the sliding carriage and the rail. The sliding carriage is the element that moves along the rail and supports the attached load.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/how-are-linear-guides-used",
+              "image": "shopify:\/\/shop_images\/linear-slide_300x300_a45ff52f-c70e-4ed0-98e5-c3cf15c7a603.jpg"
+            }
+          },
+          "4cab07e6-4f10-4772-af91-9b94023afa48": {
+            "type": "select",
+            "settings": {
+              "title": "How to adjust friction on Slide Rails",
+              "excerpt": "<p>In this Tutorial, we show you how to adjust the central bearing on Firgelli Automations heavy duty (FA-SGR-35) and mini linear track rail (FA-SGR-15N). Adjusting the tension of your slide rails may be an important detail that needs to be carefully controlled. We go into detail on how to achieve this.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/how-are-linear-guides-used",
+              "image": "shopify:\/\/shop_images\/heavy-slide-rails_300x300_ac149d2e-de4a-46b6-9d47-2facca1853b9.jpg"
+            }
+          },
+          "21326d13-feec-417c-9f68-73148ff40f08": {
+            "type": "select",
+            "settings": {
+              "title": "What are the easiest Drawer Slides to install?",
+              "excerpt": "<p>Drawer slides can be as easy or as hard as you allow them, and it all depends on what type of slide you choose. In this guide we are going to cover the many different types of Drawer slides on the market, the many different ways a slide can be fitted into a cabinet, and then some help tips for you to decide which is the ideal type you need for your application.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/what-are-the-easiest-drawer-slides-to-install",
+              "image": "shopify:\/\/shop_images\/center-mount-slide-rail_300x300_cc380203-de25-495f-b12d-ba36409865fc.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "20fba337-5264-4ce3-8bb9-a6f26c2ca9ed",
+          "8ac427e9-1aef-4622-86e8-fae039825d54",
+          "4cab07e6-4f10-4772-af91-9b94023afa48",
+          "21326d13-feec-417c-9f68-73148ff40f08"
+        ],
+        "settings": {
+          "display_blog_manual": true,
+          "title": "Top Blog Posts on Linear Bearing Slide Rails",
+          "sub_title": "<p>Here are the top blog posts related to linear bearing slide rails, on our main website.<\/p>"
+        }
+      },
+      "manual-blog-drawer-slides": {
+        "type": "manual-blog-drawer-slides",
+        "blocks": {
+          "583525f8-115e-471e-abfa-78d4fd000b4d": {
+            "type": "select",
+            "settings": {
+              "title": "Drawer Slides Complete Guide",
+              "excerpt": "<p>Drawer slides can be as easy or as hard as you allow them, and it all depends on what type of slide you choose. In this guide we are going to cover the many different types of Drawer slides on the market, the many different ways a slide can be fitted into a cabinet, and then some help tips for you to decide which is the ideal type you need for your application.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/what-are-the-easiest-drawer-slides-to-install",
+              "image": "shopify:\/\/shop_images\/drawerslide.jpg"
+            }
+          },
+          "ba048f6c-56f4-4116-9413-83c4cc47d9a7": {
+            "type": "select",
+            "settings": {
+              "title": "Linear Guides VS Drawer Slides",
+              "excerpt": "<p>In many linear actuator applications, you may need additional supports to help move your desired object or to protect your linear actuator from uneven loads. Generally, you’ll have two choices of supports you have to pick from; Linear Guides and Drawer Slides. But what is the difference? Why choose one over the other and how do you know which one is best for your application? The goal of this blog is to explain the differences between these two devices and help you decide which one to use for your next project.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/slide-rails\/linear-guides-vs-drawer-slides",
+              "image": "shopify:\/\/shop_images\/drawer-slides_300x300_abe66fb7-072b-42d0-8768-7c7aebd6a67b.jpg"
+            }
+          },
+          "759711e5-72c0-4d74-ab80-3e95437c343a": {
+            "type": "select",
+            "settings": {
+              "title": "Drawer Slides used in heavy duty applications",
+              "excerpt": "<p>You will typically see at least one pair of drawer slides in used everyday whether they are used around your home, in use at your office, or maybe in your RV or camper. But do you know if drawer slides are used in industrial and commercial applications? The short answer is yes, but you maybe wondering where? This blog will highlight some applications where you may see drawer slides in an industrial or commercial setting.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/news\/industrial-uses-of-drawer-slides",
+              "image": "shopify:\/\/shop_images\/Industrial-Drawer-Slide_300x300_675f7421-e872-4511-a7f8-4cc401d0e11c.jpg"
+            }
+          },
+          "beaabea4-dbec-47fa-b6ae-8b73213cf01e": {
+            "type": "select",
+            "settings": {
+              "title": "How to install drawer slides - The easy way",
+              "excerpt": "<p>Installation of drawer slides will vary slightly depending on the style and options of your selected draw slides. Some drawer slides that you purchase may come with a installation guide, like this one, but if not, there are some simple steps you can follow to install any drawer slides. Luckily, the installation of the two most common types of drawer slides, Roller Slides and Ball-Bearing Slides, are quite similar and you can use this guide to install either of them.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/how-to-install-drawer-slides",
+              "image": "shopify:\/\/shop_images\/install-drawer-slide_300x300_55270f78-a42e-4ecc-af02-863d96f8d0be.jpg"
+            }
+          },
+          "9367ff39-6704-4a5f-8795-51a968694dc0": {
+            "type": "select",
+            "settings": {
+              "title": "Drawer Slides 101 - Everything you need to know about Drawer Slides",
+              "excerpt": "<p>This blog will help you understand what drawer slides are as well as some of the terminology and considerations you should be conscious of when selecting a drawer slide to incorporate into your next project. Once you have an understanding of the basics, you should have a much easier time identifying what drawer slide is best for your application.<\/p>",
+              "url": "https:\/\/www.firgelliauto.com\/blogs\/drawer-slides\/what-is-a-drawer-slide-drawer-slide-101",
+              "image": "shopify:\/\/shop_images\/Drawer-Slide-2_300x300_16c52d8e-da29-4143-8072-3eec1a7d91c4.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "583525f8-115e-471e-abfa-78d4fd000b4d",
+          "ba048f6c-56f4-4116-9413-83c4cc47d9a7",
+          "759711e5-72c0-4d74-ab80-3e95437c343a",
+          "beaabea4-dbec-47fa-b6ae-8b73213cf01e",
+          "9367ff39-6704-4a5f-8795-51a968694dc0"
+        ],
+        "settings": {
+          "display_blog_manual": true,
+          "title": "Top 5 Blog Posts about Drawer Slides",
+          "sub_title": "<p>Here are the top blog posts related to drawer slides, on our main website.<\/p>"
+        }
+      },
+      "collection-cards-linear-actuators": {
+        "type": "collection-cards-linear-actuators",
+        "settings": {
+          "recommended_collection": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "1551468985699",
+      "1553102910116",
+      "1551726336660",
+      "1552001990728",
+      "1551983715707",
+      "1552411717585",
+      "1553185368562",
+      "1552414619197"
+    ],
+    "blocks": {
+      "11724500921838622758": {
+        "type": "shopify:\/\/apps\/frequently-bought-together\/blocks\/app-embed-block\/b1a8cbea-c844-4842-9529-7c62dbab1b1f",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+    }
+  }
+}
