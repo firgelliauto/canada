@@ -1,14 +1,5 @@
-{%- comment -%}
-  This is a required section for the Shopify Theme Store.
-  It is available in the "Featured Collection" section in the theme editor.
 
-  Theme Store required settings
-  - Collection
-
-  Theme Store optional settings
-  - Heading: title of the featured collection section
-{%- endcomment -%}
-<section class="featured-collection uk-section">
+<section id="featured-collection-section" class="featured-collection uk-section" hidden>
   <div class="uk-container">
     {% if section.settings.title != blank %}
       <div class="fg-heading-margin uk-text-center">
@@ -72,3 +63,8 @@
     ]
   }
 {% endschema %}
+<script>
+  $(document).ready(function () {
+    $("#featured-collection-section").removeAttr('hidden');
+  });
+</script>

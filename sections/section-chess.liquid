@@ -9,7 +9,7 @@
 {% if section.settings.section_padding == true %}
   {% assign section_padding = 'uk-section'  %}
 {% endif %}
-<section id="collection-icon-section" class="{{ section_padding }} uk-position-relative fg-section-chess">
+<section id="section-chess" class="{{ section_padding }} uk-position-relative fg-section-chess" hidden>
   {% for block in section.blocks %}
 
     {% if block.settings.uk_light == true %}
@@ -136,3 +136,8 @@
     ]
   }
 {% endschema %}
+<script>
+  $(document).ready(function () {
+    $("#section-chess").removeAttr('hidden');
+  });
+</script>
