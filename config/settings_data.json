@@ -595,7 +595,7 @@
       "social-share": {
         "type": "social-share",
         "settings": {
-          "show_share_buttons": true
+          "show_share_buttons": false
         }
       },
       "1553102910116": {
