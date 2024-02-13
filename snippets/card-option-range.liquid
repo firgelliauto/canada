@@ -1,24 +1,42 @@
 {% assign option_type = '' %}
-{% if option contains 'inch' or option contains 'stroke' or option contains 'length' %}
-  {% assign option_type = 'Stroke' %}
-  {% assign metric = ' Inches' %}
+
+{% if option contains 'drawer slide extension' %}
+{% assign metric = ' Inches' %}
+{% assign option_type = 'Length' %} 
+{% endif %}
+
+{% if option contains 'length' and producttype contains 'slide rail' %}
+{% assign metric = ' Inches' %}
+{% assign option_type = 'Length' %} 
+
+{% elsif option contains 'inch' or option contains 'stroke' or option contains 'length' %} {% comment %}option is the variable type name{% endcomment %}
+
+  {% assign option_type = 'Stroke' %} 
+    {% assign metric = ' Inches' %}
 {% elsif option contains 'force' or  option contains 'lb' %}
   {% assign option_type = 'Force' %}
-  {% assign metric = ' lb' %}
+  {% assign metric = " lb's" %}
 {% endif %}
-{% if option_type == 'Stroke' or option_type == 'Force' %}
+
+{% if option_type == 'Stroke' or option_type == 'Force' or option_type == 'Length'%}
+
 {% assign option_array = '' %}
   {% for option in array %}
+	{% if option contains 'mm' %}
+		{% assign metric = ' mm' %}
+	{% endif %}
     {% if option != '' %}
       {% assign option = option | downcase %}
       {% assign clean_option = option | remove: "lb" | remove: '"' | remove: "inch" | remove: "es" | remove: "s" | strip %}
       {% assign clean_option = clean_option | split: ", " %}
       {% assign option_array = option_array | concat: clean_option %}
+	
     {% endif %}
   {% endfor %}
   {% assign lowest = 0 %}
   {% assign highest = 0 %}
   {% for option in option_array %}
+	
     {% assign num = option | abs %}
     {% if lowest == 0 %}
       {% assign lowest = num %}
