@@ -112,6 +112,15 @@
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {{ style_mod }}" data-curr-format="{{shop.money_format}}" data-curr-code="{{shop.currency}}" >
   
   {{ 'styles.css' | asset_url | stylesheet_tag }}
+
+  {% if template contains 'collection' %}
+    <script>
+      
+        document.getElementById("bannertext").style.visibility = "visible";
+
+	</script>
+  {% endif %}
+
   {% section 'header' %}
 
   
