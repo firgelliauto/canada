@@ -39,7 +39,7 @@
 }
 @media (max-width: 752px){
     .firstCollectionBanner {
-        margin-top: 222px;
+        margin-top: 222px !important;
     }
 }
 @media (min-width: 748px) and (max-width: 752px){
