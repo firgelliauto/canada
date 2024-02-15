@@ -1,0 +1,72 @@
+
+@media (min-width: 960px) {
+    .bannertext{
+        font-size: 45px !important;
+    }
+}
+@media (max-width: 1500px) {
+    .bannertext{
+        font-size: 41px !important;
+    }
+}
+@media (max-width: 1250px) {
+    .bannertext{
+        font-size: 37px !important;
+    }
+}
+@media (max-width: 1090px) {
+    .bannertext{
+        font-size: 32px !important;
+    }
+}
+
+
+/* @media screen and (max-width: 958px) and (min-width: 753px) {*/
+
+@media (max-width: 958px){
+    #lottie{
+        right: 56%;
+        scale: 1.5;
+    }
+}
+@media (min-width: 748px) and (max-width: 752px){
+    #bannertext{
+        margin-top: 205px;
+        padding-top: 20px;
+    }
+}
+@media (max-width: 747px){
+    #lottie{
+        padding-top: 21px;
+        right: 56%;
+        scale: 1.5;
+    }
+}
+@media (max-width: 639px){
+    #lottie{
+        display: block!important;
+        scale: 2;
+        right: 75%;
+        height: 120px;
+        padding-top: 15px;
+    }
+    .bannertext {
+        margin-top: 180px !important;
+    }
+}
+@media (max-width: 450px){
+    #lottie{
+        padding-top: 37px;
+        scale: 2;
+        right: 76%;
+        height: 100px;
+    }
+}
+
+@media (max-width: 360px){
+    #lottie{
+        height: 50px;
+        scale: 3;
+        right: 113%;
+    }
+}
