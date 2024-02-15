@@ -37,6 +37,11 @@
         scale: 1.5;
     }
 }
+@media (max-width: 752px){
+    .firstCollectionBanner {
+        margin-top: 222px;
+    }
+}
 @media (min-width: 748px) and (max-width: 752px){
     #bannertext{
         margin-top: 205px;
