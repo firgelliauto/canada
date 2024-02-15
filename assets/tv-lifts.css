@@ -22,6 +22,11 @@
 
 
 /* @media screen and (max-width: 958px) and (min-width: 753px) {*/
+@media (max-width: 1055px){
+    .firstCollectionBanner {
+        margin-top: 192px;
+    }
+}
 
 @media (max-width: 958px){
     #lottie{
