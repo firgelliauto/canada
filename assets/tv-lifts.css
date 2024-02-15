@@ -66,7 +66,10 @@
         padding-top: 15px;
     }
     .bannertext {
-        margin-top: 180px !important;
+        margin-top: 150px !important;
+    }
+    .firstCollectionBanner {
+        margin-top: 137px!important;
     }
 }
 @media (max-width: 450px){
