@@ -41,6 +41,10 @@
     .firstCollectionBanner {
         margin-top: 222px !important;
     }
+    #lottie {
+        height: 182px !important;
+        margin-top: 266px !important;
+    }
 }
 @media (min-width: 748px) and (max-width: 752px){
     #bannertext{
