@@ -26,6 +26,9 @@
     .firstCollectionBanner {
         margin-top: 192px;
     }
+    #lottie{
+        margin-top: 192px;
+    }
 }
 
 @media (max-width: 958px){
