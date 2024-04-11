@@ -2,7 +2,7 @@
 
 function findProductSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
-    return scriptElements[1];
+    return scriptElements[0];
 }
 /*
 function findAggregateReviewsSchemaScript() {
@@ -10,8 +10,8 @@ function findAggregateReviewsSchemaScript() {
     return scriptElements[scriptElements.length-1];
 }*/
 
-function handleReviewScript(scriptElement) {
-    //reviewsArray = addReviews(scriptElement);
+function handleReviewScript() {
+    reviewsArray = addReviews();
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
@@ -36,7 +36,6 @@ function handleReviewScript(scriptElement) {
 function addReviews(){
     var reviewsArray = [];
     var reviews = Array.from(document.getElementsByClassName('list-review'));
-    console.log(reviews);
     for(i = 0; i < reviews.length; i++){
         //var reviewTitle = reviews[i].querySelector('.spr-review-header-title').innerHTML;
         var name = reviews[i].querySelector('.author-name').innerHTML;
@@ -78,7 +77,7 @@ function addReviews(){
 
 
 window.addEventListener('load', (event) => {
-  console.log(addReviews());
+  addReviews();
 });
 
 
