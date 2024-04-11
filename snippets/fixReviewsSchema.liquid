@@ -83,7 +83,7 @@ function addReviews(){
 
 function waitForReviewWrapper(callback) {
   var intervalId = setInterval(function() {
-    var reviewContainer = document.getElementById('reviews-wrapper');
+    var reviewContainer = document.getElementById('reviews-body');
     if (reviewContainer) {
       clearInterval(intervalId); // Stop the polling once the element is found
       callback(reviewContainer); // Call the callback function with the found element
