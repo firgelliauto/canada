@@ -81,36 +81,36 @@ function addReviews(){
 }
 
 
-window.addEventListener('load', (event) => {
-    console.log('Start Schema');
+
+
+
+
+function checkForReviewWrapper() {
+  var reviewContainer = document.getElementById('reviews-wrapper');
+  if (reviewContainer) {
     handleReviewScript();
-});
-
-
-
-  /*function checkForReviewScript() {
-    var reviewContainer = document.getElementById('shopify-product-reviews');
-    //var reviewScript = reviewContainer.querySelector('script[type="application/ld+json"]');
-    if (reviewContainer) {
-      handleReviewScript(reviewScript);
-    } else {
-      var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.type === 'childList') {
-            var addedScripts = Array.from(mutation.addedNodes).filter(function (node) {
-              return node.tagName === 'SCRIPT' && node.type === 'application/ld+json';
-            });
-            if (addedScripts.length > 0) {
-              handleReviewScript(addedScripts[0]);
-              observer.disconnect();
+  } else {
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+          var addedNodes = Array.from(mutation.addedNodes);
+          addedNodes.forEach(function(node) {
+            if (node.id === 'reviews-wrapper') {
+              handleReviewScript();
+              observer.disconnect(); // Stop observing once the element is found
             }
-          }
-        });
+          });
+        }
       });
-      observer.observe(reviewContainer, { childList: true, subtree: true });
-    }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
   }
-  checkForReviewScript();*/
+}
+
+
+checkForReviewWrapper();
+
 
 
 </script>
