@@ -1,4 +1,4 @@
-<script>
+<script defer>
 
 function findProductSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
@@ -81,10 +81,8 @@ function addReviews(){
 }
 
 
-    $(document).ready(function() {
-        console.log('run');
-        handleReviewScript();
-    });
+handleReviewScript();
+
 
 
 
