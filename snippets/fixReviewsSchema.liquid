@@ -45,7 +45,7 @@ function addReviews(){
         var name = reviews[i].querySelector('.author-name').innerHTML;
         var description = reviews[i].querySelector('.reviews-text').textContent;
         console.log(description);
-        while(description == ''){
+        while(!description){
             setTimeout(function() {
                 description = reviews[i].querySelector('.reviews-text').textContent;
             }, 100);
