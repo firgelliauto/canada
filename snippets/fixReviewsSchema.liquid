@@ -81,40 +81,26 @@ function addReviews(){
     return reviewsArray;
 }
 
-
-
-
-
-
-function checkForReviewWrapper() {
-  var reviewContainer = document.getElementById('reviews-wrapper');
-  if (reviewContainer) {
-    console.log("Start" + reviewContainer);
-    handleReviewScript();
-  } else {
-    var observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.type === 'childList') {
-          var addedNodes = Array.from(mutation.addedNodes);
-          addedNodes.forEach(function(node) {
-            if (reviewContainer) {
-                console.log("start2 " + reviewContainer);
-              handleReviewScript();
-              observer.disconnect(); // Stop observing once the element is found
-            }
-          });
-        }
-      });
+function waitForReviewWrapper(callback) {
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      var reviewContainer = document.getElementById('reviews-wrapper');
+      if (reviewContainer) {
+        observer.disconnect(); // Stop observing once the element is found
+        callback(reviewContainer); // Call the callback function with the found element
+      }
     });
+  });
 
-    observer.observe(document.body, { childList: true, subtree: true });
-  }
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  checkForReviewWrapper();
+// Usage example
+waitForReviewWrapper(function(reviewContainer) {
+  // This function will be called when the reviewContainer is available
+  handleReviewScript(reviewContainer);
 });
+
 
 
 </script>
