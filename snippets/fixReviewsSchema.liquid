@@ -81,7 +81,7 @@ function addReviews(){
 }
 
 // Add event listener for window load
-window.addEventListener("load", function(){
+
     // Select the target element
     var targetElement = document.querySelector('.reviews-text');
     
@@ -95,7 +95,7 @@ window.addEventListener("load", function(){
     
     // Start observing the target element
     observer.observe(targetElement, observerOptions);
-});
+
 
 // Define handleContentChange function
 function handleContentChange(mutationsList, observer, targetElement) {
