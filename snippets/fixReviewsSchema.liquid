@@ -81,11 +81,24 @@ function addReviews(){
 }
 
 window.addEventListener("load", function(){
-    handleReviewScript();
+    var targetElement = document.querySelector('.reviews-text');
+    var observer = new MutationObserver(handleContentChange);
+    var observerOptions = { childList: true };
+    observer.observe(targetElement, observerOptions);
 });
 
 
-
+function handleContentChange(mutationsList, observer) {
+  for(var mutation of mutationsList) {
+    if (mutation.type === 'childList' && targetElement.innerHTML.trim() !== '') {
+      
+      console.log('Content added to .reviews-text:', targetElement.innerHTML);
+      handleReviewScript();
+      observer.disconnect();
+      break; // Exit the loop since the condition is met
+    }
+  }
+}
 
 
 </script>
