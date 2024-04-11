@@ -30,9 +30,10 @@ function handleReviewScript() {
         "worstRating": "1",
         "ratingCount": numberValue;
     }];
+    console.log(schemaData);
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
     //AggregateRating.remove();
-    console.log(schemaData);
+    
 }
 
 function addReviews(){
