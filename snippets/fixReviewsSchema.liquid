@@ -89,9 +89,8 @@ function setupObserver() {
         setTimeout(setupObserver, 100); // Adjust the delay as needed
     }
 }
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener("load", function() {
     setupObserver();
-
 });
 // Define handleContentChange function
 function handleContentChange(mutationsList, observer, targetElement) {
