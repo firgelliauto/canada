@@ -101,7 +101,7 @@ window.addEventListener("DOMContentLoaded", function(){
             observer.observe(targetElement, observerOptions);
         } else {
             // If the target element doesn't exist, log a message and try again after a delay
-            console.error("Target element not found. Retrying...");
+            console.log("Target element not found. Retrying...");
             setTimeout(setupObserver, 1000); // Adjust the delay as needed
         }
     }
