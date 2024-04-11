@@ -84,12 +84,24 @@ function addReviews(){
 
 
 
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  if(document.getElementById('reviews-body')){
+function checkForReviewScript() {
+  var reviewContainer = document.getElementById('reviews-wrapper');
+  if (reviewContainer) {
     handleReviewScript();
+  } else {
+    var intervalId = setInterval(function() {
+      var reviewContainer = document.getElementById('reviews-wrapper');
+      if (reviewContainer) {
+        clearInterval(intervalId); // Stop the polling once the element is found
+        handleReviewScript(); // Call the handleReviewScript function
+      }
+    }, 100); // Adjust the polling interval as needed (e.g., 100 milliseconds)
   }
-});
+}
+
+  checkForReviewScript();
+
+
 
 
 
