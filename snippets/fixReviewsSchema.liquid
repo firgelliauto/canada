@@ -56,14 +56,12 @@ function addReviews(){
 
         reviewsArray.push({
             "@type": "Review",
-            //"name": reviewTitle,
+            "name": name,
             "reviewBody": description,
             "author": {
                 "@type": "Person",
                 "name": name
             },
-            "name": name,
-            //"datePublished": formattedDate,
             "reviewRating": {
                 "@type": "Rating",
                 "ratingValue": starRating
