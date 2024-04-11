@@ -12,7 +12,7 @@ function findAggregateReviewsSchemaScript() {
 
 function handleReviewScript() {
     reviewsArray = addReviews();
-
+    console.log(reviewsArray);
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
