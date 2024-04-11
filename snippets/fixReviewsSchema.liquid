@@ -51,9 +51,9 @@ function addReviews(){
         var day = inputDate.getDate();
         var formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
         */
-        console.log(reviews[i]);
-        var description = reviews[i].getElementsByClassName('reviews-text').innerHTML;
         
+        var description = reviews[i].getElementsByClassName('reviews-text').innerHTML;
+        console.log(description);
         var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
 
         reviewsArray.push({
