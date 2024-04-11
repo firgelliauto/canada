@@ -82,24 +82,32 @@ function addReviews(){
 
 // Add event listener for DOMContentLoaded
 window.addEventListener("DOMContentLoaded", function(){
-    // Select the target element
-    var targetElement = document.querySelector('.reviews-text');
-    
-    // Check if the target element exists before observing
-    if (targetElement) {
-        // Create a MutationObserver instance
-        var observer = new MutationObserver(function(mutationsList, observer) {
-            handleContentChange(mutationsList, observer, targetElement);
-        });
+    // Function to set up the observer
+    function setupObserver() {
+        // Select the target element
+        var targetElement = document.querySelector('.reviews-text');
         
-        // Options for the observer (we want to observe changes to child nodes)
-        var observerOptions = { childList: true };
-        
-        // Start observing the target element
-        observer.observe(targetElement, observerOptions);
-    } else {
-        console.error("Target element not found");
+        // Check if the target element exists
+        if (targetElement) {
+            // Create a MutationObserver instance
+            var observer = new MutationObserver(function(mutationsList, observer) {
+                handleContentChange(mutationsList, observer, targetElement);
+            });
+            
+            // Options for the observer (we want to observe changes to child nodes)
+            var observerOptions = { childList: true };
+            
+            // Start observing the target element
+            observer.observe(targetElement, observerOptions);
+        } else {
+            // If the target element doesn't exist, log a message and try again after a delay
+            console.error("Target element not found. Retrying...");
+            setTimeout(setupObserver, 1000); // Adjust the delay as needed
+        }
     }
+    
+    // Start setting up the observer
+    setupObserver();
 });
 
 // Define handleContentChange function
@@ -114,6 +122,7 @@ function handleContentChange(mutationsList, observer, targetElement) {
         }
     }
 }
+
 
 
 
