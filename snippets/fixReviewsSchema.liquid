@@ -19,16 +19,16 @@ function handleReviewScript() {
     console.log(schemaData);
     //var AggregateRating = findAggregateReviewsSchemaScript();
     //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
-    var reviewsContent = document.querySelector('.reviews-num').innerHTML;
+    var reviewsContent = document.querySelector('.reviews-num').textContent;
     var matches = reviewsContent.match(/\d+/);
     //var numberValue = matches ? parseInt(matches[0]) : null;
 
     schemaData.aggregateRating = [{
         "@type": "AggregateRating",
-        "ratingValue": document.getElementsByClassName('big-point').innerHTML,
+        "ratingValue": parseInt(document.querySelector('.big-point').textContent),
         "bestRating": "5",
         "worstRating": "1",
-        "ratingCount": matches
+        "ratingCount": parseInt(matches[0])
     }];
     
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
