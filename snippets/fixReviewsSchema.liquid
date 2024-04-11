@@ -82,25 +82,21 @@ function addReviews(){
 }
 
 function waitForReviewWrapper(callback) {
-  var observer = new MutationObserver(function(mutations) {
-    mutations.forEach(function(mutation) {
-      var reviewContainer = document.getElementById('reviews-wrapper');
-      if (reviewContainer) {
-        console.log(document.getElementById('reviews-wrapper'));
-        observer.disconnect(); // Stop observing once the element is found
-        callback(reviewContainer); // Call the callback function with the found element
-      }
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
+  var intervalId = setInterval(function() {
+    var reviewContainer = document.getElementById('reviews-wrapper');
+    if (reviewContainer) {
+      clearInterval(intervalId); // Stop the polling once the element is found
+      callback(reviewContainer); // Call the callback function with the found element
+    }
+  }, 100); // Adjust the polling interval as needed (e.g., 100 milliseconds)
 }
 
 // Usage example
 waitForReviewWrapper(function(reviewContainer) {
-
-  handleReviewScript();
+  // This function will be called when the reviewContainer is available
+  handleReviewScript(reviewContainer);
 });
+
 
 
 
