@@ -80,21 +80,33 @@ function addReviews(){
     return reviewsArray;
 }
 
-// Add event listener for window load
-window.addEventListener("load", function(){
+// Function to set up the observer
+function setupObserver() {
     // Select the target element
     var targetElement = document.querySelector('.reviews-text');
     
-    // Create a MutationObserver instance
-    var observer = new MutationObserver(function(mutationsList, observer) {
-        handleContentChange(mutationsList, observer, targetElement);
-    });
-    
-    // Options for the observer (we want to observe changes to child nodes)
-    var observerOptions = { childList: true };
-    
-    // Start observing the target element
-    observer.observe(targetElement, observerOptions);
+    // Check if the target element exists
+    if (targetElement) {
+        // Create a MutationObserver instance
+        var observer = new MutationObserver(function(mutationsList, observer) {
+            handleContentChange(mutationsList, observer, targetElement);
+        });
+        
+        // Options for the observer (we want to observe changes to child nodes)
+        var observerOptions = { childList: true };
+        
+        // Start observing the target element
+        observer.observe(targetElement, observerOptions);
+    } else {
+        // If the target element doesn't exist, wait and try again
+        setTimeout(setupObserver, 1000); // Adjust the delay as needed
+    }
+}
+
+// Add event listener for window load
+window.addEventListener("load", function(){
+    // Start setting up the observer
+    setupObserver();
 });
 
 // Define handleContentChange function
@@ -109,6 +121,7 @@ function handleContentChange(mutationsList, observer, targetElement) {
         }
     }
 }
+
 
 
 
