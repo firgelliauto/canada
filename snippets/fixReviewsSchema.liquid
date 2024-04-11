@@ -25,10 +25,10 @@ function handleReviewScript() {
 
     schemaData.aggregateRating = [{
         "@type": "AggregateRating",
-        "ratingValue": parseInt(document.querySelector('.big-point').textContent),
+        "ratingValue": document.querySelector('.big-point').textContent,
         "bestRating": "5",
         "worstRating": "1",
-        "ratingCount": parseInt(matches[0])
+        "ratingCount": matches[0]
     }];
     
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
