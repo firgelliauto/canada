@@ -45,6 +45,7 @@ function addReviews(){
     for(i = 0; i < reviews.length; i++){
         var name = reviews[i].querySelector('.author-name').innerHTML;
         var description = reviews[i].querySelector('.reviews-text').textContent.trim();
+        console.log(reviews[i]);
         console.log(description.length);
         var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
 
