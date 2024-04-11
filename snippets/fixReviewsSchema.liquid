@@ -41,6 +41,7 @@ function handleReviewScript() {
 function addReviews(){
     var reviewsArray = [];
     var reviews = Array.from(document.getElementsByClassName('list-review'));
+    console.log(reviews);
     //console.log(reviews.length);
     for(i = 0; i < reviews.length; i++){
         var name = reviews[i].querySelector('.author-name').innerHTML;
