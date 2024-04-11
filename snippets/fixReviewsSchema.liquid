@@ -94,7 +94,7 @@ function setupObserver() {
 function handleContentChange(mutationsList, observer, targetElement) {
     for(var mutation of mutationsList) {
         if (mutation.type === 'childList' && targetElement.innerHTML.trim() !== '') {
-            console.log('Content added to .reviews-text:', targetElement.innerHTML);
+            //console.log('Content added to .reviews-text:', targetElement.innerHTML);
             handleReviewScript();
             observer.disconnect();
             break; // Exit the loop since the condition is met
