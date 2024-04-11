@@ -89,7 +89,7 @@ function addReviews(){
 function checkForReviewWrapper() {
   var reviewContainer = document.getElementById('reviews-wrapper');
   if (reviewContainer) {
-    console.log(reviewContainer);
+    console.log("Start" + reviewContainer);
     handleReviewScript();
   } else {
     var observer = new MutationObserver(function(mutations) {
