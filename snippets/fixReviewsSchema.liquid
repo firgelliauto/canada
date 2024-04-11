@@ -85,16 +85,21 @@ window.addEventListener("DOMContentLoaded", function(){
     // Select the target element
     var targetElement = document.querySelector('.reviews-text');
     
-    // Create a MutationObserver instance
-    var observer = new MutationObserver(function(mutationsList, observer) {
-        handleContentChange(mutationsList, observer, targetElement);
-    });
-    
-    // Options for the observer (we want to observe changes to child nodes)
-    var observerOptions = { childList: true };
-    
-    // Start observing the target element
-    observer.observe(targetElement, observerOptions);
+    // Check if the target element exists before observing
+    if (targetElement) {
+        // Create a MutationObserver instance
+        var observer = new MutationObserver(function(mutationsList, observer) {
+            handleContentChange(mutationsList, observer, targetElement);
+        });
+        
+        // Options for the observer (we want to observe changes to child nodes)
+        var observerOptions = { childList: true };
+        
+        // Start observing the target element
+        observer.observe(targetElement, observerOptions);
+    } else {
+        console.error("Target element not found");
+    }
 });
 
 // Define handleContentChange function
@@ -109,6 +114,7 @@ function handleContentChange(mutationsList, observer, targetElement) {
         }
     }
 }
+
 
 
 
