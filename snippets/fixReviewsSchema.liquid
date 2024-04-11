@@ -1,39 +1,39 @@
 <script>
 
-/*function findProductSchemaScript() {
+function findProductSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
     return scriptElements[1];
 }
-
+/*
 function findAggregateReviewsSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
     return scriptElements[scriptElements.length-1];
 }*/
 
 function handleReviewScript(scriptElement) {
-    reviewsArray = addReviews(scriptElement);
+    //reviewsArray = addReviews(scriptElement);
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
 
 
-    var AggregateRating = findAggregateReviewsSchemaScript();
-    AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
+    //var AggregateRating = findAggregateReviewsSchemaScript();
+    //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
     
 
     schemaData.aggregateRating = [{
         "@type": "AggregateRating",
-        "ratingValue": parseFloat(AggregateRatingJSON.ratingValue).toFixed(2),
+        //"ratingValue": parseFloat(AggregateRatingJSON.ratingValue).toFixed(2),
         "bestRating": "5",
         "worstRating": "1",
-        "ratingCount": AggregateRatingJSON.reviewCount
+        //"ratingCount": AggregateRatingJSON.reviewCount
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
-    AggregateRating.remove();
+    //AggregateRating.remove();
 
 }
 
-function addReviews(scriptElement){
+function addReviews(){
     var reviewsArray = [];
     var reviews = Array.from(document.getElementsByClassName('list-review'));
     for(i = 0; i < reviews.length; i++){
@@ -73,8 +73,14 @@ function addReviews(scriptElement){
         
     }
     return reviewsArray;
-
 }
+
+
+console.log(addReviews());
+
+
+
+
 
   /*function checkForReviewScript() {
     var reviewContainer = document.getElementById('shopify-product-reviews');
