@@ -85,31 +85,11 @@ function addReviews(){
 
 
 
-function checkForReviewWrapper() {
-  var reviewContainer = document.getElementById('reviews-body');
-  if (reviewContainer) {
+document.addEventListener("DOMContentLoaded", function(event) {
+  if(document.getElementById('reviews-body')){
     handleReviewScript();
-  } else {
-    var observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
-        if (mutation.type === 'childList') {
-          var addedNodes = Array.from(mutation.addedNodes);
-          addedNodes.forEach(function(node) {
-            if (node.id === 'reviews-body') {
-              handleReviewScript();
-              observer.disconnect(); // Stop observing once the element is found
-            }
-          });
-        }
-      });
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
   }
-}
-
-
-checkForReviewWrapper();
+});
 
 
 
