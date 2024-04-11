@@ -18,7 +18,7 @@ function handleReviewScript() {
 
     //var AggregateRating = findAggregateReviewsSchemaScript();
     //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
-
+    console.log(schemaData);
     var reviewsContent = document.querySelector('.reviews-num').innerHTML;
     var matches = reviewsContent.match(/\d+/);
     var numberValue = matches ? parseInt(matches[0]) : null;
@@ -30,7 +30,7 @@ function handleReviewScript() {
         "worstRating": "1",
         "ratingCount": numberValue;
     }];
-    console.log(schemaData);
+    
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
     //AggregateRating.remove();
     
