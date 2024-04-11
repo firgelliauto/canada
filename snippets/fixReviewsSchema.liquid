@@ -98,7 +98,7 @@ function checkForReviewWrapper() {
           var addedNodes = Array.from(mutation.addedNodes);
           addedNodes.forEach(function(node) {
             if (node.id === 'reviews-wrapper') {
-                console.log(reviewContainer);
+                console.log("start2 " + reviewContainer);
               handleReviewScript();
               observer.disconnect(); // Stop observing once the element is found
             }
