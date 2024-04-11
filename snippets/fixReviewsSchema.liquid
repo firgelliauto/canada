@@ -84,24 +84,41 @@ function addReviews(){
 
 
 
-function checkForReviewScript() {
-  var reviewContainer = document.getElementById('reviews-wrapper');
-  if (reviewContainer) {
-    console.log("1 " + reviewContainer)
-    handleReviewScript();
-  } else {
-    var intervalId = setInterval(function() {
-      var reviewContainer = document.getElementById('reviews-wrapper');
-      if (reviewContainer) {
-        console.log("2 " + reviewContainer);
-        clearInterval(intervalId); // Stop the polling once the element is found
-        handleReviewScript(); // Call the handleReviewScript function
-      }
-    }, 100); // Adjust the polling interval as needed (e.g., 100 milliseconds)
+function waitForAuthorNameLoaded(callback) {
+  // Target the reviews-wrapper element
+  var reviewsWrapper = document.getElementById('reviews-wrapper');
+  
+  // Check if the reviews-wrapper element exists
+  if (reviewsWrapper) {
+    // Create a new MutationObserver
+    var observer = new MutationObserver(function(mutations) {
+      // Loop through the mutations
+      mutations.forEach(function(mutation) {
+        // Check if any nodes were added
+        if (mutation.addedNodes.length > 0) {
+          // Loop through the added nodes
+          mutation.addedNodes.forEach(function(node) {
+            // Check if the node contains the author name
+            if (node.querySelector('.author-name')) {
+              // If the author name is found, disconnect the observer
+              observer.disconnect();
+              // Call the callback function
+              callback();
+            }
+          });
+        }
+      });
+    });
+
+    // Start observing changes to the DOM within the reviews-wrapper element
+    observer.observe(reviewsWrapper, { childList: true, subtree: true });
   }
 }
 
-  checkForReviewScript();
+// Usage example
+waitForAuthorNameLoaded(function() {
+    handleReviewScript();
+});
 
 
 
