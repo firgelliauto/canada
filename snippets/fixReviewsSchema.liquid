@@ -37,6 +37,12 @@ function handleReviewScript() {
     
 }
 
+function waitForAsync(timeout) {
+    return new Promise(resolve => {
+        setTimeout(resolve, timeout);
+    });
+}
+
 function addReviews(){
     var reviewsArray = [];
     var reviews = Array.from(document.getElementsByClassName('list-review'));
@@ -45,12 +51,11 @@ function addReviews(){
         var name = reviews[i].querySelector('.author-name').innerHTML;
         var description = reviews[i].querySelector('.reviews-text').textContent.trim();
         console.log(description.length);
-        
+        while(description.length == 0){
             console.log("Waiting");
-            setTimeout(function() {
-                description = reviews[i].querySelector('.reviews-text').textContent;
-            }, 100);
-        
+            await waitForAsync(100);
+            description = reviews[i].querySelector('.reviews-text').textContent.trim();;
+        }
         var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
 
         reviewsArray.push({
