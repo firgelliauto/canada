@@ -82,24 +82,30 @@ function addReviews(){
 
 // Add event listener for DOMContentLoaded
 window.addEventListener("DOMContentLoaded", function(){
-    // Select the target element
-    var targetElement = document.querySelector('.reviews-text');
-    
-    // Check if the target element exists and has non-empty inner HTML
-    if (targetElement && targetElement.innerHTML.trim() !== '') {
-        // Create a MutationObserver instance
-        var observer = new MutationObserver(function(mutationsList, observer) {
-            handleContentChange(mutationsList, observer, targetElement);
-        });
+    // Function to continuously check if the target element exists and has non-empty inner HTML
+    function checkTargetElement() {
+        var targetElement = document.querySelector('.reviews-text');
         
-        // Options for the observer (we want to observe changes to child nodes)
-        var observerOptions = { childList: true };
-        
-        // Start observing the target element
-        observer.observe(targetElement, observerOptions);
-    } else {
-        console.error("Target element not found or has empty inner HTML");
+        // Check if the target element exists and has non-empty inner HTML
+        if (targetElement && targetElement.innerHTML.trim() !== '') {
+            // Create a MutationObserver instance
+            var observer = new MutationObserver(function(mutationsList, observer) {
+                handleContentChange(mutationsList, observer, targetElement);
+            });
+            
+            // Options for the observer (we want to observe changes to child nodes)
+            var observerOptions = { childList: true };
+            
+            // Start observing the target element
+            observer.observe(targetElement, observerOptions);
+        } else {
+            // If the target element doesn't exist or has empty inner HTML, keep checking
+            setTimeout(checkTargetElement, 1000); // Adjust the timeout as needed
+        }
     }
+    
+    // Start checking if the target element exists and has non-empty inner HTML
+    checkTargetElement();
 });
 
 // Define handleContentChange function
@@ -114,6 +120,7 @@ function handleContentChange(mutationsList, observer, targetElement) {
         }
     }
 }
+
 
 
 
