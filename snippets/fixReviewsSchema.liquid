@@ -89,6 +89,7 @@ function addReviews(){
 function checkForReviewWrapper() {
   var reviewContainer = document.getElementById('reviews-wrapper');
   if (reviewContainer) {
+    console.log(reviewContainer);
     handleReviewScript();
   } else {
     var observer = new MutationObserver(function(mutations) {
@@ -97,6 +98,7 @@ function checkForReviewWrapper() {
           var addedNodes = Array.from(mutation.addedNodes);
           addedNodes.forEach(function(node) {
             if (node.id === 'reviews-wrapper') {
+                console.log(reviewContainer);
               handleReviewScript();
               observer.disconnect(); // Stop observing once the element is found
             }
