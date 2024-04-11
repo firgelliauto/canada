@@ -54,7 +54,7 @@ function addReviews(){
         while(description.length == 0){
             console.log("Waiting");
             await waitForAsync(100);
-            description = reviews[i].querySelector('.reviews-text').textContent.trim();;
+            description = reviews[i].querySelector('.reviews-text').textContent.trim();
         }
         var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
 
