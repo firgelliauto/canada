@@ -12,7 +12,7 @@ function findAggregateReviewsSchemaScript() {
 
 function handleReviewScript() {
     reviewsArray = addReviews();
-    console.log(reviewsArray);
+    
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
@@ -82,30 +82,21 @@ function addReviews(){
 
 // Function to set up the observer
 function setupObserver() {
-    // Select the target element
     var targetElement = document.querySelector('.reviews-text');
     console.log(targetElement);
     // Check if the target element exists
     if (targetElement) {
-        // Create a MutationObserver instance
         var observer = new MutationObserver(function(mutationsList, observer) {
             handleContentChange(mutationsList, observer, targetElement);
         });
         
-        // Options for the observer (we want to observe changes to child nodes)
         var observerOptions = { childList: true };
-        
-        // Start observing the target element
         observer.observe(targetElement, observerOptions);
     } else {
-        // If the target element doesn't exist, wait and try again
-        setTimeout(setupObserver, 1000); // Adjust the delay as needed
+        setTimeout(setupObserver, 100); // Adjust the delay as needed
     }
 }
 
-// Add event listener for window load
-
-    // Start setting up the observer
     setupObserver();
 
 
@@ -113,7 +104,6 @@ function setupObserver() {
 function handleContentChange(mutationsList, observer, targetElement) {
     for(var mutation of mutationsList) {
         if (mutation.type === 'childList' && targetElement.innerHTML.trim() !== '') {
-            // Content added to .reviews-text, execute your code here
             console.log('Content added to .reviews-text:', targetElement.innerHTML);
             handleReviewScript();
             observer.disconnect();
