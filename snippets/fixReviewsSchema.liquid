@@ -37,11 +37,6 @@ function handleReviewScript() {
     
 }
 
-function waitForAsync(timeout) {
-    return new Promise(resolve => {
-        setTimeout(resolve, timeout);
-    });
-}
 
 function addReviews(){
     var reviewsArray = [];
@@ -53,7 +48,6 @@ function addReviews(){
         console.log(description.length);
         while(description.length == 0){
             console.log("Waiting");
-            await waitForAsync(100);
             description = reviews[i].querySelector('.reviews-text').textContent.trim();
         }
         var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
