@@ -14,9 +14,8 @@ function handleReviewScript() {
     reviewsArray = addReviews();
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
-    console.log(schemaData);
     schemaData.review = reviewsArray;
-
+    console.log(schemaData);
     //var AggregateRating = findAggregateReviewsSchemaScript();
     //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
     var reviewsContent = document.querySelector('.reviews-num').innerHTML;
