@@ -43,8 +43,8 @@ function addReviews(){
     //console.log(reviews.length);
     for(i = 0; i < reviews.length; i++){
         var name = reviews[i].querySelector('.author-name').innerHTML;
-        var description = reviews[i].querySelector('.reviews-text').textContent;
-        console.log(description);
+        var description = reviews[i].querySelector('.reviews-text').textContent.trim();
+        console.log(description.length);
         while(!description){
             console.log("Waiting");
             setTimeout(function() {
