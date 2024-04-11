@@ -87,11 +87,13 @@ function addReviews(){
 function checkForReviewScript() {
   var reviewContainer = document.getElementById('reviews-wrapper');
   if (reviewContainer) {
+    console.log(reviewContainer)
     handleReviewScript();
   } else {
     var intervalId = setInterval(function() {
       var reviewContainer = document.getElementById('reviews-wrapper');
       if (reviewContainer) {
+        console.log(reviewContainer);
         clearInterval(intervalId); // Stop the polling once the element is found
         handleReviewScript(); // Call the handleReviewScript function
       }
