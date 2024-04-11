@@ -80,25 +80,36 @@ function addReviews(){
     return reviewsArray;
 }
 
+// Add event listener for window load
 window.addEventListener("load", function(){
+    // Select the target element
     var targetElement = document.querySelector('.reviews-text');
-    var observer = new MutationObserver(handleContentChange);
+    
+    // Create a MutationObserver instance
+    var observer = new MutationObserver(function(mutationsList, observer) {
+        handleContentChange(mutationsList, observer, targetElement);
+    });
+    
+    // Options for the observer (we want to observe changes to child nodes)
     var observerOptions = { childList: true };
+    
+    // Start observing the target element
     observer.observe(targetElement, observerOptions);
 });
 
-
-function handleContentChange(mutationsList, observer) {
-  for(var mutation of mutationsList) {
-    if (mutation.type === 'childList' && targetElement.innerHTML.trim() !== '') {
-      
-      console.log('Content added to .reviews-text:', targetElement.innerHTML);
-      handleReviewScript();
-      observer.disconnect();
-      break; // Exit the loop since the condition is met
+// Define handleContentChange function
+function handleContentChange(mutationsList, observer, targetElement) {
+    for(var mutation of mutationsList) {
+        if (mutation.type === 'childList' && targetElement.innerHTML.trim() !== '') {
+            // Content added to .reviews-text, execute your code here
+            console.log('Content added to .reviews-text:', targetElement.innerHTML);
+            handleReviewScript();
+            observer.disconnect();
+            break; // Exit the loop since the condition is met
+        }
     }
-  }
 }
+
 
 
 </script>
