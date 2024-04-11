@@ -36,6 +36,7 @@ function handleReviewScript(scriptElement) {
 function addReviews(){
     var reviewsArray = [];
     var reviews = Array.from(document.getElementsByClassName('list-review'));
+    console.log(reviews);
     for(i = 0; i < reviews.length; i++){
         //var reviewTitle = reviews[i].querySelector('.spr-review-header-title').innerHTML;
         var name = reviews[i].querySelector('.author-name').innerHTML;
