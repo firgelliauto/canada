@@ -15,7 +15,6 @@ function handleReviewScript() {
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
-    console.log(schemaData);
 
     //var AggregateRating = findAggregateReviewsSchemaScript();
     //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
@@ -33,7 +32,7 @@ function handleReviewScript() {
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
     //AggregateRating.remove();
-
+    console.log(schemaData);
 }
 
 function addReviews(){
