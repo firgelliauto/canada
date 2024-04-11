@@ -86,7 +86,7 @@ function waitForReviewWrapper(callback) {
     mutations.forEach(function(mutation) {
       var reviewContainer = document.getElementById('reviews-wrapper');
       if (reviewContainer) {
-        console.log(document.getElementById('reviews-wrapper'););
+        console.log(document.getElementById('reviews-wrapper'));
         observer.disconnect(); // Stop observing once the element is found
         callback(reviewContainer); // Call the callback function with the found element
       }
