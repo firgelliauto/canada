@@ -85,13 +85,13 @@ function setupObserver() {
         var observerOptions = { childList: true };
         observer.observe(targetElement, observerOptions);
     } else {
-        setTimeout(setupObserver, 1000); // Adjust the delay as needed
+        setTimeout(setupObserver, 100); // Adjust the delay as needed
     }
 }
-
+window.addEventListener("DOMContentLoaded", function(){
     setupObserver();
 
-
+});
 // Define handleContentChange function
 function handleContentChange(mutationsList, observer, targetElement) {
     for(var mutation of mutationsList) {
