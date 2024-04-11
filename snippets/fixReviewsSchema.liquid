@@ -41,20 +41,9 @@ function addReviews(){
     var reviewsArray = [];
     var reviews = Array.from(document.getElementsByClassName('list-review'));
     for(i = 0; i < reviews.length; i++){
-        //var reviewTitle = reviews[i].querySelector('.spr-review-header-title').innerHTML;
         var name = reviews[i].querySelector('.author-name').innerHTML;
-        //var date =  reviews[i].querySelector('.spr-review-header-byline').querySelectorAll('strong')[1].innerHTML;
-        
-        /*var inputDate = new Date(date);
-        var year = inputDate.getFullYear();
-        var month = inputDate.getMonth() + 1; // Note: Months are zero-indexed
-        var day = inputDate.getDate();
-        var formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
-        */
-        
         var description = reviews[i].querySelector('.reviews-text').innerHTML;
-        console.log(description);
-        //console.log(reviews[i].querySelector('.reviews-text'));
+        console.log(description.length);
         var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
 
         reviewsArray.push({
