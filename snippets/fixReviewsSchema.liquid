@@ -14,11 +14,11 @@ function handleReviewScript() {
     reviewsArray = addReviews();
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
+    console.log(schemaData);
     schemaData.review = reviewsArray;
 
     //var AggregateRating = findAggregateReviewsSchemaScript();
     //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
-    console.log(schemaData);
     var reviewsContent = document.querySelector('.reviews-num').innerHTML;
     var matches = reviewsContent.match(/\d+/);
     var numberValue = matches ? parseInt(matches[0]) : null;
