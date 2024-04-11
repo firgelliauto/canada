@@ -1,6 +1,6 @@
 <script>
 
-function findProductSchemaScript() {
+/*function findProductSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
     return scriptElements[1];
 }
@@ -8,11 +8,10 @@ function findProductSchemaScript() {
 function findAggregateReviewsSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
     return scriptElements[scriptElements.length-1];
-}
+}*/
 
 function handleReviewScript(scriptElement) {
-    var reviewsArray = [];
-    reviewsArray = addReviews(scriptElement, reviewsArray);
+    reviewsArray = addReviews(scriptElement);
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
@@ -34,33 +33,34 @@ function handleReviewScript(scriptElement) {
 
 }
 
-function addReviews(scriptElement, reviewsArray){
-    var reviews = Array.from(document.getElementsByClassName('spr-review'));
+function addReviews(scriptElement){
+    var reviewsArray = [];
+    var reviews = Array.from(document.getElementsByClassName('list-review'));
     for(i = 0; i < reviews.length; i++){
-        var reviewTitle = reviews[i].querySelector('.spr-review-header-title').innerHTML;
-        var name = reviews[i].querySelector('.spr-review-header-byline').querySelector('strong').innerHTML;
-        var date =  reviews[i].querySelector('.spr-review-header-byline').querySelectorAll('strong')[1].innerHTML;
+        //var reviewTitle = reviews[i].querySelector('.spr-review-header-title').innerHTML;
+        var name = reviews[i].querySelector('.author-name').innerHTML;
+        //var date =  reviews[i].querySelector('.spr-review-header-byline').querySelectorAll('strong')[1].innerHTML;
         
-        var inputDate = new Date(date);
+        /*var inputDate = new Date(date);
         var year = inputDate.getFullYear();
         var month = inputDate.getMonth() + 1; // Note: Months are zero-indexed
         var day = inputDate.getDate();
         var formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
+        */
+        var description = reviews[i].querySelector('.reviews-text').innerHTML;
 
-        var description = reviews[i].querySelector('.spr-review-content-body').innerHTML;
-
-        var starRating = parseInt(reviews[i].querySelector('.spr-starratings').getAttribute('aria-label')[0]);
+        var starRating = parseInt(document.getElementsByClassName('big-point')[0].innerHTML);
 
         reviewsArray.push({
             "@type": "Review",
-            "name": reviewTitle,
+            //"name": reviewTitle,
             "reviewBody": description,
             "author": {
                 "@type": "Person",
                 "name": name
             },
             "name": name,
-            "datePublished": formattedDate,
+            //"datePublished": formattedDate,
             "reviewRating": {
                 "@type": "Rating",
                 "ratingValue": starRating
@@ -76,10 +76,10 @@ function addReviews(scriptElement, reviewsArray){
 
 }
 
-  function checkForReviewScript() {
+  /*function checkForReviewScript() {
     var reviewContainer = document.getElementById('shopify-product-reviews');
-    var reviewScript = reviewContainer.querySelector('script[type="application/ld+json"]');
-    if (reviewScript) {
+    //var reviewScript = reviewContainer.querySelector('script[type="application/ld+json"]');
+    if (reviewContainer) {
       handleReviewScript(reviewScript);
     } else {
       var observer = new MutationObserver(function (mutations) {
@@ -98,7 +98,7 @@ function addReviews(scriptElement, reviewsArray){
       observer.observe(reviewContainer, { childList: true, subtree: true });
     }
   }
-  checkForReviewScript();
+  checkForReviewScript();*/
 
 
 </script>
