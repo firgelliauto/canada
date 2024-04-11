@@ -85,7 +85,7 @@ function setupObserver() {
         var observerOptions = { childList: true };
         observer.observe(targetElement, observerOptions);
     } else {
-        setTimeout(setupObserver, 100); // Adjust the delay as needed
+        setTimeout(setupObserver, 1000); // Adjust the delay as needed
     }
 }
 
