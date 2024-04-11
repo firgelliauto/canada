@@ -19,14 +19,17 @@ function handleReviewScript() {
 
     //var AggregateRating = findAggregateReviewsSchemaScript();
     //AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
-    
+
+    var reviewsContent = document.querySelector('.reviews-num').innerHTML;
+    var matches = reviewsContent.match(/\d+/);
+    var numberValue = matches ? parseInt(matches[0]) : null;
 
     schemaData.aggregateRating = [{
         "@type": "AggregateRating",
-        //"ratingValue": parseFloat(AggregateRatingJSON.ratingValue).toFixed(2),
+        "ratingValue": document.getElementsByClassName('big-point').innerHTML,
         "bestRating": "5",
         "worstRating": "1",
-        //"ratingCount": AggregateRatingJSON.reviewCount
+        "ratingCount": numberValue;
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
     //AggregateRating.remove();
