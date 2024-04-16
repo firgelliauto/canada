@@ -183,7 +183,6 @@ function fetchFiveReviews(maxToFind, names, descriptions){
 
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
-                                    console.log("fetch again");
                                     fetchFiveReviews(maxToFind, names, descriptions);
                                 }
                             }(i));
