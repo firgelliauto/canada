@@ -169,7 +169,7 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                         console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
                             document.querySelector('.next-page').click();
-                            setUpObserverForElement('reviews-body', false, i, function(count) {
+                            setUpObserverForElement('tt-review-list', true, i, function(count) {
                                 return function() {
                                     fetchFiveReviews(maxToFind, names, descriptions);
                                 }
