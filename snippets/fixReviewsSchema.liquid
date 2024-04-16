@@ -148,7 +148,6 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
 
 
 function initiation() {
-    var allFound = false;
     var countFound = 0;
     var names = [];
     var descriptions = [];
@@ -158,8 +157,12 @@ function initiation() {
         for (let i = 0; i < maxToFind; i++) {
             setUpObserverForElement('author-name', true, i, function(count) {
                 return function() {
-                    names[count] = document.querySelectorAll('.author-name')[count].innerHTML;
-                    descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
+                    names[count] = document.querySelectorAll('.author-name')[count % 5].innerHTML;
+                    descriptions[count] = document.querySelectorAll('.reviews-text')[count % 5].innerHTML;
+                    countFound++;
+                    if (countFound % 5 === 0) {
+                        document.querySelector('.next-page').click();
+                    }
                     console.log(names);
                     console.log(descriptions);
                 };
