@@ -176,7 +176,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, i){
                             setUpObserverForElement('reviews-body', false, count, function(count) {
                                 return function() {
                                     console.log("fetch again");
-                                    fetchFiveReviews(maxToFind, names, descriptions, i);
+                                    fetchFiveReviews(maxToFind, names, descriptions, 0);
                                 }
                             }(i));
                             document.querySelector('.next-page').click();
