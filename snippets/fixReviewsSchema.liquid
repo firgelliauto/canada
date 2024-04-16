@@ -160,7 +160,7 @@ function initiation() {
 }
 
 function fetchFiveReviews(maxToFind, names, descriptions, i){
-    for (i; i < i+5; i++) {
+    for (i; i < parseInt(i+5); i++) {
         console.log(i);
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
