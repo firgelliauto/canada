@@ -159,6 +159,7 @@ function initiation() {
 
 function fetchFiveReviews(maxToFind, names, descriptions){
     for (let i = 0; i < 5; i++) {
+        console.log(i);
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
                 //console.log(document.querySelectorAll('.author-name')[count]);
