@@ -136,8 +136,8 @@ function setUpObserverForElement(identifier, isClass, count) {
             return true;
         }
     }
-    const observer = new MutationObserver((mutationsList) => {
-        console.log('Mutation observed:', mutationsList);
+    const observer = new MutationObserver(() => {
+        console.log('Mutation observed:');
         observer.disconnect();
         return true;
     });
