@@ -127,20 +127,37 @@ function getMaxToFind(){
 
 
 function setUpObserverForElement(identifier, isClass, count, callback) {
-    const targetNode = isClass ? document.querySelectorAll('.' + identifier)[count] : document.getElementById(identifier);
-    if (targetNode && targetNode.innerHTML.trim() !== '') {
-        const observer = new MutationObserver(() => {
-            //console.log('Mutation observed:');
-            observer.disconnect();
-            callback();
-        });
-
-        observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
-        return observer;
+    let targetNode;
+    if (isClass) {
+        const elements = document.querySelectorAll('.' + identifier);
+        if (elements.length > count) {
+            targetNode = elements[count];
+            if (targetNode.innerHTML.trim() !== '') {
+                callback();
+                return true;
+            }
+        } else {
+            console.log(identifier);
+            console.error('Element not found.');
+            return false;
+        }
     } else {
-        console.error('Element not found.');
-        return false;
+        targetNode = document.getElementById(identifier);
+        if (!targetNode) {
+            console.error('Element not found.');
+            return false;
+        }
     }
+
+    const observer = new MutationObserver(() => {
+        //console.log('Mutation observed:');
+        observer.disconnect();
+        callback();
+        return true;
+    });
+
+    observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+    return observer;
 }
 
 
