@@ -125,13 +125,13 @@ function getMaxToFind(){
 function setUpObserverForElement(identifier, isClass, count) {
     let targetNode;
     if (isClass) {
+        console.log(targetNode);
         targetNode = document.querySelectorAll('.' + identifier)[count];
     } else {
         targetNode = document.getElementById(identifier);
     }
     if (!targetNode) {
-        console.log(identifier + "   " + isClass + "   " + count);
-        console.log(targetNode + ' Target node not found.');
+        console.log('Target node not found.');
         return false;
     }
 
