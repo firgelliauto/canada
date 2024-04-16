@@ -1,9 +1,5 @@
 <script>
 
-function findProductSchemaScript() {
-    var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
-    return scriptElements[0];
-}
 /*
 function findAggregateReviewsSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
@@ -76,52 +72,27 @@ function addReviews(){
     return reviewsArray;
 }
 
-// Function to set up the observer
-function setupObserver() {
-    var targetElement = document.querySelector('.reviews-text');
-    // Check if the target element exists
-    if (targetElement) {
-        var observer = new MutationObserver(function(mutationsList, observer) {
-            handleContentChange(mutationsList, observer, targetElement);
-        });
-        
-        var observerOptions = { childList: true };
-        observer.observe(targetElement, observerOptions);
-    } else {
-        setTimeout(setupObserver, 100); // Adjust the delay as needed
-    }
-}
-window.addEventListener("load", function() {
-    //setupObserver();
-    //handleReviewScript();
-});
-// Define handleContentChange function
-function handleContentChange(mutationsList, observer, targetElement) {
-    for(var mutation of mutationsList) {
-        if (mutation.type === 'childList' && targetElement.innerHTML.trim() !== '') {
-            //console.log('Content added to .reviews-text:', targetElement.innerHTML);
-            handleReviewScript();
-            observer.disconnect();
-            break; // Exit the loop since the condition is met
-        }
-    }
-}
-
-
 
 
 </script>
 
 <script>
+//main function to start adding names and descriptions to schema
+function addReviewsToSchema(names, descriptions){
+    var productSchemaScript = findProductSchemaScript();
+    var schemaData = JSON.parse(productSchemaScript.textContent);
+    console.log(schemaData);
+
+}
 
 function findProductSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
     return scriptElements[0];
 }
+
 function getMaxToFind(){
     return parseInt(document.querySelector('.reviews-num').textContent);
 }
-
 
 function waitForElementToExist(identifier, isClass, count, callback, interval = 500) {
     const checkElement = () => {
@@ -136,7 +107,6 @@ function waitForElementToExist(identifier, isClass, count, callback, interval = 
     checkElement();
 }
 
-
 function setUpObserverForElement(identifier, isClass, count, callback) {
     let targetNode;
     if (isClass) {
@@ -148,7 +118,6 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
                 return true;
             }
         } else {
-            console.log(identifier);
             console.error('Element not found.');
             return false;
         }
@@ -171,13 +140,6 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
     return observer;
 }
 
-
-
-
-
-
-
-
 function initiation() {
     var countFound = 0;
     var names = [];
@@ -191,8 +153,8 @@ function initiation() {
 }
 
 function fetchFiveReviews(maxToFind, names, descriptions){
+    //5 as thats the amount shown per pagnate.
     for (let i = 0; i < 5; i++) {
-
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
                 //console.log(document.querySelectorAll('.author-name')[count]);
@@ -200,16 +162,18 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                 setUpObserverForElement('reviews-text', true, i, function(count) {
                     return function() {
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
-                        console.log(names);
+                        //console.log(names);
                         //console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
-
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
                                     fetchFiveReviews(maxToFind, names, descriptions);
                                 }
                             }(i));
                             document.querySelector('.next-page').click();
+                        }
+                        else if(i == 4 && names.length >= maxToFind){
+                            addReviewsToSchema(names, descriptions);
                         }
                     };
                 }(i));
