@@ -161,7 +161,6 @@ function initiation() {
                         setUpObserverForElement('reviews-text', true, i, function(count) {
                             return function() {
                                 descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
-                                countFound++;
                                 console.log(names);
                                 console.log(descriptions);
                             };
