@@ -123,47 +123,64 @@ function getMaxToFind(){
 }
 
 function setUpObserverForElement(identifier, isClass, count) {
-    let targetNode;
-    if (isClass) {
-        targetNode = document.querySelectorAll('.' + identifier)[count];
-        console.log(targetNode);
+  let targetNode;
+  if (isClass) {
+    targetNode = document.querySelectorAll('.' + identifier);
+    if (targetNode.length > count) {
+      targetNode = targetNode[count];
     } else {
-        targetNode = document.getElementById(identifier);
+      return false; // No element found, avoid unnecessary observer
     }
-    if(targetNode){
-        if(targetNode.innerHTML.trim() !== ''){
-            console.log(targetNode);
-            return true;
-        }
-    }
-    const observer = new MutationObserver(() => {
-        console.log('Mutation observed:');
-        observer.disconnect();
-        return true;
-    });
-    observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
-    return observer;
+  } else {
+    targetNode = document.getElementById(identifier);
+  }
+
+  if (targetNode && targetNode.innerHTML.trim() !== '') {
+    console.log(targetNode);
+    return true;
+  }
+
+  const observer = new MutationObserver(() => {
+    console.log('Mutation observed');
+    // Decide when to disconnect based on your needs
+    // observer.disconnect();
+  });
+  observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+  return observer;
 }
 
-
-function initiation(){
-    var allFound = false;
-    var countFound = 0;
-    var names = [];
-    var descriptions = [];
-    setUpObserverForElement('reviews-num', true, 0, function() {
-        console.log("get max find");
-        var maxToFind = getMaxToFind();
-        for(i = 0; i < maxToFind; i++){
-            setUpObserverForElement('author-name', true, i, function() {
-                names[i] = document.querySelectorAll('author-name')[count].innerHTML;
-                descriptions[i] = document.querySelectorAll('reviews-text')[count].innerHTML;
+function initiation() {
+  var allFound = false;
+  var countFound = 0;
+  var names = [];
+  var descriptions = [];
+  const reviewsNumObserver = setUpObserverForElement('reviews-num', true, 0);
+  if (reviewsNumObserver) { // Check if observer was created
+    reviewsNumObserver.observe(targetNode, { attributes: true, childList: true, subtree: true });
+    reviewsNumObserver.on('mutation', (mutationList) => { // Use mutation event listener
+      if (mutationList.length > 0) { // Check for actual mutations
+        const maxToFind = getMaxToFind();
+        for (let i = 0; i < maxToFind; i++) {
+          const authorNameObserver = setUpObserverForElement('author-name', true, i);
+          if (authorNameObserver) {
+            authorNameObserver.observe(targetNode, { attributes: true, childList: true, subtree: true });
+            authorNameObserver.on('mutation', (mutationList) => {
+              if (mutationList.length > 0) { // Check for actual mutations
+                names[i] = document.querySelectorAll('.author-name')[i].innerHTML;
+                descriptions[i] = document.querySelectorAll('.reviews-text')[i].innerHTML;
                 console.log(names);
                 console.log(descriptions);
+              }
             });
+          }
         }
+      }
     });
+  } else {
+    console.log("Element 'reviews-num' not found or empty.");
+  }
 }
+
 
 
 window.addEventListener("load", function() {
