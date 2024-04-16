@@ -155,7 +155,7 @@ function initiation() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
         for (let i = 0; i < maxToFind; i++) {
-            setUpObserverForElement('author-name', true, i, function(count) {
+            setUpObserverForElement('author-name', true, i % 5, function(count) {
                 return function() {
                     names[count] = document.querySelectorAll('.author-name')[count % 5].innerHTML;
                     descriptions[count] = document.querySelectorAll('.reviews-text')[count % 5].innerHTML;
