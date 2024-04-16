@@ -130,16 +130,15 @@ function setUpObserverForElement(identifier, isClass, count) {
     } else {
         targetNode = document.getElementById(identifier);
     }
-    
+    if(targetNode.innerHTML.trim() !== ''){
+        console.log(targetNode);
+        return true;
+    }
     const observer = new MutationObserver((mutationsList) => {
         console.log('Mutation observed:', mutationsList);
         observer.disconnect();
         return true;
     });
-    if(targetNode.innerHTML){
-        console.log(targetNode);
-        return true;
-    }
     observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
     return observer;
 }
