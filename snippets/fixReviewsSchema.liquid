@@ -123,31 +123,38 @@ function getMaxToFind(){
 }
 
 function setUpObserverForElement(identifier, isClass, count, callback) {
-  const observer = new MutationObserver((mutations) => {
-    const targetNode = isClass
-      ? document.querySelector('.' + identifier)
-      : document.getElementById(identifier);
-
-    if (targetNode) {
-      observer.disconnect(); // Disconnect after finding the element
-      const specificObserver = createSpecificObserver(targetNode, callback); // Create a new observer for the target element
-      specificObserver.observe(targetNode, { attributes: true, childList: true, subtree: true }); // Observe the specific element
+    let targetNode;
+    if (isClass) {
+        const elements = document.querySelectorAll('.' + identifier);
+        if (elements.length > count) {
+            targetNode = elements[count];
+            if (targetNode.innerHTML.trim() !== '') {
+                callback();
+                return true;
+            }
+        } else {
+            console.log(identifier);
+            console.error('Element not found.');
+            return false;
+        }
+    } else {
+        targetNode = document.getElementById(identifier);
+        if (!targetNode) {
+            console.error('Element not found.');
+            return false;
+        }
     }
-  });
 
-  observer.observe(document.body, { childList: true, subtree: true }); // Observe changes to the document body
-  return observer; // Still return the observer for potential cleanup (optional)
+    const observer = new MutationObserver(() => {
+        //console.log('Mutation observed:');
+        observer.disconnect();
+        callback();
+        return true;
+    });
+
+    observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+    return observer;
 }
-
-// Helper function to create the specific observer for the target element
-function createSpecificObserver(targetNode, callback) {
-  return new MutationObserver(() => {
-    if (targetNode.innerHTML.trim() !== '') { // Check if content exists before calling callback
-      callback();
-    }
-  });
-}
-
 
 
 
