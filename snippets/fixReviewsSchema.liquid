@@ -126,13 +126,11 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
     let targetNode;
     if (isClass) {
         targetNode = document.querySelectorAll('.' + identifier)[count];
-        console.log(targetNode);
     } else {
         targetNode = document.getElementById(identifier);
     }
     if(targetNode){
         if(targetNode.innerHTML.trim() !== ''){
-            console.log(targetNode);
             callback();
             return true;
         }
