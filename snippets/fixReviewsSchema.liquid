@@ -157,13 +157,12 @@ function initiation() {
             for (let i = 0; i < 5; i++) {
                 setUpObserverForElement('author-name', true, i, function(count) {
                     return function() {
-                        names[count] = document.querySelectorAll('.author-name')[count].innerHTML;
+                        names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
                         setUpObserverForElement('reviews-text', true, i, function(count) {
                             return function() {
-                                descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
+                                descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                                 console.log(names);
                                 console.log(descriptions);
-                                console.log(countFound);
                             };
                         }(i));
                     };
