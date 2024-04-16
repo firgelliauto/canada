@@ -151,8 +151,8 @@ function initiation(){
     var names = [];
     var descriptions = [];
     setUpObserverForElement('reviews-num', true, 0, function() {
+        console.log("get max find");
         var maxToFind = getMaxToFind();
-        console.log(maxToFind);
         for(i = 0; i < maxToFind; i++){
             setUpObserverForElement('author-name', true, i, function() {
                 names[i] = document.querySelectorAll('author-name')[count].innerHTML;
