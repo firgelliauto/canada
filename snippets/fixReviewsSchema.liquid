@@ -178,7 +178,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, i){
                                     console.log("fetch again");
                                     fetchFiveReviews(maxToFind, names, descriptions, i);
                                 }
-                            });
+                            }(i));
                             document.querySelector('.next-page').click();
                         }
                     };
