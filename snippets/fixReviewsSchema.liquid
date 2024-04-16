@@ -138,6 +138,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
     
     const observer = new MutationObserver(() => {
         console.log('Mutation observed:');
+        console.log(targetNode);
         observer.disconnect();
         callback();
         return true;
