@@ -129,6 +129,7 @@ function waitForElementToExist(identifier, isClass, count, callback, interval = 
         if (targetNode && targetNode.innerHTML.trim() !== '') {
             callback(targetNode);
         } else{
+            console.log("doesnt exist yet");
             setTimeout(checkElement, interval);
         }
     };
@@ -182,7 +183,6 @@ function initiation() {
     var names = [];
     var descriptions = [];
     waitForElementToExist('reviews-num', true, 0, function(targetNode) {
-        console.log("reviews-num element exists. Setting up observer.");
         setUpObserverForElement('reviews-num', true, 0, function() {
             var maxToFind = getMaxToFind();
             fetchFiveReviews(maxToFind, names, descriptions);
