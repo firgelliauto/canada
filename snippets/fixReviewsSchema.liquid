@@ -153,11 +153,11 @@ function initiation() {
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-        fetchFiveReviews(maxToFind);
+        fetchFiveReviews(maxToFind, countFound, names, descriptions);
     });
 }
 
-function fetchFiveReviews(maxToFind){
+function fetchFiveReviews(maxToFind, countFound, names, descriptions){
     for (let i = 0; i < 5; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
