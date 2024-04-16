@@ -153,23 +153,24 @@ function initiation() {
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-        for (let i = 0; i < 5; i++) {
-            setUpObserverForElement('author-name', true, i, function(count) {
-                return function() {
-                    names[count] = document.querySelectorAll('.author-name')[count].innerHTML;
-                    setUpObserverForElement('reviews-text', true, i, function(count) {
-                        return function() {
-                            descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
-                            countFound++;
-                            if (countFound % 5 === 0) {
-                                //document.querySelector('.next-page').click();
-                            }
-                            console.log(names);
-                            console.log(descriptions);
-                        };
-                    }(i));
-                };
-            }(i));
+        while(countFound < maxToFind-1){
+            for (let i = 0; i < 5; i++) {
+                setUpObserverForElement('author-name', true, i, function(count) {
+                    return function() {
+                        names[count] = document.querySelectorAll('.author-name')[count].innerHTML;
+                        setUpObserverForElement('reviews-text', true, i, function(count) {
+                            return function() {
+                                descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
+                                countFound++;
+                                console.log(names);
+                                console.log(descriptions);
+                            };
+                        }(i));
+                    };
+                }(i));
+                countFound++;
+            }
+            document.querySelector('.next-page').click();
         }
     });
 }
