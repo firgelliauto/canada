@@ -167,11 +167,14 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                         //console.log(names);
                         //console.log(descriptions);
-                        console.log(document.querySelectorAll('.reviews-text')[6]);
                         if(i == 4 && names.length < maxToFind){
                             document.querySelector('.next-page').click();
-                            console.log('clicked');
-                            fetchFiveReviews(maxToFind, names, descriptions);
+                            setUpObserverForElement('tt-review-list', true, i, function(count) {
+                                return function() {
+                                    fetchFiveReviews(maxToFind, names, descriptions);
+                                }
+                            });
+                            document.querySelector('.next-page').click();
                         }
                     };
                 }(i));
