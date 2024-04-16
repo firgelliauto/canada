@@ -146,7 +146,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
     }
 
     const observer = new MutationObserver(() => {
-        console.log('Mutation observed:');
+        //console.log('Mutation observed:');
         observer.disconnect();
         callback();
         return true;
@@ -179,7 +179,7 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                     return function() {
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                         console.log(names);
-                        console.log(descriptions);
+                        //console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
 
                             setUpObserverForElement('reviews-body', false, i, function(count) {
