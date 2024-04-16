@@ -171,7 +171,7 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                         console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
                             console.log("next page:");
-                            setUpObserverForElement('tt-review-list', true, i, function(count) {
+                            setUpObserverForElement('tt-review-list', true, 0, function(count) {
                                 return function() {
                                     console.log("fetch again");
                                     fetchFiveReviews(maxToFind, names, descriptions);
