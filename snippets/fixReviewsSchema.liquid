@@ -153,11 +153,11 @@ function initiation() {
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-        fetchFiveReviews(maxToFind, countFound, names, descriptions);
+        fetchFiveReviews(maxToFind, names, descriptions);
     });
 }
 
-function fetchFiveReviews(maxToFind, countFound, names, descriptions){
+function fetchFiveReviews(maxToFind, names, descriptions){
     for (let i = 0; i < 5; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
@@ -169,12 +169,12 @@ function fetchFiveReviews(maxToFind, countFound, names, descriptions){
                         console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
                             document.querySelector('.next-page').click();
+                            fetchFiveReviews(maxToFind, names, descriptions);
                         }
                     };
                 }(i));
             };
         }(i));
-        countFound++;
     }
 }
 
