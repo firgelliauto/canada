@@ -111,3 +111,64 @@ function handleContentChange(mutationsList, observer, targetElement) {
 
 
 </script>
+
+<script>
+
+function findProductSchemaScript() {
+    var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
+    return scriptElements[0];
+}
+function getMaxToFind(){
+    return parseInt(document.querySelector('.reviews-num').textContent);
+}
+
+function setUpObserverForElement(identifier, isClass, count) {
+    let targetNode;
+    if (isClass) {
+        targetNode = document.querySelectorAll('.' + identifier)[count];
+    } else {
+        targetNode = document.getElementById(identifier);
+    }
+    if (!targetNode) {
+        console.error('Target node not found.');
+        return false;
+    }
+
+    const observer = new MutationObserver((mutationsList) => {
+        console.log('Mutation observed:', mutationsList);
+        observer.disconnect();
+        return true;
+    });
+
+    observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+    return observer;
+}
+
+
+function initiation(){
+    var allFound = false;
+    var countFound = 0;
+    var names = [];
+    var descriptions = [];
+    setUpObserverForElement('reviews-num', true, 0, function() {
+        var maxToFind = getMaxToFind();
+        for(i = 0; i < maxToFind; i++){
+            setUpObserverForElement('author-name', true, i, function() {
+                names[i] = document.querySelectorAll('author-name')[count].innerHTML;
+                descriptions[i] = document.querySelectorAll('reviews-text')[count].innerHTML;
+                console.log(names);
+                console.log(descriptions);
+            });
+        }
+    });
+}
+
+initiation();
+
+
+
+
+
+
+
+</script>
