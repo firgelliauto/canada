@@ -130,9 +130,11 @@ function setUpObserverForElement(identifier, isClass, count) {
     } else {
         targetNode = document.getElementById(identifier);
     }
-    if(targetNode.innerHTML.trim() !== ''){
-        console.log(targetNode);
-        return true;
+    if(targetNode){
+        if(targetNode.innerHTML.trim() !== ''){
+            console.log(targetNode);
+            return true;
+        }
     }
     const observer = new MutationObserver((mutationsList) => {
         console.log('Mutation observed:', mutationsList);
