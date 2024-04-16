@@ -168,13 +168,12 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                         console.log(names);
                         console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
-                            document.querySelector('.next-page').click();
                             setUpObserverForElement('tt-review-list', true, i, function(count) {
                                 return function() {
                                     fetchFiveReviews(maxToFind, names, descriptions);
                                 }
                             });
-                            //document.querySelector('.next-page').click();
+                            document.querySelector('.next-page').click();
                         }
                     };
                 }(i));
