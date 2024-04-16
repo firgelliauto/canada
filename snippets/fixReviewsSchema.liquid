@@ -125,17 +125,25 @@ function getMaxToFind(){
 function setUpObserverForElement(identifier, isClass, count, callback) {
     let targetNode;
     if (isClass) {
-        targetNode = document.querySelectorAll('.' + identifier)[count];
-        
-        if(targetNode && targetNode.innerHTML.trim() !== ''){
-            callback();
-            return true;
+        const elements = document.querySelectorAll('.' + identifier);
+        if (elements.length > count) {
+            targetNode = elements[count];
+            if (targetNode.innerHTML.trim() !== '') {
+                callback();
+                return true;
+            }
+        } else {
+            console.error('Element not found.');
+            return false;
+        }
+    } else {
+        targetNode = document.getElementById(identifier);
+        if (!targetNode) {
+            console.error('Element not found.');
+            return false;
         }
     }
-    else {
-        targetNode = document.getElementById(identifier);
-    }
-    
+
     const observer = new MutationObserver(() => {
         console.log('Mutation observed:');
         console.log(targetNode);
@@ -143,9 +151,11 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
         callback();
         return true;
     });
+
     observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
     return observer;
 }
+
 
 
 function initiation() {
