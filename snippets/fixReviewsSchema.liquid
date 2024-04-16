@@ -161,7 +161,7 @@ function fetchFiveReviews(maxToFind, names, descriptions){
     for (let i = 0; i < 5; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
-                console.log(document.querySelectorAll('.author-name')[count]);
+                //console.log(document.querySelectorAll('.author-name')[count]);
                 names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
                 setUpObserverForElement('reviews-text', true, i, function(count) {
                     return function() {
@@ -170,7 +170,7 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                         console.log(descriptions);
                         if(i == 4 && names.length < maxToFind){
                             console.log("next page:");
-                            setUpObserverForElement('reviews-body', false, i, function(count) {
+                            setUpObserverForElement('tt-review-list', true, i, function(count) {
                                 return function() {
                                     console.log("fetch again");
                                     fetchFiveReviews(maxToFind, names, descriptions);
