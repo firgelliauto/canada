@@ -126,6 +126,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
     let targetNode;
     if (isClass) {
         targetNode = document.querySelectorAll('.' + identifier)[count];
+        console.log(targetNode);
         if(targetNode && targetNode.innerHTML.trim() !== ''){
             callback();
             return true;
