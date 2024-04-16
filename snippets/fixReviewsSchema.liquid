@@ -156,7 +156,7 @@ function initiation() {
             setUpObserverForElement('author-name', true, i, function(count) {
                 return function() {
                     names[count] = document.querySelectorAll('.author-name')[count].innerHTML;
-                    setUpObserverForElement('author-name', true, i, function(count) {
+                    setUpObserverForElement('reviews-text', true, i, function(count) {
                         return function() {
                             descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                             countFound++;
