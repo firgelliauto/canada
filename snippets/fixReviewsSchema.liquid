@@ -155,12 +155,12 @@ function initiation() {
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-        fetchFiveReviews(maxToFind, names, descriptions, 0);
+        fetchFiveReviews(maxToFind, names, descriptions);
     });
 }
 
-function fetchFiveReviews(maxToFind, names, descriptions, i){
-    for (i; i < i+5; i++) {
+function fetchFiveReviews(maxToFind, names, descriptions){
+    for (let i = 0; i < i+5; i++) {
         console.log(i);
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
@@ -176,7 +176,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, i){
                             setUpObserverForElement('reviews-body', false, count, function(count) {
                                 return function() {
                                     console.log("fetch again");
-                                    fetchFiveReviews(maxToFind, names, descriptions, 0);
+                                    fetchFiveReviews(maxToFind, names, descriptions);
                                 }
                             }(i));
                             document.querySelector('.next-page').click();
