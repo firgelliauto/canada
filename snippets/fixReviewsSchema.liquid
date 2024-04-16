@@ -147,7 +147,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
 }
 
 
-function initiation(){
+function initiation() {
     var allFound = false;
     var countFound = 0;
     var names = [];
@@ -155,16 +155,19 @@ function initiation(){
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-        for(i = 0; i < maxToFind; i++){
-            setUpObserverForElement('author-name', true, i, function() {
-                names[i] = document.querySelectorAll('author-name')[count].innerHTML;
-                descriptions[i] = document.querySelectorAll('reviews-text')[count].innerHTML;
-                console.log(names);
-                console.log(descriptions);
-            });
+        for (let i = 0; i < maxToFind; i++) {
+            setUpObserverForElement('author-name', true, i, function(count) {
+                return function() {
+                    names[count] = document.querySelectorAll('.author-name')[count].innerHTML;
+                    descriptions[count] = document.querySelectorAll('.reviews-text')[count].innerHTML;
+                    console.log(names);
+                    console.log(descriptions);
+                };
+            }(i));
         }
     });
 }
+
 
 
 window.addEventListener("load", function() {
