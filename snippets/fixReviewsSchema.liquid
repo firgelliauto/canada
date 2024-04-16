@@ -132,6 +132,7 @@ function setUpObserverForElement(identifier, isClass, count) {
     }
     if(targetNode.innerHTML.trim() !== ''){
         console.log(targetNode);
+        callback();
         return true;
     }
     const observer = new MutationObserver((mutationsList) => {
