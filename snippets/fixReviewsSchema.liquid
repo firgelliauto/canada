@@ -153,7 +153,6 @@ function initiation() {
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-        while(countFound < maxToFind-1){
             for (let i = 0; i < 5; i++) {
                 setUpObserverForElement('author-name', true, i, function(count) {
                     return function() {
@@ -163,6 +162,9 @@ function initiation() {
                                 descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                                 console.log(names);
                                 console.log(descriptions);
+                                if(i == 5 && names.length < maxToFind){
+                                    document.querySelector('.next-page').click();
+                                }
                             };
                         }(i));
                     };
@@ -170,7 +172,6 @@ function initiation() {
                 countFound++;
             }
             //document.querySelector('.next-page').click();
-        }
     });
 }
 
