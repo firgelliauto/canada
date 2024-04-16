@@ -122,31 +122,38 @@ function getMaxToFind(){
     return parseInt(document.querySelector('.reviews-num').textContent);
 }
 
-function waitForElement(identifier, isClass, count, callback) {
-    const observer = new MutationObserver((mutationsList) => {
-        const targetNode = isClass ? document.querySelectorAll('.' + identifier)[count] : document.getElementById(identifier);
-        if (targetNode && targetNode.innerHTML.trim() !== '') {
-            observer.disconnect();
-            callback();
-        }
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-}
-
 function setUpObserverForElement(identifier, isClass, count, callback) {
-    waitForElement(identifier, isClass, count, (targetNode) => {
-        const observer = new MutationObserver(() => {
-            observer.disconnect();
-            callback();
-        });
-
-        if (targetNode) {
-            observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+    let targetNode;
+    if (isClass) {
+        const elements = document.querySelectorAll('.' + identifier);
+        if (elements.length > count) {
+            targetNode = elements[count];
+            if (targetNode.innerHTML.trim() !== '') {
+                callback();
+                return true;
+            }
         } else {
-            console.error('Target node not found.');
+            console.log(identifier);
+            console.error('Element not found.');
+            return false;
         }
+    } else {
+        targetNode = document.getElementById(identifier);
+        if (!targetNode) {
+            console.error('Element not found.');
+            return false;
+        }
+    }
+
+    const observer = new MutationObserver(() => {
+        //console.log('Mutation observed:');
+        observer.disconnect();
+        callback();
+        return true;
     });
+
+    observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
+    return observer;
 }
 
 
