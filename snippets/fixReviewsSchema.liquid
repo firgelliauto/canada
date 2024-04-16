@@ -153,29 +153,30 @@ function initiation() {
     setUpObserverForElement('reviews-num', true, 0, function() {
         console.log("get max find");
         var maxToFind = getMaxToFind();
-            for (let i = 0; i < 5; i++) {
-                setUpObserverForElement('author-name', true, i, function(count) {
-                    return function() {
-                        names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
-                        setUpObserverForElement('reviews-text', true, i, function(count) {
-                            return function() {
-                                descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
-                                console.log(names);
-                                console.log(descriptions);
-                                if(i == 4 && names.length < maxToFind){
-                                    document.querySelector('.next-page').click();
-                                }
-                            };
-                        }(i));
-                    };
-                }(i));
-                countFound++;
-            }
-            //document.querySelector('.next-page').click();
+        fetchFiveReviews(maxToFind);
     });
 }
 
-
+function fetchFiveReviews(maxToFind){
+    for (let i = 0; i < 5; i++) {
+        setUpObserverForElement('author-name', true, i, function(count) {
+            return function() {
+                names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
+                setUpObserverForElement('reviews-text', true, i, function(count) {
+                    return function() {
+                        descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
+                        console.log(names);
+                        console.log(descriptions);
+                        if(i == 4 && names.length < maxToFind){
+                            document.querySelector('.next-page').click();
+                        }
+                    };
+                }(i));
+            };
+        }(i));
+        countFound++;
+    }
+}
 
 window.addEventListener("load", function() {
     initiation();
