@@ -123,7 +123,20 @@ function getMaxToFind(){
 }
 
 
-
+function waitForElementToExist(identifier, isClass, count, callback, maxAttempts = 10, interval = 500) {
+    const checkElement = () => {
+        const targetNode = isClass ? document.querySelectorAll('.' + identifier)[count] : document.getElementById(identifier);
+        if (targetNode && targetNode.innerHTML.trim() !== '') {
+            callback(targetNode);
+        } else if (maxAttempts > 0) {
+            setTimeout(checkElement, interval);
+            maxAttempts--;
+        } else {
+            console.error('Element not found after maximum attempts.');
+        }
+    };
+    checkElement();
+}
 
 
 function setUpObserverForElement(identifier, isClass, count, callback) {
@@ -171,9 +184,12 @@ function initiation() {
     var countFound = 0;
     var names = [];
     var descriptions = [];
-    setUpObserverForElement('reviews-num', true, 0, function() {
-        var maxToFind = getMaxToFind();
-        fetchFiveReviews(maxToFind, names, descriptions);
+    waitForElementToExist('reviews-num', true, 0, function(targetNode) {
+        console.log("reviews-num element exists. Setting up observer.");
+        setUpObserverForElement('reviews-num', true, 0, function() {
+            var maxToFind = getMaxToFind();
+            fetchFiveReviews(maxToFind, names, descriptions);
+        });
     });
 }
 
