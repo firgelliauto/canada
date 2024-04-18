@@ -165,6 +165,8 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                 setUpObserverForElement('reviews-text', true, i, function(count) {
                     return function() {
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
+                        console.log(names);
+                        console.log(descriptions)
                         if(i == 4 && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
