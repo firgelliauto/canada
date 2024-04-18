@@ -162,6 +162,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
         }(i));
     }
 }
-
-initiation();
+window.onload = function() {
+    initiation();
+};
 //scriptElements = document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
