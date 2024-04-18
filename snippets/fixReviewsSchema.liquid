@@ -78,7 +78,7 @@ function addReviewsToSchema(names, descriptions, ratings){
     var reviewsArray = addReviews(names, descriptions, ratings);
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
-    //console.log(schemaData);
+    console.log(reviewsArray);
 
 }
 
