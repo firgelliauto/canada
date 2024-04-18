@@ -68,6 +68,10 @@ function addReviewsToSchema(names, descriptions, ratings){
     var names = names.map(function(name) {
         return name.trim();
     });
+    var descriptions = descriptions.map(function(description) {
+        // Remove \n and replace double spaces with single spaces
+        return description.replace(/\n/g, '').replace(/ {2,}/g, ' ');
+    });
     console.log(names);
     console.log(descriptions);
     console.log(ratings);
