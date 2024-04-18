@@ -126,13 +126,13 @@ function initiation() {
     var names = [];
     var descriptions = [];
     var ratings = [];
-    waitForElementToExist('reviews-num', true, 0, function(targetNode) {
+
         setUpObserverForElement('reviews-num', true, 0, function() {
             document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
             var maxToFind = getMaxToFind();
             fetchFiveReviews(maxToFind, names, descriptions, ratings);
         });
-    });
+
 }
 
 function fetchFiveReviews(maxToFind, names, descriptions, ratings){
