@@ -121,7 +121,7 @@ function getStarRating(element){
 
 
 function initiation() {
-    document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
+    //document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
     var countFound = 0;
     var names = [];
     var descriptions = [];
