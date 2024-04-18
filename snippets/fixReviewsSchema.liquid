@@ -151,12 +151,12 @@ function initiation() {
     waitForElementToExist('reviews-num', true, 0, function(targetNode) {
         setUpObserverForElement('reviews-num', true, 0, function() {
             var maxToFind = getMaxToFind();
-            fetchFiveReviews(maxToFind, names, descriptions);
+            fetchFiveReviews(maxToFind, names, descriptions, ratings);
         });
     });
 }
 
-function fetchFiveReviews(maxToFind, names, descriptions){
+function fetchFiveReviews(maxToFind, names, descriptions, ratings){
     //5 as thats the amount shown per pagnate.
     for (let i = 0; i < 5; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
@@ -170,13 +170,13 @@ function fetchFiveReviews(maxToFind, names, descriptions){
                         if(i == 4 && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
-                                    fetchFiveReviews(maxToFind, names, descriptions);
+                                    fetchFiveReviews(maxToFind, names, descriptions, ratings);
                                 }
                             }(i));
                             document.querySelector('.next-page').click();
                         }
                         else if(i == 4 && names.length >= maxToFind){
-                            addReviewsToSchema(names, descriptions);
+                            addReviewsToSchema(names, descriptions, ratings);
                         }
                     };
                 }(i));
