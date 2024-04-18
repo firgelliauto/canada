@@ -22,3 +22,35 @@
 .dfd-branding{
   display: none;
 }
+.youtube {
+  background-color: #000;
+  margin-bottom: 30px;
+  position: relative;
+  padding-top: 30%;
+  overflow: hidden;
+  cursor: pointer;
+  width: 53.3%;
+}
+.collectionYoutube{
+  width: 100%;
+  padding-top: 55%;
+  margin-bottom: 0px !important;
+}
+.videoContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 0%;
+}
+.youtubeImage{
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+  position: initial;
+  opacity: 1 !important;
+}
+.youtube img {
+ top: 0%;
+ opacity: 0;
+}
