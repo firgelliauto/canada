@@ -52,9 +52,6 @@ function addReviewsToSchema(names, descriptions, ratings){
         "ratingCount": ratings.length
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
-    //console.log("removing");
-    //document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
-    //console.log(productSchemaScript.outerHTML);
 
 }
 
@@ -73,7 +70,7 @@ function waitForElementToExist(identifier, isClass, count, callback, interval = 
         if (targetNode && targetNode.innerHTML.trim() !== '') {
             callback(targetNode);
         } else{
-            console.log("doesnt exist yet");
+            //console.log("doesnt exist yet");
             setTimeout(checkElement, interval);
         }
     };
@@ -91,13 +88,13 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
                 return true;
             }
         } else {
-            console.error('Element not found.');
+            //console.error('Element not found.');
             return false;
         }
     } else {
         targetNode = document.getElementById(identifier);
         if (!targetNode) {
-            console.error('Element not found.');
+            //console.error('Element not found.');
             return false;
         }
     }
