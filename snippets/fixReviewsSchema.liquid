@@ -65,7 +65,7 @@ function addReviews(names, descriptions, ratings){
 <script>
 //main function to start adding names and descriptions to schema
 function addReviewsToSchema(names, descriptions, ratings){
-    var trimmedNames = names.map(function(name) {
+    var names = names.map(function(name) {
         return name.trim();
     });
     console.log(names);
