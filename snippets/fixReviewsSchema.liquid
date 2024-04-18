@@ -129,7 +129,8 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
 
 function getStarRating(element){
     var reviewDiv = document.getElementsByClassName('vstar-star')[element];
-    console.log(reviewDiv.querySelectorAll('.nostar'));
+    //console.log(reviewDiv.querySelectorAll('.nostar'));
+    return reviewDiv.querySelectorAll('.nostar').length;
 }
 
 
@@ -159,7 +160,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                         console.log(names);
                         console.log(descriptions);
-                        console.log(reviews);
+                        console.log(ratings);
                         if(i == maxReviews && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
