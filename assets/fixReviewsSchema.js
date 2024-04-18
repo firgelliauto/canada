@@ -53,7 +53,7 @@ function addReviewsToSchema(names, descriptions, ratings){
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
     //console.log("removing");
-    //document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
+    document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
     //console.log(productSchemaScript.outerHTML);
 
 }
@@ -129,7 +129,6 @@ function initiation() {
 
         
         setUpObserverForElement('reviews-num', true, 0, function() {
-            document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
             var maxToFind = getMaxToFind();
             fetchFiveReviews(maxToFind, names, descriptions, ratings);
         });
