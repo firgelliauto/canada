@@ -65,6 +65,12 @@ function addReviews(names, descriptions, ratings){
 <script>
 //main function to start adding names and descriptions to schema
 function addReviewsToSchema(names, descriptions, ratings){
+    var trimmedNames = names.map(function(name) {
+        return name.trim();
+    });
+    console.log(names);
+    console.log(descriptions);
+    console.log(ratings);
     //var reviewsArray = addReviews(names, descriptions, ratings);
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
@@ -157,9 +163,6 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                     return function() {
                         ratings[descriptions.length] = getStarRating(i);
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
-                        console.log(names);
-                        console.log(descriptions);
-                        console.log(ratings);
                         if(i === 4 && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
