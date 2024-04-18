@@ -160,7 +160,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                         console.log(names);
                         console.log(descriptions);
                         console.log(reviews);
-                        if(i == 4 && names.length < maxToFind){
+                        if(i == maxReviews-1 && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
                                     fetchFiveReviews(maxToFind, names, descriptions, ratings);
