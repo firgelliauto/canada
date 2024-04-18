@@ -53,8 +53,8 @@ function addReviewsToSchema(names, descriptions, ratings){
         "ratingCount": ratings.length
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
-    console.log("removing");
-    document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
+    //console.log("removing");
+    //document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
     //console.log(productSchemaScript.outerHTML);
 
 }
@@ -162,9 +162,6 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
     }
 }
 
-window.addEventListener("load", function() {
-    //initiation();
-});
 initiation();
 //scriptElements = document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
 
