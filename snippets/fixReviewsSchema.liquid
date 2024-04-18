@@ -129,6 +129,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
 
 function getStarRating(element){
     var reviewDiv = document.getElementsByClassName('vstar-star')[element];
+    console.log(reviewDiv);
     var starCount = 0;
     for (var i = 0; i < 5; i++) {
         var childDiv = reviewDiv.nextElementSibling;
