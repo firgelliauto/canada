@@ -53,7 +53,7 @@ function addReviewsToSchema(names, descriptions, ratings){
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
     //console.log("removing");
-    document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
+    //document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
     //console.log(productSchemaScript.outerHTML);
 
 }
@@ -140,6 +140,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
     for (let i = 0; i < 5; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
+                document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
                 names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
                 setUpObserverForElement('reviews-text', true, i, function(count) {
                     return function() {
