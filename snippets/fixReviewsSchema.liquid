@@ -45,6 +45,13 @@ function addReviewsToSchema(names, descriptions, ratings){
 
     var schemaData = JSON.parse(productSchemaScript.textContent);
     schemaData.review = reviewsArray;
+    schemaData.aggregateRating = [{
+        "@type": "AggregateRating",
+        "ratingValue": 10,
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": ratings.length
+    }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
 
 
