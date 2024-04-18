@@ -72,10 +72,10 @@ function addReviewsToSchema(names, descriptions, ratings){
         // Remove \n and replace double spaces with single spaces
         return description.replace(/\n/g, ' ').replace(/ {2,}/g, ' ');
     });
-    console.log(names);
-    console.log(descriptions);
-    console.log(ratings);
-    //var reviewsArray = addReviews(names, descriptions, ratings);
+    //console.log(names);
+    //console.log(descriptions);
+    //console.log(ratings);
+    var reviewsArray = addReviews(names, descriptions, ratings);
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
     //console.log(schemaData);
