@@ -148,7 +148,8 @@ function initiation() {
 
 function fetchFiveReviews(maxToFind, names, descriptions, ratings){
     //5 as thats the amount shown per pagnate.
-    for (let i = 0; i < 5; i++) {
+    var maxReviews = 2;
+    for (let i = 0; i < maxReviews; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
                 ratings[ratings.length] = getStarRating(i);
@@ -167,7 +168,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                             }(i));
                             document.querySelector('.next-page').click();
                         }
-                        else if(i == 4 && names.length >= maxToFind){
+                        else if(i == maxReviews-1 && names.length >= maxToFind){
                             addReviewsToSchema(names, descriptions, ratings);
                         }
                     };
