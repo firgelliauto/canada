@@ -53,6 +53,7 @@ function addReviewsToSchema(names, descriptions, ratings){
         "ratingCount": ratings.length
     }];
     productSchemaScript.remove();
+    console.log(document.querySelectorAll('script[type="application/ld+json"]'));
     //productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
 
 
