@@ -170,7 +170,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
             return function() {
                 //console.log(document.querySelectorAll('.author-name')[count]);
                 names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
-                //reviews[reviews.length] = getStarRating(reviews.length);
+                ratings[ratings.length] = getStarRating(ratings.length);
 
                 setUpObserverForElement('reviews-text', true, i, function(count) {
                     return function() {
