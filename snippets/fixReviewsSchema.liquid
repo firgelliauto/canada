@@ -130,7 +130,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
 function getStarRating(element){
     var reviewDiv = document.getElementsByClassName('vstar-star')[element+1];
     //console.log(reviewDiv.querySelectorAll('.nostar'));
-    return reviewDiv.querySelectorAll('.nostar').length;
+    return 5 - reviewDiv.querySelectorAll('.nostar').length;
 }
 
 
