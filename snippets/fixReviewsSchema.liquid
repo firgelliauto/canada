@@ -153,10 +153,10 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
     for (let i = 0; i < maxReviews; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
-                ratings[ratings.length] = getStarRating(i);
                 names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
                 setUpObserverForElement('reviews-text', true, i, function(count) {
                     return function() {
+                        ratings[descriptions.length] = getStarRating(i);
                         descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
                         console.log(names);
                         console.log(descriptions);
