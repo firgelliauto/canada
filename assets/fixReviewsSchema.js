@@ -126,6 +126,7 @@ function initiation() {
     var names = [];
     var descriptions = [];
     var ratings = [];
+    document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
     waitForElementToExist('reviews-num', true, 0, function(targetNode) {
         document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
         setUpObserverForElement('reviews-num', true, 0, function() {
