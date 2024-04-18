@@ -129,7 +129,7 @@ function setUpObserverForElement(identifier, isClass, count, callback) {
 
 function getStarRating(element){
     var reviewDiv = document.getElementsByClassName('vstar-star')[element+1];
-    console.log(reviewDiv.querySelectorAll('.nostar'));
+    //console.log(reviewDiv.querySelectorAll('.nostar'));
     return reviewDiv.querySelectorAll('.nostar').length;
 }
 
@@ -149,8 +149,7 @@ function initiation() {
 
 function fetchFiveReviews(maxToFind, names, descriptions, ratings){
     //5 as thats the amount shown per pagnate.
-    var maxReviews = 2;
-    for (let i = 0; i < maxReviews; i++) {
+    for (let i = 0; i < 5; i++) {
         setUpObserverForElement('author-name', true, i, function(count) {
             return function() {
                 names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
@@ -161,7 +160,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                         console.log(names);
                         console.log(descriptions);
                         console.log(ratings);
-                        if(i == maxReviews && names.length < maxToFind){
+                        if(i === 4 && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
                                     fetchFiveReviews(maxToFind, names, descriptions, ratings);
@@ -169,7 +168,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                             }(i));
                             document.querySelector('.next-page').click();
                         }
-                        else if(i == maxReviews && names.length >= maxToFind){
+                        else if(i === 4 && names.length >= maxToFind){
                             addReviewsToSchema(names, descriptions, ratings);
                         }
                     };
