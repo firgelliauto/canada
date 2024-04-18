@@ -160,7 +160,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                         console.log(names);
                         console.log(descriptions);
                         console.log(reviews);
-                        if(i == maxReviews-1 && names.length < maxToFind){
+                        if(i == maxReviews && names.length < maxToFind){
                             setUpObserverForElement('reviews-body', false, i, function(count) {
                                 return function() {
                                     fetchFiveReviews(maxToFind, names, descriptions, ratings);
@@ -168,7 +168,7 @@ function fetchFiveReviews(maxToFind, names, descriptions, ratings){
                             }(i));
                             document.querySelector('.next-page').click();
                         }
-                        else if(i == maxReviews-1 && names.length >= maxToFind){
+                        else if(i == maxReviews && names.length >= maxToFind){
                             addReviewsToSchema(names, descriptions, ratings);
                         }
                     };
