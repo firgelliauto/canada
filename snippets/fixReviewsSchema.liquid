@@ -52,7 +52,8 @@ function addReviewsToSchema(names, descriptions, ratings){
         "worstRating": "1",
         "ratingCount": ratings.length
     }];
-    productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
+    productSchemaScript.remove();
+    //productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
 
 
 }
