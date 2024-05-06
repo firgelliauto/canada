@@ -56,6 +56,39 @@
   border: 1px solid black;
   border-top: none;
 }
+
+.youtube {
+    background-color: #000;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 30%;
+    overflow: hidden;
+    cursor: pointer;
+    width: 53.3%;
+  }
+  .collectionYoutube{
+    width: 100%;
+    padding-top: 55%;
+    margin-bottom: 0px !important;
+  }
+  .videoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 0%;
+  }
+  .youtubeImage{
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    position: initial;
+    opacity: 1 !important;
+  }
+  .youtube img {
+   top: 0%;
+   opacity: 0;
+  }
 </style>
 
 
@@ -100,6 +133,28 @@
 {% section 'manual-blog-sit-stand-desks' %}
 {% endif %}
 {% section 'WhyFirgelli'%}
+<script>
+window.addEventListener("load", function() {
+  var youtube = document.querySelectorAll(".youtube");
+  for (var i = 0; i < youtube.length; i++) {
+    youtube[i].addEventListener("click", function() {
+      var iframe = document.createElement("iframe");
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("allow", "autoplay");
+      iframe.setAttribute(
+        "src",
+        "https://www.youtube.com/embed/" +
+          this.dataset.embed +
+          "?rel=0&showinfo=0&autoplay=1"
+      );
+      this.innerHTML = "";
+      this.appendChild(iframe);
+    });
+  }
+});
+
+</script>
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;

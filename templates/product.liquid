@@ -1,4 +1,17 @@
 <style>
+  #reviews-wrapper{
+    background: #fbfbfb;
+  }
+  #vstar-reviews{
+    background: #fbfbfb;
+  }
+  #noreviews-wrapper {
+    margin-bottom: 0px;
+    background: #fbfbfb;
+  }
+  #vstar-noreviews{
+    background: #fbfbfb;
+  }
   .uk-switcher{
     padding: 0 40px;
   }
@@ -118,9 +131,11 @@
     
     {% endif %}
     <div id="shopify-product-reviews" data-id="{{product.id}}"></div>
+  {% comment %}{% include 'fixReviewsSchema' %}{% endcomment %}
+    <script src="{{ 'fixReviewsSchema.js' | asset_url }}"></script>
   </div>
 </section>
-<section
+<section style="background: white"
   class="js-frequently-bought-container fg-display-none uk-section fg-section__muted-blue">
   <div id="cbb-frequently-bought-box" class="uk-container">
   </div>
