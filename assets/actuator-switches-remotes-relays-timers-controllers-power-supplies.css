@@ -18,7 +18,16 @@
         font-size: 32px !important;
     }
 }
-
+@media (max-width: 1055px) {
+    .firstCollectionBanner {
+        margin-top: 192px;
+    }
+}
+@media screen and (max-width: 1055px) and (min-width: 640px) {
+    .bannertext {
+        margin-top: 260px !important;
+    }
+}
 
 /* @media screen and (max-width: 958px) and (min-width: 753px) {*/
 
