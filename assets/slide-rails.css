@@ -43,6 +43,9 @@
 }
 
 @media (max-width: 639px){
+    .firstCollectionBanner {
+        margin-top: 136px;
+    }
     #lottie{
         display: block !important;
         scale: 1.5;
