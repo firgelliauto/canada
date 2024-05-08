@@ -36,6 +36,11 @@
         right: 28%;
     }
 }
+@media (max-width: 752px){
+    .firstCollectionBanner {
+        margin-top: 223px;
+    }
+}
 
 @media (max-width: 639px){
     #lottie{
