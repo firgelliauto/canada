@@ -49,7 +49,7 @@
     #lottie{
         display: block !important;
         scale: 1.5;
-        right: 43%;
+        right: 37%;
         height: 120px;
     }
     .bannertext {
@@ -59,7 +59,7 @@
 @media (max-width: 450px){
     #lottie{
         scale: 2;
-        right: 57%;
+        right: 49%;
         height: 100px;
     }
     .bannertext {
