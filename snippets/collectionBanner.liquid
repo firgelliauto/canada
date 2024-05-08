@@ -460,5 +460,7 @@ window.addEventListener('load', function () {
 {% elsif collection.handle == 'micro-motors' %}
   <link rel="stylesheet" href="{{ 'micro-motors.css' | asset_url }}">
 {% elsif collection.handle == 'robotics' %}
-  <link rel="stylesheet" href="{{ 'robotics.css' | asset_url }}">      
+  <link rel="stylesheet" href="{{ 'robotics.css' | asset_url }}">
+{% elsif collection.handle == 'mini-linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'mini-linear-actuators.css' | asset_url }}">        
 {% endif %}
