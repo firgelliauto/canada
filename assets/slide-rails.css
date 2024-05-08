@@ -1,0 +1,65 @@
+@media (min-width: 960px) {
+    .bannertext{
+        font-size: 45px !important;
+    }
+}
+@media (max-width: 1500px) {
+    .bannertext{
+        font-size: 41px !important;
+    }
+}
+@media (max-width: 1250px) {
+    .bannertext{
+        font-size: 37px !important;
+    }
+}
+@media (max-width: 1090px) {
+    .bannertext{
+        font-size: 32px !important;
+    }
+}
+@media (max-width: 1055px) {
+    .firstCollectionBanner {
+        margin-top: 192px;
+    }
+}
+@media screen and (max-width: 1055px) and (min-width: 640px) {
+    .bannertext {
+        margin-top: 260px !important;
+    }
+}
+
+/* @media screen and (max-width: 958px) and (min-width: 753px) {*/
+
+@media (max-width: 958px){
+    #lottie {
+        right: 28%;
+    }
+}
+
+@media (max-width: 639px){
+    #lottie{
+        display: block !important;
+        scale: 1.5;
+        right: 43%;
+        height: 120px;
+    }
+    .bannertext {
+        margin-top: 180px !important;
+    }
+}
+@media (max-width: 450px){
+    #lottie{
+        scale: 2;
+        right: 57%;
+        height: 100px;
+    }
+    .bannertext {
+        font-size: 32px !important;
+    }
+}
+@media (max-width: 360px){
+    #lottie{
+        height: 145px;
+    }
+}
