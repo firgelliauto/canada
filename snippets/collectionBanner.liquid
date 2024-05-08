@@ -1,0 +1,466 @@
+
+<style>
+  body {
+    overflow: scroll; /* Show scrollbars */
+  }
+  @media (min-width: 1042px){
+  .bannertext{
+    font-size: 72px ;
+  }
+  }
+  
+  .bannertext {
+    margin-top: 220px;
+  }
+  
+  
+  
+  .fg-collection-header{
+    visibility: hidden;
+  }
+  
+  .collectionbanner{
+     	height: 270px;  
+    }
+    @media (max-width: 958px){
+        .collectionbanner {
+            height: 300px;
+        }
+        .fg-collection-header{
+            height: 300px !important;
+        }
+    }
+  .firstCollectionBanner{
+        margin-top: 170px;
+  }
+  .fg-collection-header{
+    height: 229px;
+  }
+  
+  
+  
+  @media screen and (max-width: 1350px) and (min-width: 1044px) {
+  .bannertext{
+    	font-size: 62px;
+  	}
+  
+  }
+  @media screen and (max-width: 1055px) and (min-width: 958px) {
+    .bannertext{
+    	font-size: 54px;
+      	
+  	}
+  }
+  
+  
+  @media screen and (max-width: 958px) and (min-width: 753px) {
+    
+	.firstCollectionBanner{
+        margin-top: 190px;
+  	}
+	.bannertext{
+    	font-size: 54px;
+      	
+  	}
+    
+    
+  }
+  @media screen and (max-width: 752px) and (min-width: 640px) {
+    .firstCollectionBanner{
+        /*margin-top: 222px;*/
+  	}
+    .bannertext{
+    	font-size: 42px;
+      	margin-top: 245px ;
+  	}
+  }
+    
+
+  @media (max-width: 860px){
+    .collectionbanner{
+    	height: 260px;
+    }
+  }
+ 
+@media (max-width: 639px){
+  .firstCollectionBanner {
+  	margin-top: 147px;
+  }
+  .bannertext{
+    	font-size: 7vw !important;
+      margin-top: 210px;
+      text-align: center;
+    	
+  }
+}
+  
+    .collectionbanner {
+    	height: 229px;
+	}
+  
+  
+  
+  .uk-container {
+    box-sizing: content-box;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (min-width: 960px){
+  .uk-container {
+      padding-left: 40px;
+      padding-right: 40px;
+  }
+  }
+  @media (min-width: 640px){
+  .uk-container {
+      padding-left: 30px;
+      padding-right: 30px;
+  }
+  }
+  
+  
+  h1{
+   font-weight: 900 !important;
+   font-family: Roboto, sans-serif !important;
+  }
+  
+  #lottie{
+      background-color:transparent;
+      width:100%;
+      display:block;
+      overflow: hidden;
+      transform: translate3d(0,0,0);
+      text-align: center;
+      opacity: 1;
+      height: 229px;
+      margin-top: 170px; 
+      position: absolute;
+  }
+  @media (max-width: 1200px){
+    #bannertext{
+      font-size: 52px ;
+    }
+  }
+  @media (max-width: 1055px){
+    .firstCollectionBanner{
+      /*margin-top: 190px;*/
+    }
+  }
+  @media (max-width: 1038px){
+    #lottie{
+      margin-top: 191px;
+      height: 208px;
+    }
+  }
+  @media (max-width: 958px){
+    #lottie{
+      height: 228px;
+      margin-top: 280px;
+      right: 24%;
+    }
+    #bannertext{
+      text-align: center;
+      font-size: 40px ;
+    }
+    .collectionbanner {
+      height: 300px;
+    }
+    .mobileOnly{
+      height: 300px !important;
+    }
+   /* #bannertext{
+      text-align: center;
+      font-size: 40px !important;
+    }*/
+  }
+  @media (max-width: 752px){
+    #lottie{
+      height: 208px;
+    }
+  }
+  @media (max-width: 747px){
+    #lottie{
+      height: 177px;
+      
+    }
+  }
+  @media (max-width: 639px){
+    #lottie{
+      display: none;
+    }
+  }
+  #vid{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      transform: translate3d(0,142%,0);
+      object-fit: cover;
+      z-index: -1;
+  }
+
+  
+</style>
+
+{% if collection.handle == 'tv-lifts' or collection.handle contains 'micro-motors' or collection.handle contains 'robotics' or collection.handle == 'track-linear-actuators' or collection.handle =='locking-drawer-slides-lock-in-and-lock-out-heavy-duty' %}
+<style>
+  
+  @media (min-width: 753px){
+  
+.bannertext{
+  margin-top: 220px !important;
+}
+  }
+
+</style>
+
+
+{% else %}
+<style>
+  
+.bannertext {
+   /*margin-top: 240px;*/
+}  
+  
+@media screen and (max-width: 1038px) and (min-width: 640px) {
+  .bannertext {
+  	margin-top: 260px !important;
+  }
+}
+  
+  
+  
+@media (max-width: 639px){
+  .bannertext {
+  	margin-top: 232px;
+  }
+}
+g path {
+  /*stroke: white;*/
+}
+</style>
+{% endif %}
+
+
+
+{% if collection.handle == 'linear-actuators' or collection.handle == 'column-lifts' or collection.handle == 'mini-linear-actuators' or collection.handle == 'industrial-actuators' or collection.handle == 'track-linear-actuators' or collection.handle == 'feedback-actuators' or collection.handle == 'rod-actuators' or collection.handle == 'bullet-actuators' or collection.handle == 'premium-linear-actuators' or collection.handle == 'micro-linear-actuators' %}
+
+<picture>
+
+    <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211">
+
+    <img class="collectionbanner firstCollectionBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="MobileBanner" style="position: absolute; width: 100%; left: 0; top: 0">
+  <div class="">
+  <h1 id="bannertext" class="uk-container bannertext" style="position: absolute; color: white !important; text-transform: uppercase; left: 0; right: 0; top: 0; visibility: hidden">{{ title }}</h1>
+  </div>
+</picture>
+
+
+<div id="lottie"></div>
+
+
+
+
+
+<script>
+  window.addEventListener('load', function () {
+
+    // Create the banner script element
+    var script1 = document.createElement('script');
+    script1.src = "{{ 'svg-banner-script.js' | asset_url }}";
+
+    // Add an onload event to the banner script
+    script1.onload = function () {
+      // The banner script has loaded, now create the animation script element
+      var script2 = document.createElement('script');
+      script2.src = "{{ 'svg-animation-script.js' | asset_url }}";
+
+      // Append the animation script after the banner script
+      document.body.appendChild(script2);
+    };
+
+    // Append the banner script to the document
+    document.body.appendChild(script1);
+  });
+</script>
+
+{% elsif collection.handle == 'rotary-actuators' %}
+  <picture>
+
+  <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211">
+
+  <img class="collectionbanner firstCollectionBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="MobileBanner" style="position: absolute; width: 100%; left: 0; top: 0">
+<div class="">
+<h1 id="bannertext" class="uk-container bannertext" style="position: absolute; color: white !important; text-transform: uppercase; left: 0; right: 0; top: 0; visibility: hidden">{{ title }}</h1>
+</div>
+</picture>
+<div id="lottie"></div>
+<script>
+window.addEventListener('load', function () {
+
+  // Create the banner script element
+  var script1 = document.createElement('script');
+  script1.src = "{{ 'svg-banner-script-rotary.js' | asset_url }}";
+
+  // Add an onload event to the banner script
+  script1.onload = function () {
+    // The banner script has loaded, now create the animation script element
+    var script2 = document.createElement('script');
+    script2.src = "{{ 'svg-animation-script-rotary.js' | asset_url }}";
+
+    // Append the animation script after the banner script
+    document.body.appendChild(script2);
+  };
+
+  // Append the banner script to the document
+  document.body.appendChild(script1);
+});
+</script>
+
+
+
+
+
+
+{% elsif collection.handle == 'tv-lifts' %}
+  <style>
+  #__lottie_element_2 rect {
+    height: 290px;
+  }
+
+  </style>
+  <picture>
+
+  <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211">
+
+  <img class="collectionbanner firstCollectionBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="MobileBanner" style="position: absolute; width: 100%; left: 0; top: 0">
+<div class="">
+<h1 id="bannertext" class="uk-container bannertext" style="position: absolute; color: white !important; text-transform: uppercase; left: 0; right: 0; top: 0; visibility: hidden">{{ title }}</h1>
+</div>
+</picture>
+<div id="lottie"></div>
+<script>
+window.addEventListener('load', function () {
+
+  // Create the banner script element
+  var script1 = document.createElement('script');
+  script1.src = "{{ 'svg-banner-script-tv-lifts.js' | asset_url }}";
+
+  // Add an onload event to the banner script
+  script1.onload = function () {
+    // The banner script has loaded, now create the animation script element
+    var script2 = document.createElement('script');
+    script2.src = "{{ 'svg-animation-script-tv-lifts.js' | asset_url }}";
+
+    // Append the animation script after the banner script
+    document.body.appendChild(script2);
+  };
+
+  // Append the banner script to the document
+  document.body.appendChild(script1);
+});
+</script>
+
+
+
+{% elsif collection.handle == 'actuator-switches-remotes-relays-timers-controllers-power-supplies' %}
+  <style>
+  #__lottie_element_2 rect {
+    height: 290px;
+  }
+
+  </style>
+  <picture>
+
+  <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211">
+
+  <img class="collectionbanner firstCollectionBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="MobileBanner" style="position: absolute; width: 100%; left: 0; top: 0">
+<div class="">
+<h1 id="bannertext" class="uk-container bannertext" style="position: absolute; color: white !important; text-transform: uppercase; left: 0; right: 0; top: 0; visibility: hidden">{{ title }}</h1>
+</div>
+</picture>
+<div id="lottie"></div>
+<script>
+window.addEventListener('load', function () {
+
+  // Create the banner script element
+  var script1 = document.createElement('script');
+  script1.src = "{{ 'svg-banner-script-controls.js' | asset_url }}";
+
+  // Add an onload event to the banner script
+  script1.onload = function () {
+    // The banner script has loaded, now create the animation script element
+    var script2 = document.createElement('script');
+    script2.src = "{{ 'svg-animation-script-controls.js' | asset_url }}";
+
+    // Append the animation script after the banner script
+    document.body.appendChild(script2);
+  };
+
+  // Append the banner script to the document
+  document.body.appendChild(script1);
+});
+</script>
+
+
+
+
+
+
+{% else %}
+<picture>
+    <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0615/2193/collections/actuator_banner_1920x.jpg?v=1612465445">
+
+    <img class="collectionbanner firstCollectionBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="MobileBanner" style="position: absolute; width: 100%; left: 0; top: 0">
+
+  <div class="">
+  <h1 id="bannertext" class="uk-container bannertext" style="position: absolute; color: white !important; text-transform: uppercase; font-size: 470%; left: 0; right: 0; top: 0; visibility: hidden">{{ title }}</h1>
+  </div>
+</picture>
+{% endif %}
+
+
+{% if collection.handle == 'linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'linear-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'premium-linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'premium-linear-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'micro-linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'micro-linear-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'bullet-actuators' %}
+  <link rel="stylesheet" href="{{ 'bullet-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'rod-actuators' %}
+  <link rel="stylesheet" href="{{ 'rod-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'feedback-actuators' %}
+  <link rel="stylesheet" href="{{ 'feedback-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'track-actuators' %}
+  <link rel="stylesheet" href="{{ 'track-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'industrial-actuators' %}
+  <link rel="stylesheet" href="{{ 'industrial-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'mini-linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'mini-linear-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'column-lifts' %}
+  <link rel="stylesheet" href="{{ 'column-lifts.css' | asset_url }}">
+
+{% elsif collection.handle == 'tv-lifts' %}
+  <link rel="stylesheet" href="{{ 'tv-lifts.css' | asset_url }}">
+{% elsif collection.handle == 'actuator-switches-remotes-relays-timers-controllers-power-supplies' %}
+  <link rel="stylesheet" href="{{ 'actuator-switches-remotes-relays-timers-controllers-power-supplies.css' | asset_url }}">
+{% elsif collection.handle == 'rotary-actuators' %}
+  <link rel="stylesheet" href="{{ 'rotary-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'slide-rails' %}
+  <link rel="stylesheet" href="{{ 'slide-rails.css' | asset_url }}">
+{% elsif collection.handle == 'drawer-slides' %}
+  <link rel="stylesheet" href="{{ 'drawer-slides.css' | asset_url }}">
+{% elsif collection.handle == 'desk-lifts' %}
+  <link rel="stylesheet" href="{{ 'desk-lifts.css' | asset_url }}">
+{% elsif collection.handle == 'micro-motors' %}
+  <link rel="stylesheet" href="{{ 'micro-motors.css' | asset_url }}">
+{% elsif collection.handle == 'robotics' %}
+  <link rel="stylesheet" href="{{ 'robotics.css' | asset_url }}">
+{% elsif collection.handle == 'mini-linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'mini-linear-actuators.css' | asset_url }}">        
+{% endif %}

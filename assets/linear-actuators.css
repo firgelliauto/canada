@@ -1,0 +1,28 @@
+
+@media screen and (max-width: 1075px) and (min-width: 960px) {
+    .bannertext{
+        font-size: 46px !important;
+    }
+}
+
+@media (max-width: 639px){
+    #lottie{
+        display: block !important;
+        scale: 1.5;
+        right: 37%;
+        height: 120px;
+    }
+    .bannertext {
+        margin-top: 180px !important;
+    }
+}
+@media (max-width: 450px){
+    #lottie{
+        scale: 2;
+        right: 49%;
+        height: 100px;
+    }
+    .bannertext {
+        font-size: 32px !important;
+    }
+}
