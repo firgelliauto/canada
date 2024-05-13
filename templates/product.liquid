@@ -130,9 +130,8 @@
       </div>
     
     {% endif %}
-    <div id="shopify-product-reviews" data-id="{{product.id}}"></div>
-    {% comment %}{% include 'fixReviewsSchema' %}{% endcomment %}
-    {% comment %}<script src="{{ 'fixReviewsSchema.js' | asset_url }}"></script>{% endcomment %}
+    {% include 'fixReviewsSchema' %}
+
   </div>
 </section>
 <section style="background: white"

@@ -1,275 +1,79 @@
 <script>
-/*
-function addReviews(names, descriptions, ratings){
-    var reviewsArray = [];
-    for(i = 0; i < names.length; i++){
-        var name = names[i];
-        var description = descriptions[i];
-        var starRating = ratings[i];
-
-        reviewsArray.push({
-            "@type": "Review",
-            "name": name,
-            "reviewBody": description,
-            "author": {
-                "@type": "Person",
-                "name": name
-            },
-            "name": name,
-            "datePublished": "2024-01-08",
-            "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": starRating
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "Shopify Product Reviews"
-            }
-        });
-        
-    }
-    return reviewsArray;
-}
-
-//main function to start adding names and descriptions to schema
-function addReviewsToSchema(names, descriptions, ratings){
-    var names = names.map(function(name) {
-        return name.trim();
-    });
-    var descriptions = descriptions.map(function(description) {
-        return description.replace(/\n/g, ' ').replace(/ {2,}/g, ' ');
-    });
-
-    var reviewsArray = addReviews(names, descriptions, ratings);
-    var productSchemaScript = findProductSchemaScript();
-
-    var schemaData = JSON.parse(productSchemaScript.textContent);
-    schemaData.review = reviewsArray;
-    schemaData.aggregateRating = [{
-        "@type": "AggregateRating",
-        "ratingValue": 10,
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": ratings.length
-    }];
-    productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
-    //console.log("removing");
-    //document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
-    //console.log(productSchemaScript.outerHTML);
-
-}
-
-function findProductSchemaScript() {
-    var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
-    return scriptElements[0];
-}
-
-function getMaxToFind(){
-    return parseInt(document.querySelector('.reviews-num').textContent);
-}
-
-function waitForElementToExist(identifier, isClass, count, callback, interval = 500) {
-    const checkElement = () => {
-        const targetNode = isClass ? document.querySelectorAll('.' + identifier)[count] : document.getElementById(identifier);
-        if (targetNode && targetNode.innerHTML.trim() !== '') {
-            callback(targetNode);
-        } else{
-            console.log("doesnt exist yet");
-            setTimeout(checkElement, interval);
-        }
-    };
-    checkElement();
-}
-
-function setUpObserverForElement(identifier, isClass, count, callback) {
-    let targetNode;
-    if (isClass) {
-        const elements = document.querySelectorAll('.' + identifier);
-        if (elements.length > count) {
-            targetNode = elements[count];
-            if (targetNode.innerHTML.trim() !== '') {
-                callback();
-                return true;
-            }
-        } else {
-            console.error('Element not found.');
-            return false;
-        }
-    } else {
-        targetNode = document.getElementById(identifier);
-        if (!targetNode) {
-            console.error('Element not found.');
-            return false;
-        }
-    }
-
-    const observer = new MutationObserver(() => {
-        //console.log('Mutation observed:');
-        observer.disconnect();
-        callback();
-        return true;
-    });
-
-    observer.observe(targetNode, { attributes: true, childList: true, subtree: true });
-    return observer;
-}
-
-function getStarRating(element){
-    var reviewDiv = document.getElementsByClassName('vstar-star')[element+1];
-    //console.log(reviewDiv.querySelectorAll('.nostar'));
-    return 5 - reviewDiv.querySelectorAll('.nostar').length;
-}
-
-
-function initiation() {
-    var countFound = 0;
-    var names = [];
-    var descriptions = [];
-    var ratings = [];
-    waitForElementToExist('reviews-num', true, 0, function(targetNode) {
-        setUpObserverForElement('reviews-num', true, 0, function() {
-            var maxToFind = getMaxToFind();
-            fetchFiveReviews(maxToFind, names, descriptions, ratings);
-        });
-    });
-}
-
-function fetchFiveReviews(maxToFind, names, descriptions, ratings){
-    //5 as thats the amount shown per pagnate.
-    for (let i = 0; i < 5; i++) {
-        setUpObserverForElement('author-name', true, i, function(count) {
-            return function() {
-                names[names.length] = document.querySelectorAll('.author-name')[count].innerHTML;
-                setUpObserverForElement('reviews-text', true, i, function(count) {
-                    return function() {
-                        ratings[descriptions.length] = getStarRating(i);
-                        descriptions[descriptions.length] = document.querySelectorAll('.reviews-text')[count].innerHTML;
-                        if(i === 4 && names.length < maxToFind){
-                            setUpObserverForElement('reviews-body', false, i, function(count) {
-                                return function() {
-                                    fetchFiveReviews(maxToFind, names, descriptions, ratings);
-                                }
-                            }(i));
-                            document.querySelector('.next-page').click();
-                        }
-                        else if(i === 4 && names.length >= maxToFind){
-                            addReviewsToSchema(names, descriptions, ratings);
-                        }
-                    };
-                }(i));
-            };
-        }(i));
-    }
-}
-
-//initiation();
-//scriptElements = document.querySelectorAll('script[type="application/ld+json"]')[0].remove();
-
-
-*/
-</script>
-
-<script>
 
 function findProductSchemaScript() {
     var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
     return scriptElements[1];
 }
 
-function findAggregateReviewsSchemaScript() {
-    var scriptElements = document.querySelectorAll('script[type="application/ld+json"]');
-    return scriptElements[scriptElements.length-1];
-}
-
-function handleReviewScript(scriptElement) {
-    var reviewsArray = [];
-    reviewsArray = addReviews(scriptElement, reviewsArray);
+  function createReviews(reviews){
+    var schemaReview = [];
+    var sumRating = 0;
+    for (var i=0; i<reviews.length; i++) {
+      sumRating += parseInt(reviews[i][1]);
+      schemaReview.push({
+        "@type": "Review",
+        "name": reviews[i][2],
+        "reviewBody": reviews[i][3],
+        "author": {
+            "@type": "Person",
+            "name": reviews[i][2]
+        },
+        "name": reviews[i][2],
+        "datePublished": reviews[i][6],
+        "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": reviews[i][1]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Shopify Product Reviews"
+        }
+      });
+    }
+    let averageRating = sumRating/reviews.length;
     var productSchemaScript = findProductSchemaScript();
     var schemaData = JSON.parse(productSchemaScript.textContent);
-    schemaData.review = reviewsArray;
-
-
-    var AggregateRating = findAggregateReviewsSchemaScript();
-    AggregateRatingJSON = JSON.parse(AggregateRating.textContent);
-    
-
+    schemaData.review = schemaReview;
     schemaData.aggregateRating = [{
         "@type": "AggregateRating",
-        "ratingValue": parseFloat(AggregateRatingJSON.ratingValue).toFixed(2),
+        "ratingValue": parseFloat(averageRating).toFixed(2),
         "bestRating": "5",
         "worstRating": "1",
-        "ratingCount": AggregateRatingJSON.reviewCount
+        "ratingCount": reviews.length
     }];
     productSchemaScript.textContent = JSON.stringify(schemaData, null, 2);
-    AggregateRating.remove();
-
-}
-
-function addReviews(scriptElement, reviewsArray){
-    var reviews = Array.from(document.getElementsByClassName('spr-review'));
-    for(i = 0; i < reviews.length; i++){
-        var reviewTitle = reviews[i].querySelector('.spr-review-header-title').innerHTML;
-        var name = reviews[i].querySelector('.spr-review-header-byline').querySelector('strong').innerHTML;
-        var date =  reviews[i].querySelector('.spr-review-header-byline').querySelectorAll('strong')[1].innerHTML;
-        
-        var inputDate = new Date(date);
-        var year = inputDate.getFullYear();
-        var month = inputDate.getMonth() + 1; // Note: Months are zero-indexed
-        var day = inputDate.getDate();
-        var formattedDate = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
-
-        var description = reviews[i].querySelector('.spr-review-content-body').innerHTML;
-
-        var starRating = parseInt(reviews[i].querySelector('.spr-starratings').getAttribute('aria-label')[0]);
-
-        reviewsArray.push({
-            "@type": "Review",
-            "name": reviewTitle,
-            "reviewBody": description,
-            "author": {
-                "@type": "Person",
-                "name": name
-            },
-            "name": name,
-            "datePublished": formattedDate,
-            "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": starRating
-            },
-            "publisher": {
-                "@type": "Organization",
-                "name": "Shopify Product Reviews"
-            }
-        });
-        
-    }
-    return reviewsArray;
-
-}
-
-  function checkForReviewScript() {
-    var reviewContainer = document.getElementById('shopify-product-reviews');
-    var reviewScript = reviewContainer.querySelector('script[type="application/ld+json"]');
-    if (reviewScript) {
-      handleReviewScript(reviewScript);
-    } else {
-      var observer = new MutationObserver(function (mutations) {
-        mutations.forEach(function (mutation) {
-          if (mutation.type === 'childList') {
-            var addedScripts = Array.from(mutation.addedNodes).filter(function (node) {
-              return node.tagName === 'SCRIPT' && node.type === 'application/ld+json';
-            });
-            if (addedScripts.length > 0) {
-              handleReviewScript(addedScripts[0]);
-              observer.disconnect();
-            }
-          }
-        });
-      });
-      observer.observe(reviewContainer, { childList: true, subtree: true });
-    }
   }
-  //checkForReviewScript();
 
+  function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+
+    for (var i=1; i<allTextLines.length; i++) {
+        const data = allTextLines[i].split(',');
+        if(data[0] == '{{ product.handle }}'){
+          reviews.push(data);
+        }
+    }
+    createReviews(reviews);
+}
+
+function pullAndOutputReviews() {
+  $.ajax({
+    type: "GET",
+    url: '{{ "reviews.csv" | asset_url }}',
+    dataType: "text",
+    success: function(data) {
+      processData(data);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+
+      console.error("Failed to retrieve reviews:", textStatus, errorThrown);
+
+    }
+  });
+}
+
+  const reviews = [];
+  pullAndOutputReviews();
 
 </script>
