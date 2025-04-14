@@ -1,3 +1,31 @@
+<style>
+  @keyframes wiggle-occasionally {
+    0%, 39% {
+      transform: translateX(0);
+    }
+    40% {
+      transform: translateX(-10px);
+    }
+    42% {
+      transform: translateX(10px);
+    }
+    44% {
+      transform: translateX(-10px);
+    }
+    46% {
+      transform: translateX(10px);
+    }
+    48% {
+      transform: translateX(0);
+    }
+    50, 100% {
+      transform: translateX(0);
+    }
+  }
+  .buttonWiggle{
+    animation: wiggle-occasionally 5s infinite;
+  }
+</style>
 <div class="uk-grid-small" uk-grid>
   {% if product.available %}
     {% if no_sku == false %}
@@ -89,7 +117,7 @@
       {% endif %}
       <div class="uk-width-1-1@s uk-width-2-3@m">
         {{ stock_message }}
-        <span class="fg-shadow-wrap fg-button-box-shadow-hover-large fg-button-box-shadow-small js-shadow-wrap">
+        <span class="fg-shadow-wrap fg-button-box-shadow-hover-large fg-button-box-shadow-small js-shadow-wrap buttonWiggle">
 
           <button disabled id="submit-button" type="submit" dh="{{ freeProCount }}" class="fg-button js-submit" {{ add_cart_status }}><span class="js-submit-icon" uk-icon="{{ add_cart_icon }}"></span> {{ add_cart_text }}</button>
         </span>
