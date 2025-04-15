@@ -1,7 +1,7 @@
 <style>
-.trumpTariff:nth-of-type(n+1) {
-  text-decoration: line-through;
-}
+  .trumpTariff {
+    text-decoration: line-through;
+  }
 </style>
 <div class="uk-inline uk-width-auto uk-width-1-1">
   <a href="#" >{{ settings.discount_title }} <i uk-icon="icon: question"></i></a>
@@ -23,15 +23,12 @@
             </th>
           </tr>
           {% for i in (1..settings.discount_tier_count) %}
-            {% assign quanity =  "discount_quantity_" | append: i %}
-            {% assign percent =  "discount_percent_" | append: i %}
-            <tr class="trumpTariff">
-              <td>
-                {{ settings[quanity] }}
-              </td>
-              <td>
-                {{ settings[percent] }} % OFF
-              </td>
+            {% assign quanity = "discount_quantity_" | append: i %}
+            {% assign percent = "discount_percent_" | append: i %}
+          
+            <tr class="{% if forloop.first == false %}trumpTariff{% endif %}">
+              <td>{{ settings[quanity] }}</td>
+              <td>{{ settings[percent] }} % OFF</td>
             </tr>
           {% endfor %}
         </table>
