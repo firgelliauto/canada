@@ -1106,7 +1106,6 @@ function processData(allText) {
   
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
 var count = 0;
 document.querySelectorAll('.js-card-filter').forEach(card => {
   count++;
@@ -1118,6 +1117,7 @@ document.querySelectorAll('.js-card-filter').forEach(card => {
       card.setAttribute('price', priceValue);
   }
   const parentUl = card.querySelector('.fg-card__option-list');
+  console.log(parentUl);
   const liElements = parentUl.querySelectorAll('.optionElement');
   let forceElement = null;
   let strokeElement = null;
@@ -1307,7 +1307,7 @@ document.getElementById('closeSidebar').addEventListener('click', function() {
 document.getElementsByClassName('svgImage')[0].addEventListener('click', function() {
   document.getElementById('sidebar').classList.toggle('active');
 });
-});
+
 </script>
 <script>
   function toggleDropdown(dropdownId, btnElement) {
