@@ -1,31 +1,324 @@
-<script  src="{{ 'jquery.js' | asset_url }}"></script>
+
 
 <style>
-  
-  h2{
+  input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* For Internet Explorer */
+input[type=number] {
+    -ms-appearance: none;
+}
+  h4{
    margin-bottom: 0px; 
   }
-  @media only screen and (max-width: 1250px) {
-  	.mobileHidden{
-      display: none; {% comment %} it does work on mobile, just needs styling{% endcomment %}
-    }
-  }
+
   .sliderBox{
-    width: 50px; 
+    width: 31px; 
     height: 23px; 
     margin-bottom: 7px; 
     
     border-color: rgb(148, 176, 202);
     border-width: 1px;
     border-style: solid;
-    
   }
+  
+  
+  @media only screen and (min-width: 640px) {
+    .mobileOnly{
+      display: none;
+    }
+  }
+  
+  .productsDiv{
+    display: flex;
+  }
+  .filterDiv{
+    width: 25%;
+    margin: inherit;
+  }
+  .dropdown-filter-item{
+    color: black;
+  }
+  .dropdown{
+    border-top: 1px solid #4c9cdc99;
+  }
+  .dropdownSidebar{
+    border-top: 1px solid #4c9cdc99;
+  }
+  #WidgetForm{
+    width: 85%;
+  }
+
+  .dropdown-filter-item .arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  .dropdown-filter-item.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-filter-item {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dropdown-content{
+    padding: 10px 0px;
+  }
+  .sortButtonClass {
+    width: 100%;
+    height: 32px;
+    border-radius: 12px;
+    background: #f5f5f5;
+    border: solid 1px #000000; /* Border color and thickness */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative; /* Required to position the dropdown */
+}
+.sortButtonClass:hover{
+  background-color: #ddd;
+}
+.sortButtonClassSidebar{
+  width: 100%;
+  height: 32px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  border: solid 1px #000000; /* Border color and thickness */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative; /* Required to position the dropdown */
+}
+#sortButton {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.filterSVG{
+  display: none !important;
+}
+.dropdown-content-sort{
+  display: none;
+  background-color: #f5f5f5;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 12px;
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  border: solid 1px #000000;
+  padding: 10px 0;
+
+}
+.dropdown-content {
+  min-width: 100%;
+}
+.activeOption{
+  background-color: #4c9cdc99 !important;
+}
+.dropdownOption {
+    color: black;
+    padding: 6px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+}
+.filterSVG{
+  display: none;
+}
+.dropdownOption:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
+.sortText{
+  font-size: 13px;
+  color: black;
+  font-weight: 500;
+}
+.DropdownArrow{
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+.DropdownArrow.rotated {
+  transform: rotate(225deg);
+}
+.filter-button {
+  display: inline-block;
+  cursor: pointer;
+  padding-right: 8px;
+}
+
+.filter-button .line {
+  display: block;
+  width: 16px;
+  height: 2px;
+  margin: 4px 0;
+  background-color: black;
+}
+.dropdown-sidebar{
+  width: 89.3%;
+  top: 4.7%;
+}
+/* Optional: Change color on hover */
+.sortButtonClass:hover .line {
+  background-color: grey;
+}
+.sortButtonClassSidebar:hover{
+  background-color: #ddd;
+}
+#WidgetFormSidebar{
+  padding-bottom: 10px;
+}
+@media only screen and (max-width: 1100px) {
+  .fg-collection-grid>* {
+    width: 33%;
+  }
+  .noUi-pips-horizontal {
+    display: none;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .filterDiv {
+    width: 30%;
+  }
+  .fg-collection-grid>* {
+    width: 50%;
+  }
+}
+#openSidebar {
+  width: 30%;
+  height: 32px;
+  border-radius: 12px;
+  border: solid 1px #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  display: none;
+  margin: auto;
+}
+@media only screen and (max-width: 800px) {
+  .noUi-horizontal .noUi-handle {
+    scale: 0.8;
+  }
+  .dropdown{
+    display: none !important;
+  }
+  .filterSVG{
+    display: contents !important;
+  }
+  .productsDiv{
+    display: block;
+  }
+  .filterDiv{
+    height: 60px;
+  }
+  #openSidebar{
+    display: block;
+    margin: initial;
+    width: auto;
+    border: none;
+    font-size: 14px;
+    align-content: center;
+  }
+
+  #WidgetForm {  
+    display: none;
+  }
+  .svgImage:hover .SVG{
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .svgImage:hover{
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .svgImage:hover #openSidebar{
+    color: #7e7e7e;
+    text-decoration: underline;
+    cursor: pointer; 
+  }
+  .filterSVG{
+    display: block;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .mobileHidden {
+    display: none;
+  }
+}
+#sidebar {
+  position: fixed;
+  z-index: 100000000000;
+  top: 0;
+  left: -300px; /* Hide it initially */
+  width: 250px;
+  height: 100%;
+  background-color: #f4f4f4;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  transition: left 0.3s ease; /* Animation for sliding */
+}
+
+#sidebar.active {
+  left: 0; /* Slide in */
+}
+
+#closeSidebar {
+  background: none;
+  color: black;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  font-size: 37px;
+  float: left;
+  margin-top: -12px;
+  font-weight: 100;
+  font-family: math !important;
+  margin-left: -5px;
+}
+#closeSidebar:after{
+  display: inline-block;
+  content: "\00d7"; /* This will render the 'X' */
+}
+.dropdown-filter-item:hover{
+  opacity: 0.6;
+}
+
 </style>
 
 
 
-<script async src="{{ 'jquery.min.js' | asset_url }}"></script>
+
 <section id="collection-grid-section" class="uk-section">
+  <img alt="collection-banner" class="mobileOnly" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" style="width: 100%; height: 230px; margin-bottom: 30px;">
   <div class="uk-container">
     
     <div class="collectionDescription">
@@ -39,18 +332,132 @@
     </div>
 
 
-
-<div class="uk-container mobileHidden">
+<div class="productsDiv">
+<div class="uk-container mobileHidden filterDiv">
   <form id="WidgetForm" style="">
-    <div class="">
+    <div id="sortButton">
+      <div class="sortButtonClass">
+        <div class="filter-button">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </div>
+        <span class="sortText">Sort By: Featured</span>
+      </div>
+      <div id="dropdownMenu" class="dropdown-content-sort">
+        <div onclick="changeSort('Featured')" class="dropdownOption activeOption">Featured</div>
+        <div onclick="changeSort('Price Low to High')" class="dropdownOption">Price: Low to High</div>
+        <div onclick="changeSort('Price High to Low')" class="dropdownOption">Price: High to Low</div>
+        <div onclick="changeSort('Force Low to High')" class="dropdownOption">Force: Low to High</div>
+        <div onclick="changeSort('Force High to Low')" class="dropdownOption">Force: High to Low</div>
+        <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">Stroke: Low to High</div>
+        <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">Stroke: High to Low</div>
+      </div>
+  </div>
+  <div class="dropdown">
+    <div class="dropdown-filter-item" onclick="toggleDropdown('voltageDropdown', this)">
+        VOLTAGE
+        <span class="DropdownArrow"></span> <!-- Arrow down icon -->
+    </div>
+    <div class="dropdown-content" id="voltageDropdown" style="display: none">
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
+            <label class="uk-form-label" for="12v">12v</label>
+        </div>
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
+            <label class="uk-form-label" for="24v">24v</label>
+        </div>
+    </div>
+</div>
+
+<div class="dropdown">
+    <div class="dropdown-filter-item" onclick="toggleDropdown('typeDropdown', this)">
+        TYPE
+        <span class="DropdownArrow"></span>
+    </div>
+    <div class="dropdown-content" id="typeDropdown" style="display: none">
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
+            <label class="uk-form-label" for="Rod">Rod</label>
+        </div>
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
+            <label class="uk-form-label" for="Track">Track</label>
+        </div>
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
+            <label class="uk-form-label" for="Column">Column</label>
+        </div>
+    </div>
+</div>
+
+<div class="dropdown">
+    <div class="dropdown-filter-item" onclick="toggleDropdown('FeedbackDropdown', this)">
+        FEEDBACK
+        <span class="DropdownArrow"></span>
+    </div>
+    <div class="dropdown-content" id="FeedbackDropdown" style="display: none">
+      <div>
+        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
+        <label class="uk-form-label" for="Yes">Yes</label>
+      </div>
+      <div>
+        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
+        <label class="uk-form-label" for="No">No</label>
+      </div>
+    </div>
+</div>
+<div class="dropdown">
+  <div class="dropdown-filter-item" onclick="toggleDropdown('StrokeDropdown', this)">
+      STROKE
+      <span class="DropdownArrow"></span>
+  </div>
+  <div class="dropdown-content" id="StrokeDropdown" style="height: 100px; display: none; padding-top: 0px">
+    <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
+        <center><div style="font-size: 16px;"><strong>Stroke (Inches)</strong></div></center>
+        <div style="display: flex">
+        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
+        <div id="StrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+        {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
+        </div>
+      </div>
+  </div>
+</div>
+<div class="dropdown">
+  <div class="dropdown-filter-item" onclick="toggleDropdown('ForceDropdown', this)">
+      FORCE
+      <span class="DropdownArrow"></span>
+  </div>
+  <div class="dropdown-content" id="ForceDropdown" style="height: 100px; display: none; padding-top: 0px">
+  <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
+    <center><div style="font-size: 16px;"><strong>Force (lb's)</strong></div></center>
+        <div style="display: flex">
+        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
+        <div id="ForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+      </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+    <div style="visibility: hidden;">
       
       <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
         
         
         <div style="display: flex; align-items: center; width: 15%">
-		<h2 style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></h2>
+		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></div>
         <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		<div>
+		    <div>
           <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
           <label class="uk-form-label" for="12v">12v</label>
         </div>
@@ -61,54 +468,248 @@
         </div>
         </div>
         </div>
-
-   
+        
+        
+        <div style="display: flex; align-items: center; width: 15%">
+		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Type</strong></div>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
 		
-        <div class="custom-range-slider uk-width-1-1@s uk-width-1-4@m" style="text-align: -webkit-center; padding-top: 10px; align-self: center; margin: 0 15px 0 20px">
-          <center><h2 style="font-size: 23px;"><strong>Stroke (Inches)</strong></h2></center>
-          <div style="display: flex">
- 
-          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
+          <label class="uk-form-label" for="Rod">Rod</label>
+        </div>
 
-
-          
-		  
-          <div id="StrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
-          {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
-          </div>
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
+          <label class="uk-form-label" for="Track">Track</label>
         </div>
         
-    
-
-		<div class="custom-range-slider uk-width-1-1@s uk-width-1-4@m" style="text-align: -webkit-center; padding-top: 10px; align-self: center; padding-left: 10px; margin-left: 25px;">
-		  <center><h2 style="font-size: 23px;"><strong>Force (lb's)</strong></h2></center>
-          <div style="display: flex">
-          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
-
-          
-          
-		  
-          <div id="ForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
+          <label class="uk-form-label" for="Column">Column</label>
         </div>
         </div>
+        </div>
+        
+        
+        <div style="display: flex; align-items: center; width: 15%">
+        <div style="max-width: 150px; padding-right: 20px;">
+        <div style="font-size: 23px;"><strong>Feedback</strong></div>
+          <a href="https://www.firgelliauto.com/blogs/news/don-t-buy-a-feedback-linear-actuator-until-you-read-these-important-tips" title="feedback linear actuator tutorial" style="color: #1e87f0; font-size: 15px">What is feedback?</a>
+        </div>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px; width: 50px;">
+		
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
+          <label class="uk-form-label" for="Yes">Yes</label>
+        </div>
 
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
+          <label class="uk-form-label" for="No">No</label>
+        </div>
+        </div>
+        </div>
         
       </fieldset>
     </div>
     <input id="hiddenSubmit" type="button" value="Submit" hidden>
-  </form> 
+  </form>
 </div>
-       
 
 
-    
-    	{% include 'loop-collection' %}
+<div style="display: flex; align-items: center;" class="filterSVG">
+<div style="display: flex" class="svgImage">
+  <img src="{{ 'filter.svg' | asset_url }}" class="SVG">     
+  <span id="openSidebar">Filter</span>
+</div>
+</div>
 
+
+
+<div id="sidebar">
+  <button type="button" id="closeSidebar"></button>
+  <div id="WidgetFormSidebar">
+  <div id="sortButtonSidebar">
+    <div class="sortButtonClassSidebar">
+      <div class="filter-button">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+      <span class="sortText">Sort By: Featured</span>
+    </div>
+    <div id="dropdownMenuSidebar" class="dropdown-content-sort dropdown-sidebar">
+      <div onclick="changeSort('Featured')" class="dropdownOption activeOption">Featured</div>
+      <div onclick="changeSort('Price Low to High')" class="dropdownOption">Price: Low to High</div>
+      <div onclick="changeSort('Price High to Low')" class="dropdownOption">Price: High to Low</div>
+      <div onclick="changeSort('Force Low to High')" class="dropdownOption">Force: Low to High</div>
+      <div onclick="changeSort('Force High to Low')" class="dropdownOption">Force: High to Low</div>
+      <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">Stroke: Low to High</div>
+      <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">Stroke: High to Low</div>
+    </div>
   </div>
-</section>
+  </div>
 
+
+  <div class="dropdownSidebar">
+  <div class="dropdown-filter-item" onclick="toggleDropdown('voltageDropdownSidebar', this)">
+      VOLTAGE
+      <span class="DropdownArrow"></span> <!-- Arrow down icon -->
+  </div>
+  <div class="dropdown-content" id="voltageDropdownSidebar" style="display: none">
+      <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar12v" name="Voltage" value="Sidebar12v">
+          <label class="uk-form-label" for="Sidebar12v">12v</label>
+      </div>
+      <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar24v" name="Voltage" value="Sidebar24v">
+          <label class="uk-form-label" for="Sidebar24v">24v</label>
+      </div>
+  </div>
+  </div>
+
+<div class="dropdownSidebar">
+    <div class="dropdown-filter-item" onclick="toggleDropdown('typeDropdownSidebar', this)">
+        TYPE
+        <span class="DropdownArrow"></span>
+    </div>
+    <div class="dropdown-content" id="typeDropdownSidebar" style="display: none">
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarRod" name="Type" value="SidebarRod">
+            <label class="uk-form-label" for="SidebarRod">Rod</label>
+        </div>
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarTrack" name="Type" value="SidebarTrack">
+            <label class="uk-form-label" for="SidebarTrack">Track</label>
+        </div>
+        <div>
+            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarColumn" name="Type" value="SidebarColumn">
+            <label class="uk-form-label" for="SidebarColumn">Column</label>
+        </div>
+    </div>
+</div>
+
+<div class="dropdownSidebar">
+    <div class="dropdown-filter-item" onclick="toggleDropdown('FeedbackDropdownSidebar', this)">
+        FEEDBACK
+        <span class="DropdownArrow"></span>
+    </div>
+    <div class="dropdown-content" id="FeedbackDropdownSidebar" style="display: none">
+      <div>
+        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarYes" name="Feedback" value="SidebarYes">
+        <label class="uk-form-label" for="SidebarYes">Yes</label>
+      </div>
+      <div>
+        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarNo" name="Feedback" value="SidebarNo">
+        <label class="uk-form-label" for="SidebarNo">No</label>
+      </div>
+    </div>
+</div>
+<div class="dropdownSidebar">
+  <div class="dropdown-filter-item" onclick="toggleDropdown('StrokeDropdownSidebar', this)">
+      STROKE
+      <span class="DropdownArrow"></span>
+  </div>
+  <div class="dropdown-content" id="StrokeDropdownSidebar" style="height: 100px; display: none; padding-top: 0px">
+    <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
+        <center><div style="font-size: 16px;"><strong>Stroke (Inches)</strong></div></center>
+        <div style="display: flex">
+        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
+        <div id="SidebarStrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+        {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
+        </div>
+      </div>
+  </div>
+</div>
+<div class="dropdownSidebar">
+  <div class="dropdown-filter-item" onclick="toggleDropdown('ForceDropdownSidebar', this)">
+      FORCE
+      <span class="DropdownArrow"></span>
+  </div>
+  <div class="dropdown-content" id="ForceDropdownSidebar" style="height: 100px; display: none; padding-top: 0px">
+  <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
+    <center><div style="font-size: 16px;"><strong>Force (lb's)</strong></div></center>
+        <div style="display: flex">
+        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
+        <div id="SidebarForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+      </div>
+      </div>
+  </div>
+</div>
+    <div style="visibility: hidden;">
+      
+      <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
+        
+        
+        <div style="display: flex; align-items: center; width: 15%">
+		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></div>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
+		    <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
+          <label class="uk-form-label" for="12v">12v</label>
+        </div>
+
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
+          <label class="uk-form-label" for="24v">24v</label>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div style="display: flex; align-items: center; width: 15%">
+		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Type</strong></div>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
+		
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
+          <label class="uk-form-label" for="Rod">Rod</label>
+        </div>
+
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
+          <label class="uk-form-label" for="Track">Track</label>
+        </div>
+        
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
+          <label class="uk-form-label" for="Column">Column</label>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div style="display: flex; align-items: center; width: 15%">
+        <div style="max-width: 150px; padding-right: 20px;">
+        <div style="font-size: 23px;"><strong>Feedback</strong></div>
+          <a href="https://www.firgelliauto.com/blogs/news/don-t-buy-a-feedback-linear-actuator-until-you-read-these-important-tips" title="feedback linear actuator tutorial" style="color: #1e87f0; font-size: 15px">What is feedback?</a>
+        </div>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px; width: 50px;">
+		
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
+          <label class="uk-form-label" for="Yes">Yes</label>
+        </div>
+
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
+          <label class="uk-form-label" for="No">No</label>
+        </div>
+        </div>
+        </div>
+      
+      </fieldset>
+    </div>
+</div>
+
+
+{% include 'loop-collection' %}
+</div>
+</div>
+</section>
 
 
 <script>
@@ -120,24 +721,26 @@ var rangeSliderInputs = [];
 for(var i = 0; i < rangeSlidersTrack.length; i++) {
     rangeSliderInputs.push([rangeSlidersInputFrom[i], rangeSlidersInputTo[i]]);
 }
-let sliderMax = 60;
-let startOne = 1;
-
-let startTwo = 10;
 
   
 [].slice.call(rangeSlidersTrack).forEach(function(slider, index) {
+  let sliderMax = 60;
+  let startOne = 1;
+  let stepOne = 1;
+  let startTwo = 10;
+  let stepTwo = 1;
   if(slider.id == 'StrokeSlider'){
-
-    
-    
+    sliderMax = 60;
+  }
+  else if(slider.id == "SidebarStrokeSlider"){
+    sliderMax = 60;
   }
   else{
-    sliderMax = 1400;
+    sliderMax = 2200;
     startOne = 20;
-
-    startTwo = 100;
-
+    stepOne = 0.5;
+    startTwo = 350;
+    stepTwo = 100;
   }
 
   
@@ -243,6 +846,7 @@ let startTwo = 10;
   
   
 var filter_IDs = ['#12v', '#24v', '#Rod', '#Track', '#Column', '#Yes', '#No'];
+var Sliderfilter_IDs = ['#Sidebar12v', '#Sidebar24v', '#SidebarRod', '#SidebarTrack', '#SidebarColumn', '#SidebarYes', '#SidebarNo'];
 
 $(document).ready(function() {
 
@@ -268,7 +872,7 @@ function processData(allText) {
                 tarr.push(data[j]);
             }
           	
-            //console.log(tarr[6] + " " + testData);
+
           if(document.getElementById(tarr[6])){
             lines.push(tarr);
           }
@@ -280,12 +884,12 @@ function processData(allText) {
   
   
   function filter(){
-    let minStroke = rangeSliderInputs[0][0].value;
-    let maxStroke = rangeSliderInputs[0][1].value;
-    let minForce = rangeSliderInputs[1][0].value;
-    let maxForce = rangeSliderInputs[1][1].value;
+    let minStroke = Math.max(rangeSliderInputs[0][0].value, rangeSliderInputs[2][0].value);
+    let maxStroke = Math.min(rangeSliderInputs[0][1].value, rangeSliderInputs[2][1].value);
+    let minForce = Math.max(rangeSliderInputs[1][0].value, rangeSliderInputs[3][0].value);
+    let maxForce = Math.min(rangeSliderInputs[1][1].value, rangeSliderInputs[3][1].value);
     
-   //console.log(minForce, maxForce);
+
     for (var i=0; i<lines.length; i++) {
        let productHandle = lines[i][6];
      
@@ -309,9 +913,9 @@ function processData(allText) {
       let productHandle = lines[i][6]; 
       let betweenMinMaxForce = false; 
       Forces = lines[i][4];
-         if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
-           showHandles.push(productHandle);
-           betweenMinMaxForce = true;
+        if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
+          showHandles.push(productHandle);
+          betweenMinMaxForce = true;
 		 }
 		
       if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
@@ -344,7 +948,17 @@ function processData(allText) {
           document.getElementById(productHandle).setAttribute("hidden", "hidden");
         }
       }
-	  
+
+      if($(Sliderfilter_IDs[0]).is(":checked") == true && lines[i][1] != '12v'){ 
+        if($(Sliderfilter_IDs[1]).is(":checked") == true && lines[i][2] == '24v'){ 
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+
+
+
       if($(filter_IDs[1]).is(":checked") == true && lines[i][2] != '24v'){ 
         if($(filter_IDs[0]).is(":checked") == true && lines[i][1] == '12v'){ 
         }
@@ -352,7 +966,97 @@ function processData(allText) {
         document.getElementById(productHandle).setAttribute("hidden", "hidden");
         }
       }
+      if($(Sliderfilter_IDs[1]).is(":checked") == true && lines[i][2] != '24v'){ 
+        if($(Sliderfilter_IDs[0]).is(":checked") == true && lines[i][1] == '12v'){ 
+        }
+        else{
+        document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      
+      
+      if($(filter_IDs[2]).is(":checked") == true && lines[i][5] != 'Rod'){ 
+        if(($(filter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track') || ($(filter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }   
+      }
+      if($(Sliderfilter_IDs[2]).is(":checked") == true && lines[i][5] != 'Rod'){ 
+        if(($(Sliderfilter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track') || ($(Sliderfilter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }   
+      }
 
+
+
+      if($(filter_IDs[3]).is(":checked") == true && lines[i][5] != 'Track'){ 
+        if(($(filter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(filter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      if($(Sliderfilter_IDs[3]).is(":checked") == true && lines[i][5] != 'Track'){ 
+        if(($(Sliderfilter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(Sliderfilter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+
+
+
+
+      if($(filter_IDs[4]).is(":checked") == true && lines[i][5] != 'Column'){ 
+        if(($(filter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(filter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track')){
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      if($(Sliderfilter_IDs[4]).is(":checked") == true && lines[i][5] != 'Column'){ 
+        if(($(Sliderfilter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(Sliderfilter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track')){
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      
+      
+      if($(filter_IDs[5]).is(":checked") == true && lines[i][3] == ''){ //yes
+        if($(filter_IDs[6]).is(":checked") == true){
+        }
+        else{
+        	document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      if($(Sliderfilter_IDs[5]).is(":checked") == true && lines[i][3] == ''){ //yes
+        if($(Sliderfilter_IDs[6]).is(":checked") == true){
+        }
+        else{
+        	document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+
+
+
+      if($(filter_IDs[6]).is(":checked") == true && lines[i][3] != ''){ //no
+        if($(filter_IDs[5]).is(":checked") == true){
+        }
+        else{
+        	document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      if($(Sliderfilter_IDs[6]).is(":checked") == true && lines[i][3] != ''){ //no
+        if($(Sliderfilter_IDs[5]).is(":checked") == true){
+        }
+        else{
+        	document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
 
       
     }
@@ -373,7 +1077,7 @@ function processData(allText) {
       Strokes = lines[i][0].split('_');
       
        for (var x = 0; x < Strokes.length; x++){
-         //console.log(Strokes[x] + " MinValue: " + minStroke + " MaxValue: " + maxStroke);
+
          if (~~Strokes[x] >= ~~minStroke && ~~Strokes[x] <= ~~maxStroke){
            
            betweenMinMax = true;
@@ -394,17 +1098,227 @@ function processData(allText) {
     	//alert(filter_IDs[z] + " " + $(filter_IDs[z]).is(":checked"));
         filter();
      }
-    
   }
-  
 
   
   
   
   
 </script>
+<script>
+var count = 0;
+document.querySelectorAll('.js-card-filter').forEach(card => {
+  count++;
+  card.setAttribute('count', count);
+  const priceElement = card.querySelector('.fg-card__body-price-text_num');
+  if (priceElement) {
+      const priceText = priceElement.innerHTML.trim();
+      const priceValue = priceText.replace('$', '').replace('USD','');
+      card.setAttribute('price', priceValue);
+  }
+  const parentUl = card.querySelector('.fg-card__option-list');
+  const liElements = parentUl.querySelectorAll('.optionElement');
+  let forceElement = null;
+  let strokeElement = null;
+  for (let i = 0; i < liElements.length; i++) {
+    const li = liElements[i];
+    if (li.innerHTML.trim().startsWith('Force')) {
+      forceElement = li;
+    }
+    else if (li.innerHTML.trim().startsWith('Stroke')) {
+      strokeElement = li;
+    }
+  }
+  if (forceElement) {
+    const forceText = forceElement.textContent.trim();
+    const forceValues = forceText.match(/(\d+)(?:–(\d+))?/);
+    if (forceValues) {
+      card.setAttribute('lowerForce', forceValues[1]);
+      card.setAttribute('higherForce', forceValues[2] ? forceValues[2] : forceValues[1]);
+    }
+  }
+  if(strokeElement){
+    const strokeText = strokeElement.textContent.trim();
+    const strokeValues = convertToInches(strokeText);
+    if (strokeValues) {
+      card.setAttribute('lowerStroke', strokeValues.lower);
+      card.setAttribute('higherStroke', strokeValues.higher);
+    }
+  }
+});
 
 
+function convertToInches(strokeText) {
+  // Updated regex to handle decimal numbers
+  const match = strokeText.match(/(\d+(\.\d+)?)(?:–(\d+(\.\d+)?))?\s*(mm|inches?)?/);
+  if (!match) return { lower: 0, higher: 0 };
+
+  const value1 = parseFloat(match[1]); // First number
+  const value2 = match[3] ? parseFloat(match[3]) : value1; // Second number, or same as the first if not present
+  const unit = match[5]; // Unit (mm or inches)
+
+  // Convert values to inches if they are in millimeters
+  const value1Inches = unit === 'mm' ? value1 / 25.4 : value1;
+  const value2Inches = unit === 'mm' ? value2 / 25.4 : value2;
+
+  return { lower: value1Inches, higher: value2Inches };
+}
+
+
+
+
+function getVisibleCards() {
+  const cards = document.querySelectorAll('.js-card-filter');
+  const visibleCards = Array.from(cards).filter(card => !card.hasAttribute('hidden'));
+  return visibleCards;
+}
+
+document.querySelectorAll('.dropdownOption').forEach(option => {
+  option.addEventListener('click', function() {
+    document.querySelectorAll('.dropdownOption.activeOption').forEach(active => {
+      active.classList.remove('activeOption');
+    });
+
+    this.classList.add('activeOption');
+  });
+});
+
+function changeSort(sort){
+  document.querySelectorAll('.sortText').forEach(function(element) {
+    element.innerHTML = 'Sort By: ' + sort;
+  });
+  const container = document.getElementById('fg-collection-grid');
+  const elements = Array.from(container.querySelectorAll('.js-card-filter'));
+  if(sort == "Force Low to High"){
+    elements.sort((a, b) => {
+      const forceA = parseInt(a.getAttribute('lowerforce'));
+      const forceB = parseInt(b.getAttribute('lowerforce'));
+      return forceA - forceB; // Sort low to high
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+  else if(sort == "Force High to Low"){
+    elements.sort((a, b) => {
+      const forceA = parseInt(a.getAttribute('higherforce'));
+      const forceB = parseInt(b.getAttribute('higherforce'));
+      return forceB - forceA;
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+  else if(sort == "Stroke Low to High"){
+    elements.sort((a, b) => {
+      const forceA = parseInt(a.getAttribute('lowerstroke'));
+      const forceB = parseInt(b.getAttribute('lowerstroke'));
+      return forceA - forceB;
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+  else if(sort == "Stroke High to Low"){
+    elements.sort((a, b) => {
+      const forceA = parseInt(a.getAttribute('higherstroke'));
+      const forceB = parseInt(b.getAttribute('higherstroke'));
+      return forceB - forceA;
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+  else if(sort == "Featured"){
+    elements.sort((a, b) => {
+      const forceA = parseInt(a.getAttribute('count'));
+      const forceB = parseInt(b.getAttribute('count'));
+      return forceA - forceB;
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+  else if(sort == "Price High to Low"){
+    elements.sort((a, b) => {1
+      const forceA = parseInt(a.getAttribute('price'));
+      const forceB = parseInt(b.getAttribute('price'));
+      return forceB - forceA;
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+  else if(sort == "Price Low to High"){
+    elements.sort((a, b) => {
+      const forceA = parseInt(a.getAttribute('price'));
+      const forceB = parseInt(b.getAttribute('price'));
+      return forceA - forceB;
+    });
+    elements.forEach(element => container.appendChild(element));
+  }
+}
+
+
+
+
+
+
+document.querySelector('.sortButtonClass').addEventListener('click', function() {
+  var dropdown = document.getElementById('dropdownMenu');
+  dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+});
+document.querySelector('.sortButtonClassSidebar').addEventListener('click', function() {
+  var dropdown = document.getElementById('dropdownMenuSidebar');
+  dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+});
+
+
+// Optional: Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.sortButtonClass, .sortButtonClass *')) {
+    var dropdown = document.getElementById('dropdownMenu');
+    if (dropdown.style.display === 'block') {
+      dropdown.style.display = 'none';
+    }
+  }
+  if (!event.target.matches('.sortButtonClassSidebar, .sortButtonClassSidebar *')) {
+    var dropdown = document.getElementById('dropdownMenuSidebar');
+    if (dropdown.style.display === 'block') {
+      dropdown.style.display = 'none';
+    }
+  }
+  if (!event.target.matches('#sidebar, #sidebar *') && !event.target.matches('.svgImage, .svgImage *')){
+    var dropdown = document.getElementById('sidebar');
+    if (dropdown.classList.contains('active')) {
+      dropdown.classList.remove('active');
+    }
+  }
+};
+document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+  dropdown.addEventListener('click', function() {
+    const arrow = this.querySelector('.DropdownArrow');
+    if (arrow) {
+      arrow.classList.toggle('rotated');
+    }
+  });
+});
+document.querySelectorAll('.dropdownSidebar').forEach(function(dropdown) {
+  dropdown.addEventListener('click', function() {
+    const arrow = this.querySelector('.DropdownArrow');
+    if (arrow) {
+      arrow.classList.toggle('rotated');
+    }
+  });
+});
+
+document.getElementById('closeSidebar').addEventListener('click', function() {
+  document.getElementById('sidebar').classList.remove('active');
+});
+document.getElementsByClassName('svgImage')[0].addEventListener('click', function() {
+  document.getElementById('sidebar').classList.toggle('active');
+});
+
+</script>
+<script>
+  function toggleDropdown(dropdownId, btnElement) {
+    var dropdownContent = document.getElementById(dropdownId);
+    dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    
+    var parent = btnElement.parentElement;
+
+    // Toggle the arrow rotation by toggling the 'open' class on the parent
+    parent.querySelector('.dropdown-filter-item').classList.toggle("open");
+  }
+</script>
 
 
 {% comment %}
