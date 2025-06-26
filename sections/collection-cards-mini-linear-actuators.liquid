@@ -1106,6 +1106,7 @@ function processData(allText) {
   
 </script>
 <script>
+document.addEventListener('DOMContentLoaded', function () {
 var count = 0;
 document.querySelectorAll('.js-card-filter').forEach(card => {
   count++;
@@ -1306,7 +1307,7 @@ document.getElementById('closeSidebar').addEventListener('click', function() {
 document.getElementsByClassName('svgImage')[0].addEventListener('click', function() {
   document.getElementById('sidebar').classList.toggle('active');
 });
-
+});
 </script>
 <script>
   function toggleDropdown(dropdownId, btnElement) {
