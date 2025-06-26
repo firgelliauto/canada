@@ -84,7 +84,7 @@
               {% elsif product_type contains 'column' or product_type contains 'actuator' %}
               	{% if product_name contains 'linear potentiometer' %}
               		<li class="optionElement">Force 0 lb's</li>
-                {% if product_name contains 'column' %}
+                {% elsif product_name contains 'column' %}
               		<li class="optionElement">Force 80–180 lb's</li>  
               	{% elsif product_name contains 'f12 micro linear'%}
               		<li class="optionElement">Force 4.4 lb's</li>
