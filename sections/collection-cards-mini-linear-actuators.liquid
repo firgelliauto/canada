@@ -224,7 +224,14 @@ input[type=number] {
   display: none;
   margin: auto;
 }
+.js-filter-container{
+  width: 75% !important;
+}
 @media only screen and (max-width: 800px) {
+  .js-filter-container{
+    width: 100% !important;
+  }
+
   .noUi-horizontal .noUi-handle {
     scale: 0.8;
   }
@@ -316,7 +323,6 @@ input[type=number] {
 
 
 
-
 <section id="collection-grid-section" class="uk-section">
   <img alt="collection-banner" class="mobileOnly" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" style="width: 100%; height: 230px; margin-bottom: 30px;">
   <div class="uk-container">
@@ -354,43 +360,6 @@ input[type=number] {
         <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">Stroke: High to Low</div>
       </div>
   </div>
-  <div class="dropdown">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('voltageDropdown', this)">
-        VOLTAGE
-        <span class="DropdownArrow"></span> <!-- Arrow down icon -->
-    </div>
-    <div class="dropdown-content" id="voltageDropdown" style="display: none">
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
-            <label class="uk-form-label" for="12v">12v</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
-            <label class="uk-form-label" for="24v">24v</label>
-        </div>
-    </div>
-</div>
-
-<div class="dropdown">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('typeDropdown', this)">
-        TYPE
-        <span class="DropdownArrow"></span>
-    </div>
-    <div class="dropdown-content" id="typeDropdown" style="display: none">
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
-            <label class="uk-form-label" for="Rod">Rod</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
-            <label class="uk-form-label" for="Track">Track</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
-            <label class="uk-form-label" for="Column">Column</label>
-        </div>
-    </div>
-</div>
 
 <div class="dropdown">
     <div class="dropdown-filter-item" onclick="toggleDropdown('FeedbackDropdown', this)">
@@ -452,23 +421,6 @@ input[type=number] {
     <div style="visibility: hidden;">
       
       <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		    <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
-          <label class="uk-form-label" for="12v">12v</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
-          <label class="uk-form-label" for="24v">24v</label>
-        </div>
-        </div>
-        </div>
-        
         
         <div style="display: flex; align-items: center; width: 15%">
 		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Type</strong></div>
@@ -550,46 +502,6 @@ input[type=number] {
     </div>
   </div>
   </div>
-
-
-  <div class="dropdownSidebar">
-  <div class="dropdown-filter-item" onclick="toggleDropdown('voltageDropdownSidebar', this)">
-      VOLTAGE
-      <span class="DropdownArrow"></span> <!-- Arrow down icon -->
-  </div>
-  <div class="dropdown-content" id="voltageDropdownSidebar" style="display: none">
-      <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar12v" name="Voltage" value="Sidebar12v">
-          <label class="uk-form-label" for="Sidebar12v">12v</label>
-      </div>
-      <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar24v" name="Voltage" value="Sidebar24v">
-          <label class="uk-form-label" for="Sidebar24v">24v</label>
-      </div>
-  </div>
-  </div>
-
-<div class="dropdownSidebar">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('typeDropdownSidebar', this)">
-        TYPE
-        <span class="DropdownArrow"></span>
-    </div>
-    <div class="dropdown-content" id="typeDropdownSidebar" style="display: none">
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarRod" name="Type" value="SidebarRod">
-            <label class="uk-form-label" for="SidebarRod">Rod</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarTrack" name="Type" value="SidebarTrack">
-            <label class="uk-form-label" for="SidebarTrack">Track</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarColumn" name="Type" value="SidebarColumn">
-            <label class="uk-form-label" for="SidebarColumn">Column</label>
-        </div>
-    </div>
-</div>
-
 <div class="dropdownSidebar">
     <div class="dropdown-filter-item" onclick="toggleDropdown('FeedbackDropdownSidebar', this)">
         FEEDBACK
@@ -658,29 +570,6 @@ input[type=number] {
         </div>
         </div>
         </div>
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Type</strong></div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
-          <label class="uk-form-label" for="Rod">Rod</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
-          <label class="uk-form-label" for="Track">Track</label>
-        </div>
-        
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
-          <label class="uk-form-label" for="Column">Column</label>
-        </div>
-        </div>
-        </div>
-        
         
         <div style="display: flex; align-items: center; width: 15%">
         <div style="max-width: 150px; padding-right: 20px;">
@@ -1319,6 +1208,8 @@ document.getElementsByClassName('svgImage')[0].addEventListener('click', functio
     parent.querySelector('.dropdown-filter-item').classList.toggle("open");
   }
 </script>
+
+
 
 
 {% comment %}
