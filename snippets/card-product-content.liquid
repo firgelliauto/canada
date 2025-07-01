@@ -15,8 +15,10 @@
         <em class="fg-text_out-stock">Out of Stock</em>
       {% endif %}
       {% assign product_type = card_item.type | downcase %}
+      {% assign product_name = card_item.title | downcase %}
       {% if template.name == 'collection' %}
-        {% if product_type contains 'actuator' or product_type contains 'tv' or product_type contains 'column' %}
+        {% if product_type contains 'actuator' or product_type contains 'tv' or product_type contains 'column' or product_type contains 'drawer slides' or product_type contains 'slide rail' or product_type contains 'table lift'%}
+      		
           {% assign option_one_array = "" %}
           {% assign option_two_array = "" %}
           {% assign option_three_array = "" %}
@@ -41,15 +43,54 @@
             <ul class="fg-card__option-list">
               {% if option_one_array != empty %}
                 {% assign option_one_type = card_item.options_with_values[0].name | downcase %}
-                {% render 'card-option-range' with array: option_one_array; option: option_one_type %}
+                {% render 'card-option-range' with array: option_one_array; option: option_one_type; producttype: product_type %}
               {% endif %}
               {% if option_two_array != empty %}
                 {% assign option_two_type = card_item.options_with_values[1].name | downcase %}
-                {% render 'card-option-range' with array: option_two_array; option: option_two_type %}
+                {% render 'card-option-range' with array: option_two_array; option: option_two_type; producttype: product_type %}
               {% endif %}
               {% if option_three_array != empty %}
                 {% assign option_three_type = card_item.options_with_values[2].name | downcase %}
-                {% render 'card-option-range' with array: option_three_array; option: option_three_type %} 
+                {% render 'card-option-range' with array: option_three_array; option: option_three_type; producttype: product_type %} 
+              {% endif %}
+              {% if product_type contains 'tv' %}
+              	{% if product_name contains 'tvl-170'%}
+                <li class="optionElement">Recommended TV Size: 32" - 70"</li>
+              	{% elsif product_name contains 'next generation'%}
+              	<li class="optionElement">Recommended TV Size: 32" - 100"</li>
+              	{% elsif product_name contains 'tvl-180'%}
+              	<li class="optionElement">Recommended TV Size: 0" - 60"</li>
+              	{% elsif product_name contains 'motorized ceiling flip' %}
+              	<li class="optionElement">Recommended TV Size: 19" - 70"</li>
+              	{% elsif product_name contains 'outdoor tv' %}
+                <li class="optionElement">Recommended TV Size: 0" - 50"</li>
+              	{% elsif product_name contains 'fa-mt-143' %}
+              	<li class="optionElement">Recommended TV Size: 0" - 60"</li>
+              	{% elsif product_name contains 'swivel bracket' %}
+              	<li class="optionElement">Recommended TV Size: 0" - 60"</li>
+              	{% endif %}
+              {% elsif product_type contains 'table lift' %}
+              	{% if product_name contains 'one leg'%}
+              		<li class="optionElement">Weight Capacity: 165 lb's</li>
+              	{% elsif product_name contains 'two leg'%}
+              		<li class="optionElement">Weight Capacity: 260 lb's</li>
+                {% elsif product_name contains 'three leg'%}
+              		<li class="optionElement">Weight Capacity: 337 lb's</li>
+                {% elsif product_name contains 'four leg'%}
+              		<li class="optionElement">Weight Capacity: 704 lb's</li>
+              	{% elsif product_name contains 'treadmill' %}
+              		<li class="optionElement">Weight Capacity: 353 lb's</li>
+              	{% endif %}
+              {% elsif product_type contains 'column' or product_type contains 'actuator' %}
+              	{% if product_name contains 'potentiometer' %}
+              		<li class="optionElement">Force 0 lb's</li>
+                {% elsif product_name contains 'column' %}
+              		<li class="optionElement">Force 80–180 lb's</li>  
+              	{% elsif product_name contains 'f12 micro linear'%}
+              		<li class="optionElement">Force 4.4 lb's</li>
+              	{% elsif product_name contains 'silent micro linear actuator'%}
+              		<li class="optionElement">Force 22 lb's</li>
+              	{% endif %}
               {% endif %}
             </ul>
           {% endif %}
@@ -59,7 +100,7 @@
       {% render 'card-price' with card_item: card_item, device_type: device_type %}
     </div>
   </div>
-  <div class="fg-card__footer">
+  <div class="fg-card__footer" id="{{product_type}}">
     {% assign device_type = 'uk-visible@s' %}
     {% render 'card-price' with card_item: card_item, device_type: device_type %}
     {% if card_item.available and buy_now_text != 'LEARN MORE' %}
