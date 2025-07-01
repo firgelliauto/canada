@@ -1191,32 +1191,32 @@ function changeSort(sort){
   const elements = Array.from(container.querySelectorAll('.js-card-filter'));
   if(sort == "Force Low to High"){
     elements.sort((a, b) => {
-      const forceA = parseInt(a.getAttribute('lowerforce'));
-      const forceB = parseInt(b.getAttribute('lowerforce'));
+      const forceA = parseFloat(a.getAttribute('lowerforce'));
+      const forceB = parseFloat(b.getAttribute('lowerforce'));
       return forceA - forceB; // Sort low to high
     });
     elements.forEach(element => container.appendChild(element));
   }
   else if(sort == "Force High to Low"){
     elements.sort((a, b) => {
-      const forceA = parseInt(a.getAttribute('higherforce'));
-      const forceB = parseInt(b.getAttribute('higherforce'));
+      const forceA = parseFloat(a.getAttribute('higherforce'));
+      const forceB = parseFloat(b.getAttribute('higherforce'));
       return forceB - forceA;
     });
     elements.forEach(element => container.appendChild(element));
   }
   else if(sort == "Stroke Low to High"){
     elements.sort((a, b) => {
-      const forceA = parseInt(a.getAttribute('lowerstroke'));
-      const forceB = parseInt(b.getAttribute('lowerstroke'));
+      const forceA = parseFloat(a.getAttribute('lowerstroke'));
+      const forceB = parseFloat(b.getAttribute('lowerstroke'));
       return forceA - forceB;
     });
     elements.forEach(element => container.appendChild(element));
   }
   else if(sort == "Stroke High to Low"){
     elements.sort((a, b) => {
-      const forceA = parseInt(a.getAttribute('higherstroke'));
-      const forceB = parseInt(b.getAttribute('higherstroke'));
+      const forceA = parseFloat(a.getAttribute('higherstroke'));
+      const forceB = parseFloat(b.getAttribute('higherstroke'));
       return forceB - forceA;
     });
     elements.forEach(element => container.appendChild(element));
@@ -1231,16 +1231,16 @@ function changeSort(sort){
   }
   else if(sort == "Price High to Low"){
     elements.sort((a, b) => {1
-      const forceA = parseInt(a.getAttribute('price'));
-      const forceB = parseInt(b.getAttribute('price'));
+      const forceA = parseFloat(a.getAttribute('price'));
+      const forceB = parseFloat(b.getAttribute('price'));
       return forceB - forceA;
     });
     elements.forEach(element => container.appendChild(element));
   }
   else if(sort == "Price Low to High"){
     elements.sort((a, b) => {
-      const forceA = parseInt(a.getAttribute('price'));
-      const forceB = parseInt(b.getAttribute('price'));
+      const forceA = parseFloat(a.getAttribute('price'));
+      const forceB = parseFloat(b.getAttribute('price'));
       return forceA - forceB;
     });
     elements.forEach(element => container.appendChild(element));
