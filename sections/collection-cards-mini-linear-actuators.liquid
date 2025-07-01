@@ -1113,7 +1113,7 @@ document.querySelectorAll('.js-card-filter').forEach(card => {
   const priceElement = card.querySelector('.fg-card__body-price-text_num');
   if (priceElement) {
       const priceText = priceElement.innerHTML.trim();
-      const priceValue = priceText.replace('$', '').replace('USD','');
+      const priceValue = priceText.replace('$', '').replace('CAD','');
       card.setAttribute('price', priceValue);
   }
   const parentUl = card.querySelector('.fg-card__option-list');
