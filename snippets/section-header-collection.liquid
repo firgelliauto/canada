@@ -17,21 +17,15 @@
   .headertextsize {
   font-size: 500%;
 }
-</style>
-<section class="uk-visible@s fg-collection-header"
-style="background-image: url({{ background_image }}); background-size: cover;" >
+</style> 
+<section class="uk-visible@s fg-collection-header collectionbanner"{% unless collection.handle contains 'linear-actuators' %}
+style="background-image: url({{ background_image }}); background-size: cover;" {% endunless %}>
   <div>
     <div class="uk-container">
       <a href="/" class="homepage-link fg-collection-header__breadcrumb" title="Back to the home page">Home</a><span class="uk-light"> / {{ current_page }}</span>
-      <h1 class="{{ text_color }} uk-h1 uk-text-uppercase fg-collection-title headertextsize">{{ title }}</h1>
+      <!--<h1 class="{{ text_color }} uk-h1 uk-text-uppercase fg-collection-title headertextsize">{{ title }}</h1>-->
     </div> 
   </div>
 </section>
-<section class="uk-hidden@s fg-collection-header fg-background-primary">
-  <div>
-    <div class="uk-container">
-      <a href="/" class="homepage-link fg-collection-header__breadcrumb" title="Back to the home page">Home</a><span class="uk-light"> / {{ current_page }}</span>
-      <h1 class="{{ text_color }} uk-h1 uk-text-uppercase fg-collection-title">{{ title }}</h1>
-    </div>
-  </div>
-</section>
+
+
