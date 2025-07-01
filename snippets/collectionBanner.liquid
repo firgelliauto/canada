@@ -20,22 +20,13 @@
   }
   
   .collectionbanner{
-     	height: 270px;  
-    }
-    @media (max-width: 958px){
-        .collectionbanner {
-            height: 300px;
-        }
-        .fg-collection-header{
-            height: 300px !important;
-        }
+     	height: 270px;
+         
     }
   .firstCollectionBanner{
         margin-top: 170px;
   }
-  .fg-collection-header{
-    height: 229px;
-  }
+   
   
   
   
@@ -45,6 +36,7 @@
   	}
   
   }
+
   @media screen and (max-width: 1055px) and (min-width: 958px) {
     .bannertext{
     	font-size: 54px;
@@ -65,9 +57,9 @@
     
     
   }
-  @media screen and (max-width: 752px) and (min-width: 640px) {
+  @media screen and (max-width: 747px) and (min-width: 640px) {
     .firstCollectionBanner{
-        /*margin-top: 222px;*/
+        margin-top: 222px;
   	}
     .bannertext{
     	font-size: 42px;
@@ -80,6 +72,12 @@
     .collectionbanner{
     	height: 260px;
     }
+  }
+  @media (max-width: 639px){
+    .collectionbanner{
+      display: none;
+    }
+    
   }
  
 @media (max-width: 639px){
@@ -142,11 +140,6 @@
   @media (max-width: 1200px){
     #bannertext{
       font-size: 52px ;
-    }
-  }
-  @media (max-width: 1055px){
-    .firstCollectionBanner{
-      /*margin-top: 190px;*/
     }
   }
   @media (max-width: 1038px){
@@ -223,7 +216,7 @@
 <style>
   
 .bannertext {
-   /*margin-top: 240px;*/
+    margin-top: 240px;
 }  
   
 @media screen and (max-width: 1038px) and (min-width: 640px) {
@@ -247,7 +240,7 @@ g path {
 
 
 
-{% if collection.handle == 'linear-actuators' or collection.handle == 'column-lifts' or collection.handle == 'mini-linear-actuators' or collection.handle == 'industrial-actuators' or collection.handle == 'track-linear-actuators' or collection.handle == 'feedback-actuators' or collection.handle == 'rod-actuators' or collection.handle == 'bullet-actuators' or collection.handle == 'premium-linear-actuators' or collection.handle == 'micro-linear-actuators' %}
+{% if collection.handle == 'linear-actuators' or collection.handle == 'column-lifts' or collection.handle == 'mini-linear-actuators' or collection.handle == 'linear-actuators-classic-performance-enhanced-design' or collection.handle == 'industrial-actuators' or collection.handle == 'track-linear-actuators' or collection.handle == 'feedback-actuators' or collection.handle == 'rod-actuators' or collection.handle == 'bullet-actuators' or collection.handle == 'premium-linear-actuators' or collection.handle == 'micro-linear-actuators' %}
 
 <picture>
 
@@ -436,15 +429,19 @@ window.addEventListener('load', function () {
   <link rel="stylesheet" href="{{ 'rod-actuators.css' | asset_url }}">
 {% elsif collection.handle == 'feedback-actuators' %}
   <link rel="stylesheet" href="{{ 'feedback-actuators.css' | asset_url }}">
-{% elsif collection.handle == 'track-actuators' %}
-  <link rel="stylesheet" href="{{ 'track-actuators.css' | asset_url }}">
+{% elsif collection.handle == 'track-linear-actuators' %}
+  <link rel="stylesheet" href="{{ 'track-linear-actuators.css' | asset_url }}">
 {% elsif collection.handle == 'industrial-actuators' %}
   <link rel="stylesheet" href="{{ 'industrial-actuators.css' | asset_url }}">
 {% elsif collection.handle == 'mini-linear-actuators' %}
   <link rel="stylesheet" href="{{ 'mini-linear-actuators.css' | asset_url }}">
 {% elsif collection.handle == 'column-lifts' %}
   <link rel="stylesheet" href="{{ 'column-lifts.css' | asset_url }}">
+{% elsif collection.handle == 'linear-actuators-classic-performance-enhanced-design' %}
+  <link rel="stylesheet" href="{{ 'linear-actuators-classic-performance-enhanced-design.css' | asset_url }}">
 
+{% elsif collection.handle == 'mounting-brackets' %}
+  <link rel="stylesheet" href="{{ 'mounting-brackets.css' | asset_url }}">  
 {% elsif collection.handle == 'tv-lifts' %}
   <link rel="stylesheet" href="{{ 'tv-lifts.css' | asset_url }}">
 {% elsif collection.handle == 'actuator-switches-remotes-relays-timers-controllers-power-supplies' %}
@@ -453,14 +450,21 @@ window.addEventListener('load', function () {
   <link rel="stylesheet" href="{{ 'rotary-actuators.css' | asset_url }}">
 {% elsif collection.handle == 'slide-rails' %}
   <link rel="stylesheet" href="{{ 'slide-rails.css' | asset_url }}">
+{% elsif collection.handle == 'switches' %}
+  <link rel="stylesheet" href="{{ 'switches.css' | asset_url }}">
+{% elsif collection.handle == 'arduino' %}
+  <link rel="stylesheet" href="{{ 'arduino.css' | asset_url }}">
+  {% elsif collection.handle == 'control-systems-and-remotes' %}
+    <link rel="stylesheet" href="{{ 'control-systems-and-remotes.css' | asset_url }}">
 {% elsif collection.handle == 'drawer-slides' %}
   <link rel="stylesheet" href="{{ 'drawer-slides.css' | asset_url }}">
-{% elsif collection.handle == 'desk-lifts' %}
-  <link rel="stylesheet" href="{{ 'desk-lifts.css' | asset_url }}">
-{% elsif collection.handle == 'micro-motors' %}
-  <link rel="stylesheet" href="{{ 'micro-motors.css' | asset_url }}">
+{% elsif collection.handle == 'mini-linear-slide-rails' %}
+  <link rel="stylesheet" href="{{ 'mini-linear-slide-rails.css' | asset_url }}">
+{% elsif collection.handle == 'sit-stand-desks' %}
+  <link rel="stylesheet" href="{{ 'sit-stand-desks.css' | asset_url }}">
 {% elsif collection.handle == 'robotics' %}
   <link rel="stylesheet" href="{{ 'robotics.css' | asset_url }}">
-{% elsif collection.handle == 'mini-linear-actuators' %}
-  <link rel="stylesheet" href="{{ 'mini-linear-actuators.css' | asset_url }}">        
+{% elsif collection.handle == 'micro-motors' %}
+  <link rel="stylesheet" href="{{ 'micro-motors.css' | asset_url }}">                      
 {% endif %}
+
