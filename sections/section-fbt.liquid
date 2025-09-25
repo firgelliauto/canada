@@ -1,0 +1,493 @@
+<style>
+  .FBT{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .FBTProductsUL{
+    float: left;
+    vertical-align: middle;
+    list-style: none;
+    padding: 0px;
+    display: flex!important;
+    flex-wrap: wrap;
+    margin: 0!important;
+    width: 60%;
+  }
+  .FBTProductLI{
+    width: auto !important;
+    background: 0 0!important;
+    flex: auto;
+    margin: 10px!important;
+    max-width: 42%;
+    padding: 0!important;
+  }
+  .FBTProductA{
+    float: left;
+    cursor: pointer;
+    margin: 0px 5px;
+    height: auto !important;
+    border-radius: 0;
+    overflow: hidden;
+    transition: box-shadow .1s ease-in-out;
+    box-shadow: 0 5px 15px #217dbb26;
+    background: #fff;
+    display: flex!important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%!important;
+    text-decoration: none !important;
+    transition: opacity 0.5s ease;
+  }
+  .FBTImage{
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 20px auto!important;
+  }
+  .FBTDiv{
+    width: 100%;
+  }
+  .FBTButton{
+    background: linear-gradient(151deg,#0987db 25%,#2f62d2 100%);
+    background-color: #0d90e8;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 50px;
+    padding: 0 30px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    width: 100%;
+    overflow: hidden!important;
+    position: relative!important;
+    z-index: 100;
+    border: none;
+
+  }
+  .FBTButton:before{
+    content: "";
+    width: 100%;
+    height: 3rem;
+    padding: 1px;
+    left: 0;
+    transition: transform .3s;
+    position: absolute;
+    z-index: -1;
+    background: #00daff;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .FBTButton:after{
+    content: "";
+    width: 100%;
+    height: 3rem;
+    padding: 1px;
+    left: 0;
+    transition: transform .3s;
+    position: absolute;
+    z-index: -1;
+    background: #f0f6fa;
+    opacity: 0;
+  }
+  .FBTButton:hover{
+    text-decoration: none;
+    background-color: #00daff!important;
+    background: #00daff!important;
+    color: #fefefe!important;
+    transition: transform .3s;
+    transform-origin: left;
+  }
+  .FBTForm{
+    display: inline-block;
+    margin-bottom: 12px;
+    margin-top: 20px;
+    width: 40%;
+  }
+  .FormUL{
+    list-style: none;
+    display: block;
+    clear: left;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .FormLi{
+    list-style-type: none;
+    margin-bottom: 20px;
+    color: #000;
+  }
+  .FBTcheckbox{
+    float: none;
+    min-width: unset;
+    min-height: unset;
+    vertical-align: baseline;
+    background-color: #0a72b8;
+    color: #607188;
+    background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2211%22%20viewBox%3D%220%200%2014%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23fff%22%20points%3D%2212%201%205%207.5%202%205%201%205.5%205%2010%2013%201.5%22%20%2F%3E%0A%3C%2Fsvg%3E%0A);
+    border-color: transparent;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid #94b0ca;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    transition: .2s ease-in-out;
+    transition-property: background-color,border;
+    margin: 0;
+    -webkit-appearance: inherit!important;
+    display: inline-block!important;
+    height: 20px!important;
+    margin-top: -4px!important;
+    margin-right: 8px!important;
+    width: 20px!important;
+  }
+  .FBTLink{
+    display: inline;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+  }
+  .FBTPrice{
+    margin-left: 0.5em;
+    white-space: nowrap;
+    color: #607188;
+    font-weight: 600;
+  }
+  .FBTTotalPrice{
+    margin-bottom: 10px;
+    color: #333!important;
+  }
+  .spanTotalPrice{
+    color: rgb(51, 51, 51);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .FBTSpanPrice{
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+  }
+  .FBTAddToCart{
+    display: inline-block;
+    width: 200px;
+    margin-top: 0px;
+    margin-left: 0px;
+    text-align: center;
+    cursor: pointer;
+    border-style: none;
+    background-color: rgb(13, 144, 232);
+    box-sizing: border-box;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    overflow: hidden!important;
+    position: relative!important;
+    z-index: 100;
+    border: none;
+    padding: 0px 10px !important;
+    font-size: 1rem;
+    line-height: 50px;
+    background: linear-gradient(to left, rgb(13, 144, 232) 50%, #00daff 50%) right;
+    transition: .5s ease-out;
+    background-size: 250%;
+  }
+  .FBTAddToCart:hover{
+    background-position: left;
+  }
+
+  .FBTButtonText{
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 50px;
+  }
+  .disableButton{
+    cursor: auto !important;
+    background: #e3e3e3 !important;
+  }
+  .FBTTitle{
+    padding: 0 10px;
+    height: 35px;
+  }
+  .learnMoreText{
+
+  }
+  .toggleOpacity{
+    opacity: 0.2;
+  }
+  @media(max-width: 1100px){
+    .FBTTitle {
+      font-size: 12px;
+    }
+    .FBTLink {
+      font-size: 14px;
+    }
+    .FBTPrice {
+      font-size: 15px;
+    }
+  }
+  @media(max-width: 740px){
+    .FBTProductsUL {
+      width: 100%;
+    }
+    .FBTForm {
+      width: 100%;
+    }
+    .FBTButton {
+      padding: 0 10px;
+    }
+    .learnMoreText{
+      font-size: 13px;
+    }
+  }
+    .FBTMainTitle{
+      font-size: 35px;
+    }
+  @media(max-width: 380px){
+    .FBTMainTitle{
+      font-size: 27px !important;
+    }
+  }
+  .FBTHidden{
+    display: none;
+  }
+</style>
+<div class="uk-container FBTHidden" style="padding-top: 30px;">
+<h3 class="FBTMainTitle" id="FBTMainTitle">Frequently Bought Together</h3>
+<div class="FBT">
+  <ul class="FBTProductsUL" id="FBTProductsUL">
+
+  </ul>
+  <div class="FBTForm">
+    <ul class="FormUL" id="FormUL"> 
+    </ul>
+    <div class="FBTTotalPrice">
+      <span class="spanTotalPrice">Total Price: </span>
+      <span class="FBTSpanPrice" id="totalprice"></span>
+    </div>
+    <button id="cartButton" class="FBTAddToCart" onclick="addFBTToCart()">
+      <span id="cartText">ADD SELECTED TO CART</span>
+    </button>
+  </div>
+</div>
+</div>
+
+
+<script src="{{ 'FBTMap.js' | asset_url }}"></script>
+<script>
+var sectionData = [];    
+var FBTlines = [];
+var productIDs = [];
+var cartCount = {{ cart.item_count }};
+
+
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: '{{ 'frequently_bought_together.csv' | asset_url }}',
+        dataType: "text",
+        success: function(data) {
+          processFBT(data);
+        },
+        error: function(xhr, status, error) {
+            console.log('AJAX request failed:');
+        }
+      });
+});
+function processFBT(allText) {
+
+    var FBTproduct = '{{ product.handle }}';
+    var FBTTextLines = allText.split(/\r\n|\n/);
+    
+
+    for (var i=1; i<FBTTextLines.length; i++) {
+
+        var FBTdata = FBTTextLines[i].split(',');
+        //if the first entry is this product
+        if(FBTdata[0] == FBTproduct){
+          document.getElementsByClassName('FBTHidden')[0].classList.toggle('FBTHidden');
+          var values = FBTdata[1].split('/');
+          FBTlines.push(...values);
+        }
+    }
+    for(var i=0; i<FBTlines.length; i++){
+      
+      var itemImage = FBTImageMap.get(FBTlines[i]);
+      var itemName = FBTNameMap.get(FBTlines[i]);
+      var itemLink = '/products/' + FBTURLMap.get(FBTlines[i]);
+      var itemPrice = FBTPriceMap.get(FBTlines[i]);
+      var FBTitemID = FBTIDMap.get(FBTlines[i]);
+      var newItem = { product_url: itemLink, image_picker: itemImage, productName: itemName, productPrice: itemPrice, itemID: FBTitemID };
+      productIDs.push(FBTitemID);
+      sectionData.push(newItem);
+      //just create a map which maps handles to a url src then send it back here..
+  }
+  appendDataToDOM();
+  appendDataToDOMForm();
+}
+function appendDataToDOM() {
+  var ulElement = document.getElementById('FBTProductsUL');
+
+
+  sectionData.forEach(function (block) {
+    
+    var liElement = document.createElement('li');
+    liElement.className = 'FBTProductLI';
+
+    var aElement = document.createElement('a');
+    aElement.className = 'FBTProductA';
+    aElement.href = block.product_url;
+    aElement.classList.add(block.itemID);
+
+    var imgElement = document.createElement('img');
+    imgElement.className = 'FBTImage';
+    imgElement.src = block.image_picker;
+
+    var divElement = document.createElement('div');
+    divElement.className = 'FBTDiv';
+
+    var productTitle = document.createElement('h5');
+    productTitle.innerHTML = block.productName;
+    productTitle.classList.add('FBTTitle');
+
+    var buttonElement = document.createElement('button');
+    buttonElement.className = 'FBTButton';
+
+    var spanElement = document.createElement('span');
+    spanElement.textContent = 'Learn More';
+    spanElement.classList.add('learnMoreText');
+
+    buttonElement.appendChild(spanElement);
+    divElement.appendChild(productTitle);
+    divElement.appendChild(buttonElement);
+    aElement.appendChild(imgElement);
+    aElement.appendChild(divElement);
+    liElement.appendChild(aElement);
+
+    ulElement.appendChild(liElement);
+  });
+}
+function appendDataToDOMForm() {
+  var formElement = document.getElementById('FormUL');
+  sectionData.forEach(function (block) {
+    // Create the li element
+    var FormliElement = document.createElement('li');
+    FormliElement.className = 'FormLi';
+
+    // Create the input element (checkbox)
+    var ForminputElement = document.createElement('input');
+    ForminputElement.type = 'checkbox';
+    ForminputElement.className = 'FBTcheckbox';
+    ForminputElement.checked = true;
+    ForminputElement.setAttribute('checked', 'checked');
+    ForminputElement.setAttribute("id", block.itemID);
+    ForminputElement.onclick = function() {
+      updatePrice();
+      var thisID = document.getElementsByClassName(block.itemID)[0];
+      thisID.classList.toggle('toggleOpacity');
+    };
+
+    // Create the a element
+    var FormaElement = document.createElement('a');
+    FormaElement.className = 'FBTLink';
+    FormaElement.href = block.product_url;
+    FormaElement.innerHTML = block.productName;
+
+    // Create the span element (price)
+    var FormspanElement = document.createElement('span');
+    FormspanElement.className = 'FBTPrice';
+    FormspanElement.textContent = block.productPrice;
+
+    // Append the elements together
+    FormliElement.appendChild(ForminputElement);
+    FormliElement.appendChild(FormaElement);
+    FormliElement.appendChild(FormspanElement);
+
+    // Append the li element to the ul element
+    formElement.appendChild(FormliElement);
+   
+  });
+  updatePrice();
+}
+function updatePrice(){
+  const elementsWithFBTPriceClass = document.querySelectorAll('.FBTPrice');
+  var totalpriceid = document.getElementById('totalprice');
+  var runningTotal = 0;
+  elementsWithFBTPriceClass.forEach(element => {
+    const commonParent = element.parentNode;
+    const checkbox = commonParent.querySelector('.FBTcheckbox');
+    if(checkbox.checked){
+      runningTotal += extractNumber(element.innerHTML);
+    }
+  });
+  totalpriceid.innerHTML = "$" + runningTotal.toFixed(2) + " USD";
+}
+
+function extractNumber(value) {
+  const numericPart = value.replace(/\$| USD/g, "");
+  return parseFloat(numericPart);
+}
+
+function addFBTToCart(){
+  var currentChecked = {
+    'items': [] 
+  };
+  for (var i=0; i<productIDs.length; i++) {
+    if(document.getElementById(productIDs[i]).checked){
+      currentChecked.items.push({
+        'id': productIDs[i],
+        'quantity': 1
+      });
+    }
+  }
+  fetch(window.Shopify.routes.root + 'cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(currentChecked)
+  })
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    updateCartFrontend(currentChecked);
+    updateAddToCartButton();
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+function updateCartFrontend(currentChecked){
+  cartCount += currentChecked.items.length;
+  document.getElementById('cart').innerHTML = cartCount;
+}
+function updateAddToCartButton(){
+  var cartButton = document.getElementById('cartButton');
+  var cartText = document.getElementById('cartText');
+  cartButton.disabled = true;
+  cartText.innerHTML = 'THANKYOU';
+  cartButton.classList.add('disableButton');
+  setTimeout(function () {
+    cartButton.classList.remove('disableButton');
+    cartText.innerHTML = 'ADD SELECTED TO CART';
+    cartButton.disabled = false;
+  }, 1000); // 1000 milliseconds = 1 second
+}
+
+</script>
