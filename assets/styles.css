@@ -20,7 +20,11 @@
     max-height: 400px;
 
 }
-
+.fg-slick-image .slick-list .slick-track{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .dfd-branding{
   display: none;
 }
