@@ -1,12 +1,12 @@
 <div class="uk-hidden@l uk-width-1-1">
   <div class="uk-navbar uk-flex uk-flex-right uk-flex-middle">
-    <a href="/cart" class="fg-cart__badge fg-nav__topper_icon-align uk-margin-small-right js-veiw-cart_nav">
-      <span uk-icon="icon: cart; ratio: 1.5" class="fg-icon-left"></span>
-      <span class="js-cart-item-count fg-cart__badge-overlay uk-badge">
+    <a href="/cart" class="fg-cart__badge fg-nav__topper_icon-align js-veiw-cart_nav">
+      <span style="scale: 1.4" uk-icon="icon: cart; ratio: 1.5" class="fg-icon-left"></span>
+      <span id="navbarCart" class="js-cart-item-count fg-cart__badge-overlay uk-badge">
           {{ cart.item_count }}
         </span>
     </a>
-    <a class="fg-nav-toggle uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav-primary"></a>
+    <a style="padding-right: 0px; scale: 1.3" class="fg-nav-toggle uk-navbar-toggle" uk-navbar-toggle-icon href="#" uk-toggle="target: #offcanvas-nav-primary"></a>
   </div>
   <div id="offcanvas-nav-primary" uk-offcanvas="overlay: true; mode: push;">
     <div class="fg-offcanvas-bar uk-offcanvas-bar uk-flex uk-flex-column">
@@ -68,3 +68,51 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+
+  var actuatorControls = document.querySelectorAll("a[href='/collections/actuator-switches-remotes-relays-timers-controllers-power-supplies']");
+  actuatorControls[1].style.marginLeft = '-15px';
+
+  var slideRails = document.querySelectorAll("a[href='/collections/mini-linear-slide-rails']");
+  slideRails[1].style.marginLeft = '-15px';
+
+  var drawerSlides = document.querySelectorAll("a[href='/collections/drawer-slides']");
+  drawerSlides[1].style.marginLeft = '-15px';
+
+  var linearActuators = document.querySelectorAll("a[href='/collections/linear-actuators']");
+  linearActuators[1].style.fontWeight = "bold";
+
+  var mountingBrackets = document.querySelectorAll("a[href='/collections/mounting-brackets']");
+  mountingBrackets[1].style.fontWeight = "bold";
+
+  var rotaryActuators = document.querySelectorAll("a[href='/collections/rotary-actuators']");
+  rotaryActuators[1].style.fontWeight = "bold";
+  rotaryActuators[1].style.marginLeft = '-15px';
+
+  var accessories = document.querySelectorAll("a[href='/collections/accessories']");
+  accessories[1].style.fontWeight = "bold";
+  accessories[1].style.marginLeft = '-15px';
+
+  var microMotors = document.querySelectorAll("a[href='/collections/micro-motors']");
+  microMotors[1].style.fontWeight = "bold";
+  microMotors[1].style.marginLeft = '-15px';
+  
+  var roboticParts = document.querySelectorAll("a[href='/collections/robotics']");
+  roboticParts[1].style.fontWeight = "bold";
+  roboticParts[1].style.marginLeft = '-15px';
+
+  var tvLifts = document.querySelectorAll("a[href='/collections/tv-lifts']");
+  tvLifts[1].style.fontWeight = "bold";
+
+  var sitStandDesks = document.querySelectorAll("a[href='/collections/sit-stand-desks']");
+  sitStandDesks[1].style.fontWeight = "bold";
+  sitStandDesks[1].style.marginLeft = '-15px';
+
+  var slideRails = document.querySelectorAll("a[href='/collections/slide-rails']");
+  slideRails[1].style.fontWeight = "bold";
+  slideRails[1].style.marginLeft = '-15px';
+
+});
+</script>
