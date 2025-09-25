@@ -1,53 +1,31 @@
 <style>
-  .fg-responsive-image__image {
-    object-fit: initial;
-    width: 100%;
+  #reviews-wrapper{
+    background: #fbfbfb;
   }
-  .uk-table-small td, .uk-table-small th {
-    padding: 10px 7px;
+  #vstar-reviews{
+    background: #fbfbfb;
+  }
+  #noreviews-wrapper {
+    margin-bottom: 0px;
+    background: #fbfbfb;
+  }
+  #vstar-noreviews{
+    background: #fbfbfb;
   }
   .uk-switcher{
     padding: 0 40px;
   }
-  .youtube {
-    background-color: #000;
-    margin-bottom: 30px;
-    position: relative;
-    padding-top: 30%;
-    overflow: hidden;
-    cursor: pointer;
-    width: 53.3%;
+  .slick-list{
+    height: 100%;
   }
-  .videoContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding-top: 0%;
+  .slick-track{
+    height: 100%;
   }
-  .youtubeImage{
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%;
-    position: initial;
-    opacity: 1 !important;
-  }
-  .youtube img {
-   top: 0%;
-   opacity: 0;
-  }
-
-  .fg-product-padding-top{
-    padding-top: 0px;
-  }
-  
-  @media only screen and (min-width: 550px) {
-  .formHeight{
-    /*min-height: 1050px;*/
-  }
-  .slider{
-
-  }
+  .fg-responsive-image__image {
+    object-fit: initial;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
   }
   /*fix the layout issue with frequently bought together app...*/
   .cbb-frequently-bought-product > a{
@@ -56,625 +34,12 @@
   .cbb-frequently-bought-add-button{
   	padding: 0px 10px !important;  
   }
-  .productAndSliderDiv{
-    flex-direction: column-reverse; 
-    justify-content: end;
-  }
-  @media only screen and (max-width: 959px) {
-    .fg-slick-nav .uk-icon {
-      display: block;
-    }
-    .productAndSliderDiv{
-      flex-direction: column; 
-    }
-  }
-  @media (max-width: 639px){
-    .thumbnailSize {
-        height: auto !important;
-    }
-  }
-  .bracketCardCenter{
-    display: flex; 
-    justify-content: center;
-    width: 250px;
-  }
-  .bracketImages{
-    max-width: 250px;
-  }
-  .mainCardDiv{
-    margin: 10px;
-    width: 250px;
-  }
-  .bracketClass{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .bracketCardHeight{
-    height: 452px;
-  }
-
-  @media (max-width: 639px){
-    .fg-card-media-top {
-      /* display: flex; */
-    }
-    .fg-card__image_url {
-        margin: 0 auto;
-        width: 80%;
-    }
-    .bracketImages {
-      max-width: 250px;
-      width: 220px;
-    }
-    .bracketCardCenter {
-      width: 160px;
-    }
-    
-  }
-  @media (max-width: 480px){
-    .bracketImages {
-        width: 170px;
-    }
-  }
-
-  .youtubeVideo iframe {
-    height: 100% !important;
-    width: 100% !important;
-  }
-  @media screen and (max-width: 1050px) {
-    .article-card {
-      flex: 0 0 205px !important;
-    }
-  }
-  @media screen and (max-width: 960px) {
-    .videos-container, .articles-container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .video-item {
-      height: 300px;
-      width: auto !important;
-    }
-    .article-card{
-      width: 400px;
-      flex: 0 0 235px !important;
-    }
-    .article-card img {
-      height: 230px !important;
-    }
-    .tabs .tab {
-      padding: 0 !important;
-    }
-  }
-  @media screen and (max-width: 710px) {
-    .article-card{
-      width: 300px;
-    }
-    .video-item {
-      height: 185px;
-    }
-    .article-card img {
-      height: 170px !important;
-    }
-  }
-  @media screen and (max-width: 570px) {
-    .article-card {
-      width: 220px !important;
-    }
-    .video-item {
-      height: 140px !important;
-    }
-    .youtubeVideo .play-button {
-      width: 70px;
-      height: 45px;
-    }
-  }
-  @media screen and (max-width: 400px) {
-    .video-item {
-      height: 115px !important;
-    }
-    .youtubeVideo .play-button {
-      width: 65px;
-      height: 45px;
-    }
-    .article-card {
-      width: 165px !important;
-    }
-  }
-
 </style>
 
-<style>
-  .content {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
 
-  .StepStroke {
-    text-decoration: none;
-  }
-
-  .videos-section h2,
-  .blog-articles h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-
-  .videos-container,
-  .articles-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    justify-content: space-evenly;
-  }
-
-  .video-item iframe {
-    width: 320px;
-    height: 180px;
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .video-item {
-    width: 31%;
-    aspect-ratio: 1.766;
-  }
-
-  .article-card {
-    flex: 0 0 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-
-  .article-card img {
-    width: 100%;
-    border-radius: 5px;
-    height: 200px;
-  }
-
-  @media screen and (max-width: 1370px) {
-    .article-card img {
-      height: 170px;
-    }
-
-    .article-card {
-      flex: 0 0 235px;
-    }
-  }
-
-  .article-card h3 {
-    font-size: 18px;
-    margin: 0;
-  }
-
-  .article-card p {
-    font-size: 14px;
-    color: #777;
-  }
-
-  .DirectFirgelli {
-    height: 200px;
-    width: 100%;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    justify-self: center;
-    padding: 0px 60px;
-  }
-
-  .FirgelliElement {
-    width: 20%;
-    height: 50%;
-    background-color: white;
-    border: thin solid #bdbdbd;
-    padding: 20px 15px;
-  }
-
-  .centeredElements {
-    display: flex;
-    justify-content: space-between;
-    height: 80%;
-  }
-
-  .firgelliTitle {
-    margin: 0px;
-    padding: 12px 0;
-  }
-
-  .elementTitle {
-    font-size: 18px;
-    margin: 0;
-    margin-bottom: 0px;
-    text-decoration: underline;
-  }
-
-  .elementText {
-    margin: 0px;
-  }
-
-  .elementDiv {
-    height: 30px;
-  }
-
-  .SVGImage {
-    width: 20px;
-    height: 20px;
-  }
-
-  .logosvg {
-    width: 25px;
-    height: 25px;
-  }
-
-  .blog-articles {
-    padding-top: 25px;
-  }
-
-  .productDescription {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .section-tabs-description {
-    width: 42%;
-  }
-
-  .section-tabs-tables {
-    width: 52%;
-  }
-
-  @media screen and (max-width: 1200px) {
-    .section-tabs-description {
-      width: 100%;
-    }
-
-    .section-tabs-tables {
-      width: 100%;
-    }
-
-    .productDescription {
-      flex-direction: column;
-    }
-
-    .elementText {
-      font-size: 13px;
-    }
-
-    .elementTitle {
-      font-size: 16px;
-    }
-  }
-
-  @media screen and (max-width: 1100px) {
-    .FirgelliElement {
-      padding: 10px 15px;
-    }
-
-    .centeredElements {
-      height: 100%;
-    }
-
-    .elementText {
-      font-size: 13px;
-    }
-
-    .DirectFirgelli {
-      padding: 0px 35px;
-    }
-
-    .containerPadding {
-      padding: 0px 25px !important;
-    }
-  }
-
-  @media screen and (max-width: 950px) {
-    #strokeImage {
-      max-width: -webkit-fill-available !important;
-    }
-  }
-  @media screen and (min-width: 768px) and (max-width: 890px) {
-    .productTabs label {
-      padding: 12px 13px !important;
-      font-size: 17px !important;
-    }
-  }
-
-
-  @media screen and (max-width: 850px) {
-    .FirgelliElement {
-      width: 17%;
-    }
-
-    .elementTitle {
-      font-size: 14px;
-    }
-
-    .elementText {
-      display: none;
-    }
-
-    .centeredElements {
-      height: 85%;
-    }
-
-    .DirectFirgelli {
-      height: 160px;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    #strokeImage {
-      max-width: -webkit-fill-available !important;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .DirectFirgelli {
-      width: 105%;
-      border-radius: 0px;
-      height: 290px;
-    }
-
-    .centeredElements {
-      height: 79%;
-      flex-wrap: wrap;
-      justify-content: space-around;
-    }
-
-    .FirgelliElement {
-      width: 35%;
-      height: 32%;
-      margin: 5px 0px;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    .inputText {
-      font-size: 0.75rem !important;
-    }
-
-    .select {
-      font-size: 0.7rem !important;
-      width: 75px !important;
-    }
-  }
-
-  .productTabs label {
-    user-select: none;
-  }
-
-  .tabs-container {
-    padding: 2rem;
-  }
-
-  .tabs-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .productTabs {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    border: 1px solid #0000003d;
-  }
-
-  .productTabs label {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-    background-color: #0d90e821;
-    color: #000;
-    font-family: Roboto, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-  }
-
-  .productTabs label .material-icons {
-    margin-right: 0.3rem;
-  }
-
-  .productTabs .tab {
-    flex-grow: 1;
-    width: 100%;
-    height: 100%;
-    display: none;
-    color: #000;
-    background-color: #fff;
-  }
-
-  .productTabs .tab > *:not(:last-child) {
-    margin-bottom: 0.8rem;
-  }
-
-  .productTabs [type=radio] {
-    display: none;
-  }
-
-  .productTabs [type=radio]:checked + label {
-    background-color: #fAfAfA;
-    color: #000;
-    border-top: 4px solid #000 !important;
-  }
-
-  .productTabs [type=radio]:checked + label + .tab {
-    display: block;
-  }
-
-  @media (min-width: 768px) {
-    .tabs-container {
-      padding: 4rem 2rem;
-    }
-    
-    .productTabs label {
-      border-right: 1px solid #0000003d;
-      border-bottom: 1px solid #0000003d;
-    }
-    .productTabs label {
-      order: 1;
-      width: auto;
-    }
-
-    .productTabs .tab {
-      order: 9;
-    }
-
-    .productTabs [type=radio]:checked + label {
-      border-bottom: none;
-    }
-  }
-
-  .section-tabs {
-  }
-
-  .dropdown-panel {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .dropdown-trigger {
-    background-color: #f7f7f7;
-    padding: 15px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .dropdown-trigger:hover {
-    background-color: #eaeaea;
-  }
-
-  .dropdown-details {
-    max-height: 0;
-    overflow: hidden;
-    background-color: #fff;
-    padding: 0 15px;
-    text-align: -webkit-center;
-  }
-
-  .dropdown-details.visible {
-    max-height: 500px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0;
-  }
-
-  table th,
-  table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-
-  table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-
-  .youtubeVideo {
-    background-color: #000;
-    margin-bottom: 30px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    height: 100%;
-  }
-
-  .articleText {
-    margin-top: 0px;
-    color: black !important;
-  }
-
-  .optionDiv {
-    display: flex;
-    place-content: center;
-    padding: 10px 0 20px 0;
-  }
-
-  .option {
-    padding: 0 20px;
-  }
-
-  .select {
-    color: #0d90e8;
-    padding-right: 2.5em;
-    border-color: #3273dc;
-    width: 100%;
-    padding: calc(0.5em - 1px) calc(0.5em - 1px);
-    border-radius: 4px;
-    font-size: 1rem;
-    height: 2.5em;
-    line-height: 1.5;
-    vertical-align: top;
-    position: relative;
-    width: 120px;
-  }
-
-  .inputText {
-    margin-bottom: 0.3em;
-    color: #0068a8;
-    display: block;
-    font-size: 1rem;
-    font-weight: 700;
-    padding-top: 15px !important;
-  }
-
-  #strokeImage {
-    max-width: 750px;
-    transition: opacity 0.2s;
-  }
-
-  #strokeImage:hover {
-    opacity: 0.5;
-  }
-
-  table {
-    table-layout: fixed;
-    border-collapse: collapse;
-    margin-bottom: 10px !important;
-  }
-
-  @media (max-width: 450px) {
-    table td {
-      font-size: 10px;
-    }
-    .tabs-container {
-      padding: 0rem;
-      padding-top: 20px;
-    }
-    .fg-product-additional-content table td{
-      padding: 10px 3px;
-    }
-  }
-
-  .productTabs label {
-    border-top: 4px solid transparent !important;
-    border-bottom: 0px solid transparent;
-  }
-
-  .productTabs label:hover {
-    opacity: 0.7;
-  }
-</style>
-
+<script> //set frequently bought together to hidden so we can fix it up before it displays
+  
+</script>
 
 {% include 'nav-bread-crumbs' %}
 {% assign qty_limit_one = false %}
@@ -704,20 +69,20 @@
   <div class="uk-container">
     <div data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
       <h1 class="fg-product-title_mobile uk-h2 uk-text-center uk-hidden@s ">{{ product.title }}</h1>
-      <div class="uk-flex-middle" uk-grid style="align-items: stretch;">
-<div class="uk-width-2-3@l uk-width-1-2@m js-slick-container fg-slick-container fg-transparent productAndSliderDiv" uk-grid>
+      <div class="uk-flex-middle" uk-grid>
+        <div class="uk-width-2-3@l uk-width-1-2@m js-slick-container fg-slick-container fg-transparent" uk-grid>
           {% include 'loop-product-slider' %}
         </div>
-        <div class="uk-width-1-3@l uk-width-1-2@m formHeight">
+        <div class="uk-width-1-3@l uk-width-1-2@m">
           <h1 class="uk-visible@s">{{ product.title }}</h1>
           <div class="js-product-main-details">
             <div class="fg-product-meta uk-grid-small" uk-grid>
               <div class="fg-product-price uk-h2">
                 {% include 'form-product__price' %}
               </div>
-              {% comment %}<div class="">
+              <div class="">
                 {% section 'social-share' %}
-              </div> {% endcomment %}
+              </div>
             </div>
             {% if delivery_time %}
               <p class="uk-h3">*{{ delivery_time }}</p>
@@ -727,157 +92,56 @@
         </div>
       </div>
     </div>
-    
+    {% comment %} 
+      ADDITIONAL CONTENT
+      variable renderProductDescription will trigger client render from product-all.js
+    {% endcomment %}
+    {% if  product.metafields.custom_fields['display_custom_product_tabs'] > 0 %}
+      {% assign product_tab_list = 'description, specifications, tech_drawing, wiring_diagram,performance_graph, video, video_comparison, video_demo' %}
+
+      {% assign product_tab_list = product_tab_list | split: ',' %}
+        {% comment %} Include counter to output {{ number_of_resources }} variable {% endcomment %}
+        {% include 'custom-fields-product-content-counter' %}
+        {% if number_of_resources > 1 %}
+          <div class="fg-product-additional-content">
+            {% render 'custom-fields-product-content' with product_tab_list: product_tab_list %}
+            {% render 'custom-fields-product-content-mobile' with product_tab_list: product_tab_list %}
+          </div>
+        {% elsif  number_of_resources == 1 %}
+          <div class="uk-container-small uk-margin-top uk-margin-auto-left uk-margin-auto-right">
+            {% render 'custom-fields-product-content-single' with product_tab_list: product_tab_list %}
+          </div>
+        {% endif %}
+      <script>
+        var renderProductDescription = false;
+      </script>
+    {% else %}
       <script>
         var renderProductDescription = true;
       </script>
-
-      {% assign newProductHandles = "rrew" | split: "," %}
-
-      {% if product.handle == "test-micro-actuators-12v123" %}
-        {% include 'testPage' %}
-      {% endif %}
-
-      {% if newProductHandles contains product.handle %}
-          <div class="fg-no-js" style="padding-top: 20px">
-            {{ product.description }}
-          </div>
-          <script>
-            var renderProductDescription = false;
-          </script>
-      {% else %}
-      <div class="fg-product-additional-content rte js-product-additional-content" style="margin-right: -15px; margin-left: -15px">
+      
+      <div class="fg-product-additional-content rte js-product-additional-content">
         <div class="fg-no-js">
-          {{ product.description }}
+          <script async>
+            {{ product.description }}
+          </script>
         </div>
-      </div>
-      {% endif %}
     
+      </div>
+    
+    {% endif %}
+    {% include 'fixReviewsSchema' %}
+
+  </div>
+</section>
+<section style="background: white"
+  class="js-frequently-bought-container fg-display-none uk-section fg-section__muted-blue">
+  <div id="cbb-frequently-bought-box" class="uk-container">
   </div>
 </section>
 
-{% if product.tags contains 'usesBrackets' %}
-<section id="compatibleBrackets" style="padding-bottom: 20px">
-<div class="uk-container">
-<div style="margin: 0px auto; max-width: 1360px;">
-<h2 id="bracketSection">Compatible Brackets</h2>
-<div id="bracketCardsDiv" class="bracketClass"></div>
-
-<script src="{{ 'FBTMap.js' | asset_url }}"></script>
-<script>
-var lines = [];
-$(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: '{{ 'compatible_brackets.csv' | asset_url }}',
-        dataType: "text",
-        success: function(data) {processBracketData(data);}
-     });
-});
-function processBracketData(allText) {
-    var thisProduct = '{{ product.handle }}';
-    var allTextLines = allText.split(/\r\n|\n/);
-    var headers = allTextLines[0].split(',');
-    
-    for (var i=1; i<allTextLines.length; i++) {
-      //console.log(allTextLines[i]); all the full rows
-        var data = allTextLines[i].split(',');
-        //if the first entry is this product
-        if(data[0] == thisProduct){
-          var values = data[1].split('/');
-          lines.push(...values);
-          //console.log(lines);
-        }
-    } 
-
-  for(var i=0; i<lines.length; i++){
-      var imageUrl = FBTImageMap.get(lines[i]);
-      var bracketName = FBTNameMap.get(lines[i]);
-      var bracketPrice = FBTPriceMap.get(lines[i]);
-      //just create a map which maps handles to a url src then send it back here..
-      createBracketCard(lines[i], imageUrl, bracketName, bracketPrice);
-  }
-}
-function createBracketCard(bracketHandle, bracketURL, bracketName, bracketPrice){
-  var startingPoint = document.getElementById('bracketCardsDiv');
-
-  var cardDiv = document.createElement("div");
-  cardDiv.classList.add('js-card-filter', 'uk-first-column', 'mainCardDiv');
-  cardDiv.setAttribute('style', 'text-align: -webkit-center;');
-  var cardDiv2 = document.createElement("div");
-  cardDiv2.classList.add('fg-card', 'js-card', 'bracketCardHeight');
-  cardDiv.appendChild(cardDiv2);
-  var cardDiv3 = document.createElement("div");
-  cardDiv3.classList.add('fg-card-media-top');
-  cardDiv2.appendChild(cardDiv3);
-  var aTag = document.createElement("a");
-  aTag.classList.add('fg-card__image_url');
-  aTag.setAttribute("href", '/products/'+bracketHandle);
-  cardDiv3.appendChild(aTag);
-
-  var innerDiv = document.createElement("div");
-  innerDiv.classList.add('fg-card-image-container', 'bracketCardCenter');
-  aTag.appendChild(innerDiv);
-
-  var innerDiv2 = document.createElement("div");
-  innerDiv2.classList.add('fg-responsive-image__absolute-wrapper');
-  innerDiv.appendChild(innerDiv2);
-
-  var innerDiv3 = document.createElement("div");
-  innerDiv3.classList.add('fg-responsive-image__flex-column-wrapper');
-  innerDiv2.appendChild(innerDiv3);
-
-  var imageTag = document.createElement("img");
-  imageTag.classList.add('bracketImages');
-  imageTag.setAttribute('loading', 'lazy');
-  imageTag.setAttribute('src', bracketURL);
-  
-  innerDiv3.appendChild(imageTag);
-
-  var divBody = document.createElement("div");
-  divBody.classList.add('fg-card__body');
-  cardDiv3.appendChild(divBody);
-  var aBodyTag = document.createElement("a");
-  aBodyTag.classList.add('fg-card__product-title');
-  aBodyTag.setAttribute("href", '/products/'+bracketHandle);
-  aBodyTag.innerHTML = bracketName;
-  divBody.appendChild(aBodyTag);
-
-  var divFooter = document.createElement("div");
-  divFooter.classList.add('fg-card__footer');
-  cardDiv2.appendChild(divFooter);
-
-  var divPrice = document.createElement("div");
-  divPrice.classList.add('fg-card__body-price-container');
-  divFooter.appendChild(divPrice);
-  var spanPrice = document.createElement("span");
-  spanPrice.classList.add('uk-h4', 'fg-card__body-price-text_num');
-  spanPrice.innerHTML = bracketPrice;
-  divPrice.appendChild(spanPrice);
-
-  var aBuyNow = document.createElement("a");
-  aBuyNow.classList.add('fg-button');
-  aBuyNow.setAttribute("href", '/products/'+bracketHandle);
-  aBuyNow.innerHTML = "BUY NOW";
-  divFooter.appendChild(aBuyNow);
-
-
-
-
-
-  startingPoint.appendChild(cardDiv);
-}
-
-
-
-
-
-</script>
-</div>
-</div>
-</section>
-{% endif %}
-
+{% section 'section-full-width' %}
+{%- include 'social-pin-board' -%}
 <script>
 
   {% if product.variants.size > 1 %}
@@ -951,14 +215,7 @@ function createBracketCard(bracketHandle, bracketURL, bracketName, bracketPrice)
     }
   {% endfor %};
 
+
+  
 </script>
-
-{% if product %}
-  <script defer src="{{ product.handle | append: '.js' | asset_url }}"></script>
-{% endif %}
-
-
-{% section 'section-fbt' %}
-{% include 'fixReviewsSchema' %}
-
 
