@@ -1,5 +1,136 @@
 <style>
-    @keyframes wiggle-occasionally {
+  /*#submit-button{
+    background: linear-gradient(151deg,#087ac6 25%,#2f62d2 100%);
+  }
+  #submit-button::before{
+    background: #2f62d2;
+  }*/
+  #submit-button {
+    background: linear-gradient(151deg, #e52d2d 25%, #ff0000 100%);
+  }
+  #submit-button::before {
+    background: #ff0000;
+  }
+  #warranty-submit-button{
+    background: linear-gradient(151deg, #e52d2d 25%, #ff0000 100%);
+  }
+  #warranty-submit-button::before{
+    background: #ff0000;
+  }
+  .warrantyItem{
+    display: none;
+  }
+
+  .active-item{
+    background: rgba(13, 144, 232, 0.4);
+  }
+  .active-item-title{
+    color: black !important;
+    font-weight: bold !important;
+  }
+  .active-item:hover{
+    opacity: 1 !important;
+  }
+
+
+  @media only screen and (max-width: 560px){
+    .uk-table td {
+      font-size: 11px;
+    }
+  }
+
+  .disabledButton {
+    pointer-events: none;
+    opacity: 0.5;      /* optional: make it look disabled */
+  }
+
+  .productButton{
+    display: inline-grid;
+    place-items: center;
+    padding: 10px;
+    line-height: 19px;
+  }
+  .productButtonSizing{
+    width: 32%;
+    padding: 0;
+    height: 115px;
+  }
+  .productButtonSizing .shopify-section{
+    height: 100%;
+  }
+  .productSliderImage {
+    border-style: solid;
+    border-color: #0d90e8;
+    border-radius: 6px;
+    border-width: 1px;
+  }
+  .timeRemaining{
+    color: #007600;
+
+  }
+  .inStock{
+    font-size: 18px;
+    color: #007600;
+    line-height: 20px;
+    padding-bottom: 5px;
+  }
+  .outStock{
+    font-size: 18px;
+    color: #fa1717;
+    line-height: 20px;
+    padding-bottom: 5px;
+  }
+  .amountPosition{
+    position: absolute; 
+    top: 15px; 
+    right: 15px;
+  }
+  @media only screen and (max-width: 1420px){
+    .amountPosition{
+      right: 10px;
+    }
+  }
+  @media only screen and (max-width: 1420px){
+    .amountPosition{
+      right: -5px;
+    }
+  }
+  @media only screen and (max-width: 1199px){
+    .amountPosition{
+      right: 20px;
+    }
+  }
+  @media only screen and (max-width: 1020px){
+    .amountPosition{
+      right: 10px;
+    }
+  }
+  @media only screen and (max-width: 959px){
+    .amountPosition{
+      right: 8vw;
+    }
+  }
+  @media only screen and (max-width: 800px){
+    .amountPosition{
+      right: 6.5vw;
+    }
+  }
+  @media only screen and (max-width: 600px){
+    .amountPosition{
+      right: 3.5vw;
+    }
+  }
+  @media only screen and (max-width: 480px){
+    .amountPosition{
+      right: 0.5vw;
+    }
+  }
+  @media only screen and (max-width: 390px){
+    .amountPosition{
+      right: -1.5vw;
+    }
+  }
+  @keyframes wiggle-occasionally {
     0%, 39% {
       transform: translateX(0);
     }
@@ -22,6 +153,8 @@
       transform: translateX(0);
     }
   }
+
+
   .buttonWiggle{
     animation: wiggle-occasionally 10s infinite;
   }
@@ -51,10 +184,9 @@
 </div>
 
 <div class="var-msg"></div>
-
-<form class="fg-product-form" data-cart-submit="data-cart-submit">
+{% form "product", product, id: "newID", class: "fg-product-form" %}
+{% comment %}<form class="fg-product-form" data-cart-submit="data-cart-submit">{% endcomment %}
   <fieldset id="productVariables" class="fg-product-form__variant-group uk-fieldset js-product-variants">
-    
     {% if product.variants.size == 1%}
       {% for variant in product.variants %}
         <input type="hidden" name="id" value="{{ variant.id }}" />
@@ -63,8 +195,7 @@
       <div class="select clearfix"{% if hide_default_title %} {% endif %} style="display:none;" hidden>
         <select id="product-select-{{product.id}}" class='single-option-selector js-data-price' name="id" data-bind="variant_id">
           {% for variant in product.variants %}
-
-          <option id="{{ variant.id }}" value="{{ variant.id }}" data-price='{{ variant.price | money_with_currency }}'>{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+          <option value="{{ variant.id }}" data-price='{{ variant.price | money_with_currency }}'>{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
           {% endfor %}
         </select>
       </div>
@@ -72,6 +203,7 @@
         {% for option in product.options %}
           {% include 'swatch' with option %}
         {% endfor %}
+          
       {% endif %}
     {% endif %}
 
@@ -83,9 +215,9 @@
             {% if qty_limit_one %}
               <input disabled class="uk-input fg-button-swatch__number" type="number" id="product-quantity-{{product.id}}" name="quantity" value="1" min="1" data-bind="quantity" data-bind-event-keyup="_customProductHelper.updatePrice()" data-bind-event-change="_customProductHelper.updatePrice()"/>
             {% else %}
-              <span data-step="down" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_down" data-bind-event-click="_customProductHelper.quantityStep('minus')"><span class="fg-svg-reset" uk-icon="minus"></span></span>
-              <input class="uk-input fg-button-swatch__number" type="number" id="product-quantity-{{product.id}}" name="quantity" value="1" min="1" data-bind="quantity" data-bind-event-keyup="_customProductHelper.updatePrice()" data-bind-event-change="_customProductHelper.updatePrice()" onclick="changeURL()" />
-              <span data-step="up" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_up" data-bind-event-click="_customProductHelper.quantityStep('add')"><span class="fg-svg-reset" uk-icon="plus"></span></span>
+              <span data-step="down" onclick="changeWarrantyPrice('down')" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_down" data-bind-event-click="_customProductHelper.quantityStep('minus')"><span class="fg-svg-reset" uk-icon="minus"></span></span>
+              <input class="uk-input fg-button-swatch__number" type="number" id="product-quantity-{{product.id}}" autocomplete='off' name="quantity" value="1" min="1" data-bind="quantity" data-bind-event-keyup="_customProductHelper.updatePrice()" data-bind-event-change="_customProductHelper.updatePrice()"/>
+              <span data-step="up" onclick="changeWarrantyPrice('up')" class="js-step fg-button-swatch__number-step fg-button-swatch__number-step_up" data-bind-event-click="_customProductHelper.quantityStep('add')"><span class="fg-svg-reset" uk-icon="plus"></span></span>
             {% endif %}
           </div>
         </div>
@@ -110,43 +242,103 @@
         {% capture stock_message %}<p><strong>Sorry, this product is temporarily out of stock.</strong></p>
         {% endcapture %}
       {% endif %}
-      {% if product.type contains 'Actuator' and settings.discount_tier_count > 1 %}
-        <div class="uk-width-1-1@s uk-width-2-3@m">
-          {% include 'section-bulk-discount' %}
-        </div>
-      {% endif %}
-      <div class="uk-width-1-1@s uk-width-2-3@m">
-        {{ stock_message }}
-        <span class="fg-shadow-wrap fg-button-box-shadow-hover-large fg-button-box-shadow-small js-shadow-wrap buttonWiggle">
-
-          <button disabled id="submit-button" type="submit" dh="{{ freeProCount }}" class="fg-button js-submit" {{ add_cart_status }}><span class="js-submit-icon" uk-icon="{{ add_cart_icon }}"></span> {{ add_cart_text }}</button>
-        </span>
-      </div>
 
       <div class="uk-width-1-1 uk-width-auto@s">
         <span class="fg-alert js-submit-notice uk-animation-slide-top-small"></span>
         <span class="fg-alert js-warning-qty-limit uk-animation-slide-top-small uk-alert-warning">qty limit</span>
         <span class="fg-alert js-warning-cart-limit uk-animation-slide-top-small uk-alert-warning">cart limit</span>
       </div>
-      <div class="uk-width-1-1 uk-grid-margin uk-grid-small" uk-grid>
-        <div>
-          <a href="{{ shop.url | append: '/cart' }}" class="js-veiw-cart uk-button uk-button-default">
-            <span uk-icon="cart"></span> View Cart <span class="js-cart-item-count_form uk-badge fg-cart__badge_form">
-          {{ cart.item_count }}</span></a>
+
+
+
+  
+      <script src="{{ 'warrantyHandleMap.js' | asset_url }}"></script>
+      
+    
+      
+    
+  
+
+
+
+
+  
+
+      <div class="uk-width-1-1@s uk-width-2-3@m" style="width: 100%">
+        {% if product.available %}
+        <span class="inStock">In Stock</span>
+        <div id="orderWithin" style="padding-top: 5px; display: none;"></div>
+        {% else %}
+        <span class="outStock">Out of Stock</span>
+        {% endif %}
+        <div class="warrantyItem">
+      <div id="warrantyDiv" style="display: flex; align-items: center; width: 100%">
+        <form method="post">
+          <input type="checkbox" id="warrantyInput" name="warranty" autocomplete='off' style="margin: 0;"/>
+          <p style="margin: 0px 0px 0px 10px;">Add&nbsp;{% include 'warranty-plus-text' %}&nbsp;+8%&nbsp;<span id="warrantyPriceIDDiscounted" class="hiddenAtStart"></span><span id="warrantyPriceID"></span></p>
+        </form>
+      </div>
+    </div>
+        <span style="margin: 10px 0" class="fg-shadow-wrap fg-button-box-shadow-hover-large fg-button-box-shadow-small js-shadow-wrap  buttonWiggle">
+
+          <button disabled id="submit-button" type="submit" dh="{{ freeProCount }}" class="fg-button js-submit" {{ add_cart_status }}><span class="js-submit-icon" uk-icon="{{ add_cart_icon }}" style="font-size: 25px;"></span> <span style="font-size: 20px;">{{ add_cart_text }}</span></button>
+        
+        
+          <div class="warrantyItem">
+          <button id="warranty-submit-button" type="button" dh="{{ freeProCount }}" class="fg-button js-submit" {{ add_cart_status }} style="display:none"><span class="js-submit-icon" uk-icon="{{ add_cart_icon }}" style="font-size: 25px;"></span> <span style="font-size: 20px;">{{ add_cart_text }}</span></button>
+          </div>
+        
+        </span>
+        {% if product.type contains 'Actuator' and settings.discount_tier_count > 1 %}
+          <div class="uk-width-1-1@s uk-width-2-3@m" style="padding: 10px 0;">
+            {% include 'section-bulk-discount' %}
+          </div>
+        {% endif %}
+        {{ form | payment_terms }}
+      </div>
+      
+      <div class="uk-grid-margin uk-grid-small" uk-grid style="padding-top: 15px; justify-content: space-between; margin-left: 0px; width: 100%">
+        <div class="productButtonSizing">
+          <a href="{{ shop.url | append: '/cart' }}" class="js-veiw-cart uk-button uk-button-default" style="width: 100%; height: 100%; display: inline-grid; border-radius: 10px;">
+            <div style="position: relative;">
+              <span uk-icon="cart" style="padding-top: 23px; scale: 1.5;"></span>
+              <span id="cartTwo" class="amountPosition uk-badge"></span>
+            </div>
+            <div style="line-height: 19px;">View Cart</div>
+          </a>
         </div>
-        <div class="fg-display-none js-button-frequent-container fg-button-frequent-container">
-          <a class="fg-button-frequent fg-arrow-down-hover uk-button uk-button-default uk-width-1-1@s uk-animation-slide-top-small" href="#cbb-frequently-bought-box" uk-icon="icon:chevron-down" uk-scroll>Frequently Bought</a>
+        <div class="productButtonSizing">
+        {% section 'shipping-window' %}
         </div>
+        <a id="FBTButton" onclick="moveToFBT();return false;" uk-toggle class="productButtonSizing" style="text-decoration: none; display: initial !important;"><button class="uk-button uk-button-default productButton" style="height: 100%; border-radius: 10px;"><span class="uk-icon" style="width: 9%; scale: 3; padding: 19px">{% include 'shopping-basket-svg' %}</span> People also bought</button></a>
       </div>
     </div>
   </fieldset>
-</form>
+{% comment %}</form>{% endcomment %}
+{% endform %}
 {% render 'form-link-wiring-diagram' with tags: product.tags, class_name: 'uk-hidden@m' %}
 
 <script>
 
-  
-  
+    
+document.addEventListener('DOMContentLoaded', () => {
+  const targetNode = document.getElementById("navbarCart");
+  document.getElementById('cartTwo').innerHTML = targetNode.innerHTML;
+  const observer = new MutationObserver(() => {
+      document.getElementById('cartTwo').innerHTML = targetNode.innerHTML;
+  });
+  const config = { childList: true, subtree: true };
+  observer.observe(targetNode, config);
+});
+                                                                     
+ </script>
+
+
+<script>
+
+  function moveToFBT(){
+    document.getElementById("FBTMainTitle").scrollIntoView({behavior: 'smooth'});
+  }
   
   for  (let i = 0; i < actives.length; i++) {
   actives[i].className = current[0].className.replace(" active", "");
@@ -154,10 +346,267 @@
   }
   var fieldset = document.getElementById("productVariables");
   var actives = fieldset.getElementsByClassName("active");
-  
-
-  
-
 
 
 </script>
+
+
+
+
+  {% comment %}<script src="{{ 'orderWithin.js' | asset_url }}"></script>{% endcomment %}
+  <script src="{{ 'warrantyMap.js' | asset_url }}"></script>
+  <script>
+
+
+  let productHandle = '{{ product.handle }}';
+
+  if(warrantyHandleMap.get(productHandle)){
+  var warrantyItems = document.getElementsByClassName("warrantyItem");
+  for(let i=0; i<warrantyItems.length; i++){
+    warrantyItems[i].style.display = "block";
+  }
+  }
+  
+
+   $("#warrantyInput").change(function(){
+      if(($("#warrantyInput")).is(":checked")){
+        document.getElementById('submit-button').style.display = 'none';
+        document.getElementById('warranty-submit-button').style.display = 'block';
+      }
+     else{
+        document.getElementById('submit-button').style.display = 'block';
+        document.getElementById('warranty-submit-button').style.display = 'none';
+     }
+
+     });
+
+
+    
+  document.getElementById('warranty-submit-button').addEventListener("click", function() {
+    
+
+    
+      
+    addwarranty();
+    setTimeout(function(){
+          jQuery.getJSON('/cart.js', function(cart) {
+    		var cartQuantity = cart.item_count
+            document.getElementById("cartCount").innerHTML = cartQuantity;
+            document.getElementById("cart").innerHTML = cartQuantity;
+          });
+        } , 2000);
+    
+        
+  });
+     
+  function addwarranty(){
+
+    if(($("#warrantyInput")).is(":checked") == true){
+      
+      
+      var quantity = $("#product-quantity-{{product.id}}").val();
+      addwarrantyToCart(quantity);
+    }
+  }
+
+
+  function addwarrantyToCart(quantity) {
+    let productVariant;
+    let warrantyID;
+    const hasVariantEls = typeof document.getElementsByClassName('NotSoldOut')[0] !== 'undefined';
+
+    if (hasVariantEls) {
+      productVariant = document.getElementById('currentVarient').textContent;
+    } else {
+      productVariant = $("input[name=id]").val();
+    }
+    warrantyID = warrantyMap.get(productVariant);
+
+    if (!warrantyID) {
+      console.warn('No warranty ID found for variant', productVariant);
+    }
+
+    return $.post('/cart/add.js', {
+      items: [
+        { quantity: quantity, id: warrantyID },
+        { quantity: quantity, id: productVariant }
+      ]
+    })
+    .done(function () {
+      refreshCartCount();
+    })
+    .fail(function (xhr) {
+      console.error('Add to cart failed', xhr && xhr.responseText ? xhr.responseText : xhr);
+    });
+  }
+
+  function refreshCartCount() {
+  try {
+    if (window.CartJS && typeof CartJS.getCart === 'function') {
+      if (typeof CartJS.loadCart === 'function') {
+        CartJS.loadCart({
+          success: function (cart) {
+            updateCartCountUI(cart.item_count);
+          },
+          error: function () {
+            fallbackCartAjax();
+          }
+        });
+        return;
+      }
+      const cart = CartJS.getCart();
+      if (cart && typeof cart.item_count !== 'undefined') {
+        updateCartCountUI(cart.item_count);
+        return;
+      }
+    }
+  } catch (e) {
+    // ignore and fallback
+  }
+  fallbackCartAjax();
+}
+
+  function fallbackCartAjax() {
+    $.getJSON('/cart.js', function (cart) {
+      if (cart && typeof cart.item_count !== 'undefined') {
+        updateCartCountUI(cart.item_count);
+      }
+    });
+  }
+
+  function updateCartCountUI(count) {
+    const el1 = document.getElementById('cartCount');
+    const el2 = document.getElementById('cart');
+    if (el1) el1.innerHTML = count;
+    if (el2) el2.innerHTML = count;
+  }
+
+  function changeWarrantyPrice(direction){
+        var warrantyPrice;
+        var productVariant;
+        if(typeof document.getElementsByClassName('NotSoldOut')[0] == 'undefined'){
+          warrantyPrice = '{{ product.price }}';
+          productVariant = jQuery("input[name=id]").val();
+          var quantity = $("#product-quantity-{{product.id}}").val();
+          if(direction == 'up'){
+                quantity = +quantity + 1;
+              }
+              else if(direction == 'down'){
+                quantity = +quantity - 1;
+                if(quantity < 1){
+                 quantity = 1;
+                }
+              }
+          document.getElementById("warrantyPriceID").innerHTML = "($" + parseFloat((warrantyPrice*quantity)/1249.9875).toFixed(2) + ")";
+        }
+        else{
+          productVariant = document.getElementById('currentVarient').textContent;
+        
+    
+        {% for variant in product.variants %}
+          if('{{variant.id}}' == productVariant){
+            
+              warrantyPrice = '{{ variant.price }}';
+            
+             var quantity = $("#product-quantity-{{product.id}}").val();
+              if(direction == 'up'){
+                quantity = +quantity + 1;
+              }
+              else if(direction == 'down'){
+                quantity = +quantity - 1;
+                if(quantity < 1){
+                 quantity = 1;
+                }
+              }
+
+            document.getElementById("warrantyPriceID").innerHTML = "($" + parseFloat((warrantyPrice*quantity)/1249.9875).toFixed(2) + ")";
+            
+          {% comment %}{% break %}{% endcomment %}
+          }     
+        {% endfor %}             
+        }
+  }
+  checkBox = document.getElementById('warrantyInput');
+  checkBox.attr("autocomplete", "off");
+</script>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const addEventListenersToAccordionItems = () => {
+  const accordianItems = document.querySelectorAll('.uk-accordion-title');
+  const count = accordianItems.length;
+  if (count > 0) {
+      console.log("Number of items found:", count);
+  }
+  accordianItems.forEach(item => {
+    if (!item.dataset.listenerAdded) {
+      item.addEventListener("click", function() {
+        const isActive = this.classList.contains('active-item');
+        accordianItems.forEach(item => {
+          item.classList.remove('active-item');
+          const firstChild = item.firstElementChild;
+          if (firstChild) {
+            firstChild.classList.remove('active-item-title');
+          }
+        });
+        if (!isActive) {
+          this.classList.add('active-item');
+          const firstChild = this.firstElementChild;
+          if (firstChild) {
+            firstChild.classList.add('active-item-title');
+          }
+        }
+      });
+      item.dataset.listenerAdded = true;
+    }
+    });
+    };
+    const observer = new MutationObserver(mutations => {
+      let foundNewItems = false;
+      mutations.forEach(mutation => {
+        if (mutation.addedNodes.length > 0) {
+          foundNewItems = true;
+        }
+      });
+      if (foundNewItems) {
+        addEventListenersToAccordionItems();
+        const accordianItems = document.querySelectorAll('.uk-accordion-title');
+        if (accordianItems.length > 0) {
+          observer.disconnect();
+          console.log("Stopped observing after finding items.");
+        }
+      }
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+    addEventListenersToAccordionItems();
+});
+</script>
+
+{% if product.tags contains 'hidden' %}
+<script>  
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("submit-button");
+    if (!btn) return; // safety check
+
+    btn.disabled = true;
+
+    var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === "disabled") {
+                // Only set disabled if not already disabled, to avoid loop
+                if (!btn.disabled) {
+                    btn.disabled = true;
+                }
+            }
+        });
+    });
+
+    observer.observe(btn, { attributes: true, attributeFilter: ["disabled"] });
+});
+</script>
+{% endif %}
