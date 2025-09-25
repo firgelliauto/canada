@@ -1,0 +1,37 @@
+<div id="wiring-diagram-legend" class="uk-modal-container" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+              <button class="uk-modal-close-default uk-close-large" type="button" uk-close></button>
+              <caption><h2 class="uk-modal-title">{{ section.settings.wiring_diagram_legend_heading }}</h2></caption>
+              <table class="uk-table uk-table-divider uk-table-middle uk-table-responsive">
+                <tbody>
+                  
+                  
+                  {% include 'form-shipping-calculators' %}
+                  
+                  
+                </tbody>
+              </table>
+              <p class="uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+              </p>
+            </div>
+          </div>
+          
+      <div class="uk-width-1-1@s" style="height: 100%">
+        
+          
+
+        <a href="#wiring-diagram-legend" uk-toggle style="text-decoration: none;"><button class="uk-button uk-button-default productButton" style="height: 100%; border-radius: 10px;"><span class="uk-icon" style="width: 9%; scale: 3; padding: 19px">{% include 'calculator-svg' %}</span>Shipping Calculator </button></a>
+      </div>
+
+
+
+
+{% schema %}
+  {
+    "name" : "Shipping Window",
+    "settings": [
+      
+    ]
+  }
+{% endschema %}
