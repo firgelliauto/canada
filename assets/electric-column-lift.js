@@ -82,6 +82,7 @@ var strokeImages8lb = {
       if (!trigger.dataset.listenerAdded) {
         trigger.dataset.listenerAdded = "true";
         trigger.addEventListener("click", () => {
+        console.log("clicked");
         const detailsSection = trigger.nextElementSibling;
         if (detailsSection) {
           detailsSection.style.transition = "max-height 0.3s ease, padding 0.3s ease";
