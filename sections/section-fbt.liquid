@@ -297,15 +297,25 @@ var cartCount = {{ cart.item_count }};
 
 
 $(document).ready(function() {
+    var csvUrl = '{{ 'frequently_bought_together.csv' | asset_url }}';
+    console.log('Attempting to load CSV from:', csvUrl);
+    
     $.ajax({
         type: "GET",
-        url: '{{ 'frequently_bought_together.csv' | asset_url }}',
+        url: csvUrl,
         dataType: "text",
         success: function(data) {
+          console.log('CSV loaded successfully, data length:', data.length);
           processFBT(data);
         },
         error: function(xhr, status, error) {
-            console.log('AJAX request failed:');
+            console.error('AJAX request failed:');
+            console.error('Status:', status);
+            console.error('Error:', error);
+            console.error('Response Code:', xhr.status);
+            console.error('Response Text:', xhr.responseText);
+            console.error('Ready State:', xhr.readyState);
+            console.error('URL that failed:', csvUrl);
         }
       });
 });
