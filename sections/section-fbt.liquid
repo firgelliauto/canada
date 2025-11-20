@@ -435,11 +435,11 @@ function updatePrice(){
       runningTotal += extractNumber(element.innerHTML);
     }
   });
-  totalpriceid.innerHTML = "$" + runningTotal.toFixed(2) + " USD";
+  totalpriceid.innerHTML = "$" + runningTotal.toFixed(2) + " CAD";
 }
 
 function extractNumber(value) {
-  const numericPart = value.replace(/\$| USD/g, "");
+  const numericPart = value.replace(/\$| CAD/g, "");
   return parseFloat(numericPart);
 }
 
