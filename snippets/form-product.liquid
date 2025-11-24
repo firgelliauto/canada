@@ -170,13 +170,13 @@
   {% if product.available %}
     {% if no_sku == false %}
       <div class="fg-label_sku" data-bind-show="selectedVariant.sku">
-        Model #<span class="fg-label_sku uk-label" data-bind="selectedVariant.sku"></span>
+        Model #<span id="copySku" class="fg-label_sku uk-label" data-bind="selectedVariant.sku"></span>
       </div>
     {% endif %}
   {% else %}
     {% assign first_variant = product.variants | first %}
       <div class="fg-label_sku">
-        Model #<span class="fg-label_sku uk-label">{{ first_variant.sku }}</span>
+        Model #<span id="copySku" class="fg-label_sku uk-label">{{ first_variant.sku }}</span>
       </div>
   {% endif %}
 
