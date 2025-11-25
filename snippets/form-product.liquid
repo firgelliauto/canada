@@ -160,7 +160,7 @@
   }
 
   .fg-label_sku.copied {
-    background: #c6ffc6;
+    opacity: 0.5;
     transition: background 0.3s;
   }
 
@@ -369,7 +369,7 @@ document.getElementById("copySku").addEventListener("click", function () {
       console.error("Could not copy text:", err);
     });
     this.classList.add("copied");
-    setTimeout(() => el.classList.remove("copied"), 600);
+    setTimeout(() => this.classList.remove("copied"), 100);
 });
 </script>
 
