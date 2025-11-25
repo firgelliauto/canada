@@ -171,7 +171,22 @@
     opacity: 0.2 !important;
   }
 
+  .fg-label_sku.copied {
+    opacity: 0.2 !important;
+  }
 
+  /* add this */
+  .hidden { display: none !important; }
+  #copy-tooltip {
+    display: inline-block;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    font-size: 12px;
+    vertical-align: middle;
+  }
 </style>
 <div class="uk-grid-small" uk-grid>
   {% if product.available %}
