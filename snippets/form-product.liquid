@@ -161,7 +161,7 @@
 
   .fg-label_sku.copied {
     opacity: 0.5;
-    transition: background 0.3s;
+    transition: opacity 0.3s;
   }
 
 
@@ -362,14 +362,8 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById("copySku").addEventListener("click", function () {
   const textToCopy = this.innerText; // or innerHTML if you prefer
   navigator.clipboard.writeText(textToCopy)
-    .then(() => {
-      console.log("Copied:", textToCopy);z
-    })
-    .catch(err => {
-      console.error("Could not copy text:", err);
-    });
     this.classList.add("copied");
-    setTimeout(() => this.classList.remove("copied"), 100);
+    setTimeout(() => this.classList.remove("copied"), 500);
 });
 </script>
 
