@@ -372,18 +372,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!copyEl) return; // Exit if the element doesn't exist
 
   copyEl.addEventListener("click", function () {
-  const originalText = this.innerHTML;
-
-  setTimeout(() => {
-    this.innerHTML = "SKU Copied!";
-    this.classList.add("copied");
-
+    const originalText = this.innerHTML;
+    const textToCopy = originalText.trim();
     setTimeout(() => {
-      this.innerHTML = originalText;
-      this.classList.remove("copied");
-    }, 1500);
-  }, 50); // Delay to avoid conflicts
-});
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        this.innerHTML = "SKU Copied!";
+        this.classList.add("copied");
+
+        setTimeout(() => {
+          this.innerHTML = originalText;
+          this.classList.remove("copied");
+        }, 1500);
+      }, 50); // Delay to avoid conflicts
+    });
+  });
 });
 </script>
 
