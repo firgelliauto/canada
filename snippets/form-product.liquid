@@ -185,6 +185,9 @@
       <div class="fg-label_sku">
         Model #<span id="copySku" class="fg-label_sku uk-label">{{ first_variant.sku }}</span>
       </div>
+      <span id="copy-default-icon" aria-hidden>📋</span>
+      <span id="copy-success-icon" class="hidden" aria-hidden>✅</span>
+      <span id="copy-tooltip" class="hidden">Copied!</span>
   {% endif %}
 
   <div class="js-product-price-wrap uk-margin-remove-top uk-h2" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -630,6 +633,37 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     observer.observe(btn, { attributes: true, attributeFilter: ["disabled"] });
+});
+</script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const $defaultIcon = document.getElementById('copy-default-icon');
+  const $successIcon = document.getElementById('copy-success-icon');
+  const $tooltip = document.getElementById('copy-tooltip');
+  const $copySku = document.getElementById('copySku');
+
+  function showCopied() {
+    $defaultIcon?.classList.add('hidden');
+    $successIcon?.classList.remove('hidden');
+    $tooltip?.classList.remove('hidden');
+  }
+
+  function resetCopied() {
+    $defaultIcon?.classList.remove('hidden');
+    $successIcon?.classList.add('hidden');
+    $tooltip?.classList.add('hidden');
+  }
+
+  $copySku?.addEventListener('click', function () {
+    const textToCopy = this.innerText;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      showCopied();
+      setTimeout(resetCopied, 2000); // revert UI after 2s
+    }).catch(err => console.warn('copy failed', err));
+  });
 });
 </script>
 {% endif %}
