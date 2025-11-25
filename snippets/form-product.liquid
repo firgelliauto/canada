@@ -366,11 +366,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <script>
-document.getElementById("copySku").addEventListener("click", function () {
-  const textToCopy = this.innerText; // or innerHTML if you prefer
-  navigator.clipboard.writeText(textToCopy)
-  this.classList.add("copied");
-  setTimeout(() => this.classList.remove("copied"), 800);
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById("copySku").addEventListener("click", function () {
+    const textToCopy = this.innerText; // or innerHTML if you prefer
+    navigator.clipboard.writeText(textToCopy)
+    this.classList.add("copied");
+    setTimeout(() => this.classList.remove("copied"), 800);
+  });
 });
 </script>
 
