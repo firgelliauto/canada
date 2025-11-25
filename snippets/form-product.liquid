@@ -169,6 +169,7 @@
   }
   .fg-label_sku.copied {
     opacity: 0.2 !important;
+    text-transform: none !important;
   }
 
 
@@ -367,11 +368,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById("copySku").addEventListener("click", function () {
-    const textToCopy = this.innerText; // or innerHTML if you prefer
-    navigator.clipboard.writeText(textToCopy)
+  const copyEl = document.getElementById("copySku");
+  if (!copyEl) return; // Exit if the element doesn't exist
+
+  copyEl.addEventListener("click", function () {
+    const originalText = this.innerHTML; // Store the original SKU text
+
+    // Change the text to "SKU Copied!" and add the 'copied' class
+    this.innerHTML = "SKU Copied!";
     this.classList.add("copied");
-    setTimeout(() => this.classList.remove("copied"), 800);
+
+    // Revert the text and remove the 'copied' class after 1.5 seconds
+    setTimeout(() => {
+      this.innerHTML = originalText;
+      this.classList.remove("copied");
+    }, 800); // Duration in milliseconds
   });
 });
 </script>
