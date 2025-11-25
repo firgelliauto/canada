@@ -372,17 +372,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!copyEl) return; // Exit if the element doesn't exist
 
   copyEl.addEventListener("click", function () {
-    const originalText = this.innerHTML; // Store the original SKU text
+    const originalText = this.innerHTML;
 
-    // Change the text to "SKU Copied!" and add the 'copied' class
     this.innerHTML = "SKU Copied!";
     this.classList.add("copied");
 
-    // Revert the text and remove the 'copied' class after 1.5 seconds
     setTimeout(() => {
       this.innerHTML = originalText;
       this.classList.remove("copied");
-    }, 800); // Duration in milliseconds
+    }, 900);
   });
 });
 </script>
