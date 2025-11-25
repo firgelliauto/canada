@@ -161,15 +161,15 @@
 
  
   #copySku {
-    transition: opacity 0.3s;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
     cursor: pointer;
   }
   #copySku:hover {
     opacity: 0.6;
   }
   .fg-label_sku.copied {
-    opacity: 0.2 !important;
-    text-transform: none !important;
+    background: rgba(255, 157, 10, 0.5); /* Semi-transparent background */
+    text-transform: none !important; /* Ensure no text transformation */
   }
 
 
