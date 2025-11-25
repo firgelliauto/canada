@@ -361,14 +361,14 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 document.getElementById("copySku").addEventListener("click", function () {
   const textToCopy = this.innerText; // or innerHTML if you prefer
-  navigator.clipboard.writeText(textToCopy);
+  navigator.clipboard.writeText(textToCopy)
     .then(() => {
-      console.log("Copied:", textToCopy);
+      console.log("Copied:", textToCopy);z
     })
     .catch(err => {
       console.error("Could not copy text:", err);
     });
-    el.classList.add("copied");
+    this.classList.add("copied");
     setTimeout(() => el.classList.remove("copied"), 600);
 });
 </script>
