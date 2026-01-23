@@ -41,25 +41,16 @@
   
 
   {% endif %}
-  {%- comment -%}smartseo{%- endcomment -%}
-   <title>{{ page_title }}</title>
-   <meta name="description" content="{{ page_description }}">
-   <meta name="referrer" content="origin">
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description }}">
+  <meta name="referrer" content="origin">
   
-  
-  {% case shop.address.country  %}
-    {% when 'United States' %}
-      {%- comment -%}smartseo_integration_begin{%- endcomment -%}
-      {% include 'smartseo' %}
-    {% when 'Canada' %}
-      {% include 'fa-seo' %}
-      
+  {%- comment -%} Using fa-seo for Canada/Australia retail sites {%- endcomment -%}
+  {% if shop.address.country == 'Canada' or shop.address.country == 'Australia' %}
+     {% include 'fa-seo' %}
+  {% endif %}
 
-    {% when 'Australia' %}
-      {% include 'fa-seo' %}
-      
 
-  {% endcase %}
   
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
