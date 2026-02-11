@@ -1,0 +1,35 @@
+# AI Search Crawlers - explicitly allow
+User-agent: OAI-SearchBot
+Disallow:
+
+User-agent: GPTBot
+Disallow:
+
+User-agent: ChatGPT-User
+Disallow:
+
+User-agent: Google-Extended
+Disallow:
+
+User-agent: ClaudeBot
+Disallow:
+
+User-agent: Claude-Web
+Disallow:
+
+User-agent: PerplexityBot
+Disallow:
+
+User-agent: Applebot-Extended
+Disallow:
+
+# Shopify default rules below
+{% for group in robots.default_groups %}
+{{- group.user_agent -}}
+{% for rule in group.rules %}
+{{- rule -}}
+{% endfor %}
+{%- if group.sitemap != blank -%}
+{{ group.sitemap }}
+{%- endif -%}
+{% endfor %}
