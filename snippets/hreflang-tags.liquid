@@ -1,0 +1,61 @@
+{% if template == 'index' or template contains 'product' or template contains 'collection' %}
+
+{% assign com_path = request.path %}
+{% assign au_path = request.path %}
+
+{% if collection %}
+  {% case collection.handle %}
+    {% when 'control-systems' %}
+      {% assign com_path = '/collections/arduino' %}
+      {% assign au_path = '/collections/controls-relays-remotes' %}
+    {% when 'desk-lifts' %}
+      {% assign com_path = '/collections/sit-stand-desks' %}
+      {% assign au_path = '/collections/sit-stand-desks' %}
+    {% when 'track-actuators' %}
+      {% assign com_path = '/collections/track-linear-actuators' %}
+      {% assign au_path = '/collections/track-actuators' %}
+    {% when 'bullet-actuators' %}
+      {% assign au_path = '/collections/mini-linear-actuators' %}
+  {% endcase %}
+{% endif %}
+
+{% if product %}
+  {% case product.handle %}
+    {% when 'os-series' %}
+      {% assign com_path = '/products/optical-sensor-actuators' %}
+      {% assign au_path = '/products/os-series' %}
+    {% when 'light-duty-rod-actuator' %}
+      {% assign com_path = '/products/linear-actuators' %}
+      {% assign au_path = '/products/light-duty-rod-actuator' %}
+    {% when 'heavy-duty-linear-actuator-ip66' %}
+      {% assign com_path = '/products/water-proof-linear-actuator' %}
+      {% assign au_path = '/products/heavy-duty-linear-actuator-ip66' %}
+    {% when 'mini-rod-actuator' %}
+      {% assign com_path = '/products/mini-linear-actuator' %}
+      {% assign au_path = '/products/mini-linear-actuator' %}
+    {% when 'electric-desk-lift' %}
+      {% assign com_path = '/products/sit-stand-desk-lift' %}
+      {% assign au_path = '/products/sit-stand-desk-lift' %}
+    {% when 'electric-table-lift-1' %}
+      {% assign com_path = '/products/electric-table-lift' %}
+      {% assign au_path = '/products/electric-table-lift' %}
+    {% when 'cable-drag-chain' %}
+      {% assign com_path = '/products/nylon-drag-chain-bridge-style-2-side-cross-bar-close-type' %}
+      {% assign au_path = '/products/nylon-drag-chain-bridge-style-2-side-cross-bar-close-type' %}
+    {% when 'column-lift-remote-control-rf' %}
+      {% assign com_path = '/products/track-actuator-rf-remote-control' %}
+      {% assign au_path = '/products/track-actuator-rf-remote-control' %}
+    {% when 'column-lift-radio-frequency-remote-control-rf' %}
+      {% assign com_path = '/products/column-lift-remote-control-rf' %}
+      {% assign au_path = '/products/column-lift-remote-control-rf' %}
+    {% when '39-pop-up-tv-lift' %}
+      {% assign au_path = '/products/pop-up-tv-lift-1' %}
+  {% endcase %}
+{% endif %}
+
+<link rel="alternate" hreflang="en-us" href="https://www.firgelliauto.com{{ com_path }}" />
+<link rel="alternate" hreflang="en-ca" href="https://www.firgelliauto.ca{{ request.path }}" />
+<link rel="alternate" hreflang="en-au" href="https://www.firgelliauto.com.au{{ au_path }}" />
+<link rel="alternate" hreflang="x-default" href="https://www.firgelliauto.com{{ com_path }}" />
+
+{% endif %}
