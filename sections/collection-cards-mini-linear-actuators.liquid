@@ -925,6 +925,7 @@ function processData(allText) {
       Forces = lines[i][4];
       console.log(productHandle);
       console.log(Forces);
+      console.log(lines[i]);
         if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
           showHandles.push(productHandle);
           betweenMinMaxForce = true;
