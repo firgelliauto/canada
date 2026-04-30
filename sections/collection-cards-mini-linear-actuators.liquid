@@ -935,7 +935,7 @@ function processData(allText) {
       if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
          hideProduct(productHandle);
       }
-      if(betweenMinMaxForce == true &&  document.getElementById(productHandle).hasAttribute("hidden")){
+      if(betweenMinMaxForce == true &&  document.getElementById(productHandle).parentElement.hasAttribute("hidden")){
         showProduct(productHandle);
         console.log("showing: " + productHandle);
       }
