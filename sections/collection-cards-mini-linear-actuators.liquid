@@ -931,14 +931,15 @@ function processData(allText) {
           showHandles.push(productHandle);
           betweenMinMaxForce = true;
 		 }
-		
+		  console.log("between: " + betweenMinMaxForce);
       if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
          hideProduct(productHandle);
       }
       if(betweenMinMaxForce == true &&  document.getElementById(productHandle).hasAttribute("hidden")){
         showProduct(productHandle);
+        console.log("showing: " + productHandle);
       }
-      console.log("between: " + betweenMinMaxForce);
+      
      }
   }
   
