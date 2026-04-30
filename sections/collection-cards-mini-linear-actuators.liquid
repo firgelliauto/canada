@@ -925,7 +925,7 @@ function processData(allText) {
       Forces = lines[i][4];
       console.log(productHandle);
       console.log(Forces);
-      console.log(lines[i]);
+
         if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
           showHandles.push(productHandle);
           betweenMinMaxForce = true;
@@ -937,6 +937,7 @@ function processData(allText) {
       if(betweenMinMaxForce == true &&  document.getElementById(productHandle).hasAttribute("hidden")){
         showProduct(productHandle);
       }
+      console.log("between: " + betweenMinMaxForce);
      }
   }
   
