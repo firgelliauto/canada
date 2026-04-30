@@ -1,3 +1,5 @@
+
+
 <style>
   input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -520,7 +522,7 @@ input[type=number] {
         </div>
         </div>
         </div>
-      
+        
       </fieldset>
     </div>
     <input id="hiddenSubmit" type="button" value="Submit" hidden>
@@ -915,35 +917,25 @@ function processData(allText) {
   
   
   function checkForce(minForce, maxForce){
-    let Forces = 0;
-    let showHandles = [];
-    for (var i = 0; i < lines.length; i++) {
-        let productHandle = lines[i][6]; 
-        let betweenMinMaxForce = false; 
-
-        // Assuming lines[i][4] contains the product's force range as an object with min and max properties
-        let productMinForce = lines[i][4].min; // Replace with actual logic to get min force
-        let productMaxForce = lines[i][4].max; // Replace with actual logic to get max force
-
-        if (
-            (~~productMinForce <= ~~maxForce && ~~productMinForce >= ~~minForce) || // Product's min force is in range
-            (~~productMaxForce >= ~~minForce && ~~productMaxForce <= ~~maxForce) || // Product's max force is in range
-            (~~productMinForce <= ~~minForce && ~~productMaxForce >= ~~maxForce)    // Product's range fully covers the filter range
-        ) {
-            showHandles.push(productHandle);
-            betweenMinMaxForce = true;
-        }
-
-        if (betweenMinMaxForce == false && !showHandles.includes(productHandle)) {
-            hideProduct(productHandle);
-        }
-        if (betweenMinMaxForce == true && document.getElementById(productHandle).hasAttribute("hidden")) {
-            showProduct(productHandle);
-        }
-    }
-    
-    
-    
+	 let Forces = 0;
+     let showHandles = [];
+     for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+      let betweenMinMaxForce = false; 
+      Forces = lines[i][4];
+      console.log(Forces);
+        if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
+          showHandles.push(productHandle);
+          betweenMinMaxForce = true;
+		 }
+		
+      if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
+         hideProduct(productHandle);
+      }
+      if(betweenMinMaxForce == true &&  document.getElementById(productHandle).hasAttribute("hidden")){
+        showProduct(productHandle);
+      }
+     }
   }
   
   
