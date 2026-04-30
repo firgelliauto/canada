@@ -924,14 +924,14 @@ function processData(allText) {
       let productHandle = lines[i][6]; 
       let betweenMinMaxForce = false; 
       Forces = lines[i][4];
-      console.log(productHandle);
-      console.log(Forces);
+      //console.log(productHandle);
+      //console.log(Forces);
 
         if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
           showHandles.push(productHandle);
           betweenMinMaxForce = true;
 		 }
-		  console.log("between: " + betweenMinMaxForce);
+		  //console.log("between: " + betweenMinMaxForce);
       if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
          hideProduct(productHandle);
       }
