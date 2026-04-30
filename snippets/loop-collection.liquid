@@ -1,3 +1,309 @@
+<style>
+  .fg-card{
+    height: 100%;
+  }
+  .compareMainDiv{
+    height: 36px;
+    margin: 8px 0px 20px 0px !important;
+    border-radius: 5px;
+    border: 2.5px solid #0d90e8;
+    flex: inherit !important;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 0 1.5px #a8daff59;
+  }
+  .productMainDiv{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .compare-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+  
+  .compare-row input {
+    position: absolute;
+    opacity: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+
+
+  .custom-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #0d90e8;
+    border-radius: 4px;
+    position: relative;
+    pointer-events: none;
+  }
+
+  
+  .compare-row input:checked + .custom-box {
+    background: #0d90e8;
+  }
+
+  .compare-row input:checked + .custom-box::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  
+  .compare-row input:hover + .custom-box {
+    cursor: pointer;
+  }
+
+  .compare-text {
+    cursor: default;
+    user-select: none;       /* Standard syntax */
+    -webkit-user-select: none; /* Safari/Chrome */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+  }
+  .compareMainDiv:hover{
+    cursor: pointer !important;
+  }
+  .compare-text{
+    cursor: pointer;
+  }
+  
+
+#compareBar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111;
+  color: white;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 9999;
+}
+
+
+#compareBar.show {
+  transform: translateY(0);
+}
+.clearAll{
+  padding: 0 30px;
+}
+
+.viewComparisonButton {
+  background: linear-gradient(180deg, #0d90e8, #299ce9);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+
+  padding: 14px 34px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.viewComparisonButton:hover {
+  opacity: 0.5;
+}
+
+.viewComparisonButton:active {
+  transform: translateY(2px);
+}
+.clearAll {
+  color: #0d90e8;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  transition: 
+    color 0.15s ease,
+    opacity 0.15s ease,
+    transform 0.05s ease;
+}
+
+.clearAll:hover {
+  color: #0468ac;
+}
+
+.clearAll:active {
+  opacity: 0.7;
+  transform: translateY(1px);
+}
+
+@keyframes compareLimitShake {
+  0%   { transform: translateY(0) translateX(0); }
+  20%  { transform: translateY(0) translateX(-6px); }
+  40%  { transform: translateY(0) translateX(6px); }
+  60%  { transform: translateY(0) translateX(-4px); }
+  80%  { transform: translateY(0) translateX(4px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+#compareBar.limitHit .compareBarInner {
+  animation: compareLimitShake 0.35s ease;
+}
+.modalElement {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+
+.modalContent {
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 8px;
+  overflow-x: auto;
+  position: relative;
+}
+
+.modalElement .close {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    font-size: 24px;
+    cursor: pointer;
+    color: black;
+}
+
+#comparisonTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#comparisonTable th,
+#comparisonTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.hover-opacity {
+  transition: opacity 0.3s;
+}
+.hover-opacity:hover {
+  opacity: 0.5;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.product-image {
+  width: 100px;
+  margin-bottom: 8px;
+}
+
+.comparisonFromPrice{
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+@media only screen and (max-width: 650px) {
+  #comparisonTable{
+    font-size: 14px;
+  }
+  .hover-opacity{
+    padding: 5px 6px !important;
+  }
+  .product-container {
+    height: 190px;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .clearAll {
+    padding: 0 10px;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .clearAll {
+    display: none;
+  }
+  #compareCount{
+    display: none;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .comparisonFromPrice{
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 440px) {
+  .product-container {
+    height: 160px;
+  }
+  
+  #comparisonTable {
+    font-size: 11px;
+    margin-top: 40px !important;
+  }
+  .modalContent {
+    width: 94%;
+    padding: 0px;
+  }
+  .product-image {
+    width: 75px;
+    height: 75px;
+  }
+  #comparisonTable th{
+    padding: 2px;
+  }
+
+}
+@media only screen and (max-width: 315px) {
+  #comparisonTable td {
+    padding: 4px;
+  }
+  .comparisonFromPrice{
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .fg-button{
+    padding: 0px !important;
+  }
+}
+
+</style>
+
+{% assign compare_collections = 
+  "linear-actuators,mini-linear-actuators,feedback-actuators"
+  | split: "," 
+%}
+
 {% paginate collection.products by 40 %}
   {% if section.settings.disable_filter == false %}
     {% assign show_filter = true %}
@@ -15,10 +321,10 @@
     {% assign js_card_filter = '' %}
   {% endif %}
   {% assign display_stock = true %}
-  <div style="width: 100%" class="js-filter-container fg-collection-filter-nav" uk-filter="target: .js-filter">
-    {% if show_filter == true %} {% comment %}
+  <div class="js-filter-container fg-collection-filter-nav" uk-filter="target: .js-filter" style="width: 100%">
+    {% if show_filter == true %}  {% comment %}
       <a class="fg-filter-toggle" uk-toggle="target: .fg-toggle-el; animation: uk-animation-fade">
-        <span class="">Filter</span>
+        <span class=""></span>
         <span uk-icon="icon: settings"></span>
       </a>
       <div class="fg-toggle-el js-filter-nav uk-grid-small uk-grid-divider uk-margin" uk-grid hidden>
@@ -38,9 +344,9 @@
         <a class="fg-collection-scroll fg-arrow-down-hover" href="#fg-collection-grid" uk-scroll="duration: 500;" uk-icon="icon: chevron-down">scroll</a>
       </div>
     {% endcomment %}{% endif %}
-    <div style="place-content: center;" id="fg-collection-grid" class="fg-collection-grid js-filter uk-margin-small-top uk-grid-small uk-grid-match" uk-grid>
+    <div style="place-content: center; margin-top: 0px !important;" id="fg-collection-grid" class="fg-collection-grid js-filter uk-margin-small-top uk-grid-small uk-grid-match" uk-grid>
       {% if show_filter == true %}
-        <div class="js-filter__message fg-container-full-width">
+        <div class="js-filter__message fg-container-full-width" style="padding: 0;">
           <span class="js-filter__message-text uk-text-lead uk-text-center">
           
           </span>
@@ -61,9 +367,21 @@
             {% assign card_item_first = false %}
           {% endif %}
           {% comment %} {% include 'card-product' %} {% endcomment %}
-          <div id={{product.handle}} class="{{ js_card_filter }}">
-            {% render 'card-product-content' with card_item: card_item index_first: card_item_first %}
+           <div class="productMainDiv">
+            <div id={{product.handle}} class="{{ js_card_filter }}" style="flex: 1;">
+              {% render 'card-product-content' with card_item: card_item index_first: card_item_first %}
+            </div>
+            {% if compare_collections contains collection.handle %}
+            <div class="compareMainDiv">
+              <div class="compare-row">
+                <input type="checkbox">
+                <span class="custom-box"></span>
+                <span class="compare-text">Compare</span>
+              </div>
+            </div>
+            {% endif %}
           </div>
+          
         {%- endif -%}
       {% else %}
         {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
@@ -94,3 +412,287 @@
     var collectionsJson = {{ collection.products | json}};
   </script>
 {% endif %}
+
+{% if compare_collections contains collection.handle %}
+  <div id="compareBar">
+    <div class="compareBarInner">
+      <span id="compareCount"></span>
+      <span class="clearAll">Clear All</span>
+      <button id="viewComparison" class="viewComparisonButton">View Comparison</button>
+    </div>
+  </div>
+
+{% endif %}
+
+
+<script>
+
+const MAX_COMPARE = 3;
+const compareCount = document.querySelector('#compareCount');
+const compareBar = document.getElementById('compareBar');
+const countLabel = document.getElementById('compareCount');
+
+document.addEventListener('click', e => {
+  const box = e.target.closest('.compareMainDiv');
+  if (!box) {
+    // Prevent default for anchor tags with href="#"
+    if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+      e.preventDefault();
+    }
+    return;
+  }
+
+  const checkbox = box.querySelector('input');
+  const isCurrentlyActive = box.classList.contains('compareActive');
+  const activeCount = document.querySelectorAll('.compareMainDiv.compareActive').length;
+
+
+  if (!isCurrentlyActive && activeCount >= MAX_COMPARE) {
+    compareBar.classList.add('limitHit');
+    setTimeout(() => compareBar.classList.remove('limitHit'), 300);
+    e.preventDefault();
+    return;
+  } else {
+    if (e.target === checkbox) {
+      box.classList.toggle('compareActive', checkbox.checked);
+    } else {
+      checkbox.checked = !checkbox.checked;
+      box.classList.toggle('compareActive', checkbox.checked);
+    }
+  }
+
+  updateCompareBar();
+});
+
+
+
+function updateCompareBar() {
+  const active = document.querySelectorAll('.compareMainDiv.compareActive');
+  const count = active.length;
+
+  if (count >= 1 && count < MAX_COMPARE) {
+    compareBar.classList.add('show');
+    countLabel.textContent = `${count} Products Selected`;
+  } 
+  else if(count >= MAX_COMPARE){
+    countLabel.textContent = `Max Selected (${MAX_COMPARE})`;
+  }
+  else {
+    compareBar.classList.remove('show');
+  }
+}
+
+//clear all
+const clearAllBtn = document.querySelector('.clearAll');
+
+clearAllBtn.addEventListener('click', () => {
+  document.querySelectorAll('.compareMainDiv').forEach(box => {
+    const checkbox = box.querySelector('input');
+
+    checkbox.checked = false;
+    box.classList.remove('compareActive');
+  });
+
+  updateCompareBar();
+});
+
+
+</script>
+
+
+
+<div id="comparisonModal" class="modalElement">
+  <div class="modalContent">
+    <div class="modalHeader" style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: black;
+      display: flex;
+      align-items: center;
+
+      color: white;
+      font-weight: bold;
+    ">
+    
+    <span style="flex: 1; text-align: center;">Product Comparison</span>
+    
+    <span id="closeModal" style="
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      font-size: 25px;
+      color: white;
+    ">&times;</span>
+  </div>
+    <table id="comparisonTable" style="margin-top: 30px;">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <!-- Product handles will be inserted dynamically -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-variable="minForce"><td>Min Force</td></tr>
+        <tr data-variable="maxForce"><td>Max Force</td></tr>
+        <tr data-variable="maxSpeed"><td>Max Speed</td></tr>
+        <tr data-variable="strokeOptions"><td>Stroke Options</td></tr>
+        <tr data-variable="voltage"><td>Voltage</td></tr>
+        <tr data-variable="ipRating"><td>IP Rating</td></tr>
+        <tr data-variable="feedback"><td>Feedback</td></tr>
+        
+        <tr data-variable="price"><td>Price</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="{{ 'productSpecifications.js' | asset_url }}"></script>
+<script>
+const viewBtn = document.getElementById('viewComparison');
+const modal = document.getElementById('comparisonModal');
+const closeBtn = modal.querySelector('.close');
+const table = document.getElementById('comparisonTable');
+
+const comparisonFields = [
+  { label: "Product", key: "name" },
+  { label: "Min Force", key: "Force", format: v => `${v[0]} lbs` },
+  { label: "Max Force", key: "Force", format: v => `${v[v.length - 1]} lbs` },
+  { label: "Max Speed", key: "maxSpeed" },
+  { label: "Stroke Options", key: "strokeOptions", format: v => `${Math.min(...v)}" - ${Math.max(...v)}"`  },
+  { label: "Voltage", key: "voltage", format: v => v.length === 1 ? `${v[0]}` : `${v[0]} / ${v[v.length - 1]}`  },
+  { label: "IP Rating", key: "ipRating" },
+  { label: "Feedback", key: "feedback" },
+  { 
+    label: "Brackets", 
+    key: "brackets", 
+    format: brackets => {
+      if (!brackets || brackets.length === 0 || brackets[0] === '') {
+        return "N/A"; // Display "N/A" for empty brackets
+      }
+      return brackets
+        .map(bracket => `<a href="/products/${bracket.handle}">${bracket.name}</a>`)
+        .join(", "); // Add a comma and space as a separator
+    }
+  },
+  { label: "Price", key: "price", format: v => `$${v.toFixed(2)}` }
+];
+
+
+
+viewBtn.addEventListener('click', () => {
+  const selectedBoxes = document.querySelectorAll('.compareMainDiv.compareActive');
+  if (!selectedBoxes.length) {
+    alert("No products selected");
+    return;
+  }
+
+  const handles = [...selectedBoxes]
+    .map(box => box.previousElementSibling?.id)
+    .filter(Boolean);
+
+  const theadRow = table.querySelector('thead tr');
+  const tbody = table.querySelector('tbody');
+
+  // Reset table
+  theadRow.innerHTML = '<th style="width: 100px;"></th>';
+  tbody.innerHTML = '';
+
+  // Header columns
+  handles.forEach(handle => {
+    const product = productSpecifications.find(p => p.handle === handle);
+    const th = document.createElement('th');
+    th.style.width = '200px';
+    th.style.height = '100%';
+
+    const productContainer = document.createElement('div');
+    productContainer.classList.add('product-container');
+
+    const img = document.createElement('img');
+    img.src = product.image.startsWith('http') ? product.image : 'https://' + product.image;
+    img.alt = product.name;
+    img.classList.add('product-image');
+
+    const priceText = document.createElement('div');
+    priceText.innerHTML = `From:<br>$${product.price.toFixed(2)}`;
+    priceText.classList.add('comparisonFromPrice');
+
+    const btn = document.createElement('a');
+    btn.href = `/products/${product.handle}`;
+    btn.textContent = 'Buy Now';
+    btn.style.display = 'inline-block';
+    btn.style.padding = '8px 15px';
+    btn.style.background = '#007bff';
+    btn.style.color = '#fff';
+    btn.style.borderRadius = '4px';
+    btn.style.textDecoration = 'none';
+    btn.style.fontSize = '12px';
+    btn.style.textAlign = 'center';
+    btn.classList.add('hover-opacity');
+
+    productContainer.appendChild(img);
+    productContainer.appendChild(priceText);
+    productContainer.appendChild(btn);
+
+    th.appendChild(productContainer);
+    theadRow.appendChild(th);
+  });
+
+  comparisonFields.forEach(field => {
+    const tr = document.createElement('tr');
+
+    const labelTd = document.createElement('td');
+    labelTd.textContent = field.label;
+    tr.appendChild(labelTd);
+
+    handles.forEach(handle => {
+      const product = productSpecifications.find(p => p.handle === handle);
+      const td = document.createElement('td');
+
+      if (!product || product[field.key] == null) {
+        td.textContent = "—";
+      } else {
+        const raw = product[field.key];
+        if (field.format) {
+          td.innerHTML = field.format(raw);
+        } else {
+          td.textContent = raw;
+        }
+      }
+
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  });
+
+  modal.style.display = "block";
+});
+
+
+document.getElementById('closeModal').addEventListener('click', () => {
+  modal.style.display = "none";
+});
+// Close modal if clicking outside
+window.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = "none";
+});
+
+
+window.addEventListener("pageshow", function () {
+  document.querySelectorAll(".compare-row input[type='checkbox']")
+    .forEach(function (checkbox) {
+      checkbox.checked = false;
+      checkbox.defaultChecked = false;
+    });
+});
+
+
+
+$(window).on("pageshow", function () {
+  $(".compare-row input[type='checkbox']").prop("checked", false);
+});
+
+</script>
+

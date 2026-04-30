@@ -1,0 +1,16 @@
+<style>
+    .breadcrumbs{
+        padding-bottom: 10px;
+        text-decoration: none;
+        font-size: 13px;
+    }
+</style>
+
+
+<div class="breadcrumbs">
+  <a style="text-decoration: auto;" href="{{ routes.root_url }}">Home</a>
+  {% if collection %}
+    <span class="breadcrumb-separator">/</span>
+  <a style="text-decoration: auto;" href="{{ collection.url }}">{% if handle == 'micro-linear-actuators' %}Micro Linear Actuators{% else %}{{ collection.title }}{% endif %}</a>
+  {% endif %}
+</div>
