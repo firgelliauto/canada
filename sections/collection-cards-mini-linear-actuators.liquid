@@ -748,10 +748,10 @@ for(var i = 0; i < rangeSlidersTrack.length; i++) {
     sliderMax = 60;
   }
   else{
-    sliderMax = 330;
-    startOne = 20;
+    sliderMax = 350;
+    startOne = 5;
     stepOne = 0.5;
-    startTwo = 150;
+    startTwo = 30;
     stepTwo = 100;
   }
 
@@ -917,30 +917,23 @@ function processData(allText) {
   
   
   function checkForce(minForce, maxForce){
-    console.log("start");
-	 let Forces = 0;
-     let showHandles = [];
-     for (var i = 0; i < lines.length; i++) {
+	  let Forces = 0;
+    let showHandles = [];
+    for (var i = 0; i < lines.length; i++) {
       let productHandle = lines[i][6]; 
       let betweenMinMaxForce = false; 
       Forces = lines[i][4];
-      //console.log(productHandle);
-      //console.log(Forces);
-
-        if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
-          showHandles.push(productHandle);
-          betweenMinMaxForce = true;
-		 }
-		  //console.log("between: " + betweenMinMaxForce);
+      if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
+        showHandles.push(productHandle);
+        betweenMinMaxForce = true;
+      }
       if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
-         hideProduct(productHandle);
+        hideProduct(productHandle);
       }
       if(betweenMinMaxForce == true &&  document.getElementById(productHandle).parentElement.hasAttribute("hidden")){
         showProduct(productHandle);
-        console.log("showing: " + productHandle);
       }
-      
-     }
+    }
   }
   
   
