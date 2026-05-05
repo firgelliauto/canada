@@ -15,7 +15,7 @@
             {%- if image_src.width > 180 -%}{{ image_src | img_url: '180x' }} 180w, {%- endif -%}
             {%- if image_src.width > 300 -%}{{ image_src | img_url: '300x' }} 300w {%- endif -%}
             "
-          uk-img
+          
         {% endif %}
         src="{{ image_src | img_url: '300x' }}"
         data-aspectratio="{{ image_src.aspect_ratio }}"
