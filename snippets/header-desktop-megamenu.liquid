@@ -6,7 +6,7 @@
     
       <li class="itg_main_link {{ link.handle }}" id="{{ link.handle }}">
         <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %} class="uk-icon">
-          {{ link.title }}
+          {%- if link.handle == 'products' -%}<span class="jiggle-text">{{ link.title }}</span>{%- else -%}{{ link.title }}{%- endif -%}
            {%- if link.links != blank -%}
           {% comment %}<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"> <polyline fill="none" stroke="#000" stroke-width="1.03" points="16 7 10 13 4 7"></polyline></svg>{% endcomment %}
           {% endif %}
@@ -448,20 +448,23 @@ li.itg_main_link.products {
     color: #1e87f0 !important;
   }
 
-.itg_main > li.itg_main_link.products > a:after {
-  display: none !important;
+.itg_main > li.itg_main_link.products > a {
+  position: relative;
 }
-.itg_main > li.itg_main_link.products:after {
+.itg_main > li.itg_main_link.products > a:after {
   content: "";
   display: block;
   position: absolute;
-  left: 15px;
-  right: 15px;
+  left: 0;
+  right: 0;
   bottom: 30px;
   height: 3px;
   background-color: #0d90e8;
+  transform: scaleX(1) !important;
+  transform-origin: left;
 }
-.itg_main > li.itg_main_link.products > a {
+.jiggle-text {
+  display: inline-block;
   animation: products-jiggle 2.5s ease-in-out infinite;
 }
 @keyframes products-jiggle {
