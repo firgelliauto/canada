@@ -747,6 +747,102 @@
           <div class="fg-no-js" style="padding-top: 20px">
             {{ product.description }}
           </div>
+          {% if product.handle == 'super-duty-actuators' %}
+            <style data-codex-fix="super-duty-cdn-animation-style">
+              .super-duty-animation-slot[data-codex-fix="super-duty-cdn-animation"] {
+                margin-top: 20px;
+              }
+              .section-tabs-tables .super-duty-animation-slot[data-codex-fix="super-duty-cdn-animation"] {
+                width: 100%;
+              }
+              .super-duty-animation-frame {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                background: #f5f8fb;
+                border: 1px solid #d9e6f2;
+                box-shadow: 0 8px 24px rgba(21, 57, 91, 0.10);
+              }
+              .super-duty-animation-frame video {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                object-position: center center;
+                background: #fff;
+                transform: scale(1.2);
+                transform-origin: center center;
+              }
+              .super-duty-animation-frame::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+              }
+              @media screen and (max-width: 1200px) {
+                .super-duty-animation-slot[data-codex-fix="super-duty-cdn-animation"] {
+                  margin-top: 24px;
+                }
+              }
+            </style>
+            <div class="super-duty-animation-slot" data-codex-fix="super-duty-cdn-animation">
+              <div class="super-duty-animation-frame">
+                <video class="super-duty-lazy-video" data-codex-lazy-video muted loop autoplay playsinline preload="none" aria-label="Super Duty actuator animation">
+                  <source data-src="https://cdn.shopify.com/videos/c/o/v/68e2d905d30b46a6861e7e015bb4d285.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+            <script data-codex-fix="super-duty-cdn-animation-loader">
+              (function() {
+                function initSuperDutyAnimation() {
+                  var slot = document.querySelector('.super-duty-animation-slot[data-codex-fix="super-duty-cdn-animation"]');
+                  if (!slot) return;
+                  var target = document.querySelector('.section-tabs-tables');
+                  if (target && slot.parentNode !== target) {
+                    target.appendChild(slot);
+                  }
+                  var video = slot.querySelector('video[data-codex-lazy-video]');
+                  if (!video) return;
+                  var loadVideo = function() {
+                    if (video.getAttribute('data-loaded') === 'true') return;
+                    var sources = video.querySelectorAll('source[data-src]');
+                    for (var i = 0; i < sources.length; i += 1) {
+                      sources[i].setAttribute('src', sources[i].getAttribute('data-src'));
+                      sources[i].removeAttribute('data-src');
+                    }
+                    video.setAttribute('data-loaded', 'true');
+                    video.muted = true;
+                    video.load();
+                    var playPromise = video.play();
+                    if (playPromise && playPromise.catch) {
+                      playPromise.catch(function() {});
+                    }
+                  };
+                  if ('IntersectionObserver' in window) {
+                    var observer = new IntersectionObserver(function(entries) {
+                      for (var i = 0; i < entries.length; i += 1) {
+                        if (entries[i].isIntersecting) {
+                          loadVideo();
+                          observer.disconnect();
+                          break;
+                        }
+                      }
+                    }, { rootMargin: '350px 0px' });
+                    observer.observe(slot);
+                  } else {
+                    loadVideo();
+                  }
+                }
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', initSuperDutyAnimation);
+                } else {
+                  initSuperDutyAnimation();
+                }
+              })();
+            </script>
+          {% endif %}
           <script>
             var renderProductDescription = false;
           </script>
