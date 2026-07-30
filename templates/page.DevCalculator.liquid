@@ -1,0 +1,1898 @@
+<style>
+.calculatorCanvas{
+    align-content: center;
+    margin: auto;
+    display: block;
+    box-shadow: 0 5px 15px rgba(33,125,187,.15);
+    border-radius: 0.5em;
+    margin-bottom: 0px;
+}
+
+.circle-input {
+  
+  display: flex;
+  align-items: center;
+  height: 36px;
+}
+
+.circle-input-button {
+  padding: 5px 10px;
+  background-color: #ccc;
+  border: none;
+  
+}
+
+.circle-input-value {
+  width: 50px;
+  text-align: center;
+}
+
+.circle-input-button:hover,
+.circle-input-button:focus {
+  background-color: #aaa;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
+<style>
+.calculatorCanvas{
+    align-content: center;
+    display: block;
+    box-shadow: 0 5px 15px rgba(33,125,187,.15);
+    border-radius: 0.5em;
+    margin-bottom: 0px;
+    height: auto !important;
+    
+}
+.cardMedia{
+  height: 360px;
+}
+.fg-card__option-list {
+    padding: 8px;
+}
+.fg-card__body-price-container {
+    padding: 15px 20px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.ActuatorsTitle{
+  height: 45px;
+  font-size: 27px;
+  text-align: center;
+}
+.fg-card__product-title {
+    min-height: 56px;
+}
+.circle-input {
+  
+  display: flex;
+  align-items: center;
+}
+
+.circle-input-button {
+  padding: 5px 10px;
+  background-color: #ccc;
+  border: none;
+  
+}
+
+.circle-input-value {
+  width: 50px;
+  text-align: center;
+}
+
+.circle-input-button:hover,
+.circle-input-button:focus {
+  background-color: #aaa;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-increment{
+  background: #0d90e8;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2em;
+  text-align: center;
+  width: 20%;
+  min-width: 40px;
+  height: 100%;
+}
+.circle-input-value.inputBox {
+  height: 100%;
+}
+.inputBox{
+  border-color: #0d90e8;
+  color: #0d90e8;
+  margin: 0 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 1.25rem;
+  justify-content: center;
+  min-width: 2.5em;
+  text-align: center;
+  width: 45%;
+  border-style: solid;
+  padding: 0;
+  box-sizing: border-box;
+}
+.inputText{
+  margin-bottom: 0.3em;
+  color: #0068a8;
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  padding-top: 10px !important;
+}
+.resultTextCard{
+  border: 2px solid #88c6ef;
+  box-shadow: 0 5px 15px rgba(33,125,187,.15);
+  min-height: 150px;
+  border-radius: 10px;
+}
+.forceTextCard{
+  border: 2px solid #88c6ef;
+  box-shadow: 0 5px 15px rgba(33,125,187,.15);
+  min-height: 50px;
+  width: 40%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  min-width: 103px;
+}
+.angleDisplay{
+  background: #0d90e8;
+  border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    line-height: 20px;
+    margin-left: 8px;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+    width: 30px;
+    height: 20px;  
+}
+.angleDisplay:after {
+    border-bottom: 7px solid transparent;
+    border-right: 7px solid #0d90e8;
+    border-top: 7px solid transparent;
+    content: "";
+    height: 0;
+    left: -7px;
+    position: absolute;
+    top: 8px;
+    width: 0;
+}
+.titleHeight{
+  height: 32px;
+  font-size: 23px;
+}
+.mainCardDiv{
+  width: 260px;
+  padding-bottom: 30px;
+}
+.titleOne{
+  width: 20%; 
+  padding-right: 10px;
+}
+.canvasTwo{
+  width: 40%; 
+  padding-right: 20px;
+}
+.titleThree{
+  width: 20%; 
+  padding-right: 20px;
+}
+.resultsSection{
+  padding-top: 20px;
+}
+.forceBox{
+  padding: 10px;
+  font-size: 22px;
+  margin: 0;
+  text-align: center;
+}
+.resultsSectionMobile{
+  display: none;
+}
+.variables{
+  max-width: 246px;
+}
+@media screen and (max-width: 1068px) {
+  .select {
+    font-size: small !important;
+    width: 90% !important;
+  }
+  .titleOne{
+    order: 3;
+  }
+  .canvasTwo{
+    order: 1;
+  }
+  .mobileMenu{
+    order: 2;
+  }
+  .resultsCards{
+    order: 4;
+    width: -webkit-fill-available;
+  }
+  .resultsSectionMobile{
+    display: initial;
+  }
+  .inputField{
+    /*display: none;*/
+  }
+  .resultTextCard{
+    margin-bottom: 40px;
+  }
+  .resultsSection{
+    display: none;
+  }
+  .mobileHidden{
+    display: none;
+  }
+  .inputField{
+    width: 22%;
+    min-width: 166px;
+  }
+  .titleOne{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }
+  .calculatorView {
+    display: initial;
+    flex-flow: wrap;
+  }
+  .titleThree {
+    width: 100%;
+  }
+  .resultTextCard {
+    min-height: 0px;
+  }
+  .canvasTwo {
+    width: 100%;
+    max-width: 530px;
+    margin: auto;
+  }
+  .inputText{
+    padding-top: 0px;
+    height: 50px;
+  }
+  .variables{
+    /*display: flex;
+    justify-content: space-between;*/
+    max-width: fit-content;
+  }  
+}
+@media screen and (max-width: 900px) {
+  .inputField {
+    min-width: 146px;
+  }
+}
+@media screen and (max-width: 780px) {
+
+}
+.forceText{
+    align-self: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 19px;
+}
+@media screen and (max-width: 1330px) {
+  .forceText{
+      padding-left: 15px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .mobileHidden {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .variables{
+    display: initial;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .circle-input {
+    justify-content: center;
+  }
+  .inputField {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+input[type=range] {
+   -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+   width: 300px;
+   height: 5px;
+   background: #88c6ef;
+   border: none;
+   border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   border: none;
+   height: 32px;
+   width: 12px;
+   border-radius: 7px;
+   background: #0d90e8;
+   margin-top: -14px;
+}
+input[type=range]:focus {
+   outline: none;
+}
+ input[type=range]:focus::-webkit-slider-runnable-track {
+   background: #ccc;
+}
+input[type=range] {
+   /* fix for FF unable to apply focus style bug  */
+   border: 1px solid white;
+   /*required for proper track sizing in FF*/
+   width: 300px;
+}
+ input[type=range]::-moz-range-track {
+   width: 300px;
+   height: 5px;
+   background: #ddd;
+   border: none;
+   border-radius: 3px;
+}
+ input[type=range]::-moz-range-thumb {
+   border: none;
+   height: 16px;
+   width: 16px;
+   border-radius: 50%;
+   background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring {
+   outline: 1px solid white;
+   outline-offset: -1px;
+}
+ input[type=range]:focus::-moz-range-track {
+   background: #ccc;
+}
+
+/* for ie */
+
+input[type=range]::-ms-track {
+   width: 300px;
+   height: 5px;
+
+/*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+   background: transparent;
+
+/*leave room for the larger thumb to overflow with a transparent border */
+   border-color: transparent;
+   border-width: 6px 0;
+
+/*remove default tick marks*/
+   color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+   background: #777;
+   border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+   background: #ddd;
+   border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+   border: none;
+   height: 16px;
+   width: 16px;
+   border-radius: 50%;
+   background: goldenrod;
+}
+input[type=range]:focus::-ms-fill-lower {
+   background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+   background: #ccc;
+}
+.option{
+  color: #0d90e8;
+}
+.select {
+  color: #0d90e8;
+  padding-right: 2.5em;
+  border-color: #3273dc;
+  width: 100%;
+  padding: calc(0.5em - 1px) calc(0.5em - 1px); /* Adjust the padding to make the icon thinner */
+  border-radius: 4px;
+  font-size: 1rem;
+  height: 2.5em;
+  line-height: 1.5;
+  vertical-align: top;
+  position: relative;
+  max-width: 240px;
+}
+.select:hover{
+  border-color: #5ce6fe;
+  cursor: pointer;
+}
+.titleDescription{
+  color: #666;
+  font-weight: 500;
+}
+.Results{
+  width: 40%;
+  padding-right: 20px;
+}
+.resultsH2{
+  /*padding-bottom: 1em;*/
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+.resultsBox{
+  border: 2px solid #88c6ef;
+  box-shadow: 0 5px 15px rgba(33,125,187,.15);
+  background-color: #fff;
+}
+.resultsHeader{
+  box-shadow: 0 2px 0 #88c6ef;
+  background-color: transparent;
+  align-items: stretch;
+  display: flex
+}
+.cardHeader{
+  align-items: center;
+  color: #363636;
+  display: flex;
+  flex-grow: 1;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  flex-direction: column;
+}
+.bottomResults{
+  box-shadow: 0 2px 0 #88c6ef;
+  padding: 1.5rem;
+}
+.resultsUL{
+  margin: 0 0 20px;
+  list-style: none;
+  padding-left: 20px;
+}
+.card-product{
+  background: #fefefe;
+  border-radius: 0.66em!important;
+  box-shadow: 0 5px 15px rgba(33,125,187,.14902);
+  overflow: hidden;
+  transition: box-shadow .1s ease-in-out;
+}
+@media screen and (max-width: 768px){
+.card-product-mobile{
+  flex-flow: wrap;
+  display: flex!important;
+}
+}
+.imageDiv{
+  display: block;
+  padding: 0.75rem;
+}
+.buyButton{
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  line-height: 50px;
+  padding: 0 30px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  border: none;
+  color: white !important;
+  text-decoration: none !important;
+  background: linear-gradient(to right, #0987db 0%, #34bff4 100%);
+  background-size: 200% 100%;
+  background-position: -100% 0;
+  transition: background-position 2s cubic-bezier(0.61, 0.51, 0, 1.04);
+}
+.buyButton:hover{
+  background-position: 100% 0;
+}
+.radioInput{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border: 1px solid #cccbcb;
+  border-radius: 0.22rem;
+  display: inline-block;
+  height: 16px;
+  margin: -2px 0px 0px 4px;
+  overflow: hidden;
+  width: 16px;
+  transition: .2s ease-in-out;
+  transition-property: background-color,border;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.item-not-interactable {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.resultsCards{
+  display: flex;
+}
+@media screen and (max-width: 1068px) {
+.mobileVariables{
+  /*display: flex;*/
+  width: 33%;
+  text-align: -webkit-center;
+  min-width: 173px;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.variables{
+  display: flex;
+  max-width: 100%;
+  width: 100%;
+}
+.Results {
+  width: 40%;
+}
+.resultsCards{
+  display: flex;
+  justify-content: center;
+}
+.resultsUL {
+    padding-left: 0px;
+}
+.titleHeight{
+  display: none;
+}
+.mobileMenu{
+  display: block !important;
+  width: 100%;
+  max-width: 530px;
+  margin: auto;
+  padding-right: 20px;
+  display: flex !important;
+  padding-bottom: 45px;
+}
+.isHidden{
+  display: none;
+}
+.isFlex{
+  display: flex ;
+}
+}
+.mobileMenu{
+  display: none;
+}
+.menuItem{
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+  text-decoration-line: none;
+}
+.isActive{
+  box-shadow: 0 10px 9px rgba(33,125,187,.55);
+  background-color: #39adff !important;
+  text-decoration: none !important;
+  text-decoration-line: none;
+}
+@media screen and (max-width: 780px){
+  .isFlex {
+    display: block !important;
+  }
+}
+.secondResults{
+  display: none;
+}
+.generalTipsButton:focus{
+  border-color: #3273dc;
+  color: #363636;
+}
+.generalTipsButton{
+  display: flex;
+  padding-right: 35px;
+  background: white;
+  border-radius: 6px;
+  margin-top: 20px;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+button.generalTipsButton:hover {
+  border-color: darkgray;
+}
+.buttonArrow{
+  margin-left: 0.25em;
+  margin-right: calc(-0.5em - 1px);
+  padding-top: 15px;
+  padding-left: 4px;
+}
+.angle-down{
+    border: 3px solid #3273dc;
+    border-radius: 2px;
+    border-right: 0;
+    border-top: 0;
+    content: " ";
+    display: block;
+    height: 0.625em;
+    margin-top: -0.4375em;
+    pointer-events: none;
+    position: absolute;
+    /*top: 50%;*/
+    transform: rotate(-45deg);
+    transform-origin: center;
+    width: 0.625em;
+}
+#popupWindow {
+  background: white;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  margin-bottom: 10px;
+}
+.infoText{
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+@media screen and (max-width: 400px){
+.generalTipsButton{
+  display: none;
+}
+#popupWindow{
+  display: none;
+}
+}
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  margin: 0;
+}
+.select {
+  animation: selectAttention 6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.select.needs-selection {
+  border: 1px solid #ff9800 !important;
+  box-shadow: 0 0 0 1px rgba(255,152,0,.25);
+  animation-play-state: running;
+}
+
+@keyframes selectAttention {
+  0%   { transform: translateX(0); }
+  2%   { transform: translateX(-4px); }
+  4%   { transform: translateX(4px); }
+  6%   { transform: translateX(-2px); }
+  8%   { transform: translateX(2px); }
+  10%  { transform: translateX(0); }
+
+  100% { transform: translateX(0); }
+}
+.inputField p{
+  margin-bottom: 0px !important;
+}
+</style>
+
+<div class="titleOne">
+
+<div class="inputField mobileHidden">
+<h2 class="titleHeight">Dimensions</h2>
+<p>Enter your specific requirements and find an actuator which has enough force to lift your load</p>
+</div>
+<div class="variables">
+<div class="mobileVariables isHidden isFlex" id="dimensionsVariable">
+<div class="inputField">
+<span class="inputText">Box Height <span class="titleDescription">(Inches)</span></span>
+<div class="circle-input">
+  <button id="downButtonOne" class="circle-input-button minus number-increment">-</button>
+  <input id="inputValueOne" type="number" class="circle-input-value inputBox" value="30">
+  <button id="upButtonOne" class="circle-input-button plus number-increment">+</button>
+</div>
+</div>
+<div class="inputField">
+<span class="inputText">Box Width <span class="titleDescription">(Inches)</span></span>
+<div class="circle-input">
+  <button id="downButtonTwo" class="circle-input-button minus number-increment">-</button>
+  <input id="inputValueTwo" type="number" class="circle-input-value inputBox" value="30">
+  <button id="upButtonTwo" class="circle-input-button plus number-increment">+</button>
+</div>
+</div>
+<div class="inputField">
+<span class="inputText">Lid Weight <span class="titleDescription">(Lb's)</span></span>
+<div class="circle-input">
+  <button id="downButtonThree" class="circle-input-button minus number-increment">-</button>
+  <input id="inputValueThree" type="number" class="circle-input-value inputBox" value="30" min="0">
+  <button id="upButtonThree" class="circle-input-button plus number-increment">+</button>
+</div>
+</div>
+</div>
+<div class="mobileVariables isHidden" id="lidVariables">
+<div class="inputField">
+<span class="inputText">Max Lid Angle <span class="titleDescription">(Degrees)</span></span>
+<div class="circle-input">
+  <input id="angleSlider" style="padding: 0; border: 0; width: 162px; overflow: clip;" id="inputValueAngle" type="range" class="circle-input-value inputBox" value="45" min="0" max="180">
+  <span class="angleDisplay" id="angleDisplay">45°</span>
+</div>
+</div>
+<div class="inputField">
+<span class="inputText">Lid Mount Position <span class="titleDescription">(Inches from hinge)</span></span>
+<div class="circle-input">
+  <input id="circleSliderTwo" style="padding: 0; border: 0; width: 162px; overflow: clip;" id="inputValueAngle" type="range" class="circle-input-value inputBox" min="0" max="100" value="50" class="slider" style="display: flex">
+  <span id="circleID" class="angleDisplay">15.0</span>
+</div>
+</div>
+</div>
+<div class="mobileVariables isHidden" id="actuatorVariable">
+<div class="inputField">
+<span class="inputText">Calculator Mode</span>
+<label>
+Auto <input id="autoInput" type="checkbox" name="auto" class="radioInput" value="auto" checked>
+</label>
+<label style="padding-left: 15px;">
+Manual <input id="manualInput" type="checkbox" name="manual" class="radioInput" value="manual">
+</label>
+</div>
+<div class="inputField">
+<span class="inputText">Number Of Actuators</span>
+<label>
+1 <input id="oneActuator" type="checkbox" name="oneActuator" class="radioInput" value="oneActuator">
+</label>
+<label style="padding-left: 15px;">
+2 <input id="twoActuator" type="checkbox" name="twoActuator" class="radioInput" value="twoActuator" checked>
+</label>
+</div>
+<div class="inputField">
+<span class="inputText">Actuator Type</span>
+<select class="select item-not-interactable" id="actuatorTypeSelector" name="actuatorType">
+  <option class="option" value="default">Choose Type</option>
+  <option class="option" value="super-duty-actuators">Super Duty</option>
+  <option class="option" value="industrial-actuators">Industrial</option>
+  <option class="option" value="c-series-actuators">C Series</option>
+  <option class="option" value="micro-utility-actuator">Micro Utility</option>
+  <option class="option" value="utility-linear-actuators-110">Utility 110'Lb</option>
+  <option class="option" value="utility-linear-actuators-330">Utility 330'Lb</option>
+  <option class="option" value="linear-actuators">Classic</option>
+  <option class="option" value="adjustable-stroke-linear-actuators">Adjustable</option>
+  <option class="option" value="bullet-series-50-cal-linear-actuators">Bullet 50 Cal</option>
+  <option class="option" value="bullet-series-36-cal-linear-actuators">Bullet 36 Cal</option>
+  <option class="option" value="bullet-series-35-cal-linear-actuators">Bullet 35 Cal</option>
+  <option class="option" value="bullet-series-23-cal">Bullet 23 Cal</option>
+  <option class="option" value="bullet-series-mini-actuators">Mini Bullet</option>
+  <option class="option" value="deluxe-rod-actuator">Deluxe Rod</option>
+  <option class="option" value="heavy-duty">Heavy Duty</option>
+
+  <option class="option" value="feedback-rod-actuator">Feedback Rod</option>
+  <option class="option" value="industrial-heavy-duty-linear-actuators">Industrial Heavy Duty</option>
+  <option class="option" value="high-speed-actuator">High Speed</option>
+  <option class="option" value="power-max-heavy-duty-actuators">Power Max</option>
+  <option class="option" value="tubular-linear-actuator">Sleek Rod</option>
+  <option class="option" value="premium-linear-actuators">P-Series</option>
+  <option class="option" value="premium-high-force-linear-actuators">P-Series High Force</option>
+  
+</select>
+</div>
+<div id="actuatorStrokeDiv" class="inputField">
+<span class="inputText">Actuator Stroke</span>
+<select class="select item-not-interactable" id="actuatorStrokeSelector" name="actuatorType">
+  <option class="option" value="default">Choose Stroke</option>
+</select>
+</div>
+<div class="inputField">
+<span class="inputText">Show Alternate Mounting Position</span>
+<label>
+No <input id="alternativeNo" type="checkbox" name="no" class="radioInput" value="no" checked>
+</label>
+<label style="padding-left: 15px;">
+Yes <input id="alternativeYes" type="checkbox" name="yes" class="radioInput" value="yes">
+</label>
+</div>
+</div>
+</div>
+</div>
+<div class="canvasTwo"><h2 class="titleHeight">Diagram</h2><div id="calcParent"></div>
+<button class="generalTipsButton" onclick="toggleWindow()"><p style="margin: auto; padding: 8px 0;">General Tips</p><span class="buttonArrow"><i class="angle-down"></i></span></button>
+<div id="popupWindow" style="display: none;">
+  <p class="infoText">This tool automatically factors in a multiplicative factor of 1.2 in the load requirements as a minimum safety factor (actuators should not be run at 100% their maximum rated load).</p>
+  <p class="infoText">If there is a intersection but no results are showing, it is because the current actuator does not have a force option high enough for the current requirments. Try selecting a different actuator type.</p>
+  </div>
+</div>
+<div class="mobileMenu">
+<a class="isActive" style="width: 33.3333%; background-color: #3d93d0;" id="dimensions"><div class="menuItem">DIMENSIONS</div></a>
+<a style="width: 33.3333%; background-color: #3d93d0;" id="lid"><div class="menuItem">LID</div></a>
+<a style="width: 33.3333%; background-color: #3d93d0;" id="actuator"><div class="menuItem">ACTUATOR</div></a>
+</div>
+<div class="resultsCards">
+<div id="Results" class="Results">
+  <h2 class="resultsH2">Results</h2>
+  <div class="resultsBox">
+    <header class="resultsHeader">
+      <div class="cardHeader">
+        <h4 id="actuatorResults" style="font-weight: 700!important;">Super Duty 6"</h4>
+        <h5>Mounting Options</h5>
+      </div>
+    </header>
+    <div class="bottomResults">
+      <ul class="resultsUL">
+      <li style="overflow-wrap: break-word;">A COORDINATES:</li>
+      <li>X: <span id="XCoord" style="color: #0d90e8;"></span></li>
+      <li>Y: <span id="YCoord" style="color: #0d90e8;"></span></li>
+      <li style="padding-top: 1em;">
+      <p style="margin-bottom: 1em; color: #3298dc !important;">Requires <b class="actuatorAmount">two</b> actuators, each with a minimum force of at least:</p>
+      <p id="forceResult" style="color: #0d90e8; margin-bottom: 10px; font-size: 1.25rem!important;"></p>
+      <li id="ForceWarning" style="display: none; max-width: 400px;">
+      <p style="color: red;">Required force exceeds maximum rated load for this type of actuator. Please select a different mounting position and/or actuator.</p>
+      </li>   
+      </li>               
+      </ul>
+    </div>
+    <div class="bottomResults secondResults" id="secondResult">
+      <ul class="resultsUL">
+      <li style="overflow-wrap: break-word;">B COORDINATES:</li>
+      <li>X: <span id="XCoord2" style="color: #0d90e8;"></span></li>
+      <li>Y: <span id="YCoord2" style="color: #0d90e8;"></span></li>
+      <li style="padding-top: 1em;">
+      <p style="margin-bottom: 1em; color: #3298dc !important;">Requires <b class="actuatorAmount">two</b> actuators, each with a minimum force of at least:</p>
+      <p id="forceResult2" style="color: #0d90e8; margin-bottom: 10px; font-size: 1.25rem!important;"></p>
+      </li>
+      <li id="ForceWarning2" style="display: none; max-width: 400px;">
+      <p style="color: red;">Required force exceeds maximum rated load for this type of actuator. Please select a different mounting position and/or actuator.</p>
+      </li>              
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="recommendedProductDiv" style="max-width: 255px">
+  <h2 class="resultsH2">Recommended Product</h2>
+  <div id="mainResultsDiv" class="card-product card-product-mobile">
+    <div class="imageDiv">
+      <img src="" id="productImage" alt="" style="width: 225px;">
+    </div>
+    <div style="padding: 20px;">
+      <h4><a href="" id="productTitle" style="color: black;"></a></h4>
+      <p>From:</p>
+      <h5 id="productPrice"></h5>
+    </div>
+    <a id="buyNowButton" class="buyButton">BUY NOW</a>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+<script src="{{ 'actuatorDimensions.js' | asset_url }}"></script>
+<script>
+
+function toggleWindow() {
+  var popup = document.getElementById("popupWindow");
+  if (popup.style.display === "none") {
+    popup.style.display = "block";
+  } else {
+    popup.style.display = "none";
+  }
+}
+
+
+
+
+
+let shapeOne;
+let circleX = 300;
+let circleY = 100;
+let circlediameter = 100;
+let lineX1;
+let lineY1;
+let lineX2;
+let lineY2;
+var currentAspectRatio = 1;
+var currentHeight = 300;
+var currentWidth = 300;
+var boxHeight = 300;
+var boxWidth = 300;
+var angleX = 0;
+var angleY = 0;
+let actuatorLength = 10;
+let actuatorStroke = 2;
+let angle;
+let aspectRatio = boxHeight/boxWidth;
+let canvasHeight = 800;
+let canvasWidth = 800;
+var squareEdgeWidth = 300;
+let lidCircleX;
+let lidCircleY;
+let newHeight;
+let newWidth;
+let intersectedPointOne;
+let intersectedPointTwo;
+let actuatorMountingPoint;
+let actuatorAngle;
+let actuatorAngle2;
+let actuatorMountingPointOne;
+let actuatorMountingPointTwo;
+let uniqueForces;
+
+function setup() {
+
+let downButtonOne = document.getElementById("downButtonOne");
+let upButtonOne = document.getElementById("upButtonOne");
+let inputValueOne = document.getElementById("inputValueOne");
+
+downButtonOne.addEventListener('click', function() {
+    inputValueOne.value = parseInt(inputValueOne.value) - 1;
+    boxHeight = parseInt(inputValueOne.value)*10;
+    redraw();
+});
+upButtonOne.addEventListener('click', function() {
+    inputValueOne.value = parseInt(inputValueOne.value) + 1;
+    boxHeight = parseInt(inputValueOne.value)*10;
+    redraw();
+}); 
+inputValueOne.addEventListener('input', function() {
+    boxHeight = parseInt(inputValueOne.value)*10;
+    redraw();
+});
+
+
+downButtonTwo.addEventListener('click', function() {
+    inputValueTwo.value = parseInt(inputValueTwo.value) - 1;
+    boxWidth = parseInt(inputValueTwo.value)*10;
+    //document.getElementById(circleID).innerHTML = parseInt(inputValueTwo.value)/100*document.getElementById(circleID).innerHTML;
+    lidCircle = circleSliderTwo.value;
+    document.getElementById('circleID').innerHTML = ((lidCircle / 100) * document.getElementById('inputValueTwo').value).toFixed(1);
+    redraw();
+});
+upButtonTwo.addEventListener('click', function() {
+    inputValueTwo.value = parseInt(inputValueTwo.value) + 1;
+    boxWidth = parseInt(inputValueTwo.value)*10;
+    lidCircle = circleSliderTwo.value;
+    document.getElementById('circleID').innerHTML = ((lidCircle / 100) * document.getElementById('inputValueTwo').value).toFixed(1);
+    redraw();
+});
+inputValueTwo.addEventListener('input', function() {
+    boxWidth = parseInt(inputValueTwo.value)*10;
+    lidCircle = circleSliderTwo.value;
+    document.getElementById('circleID').innerHTML = ((lidCircle / 100) * document.getElementById('inputValueTwo').value).toFixed(1);
+    redraw();
+});
+
+downButtonThree.addEventListener('click', function() {
+  if(inputValueThree.value > 2){
+    inputValueThree.value = parseInt(inputValueThree.value) - 1;
+  }
+  redraw();
+});
+upButtonThree.addEventListener('click', function() {
+    inputValueThree.value = parseInt(inputValueThree.value) + 1;
+    redraw();
+});
+inputValueThree.addEventListener('input', function() {
+    redraw();
+});
+
+
+
+let angleSlider = document.getElementById("angleSlider");
+angleSlider.addEventListener("input", function() {
+  angle = angleSlider.value;
+  document.getElementById('angleDisplay').innerHTML = angle + "°";
+  redraw();
+});
+
+
+let circleSliderTwo = document.getElementById("circleSliderTwo");
+let lidCircle;
+circleSliderTwo.addEventListener("input", function() {
+  lidCircle = circleSliderTwo.value;
+  document.getElementById('circleID').innerHTML = ((lidCircle / 100) * document.getElementById('inputValueTwo').value).toFixed(1);
+  redraw();
+});
+
+
+document.getElementById('manualInput').addEventListener('click', function() {
+  if (document.getElementById('autoInput').checked) {
+    document.getElementById('actuatorStrokeSelector').classList.toggle("item-not-interactable");
+    document.getElementById('actuatorTypeSelector').classList.toggle("item-not-interactable");
+    document.getElementById('autoInput').checked = false;
+    
+  }
+  else{
+    if(!this.checked){
+      this.checked = true;
+    }
+  }
+  redraw();
+});
+
+document.getElementById('autoInput').addEventListener('click', function() {
+  if (document.getElementById('manualInput').checked) {
+    document.getElementById('actuatorStrokeSelector').classList.toggle("item-not-interactable");
+    document.getElementById('actuatorTypeSelector').classList.toggle("item-not-interactable");
+    document.getElementById('manualInput').checked = false;
+  }
+  else{
+    if(!this.checked){
+      this.checked = true;
+    }
+  }
+  redraw();
+});
+
+
+
+
+
+var numberActuatorsElements = document.getElementsByClassName('actuatorAmount');
+var forceElement = document.getElementById('forceResult');
+var forceElementTwo = document.getElementById('forceResult2');
+
+function changeforce(multiplyer){
+  const forceOne = parseFloat(forceElement.innerText) * multiplyer;
+  const forceTwo = parseFloat(forceElementTwo.innerText) * multiplyer;
+  console.log(forceOne);
+  forceElement.innerHTML = forceOne.toFixed(2) + " Lb's";
+  console.log(forceElement);
+  forceElementTwo.innerHTML = forceTwo.toFixed(2) + " Lb's";
+};
+
+
+
+document.getElementById('oneActuator').addEventListener('click', function() {
+  if(document.getElementById('twoActuator').checked){
+    Array.from(numberActuatorsElements).forEach(function(element, index) {
+      element.innerHTML = 'one';
+    });
+    document.getElementById('twoActuator').checked = false;
+    redraw();
+    
+  }
+  else{
+    if(!this.checked){
+      this.checked = true;
+    }
+    redraw();
+  }
+  
+});
+
+document.getElementById('twoActuator').addEventListener('click', function() {
+  if(document.getElementById('oneActuator').checked){
+    Array.from(numberActuatorsElements).forEach(function(element, index) {
+      element.innerHTML = 'two';
+    });
+    document.getElementById('oneActuator').checked = false;
+    redraw();
+  }
+  else{
+    if(!this.checked){
+      this.checked = true;
+    }
+    redraw();
+  }
+});
+
+
+
+
+
+
+
+document.getElementById('alternativeNo').addEventListener('click', function() {
+  if (document.getElementById('alternativeYes').checked) {
+    document.getElementById('alternativeYes').checked = false;
+  }
+  else{
+    if(!this.checked){
+      this.checked = true;
+    }
+  }
+  redraw();
+});
+
+document.getElementById('alternativeYes').addEventListener('click', function() {
+  if (document.getElementById('alternativeNo').checked) {
+    document.getElementById('alternativeNo').checked = false;
+  }
+  else{
+    if(!this.checked){
+      this.checked = true;
+    }
+  }
+  redraw();
+});
+
+
+
+
+
+
+
+document.getElementById('actuatorTypeSelector').addEventListener('change', function () {
+  updateSelectorHighlights();
+  syncSelectionAnimations();
+  redraw();
+});
+
+document.getElementById('actuatorStrokeSelector').addEventListener('change', function () {
+  updateSelectorHighlights();
+  syncSelectionAnimations();
+  redraw();
+});
+
+let dimensions = document.getElementById('dimensions');
+let lid = document.getElementById('lid');
+let actuator = document.getElementById('actuator');
+
+let dimenionvariable = document.getElementById('dimensionsVariable');
+let lidvariable = document.getElementById('lidVariables');
+let actuatorvariable = document.getElementById('actuatorVariable');
+
+dimensions.addEventListener('click', function() {
+  this.classList.add('isActive');
+  lid.classList.remove('isActive');
+  actuator.classList.remove('isActive');
+  dimenionvariable.classList.add('isFlex');
+  lidvariable.classList.remove('isFlex');
+  actuatorvariable.classList.remove('isFlex');
+});
+lid.addEventListener('click', function() {
+  this.classList.add('isActive');
+  dimensions.classList.remove('isActive');
+  actuator.classList.remove('isActive');
+  dimenionvariable.classList.remove('isFlex');
+  lidvariable.classList.add('isFlex');
+  actuatorvariable.classList.remove('isFlex');
+});
+actuator.addEventListener('click', function() {
+  this.classList.add('isActive');
+  lid.classList.remove('isActive');
+  dimensions.classList.remove('isActive');
+  dimenionvariable.classList.remove('isFlex');
+  lidvariable.classList.remove('isFlex');
+  actuatorvariable.classList.add('isFlex');
+});
+
+
+
+
+
+
+let parentElement = document.getElementById("calcParent");
+let canvas = createCanvas(canvasWidth, canvasHeight);
+canvas.addClass('calculatorCanvas');
+canvas.parent(parentElement);
+
+
+noLoop();
+updateSelectorHighlights();
+syncSelectionAnimations();
+}
+
+
+
+
+
+
+function drawBox(){
+
+  stroke("#88c6ef");
+  strokeWeight(5);
+  aspectRatio = (boxHeight/boxWidth);
+
+  var maxHeight = 600;
+  var maxWidth = 600;
+  var amountToChange;
+  var ratio = 1;
+
+  if(boxWidth > boxHeight){
+    newWidth = (squareEdgeWidth/aspectRatio);
+    newHeight = newWidth*aspectRatio;
+    
+  }
+  else if(boxWidth < boxHeight){
+    newHeight = (squareEdgeWidth*aspectRatio);
+    newWidth = newHeight/aspectRatio;
+  }
+
+  ratio = (newWidth + newHeight)/(squareEdgeWidth*2);
+  newWidth = newWidth/ratio;
+  newHeight = newHeight/ratio;
+
+  if(boxWidth == boxHeight){
+    newHeight = squareEdgeWidth;
+    newWidth = squareEdgeWidth;
+  }
+
+  lineY1 = canvasWidth - newHeight - 100;
+  lineY2 = canvasWidth - newHeight;
+  lineX1 = (canvasWidth - newWidth) / 2;
+  lineX2 = lineX1 + newWidth;
+
+
+  stroke("#88c6ef");
+  strokeWeight(4);
+
+
+  //top line that height and width can move
+  line(lineX1, lineY1, lineX2, lineY2-100);
+  
+  //bottom line that never moves up but can be squished
+  line(lineX1,canvasHeight-100,lineX2,canvasHeight-100);
+
+  //lines joining them:
+  line(lineX1, canvasHeight-100, lineX1, lineY2-100);
+  line(lineX2, lineY1, lineX2, canvasHeight-100);
+
+  stroke("#0d90e8");
+  strokeWeight(8);
+  
+  let angleRadians = radians(angleSlider.value);
+  //400 is length of line
+
+  angleX = cos(angleRadians) * newWidth;
+  angleY = sin(angleRadians) * newWidth;
+
+  line(lineX1, lineY1, lineX1 + angleX, lineY1 - angleY);
+
+  //angle = slider.value();
+}
+
+function drawActuatorPoints(){
+  lidCircleX = (lineX1 + lineX1 + angleX*(circleSliderTwo.value/50))/2;
+  lidCircleY = (lineY1 + lineY1 - angleY*(circleSliderTwo.value/50))/2;
+  stroke('#ff8800');
+  fill('#ff8800');
+  strokeWeight(4);
+  //lid
+  ellipse(lidCircleX, lidCircleY, 15); 
+  //box
+  ellipse(lineX1 + (lineX2 - lineX1)*(circleSliderTwo.value/100), lineY1, 10); 
+  noFill();
+}
+
+function drawIntersectPoints(){
+  strokeWeight(1);
+  const selectElement = document.getElementById("actuatorTypeSelector");
+  const options = selectElement.options;
+  let solutionFound = false;
+  let matchingStroke = false;
+  for (let i = 0; i < actuatorDimensions.length; i++) {
+    let currentActuator = actuatorDimensions[i];
+    if(document.getElementById('manualInput').checked){
+      if(currentActuator.Stroke != document.getElementById('actuatorStrokeSelector').value || currentActuator.handle != document.getElementById('actuatorTypeSelector').value){
+        continue;
+      }
+    }
+    matchingStroke = true;
+    actuatorLength = currentActuator.retractedLength;
+    actuatorStroke = currentActuator.Stroke;
+    let arcFound = false;
+
+    let arcLength = (((actuatorLength + actuatorStroke)/inputValueTwo.value)*newWidth);
+    let boxArcLength = ((actuatorLength/inputValueTwo.value)*newWidth);
+    
+    let lidArc = {
+    x: lidCircleX,
+    y: lidCircleY,
+    diameter: arcLength * 2,
+    radius: arcLength,
+    startAngle: radians(8) - radians(angleSlider.value),
+    endAngle: radians(172) - radians(angleSlider.value),
+    draw: function() {
+        arc(this.x, this.y, this.diameter, this.diameter, this.startAngle, this.endAngle, PIE);
+    },
+    contains: function(x, y) {
+        let distanceFromCenter = dist(x, y, this.x, this.y);
+        if (distanceFromCenter > (this.radius * 1.001)) {
+            return false;
+        }
+        let angle = atan2(y - this.y, x - this.x);
+        let adjustedStartAngle = this.startAngle + radians(angleSlider.value);
+        let adjustedEndAngle = this.endAngle + radians(angleSlider.value);
+        
+        // Normalize angles to be between 0 and TWO_PI
+        while (adjustedStartAngle < 0) adjustedStartAngle += TWO_PI;
+        while (adjustedStartAngle >= TWO_PI) adjustedStartAngle -= TWO_PI;
+        while (adjustedEndAngle < 0) adjustedEndAngle += TWO_PI;
+        while (adjustedEndAngle >= TWO_PI) adjustedEndAngle -= TWO_PI;
+        
+        // Normalize angle to be between 0 and TWO_PI
+        while (angle < 0) angle += TWO_PI;
+        while (angle >= TWO_PI) angle -= TWO_PI;
+
+        // Check if the angle falls within the adjusted range
+        if (adjustedEndAngle > adjustedStartAngle) {
+            return (angle >= adjustedStartAngle && angle <= adjustedEndAngle);
+        } else {
+            return (angle >= adjustedStartAngle || angle <= adjustedEndAngle);
+        }
+    }
+};
+
+    let boxArc = {
+      x: lineX1 + (lineX2 - lineX1) * (circleSliderTwo.value / 100),
+      y: lineY1,
+      diameter: boxArcLength*2,
+      radius: boxArcLength,
+      startAngle: radians(16),
+      endAngle: radians(166),
+      draw: function() {
+        arc(this.x, this.y, this.diameter, this.diameter, this.startAngle, this.endAngle, PIE);
+      },
+      contains: function(x, y) {
+        let distanceFromCenter = dist(x, y, this.x, this.y);
+        if (distanceFromCenter > (this.radius*1.001)) {
+          return false;
+        }
+        let angle = atan2(y - this.y, x - this.x);
+        while (angle < this.startAngle) angle += TWO_PI;
+        while (angle > this.endAngle) angle -= TWO_PI;
+        return (angle >= this.startAngle && angle <= this.endAngle);
+      }
+    };
+
+    if(document.getElementById('manualInput').checked){
+      strokeWeight(2);
+      stroke('#ff8800');
+      boxArc.draw();
+      stroke('#ffc800');
+      lidArc.draw();
+      addAcuatorStrokes(currentActuator.handle, actuatorNames.get(currentActuator.handle), currentActuator.Stroke);
+    }
+    let intersections;
+    actuatorMountingPointOne = null;
+    actuatorMountingPointTwo = null;
+    intersections = calculateArcIntersection(boxArc, lidArc, true);
+
+    if(intersections){
+      
+      strokeWeight(2);
+      stroke('#ff8800');
+      uniqueForces = getUniqueForces(currentActuator.handle, actuatorDimensions, currentActuator.Stroke);
+      
+      if(intersections[0]){
+        actuatorMountingPointOne = [intersections[0][0], intersections[0][1]];
+      }
+      if(intersections[1]){
+        actuatorMountingPointTwo = [intersections[1][0], intersections[1][1]];
+      }
+      let minForce = findMaxForce();
+      //*2 as we are calculating for 2 actuators.
+      if(Math.min(minForce[0], minForce[1]) < Math.max(...uniqueForces)*getSelectedActuatorCount() || document.getElementById('manualInput').checked){
+        solutionFound = true;
+        if(!document.getElementById('manualInput').checked){
+          boxArc.draw();
+          stroke('#ffc800');
+          lidArc.draw();
+        }
+        stroke('#000000');
+        strokeWeight(5);
+        //point(intersections[0], intersections[1]);
+        strokeWeight(1);
+        textSize(36);
+        stroke('#3642b3');
+        fill('#3642b3');
+        if(document.getElementById('alternativeNo').checked && intersections[0]){
+          if(minForce[0] <= minForce[1]){
+            //console.log("First option");
+            text("A", intersections[0][0] + 8, intersections[0][1] + 22);
+            strokeWeight(5);
+            drawActuator(intersections[0], 1);
+          }
+          else{
+            //console.log("Second option");
+            text("A", intersections[1][0] + 8, intersections[1][1] + 22);
+            strokeWeight(5);
+            drawActuator(intersections[1], 1);
+          }
+          noFill();
+        }
+        else{
+          if(intersections[0]){
+            if(minForce[0] <= minForce[1]){
+              text("A", intersections[0][0] + 8, intersections[0][1] + 22);
+              strokeWeight(5);
+              drawActuator(intersections[0], 1);
+            }
+            else{
+              text("A", intersections[1][0] + 8, intersections[1][1] + 22);
+              strokeWeight(5);
+              drawActuator(intersections[1], 1);
+            }
+            noFill();
+          }
+          if(intersections[1]){
+            strokeWeight(1);
+            textSize(36);
+            stroke('#3642b3');
+            fill('#3642b3');
+            if(minForce[0] <= minForce[1]){
+              text("B", intersections[1][0] + 8, intersections[1][1] + 22);
+              strokeWeight(5);
+              drawActuator(intersections[1], 2);
+            }
+            else{
+              text("B", intersections[0][0] + 8, intersections[0][1] + 22);
+              strokeWeight(5);
+              drawActuator(intersections[0], 2);
+            }
+            noFill();
+          }
+        }
+        noFill();
+        for (let i = 0; i < options.length; i++) {
+          if (options[i].text === actuatorNames.get(currentActuator.handle)) {
+            options[i].selected = true;
+            break;
+          }
+        }
+        if(!document.getElementById('manualInput').checked){
+          addAcuatorStrokes(currentActuator.handle, actuatorNames.get(currentActuator.handle), currentActuator.Stroke);
+        }
+        document.getElementById('actuatorResults').innerHTML = actuatorNames.get(currentActuator.handle) + " " + currentActuator.Stroke + '"';
+        if(!document.getElementById('alternativeNo').checked){
+          if(intersections[0]){
+            var XIntersectOne;
+            var yIntersectOne;
+            if(minForce[0] <= minForce[1]){
+              XIntersectOne = (((intersections[0][0] - lineX1) / (lineX2 - lineX1)) * document.getElementById('inputValueTwo').value).toFixed(2);
+              yIntersectOne = (((intersections[0][1] - lineY1) / (canvasHeight-100-lineY1)) * document.getElementById('inputValueOne').value).toFixed(2);
+            }
+            else{
+              XIntersectOne = (((intersections[1][0] - lineX1) / (lineX2 - lineX1)) * document.getElementById('inputValueTwo').value).toFixed(2);
+              yIntersectOne = (((intersections[1][1] - lineY1) / (canvasHeight-100-lineY1)) * document.getElementById('inputValueOne').value).toFixed(2);
+            }
+            document.getElementById('XCoord').innerHTML = XIntersectOne + " Inches";
+            document.getElementById('YCoord').innerHTML = yIntersectOne + " Inches";
+          }
+          if(intersections[1]){
+            var XIntersectTwo;
+            var yIntersectTwo;
+            document.getElementById('secondResult').style.display = "block";
+            if(minForce[0] <= minForce[1]){
+              XIntersectTwo = (((intersections[1][0] - lineX1) / (lineX2 - lineX1)) * document.getElementById('inputValueTwo').value).toFixed(2);
+              yIntersectTwo = (((intersections[1][1] - lineY1) / (canvasHeight-100-lineY1)) * document.getElementById('inputValueOne').value).toFixed(2);
+            }
+            else{
+              XIntersectTwo = (((intersections[0][0] - lineX1) / (lineX2 - lineX1)) * document.getElementById('inputValueTwo').value).toFixed(2);
+              yIntersectTwo = (((intersections[0][1] - lineY1) / (canvasHeight-100-lineY1)) * document.getElementById('inputValueOne').value).toFixed(2);
+            }
+            document.getElementById('XCoord2').innerHTML = XIntersectTwo + " Inches";
+            document.getElementById('YCoord2').innerHTML = yIntersectTwo + " Inches";
+          }
+          else{
+            document.getElementById('secondResult').style.display = "none";
+          }
+
+          //needs updating to show individual force for each actuator
+          document.getElementById('forceResult').innerHTML = (Math.min(minForce[0], minForce[1])/getSelectedActuatorCount()).toFixed(2) + " Lbs";
+          document.getElementById('forceResult2').innerHTML = (Math.max(minForce[0], minForce[1])/getSelectedActuatorCount()).toFixed(2) + " Lbs";
+          document.getElementById('productImage').src = actuatorImage.get(currentActuator.handle);
+          document.getElementById('productTitle').innerHTML = actuatorNames.get(currentActuator.handle) + " Linear Actuators";
+          document.getElementById('productTitle').setAttribute('href', "https://www.firgelliauto.com/products/" + currentActuator.handle);
+          document.getElementById('productPrice').innerHTML = actuatorPrice.get(currentActuator.handle);
+          if(currentActuator.handle == 'utility-linear-actuators-110' || currentActuator.handle == 'utility-linear-actuators-330'){
+            document.getElementById('buyNowButton').setAttribute('href', "https://www.firgelliauto.com/products/utility-linear-actuators");
+          }
+          else{
+            document.getElementById('buyNowButton').setAttribute('href', "https://www.firgelliauto.com/products/" + currentActuator.handle);
+          }
+          break;
+        }
+        else{
+          document.getElementById('secondResult').style.display = "none";
+          var XIntersectOne;
+          var yIntersectOne;
+          if(minForce[0] <= minForce[1]){
+            XIntersectOne = (((intersections[0][0] - lineX1) / (lineX2 - lineX1)) * document.getElementById('inputValueTwo').value).toFixed(2);
+            yIntersectOne = (((intersections[0][1] - lineY1) / (canvasHeight-100-lineY1)) * document.getElementById('inputValueOne').value).toFixed(2);
+          }
+          else{
+            XIntersectOne = (((intersections[1][0] - lineX1) / (lineX2 - lineX1)) * document.getElementById('inputValueTwo').value).toFixed(2);
+            yIntersectOne = (((intersections[1][1] - lineY1) / (canvasHeight-100-lineY1)) * document.getElementById('inputValueOne').value).toFixed(2);
+          }
+          document.getElementById('XCoord').innerHTML = XIntersectOne + " Inches";
+          document.getElementById('YCoord').innerHTML = yIntersectOne + " Inches";
+          document.getElementById('forceResult').innerHTML = (Math.min(minForce[0], minForce[1])/getSelectedActuatorCount()).toFixed(2) + " Lbs";
+          document.getElementById('productImage').src = actuatorImage.get(currentActuator.handle);
+          document.getElementById('productTitle').innerHTML = actuatorNames.get(currentActuator.handle) + " Linear Actuators";
+          document.getElementById('productTitle').setAttribute('href', "https://www.firgelliauto.com/products/" + currentActuator.handle);
+          document.getElementById('productPrice').innerHTML = actuatorPrice.get(currentActuator.handle);
+          if(currentActuator.handle == 'utility-linear-actuators-110' || currentActuator.handle == 'utility-linear-actuators-330'){
+            document.getElementById('buyNowButton').setAttribute('href', "https://www.firgelliauto.com/products/utility-linear-actuators");
+          }
+          else{
+            document.getElementById('buyNowButton').setAttribute('href', "https://www.firgelliauto.com/products/" + currentActuator.handle);
+          }
+          break;
+        }
+        
+      }
+    }
+  }
+  if(!matchingStroke){
+    addAcuatorStrokes(document.getElementById('actuatorTypeSelector').value, actuatorNames.get(document.getElementById('actuatorTypeSelector').value), document.getElementById('actuatorStrokeSelector').value);
+  }
+  //show results
+  if(!solutionFound){
+    document.getElementById('mainResultsDiv').style.display = 'none';
+    document.getElementById('XCoord').style.display = 'none';
+    document.getElementById('YCoord').style.display = 'none';
+    document.getElementById('actuatorResults').style.display = 'none';
+    document.getElementById('forceResult').style.display = 'none';
+    document.getElementById('forceResult2').style.display = 'none';
+    document.getElementById('ForceWarning').style.display = 'none';
+    document.getElementById('ForceWarning2').style.display = 'none';
+    document.getElementById('secondResult').style.display = 'none';
+  }
+  else{
+    document.getElementById('mainResultsDiv').style.display = 'block';
+    document.getElementById('XCoord').style.display = 'contents';
+    document.getElementById('YCoord').style.display = 'contents';
+    document.getElementById('actuatorResults').style.display = 'block';
+    document.getElementById('forceResult').style.display = 'block';
+    document.getElementById('forceResult2').style.display = 'block';
+    highlightForces();
+  }
+  if(!solutionFound && document.getElementById('autoInput').ticked){
+    options[0].selected = true;
+    document.getElementById('actuatorStrokeDiv').style.display = 'none';
+  }
+  else{
+    document.getElementById('actuatorStrokeDiv').style.display = 'block';
+  }
+}
+
+function highlightForces(){
+
+var forceResultElement = document.getElementById('forceResult');
+var forceResult2Element = document.getElementById('forceResult2');
+var forceResultValue = parseFloat(forceResultElement.innerHTML);
+var forceResult2Value = parseFloat(forceResult2Element.innerHTML);
+var max = Math.max(...uniqueForces);
+
+if (!isNaN(forceResultValue) && forceResultValue > max) {
+  forceResultElement.style.color = 'red';
+  document.getElementById('ForceWarning').style.display = 'block';
+}
+else{
+  forceResultElement.style.color = '';
+  document.getElementById('ForceWarning').style.display = 'none';
+}
+
+if (!isNaN(forceResult2Value) && forceResult2Value > max) {
+  forceResult2Element.style.color = 'red';
+  document.getElementById('ForceWarning2').style.display = 'block'; 
+}
+else{
+  forceResult2Element.style.color = '';
+  document.getElementById('ForceWarning2').style.display = 'none';
+}
+
+}
+
+
+function getUniqueForces(handle, actuators, stroke) {
+  const uniqueForces = [];
+
+  for (const actuator of actuators) {
+    if (actuator.handle === handle && !uniqueForces.includes(actuator.Force) &&
+      actuator.Stroke === stroke) {
+      uniqueForces.push(actuator.Force);
+    }
+  }
+
+  return uniqueForces;
+}
+
+function calculateArcIntersection(arc1, arc2, getBoth) {
+  let intersectionFound = false;
+  let bothIntersections = [];
+  let distanceBetweenCenter = dist(arc1.x, arc1.y, arc2.x, arc2.y);
+  let angle = atan2(arc2.y - arc1.y, arc2.x - arc1.x);
+  let d = (arc1.radius**2 - arc2.radius**2 + distanceBetweenCenter**2) / (2 * distanceBetweenCenter);
+  let x = arc1.x + d * cos(angle);
+  let y = arc1.y + d * sin(angle);
+  let distanceBetweenIntersect;
+
+  if (distanceBetweenCenter < (arc1.radius + arc2.radius)) {
+      let h = sqrt(arc1.radius**2 - d**2);
+      intersectedPointOne = [x + h*cos(angle + HALF_PI), y + h*sin(angle + HALF_PI)];
+      intersectedPointTwo = [x - h*cos(angle + HALF_PI), y - h*sin(angle + HALF_PI)];
+      if (arc1.contains(x + h*cos(angle + HALF_PI), y + h*sin(angle + HALF_PI)) && (x + h*cos(angle + HALF_PI)) < lineX2 && (y + h*sin(angle + HALF_PI) < canvasHeight-100) && arc2.contains(x + h*cos(angle + HALF_PI), y + h*sin(angle + HALF_PI))) {
+        distanceBetweenIntersect = dist(x + h*cos(angle + HALF_PI), y + h*sin(angle + HALF_PI), lidCircleX, lidCircleY);
+        if(!getBoth){
+          return [x + h*cos(angle + HALF_PI), y + h*sin(angle + HALF_PI)];
+        }
+        bothIntersections.push([x + h * Math.cos(angle + HALF_PI), y + h * Math.sin(angle + HALF_PI)]);
+      }
+
+      if (arc1.contains(x - h*cos(angle + HALF_PI), y - h*sin(angle + HALF_PI)) && (x - h*cos(angle + HALF_PI)) > lineX1 && (y - h*sin(angle + HALF_PI) < canvasHeight-100) && arc2.contains(x + h*cos(angle + HALF_PI), y + h*sin(angle + HALF_PI))) {
+        distanceBetweenIntersect = dist(x - h*cos(angle + HALF_PI), y - h*sin(angle + HALF_PI), lidCircleX, lidCircleY);
+        if(!getBoth){
+          return [x - h*cos(angle + HALF_PI), y - h*sin(angle + HALF_PI)];
+        }
+        bothIntersections.push([x - h * Math.cos(angle + HALF_PI), y - h * Math.sin(angle + HALF_PI)]);
+      }
+
+      if(getBoth && bothIntersections.length >= 1){
+        return bothIntersections;
+      }
+  }
+  return false;
+}
+
+function drawActuator(intersections, actuator){
+  let topMidpointX = intersections[0];
+  let topMidpointY = intersections[1];
+
+  let bottomMidpointX = lidCircleX;
+  let bottomMidpointY = lidCircleY;
+
+  
+  let angleRadians = atan2(topMidpointY - bottomMidpointY, topMidpointX - bottomMidpointX);
+  if(actuator == 1){
+    actuatorAngle = degrees(angleRadians);
+  }
+  else if(actuator == 1){
+    actuatorAngle2 = degrees(angleRadians);
+  }
+
+
+  let strokeStartX = topMidpointX + ((actuatorLength/(actuatorLength+actuatorStroke)) * (bottomMidpointX - topMidpointX));
+  let strokeStartY = topMidpointY + ((actuatorLength/(actuatorLength+actuatorStroke)) * (bottomMidpointY - topMidpointY));
+
+  // Calculate angle between midpoints
+  let angle = atan2(bottomMidpointY - topMidpointY, bottomMidpointX - topMidpointX);
+
+  // Calculate the offsets for the rectangle corners
+  let xOffset = 3 * cos(angle + PI/2);
+  let yOffset = 3 * sin(angle + PI/2);
+
+  // Calculate the four corner points of the rectangle
+  corner1X = topMidpointX + xOffset;
+  corner1Y = topMidpointY + yOffset;
+  corner2X = topMidpointX - xOffset;
+  corner2Y = topMidpointY - yOffset;
+  corner3X = strokeStartX - xOffset;
+  corner3Y = strokeStartY - yOffset;
+  corner4X = strokeStartX + xOffset;
+  corner4Y = strokeStartY + yOffset;
+
+  xOffset = 1 * cos(angle + PI/2);
+  yOffset = 1 * sin(angle + PI/2);
+
+  corner7X = strokeStartX - xOffset;
+  corner7Y = strokeStartY - yOffset;
+  corner8X = strokeStartX + xOffset;
+  corner8Y = strokeStartY + yOffset;
+  corner5X = bottomMidpointX + xOffset;
+  corner5Y = bottomMidpointY + yOffset;
+  corner6X = bottomMidpointX - xOffset;
+  corner6Y = bottomMidpointY - yOffset;
+
+  //rod
+  stroke('#6f78bf');
+  fill('#6f78bf');
+  beginShape();
+  vertex(corner5X, corner5Y);
+  vertex(corner6X, corner6Y);
+  vertex(corner7X, corner7Y);
+  vertex(corner8X, corner8Y);
+  endShape(CLOSE);
+
+  //body
+  fill('#3642b3');
+  stroke('#3642b3');
+  beginShape();
+  vertex(corner1X, corner1Y);
+  vertex(corner2X, corner2Y);
+  vertex(corner3X, corner3Y);
+  vertex(corner4X, corner4Y);
+  endShape(CLOSE);
+  actuatorPoints(intersections);
+}
+
+function actuatorPoints(intersections){
+  point(lidCircleX, lidCircleY);
+  point(intersections[0], intersections[1]);
+  stroke('#ff8800');
+  fill('#ff8800');
+  strokeWeight(4);
+  //lid
+  ellipse(lidCircleX, lidCircleY, 15); 
+  //box
+  ellipse(intersections[0], intersections[1], 15); 
+}
+
+function findClosestActuator(forceRequired){
+  let filteredTable = actuatorTable.filter(function(row) {
+    return row.Force >= forceRequired;
+  });
+}
+
+function draw() {
+  //canvas color
+  background(247,251,253);
+  // Draw line
+  drawBox();
+  drawActuatorPoints();
+  drawIntersectPoints();
+  
+  }
+
+function getSelectedActuatorCount(){
+  return document.getElementById('oneActuator').checked ? 1 : 2;
+}
+
+function canvasPointToHingeInches(xPoint, yPoint){
+  const lidLength = Math.max(0.001, parseFloat(document.getElementById('inputValueTwo').value) || 0.001);
+  const boxHeightInches = Math.max(0.001, parseFloat(document.getElementById('inputValueOne').value) || 0.001);
+  const xScale = lineX2 - lineX1;
+  const yScale = canvasHeight - 100 - lineY1;
+  return {
+    x: xScale ? ((xPoint - lineX1) / xScale) * lidLength : 0,
+    y: yScale ? ((yPoint - lineY1) / yScale) * boxHeightInches : 0
+  };
+}
+
+function forceForMountAtAngle(angleDeg, xPoint, yPoint){
+  const lidLength = Math.max(0.001, parseFloat(document.getElementById('inputValueTwo').value) || 0.001);
+  const lidWeight = Math.max(0, parseFloat(document.getElementById('inputValueThree').value) || 0);
+  const mountDistance = lidLength * ((parseFloat(circleSliderTwo.value) || 0) / 100);
+  if (mountDistance <= 0 || lidWeight <= 0) return 0;
+
+  const base = canvasPointToHingeInches(xPoint, yPoint);
+  const angleRadians = angleDeg * Math.PI / 180;
+  const lidMountX = mountDistance * Math.cos(angleRadians);
+  const lidMountY = -mountDistance * Math.sin(angleRadians);
+  const actuatorDX = lidMountX - base.x;
+  const actuatorDY = lidMountY - base.y;
+  const actuatorLength = Math.sqrt(actuatorDX * actuatorDX + actuatorDY * actuatorDY);
+  if (actuatorLength <= 0.001) return 999999999;
+
+  const actuatorUX = actuatorDX / actuatorLength;
+  const actuatorUY = actuatorDY / actuatorLength;
+  const momentArm = Math.abs(lidMountX * actuatorUY - lidMountY * actuatorUX);
+  if (momentArm <= 0.001) return 999999999;
+
+  const lidTorque = Math.abs(lidWeight * (lidLength / 2) * Math.cos(angleRadians));
+  return (lidTorque / momentArm) * 1.2;
+}
+
+function findMaxForce(){
+  const lidAngle = Math.max(0, Math.min(180, parseFloat(document.getElementById('angleSlider').value) || 0));
+  let largestForces = 0;
+  let largestForcesTwo = 0;
+  for (let i = 0; i <= lidAngle; i++) {
+    const totalForceRequired = forceForMountAtAngle(i, actuatorMountingPointOne[0], actuatorMountingPointOne[1]);
+    if (largestForces < totalForceRequired) largestForces = totalForceRequired;
+    if (actuatorMountingPointTwo) {
+      const totalForceRequiredTwo = forceForMountAtAngle(i, actuatorMountingPointTwo[0], actuatorMountingPointTwo[1]);
+      if (largestForcesTwo < totalForceRequiredTwo) largestForcesTwo = totalForceRequiredTwo;
+    }
+  }
+  if (actuatorMountingPointTwo) return [largestForces, largestForcesTwo];
+  return [largestForces, 999999999];
+}
+
+function calculateActuatorAngle(angle, xPoint, yPoint){
+  const lidLength = Math.max(0.001, parseFloat(document.getElementById('inputValueTwo').value) || 0.001);
+  const mountDistance = lidLength * ((parseFloat(circleSliderTwo.value) || 0) / 100);
+  const base = canvasPointToHingeInches(xPoint, yPoint);
+  const angleRadians = angle * Math.PI / 180;
+  const lidMountX = mountDistance * Math.cos(angleRadians);
+  const lidMountY = -mountDistance * Math.sin(angleRadians);
+  const lidUX = Math.cos(angleRadians);
+  const lidUY = -Math.sin(angleRadians);
+  const actuatorDX = lidMountX - base.x;
+  const actuatorDY = lidMountY - base.y;
+  const actuatorLength = Math.sqrt(actuatorDX * actuatorDX + actuatorDY * actuatorDY);
+  if (actuatorLength <= 0.001) return 0;
+  const actuatorUX = actuatorDX / actuatorLength;
+  const actuatorUY = actuatorDY / actuatorLength;
+  const cross = Math.abs(lidUX * actuatorUY - lidUY * actuatorUX);
+  const dot = Math.max(-1, Math.min(1, lidUX * actuatorUX + lidUY * actuatorUY));
+  return Math.atan2(cross, dot) * 180 / Math.PI;
+}
+
+function addAcuatorStrokes(handle, name, currentStroke){
+  removeAllOptions();
+  let matchedStroke = false;
+  const uniqueStrokes = new Set();
+  for (const actuator of actuatorDimensions) {
+    if (actuator.handle === handle) {
+      uniqueStrokes.add(actuator.Stroke);
+    }
+  }
+  addOption('default', 'Choose Stroke');
+  uniqueStrokes.forEach((stroke) => {
+    let option = addOption(stroke, name + " " + stroke + '"');
+    if (stroke === currentStroke) {
+      option.setAttribute('selected', 'selected');
+      matchedStroke = true;
+    }
+  });
+  if(!matchedStroke){
+    selectElement.querySelector("option").selected = true;
+  }
+  updateSelectorHighlights();
+  syncSelectionAnimations();
+}
+
+const selectElement = document.getElementById("actuatorStrokeSelector");
+function addOption(value, text) {
+  const option = document.createElement("option");
+  option.value = value;
+  option.text = text;
+  selectElement.appendChild(option);
+  return option;
+}
+
+// Function to remove all options from the select element
+function removeAllOptions() {
+  selectElement.innerHTML = "";
+}
+function updateSelectorHighlights() {
+  document.getElementById("actuatorTypeSelector").classList.toggle(
+    "needs-selection",
+    document.getElementById("actuatorTypeSelector").value === "default"
+  );
+
+  document.getElementById("actuatorStrokeSelector").classList.toggle(
+    "needs-selection",
+    document.getElementById("actuatorStrokeSelector").value === "default"
+  );
+}
+function syncSelectionAnimations() {
+  document.querySelectorAll(".select").forEach(el => {
+    el.style.animation = "none";
+    el.offsetHeight; // Force reflow
+    el.style.animation = "";
+  });
+}
+
+
+</script>
