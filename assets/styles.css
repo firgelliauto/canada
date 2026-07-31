@@ -135,3 +135,17 @@ background-color: #ff0000;
   top: 0;
   left: 0;
 }
+
+/* FIRGELLI CA mobile product thumbnail gap fix start */
+@media only screen and (max-width: 639px) {
+  body.template-product .productAndSliderDiv > .js-product-downloads-container {
+    display: none !important;
+  }
+
+  body.template-product #Slider.fg-slick-nav.productImagePadding,
+  body.template-product .productAndSliderDiv > #Slider.fg-slick-nav {
+    margin-top: 8px !important;
+    padding-top: 0 !important;
+  }
+}
+/* FIRGELLI CA mobile product thumbnail gap fix end */
