@@ -149,3 +149,30 @@ background-color: #ff0000;
   }
 }
 /* FIRGELLI CA mobile product thumbnail gap fix end */
+
+/* codex-super-duty-technical-table-columns-20260813
+   Keep the Super Duty technical-details model columns visually balanced. */
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table,
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table {
+  width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse !important;
+}
+
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > td:nth-child(1),
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(1),
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > td:nth-child(1),
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(1) {
+  width: 26% !important;
+}
+
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > td:nth-child(2),
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(2),
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > td:nth-child(3),
+body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(3),
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > td:nth-child(2),
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(2),
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > td:nth-child(3),
+body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(3) {
+  width: 37% !important;
+}
