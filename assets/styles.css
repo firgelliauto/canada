@@ -176,3 +176,113 @@ body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown
 body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(3) {
   width: 37% !important;
 }
+
+/* codex-product-tabs-polish-multistore-stylesheet-20260814
+   Polished product tab navigation for actuator product pages. */
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: stretch;
+    gap: 0;
+    margin: 14px 0 28px;
+    border: 1px solid #d5e1ec;
+    border-radius: 8px;
+    background: #f4f8fb;
+    box-shadow: 0 10px 24px rgba(13, 45, 78, 0.08);
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > input[type="radio"] {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > label {
+    order: 1;
+    float: none !important;
+    flex: 1 1 150px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    margin: 0 !important;
+    padding: 8px 14px !important;
+    border: 0 !important;
+    border-right: 1px solid #d5e1ec !important;
+    border-bottom: 3px solid transparent !important;
+    background: #f4f8fb !important;
+    color: #173a5e !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0 !important;
+    text-align: center !important;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > label:last-of-type {
+    border-right: 0 !important;
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > label:hover {
+    background: #ffffff !important;
+    color: #006fba !important;
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > input[type="radio"]:checked + label {
+    background: #ffffff !important;
+    color: #062f56 !important;
+    border-bottom-color: #0b82d8 !important;
+    box-shadow: inset 0 3px 0 #0b82d8, 0 1px 0 rgba(13, 45, 78, 0.06);
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > .tab {
+    order: 2;
+    flex: 0 0 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-top: 0 !important;
+    background: #ffffff;
+    padding: 28px 26px !important;
+  }
+
+  .site-wrapper.firgelli-product-tabs-polished .productTabs > .tab .content {
+    max-width: none;
+  }
+
+  @media (max-width: 820px) {
+    .site-wrapper.firgelli-product-tabs-polished .productTabs {
+      gap: 6px;
+      padding: 6px;
+      border-radius: 8px;
+    }
+
+    .site-wrapper.firgelli-product-tabs-polished .productTabs > label {
+      flex: 1 1 calc(50% - 6px);
+      height: auto !important;
+      min-height: 42px;
+      padding: 8px 12px !important;
+      border: 1px solid #d5e1ec !important;
+      border-radius: 6px;
+      font-size: 13px !important;
+    }
+
+    .site-wrapper.firgelli-product-tabs-polished .productTabs > input[type="radio"]:checked + label {
+      border-color: #0b82d8 !important;
+    }
+
+    .site-wrapper.firgelli-product-tabs-polished .productTabs > .tab {
+      border: 0;
+      padding: 20px 12px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-wrapper.firgelli-product-tabs-polished .productTabs > label {
+      flex-basis: 100%;
+    }
+  }
