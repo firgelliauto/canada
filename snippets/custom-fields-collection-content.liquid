@@ -19,7 +19,7 @@
   {% assign featured_image_url = collection.metafields.custom_fields[featured_image_url] %}
 
   {% if content_item != blank %}
-    <div class="fg-section-chess__content uk-flex uk-flex-middle uk-flex-center uk-child-width-1-2@s" uk-grid>
+    <div id="shopify-section-collection-options" class="fg-section-chess__content uk-flex uk-flex-middle uk-flex-center uk-child-width-1-2@s" uk-grid>
     {% assign loop_modulo =  forloop.index | modulo: 2 %}
 
       {% if loop_modulo == 0 %}
