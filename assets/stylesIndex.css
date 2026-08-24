@@ -164,10 +164,10 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
 
 #footer.fg-footer-redesign .fg-social-icon-row {
   display: flex !important;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 7px;
   list-style: none;
   margin: 16px 0 0 !important;
   padding: 0 !important;
@@ -232,6 +232,16 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
   display: none !important;
 }
 
+body#linear-actuators-firgelliauto .js-section-chess-collection {
+  padding-bottom: 24px !important;
+}
+
+body#linear-actuators-firgelliauto .js-section-chess-collection .fg-section-chess__content-inner.uk-grid-margin {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 #footer.fg-footer-redesign .fg-footer-bottom {
   background: #005f97;
   padding: 10px 16px;
@@ -287,6 +297,21 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
 }
 
 @media (max-width: 520px) {
+  #footer.fg-footer-redesign .fg-social-icon-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #footer.fg-footer-redesign .fg-social-link.uk-icon-button {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
+    flex-basis: 50px !important;
+  }
+
   #footer.fg-footer-redesign .fg-footer-mobile-nav {
     grid-template-columns: 1fr;
     text-align: center;
