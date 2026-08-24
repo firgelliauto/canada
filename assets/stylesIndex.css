@@ -7,6 +7,8 @@
   color: #ffffff !important;
   display: block !important;
   height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   width: 100%;
 }
 

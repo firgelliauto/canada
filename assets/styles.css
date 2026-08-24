@@ -294,6 +294,8 @@ body.template-product .section-tabs-tables .dropdown-panel:first-child .dropdown
   color: #ffffff !important;
   display: block !important;
   height: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
   width: 100%;
 }
 
