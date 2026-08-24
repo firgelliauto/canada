@@ -1546,8 +1546,10 @@ mobileOverlay.addEventListener(
     if(!stickyBar){
       return;
     }
-    if(window.scrollY > 880 && !collectionOptionsAtTop){
-      stickyBar.classList.add('visible');
+    if(window.innerWidth <= 958){
+      if(window.scrollY > 880 && !collectionOptionsAtTop){
+        stickyBar.classList.add('visible');
+      }
     }  
     else {
       stickyBar.classList.remove('visible');
