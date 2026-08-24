@@ -1541,32 +1541,20 @@ mobileOverlay.addEventListener(
 </script>
 
 <script>
+
+  let scrollDownHeight = 880;
   window.addEventListener('scroll', function(){
     const stickyBar = document.getElementById('stickyFilterDock');
     if(!stickyBar){
       return;
     }
-    if(window.innerWidth <= 568){
-      if(window.scrollY > 880 && !collectionOptionsAtTop){
-        stickyBar.classList.add('visible');
-      }
-      else {
-        stickyBar.classList.remove('visible');
-      }
-    }
-    else{
-      if(window.scrollY > 880 && !collectionOptionsAtTop){
-        stickyBar.classList.add('visible');
-      }
-      else {
-        stickyBar.classList.remove('visible');
-      }
+    if(window.scrollY > scrollDownHeight && !collectionOptionsAtTop){
+      stickyBar.classList.add('visible');
+    }  
+    else {
+      stickyBar.classList.remove('visible');
     }
   });
-</script>
-
-
-<script>
 
 document
   .getElementById('stickyFilterButton')
@@ -1614,7 +1602,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(hide){
       stickyDock.classList.remove('visible');
     }
-    else if(window.scrollY > 880){
+    else if(window.scrollY > scrollDownHeight){
       stickyDock.classList.add('visible');
     }
   };
