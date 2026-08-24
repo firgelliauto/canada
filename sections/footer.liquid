@@ -1,25 +1,12 @@
-{% if section.settings.background_color == true %}
-  {% assign background_color = 'uk-background-primary' %}
-  {% assign text_color = 'uk-light' %}
-{% else %}
-  {% assign background_color = 'uk-background-muted' %}
-  {% assign text_color = 'uk-dark' %}
-{% endif %}
-<footer class="{{ background_color }}  {{ text_color }}">
-  <div class="uk-container">
-    {% include 'responsive-footer-desktop' %}
-    {% include 'responsive-footer-mobile' %}
-    <div class="uk-flex uk-flex-center">
-      <div class="uk-width-1-1 uk-width-1-4@s" style="padding-top: 10px;">
-        <span class="uk-dark">Payments we accept:</span>
-        <div class="uk-background-default fg-padding-xs uk-margin-bottom">
-          {% include 'icon-payment-icon-group' %}
-        </div>
-      </div>
+<footer id="footer" class="fg-footer-redesign" style="display: none; width: 100%; height: auto">
+  <div class="fg-footer-main">
+    <div class="uk-container">
+      {% include 'responsive-footer-desktop' %}
+      {% include 'responsive-footer-mobile' %}
     </div>
   </div>
-  <div class="fg-background-primary-dark uk-text-center">
-    <small>{{ 'layout.footer.copyright' | t }} &copy; all rights reserved {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}.</small>
+  <div class="fg-footer-bottom uk-text-center">
+    <small>{{ 'layout.footer.copyright' | t }} &copy; all rights reserved {{ 'now' | date: "%Y" }}, <a href="/">{{ shop.name | replace: 'Firgelli', 'FIRGELLI' }}</a>.</small>
   </div>
 </footer>
 

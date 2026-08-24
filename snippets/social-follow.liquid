@@ -1,41 +1,38 @@
 {% if settings.show_social %}
-  <ul class="fg-social-icon-row uk-flex uk-flex-center js-filter uk-child-width-1-5 uk-child-width-1-5@s uk-child-width-1-5@m uk-child-width-1-6@l" uk-grid>
+  <ul class="fg-social-icon-row" aria-label="FIRGELLI social links">
     {% if settings.share_facebook %}
       <li>
-        <a href="{{ settings.facebook_link }}" title="Facebook" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="facebook">
+        <a href="{{ settings.facebook_link }}" title="Facebook" aria-label="Follow FIRGELLI on Facebook" target="_blank" rel="noreferrer noopener" class="uk-icon-button fg-social-link" uk-icon="facebook"></a>
+      </li>
+    {% endif %}
+    {% if settings.share_twitter and settings.twitter_link != blank %}
+      <li>
+        <a href="{{ settings.twitter_link }}" title="X" aria-label="Follow FIRGELLI on X" target="_blank" rel="noreferrer noopener" class="uk-icon-button fg-social-link fg-social-link-x">
+          <svg aria-hidden="true" class="fg-social-x-svg" viewBox="0 0 24 24" focusable="false">
+            <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"></path>
+          </svg>
         </a>
       </li>
     {% endif %}
-    {% if settings.share_twitter %}
-      <li>
-        <a href="{{ settings.twitter_link }}" title="Twitter" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="twitter">
-        </a>
-      </li>   
-    {% endif %}
-    {% if settings.share_pinterest %}
-      <li>
-        <a href="{{ settings.pinterest_link }}" title="LinkedIn" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="pinterest"></a>
-      </li>                 
-    {% endif %}
     {% if settings.share_linkedin %}
       <li>
-        <a href="{{ settings.linkedin_link }}" title="LinkedIn" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="linkedin"></a>
-      </li>   
+        <a href="{{ settings.linkedin_link }}" title="LinkedIn" aria-label="Follow FIRGELLI on LinkedIn" target="_blank" rel="noreferrer noopener" class="uk-icon-button fg-social-link" uk-icon="linkedin"></a>
+      </li>
     {% endif %}
     {% if settings.share_youtube %}
       <li>
-        <a href="{{ settings.youtube_link }}" title="Youtube" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="youtube"></a>
+        <a href="{{ settings.youtube_link }}" title="YouTube" aria-label="Follow FIRGELLI on YouTube" target="_blank" rel="noreferrer noopener" class="uk-icon-button fg-social-link" uk-icon="youtube"></a>
       </li>
     {% endif %}
     {% if settings.social_sharing_blog %}
       <li>
-        <a href='/blogs/news.atom' title="RSS" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="rss"></a>
-      </li> 
+        <a href="/blogs/news.atom" title="RSS" aria-label="Subscribe to FIRGELLI RSS" target="_blank" rel="noreferrer noopener" class="uk-icon-button fg-social-link" uk-icon="rss"></a>
+      </li>
     {% endif %}
     {% if settings.share_instagram %}
       <li>
-        <a href="{{settings.instagram_link}}" title="Instagram" target="_blank" rel="noreferrer noopener" class="uk-icon-button" uk-icon="instagram"></a>
-      </li> 
+        <a href="{{ settings.instagram_link }}" title="Instagram" aria-label="Follow FIRGELLI on Instagram" target="_blank" rel="noreferrer noopener" class="uk-icon-button fg-social-link" uk-icon="instagram"></a>
+      </li>
     {% endif %}
   </ul>
-{% endif %} 
+{% endif %}

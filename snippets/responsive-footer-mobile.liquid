@@ -1,55 +1,42 @@
-<style>
+<div class="fg-footer-mobile uk-hidden@m">
+  <div class="fg-footer-mobile-brand">
+    {% include 'logo-alt' %}
+    {% include 'social-follow' %}
+  </div>
 
-.footerNav{
-  display: contents !important; 
-  display: grid !important; 
-  grid-template-columns: repeat(2, 1fr); 
-  text-align: center;
-  }
+  <div class="fg-footer-mobile-contact">
+    {% include 'phone-and-address' %}
+  </div>
 
+  <div class="fg-footer-support-block">
+    <p class="fg-footer-heading">Sales &amp; Support</p>
+    <p><span>Phone:</span> <a href="tel:+18662260465">+1 866-226-0465</a></p>
+    <p><span>Extension 1:</span> Sales</p>
+    <p><span>Extension 2:</span> Support</p>
+  </div>
 
-</style>
-
-
-
-<div class="uk-section uk-hidden@m">
-  <div class="uk-container">
-    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+  <nav class="fg-footer-mobile-nav" aria-label="Footer navigation">
+    {% assign footer_link_count = 0 %}
+    {% for block in section.blocks %}
+      {% assign footer_link_count = footer_link_count | plus: linklists[block.settings.linklist].links.size %}
+    {% endfor %}
+    {% assign footer_first_column_count = footer_link_count | plus: 1 | divided_by: 2 %}
+    {% assign footer_link_index = 0 %}
+    <ul class="fg-footer-link-list">
       {% for block in section.blocks %}
-        {% assign linklist_heading = block.settings.linklist | split: '-' %}
-        {% capture linklist_title %}
-          {% for word in linklist_heading %}
-            {{ word | capitalize }}
-          {% endfor %}
-        {% endcapture %}
-        <li class="uk-parent uk-nav-divider" style="border-top: 0px;">
-          {% comment %}<a href="#">{{ linklist_title }}</a>{% endcomment %}
-          <ul class="uk-nav footerNav" id="footer">
-            {% for link in linklists[block.settings.linklist].links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
+        {% for link in linklists[block.settings.linklist].links %}
+          {% if footer_link_index == footer_first_column_count %}
+            </ul><ul class="fg-footer-link-list">
+          {% endif %}
+          <li><a href="{{ link.url }}">{{ link.title | replace: 'Firgelli', 'FIRGELLI' }}</a></li>
+          {% assign footer_link_index = footer_link_index | plus: 1 %}
+        {% endfor %}
       {% endfor %}
     </ul>
-    <div class="uk-width-1-2@s">  
-      {% if section.settings.background_color == true %}
-        {% include 'logo-alt' %}
-      {% else %}
-        {% include 'logo' %}
-      {% endif %}
-      {% include 'social-follow' %}
-    </div>
-  </div>
+  </nav>
+
 </div>
 
 <script>
-
-document.getElementById('footer').removeAttribute("hidden");
-
-
-
-
-
-
+  document.getElementById('footer').removeAttribute("hidden");
 </script>

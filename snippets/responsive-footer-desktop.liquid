@@ -1,37 +1,43 @@
-<style>
-  .rightBorder{
-    border-right: 1px solid rgba(229,229,229, 0.25);
-  }
-  .leftBorder{
-    border-left: 1px solid rgba(229,229,229, 0.25);
-  }
-</style>
+<div class="fg-footer-desktop uk-visible@m">
+  <div class="fg-footer-layout">
+    <div class="fg-footer-column fg-footer-locations">
+      {% include 'phone-and-address' %}
+    </div>
 
-<div class="uk-section uk-visible@m">
-  <div class="uk-container">
-    <div style="padding-top: 30px;" class="uk-grid-divider uk-child-width-1-3 uk-grid-match uk-flex-middle" uk-grid>
-      
-      {% for block in section.blocks %}
-        <div class="rightBorder" style="text-align: center">
-          <ul class="uk-list uk-column-1-2">
-            {% for link in linklists[block.settings.linklist].links %}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li> 
+    <div class="fg-footer-column fg-footer-middle">
+      <div class="fg-footer-support-block">
+        <p class="fg-footer-heading">Sales &amp; Support</p>
+        <p><span>Phone:</span> <a href="tel:+18662260465">+1 866-226-0465</a></p>
+        <p><span>Extension 1:</span> Sales</p>
+        <p><span>Extension 2:</span> Support</p>
+      </div>
+
+      <nav class="fg-footer-nav" aria-label="Footer navigation">
+        <div class="fg-footer-link-groups">
+          {% assign footer_link_count = 0 %}
+          {% for block in section.blocks %}
+            {% assign footer_link_count = footer_link_count | plus: linklists[block.settings.linklist].links.size %}
+          {% endfor %}
+          {% assign footer_first_column_count = footer_link_count | plus: 1 | divided_by: 2 %}
+          {% assign footer_link_index = 0 %}
+          <ul class="fg-footer-link-list">
+            {% for block in section.blocks %}
+              {% for link in linklists[block.settings.linklist].links %}
+                {% if footer_link_index == footer_first_column_count %}
+                  </ul><ul class="fg-footer-link-list">
+                {% endif %}
+                <li><a href="{{ link.url }}">{{ link.title | replace: 'Firgelli', 'FIRGELLI' }}</a></li>
+                {% assign footer_link_index = footer_link_index | plus: 1 %}
+              {% endfor %}
             {% endfor %}
           </ul>
         </div>
-      {% endfor %}
-
-      <div class="uk-flex uk-flex-center">
-        {% if section.settings.background_color == true %}
-          {% include 'logo-alt' %}
-        {% else %}
-          {% include 'logo' %}
-        {% endif %}
-        {% include 'social-follow' %}
-      </div>
-      <div class="uk-flex uk-flex-center" style="text-align: center; height: 160px">
-          {% include 'phone-and-address' %}
-      </div>
+      </nav>
     </div>
-  </div> 
+
+    <div class="fg-footer-column fg-footer-brand">
+      {% include 'logo-alt' %}
+      {% include 'social-follow' %}
+    </div>
+  </div>
 </div>
