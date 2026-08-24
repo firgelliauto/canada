@@ -5,17 +5,36 @@
   #submit-button::before{
     background: #2f62d2;
   }*/
-  #submit-button {
-    background: linear-gradient(151deg, #e52d2d 25%, #ff0000 100%);
+  /* Amazon Add to Cart yellow - product-form ATC submit only */
+  #submit-button,
+  #warranty-submit-button,
+  form.fg-product-form button[type="submit"].js-submit {
+    background: #FFD814 !important;
+    background-image: none !important;
+    color: #0F1111 !important;
+    border: 1px solid #FCD200;
+    border-radius: 8px;
   }
-  #submit-button::before {
-    background: #ff0000;
+  #submit-button::before,
+  #warranty-submit-button::before {
+    background: #FFD814 !important;
   }
-  #warranty-submit-button{
-    background: linear-gradient(151deg, #e52d2d 25%, #ff0000 100%);
+  #submit-button:hover,
+  #warranty-submit-button:hover,
+  form.fg-product-form button[type="submit"].js-submit:hover {
+    background: #F7CA00 !important;
+    background-image: none !important;
+    color: #0F1111 !important;
   }
-  #warranty-submit-button::before{
-    background: #ff0000;
+  #submit-button:hover::before,
+  #warranty-submit-button:hover::before {
+    background: #F7CA00 !important;
+  }
+  #submit-button span,
+  #warranty-submit-button span,
+  #submit-button .uk-icon,
+  #warranty-submit-button .uk-icon {
+    color: #0F1111 !important;
   }
   .warrantyItem{
     display: none;
