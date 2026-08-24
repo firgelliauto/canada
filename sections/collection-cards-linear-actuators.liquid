@@ -1542,14 +1542,14 @@ mobileOverlay.addEventListener(
 
 <script>
 
-  let scrollDownHeight = 840;
+  let scrollDownHeight = 820;
   window.addEventListener('scroll', function(){
-    scrollDownHeight = 840;
+    scrollDownHeight = 820;
     if(window.innerWidth <= 970){
-      scrollDownHeight = 950;
+      scrollDownHeight = 900;
     }
     if(window.innerWidth <= 480){
-      scrollDownHeight = 1050;
+      scrollDownHeight = 950;
     }
     const stickyBar = document.getElementById('stickyFilterDock');
     if(!stickyBar){
