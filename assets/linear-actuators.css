@@ -4,7 +4,11 @@
         font-size: 46px !important;
     }
 }
-
+@media (max-width: 747px) and (min-width: 731px){
+    .firstCollectionBanner {
+        margin-top: 191px;
+    }
+}
 @media (max-width: 639px){
     #lottie{
         display: block !important;

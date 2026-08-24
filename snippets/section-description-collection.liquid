@@ -13,7 +13,7 @@
     var renderCollectionDescription = true;
   </script>
   {% if collection.description != '' %}
-    <section class="uk-section uk-position-relative fg-section-chess js-section-chess-collection">
+    <section id="shopify-section-collection-options" class="uk-section uk-position-relative fg-section-chess js-section-chess-collection">
       <div class="uk-container js-description-content">
          
       {% assign productDescription = collection.description | split:"<!--SEO-->"%}
