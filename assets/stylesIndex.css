@@ -227,6 +227,11 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
   display: none !important;
 }
 
+.fg-pin-board,
+.uk-section:has(.fg-pin-board) {
+  display: none !important;
+}
+
 #footer.fg-footer-redesign .fg-footer-bottom {
   background: #005f97;
   padding: 10px 16px;
