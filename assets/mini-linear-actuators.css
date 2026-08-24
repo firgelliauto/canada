@@ -18,7 +18,7 @@
         font-size: 32px !important;
     }
 }
-@media (max-width: 1055px) {
+@media (max-width: 1033px) {
     .firstCollectionBanner {
         margin-top: 192px;
     }
