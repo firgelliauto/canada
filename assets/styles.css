@@ -454,7 +454,7 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-end;
-  gap: 7px;
+  gap: 6px;
   list-style: none;
   margin: 16px 0 0 !important;
   padding: 0 !important;
@@ -470,13 +470,13 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  width: 59px !important;
-  height: 59px !important;
-  min-width: 59px !important;
-  min-height: 59px !important;
-  max-width: 59px !important;
-  max-height: 59px !important;
-  flex: 0 0 59px !important;
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px !important;
+  min-height: 52px !important;
+  max-width: 52px !important;
+  max-height: 52px !important;
+  flex: 0 0 52px !important;
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 4px;
   background: #0b8ed8;
@@ -590,13 +590,13 @@ body#linear-actuators-firgelliauto .js-section-chess-collection .fg-section-ches
   }
 
   #footer.fg-footer-redesign .fg-social-link.uk-icon-button {
-    width: 50px !important;
-    height: 50px !important;
-    min-width: 50px !important;
-    min-height: 50px !important;
-    max-width: 50px !important;
-    max-height: 50px !important;
-    flex-basis: 50px !important;
+    width: 46px !important;
+    height: 46px !important;
+    min-width: 46px !important;
+    min-height: 46px !important;
+    max-width: 46px !important;
+    max-height: 46px !important;
+    flex-basis: 46px !important;
   }
 
   #footer.fg-footer-redesign .fg-footer-mobile-nav {
