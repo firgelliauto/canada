@@ -5,6 +5,8 @@
 #footer.fg-footer-redesign {
   background: #0076ba !important;
   color: #ffffff !important;
+  display: block !important;
+  height: auto !important;
   width: 100%;
 }
 
