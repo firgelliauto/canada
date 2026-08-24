@@ -1547,7 +1547,7 @@ mobileOverlay.addEventListener(
       return;
     }
 
-    if(window.scrollY > 860 && !collectionOptionsAtTop){
+    if(window.scrollY > 880 && !collectionOptionsAtTop){
       stickyBar.classList.add('visible');
     } else {
       stickyBar.classList.remove('visible');
@@ -1603,7 +1603,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if(hide){
       stickyDock.classList.remove('visible');
-    } else if(window.scrollY > 860){
+    } else if(window.scrollY > 880){
       stickyDock.classList.add('visible');
     }
   };
