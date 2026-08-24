@@ -1,891 +1,31 @@
-
+<script  src="{{ 'jquery.js' | asset_url }}"></script>
 
 <style>
-  input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* For Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-/* For Internet Explorer */
-input[type=number] {
-    -ms-appearance: none;
-}
-  h4{
+  
+  h2{
    margin-bottom: 0px; 
   }
-
+  @media only screen and (max-width: 1250px) {
+  	.mobileHidden{
+      display: none; {% comment %} it does work on mobile, just needs styling{% endcomment %}
+    }
+  }
   .sliderBox{
-    width: 31px; 
+    width: 50px; 
     height: 23px; 
+    margin-bottom: 7px; 
+    
     border-color: rgb(148, 176, 202);
     border-width: 1px;
     border-style: solid;
+    
   }
-  
-  @media only screen and (max-width: 640px) {
-    .productsDiv{
-      padding-top: 0px !important;
-    }
-    .mobileFilterBar{
-      margin-top: 0px !important;
-    }
-  }
-  
-  @media only screen and (min-width: 640px) {
-    .mobileOnly{
-      display: none;
-    }
-  }
-  
-  .productsDiv{
-    display: flex;
-    padding-top: 15px;
-  }
-  .filterDiv{
-    width: 25%;
-    margin: inherit;
-  }
-
-  .dropdown{
-    border-top: 1px solid #4c9cdc99;
-  }
-
-  .dropdown-content{
-    /*padding: 10px 0px;*/
-  }
-  .sortButtonClass {
-    width: 100%;
-    height: 32px;
-    border-radius: 12px;
-    background: #f5f5f5;
-    border: solid 1px #000000; /* Border color and thickness */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    position: relative; /* Required to position the dropdown */
-}
-.sortButtonClass:hover{
-  background-color: #ddd;
-}
-.sortButtonClassSidebar{
-  width: 100%;
-  min-width: 0;
-  height: 32px;
-  border-radius: 12px;
-  background: #f5f5f5;
-  border: solid 1px #000000; /* Border color and thickness */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative; /* Required to position the dropdown */
-  box-sizing: border-box;
-}
-#sortButtonSidebar {
-  position: relative;
-  width: 195px;
-  max-width: 100%;
-}
-#sortButton {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 15px;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-.dropdown-content-sort{
-  display: none;
-  background-color: #f5f5f5;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 12px;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  min-width: 100%;
-  border: solid 1px #000000;
-  padding: 10px 0;
-  z-index: 2;
-  top: 0;
-}
-.dropdown-content {
-  min-width: 100%;
-}
-.activeOption{
-  background-color: #4c9cdc99 !important;
-}
-.dropdownOption {
-    color: black;
-    padding: 6px 12px;
-    text-decoration: none;
-    display: block;
-    font-size: 13px;
-}
-.dropdownOption:hover {
-    background-color: #ddd;
-    cursor: pointer;
-}
-.sortText{
-  font-size: 13px;
-  color: black;
-  font-weight: 500;
-}
-.DropdownArrow{
-  border: solid black;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 3px;
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transition: transform 0.3s ease;
-}
-.DropdownArrow.rotated {
-  transform: rotate(225deg);
-}
-.filter-button {
-  display: inline-block;
-  cursor: pointer;
-  padding-right: 8px;
-}
-
-.filter-button .line {
-  display: block;
-  width: 16px;
-  height: 2px;
-  margin: 4px 0;
-  background-color: black;
-}
-
-/* Optional: Change color on hover */
-.sortButtonClass:hover .line {
-  background-color: grey;
-}
-.sortButtonClassSidebar:hover{
-  background-color: #f5f5f5;
-}
-@media only screen and (max-width: 1100px) {
-  .fg-collection-grid>* {
-    width: 33%;
-  }
-  .noUi-pips-horizontal {
-    display: none;
-  }
-}
-@media only screen and (max-width: 980px) {
-  .filterDiv {
-    width: 30%;
-  }
-  .fg-collection-grid>* {
-    width: 50%;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .dropdown-sidebar{
-    top: 4.0%;
-  }
-  .noUi-horizontal .noUi-handle {
-    scale: 0.8;
-  }
-  .dropdown{
-    display: none !important;
-  }
-
-  .productsDiv{
-    display: block;
-  }
-  .filterDiv{
-    height: 60px;
-  }
-
-}
-@media only screen and (max-width: 640px) {
-  .mobileHidden {
-    display: none;
-  }
-}
-
-.noUi-pips-horizontal{
-  display: none;
-}
-
-.collection-filter-bar{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:15px;
-
-  padding:55px 25px 10px 25px;
-  margin:10px 0;
-
-  border:1px solid #e7edf5;
-  border-radius:10px;
-
-  box-shadow:
-    0 4px 12px rgba(15, 23, 42, 0.04),
-    0 12px 32px rgba(15, 23, 42, 0.06);
-
-  position:relative;
-  background:#fff;
-}
-
-.filter-title{
-  position:absolute;
-  top:14px;
-  left:25px;
-
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-
-  color:#64748b;
-}
-
-.filter-column{
-  flex:1;
-  min-width:0;
-  align-self: flex-start;
-  display:flex;
-  flex-direction:column;
-  width: 240px;
-}
-@media(max-width: 1350px){
-  .filter-column{
-    width: 150px;
-  }
-}
-@media(max-width: 940px){
-  .filter-column{
-    width: 120px;
-  }
-}
-
-
-.slider-column{
-  flex:2.2;
-}
-
-.filter-label{
-  margin-bottom:2px;
-
-  font-size:13px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:0.05em;
-
-  color:#334155;
-}
-
-.filter-select{
-  height:48px;
-  width:100%;
-
-  padding:0 14px;
-
-  border:1px solid #dbe4f0;
-  border-radius:8px;
-
-  background:#fff;
-
-  font-size:15px;
-  color:#0f172a;
-
-  cursor:pointer;
-}
-
-
-.slider-row{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  height: 48px;
-}
-
-
-.filter-sort-wrapper{
-  position:absolute;
-
-  top:14px;
-  right:25px;
-
-  z-index:20;
-}
-
-
-#sortButtonSidebar{
-  margin:0;
-}
-
-.sortButtonClassSidebar{
-  height:30px;
-  padding:0 5px;
-  border:1px solid #dbe4f0;
-  border-radius:10px;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  cursor:pointer;
-}
-.stickySortButtonContainer .sortButtonClassSidebar{
-  height:40px;
-}
-
-.stickyFilterContent{
-  max-height:0;
-  overflow:hidden;
-  display:none;
-  padding:0 24px;
-  gap:40px;
-  background:#fff;
-  border-top:1px solid transparent;
-  transition:max-height .3s ease,padding .3s ease;
-}
-
-.stickyFilterContent.open{
-  display:flex;
-  max-height:500px;
-  padding:20px 24px;
-  border-top:1px solid #e7edf5;
-}
-
-@media(max-width:800px){
-  .collection-filter-bar{
-    display: none;
-  }
-}
-
-@media(max-width: 790px){
-  .stickyFilterContent{
-    display: none !important;
-  }
-  .stickyFilterSummary{
-    display: none !important;
-  }
-}
-
-
-.stickyFilterDock{
-  position:fixed;
-  top:0;
-  left:50%;
-  width:100%;
-  transform:translateX(-50%) translateY(-100%);
-  
-  background:#fff;
-  border-bottom:1px solid #e7edf5;
-  box-shadow:0 4px 12px rgba(15,23,42,.06);
-
-  display:flex;
-  flex-direction:column;
-
-  align-items:stretch;
-
-  z-index:9999;
-
-  opacity:0;
-  transition:
-    transform .25s ease,
-    opacity .25s ease;
-}
-.stickyFilterDock.visible{
-  transform:translateY(0);
-  opacity:1;
-}
-.stickyFilterDock.visible{
-  transform:translateX(-50%) translateY(0);
-}
-.stickyFilterToggle{
-  margin-left: 40px;
-}
-.stickySortWrapper{
-  margin-right: 40px;
-}
-.stickyFilterToggle,
-.stickySortToggle{
-  height:40px;
-
-  padding:0 16px;
-
-  border:1px solid #dbe4f0;
-  border-radius:10px;
-
-  background:#fff;
-
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  cursor:pointer;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-
-  font-weight:600;
-}
-
-.stickyFilterToggle:focus,
-.stickySortToggle:focus,
-.stickyFilterToggle:focus-visible,
-.stickySortToggle:focus-visible{
-  outline: none;
-  box-shadow: none;
-}
-
-.stickyFilterSummary{
-  font-size:14px;
-  color:#64748b;
-}
-
-
-
-
-
-
-#stickyFilterDock{
-  /*display:none;*/
-}
-
-@media(min-width:801px){
-
-  #stickyFilterDock{
-    display:flex;
-  }
-
-}
-.stickySortWrapper{
-  flex-shrink:0;
-}
-
-.stickySortButtonContainer{
-  width:195px;
-  position:relative;
-}
-
-
-.stickyFilterTopRow{
-  height:64px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 24px;
-}
-
-.stickyDockTop{
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  width:100%;
-}
-
-  #mobileFilterOverlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.4);
-
-  opacity:0;
-  visibility:hidden;
-
-  transition:.25s ease;
-
-  z-index:99998;
-}
-
-#mobileFilterOverlay.active{
-  opacity:1;
-  visibility:visible;
-}
-
-#mobileFilterOverlay::before,
-#mobileFilterOverlay::after {
-  content: none !important;
-  display: none !important;
-}
-
-#mobileFilterDrawer{
-  position:fixed;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:72vh;
-
-  background:#fff;
-
-  border-radius:20px 20px 0 0;
-
-  transform:translateY(100%);
-
-  transition:transform .3s ease;
-
-  z-index:99999;
-
-  display:flex;
-  flex-direction:column;
-
-  box-shadow:
-    0 -8px 30px rgba(0,0,0,.15);
-}
-
-#mobileFilterDrawer.active{
-  transform:translateY(0);
-}
-
-.mobileFilterHeader{
-  height:60px;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 20px;
-
-  border-bottom:1px solid #e7edf5;
-
-  font-weight:600;
-  font-size:18px;
-}
-
-#closeMobileFilters{
-  border:none;
-  background:none;
-  font-size:28px;
-  cursor:pointer;
-}
-
-.mobileFilterBody{
-  flex:1;
-  overflow:auto;
-  padding:20px;
-}
-.mobileFiltersText{
-  font-weight: 700; 
-  letter-spacing: 0.08em; 
-  text-transform: uppercase; 
-  color: #64748b;
-}
-
-.mobileFilterBody{
-  padding:24px;
-  padding-top: 16px;
-  overflow-y:auto;
-  height:calc(100% - 65px);
-  background:#fff;
-}
-
-.mobileFilterGroup{
-  padding-bottom:16px;
-  margin-bottom:16px;
-  border-bottom:1px solid #e7edf5;
-}
-.mobileFilterGroup:last-child{
-
-  border-bottom:none;
-
-}
-.mobileFilterTitle{
-
-  font-size:14px;
-
-  font-weight:700;
-
-  text-transform:uppercase;
-
-  letter-spacing:.06em;
-
-  color:#334155;
-
-  margin-bottom:6px;
-
-}
-
-.mobileFilterOptions{
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
-
-.mobileCheckbox{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  font-size:15px;
-
-  color:#0f172a;
-
-  cursor:pointer;
-
-}
-
-.mobileCheckbox input{
-
-  width:18px;
-
-  height:18px;
-
-}
-
-.mobileSlider{
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:14px;
-
-  width:100%;
-
-}
-
-.mobileSlider .sliderBox{
-
-  width:42px;
-
-  height:28px;
-
-  text-align:center;
-
-}
-
-#MobileStrokeSlider,
-#MobileForceSlider{
-
-  flex:1;
-
-  max-width:180px;
-
-  margin-top:5px;
-
-}
-
-#mobileFilterDrawer{
-
-  background:#fff;
-
-  border-radius:18px 18px 0 0;
-
-  box-shadow:
-    0 -8px 30px rgba(15,23,42,.15);
-
-}
-
-.mobileFilterHeader{
-
-  height:65px;
-
-  padding:0 20px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-
-  border-bottom:1px solid #e7edf5;
-
-}
-
-
-.mobileFiltersText{
-
-  font-size:18px;
-
-  font-weight:700;
-
-  color:#0f172a;
-
-}
-
-
-#closeMobileFilters{
-
-  border:none;
-
-  background:none;
-
-  font-size:22px;
-
-  cursor:pointer;
-
-  color:#334155;
-
-}
-
-
-
-/* mobile drawer only */
-
-@media(max-width:800px){
-  #mobileFilterDrawer{
-    width:100%;
-    left:0;
-  }
-}
-@media(max-width:480px){
-  .mobileFilterButton {
-    width: 45% !important;
-  }
-  .mobileSortWrapper {
-    width: 45% !important;
-  }
-  .sortText {
-    font-size: 11px !important;
-  }
-}
-@media(max-width:310px){
-  .sortText {
-    font-size: 9px !important;
-  }
-}
-#mobileFilterDrawer::before{
-  content: none !important;
-  display: none !important;
-}
-#mobileFilterDrawer::after{
-  content: none !important;
-  display: none !important;
-}
-
-.mobileFilterBar{
-  display:none;
-}
-
-@media(max-width:800px){
-
-  .mobileFilterBar{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:12px;
-
-    margin:15px 0;
-
-    padding:12px;
-
-    background:#fff;
-
-    border:1px solid #e7edf5;
-    border-radius:12px;
-
-    box-shadow:
-      0 4px 12px rgba(15,23,42,.04),
-      0 12px 32px rgba(15,23,42,.06);
-  }
-
-  .mobileFilterButton{
-    width: 25%;
-
-    height:44px;
-
-    border:1px solid #dbe4f0;
-    border-radius:10px;
-
-    background:#fff;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:8px;
-
-    font-size:14px;
-    font-weight:600;
-
-    cursor:pointer;
-  }
-
-  .mobileSortWrapper{
-    width: 30%;
-    position:relative;
-  }
-
-  .mobileSortWrapper .sortButtonClassSidebar{
-    width:100%;
-    height:40px;
-    padding:0 14px;
-    justify-content:space-between;
-  }
-
-  .mobileSortWrapper .dropdown-content-sort{
-    left:0;
-    top:0;
-  }
-}
-.stickyFilterToggle:hover{
- background-color: #f5f5f5;
-}
-.mobileFilterButton:hover{
-  background-color: #f5f5f5;
-}
-
-
-
-/* FIRGELLI linear-actuators mobile SVG restore start */
-@media only screen and (max-width: 959px) {
-
-
-
-  body#linear-actuators-12v-amp-24v-electric-actuators-firgelli #collection-grid-section .firgelli-mobile-collection-hero__title {
-    align-items: flex-start !important;
-    padding-top: 46px !important;
-    z-index: 2 !important;
-  }
-
-  body#linear-actuators-12v-amp-24v-electric-actuators-firgelli #lottie {
-    z-index: 1 !important;
-    pointer-events: none !important;
-  }
-}
-/* FIRGELLI linear-actuators mobile SVG restore end */
-
-
-
-/* FIRGELLI mobile collection SVG overlay restore start */
-@media only screen and (max-width: 959px) {
-
-
-  #collection-grid-section .firgelli-mobile-collection-hero__image {
-    position: relative !important;
-    z-index: 0 !important;
-
-  }
-
-  #collection-grid-section .firgelli-mobile-collection-hero__title {
-    align-items: flex-start !important;
-    padding-top: 22px !important;
-    z-index: 2 !important;
-  }
-
-  #lottie {
-    z-index: 1 !important;
-    pointer-events: none !important;
-  }
-}
-/* FIRGELLI mobile collection SVG overlay restore end */
 </style>
 
+
+
+<script async src="{{ 'jquery.min.js' | asset_url }}"></script>
 <section id="collection-grid-section" class="uk-section">
-  <div class="firgelli-mobile-collection-hero mobileOnly">
-  </div>
   <div class="uk-container">
     
     <div class="collectionDescription">
@@ -899,876 +39,109 @@ input[type=number] {
     </div>
 
 
-<div class="collection-filter-bar">
-  <div class="filter-title">
-    Filters
-  </div>
-  <div class="filter-sort-wrapper">
-    <div id="sortButtonSidebar">
-      <div class="sortButtonClassSidebar">
-        <div class="filter-button">
-          <span class="line"></span>
-          <span class="line"></span>
-          <span class="line"></span>
+
+<div class="uk-container mobileHidden">
+  <form id="WidgetForm" style="">
+    <div class="">
+      
+      <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
+        
+        
+        <div style="display: flex; align-items: center; width: 15%">
+		<h2 style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></h2>
+        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
+		<div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
+          <label class="uk-form-label" for="12v">12v</label>
         </div>
-        <span class="sortText">
-          Sort By: Featured
-        </span>
-      </div>
-      <div id="dropdownMenuSidebar" class="dropdown-content-sort dropdown-sidebar">
-        <div onclick="changeSort('Featured')" class="dropdownOption activeOption">
-          Featured
+
+        <div>
+          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
+          <label class="uk-form-label" for="24v">24v</label>
         </div>
-        <div onclick="changeSort('Price Low to High')" class="dropdownOption">
-          Price: Low to High
         </div>
-        <div onclick="changeSort('Price High to Low')" class="dropdownOption">
-          Price: High to Low
         </div>
-        <div onclick="changeSort('Force Low to High')" class="dropdownOption">
-          Force: Low to High
-        </div>
-        <div onclick="changeSort('Force High to Low')" class="dropdownOption">
-          Force: High to Low
-        </div>
-        <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">
-          Stroke: Low to High
-        </div>
-        <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">
-          Stroke: High to Low
-        </div>
-      </div>
-    </div>
-  </div>
+
+   
+		
+        <div class="custom-range-slider uk-width-1-1@s uk-width-1-4@m" style="text-align: -webkit-center; padding-top: 10px; align-self: center; margin: 0 15px 0 20px">
+          <center><h2 style="font-size: 23px;"><strong>Stroke (Inches)</strong></h2></center>
+          <div style="display: flex">
+ 
+          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
 
 
-  <div class="filter-column">
-
-    <div class="filter-label">
-      Voltage
-    </div>
-      <div class="dropdown-content filter-dropdown-always-open">
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar12v" name="Voltage" value="Sidebar12v">
-
-        <label class="uk-form-label" for="Sidebar12v">
-          12v
-        </label>
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar24v" name="Voltage" value="Sidebar24v">
-
-        <label class="uk-form-label" for="Sidebar24v">
-          24v
-        </label>
-      </div>
-
-  </div>  
-  
-  </div>
-
-  <div class="filter-column">
-
-    <div class="filter-label">
-      Type
-    </div>
-     <div class="dropdown-content filter-dropdown-always-open">
-
-    <div class="filter-checkbox-row">
-      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarRod" name="Type" value="SidebarRod">
-
-      <label class="uk-form-label" for="SidebarRod">
-        Rod
-      </label>
-    </div>
-
-    <div class="filter-checkbox-row">
-      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarTrack" name="Type" value="SidebarTrack">
-
-      <label class="uk-form-label" for="SidebarTrack">
-        Track
-      </label>
-    </div>
-
-    <div class="filter-checkbox-row">
-      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarColumn" name="Type" value="SidebarColumn">
-
-      <label class="uk-form-label" for="SidebarColumn">
-        Column
-      </label>
-    </div>
-
-  </div>
-  </div>
-
-  <div class="filter-column">
-    <div class="filter-label">
-      Feedback
-    </div>
-    <div class="dropdown-content filter-dropdown-always-open">
-
-    <div class="filter-checkbox-row">
-      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarYes" name="Feedback" value="SidebarYes">
-
-      <label class="uk-form-label" for="SidebarYes">
-        Yes
-      </label>
-    </div>
-
-    <div class="filter-checkbox-row">
-      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarNo" name="Feedback" value="SidebarNo">
-
-      <label class="uk-form-label" for="SidebarNo">
-        No
-      </label>
-    </div>
-  </div>
-  </div>
-
-  <div class="filter-column slider-column">
-
-    <div class="filter-label">
-      Stroke (Inches)
-    </div>
-
-    <div class="slider-row">
-
-  <div class="dropdown-content" id="StrokeDropdown" style="padding-top: 0px">
-    <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; align-self: center;">
-        <div style="display: flex">
-        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
-        <div id="StrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
-        </div>
-      </div>
-  </div>
-
-    </div>
-
-  </div>
-
-  <div class="filter-column slider-column">
-
-    <div class="filter-label">
-      Force (lbs)
-    </div>
-
-    <div class="slider-row">
-
-      <div class="dropdown-content" id="ForceDropdown" style="padding-top: 0px">
-        <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; align-self: center;">
-            <div style="display: flex">
-            <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
-            <div id="SidebarForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-            <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+          
+		  
+          <div id="StrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+          {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
           </div>
-      </div>
-  </div>
-    </div>
-  </div>
-</div>
+        </div>
+        
+    
 
+		<div class="custom-range-slider uk-width-1-1@s uk-width-1-4@m" style="text-align: -webkit-center; padding-top: 10px; align-self: center; padding-left: 10px; margin-left: 25px;">
+		  <center><h2 style="font-size: 23px;"><strong>Force (lb's)</strong></h2></center>
+          <div style="display: flex">
+          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
 
-<div id="stickyFilterDock" class="stickyFilterDock">
-
-  <div class="stickyDockTop">
-
-    <button id="stickyFilterButton" class="stickyFilterToggle">
-      <div class="filter-button">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
-      </div>
-
-      <span>Filters</span>
-    </button>
-
-    <div class="stickyFilterSummary">
-      0 Filters Applied
-    </div>
-
-    <div class="stickySortWrapper">
-
-      <div class="stickySortButtonContainer">
-
-        <div class="sortButtonClassSidebar">
-
-          <div class="filter-button">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-          </div>
-
-          <span class="sortText">
-            Sort By: Featured
-          </span>
-
+          
+          
+		  
+          <div id="ForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+        </div>
         </div>
 
-        <div id="stickySortDropdown" class="dropdown-content-sort dropdown-sidebar">
-
-          <div onclick="changeSort('Featured')" class="dropdownOption activeOption">
-            Featured
-          </div>
-
-          <div onclick="changeSort('Price Low to High')" class="dropdownOption">
-            Price: Low to High
-          </div>
-
-          <div onclick="changeSort('Price High to Low')" class="dropdownOption">
-            Price: High to Low
-          </div>
-
-          <div onclick="changeSort('Force Low to High')" class="dropdownOption">
-            Force: Low to High
-          </div>
-
-          <div onclick="changeSort('Force High to Low')" class="dropdownOption">
-            Force: High to Low
-          </div>
-
-          <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">
-            Stroke: Low to High
-          </div>
-
-          <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">
-            Stroke: High to Low
-          </div>
-
-        </div>
-
-      </div>
-
+        
+      </fieldset>
     </div>
-
-  </div>
-
-  <!-- EXPANDING FILTER AREA -->
-  <div id="stickyFilterContent" class="stickyFilterContent">
-
-    <div class="filter-column">
-
-      <div class="filter-label">
-        Voltage
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sticky12v">
-        <label for="Sticky12v">12v</label>
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sticky24v">
-        <label for="Sticky24v">24v</label>
-      </div>
-
-    </div>
-
-
-    <div class="filter-column">
-
-      <div class="filter-label">
-        Type
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyRod">
-        <label for="StickyRod">Rod</label>
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyTrack">
-        <label for="StickyTrack">Track</label>
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyColumn">
-        <label for="StickyColumn">Column</label>
-      </div>
-
-    </div>
-
-
-    <div class="filter-column">
-
-      <div class="filter-label">
-        Feedback
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyYes">
-        <label for="StickyYes">Yes</label>
-      </div>
-
-      <div class="filter-checkbox-row">
-        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyNo">
-        <label for="StickyNo">No</label>
-      </div>
-
-    </div>
-
-    <div class="filter-column slider-column">
-
-  <div class="filter-label">
-    Stroke (Inches)
-  </div>
-
-  <div class="slider-row">
-
-    <div class="dropdown-content" style="padding-top:0;">
-      <div class="custom-range-slider uk-width-1-1@s" style="text-align:-webkit-center; align-self:center;">
-        <div style="display:flex">
-          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox"
-                 type="number"
-                 style="margin-right:20px;">
-
-          <div id="StickyStrokeSlider"
-               class="custom-range-slider__track"
-               style="width:200px; margin-top:5px;">
-          </div>
-
-          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox"
-                 type="number"
-                 style="margin-left:20px;">
-        </div>
-      </div>
-    </div>
-
-  </div>
-
+    <input id="hiddenSubmit" type="button" value="Submit" hidden>
+  </form> 
 </div>
+       
 
 
-<div class="filter-column slider-column">
-
-  <div class="filter-label">
-    Force (lbs)
-  </div>
-
-  <div class="slider-row">
-
-    <div class="dropdown-content" style="padding-top:0;">
-      <div class="custom-range-slider uk-width-1-1@s" style="text-align:-webkit-center; align-self:center;">
-        <div style="display:flex">
-          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox"
-                 type="number"
-                 style="margin-right:20px;">
-
-          <div id="StickyForceSlider"
-               class="custom-range-slider__track"
-               style="width:200px; margin-top:5px;">
-          </div>
-
-          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox"
-                 type="number"
-                 style="margin-left:20px;">
-        </div>
-      </div>
-    </div>
+    
+    	{% include 'loop-collection' %}
 
   </div>
-
-</div>
-
-
-  </div>
-
-</div>
-
-
-<div id="mobileFilterOverlay"></div>
-
-<div id="mobileFilterDrawer">
-
-  <div class="mobileFilterHeader">
-
-    <span class="mobileFiltersText">Filters</span>
-
-    <button id="closeMobileFilters">
-      ✕
-    </button>
-
-  </div>
-
-  <div class="mobileFilterBody">
-
-
-  <!-- VOLTAGE -->
-  <div class="mobileFilterGroup">
-
-    <div class="mobileFilterTitle">
-      Voltage
-    </div>
-
-    <div class="mobileFilterOptions">
-
-      <label class="mobileCheckbox">
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="Mobile12v">
-        <span>12v</span>
-      </label>
-
-      <label class="mobileCheckbox">
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="Mobile24v">
-        <span>24v</span>
-      </label>
-
-    </div>
-  </div>
-
-
-
-  <!-- TYPE -->
-  <div class="mobileFilterGroup">
-
-    <div class="mobileFilterTitle">
-      Type
-    </div>
-
-    <div class="mobileFilterOptions">
-
-      <label class="mobileCheckbox">
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="MobileRod">
-        <span>Rod</span>
-      </label>
-
-
-      <label class="mobileCheckbox">
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="MobileTrack">
-        <span>Track</span>
-      </label>
-
-
-      <label class="mobileCheckbox">
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="MobileColumn">
-        <span>Column</span>
-      </label>
-
-
-    </div>
-
-  </div>
-
-
-
-
-  <!-- FEEDBACK -->
-  <div class="mobileFilterGroup">
-
-    <div class="mobileFilterTitle">
-      Feedback
-    </div>
-
-    <div class="mobileFilterOptions">
-
-
-      <label class="mobileCheckbox">
-
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="MobileYes">
-
-        <span>Yes</span>
-
-      </label>
-
-
-      <label class="mobileCheckbox">
-
-        <input 
-        onclick="submitFunction()" 
-        class="uk-checkbox" 
-        type="checkbox" 
-        id="MobileNo">
-
-        <span>No</span>
-
-      </label>
-
-
-    </div>
-
-  </div>
-
-
-
-  <!-- STROKE -->
-  <div class="mobileFilterGroup">
-
-    <div class="mobileFilterTitle">
-      Stroke (Inches)
-    </div>
-
-    <div class="dropdown-content">
-
-  <div class="custom-range-slider uk-width-1-1@s">
-
-    <div style="display:flex">
-
-      <input 
-      class="custom-range-slider__input custom-range-slider__input--from sliderBox"
-      type="number"
-      style="margin-right:20px">
-
-
-      <div 
-      id="MobileStrokeSlider"
-      class="custom-range-slider__track"
-      style="width:160px; margin-top:5px;">
-      </div>
-
-
-      <input 
-      class="custom-range-slider__input custom-range-slider__input--to sliderBox"
-      type="number"
-      style="margin-left:20px">
-
-    </div>
-
-  </div>
-
-</div>
-
-  </div>
-
-
-
-  <!-- FORCE -->
-  <div class="mobileFilterGroup">
-
-    <div class="mobileFilterTitle">
-      Force (lbs)
-    </div>
-
-    <div class="dropdown-content">
-
-  <div class="custom-range-slider uk-width-1-1@s">
-
-    <div style="display:flex">
-
-      <input 
-      class="custom-range-slider__input custom-range-slider__input--from sliderBox"
-      type="number"
-      style="margin-right:20px">
-
-
-      <div 
-      id="MobileForceSlider"
-      class="custom-range-slider__track"
-      style="width:160px; margin-top:5px;">
-      </div>
-
-
-      <input 
-      class="custom-range-slider__input custom-range-slider__input--to sliderBox"
-      type="number"
-      style="margin-left:20px">
-
-    </div>
-
-  </div>
-
-</div>
-
-  </div>
-
-
-</div>
-
-</div>
-
-
-
-
-
-<script>
-  const mobileDrawer =
-  document.getElementById('mobileFilterDrawer');
-
-const mobileOverlay =
-  document.getElementById('mobileFilterOverlay');
-
-function preventOverlayScroll(event) {
-  event.preventDefault();
-}
-
-function openMobileFilters(){
-
-  mobileDrawer.classList.add('active');
-  mobileOverlay.classList.add('active');
-}
-
-function closeMobileFilters(){
-
-  mobileDrawer.classList.remove('active');
-  mobileOverlay.classList.remove('active');
-}
-
-mobileOverlay.addEventListener('wheel', preventOverlayScroll, { passive: false });
-mobileOverlay.addEventListener('touchmove', preventOverlayScroll, { passive: false });
-
-document
-  .getElementById('closeMobileFilters')
-  .addEventListener('click', closeMobileFilters);
-
-mobileOverlay.addEventListener(
-  'click',
-  closeMobileFilters
-);
-</script>
-
-<script>
-
-  let scrollDownHeight = 780;
-  window.addEventListener('scroll', function(){
-    scrollDownHeight = 780;
-    if(window.innerWidth <= 970){
-      scrollDownHeight = 820;
-    }
-    if(window.innerWidth <= 480){
-      scrollDownHeight = 840;
-    }
-    const stickyBar = document.getElementById('stickyFilterDock');
-    if(!stickyBar){
-      return;
-    }
-    if(window.scrollY > scrollDownHeight && !collectionOptionsAtTop){
-      stickyBar.classList.add('visible');
-    }  
-    else {
-      stickyBar.classList.remove('visible');
-    }
-  });
-
-document
-  .getElementById('stickyFilterButton')
-  .addEventListener('click', function(){
-
-    if(window.innerWidth <= 958){
-
-      openMobileFilters();
-
-    }else{
-
-      document
-        .getElementById('stickyFilterContent')
-        .classList
-        .toggle('open');
-
-    }
-
-});
-
-document.addEventListener('DOMContentLoaded', function(){
-  const mobileFiltersButton = document.getElementById('mobileFiltersButton');
-  if(mobileFiltersButton){
-    mobileFiltersButton.addEventListener('click', function(){
-      if(window.innerWidth <= 958){
-        openMobileFilters();
-      } else {
-        document
-          .getElementById('stickyFilterContent')
-          .classList
-          .toggle('open');
-      }
-    });
-  }
-
-  const stickyDock = document.getElementById('stickyFilterDock');
-  const collectionOptions = document.getElementById('shopify-section-collection-options');
-
-  const updateStickyVisible = function(hide){
-    collectionOptionsAtTop = hide;
-    if(!stickyDock){
-      return;
-    }
-
-    if(hide){
-      stickyDock.classList.remove('visible');
-    }
-    else if(window.scrollY > scrollDownHeight){
-      stickyDock.classList.add('visible');
-    }
-  };
-
-  if(stickyDock && collectionOptions && 'IntersectionObserver' in window){
-    const sentinel = document.createElement('div');
-    sentinel.id = 'collectionOptionsScrollSentinel';
-    sentinel.style.cssText = 'height:1px;width:1px;margin:0;padding:0;visibility:hidden;pointer-events:none;';
-    collectionOptions.parentNode.insertBefore(sentinel, collectionOptions);
-
-    const observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        const hide = !entry.isIntersecting && entry.boundingClientRect.top < 0;
-        updateStickyVisible(hide);
-      });
-    }, { threshold: [0] });
-
-    observer.observe(sentinel);
-
-    const rect = sentinel.getBoundingClientRect();
-    updateStickyVisible(rect.top < 0);
-  }
-});
-
-
-</script>
-
-<script>
-
-  function syncCheckbox(...selectors){
-
-  document.addEventListener('change',e=>{
-  if(e.target.matches(selectors.join(','))){
-
-      const checked = e.target.checked;
-
-      selectors.forEach(function(selector){
-        document.querySelector(selector).checked = checked;
-      });
-      updateFilterCount();
-      filter();
-    }
-    }
-  );
-
-}
-syncCheckbox('#Sidebar12v', '#Sticky12v', '#Mobile12v');
-syncCheckbox('#Sidebar24v', '#Sticky24v', '#Mobile24v');
-
-syncCheckbox('#SidebarRod', '#StickyRod', '#MobileRod');
-syncCheckbox('#SidebarTrack', '#StickyTrack', '#MobileTrack');
-syncCheckbox('#SidebarColumn', '#StickyColumn', '#MobileColumn');
-
-syncCheckbox('#SidebarYes', '#StickyYes', '#MobileYes');
-syncCheckbox('#SidebarNo', '#StickyNo', '#MobileNo');
-
-
-</script>
-
-<div class="productsDiv">
-
-<div class="mobileFilterBar">
-
-  <button id="mobileFiltersButton" class="mobileFilterButton">
-    <div class="filter-button">
-      <span class="line"></span>
-      <span class="line"></span>
-      <span class="line"></span>
-    </div>
-
-    <span>Filters</span>
-  </button>
-
-  <div class="mobileSortWrapper">
-
-    <div class="sortButtonClassSidebar">
-
-      <span class="sortText">
-        Sort By: Featured
-      </span>
-
-      <span class="DropdownArrow"></span>
-
-    </div>
-
-    <div class="dropdown-content-sort">
-
-      <div onclick="changeSort('Featured')" class="dropdownOption activeOption">
-        Featured
-      </div>
-
-      <div onclick="changeSort('Price Low to High')" class="dropdownOption">
-        Price: Low to High
-      </div>
-
-      <div onclick="changeSort('Price High to Low')" class="dropdownOption">
-        Price: High to Low
-      </div>
-
-      <div onclick="changeSort('Force Low to High')" class="dropdownOption">
-        Force: Low to High
-      </div>
-
-      <div onclick="changeSort('Force High to Low')" class="dropdownOption">
-        Force: High to Low
-      </div>
-
-      <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">
-        Stroke: Low to High
-      </div>
-
-      <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">
-        Stroke: High to Low
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-{% include 'loop-collection' %}
-</div>
-</div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>  
+
+
 <script>
-function isChecked(...selectors){
-  return selectors.some(selector => {
-    return document.querySelector(selector)?.checked;
-  });
+  
+var rangeSlidersTrack = document.querySelectorAll('.custom-range-slider .custom-range-slider__track');
+var rangeSlidersInputFrom = document.querySelectorAll('.custom-range-slider .custom-range-slider__input--from');
+var rangeSlidersInputTo = document.querySelectorAll('.custom-range-slider .custom-range-slider__input--to');
+var rangeSliderInputs = [];
+for(var i = 0; i < rangeSlidersTrack.length; i++) {
+    rangeSliderInputs.push([rangeSlidersInputFrom[i], rangeSlidersInputTo[i]]);
 }
-document.querySelectorAll('.uk-checkbox').forEach(function(checkbox){
-  checkbox.checked = false;
-});
-document.querySelectorAll('.custom-range-slider .custom-range-slider__track').forEach(function(slider) {
-  const sliderContainer = slider.closest('.custom-range-slider');
-  const inputs = [
-    sliderContainer.querySelector('.custom-range-slider__input--from'),
-    sliderContainer.querySelector('.custom-range-slider__input--to')
-  ];
-  let sliderMax = 60;
-  let startOne = 1;
-  let stepOne = 1;
-  let startTwo = 10;
-  let stepTwo = 1;
-  if (slider.id.includes('Stroke')){
-    sliderMax = 60;
+let sliderMax = 60;
+let startOne = 1;
+
+let startTwo = 10;
+
+  
+[].slice.call(rangeSlidersTrack).forEach(function(slider, index) {
+  if(slider.id == 'StrokeSlider'){
+
+    
+    
   }
-  else if (slider.id.includes('Force')){
-    sliderMax = 2200;
-    startOne = 20;
-    stepOne = 0.5;
-    startTwo = 350;
-    stepTwo = 100;
+  else{
+    sliderMax = 600;
+    startOne = 60;
+
+    startTwo = 300;
+
   }
 
+  
+  
     noUiSlider.create(slider, {
         start: [0, sliderMax],
         connect: true,
@@ -1784,17 +157,16 @@ document.querySelectorAll('.custom-range-slider .custom-range-slider__track').fo
     
     
     slider.noUiSlider.on('update', function(values, handle) {
-        inputs[handle].value = parseInt(values[handle]);
+        rangeSliderInputs[index][handle].value = parseInt(values[handle]); //rangeSliderInputs[0][0].value + " " + rangeSliderInputs[0][1].value
+		//checkStroke(rangeSliderInputs[0][0].value, rangeSliderInputs[0][1].value);
     });
   
   	slider.noUiSlider.on('set', function(values, handle){
       //checkStroke(rangeSliderInputs[0][0].value, rangeSliderInputs[0][1].value);
-      updateFilterCount();
       filter();
     });
   
   	slider.noUiSlider.on('slide', function(values, handle){
-      updateFilterCount();
       filter();
     });
 
@@ -1804,7 +176,8 @@ document.querySelectorAll('.custom-range-slider .custom-range-slider__track').fo
         slider.noUiSlider.set(r);
     }
 
-      inputs.forEach(function(input, handle) {
+    rangeSliderInputs[index].forEach(function(input, handle) {
+
         input.addEventListener('change', function(){
             setSliderHandle(handle, this.value);
         });
@@ -1867,40 +240,11 @@ document.querySelectorAll('.custom-range-slider .custom-range-slider__track').fo
         });
     });
 });  
-document.addEventListener('DOMContentLoaded', function(){
+  
+  
+var filter_IDs = ['#12v', '#24v', '#Rod', '#Track', '#Column', '#Yes', '#No'];
 
-  // Reset all checkboxes
-  document.querySelectorAll('.uk-checkbox').forEach(function(checkbox){
-    checkbox.checked = false;
-  });
-
-
-  // Reset all sliders
-  document.querySelectorAll('.custom-range-slider__track').forEach(function(slider){
-
-    if(!slider.noUiSlider) return;
-
-    let maxValue = slider.id.includes('Force') ? 2200 : 60;
-
-    slider.noUiSlider.set([
-      0,
-      maxValue
-    ]);
-
-  });
-
-
-  // Update filter count
-  updateFilterCount();
-
-
-  // Apply filter with defaults
-  if(lines.length){
-    filter();
-  }
-
-});
-document.addEventListener('DOMContentLoaded',()=>{
+$(document).ready(function() {
 
     $.ajax({
         type: "GET",
@@ -1910,551 +254,161 @@ document.addEventListener('DOMContentLoaded',()=>{
      });
   });
 var lines = [];
-
 function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    
 
-  Papa.parse(allText, {
-    header: true,
-    skipEmptyLines: true,
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
 
-    complete: function(results) {
-
-    lines = results.data
-  .filter(product => {
-    return document.getElementById(product.URL);
-  })
-  .map(product => ({
-    strokes: product.Stroke.split('_').map(Number),
-    voltage12: product["12v"],
-    voltage24: product["24v"],
-    feedback: product.Sensor,
-    force: Number(product.Force),
-    type: product.Type,
-    handle: product.URL
-  }));
-
-
-// RESET FILTERS HERE
-
-document.querySelectorAll('.uk-checkbox').forEach(function(checkbox){
-  checkbox.checked = false;
-});
-
-
-document.querySelectorAll('.custom-range-slider__track').forEach(function(slider){
-
-  if(!slider.noUiSlider) return;
-
-  slider.noUiSlider.set([
-    0,
-    slider.id.includes('Force') ? 2200 : 60
-  ]);
-
-});
-
-
-updateFilterCount();
-
-filter();
-
-}
-
-  });
-
-}
-  
-  
-function filter(){
-
- const strokeSliders = [
-    document.getElementById('StrokeSlider'),
-    document.getElementById('StickyStrokeSlider'),
-    document.getElementById('MobileStrokeSlider')
-  ].filter(slider => slider && slider.noUiSlider);
-
-
-  const forceSliders = [
-    document.getElementById('SidebarForceSlider'),
-    document.getElementById('StickyForceSlider'),
-    document.getElementById('MobileForceSlider')
-  ].filter(slider => slider && slider.noUiSlider);
-
-
-  if(!strokeSliders.length || !forceSliders.length){
-    return;
-  }
-
-  let minStroke = Math.max(
-      ...strokeSliders.map(slider => Number(slider.noUiSlider.get()[0]))
-  );
-
-  let maxStroke = Math.min(
-      ...strokeSliders.map(slider => Number(slider.noUiSlider.get()[1]))
-  );
-
-
-  let minForce = Math.max(
-      ...forceSliders.map(slider => Number(slider.noUiSlider.get()[0]))
-  );
-
-  let maxForce = Math.min(
-      ...forceSliders.map(slider => Number(slider.noUiSlider.get()[1]))
-  );
-
-  const voltageSelected = [];
-
-  if(isChecked('#Sidebar12v','#Sticky12v','#Mobile12v')){
-      voltageSelected.push('12v');
-  }
-
-  if(isChecked('#Sidebar24v','#Sticky24v','#Mobile24v')){
-      voltageSelected.push('24v');
-  }
-
-
-
-const typesSelected = [];
-
-['Rod','Track','Column'].forEach(function(value){
-
-    if(
-        isChecked(
-            '#Sidebar'+value,
-            '#Sticky'+value,
-            '#Mobile'+value
-        )
-    ){
-        typesSelected.push(value);
-    }
-
-});
-
-
-
-const yesSelected = isChecked(
-    '#SidebarYes',
-    '#StickyYes',
-    '#MobileYes'
-);
-
-
-const noSelected = isChecked(
-    '#SidebarNo',
-    '#StickyNo',
-    '#MobileNo'
-);
-
-
-
-  for(let i = 0; i < lines.length; i++){
-
-    let product = lines[i];
-    let productHandle = product.handle;
-    let force = product.force;
-    let voltage12 = product.voltage12;
-    let voltage24 = product.voltage24;
-    let type = product.type;
-    let hasYesNo = product.feedback;
-
-
-      let visible = true;
-
-
-      // FORCE CHECK
-      if(force < minForce || force > maxForce){
-          visible = false;
-      }
-
-
-      
-
-      
-      if(voltageSelected.length){
-
-          if(
-              !(
-                  (voltageSelected.includes('12v') && voltage12 === '12v') ||
-                  (voltageSelected.includes('24v') && voltage24 === '24v')
-              )
-          ){
-              visible = false;
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr.push(data[j]);
+            }
+          	
+            //console.log(tarr[6] + " " + testData);
+          if(document.getElementById(tarr[6])){
+            lines.push(tarr);
           }
-
-      }
-
-
-
- 
-
-
-      if(
-          typesSelected.length &&
-          !typesSelected.includes(type)
-      ){
-          visible = false;
-      }
-
-      if(yesSelected && !noSelected && hasYesNo === ''){
-          visible = false;
-      }
-
-      if(noSelected && !yesSelected && hasYesNo !== ''){
-          visible = false;
-      }
-
-      let strokes = product.strokes;
-
-      let strokeMatch = strokes.some(function(stroke){
-
-          let value = Number(stroke);
-
-          return value >= minStroke && value <= maxStroke;
-      });
-      if(!strokeMatch){
-          visible = false;
-      }
-      if(visible){
-          showProduct(productHandle);
-      }
-      else{
-          hideProduct(productHandle);
-      }
+          	
+        }
     }
-    updateFilterCount();
-  }
-  function hideProduct(handle){
-    const wrapper = document.getElementById(handle)?.closest('.productMainDiv');
-    if(wrapper) wrapper.setAttribute("hidden","hidden");
-  }
-
-  function showProduct(handle){
-    const wrapper = document.getElementById(handle)?.closest('.productMainDiv');
-    if(wrapper) wrapper.removeAttribute("hidden");
-  }
-
-  function submitFunction(){
-    filter();
-  }
-
-</script>
-<script>
-var count = 0;
-document.querySelectorAll('.js-card-filter').forEach(card => {
-  count++;
-  card.setAttribute('count', count);
-  const priceElement = card.querySelector('.fg-card__body-price-text_num');
-  if (priceElement) {
-      const priceText = priceElement.innerHTML.trim();
-      const priceValue = priceText.replace('$', '').replace('USD','');
-      card.setAttribute('price', priceValue);
-  }
-  const parentUl = card.querySelector('.fg-card__option-list');
-  const liElements = parentUl.querySelectorAll('.optionElement');
-  let forceElement = null;
-  let strokeElement = null;
-  for (let i = 0; i < liElements.length; i++) {
-    const li = liElements[i];
-    if (li.innerHTML.trim().startsWith('Force')) {
-      forceElement = li;
-    }
-    else if (li.innerHTML.trim().startsWith('Stroke')) {
-      strokeElement = li;
-    }
-  }
-  if (forceElement) {
-    const forceText = forceElement.textContent.trim();
-    const forceValues = forceText.match(/(\d+)(?:–(\d+))?/);
-    if (forceValues) {
-      card.setAttribute('lowerForce', forceValues[1]);
-      card.setAttribute('higherForce', forceValues[2] ? forceValues[2] : forceValues[1]);
-    }
-  }
-  if(strokeElement){
-    const strokeText = strokeElement.textContent.trim();
-    const strokeValues = convertToInches(strokeText);
-    if (strokeValues) {
-      card.setAttribute('lowerStroke', strokeValues.lower);
-      card.setAttribute('higherStroke', strokeValues.higher);
-    }
-  }
-});
-
-
-function convertToInches(strokeText) {
-  // Updated regex to handle decimal numbers
-  const match = strokeText.match(/(\d+(\.\d+)?)(?:–(\d+(\.\d+)?))?\s*(mm|inches?)?/);
-  if (!match) return { lower: 0, higher: 0 };
-
-  const value1 = parseFloat(match[1]); // First number
-  const value2 = match[3] ? parseFloat(match[3]) : value1; // Second number, or same as the first if not present
-  const unit = match[5]; // Unit (mm or inches)
-
-  // Convert values to inches if they are in millimeters
-  const value1Inches = unit === 'mm' ? value1 / 25.4 : value1;
-  const value2Inches = unit === 'mm' ? value2 / 25.4 : value2;
-
-  return { lower: value1Inches, higher: value2Inches };
+    
 }
-
-
-document.querySelectorAll('.dropdownOption').forEach(option => {
-  option.addEventListener('click', function() {
-    document.querySelectorAll('.dropdownOption.activeOption').forEach(active => {
-      active.classList.remove('activeOption');
-    });
-
-    this.classList.add('activeOption');
-  });
-});
-
-function changeSort(sort){
-
-  document.querySelectorAll('.sortText').forEach(function(element) {
-    element.innerHTML = 'Sort By: ' + sort;
-  });
-
-  const container = document.getElementById('fg-collection-grid');
-  const elements = Array.from(container.querySelectorAll('.productMainDiv'));
-
-  elements.sort((a, b) => {
-
-    const cardA = a.querySelector('.js-card-filter');
-    const cardB = b.querySelector('.js-card-filter');
-
-    if (!cardA || !cardB) return 0;
-
-    switch(sort){
-
-      case "Force Low to High":
-        return parseFloat(cardA.getAttribute('lowerforce')) -
-               parseFloat(cardB.getAttribute('lowerforce'));
-
-      case "Force High to Low":
-        return parseFloat(cardB.getAttribute('higherforce')) -
-               parseFloat(cardA.getAttribute('higherforce'));
-
-      case "Stroke Low to High":
-        return parseFloat(cardA.getAttribute('lowerstroke')) -
-               parseFloat(cardB.getAttribute('lowerstroke'));
-
-      case "Stroke High to Low":
-        return parseFloat(cardB.getAttribute('higherstroke')) -
-               parseFloat(cardA.getAttribute('higherstroke'));
-
-      case "Price Low to High":
-        return parseFloat(cardA.getAttribute('price')) -
-               parseFloat(cardB.getAttribute('price'));
-
-      case "Price High to Low":
-        return parseFloat(cardB.getAttribute('price')) -
-               parseFloat(cardA.getAttribute('price'));
-
-      case "Featured":
-      default:
-        return parseInt(cardA.getAttribute('count')) -
-               parseInt(cardB.getAttribute('count'));
+  
+  
+  function filter(){
+    let minStroke = rangeSliderInputs[0][0].value;
+    let maxStroke = rangeSliderInputs[0][1].value;
+    let minForce = rangeSliderInputs[1][0].value;
+    let maxForce = rangeSliderInputs[1][1].value;
+    
+   //console.log(minForce, maxForce);
+    for (var i=0; i<lines.length; i++) {
+       let productHandle = lines[i][6];
+     
+       document.getElementById(productHandle).removeAttribute("hidden");
+      
     }
-  });
-
-  elements.forEach(element => container.appendChild(element));
-
-  document.querySelectorAll('.dropdown-content-sort').forEach(function(dropdown) {
-    dropdown.style.display = 'none';
-    dropdown.classList.remove('fg-open');
-  });
-}
-
-
-
-
-
-(function(){
-  function closeAllSortDropdowns() {
-    document.querySelectorAll('.dropdown-content-sort').forEach(function(dropdown){
-      dropdown.style.display = 'none';
-      dropdown.classList.remove('fg-open');
-    });
+    checkForce(minForce, maxForce);
+    checkFilter();
+    checkStroke(minStroke, maxStroke);
+    
   }
-
-  function getDropdownContainer(button) {
-    return button.closest('#sortButtonSidebar') || button.closest('#sortButton') || button.parentElement;
-  }
-
-  document.querySelectorAll('.sortButtonClass, .sortButtonClassSidebar').forEach(function(btn) {
-    var container = getDropdownContainer(btn);
-    var dropdown = container ? container.querySelector('.dropdown-content-sort') : null;
-    if (!dropdown) return;
-
-    function syncWidth() {
-      dropdown.style.width = btn.getBoundingClientRect().width + 'px';
-    }
-    syncWidth();
-    window.addEventListener('resize', syncWidth);
-
-    btn.addEventListener('click', function(event) {
-      event.stopPropagation();
-      var isOpen = dropdown.style.display === 'block';
-      if (isOpen) {
-        dropdown.style.display = 'none';
-        dropdown.classList.remove('fg-open');
-      } else {
-        closeAllSortDropdowns();
-        syncWidth();
-        dropdown.style.display = 'block';
-        dropdown.classList.add('fg-open');
+  
+  
+  
+  function checkForce(minForce, maxForce){
+    
+    
+	 let Forces = 0;
+     let showHandles = [];
+     for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+      let betweenMinMaxForce = false; 
+      Forces = lines[i][4];
+         if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
+           showHandles.push(productHandle);
+           betweenMinMaxForce = true;
+		 }
+		
+      if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
+         document.getElementById(productHandle).setAttribute("hidden", "hidden");
       }
-    });
+      if(betweenMinMaxForce == true &&  document.getElementById(productHandle).hasAttribute("hidden")){
+        document.getElementById(productHandle).removeAttribute("hidden");
+      }
+       
+       
+       
+     }
+    
+    
+    
+  }
+  
+  
+  
+  
+  
+   function checkFilter(productHandle){
+	
+	for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+      if($(filter_IDs[0]).is(":checked") == true && lines[i][1] != '12v'){ 
+        if($(filter_IDs[1]).is(":checked") == true && lines[i][2] == '24v'){ 
+        }
+        else{
+          document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+	  
+      if($(filter_IDs[1]).is(":checked") == true && lines[i][2] != '24v'){ 
+        if($(filter_IDs[0]).is(":checked") == true && lines[i][1] == '12v'){ 
+        }
+        else{
+        document.getElementById(productHandle).setAttribute("hidden", "hidden");
+        }
+      }
+      
+      
 
-    dropdown.addEventListener('click', function(event) {
-      event.stopPropagation();
-    });
-  });
+      
 
-  document.addEventListener('click', function() {
-    closeAllSortDropdowns();
-  });
-
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') closeAllSortDropdowns();
-  });
-})();
-
-document.querySelectorAll('.dropdown').forEach(function(dropdown) {
-  dropdown.addEventListener('click', function() {
-    const arrow = this.querySelector('.DropdownArrow');
-    if (arrow) {
-      arrow.classList.toggle('rotated');
+      
     }
-  });
-});
-document.querySelectorAll('.dropdownSidebar').forEach(function(dropdown) {
-  dropdown.addEventListener('click', function() {
-    const arrow = this.querySelector('.DropdownArrow');
-    if (arrow) {
-      arrow.classList.toggle('rotated');
-    }
-  });
-});
+   }
+  
+  
+  
 
-function syncSliders(ids){
 
- const sliders = ids
- .map(id => document.getElementById(id))
- .filter(slider => slider && slider.noUiSlider);
-
- let syncing = false;
-
- sliders.forEach(source => {
-
-   source.noUiSlider.on('update', values => {
-
-     if(syncing) return;
-
-     syncing = true;
-
-     sliders.forEach(target => {
-
-       if(target !== source){
-         target.noUiSlider.set(values, false);
+  
+  function checkStroke(minStroke, maxStroke){
+	
+	 let Strokes = [];
+    
+     for (var i = 0; i < lines.length; i++) {
+      let productHandle = lines[i][6]; 
+      let betweenMinMax = false; 
+      Strokes = lines[i][0].split('_');
+      
+       for (var x = 0; x < Strokes.length; x++){
+         //console.log(Strokes[x] + " MinValue: " + minStroke + " MaxValue: " + maxStroke);
+         if (~~Strokes[x] >= ~~minStroke && ~~Strokes[x] <= ~~maxStroke){
+           
+           betweenMinMax = true;
+		   break
+         }
        }
+       if(betweenMinMax == false){
+         document.getElementById(productHandle).setAttribute("hidden", "hidden");
+       }
+      }
 
-     });
-
-     syncing = false;
-
-   });
-
- });
-
-}
-
-syncSliders([
-'StrokeSlider',
-'StickyStrokeSlider',
-'MobileStrokeSlider'
-]);
-
-syncSliders([
-'SidebarForceSlider',
-'StickyForceSlider',
-'MobileForceSlider'
-]);
-
-function updateFilterCount(){
-
-  let count = 0;
-
-  function anyCheckedInGroup(group){
-    return group.some(function(selectors){
-      return isChecked.apply(null, selectors);
-    });
+    
   }
-
-  // Checkbox filter groups (count once per filter column)
-  if(anyCheckedInGroup([
-      ['#Sidebar12v', '#Sticky12v', '#Mobile12v'],
-      ['#Sidebar24v', '#Sticky24v', '#Mobile24v']
-    ])) count++;
-
-  if(anyCheckedInGroup([
-      ['#SidebarRod', '#StickyRod', '#MobileRod'],
-      ['#SidebarTrack', '#StickyTrack', '#MobileTrack'],
-      ['#SidebarColumn', '#StickyColumn', '#MobileColumn']
-    ])) count++;
-
-  if(anyCheckedInGroup([
-      ['#SidebarYes', '#StickyYes', '#MobileYes'],
-      ['#SidebarNo', '#StickyNo', '#MobileNo']
-    ])) count++;
-
-  // Stroke slider
-  const strokeSlider =
-    document.getElementById('StrokeSlider') ||
-    document.getElementById('StickyStrokeSlider') ||
-    document.getElementById('MobileStrokeSlider');
-
-  if(strokeSlider){
-
-    const values = strokeSlider.noUiSlider.get().map(Number);
-
-    if(values[0] !== 0 || values[1] !== 60){
-      count++;
-    }
+  
+  
+  function submitFunction(id){
+   	for(var z=0; z<filter_IDs.length; z++){
+    	//alert(filter_IDs[z] + " " + $(filter_IDs[z]).is(":checked"));
+        filter();
+     }
+    
   }
+  
 
-  // Force slider
-  const forceSlider =
-    document.getElementById('SidebarForceSlider') ||
-    document.getElementById('StickyForceSlider') ||
-    document.getElementById('MobileForceSlider');
-
-  if(forceSlider){
-
-    const values = forceSlider.noUiSlider.get().map(Number);
-
-    if(values[0] !== 0 || values[1] !== 2200){
-      count++;
-    }
-  }
-
-  document.querySelectorAll('.stickyFilterSummary').forEach(function(el){
-
-    el.textContent =
-      count + (count === 1 ? ' Filter Applied' : ' Filters Applied');
-
-  });
-
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  updateFilterCount();
-  if(lines.length){
-    filter();
-  }
-});
-
-
+  
+  
+  
+  
 </script>
+
+
+
 
 {% comment %}
 {% for product in collection.products %}
