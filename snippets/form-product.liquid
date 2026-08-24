@@ -664,3 +664,25 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 {% endif %}
+
+/* CA option chips + qty steppers: 8px radius to match ATC. Do not restyle ATC colors. Warranty checkbox stays square. */
+<style>
+.fg-button-swatch.swatch-element,
+.fg-button-swatch,
+.fg-product-form .fg-button-swatch,
+.fg-button-swatch__number,
+.fg-product-form .fg-button-swatch__number,
+.fg-button-swatch__number-step,
+.fg-button-swatch__number-step_down,
+.fg-button-swatch__number-step_up,
+.fg-product-form .fg-button-swatch__number-step,
+.fg-product-form .js-step.fg-button-swatch__number-step {
+  border-radius: 8px !important;
+}
+#warrantyInput,
+.warrantyItem input[type="checkbox"],
+#warrantyDiv input[type="checkbox"] {
+  border-radius: 0 !important;
+}
+</style>
+
