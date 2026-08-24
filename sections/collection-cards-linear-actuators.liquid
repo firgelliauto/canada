@@ -1547,7 +1547,7 @@ mobileOverlay.addEventListener(
       return;
     }
 
-    if(window.scrollY > 800 && !collectionOptionsAtTop){
+    if(window.scrollY > 840 && !collectionOptionsAtTop){
       stickyBar.classList.add('visible');
     } else {
       stickyBar.classList.remove('visible');
@@ -1562,7 +1562,7 @@ document
   .getElementById('stickyFilterButton')
   .addEventListener('click', function(){
 
-    if(window.innerWidth <= 800){
+    if(window.innerWidth <= 840){
 
       openMobileFilters();
 
