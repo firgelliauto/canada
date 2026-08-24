@@ -23,13 +23,19 @@ input[type=number] {
   .sliderBox{
     width: 31px; 
     height: 23px; 
-    margin-bottom: 7px; 
-    
     border-color: rgb(148, 176, 202);
     border-width: 1px;
     border-style: solid;
   }
   
+  @media only screen and (max-width: 640px) {
+    .productsDiv{
+      padding-top: 0px !important;
+    }
+    .mobileFilterBar{
+      margin-top: 0px !important;
+    }
+  }
   
   @media only screen and (min-width: 640px) {
     .mobileOnly{
@@ -45,41 +51,13 @@ input[type=number] {
     width: 25%;
     margin: inherit;
   }
-  .dropdown-filter-item{
-    color: black;
-  }
+
   .dropdown{
     border-top: 1px solid #4c9cdc99;
   }
-  .dropdownSidebar{
-    border-top: 1px solid #4c9cdc99;
-  }
-  #WidgetForm{
-    width: 85%;
-  }
 
-  .dropdown-filter-item .arrow {
-    font-size: 12px;
-    transition: transform 0.3s ease;
-  }
-  .dropdown-filter-item.open .arrow {
-    transform: rotate(180deg);
-  }
-
-  .dropdown-filter-item {
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    width: 100%;
-    height: 50px;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
   .dropdown-content{
-    padding: 10px 0px;
+    /*padding: 10px 0px;*/
   }
   .sortButtonClass {
     width: 100%;
@@ -98,6 +76,7 @@ input[type=number] {
 }
 .sortButtonClassSidebar{
   width: 100%;
+  min-width: 0;
   height: 32px;
   border-radius: 12px;
   background: #f5f5f5;
@@ -107,6 +86,12 @@ input[type=number] {
   align-items: center;
   cursor: pointer;
   position: relative; /* Required to position the dropdown */
+  box-sizing: border-box;
+}
+#sortButtonSidebar {
+  position: relative;
+  width: 195px;
+  max-width: 100%;
 }
 #sortButton {
   display: flex;
@@ -116,20 +101,21 @@ input[type=number] {
   align-items: center;
   position: relative;
 }
-.filterSVG{
-  display: none !important;
-}
+
 .dropdown-content-sort{
   display: none;
   background-color: #f5f5f5;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   border-radius: 12px;
   position: absolute;
-  top: 0%;
+  top: 100%;
+  left: 0;
   width: 100%;
+  min-width: 100%;
   border: solid 1px #000000;
   padding: 10px 0;
   z-index: 2;
+  top: 0;
 }
 .dropdown-content {
   min-width: 100%;
@@ -143,9 +129,6 @@ input[type=number] {
     text-decoration: none;
     display: block;
     font-size: 13px;
-}
-.filterSVG{
-  display: none;
 }
 .dropdownOption:hover {
     background-color: #ddd;
@@ -181,19 +164,13 @@ input[type=number] {
   margin: 4px 0;
   background-color: black;
 }
-.dropdown-sidebar{
-  width: 89.3%;
-  top: 4.7%;
-}
+
 /* Optional: Change color on hover */
 .sortButtonClass:hover .line {
   background-color: grey;
 }
 .sortButtonClassSidebar:hover{
-  background-color: #ddd;
-}
-#WidgetFormSidebar{
-  padding-bottom: 10px;
+  background-color: #f5f5f5;
 }
 @media only screen and (max-width: 1100px) {
   .fg-collection-grid>* {
@@ -211,19 +188,7 @@ input[type=number] {
     width: 50%;
   }
 }
-#openSidebar {
-  width: 30%;
-  height: 32px;
-  border-radius: 12px;
-  border: solid 1px #000000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  display: none;
-  margin: auto;
-}
+
 @media only screen and (max-width: 800px) {
   .dropdown-sidebar{
     top: 4.0%;
@@ -234,102 +199,693 @@ input[type=number] {
   .dropdown{
     display: none !important;
   }
-  .filterSVG{
-    display: contents !important;
-  }
+
   .productsDiv{
     display: block;
   }
   .filterDiv{
     height: 60px;
   }
-  #openSidebar{
-    display: block;
-    margin: initial;
-    width: auto;
-    border: none;
-    font-size: 14px;
-    align-content: center;
-  }
 
-  #WidgetForm {  
-    display: none;
-  }
-  .svgImage:hover .SVG{
-    opacity: 0.6;
-    cursor: pointer;
-  }
-  .svgImage:hover{
-    opacity: 0.6;
-    cursor: pointer;
-  }
-  .svgImage:hover #openSidebar{
-    color: #7e7e7e;
-    text-decoration: underline;
-    cursor: pointer; 
-  }
-  .filterSVG{
-    display: block;
-  }
 }
 @media only screen and (max-width: 640px) {
   .mobileHidden {
     display: none;
   }
 }
-#sidebar {
-  position: fixed;
-  z-index: 100000000000;
-  top: 0;
-  left: -300px; /* Hide it initially */
-  width: 250px;
-  height: 100%;
-  background-color: #f4f4f4;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-  padding: 15px;
-  transition: left 0.3s ease; /* Animation for sliding */
+
+.noUi-pips-horizontal{
+  display: none;
 }
 
-#sidebar.active {
-  left: 0; /* Slide in */
-}
-#sidebar.active::after {
-  content: none;
+.collection-filter-bar{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:15px;
+
+  padding:55px 25px 10px 25px;
+  margin:10px 0;
+
+  border:1px solid #e7edf5;
+  border-radius:10px;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.04),
+    0 12px 32px rgba(15, 23, 42, 0.06);
+
+  position:relative;
+  background:#fff;
 }
 
-#closeSidebar {
-  background: none;
-  color: black;
-  border: none;
-  padding: 0px;
-  cursor: pointer;
-  font-size: 37px;
-  float: left;
-  margin-top: -12px;
-  font-weight: 100;
-  font-family: math !important;
-  margin-left: -5px;
+.filter-title{
+  position:absolute;
+  top:14px;
+  left:25px;
+
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+
+  color:#64748b;
 }
-#closeSidebar:after{
-  display: inline-block;
-  content: "\00d7"; /* This will render the 'X' */
+
+.filter-column{
+  flex:1;
+  min-width:0;
+  align-self: flex-start;
+  display:flex;
+  flex-direction:column;
+  width: 240px;
 }
-.dropdown-filter-item:hover{
-  opacity: 0.6;
+@media(max-width: 1350px){
+  .filter-column{
+    width: 150px;
+  }
 }
+@media(max-width: 940px){
+  .filter-column{
+    width: 120px;
+  }
+}
+
+
+.slider-column{
+  flex:2.2;
+}
+
+.filter-label{
+  margin-bottom:2px;
+
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+
+  color:#334155;
+}
+
+.filter-select{
+  height:48px;
+  width:100%;
+
+  padding:0 14px;
+
+  border:1px solid #dbe4f0;
+  border-radius:8px;
+
+  background:#fff;
+
+  font-size:15px;
+  color:#0f172a;
+
+  cursor:pointer;
+}
+
+
+.slider-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  height: 48px;
+}
+
+
+.filter-sort-wrapper{
+  position:absolute;
+
+  top:14px;
+  right:25px;
+
+  z-index:20;
+}
+
+
+#sortButtonSidebar{
+  margin:0;
+}
+
+.sortButtonClassSidebar{
+  height:30px;
+  padding:0 5px;
+  border:1px solid #dbe4f0;
+  border-radius:10px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+}
+.stickySortButtonContainer .sortButtonClassSidebar{
+  height:40px;
+}
+
+.stickyFilterContent{
+  max-height:0;
+  overflow:hidden;
+  display:none;
+  padding:0 24px;
+  gap:40px;
+  background:#fff;
+  border-top:1px solid transparent;
+  transition:max-height .3s ease,padding .3s ease;
+}
+
+.stickyFilterContent.open{
+  display:flex;
+  max-height:500px;
+  padding:20px 24px;
+  border-top:1px solid #e7edf5;
+}
+
+@media(max-width:800px){
+  .collection-filter-bar{
+    display: none;
+  }
+}
+
+@media(max-width: 790px){
+  .stickyFilterContent{
+    display: none !important;
+  }
+  .stickyFilterSummary{
+    display: none !important;
+  }
+}
+
+
+.stickyFilterDock{
+  position:fixed;
+  top:0;
+  left:50%;
+  width:100%;
+  transform:translateX(-50%) translateY(-100%);
+  
+  background:#fff;
+  border-bottom:1px solid #e7edf5;
+  box-shadow:0 4px 12px rgba(15,23,42,.06);
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:stretch;
+
+  z-index:9999;
+
+  opacity:0;
+  transition:
+    transform .25s ease,
+    opacity .25s ease;
+}
+.stickyFilterDock.visible{
+  transform:translateY(0);
+  opacity:1;
+}
+.stickyFilterDock.visible{
+  transform:translateX(-50%) translateY(0);
+}
+.stickyFilterToggle{
+  margin-left: 40px;
+}
+.stickySortWrapper{
+  margin-right: 40px;
+}
+.stickyFilterToggle,
+.stickySortToggle{
+  height:40px;
+
+  padding:0 16px;
+
+  border:1px solid #dbe4f0;
+  border-radius:10px;
+
+  background:#fff;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  font-weight:600;
+}
+
+.stickyFilterToggle:focus,
+.stickySortToggle:focus,
+.stickyFilterToggle:focus-visible,
+.stickySortToggle:focus-visible{
+  outline: none;
+  box-shadow: none;
+}
+
+.stickyFilterSummary{
+  font-size:14px;
+  color:#64748b;
+}
+
+
+
+
+
+
+#stickyFilterDock{
+  /*display:none;*/
+}
+
+@media(min-width:801px){
+
+  #stickyFilterDock{
+    display:flex;
+  }
+
+}
+.stickySortWrapper{
+  flex-shrink:0;
+}
+
+.stickySortButtonContainer{
+  width:195px;
+  position:relative;
+}
+
+
+.stickyFilterTopRow{
+  height:64px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 24px;
+}
+
+.stickyDockTop{
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+
+  #mobileFilterOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+
+  opacity:0;
+  visibility:hidden;
+
+  transition:.25s ease;
+
+  z-index:99998;
+}
+
+#mobileFilterOverlay.active{
+  opacity:1;
+  visibility:visible;
+}
+
+#mobileFilterOverlay::before,
+#mobileFilterOverlay::after {
+  content: none !important;
+  display: none !important;
+}
+
+#mobileFilterDrawer{
+  position:fixed;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:72vh;
+
+  background:#fff;
+
+  border-radius:20px 20px 0 0;
+
+  transform:translateY(100%);
+
+  transition:transform .3s ease;
+
+  z-index:99999;
+
+  display:flex;
+  flex-direction:column;
+
+  box-shadow:
+    0 -8px 30px rgba(0,0,0,.15);
+}
+
+#mobileFilterDrawer.active{
+  transform:translateY(0);
+}
+
+.mobileFilterHeader{
+  height:60px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 20px;
+
+  border-bottom:1px solid #e7edf5;
+
+  font-weight:600;
+  font-size:18px;
+}
+
+#closeMobileFilters{
+  border:none;
+  background:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.mobileFilterBody{
+  flex:1;
+  overflow:auto;
+  padding:20px;
+}
+.mobileFiltersText{
+  font-weight: 700; 
+  letter-spacing: 0.08em; 
+  text-transform: uppercase; 
+  color: #64748b;
+}
+
+.mobileFilterBody{
+  padding:24px;
+  padding-top: 16px;
+  overflow-y:auto;
+  height:calc(100% - 65px);
+  background:#fff;
+}
+
+.mobileFilterGroup{
+  padding-bottom:16px;
+  margin-bottom:16px;
+  border-bottom:1px solid #e7edf5;
+}
+.mobileFilterGroup:last-child{
+
+  border-bottom:none;
+
+}
+.mobileFilterTitle{
+
+  font-size:14px;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  letter-spacing:.06em;
+
+  color:#334155;
+
+  margin-bottom:6px;
+
+}
+
+.mobileFilterOptions{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.mobileCheckbox{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  font-size:15px;
+
+  color:#0f172a;
+
+  cursor:pointer;
+
+}
+
+.mobileCheckbox input{
+
+  width:18px;
+
+  height:18px;
+
+}
+
+.mobileSlider{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:14px;
+
+  width:100%;
+
+}
+
+.mobileSlider .sliderBox{
+
+  width:42px;
+
+  height:28px;
+
+  text-align:center;
+
+}
+
+#MobileStrokeSlider,
+#MobileForceSlider{
+
+  flex:1;
+
+  max-width:180px;
+
+  margin-top:5px;
+
+}
+
+#mobileFilterDrawer{
+
+  background:#fff;
+
+  border-radius:18px 18px 0 0;
+
+  box-shadow:
+    0 -8px 30px rgba(15,23,42,.15);
+
+}
+
+.mobileFilterHeader{
+
+  height:65px;
+
+  padding:0 20px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  border-bottom:1px solid #e7edf5;
+
+}
+
+
+.mobileFiltersText{
+
+  font-size:18px;
+
+  font-weight:700;
+
+  color:#0f172a;
+
+}
+
+
+#closeMobileFilters{
+
+  border:none;
+
+  background:none;
+
+  font-size:22px;
+
+  cursor:pointer;
+
+  color:#334155;
+
+}
+
+
+
+/* mobile drawer only */
+
+@media(max-width:800px){
+  #mobileFilterDrawer{
+    width:100%;
+    left:0;
+  }
+}
+@media(max-width:480px){
+  .mobileFilterButton {
+    width: 45% !important;
+  }
+  .mobileSortWrapper {
+    width: 45% !important;
+  }
+  .sortText {
+    font-size: 11px !important;
+  }
+}
+@media(max-width:310px){
+  .sortText {
+    font-size: 9px !important;
+  }
+}
+#mobileFilterDrawer::before{
+  content: none !important;
+  display: none !important;
+}
+#mobileFilterDrawer::after{
+  content: none !important;
+  display: none !important;
+}
+
+.mobileFilterBar{
+  display:none;
+}
+
+@media(max-width:800px){
+
+  .mobileFilterBar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin:15px 0;
+
+    padding:12px;
+
+    background:#fff;
+
+    border:1px solid #e7edf5;
+    border-radius:12px;
+
+    box-shadow:
+      0 4px 12px rgba(15,23,42,.04),
+      0 12px 32px rgba(15,23,42,.06);
+  }
+
+  .mobileFilterButton{
+    width: 25%;
+
+    height:44px;
+
+    border:1px solid #dbe4f0;
+    border-radius:10px;
+
+    background:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+  }
+
+  .mobileSortWrapper{
+    width: 30%;
+    position:relative;
+  }
+
+  .mobileSortWrapper .sortButtonClassSidebar{
+    width:100%;
+    height:40px;
+    padding:0 14px;
+    justify-content:space-between;
+  }
+
+  .mobileSortWrapper .dropdown-content-sort{
+    left:0;
+    top:0;
+  }
+}
+.stickyFilterToggle:hover{
+ background-color: #f5f5f5;
+}
+.mobileFilterButton:hover{
+  background-color: #f5f5f5;
+}
+
+
+
+/* FIRGELLI linear-actuators mobile SVG restore start */
+@media only screen and (max-width: 959px) {
+
+
+
+  body#linear-actuators-12v-amp-24v-electric-actuators-firgelli #collection-grid-section .firgelli-mobile-collection-hero__title {
+    align-items: flex-start !important;
+    padding-top: 46px !important;
+    z-index: 2 !important;
+  }
+
+  body#linear-actuators-12v-amp-24v-electric-actuators-firgelli #lottie {
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+}
+/* FIRGELLI linear-actuators mobile SVG restore end */
+
+
+
+/* FIRGELLI mobile collection SVG overlay restore start */
+@media only screen and (max-width: 959px) {
+
+
+  #collection-grid-section .firgelli-mobile-collection-hero__image {
+    position: relative !important;
+    z-index: 0 !important;
+
+  }
+
+  #collection-grid-section .firgelli-mobile-collection-hero__title {
+    align-items: flex-start !important;
+    padding-top: 22px !important;
+    z-index: 2 !important;
+  }
+
+  #lottie {
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+}
+/* FIRGELLI mobile collection SVG overlay restore end */
 </style>
 
-
-
-
 <section id="collection-grid-section" class="uk-section">
-  <img 
-  fetchpriority="high"
-  loading="eager"
-  alt="collection banner"
-  class="mobileOnly"
-  src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211"
-  style="width: 100%; height: 230px; margin-bottom: 30px;">
+  <div class="firgelli-mobile-collection-hero mobileOnly">
+  </div>
   <div class="uk-container">
     
     <div class="collectionDescription">
@@ -343,378 +899,830 @@ input[type=number] {
     </div>
 
 
-<div class="productsDiv">
-<div class="uk-container mobileHidden filterDiv">
-  <form id="WidgetForm" style="">
-    {% render 'collection-breadcrumbs' %}
-    <div id="sortButton">
-      <div class="sortButtonClass">
+<div class="collection-filter-bar">
+  <div class="filter-title">
+    Filters
+  </div>
+  <div class="filter-sort-wrapper">
+    <div id="sortButtonSidebar">
+      <div class="sortButtonClassSidebar">
         <div class="filter-button">
           <span class="line"></span>
           <span class="line"></span>
           <span class="line"></span>
         </div>
-        <span class="sortText">Sort By: Featured</span>
+        <span class="sortText">
+          Sort By: Featured
+        </span>
       </div>
-      <div id="dropdownMenu" class="dropdown-content-sort">
-        <div onclick="changeSort('Featured')" class="dropdownOption activeOption">Featured</div>
-        <div onclick="changeSort('Price Low to High')" class="dropdownOption">Price: Low to High</div>
-        <div onclick="changeSort('Price High to Low')" class="dropdownOption">Price: High to Low</div>
-        <div onclick="changeSort('Force Low to High')" class="dropdownOption">Force: Low to High</div>
-        <div onclick="changeSort('Force High to Low')" class="dropdownOption">Force: High to Low</div>
-        <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">Stroke: Low to High</div>
-        <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">Stroke: High to Low</div>
+      <div id="dropdownMenuSidebar" class="dropdown-content-sort dropdown-sidebar">
+        <div onclick="changeSort('Featured')" class="dropdownOption activeOption">
+          Featured
+        </div>
+        <div onclick="changeSort('Price Low to High')" class="dropdownOption">
+          Price: Low to High
+        </div>
+        <div onclick="changeSort('Price High to Low')" class="dropdownOption">
+          Price: High to Low
+        </div>
+        <div onclick="changeSort('Force Low to High')" class="dropdownOption">
+          Force: Low to High
+        </div>
+        <div onclick="changeSort('Force High to Low')" class="dropdownOption">
+          Force: High to Low
+        </div>
+        <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">
+          Stroke: Low to High
+        </div>
+        <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">
+          Stroke: High to Low
+        </div>
       </div>
+    </div>
   </div>
-  <div class="dropdown">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('voltageDropdown', this)">
-        VOLTAGE
-        <span class="DropdownArrow"></span> <!-- Arrow down icon -->
-    </div>
-    <div class="dropdown-content" id="voltageDropdown" style="display: none">
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
-            <label class="uk-form-label" for="12v">12v</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
-            <label class="uk-form-label" for="24v">24v</label>
-        </div>
-    </div>
-</div>
 
-<div class="dropdown">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('typeDropdown', this)">
-        TYPE
-        <span class="DropdownArrow"></span>
-    </div>
-    <div class="dropdown-content" id="typeDropdown" style="display: none">
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
-            <label class="uk-form-label" for="Rod">Rod</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
-            <label class="uk-form-label" for="Track">Track</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
-            <label class="uk-form-label" for="Column">Column</label>
-        </div>
-    </div>
-</div>
 
-<div class="dropdown">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('FeedbackDropdown', this)">
-        FEEDBACK
-        <span class="DropdownArrow"></span>
+  <div class="filter-column">
+
+    <div class="filter-label">
+      Voltage
     </div>
-    <div class="dropdown-content" id="FeedbackDropdown" style="display: none">
-      <div>
-        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
-        <label class="uk-form-label" for="Yes">Yes</label>
+      <div class="dropdown-content filter-dropdown-always-open">
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar12v" name="Voltage" value="Sidebar12v">
+
+        <label class="uk-form-label" for="Sidebar12v">
+          12v
+        </label>
       </div>
-      <div>
-        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
-        <label class="uk-form-label" for="No">No</label>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar24v" name="Voltage" value="Sidebar24v">
+
+        <label class="uk-form-label" for="Sidebar24v">
+          24v
+        </label>
       </div>
-    </div>
-</div>
-<div class="dropdown">
-  <div class="dropdown-filter-item" onclick="toggleDropdown('StrokeDropdown', this)">
-      STROKE
-      <span class="DropdownArrow"></span>
+
+  </div>  
+  
   </div>
-  <div class="dropdown-content" id="StrokeDropdown" style="height: 100px; display: none; padding-top: 0px">
-    <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
-        <center><div style="font-size: 16px;"><strong>Stroke (Inches)</strong></div></center>
+
+  <div class="filter-column">
+
+    <div class="filter-label">
+      Type
+    </div>
+     <div class="dropdown-content filter-dropdown-always-open">
+
+    <div class="filter-checkbox-row">
+      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarRod" name="Type" value="SidebarRod">
+
+      <label class="uk-form-label" for="SidebarRod">
+        Rod
+      </label>
+    </div>
+
+    <div class="filter-checkbox-row">
+      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarTrack" name="Type" value="SidebarTrack">
+
+      <label class="uk-form-label" for="SidebarTrack">
+        Track
+      </label>
+    </div>
+
+    <div class="filter-checkbox-row">
+      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarColumn" name="Type" value="SidebarColumn">
+
+      <label class="uk-form-label" for="SidebarColumn">
+        Column
+      </label>
+    </div>
+
+  </div>
+  </div>
+
+  <div class="filter-column">
+    <div class="filter-label">
+      Feedback
+    </div>
+    <div class="dropdown-content filter-dropdown-always-open">
+
+    <div class="filter-checkbox-row">
+      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarYes" name="Feedback" value="SidebarYes">
+
+      <label class="uk-form-label" for="SidebarYes">
+        Yes
+      </label>
+    </div>
+
+    <div class="filter-checkbox-row">
+      <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarNo" name="Feedback" value="SidebarNo">
+
+      <label class="uk-form-label" for="SidebarNo">
+        No
+      </label>
+    </div>
+  </div>
+  </div>
+
+  <div class="filter-column slider-column">
+
+    <div class="filter-label">
+      Stroke (Inches)
+    </div>
+
+    <div class="slider-row">
+
+  <div class="dropdown-content" id="StrokeDropdown" style="padding-top: 0px">
+    <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; align-self: center;">
         <div style="display: flex">
         <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
         <div id="StrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
         <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
-        {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
         </div>
       </div>
   </div>
-</div>
-<div class="dropdown">
-  <div class="dropdown-filter-item" onclick="toggleDropdown('ForceDropdown', this)">
-      FORCE
-      <span class="DropdownArrow"></span>
-  </div>
-  <div class="dropdown-content" id="ForceDropdown" style="height: 100px; display: none; padding-top: 0px">
-  <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
-    <center><div style="font-size: 16px;"><strong>Force (lb's)</strong></div></center>
-        <div style="display: flex">
-        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
-        <div id="ForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
-      </div>
-      </div>
-  </div>
-</div>
 
-
-
-
-
-
-
-
-    <div style="visibility: hidden;">
-      
-      <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		    <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
-          <label class="uk-form-label" for="12v">12v</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
-          <label class="uk-form-label" for="24v">24v</label>
-        </div>
-        </div>
-        </div>
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Type</strong></div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
-          <label class="uk-form-label" for="Rod">Rod</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
-          <label class="uk-form-label" for="Track">Track</label>
-        </div>
-        
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
-          <label class="uk-form-label" for="Column">Column</label>
-        </div>
-        </div>
-        </div>
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-        <div style="max-width: 150px; padding-right: 20px;">
-        <div style="font-size: 23px;"><strong>Feedback</strong></div>
-          <a href="https://www.firgelliauto.com/blogs/news/don-t-buy-a-feedback-linear-actuator-until-you-read-these-important-tips" title="feedback linear actuator tutorial" style="color: #1e87f0; font-size: 15px">What is feedback?</a>
-        </div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px; width: 50px;">
-		
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
-          <label class="uk-form-label" for="Yes">Yes</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
-          <label class="uk-form-label" for="No">No</label>
-        </div>
-        </div>
-        </div>
-        
-      </fieldset>
     </div>
-    <input id="hiddenSubmit" type="button" value="Submit" hidden>
-  </form>
+
+  </div>
+
+  <div class="filter-column slider-column">
+
+    <div class="filter-label">
+      Force (lbs)
+    </div>
+
+    <div class="slider-row">
+
+      <div class="dropdown-content" id="ForceDropdown" style="padding-top: 0px">
+        <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; align-self: center;">
+            <div style="display: flex">
+            <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
+            <div id="SidebarForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
+            <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
+          </div>
+      </div>
+  </div>
+    </div>
+  </div>
 </div>
 
 
-<div style="display: flex; align-items: center;" class="filterSVG">
-<div style="display: flex" class="svgImage">
-  <img src="{{ 'filter.svg' | asset_url }}" class="SVG">     
-  <span id="openSidebar">Filter</span>
-</div>
-</div>
+<div id="stickyFilterDock" class="stickyFilterDock">
 
+  <div class="stickyDockTop">
 
-
-<div id="sidebar">
-  <button type="button" id="closeSidebar"></button>
-  <div id="WidgetFormSidebar">
-  <div id="sortButtonSidebar">
-    <div class="sortButtonClassSidebar">
+    <button id="stickyFilterButton" class="stickyFilterToggle">
       <div class="filter-button">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
       </div>
-      <span class="sortText">Sort By: Featured</span>
-    </div>
-    <div id="dropdownMenuSidebar" class="dropdown-content-sort dropdown-sidebar">
-      <div onclick="changeSort('Featured')" class="dropdownOption activeOption">Featured</div>
-      <div onclick="changeSort('Price Low to High')" class="dropdownOption">Price: Low to High</div>
-      <div onclick="changeSort('Price High to Low')" class="dropdownOption">Price: High to Low</div>
-      <div onclick="changeSort('Force Low to High')" class="dropdownOption">Force: Low to High</div>
-      <div onclick="changeSort('Force High to Low')" class="dropdownOption">Force: High to Low</div>
-      <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">Stroke: Low to High</div>
-      <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">Stroke: High to Low</div>
-    </div>
-  </div>
-  </div>
 
+      <span>Filters</span>
+    </button>
 
-  <div class="dropdownSidebar">
-  <div class="dropdown-filter-item" onclick="toggleDropdown('voltageDropdownSidebar', this)">
-      VOLTAGE
-      <span class="DropdownArrow"></span> <!-- Arrow down icon -->
-  </div>
-  <div class="dropdown-content" id="voltageDropdownSidebar" style="display: none">
-      <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar12v" name="Voltage" value="Sidebar12v">
-          <label class="uk-form-label" for="Sidebar12v">12v</label>
+    <div class="stickyFilterSummary">
+      0 Filters Applied
+    </div>
+
+    <div class="stickySortWrapper">
+
+      <div class="stickySortButtonContainer">
+
+        <div class="sortButtonClassSidebar">
+
+          <div class="filter-button">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+
+          <span class="sortText">
+            Sort By: Featured
+          </span>
+
+        </div>
+
+        <div id="stickySortDropdown" class="dropdown-content-sort dropdown-sidebar">
+
+          <div onclick="changeSort('Featured')" class="dropdownOption activeOption">
+            Featured
+          </div>
+
+          <div onclick="changeSort('Price Low to High')" class="dropdownOption">
+            Price: Low to High
+          </div>
+
+          <div onclick="changeSort('Price High to Low')" class="dropdownOption">
+            Price: High to Low
+          </div>
+
+          <div onclick="changeSort('Force Low to High')" class="dropdownOption">
+            Force: Low to High
+          </div>
+
+          <div onclick="changeSort('Force High to Low')" class="dropdownOption">
+            Force: High to Low
+          </div>
+
+          <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">
+            Stroke: Low to High
+          </div>
+
+          <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">
+            Stroke: High to Low
+          </div>
+
+        </div>
+
       </div>
-      <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sidebar24v" name="Voltage" value="Sidebar24v">
-          <label class="uk-form-label" for="Sidebar24v">24v</label>
-      </div>
-  </div>
+
+    </div>
+
   </div>
 
-<div class="dropdownSidebar">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('typeDropdownSidebar', this)">
-        TYPE
-        <span class="DropdownArrow"></span>
+  <!-- EXPANDING FILTER AREA -->
+  <div id="stickyFilterContent" class="stickyFilterContent">
+
+    <div class="filter-column">
+
+      <div class="filter-label">
+        Voltage
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sticky12v">
+        <label for="Sticky12v">12v</label>
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Sticky24v">
+        <label for="Sticky24v">24v</label>
+      </div>
+
     </div>
-    <div class="dropdown-content" id="typeDropdownSidebar" style="display: none">
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarRod" name="Type" value="SidebarRod">
-            <label class="uk-form-label" for="SidebarRod">Rod</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarTrack" name="Type" value="SidebarTrack">
-            <label class="uk-form-label" for="SidebarTrack">Track</label>
-        </div>
-        <div>
-            <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarColumn" name="Type" value="SidebarColumn">
-            <label class="uk-form-label" for="SidebarColumn">Column</label>
-        </div>
+
+
+    <div class="filter-column">
+
+      <div class="filter-label">
+        Type
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyRod">
+        <label for="StickyRod">Rod</label>
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyTrack">
+        <label for="StickyTrack">Track</label>
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyColumn">
+        <label for="StickyColumn">Column</label>
+      </div>
+
     </div>
+
+
+    <div class="filter-column">
+
+      <div class="filter-label">
+        Feedback
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyYes">
+        <label for="StickyYes">Yes</label>
+      </div>
+
+      <div class="filter-checkbox-row">
+        <input autocomplete="off" onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="StickyNo">
+        <label for="StickyNo">No</label>
+      </div>
+
+    </div>
+
+    <div class="filter-column slider-column">
+
+  <div class="filter-label">
+    Stroke (Inches)
+  </div>
+
+  <div class="slider-row">
+
+    <div class="dropdown-content" style="padding-top:0;">
+      <div class="custom-range-slider uk-width-1-1@s" style="text-align:-webkit-center; align-self:center;">
+        <div style="display:flex">
+          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox"
+                 type="number"
+                 style="margin-right:20px;">
+
+          <div id="StickyStrokeSlider"
+               class="custom-range-slider__track"
+               style="width:200px; margin-top:5px;">
+          </div>
+
+          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox"
+                 type="number"
+                 style="margin-left:20px;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="dropdownSidebar">
-    <div class="dropdown-filter-item" onclick="toggleDropdown('FeedbackDropdownSidebar', this)">
-        FEEDBACK
-        <span class="DropdownArrow"></span>
-    </div>
-    <div class="dropdown-content" id="FeedbackDropdownSidebar" style="display: none">
-      <div>
-        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarYes" name="Feedback" value="SidebarYes">
-        <label class="uk-form-label" for="SidebarYes">Yes</label>
+
+<div class="filter-column slider-column">
+
+  <div class="filter-label">
+    Force (lbs)
+  </div>
+
+  <div class="slider-row">
+
+    <div class="dropdown-content" style="padding-top:0;">
+      <div class="custom-range-slider uk-width-1-1@s" style="text-align:-webkit-center; align-self:center;">
+        <div style="display:flex">
+          <input class="custom-range-slider__input custom-range-slider__input--from sliderBox"
+                 type="number"
+                 style="margin-right:20px;">
+
+          <div id="StickyForceSlider"
+               class="custom-range-slider__track"
+               style="width:200px; margin-top:5px;">
+          </div>
+
+          <input class="custom-range-slider__input custom-range-slider__input--to sliderBox"
+                 type="number"
+                 style="margin-left:20px;">
+        </div>
       </div>
-      <div>
-        <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="SidebarNo" name="Feedback" value="SidebarNo">
-        <label class="uk-form-label" for="SidebarNo">No</label>
-      </div>
     </div>
+
+  </div>
+
 </div>
-<div class="dropdownSidebar">
-  <div class="dropdown-filter-item" onclick="toggleDropdown('StrokeDropdownSidebar', this)">
-      STROKE
+
+
+  </div>
+
+</div>
+
+
+<div id="mobileFilterOverlay"></div>
+
+<div id="mobileFilterDrawer">
+
+  <div class="mobileFilterHeader">
+
+    <span class="mobileFiltersText">Filters</span>
+
+    <button id="closeMobileFilters">
+      ✕
+    </button>
+
+  </div>
+
+  <div class="mobileFilterBody">
+
+
+  <!-- VOLTAGE -->
+  <div class="mobileFilterGroup">
+
+    <div class="mobileFilterTitle">
+      Voltage
+    </div>
+
+    <div class="mobileFilterOptions">
+
+      <label class="mobileCheckbox">
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="Mobile12v">
+        <span>12v</span>
+      </label>
+
+      <label class="mobileCheckbox">
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="Mobile24v">
+        <span>24v</span>
+      </label>
+
+    </div>
+  </div>
+
+
+
+  <!-- TYPE -->
+  <div class="mobileFilterGroup">
+
+    <div class="mobileFilterTitle">
+      Type
+    </div>
+
+    <div class="mobileFilterOptions">
+
+      <label class="mobileCheckbox">
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="MobileRod">
+        <span>Rod</span>
+      </label>
+
+
+      <label class="mobileCheckbox">
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="MobileTrack">
+        <span>Track</span>
+      </label>
+
+
+      <label class="mobileCheckbox">
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="MobileColumn">
+        <span>Column</span>
+      </label>
+
+
+    </div>
+
+  </div>
+
+
+
+
+  <!-- FEEDBACK -->
+  <div class="mobileFilterGroup">
+
+    <div class="mobileFilterTitle">
+      Feedback
+    </div>
+
+    <div class="mobileFilterOptions">
+
+
+      <label class="mobileCheckbox">
+
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="MobileYes">
+
+        <span>Yes</span>
+
+      </label>
+
+
+      <label class="mobileCheckbox">
+
+        <input 
+        onclick="submitFunction()" 
+        class="uk-checkbox" 
+        type="checkbox" 
+        id="MobileNo">
+
+        <span>No</span>
+
+      </label>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- STROKE -->
+  <div class="mobileFilterGroup">
+
+    <div class="mobileFilterTitle">
+      Stroke (Inches)
+    </div>
+
+    <div class="dropdown-content">
+
+  <div class="custom-range-slider uk-width-1-1@s">
+
+    <div style="display:flex">
+
+      <input 
+      class="custom-range-slider__input custom-range-slider__input--from sliderBox"
+      type="number"
+      style="margin-right:20px">
+
+
+      <div 
+      id="MobileStrokeSlider"
+      class="custom-range-slider__track"
+      style="width:160px; margin-top:5px;">
+      </div>
+
+
+      <input 
+      class="custom-range-slider__input custom-range-slider__input--to sliderBox"
+      type="number"
+      style="margin-left:20px">
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+
+
+  <!-- FORCE -->
+  <div class="mobileFilterGroup">
+
+    <div class="mobileFilterTitle">
+      Force (lbs)
+    </div>
+
+    <div class="dropdown-content">
+
+  <div class="custom-range-slider uk-width-1-1@s">
+
+    <div style="display:flex">
+
+      <input 
+      class="custom-range-slider__input custom-range-slider__input--from sliderBox"
+      type="number"
+      style="margin-right:20px">
+
+
+      <div 
+      id="MobileForceSlider"
+      class="custom-range-slider__track"
+      style="width:160px; margin-top:5px;">
+      </div>
+
+
+      <input 
+      class="custom-range-slider__input custom-range-slider__input--to sliderBox"
+      type="number"
+      style="margin-left:20px">
+
+    </div>
+
+  </div>
+
+</div>
+
+  </div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+<script>
+  const mobileDrawer =
+  document.getElementById('mobileFilterDrawer');
+
+const mobileOverlay =
+  document.getElementById('mobileFilterOverlay');
+
+function preventOverlayScroll(event) {
+  event.preventDefault();
+}
+
+function openMobileFilters(){
+
+  mobileDrawer.classList.add('active');
+  mobileOverlay.classList.add('active');
+}
+
+function closeMobileFilters(){
+
+  mobileDrawer.classList.remove('active');
+  mobileOverlay.classList.remove('active');
+}
+
+mobileOverlay.addEventListener('wheel', preventOverlayScroll, { passive: false });
+mobileOverlay.addEventListener('touchmove', preventOverlayScroll, { passive: false });
+
+document
+  .getElementById('closeMobileFilters')
+  .addEventListener('click', closeMobileFilters);
+
+mobileOverlay.addEventListener(
+  'click',
+  closeMobileFilters
+);
+</script>
+
+<script>
+  window.addEventListener('scroll', function(){
+    const stickyBar = document.getElementById('stickyFilterDock');
+    if(!stickyBar){
+      return;
+    }
+
+    if(window.scrollY > 840 && !collectionOptionsAtTop){
+      stickyBar.classList.add('visible');
+    } else {
+      stickyBar.classList.remove('visible');
+    }
+  });
+</script>
+
+
+<script>
+
+document
+  .getElementById('stickyFilterButton')
+  .addEventListener('click', function(){
+
+    if(window.innerWidth <= 958){
+
+      openMobileFilters();
+
+    }else{
+
+      document
+        .getElementById('stickyFilterContent')
+        .classList
+        .toggle('open');
+
+    }
+
+});
+
+document.addEventListener('DOMContentLoaded', function(){
+  const mobileFiltersButton = document.getElementById('mobileFiltersButton');
+  if(mobileFiltersButton){
+    mobileFiltersButton.addEventListener('click', function(){
+      if(window.innerWidth <= 958){
+        openMobileFilters();
+      } else {
+        document
+          .getElementById('stickyFilterContent')
+          .classList
+          .toggle('open');
+      }
+    });
+  }
+
+  const stickyDock = document.getElementById('stickyFilterDock');
+  const collectionOptions = document.getElementById('shopify-section-collection-options');
+
+  const updateStickyVisible = function(hide){
+    collectionOptionsAtTop = hide;
+    if(!stickyDock){
+      return;
+    }
+
+    if(hide){
+      stickyDock.classList.remove('visible');
+    } else if(window.scrollY > 840){
+      stickyDock.classList.add('visible');
+    }
+  };
+
+  if(stickyDock && collectionOptions && 'IntersectionObserver' in window){
+    const sentinel = document.createElement('div');
+    sentinel.id = 'collectionOptionsScrollSentinel';
+    sentinel.style.cssText = 'height:1px;width:1px;margin:0;padding:0;visibility:hidden;pointer-events:none;';
+    collectionOptions.parentNode.insertBefore(sentinel, collectionOptions);
+
+    const observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        const hide = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        updateStickyVisible(hide);
+      });
+    }, { threshold: [0] });
+
+    observer.observe(sentinel);
+
+    const rect = sentinel.getBoundingClientRect();
+    updateStickyVisible(rect.top < 0);
+  }
+});
+
+
+</script>
+
+<script>
+
+  function syncCheckbox(...selectors){
+
+  document.addEventListener('change',e=>{
+  if(e.target.matches(selectors.join(','))){
+
+      const checked = e.target.checked;
+
+      selectors.forEach(function(selector){
+        document.querySelector(selector).checked = checked;
+      });
+      updateFilterCount();
+      filter();
+    }
+    }
+  );
+
+}
+syncCheckbox('#Sidebar12v', '#Sticky12v', '#Mobile12v');
+syncCheckbox('#Sidebar24v', '#Sticky24v', '#Mobile24v');
+
+syncCheckbox('#SidebarRod', '#StickyRod', '#MobileRod');
+syncCheckbox('#SidebarTrack', '#StickyTrack', '#MobileTrack');
+syncCheckbox('#SidebarColumn', '#StickyColumn', '#MobileColumn');
+
+syncCheckbox('#SidebarYes', '#StickyYes', '#MobileYes');
+syncCheckbox('#SidebarNo', '#StickyNo', '#MobileNo');
+
+
+</script>
+
+<div class="productsDiv">
+
+<div class="mobileFilterBar">
+
+  <button id="mobileFiltersButton" class="mobileFilterButton">
+    <div class="filter-button">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+
+    <span>Filters</span>
+  </button>
+
+  <div class="mobileSortWrapper">
+
+    <div class="sortButtonClassSidebar">
+
+      <span class="sortText">
+        Sort By: Featured
+      </span>
+
       <span class="DropdownArrow"></span>
-  </div>
-  <div class="dropdown-content" id="StrokeDropdownSidebar" style="height: 100px; display: none; padding-top: 0px">
-    <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
-        <center><div style="font-size: 16px;"><strong>Stroke (Inches)</strong></div></center>
-        <div style="display: flex">
-        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px;">
-        <div id="SidebarStrokeSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
-        {% comment %}<span class="custom-range-slider__input-text">Inches</span>{% endcomment %}
-        </div>
-      </div>
-  </div>
-</div>
-<div class="dropdownSidebar">
-  <div class="dropdown-filter-item" onclick="toggleDropdown('ForceDropdownSidebar', this)">
-      FORCE
-      <span class="DropdownArrow"></span>
-  </div>
-  <div class="dropdown-content" id="ForceDropdownSidebar" style="height: 100px; display: none; padding-top: 0px">
-  <div class="custom-range-slider uk-width-1-1@s" style="text-align: -webkit-center; padding-top: 10px; align-self: center;">
-    <center><div style="font-size: 16px;"><strong>Force (lb's)</strong></div></center>
-        <div style="display: flex">
-        <input class="custom-range-slider__input custom-range-slider__input--from sliderBox" type="number" style="margin-right: 20px">
-        <div id="SidebarForceSlider" class="custom-range-slider__track" style="width: 200px; margin-top: 5px;"></div>
-        <input class="custom-range-slider__input custom-range-slider__input--to sliderBox" type="number" style="margin-left: 20px">
-      </div>
-      </div>
-  </div>
-</div>
-    <div style="visibility: hidden;">
-      
-      <fieldset class="uk-fieldset uk-margin-right" style="display: flex; border: none; height: 120px; padding-bottom: 20px; place-content: center;">
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Voltage</strong></div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		    <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="12v" name="Voltage" value="12v">
-          <label class="uk-form-label" for="12v">12v</label>
-        </div>
 
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="24v" name="Voltage" value="24v">
-          <label class="uk-form-label" for="24v">24v</label>
-        </div>
-        </div>
-        </div>
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-		<div style="font-size: 23px; padding: 10px 0; padding-right: 20px"><strong>Type</strong></div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px">
-		
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Rod" name="Type" value="Rod">
-          <label class="uk-form-label" for="Rod">Rod</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Track" name="Type" value="Track">
-          <label class="uk-form-label" for="Track">Track</label>
-        </div>
-        
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Column" name="Type" value="Column">
-          <label class="uk-form-label" for="Column">Column</label>
-        </div>
-        </div>
-        </div>
-        
-        
-        <div style="display: flex; align-items: center; width: 15%">
-        <div style="max-width: 150px; padding-right: 20px;">
-        <div style="font-size: 23px;"><strong>Feedback</strong></div>
-          <a href="https://www.firgelliauto.com/blogs/news/don-t-buy-a-feedback-linear-actuator-until-you-read-these-important-tips" title="feedback linear actuator tutorial" style="color: #1e87f0; font-size: 15px">What is feedback?</a>
-        </div>
-        <div class="fg-checkbox-group" style="padding: 0 0 0px 0px; width: 50px;">
-		
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="Yes" name="Feedback" value="Yes">
-          <label class="uk-form-label" for="Yes">Yes</label>
-        </div>
-
-        <div>
-          <input onclick="submitFunction()" class="uk-checkbox" type="checkbox" id="No" name="Feedback" value="No">
-          <label class="uk-form-label" for="No">No</label>
-        </div>
-        </div>
-        </div>
-      
-      </fieldset>
     </div>
+
+    <div class="dropdown-content-sort">
+
+      <div onclick="changeSort('Featured')" class="dropdownOption activeOption">
+        Featured
+      </div>
+
+      <div onclick="changeSort('Price Low to High')" class="dropdownOption">
+        Price: Low to High
+      </div>
+
+      <div onclick="changeSort('Price High to Low')" class="dropdownOption">
+        Price: High to Low
+      </div>
+
+      <div onclick="changeSort('Force Low to High')" class="dropdownOption">
+        Force: Low to High
+      </div>
+
+      <div onclick="changeSort('Force High to Low')" class="dropdownOption">
+        Force: High to Low
+      </div>
+
+      <div onclick="changeSort('Stroke Low to High')" class="dropdownOption">
+        Stroke: Low to High
+      </div>
+
+      <div onclick="changeSort('Stroke High to Low')" class="dropdownOption">
+        Stroke: High to Low
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
 
 
@@ -723,40 +1731,38 @@ input[type=number] {
 </div>
 </section>
 
-
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>  
 <script>
-  
-var rangeSlidersTrack = document.querySelectorAll('.custom-range-slider .custom-range-slider__track');
-var rangeSlidersInputFrom = document.querySelectorAll('.custom-range-slider .custom-range-slider__input--from');
-var rangeSlidersInputTo = document.querySelectorAll('.custom-range-slider .custom-range-slider__input--to');
-var rangeSliderInputs = [];
-for(var i = 0; i < rangeSlidersTrack.length; i++) {
-    rangeSliderInputs.push([rangeSlidersInputFrom[i], rangeSlidersInputTo[i]]);
+function isChecked(...selectors){
+  return selectors.some(selector => {
+    return document.querySelector(selector)?.checked;
+  });
 }
-
-  
-[].slice.call(rangeSlidersTrack).forEach(function(slider, index) {
+document.querySelectorAll('.uk-checkbox').forEach(function(checkbox){
+  checkbox.checked = false;
+});
+document.querySelectorAll('.custom-range-slider .custom-range-slider__track').forEach(function(slider) {
+  const sliderContainer = slider.closest('.custom-range-slider');
+  const inputs = [
+    sliderContainer.querySelector('.custom-range-slider__input--from'),
+    sliderContainer.querySelector('.custom-range-slider__input--to')
+  ];
   let sliderMax = 60;
   let startOne = 1;
   let stepOne = 1;
   let startTwo = 10;
   let stepTwo = 1;
-  if(slider.id == 'StrokeSlider'){
+  if (slider.id.includes('Stroke')){
     sliderMax = 60;
   }
-  else if(slider.id == "SidebarStrokeSlider"){
-    sliderMax = 60;
-  }
-  else{
-    sliderMax = 350;
-    startOne = 5;
+  else if (slider.id.includes('Force')){
+    sliderMax = 2200;
+    startOne = 20;
     stepOne = 0.5;
-    startTwo = 30;
+    startTwo = 350;
     stepTwo = 100;
   }
 
-  
-  
     noUiSlider.create(slider, {
         start: [0, sliderMax],
         connect: true,
@@ -772,16 +1778,17 @@ for(var i = 0; i < rangeSlidersTrack.length; i++) {
     
     
     slider.noUiSlider.on('update', function(values, handle) {
-        rangeSliderInputs[index][handle].value = parseInt(values[handle]); //rangeSliderInputs[0][0].value + " " + rangeSliderInputs[0][1].value
-		//checkStroke(rangeSliderInputs[0][0].value, rangeSliderInputs[0][1].value);
+        inputs[handle].value = parseInt(values[handle]);
     });
   
   	slider.noUiSlider.on('set', function(values, handle){
       //checkStroke(rangeSliderInputs[0][0].value, rangeSliderInputs[0][1].value);
+      updateFilterCount();
       filter();
     });
   
   	slider.noUiSlider.on('slide', function(values, handle){
+      updateFilterCount();
       filter();
     });
 
@@ -791,8 +1798,7 @@ for(var i = 0; i < rangeSlidersTrack.length; i++) {
         slider.noUiSlider.set(r);
     }
 
-    rangeSliderInputs[index].forEach(function(input, handle) {
-
+      inputs.forEach(function(input, handle) {
         input.addEventListener('change', function(){
             setSliderHandle(handle, this.value);
         });
@@ -855,12 +1861,40 @@ for(var i = 0; i < rangeSlidersTrack.length; i++) {
         });
     });
 });  
-  
-  
-var filter_IDs = ['#12v', '#24v', '#Rod', '#Track', '#Column', '#Yes', '#No'];
-var Sliderfilter_IDs = ['#Sidebar12v', '#Sidebar24v', '#SidebarRod', '#SidebarTrack', '#SidebarColumn', '#SidebarYes', '#SidebarNo'];
+document.addEventListener('DOMContentLoaded', function(){
 
-$(document).ready(function() {
+  // Reset all checkboxes
+  document.querySelectorAll('.uk-checkbox').forEach(function(checkbox){
+    checkbox.checked = false;
+  });
+
+
+  // Reset all sliders
+  document.querySelectorAll('.custom-range-slider__track').forEach(function(slider){
+
+    if(!slider.noUiSlider) return;
+
+    let maxValue = slider.id.includes('Force') ? 2200 : 60;
+
+    slider.noUiSlider.set([
+      0,
+      maxValue
+    ]);
+
+  });
+
+
+  // Update filter count
+  updateFilterCount();
+
+
+  // Apply filter with defaults
+  if(lines.length){
+    filter();
+  }
+
+});
+document.addEventListener('DOMContentLoaded',()=>{
 
     $.ajax({
         type: "GET",
@@ -870,202 +1904,218 @@ $(document).ready(function() {
      });
   });
 var lines = [];
+
 function processData(allText) {
-    var allTextLines = allText.split(/\r\n|\n/);
-    var headers = allTextLines[0].split(',');
-    
 
-    for (var i=1; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
+  Papa.parse(allText, {
+    header: true,
+    skipEmptyLines: true,
 
-            var tarr = [];
-            for (var j=0; j<headers.length; j++) {
-                tarr.push(data[j]);
-            }
-          	
+    complete: function(results) {
 
-          if(document.getElementById(tarr[6])){
-            lines.push(tarr);
-          }
-          	
-        }
-    }
-    
+    lines = results.data
+  .filter(product => {
+    return document.getElementById(product.URL);
+  })
+  .map(product => ({
+    strokes: product.Stroke.split('_').map(Number),
+    voltage12: product["12v"],
+    voltage24: product["24v"],
+    feedback: product.Sensor,
+    force: Number(product.Force),
+    type: product.Type,
+    handle: product.URL
+  }));
+
+
+// RESET FILTERS HERE
+
+document.querySelectorAll('.uk-checkbox').forEach(function(checkbox){
+  checkbox.checked = false;
+});
+
+
+document.querySelectorAll('.custom-range-slider__track').forEach(function(slider){
+
+  if(!slider.noUiSlider) return;
+
+  slider.noUiSlider.set([
+    0,
+    slider.id.includes('Force') ? 2200 : 60
+  ]);
+
+});
+
+
+updateFilterCount();
+
+filter();
+
+}
+
+  });
+
 }
   
   
-  function filter(){
-    let minStroke = Math.max(rangeSliderInputs[0][0].value, rangeSliderInputs[2][0].value);
-    let maxStroke = Math.min(rangeSliderInputs[0][1].value, rangeSliderInputs[2][1].value);
-    let minForce = Math.max(rangeSliderInputs[1][0].value, rangeSliderInputs[3][0].value);
-    let maxForce = Math.min(rangeSliderInputs[1][1].value, rangeSliderInputs[3][1].value);
-    
+function filter(){
 
-    for (var i=0; i<lines.length; i++) {
-       let productHandle = lines[i][6];
-     
-       showProduct(productHandle);
-      
-    }
-    checkForce(minForce, maxForce);
-    checkFilter();
-    checkStroke(minStroke, maxStroke);
-    
+ const strokeSliders = [
+    document.getElementById('StrokeSlider'),
+    document.getElementById('StickyStrokeSlider'),
+    document.getElementById('MobileStrokeSlider')
+  ].filter(slider => slider && slider.noUiSlider);
+
+
+  const forceSliders = [
+    document.getElementById('SidebarForceSlider'),
+    document.getElementById('StickyForceSlider'),
+    document.getElementById('MobileForceSlider')
+  ].filter(slider => slider && slider.noUiSlider);
+
+
+  if(!strokeSliders.length || !forceSliders.length){
+    return;
   }
-  
-  
-  
-  function checkForce(minForce, maxForce){
-	  let Forces = 0;
-    let showHandles = [];
-    for (var i = 0; i < lines.length; i++) {
-      let productHandle = lines[i][6]; 
-      let betweenMinMaxForce = false; 
-      Forces = lines[i][4];
-      if (~~Forces >= ~~minForce && ~~Forces <= ~~maxForce){
-        showHandles.push(productHandle);
-        betweenMinMaxForce = true;
-      }
-      if(betweenMinMaxForce == false && !showHandles.includes(productHandle)){
-        hideProduct(productHandle);
-      }
-      if(betweenMinMaxForce == true &&  document.getElementById(productHandle).parentElement.hasAttribute("hidden")){
-        showProduct(productHandle);
-      }
-    }
+
+  let minStroke = Math.max(
+      ...strokeSliders.map(slider => Number(slider.noUiSlider.get()[0]))
+  );
+
+  let maxStroke = Math.min(
+      ...strokeSliders.map(slider => Number(slider.noUiSlider.get()[1]))
+  );
+
+
+  let minForce = Math.max(
+      ...forceSliders.map(slider => Number(slider.noUiSlider.get()[0]))
+  );
+
+  let maxForce = Math.min(
+      ...forceSliders.map(slider => Number(slider.noUiSlider.get()[1]))
+  );
+
+  const voltageSelected = [];
+
+  if(isChecked('#Sidebar12v','#Sticky12v','#Mobile12v')){
+      voltageSelected.push('12v');
   }
-  
-  
-  
-  
-  
-   function checkFilter(productHandle){
-	
-	for (var i = 0; i < lines.length; i++) {
-      let productHandle = lines[i][6]; 
-      if($(filter_IDs[0]).is(":checked") == true && lines[i][1] != '12v'){ 
-        if($(filter_IDs[1]).is(":checked") == true && lines[i][2] == '24v'){ 
-        }
-        else{
-          hideProduct(productHandle);
-        }
-      }
 
-      if($(Sliderfilter_IDs[0]).is(":checked") == true && lines[i][1] != '12v'){ 
-        if($(Sliderfilter_IDs[1]).is(":checked") == true && lines[i][2] == '24v'){ 
-        }
-        else{
-          hideProduct(productHandle);
-        }
-      }
+  if(isChecked('#Sidebar24v','#Sticky24v','#Mobile24v')){
+      voltageSelected.push('24v');
+  }
 
 
 
-      if($(filter_IDs[1]).is(":checked") == true && lines[i][2] != '24v'){ 
-        if($(filter_IDs[0]).is(":checked") == true && lines[i][1] == '12v'){ 
-        }
-        else{
-        hideProduct(productHandle);
-        }
-      }
-      if($(Sliderfilter_IDs[1]).is(":checked") == true && lines[i][2] != '24v'){ 
-        if($(Sliderfilter_IDs[0]).is(":checked") == true && lines[i][1] == '12v'){ 
-        }
-        else{
-        hideProduct(productHandle);
-        }
-      }
-      
-      
-      if($(filter_IDs[2]).is(":checked") == true && lines[i][5] != 'Rod'){ 
-        if(($(filter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track') || ($(filter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
-        }
-        else{
-          hideProduct(productHandle);
-        }   
-      }
-      if($(Sliderfilter_IDs[2]).is(":checked") == true && lines[i][5] != 'Rod'){ 
-        if(($(Sliderfilter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track') || ($(Sliderfilter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
-        }
-        else{
-          hideProduct(productHandle);
-        }   
-      }
+const typesSelected = [];
 
+['Rod','Track','Column'].forEach(function(value){
 
-
-      if($(filter_IDs[3]).is(":checked") == true && lines[i][5] != 'Track'){ 
-        if(($(filter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(filter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
-        }
-        else{
-          hideProduct(productHandle);
-        }
-      }
-      if($(Sliderfilter_IDs[3]).is(":checked") == true && lines[i][5] != 'Track'){ 
-        if(($(Sliderfilter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(Sliderfilter_IDs[4]).is(":checked") == true && lines[i][5] == 'Column')){
-        }
-        else{
-          hideProduct(productHandle);
-        }
-      }
-
-
-
-
-      if($(filter_IDs[4]).is(":checked") == true && lines[i][5] != 'Column'){ 
-        if(($(filter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(filter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track')){
-        }
-        else{
-          hideProduct(productHandle);
-        }
-      }
-      if($(Sliderfilter_IDs[4]).is(":checked") == true && lines[i][5] != 'Column'){ 
-        if(($(Sliderfilter_IDs[2]).is(":checked") == true && lines[i][5] == 'Rod') || ($(Sliderfilter_IDs[3]).is(":checked") == true && lines[i][5] == 'Track')){
-        }
-        else{
-          hideProduct(productHandle);
-        }
-      }
-      
-      
-      if($(filter_IDs[5]).is(":checked") == true && lines[i][3] == ''){ //yes
-        if($(filter_IDs[6]).is(":checked") == true){
-        }
-        else{
-        	hideProduct(productHandle);
-        }
-      }
-      if($(Sliderfilter_IDs[5]).is(":checked") == true && lines[i][3] == ''){ //yes
-        if($(Sliderfilter_IDs[6]).is(":checked") == true){
-        }
-        else{
-        	hideProduct(productHandle);
-        }
-      }
-
-
-
-      if($(filter_IDs[6]).is(":checked") == true && lines[i][3] != ''){ //no
-        if($(filter_IDs[5]).is(":checked") == true){
-        }
-        else{
-        	hideProduct(productHandle);
-        }
-      }
-      if($(Sliderfilter_IDs[6]).is(":checked") == true && lines[i][3] != ''){ //no
-        if($(Sliderfilter_IDs[5]).is(":checked") == true){
-        }
-        else{
-        	hideProduct(productHandle);
-        }
-      }
-
-      
+    if(
+        isChecked(
+            '#Sidebar'+value,
+            '#Sticky'+value,
+            '#Mobile'+value
+        )
+    ){
+        typesSelected.push(value);
     }
-   }
-  
-  
+
+});
+
+
+
+const yesSelected = isChecked(
+    '#SidebarYes',
+    '#StickyYes',
+    '#MobileYes'
+);
+
+
+const noSelected = isChecked(
+    '#SidebarNo',
+    '#StickyNo',
+    '#MobileNo'
+);
+
+
+
+  for(let i = 0; i < lines.length; i++){
+
+    let product = lines[i];
+    let productHandle = product.handle;
+    let force = product.force;
+    let voltage12 = product.voltage12;
+    let voltage24 = product.voltage24;
+    let type = product.type;
+    let hasYesNo = product.feedback;
+
+
+      let visible = true;
+
+
+      // FORCE CHECK
+      if(force < minForce || force > maxForce){
+          visible = false;
+      }
+
+
+      
+
+      
+      if(voltageSelected.length){
+
+          if(
+              !(
+                  (voltageSelected.includes('12v') && voltage12 === '12v') ||
+                  (voltageSelected.includes('24v') && voltage24 === '24v')
+              )
+          ){
+              visible = false;
+          }
+
+      }
+
+
+
+ 
+
+
+      if(
+          typesSelected.length &&
+          !typesSelected.includes(type)
+      ){
+          visible = false;
+      }
+
+      if(yesSelected && !noSelected && hasYesNo === ''){
+          visible = false;
+      }
+
+      if(noSelected && !yesSelected && hasYesNo !== ''){
+          visible = false;
+      }
+
+      let strokes = product.strokes;
+
+      let strokeMatch = strokes.some(function(stroke){
+
+          let value = Number(stroke);
+
+          return value >= minStroke && value <= maxStroke;
+      });
+      if(!strokeMatch){
+          visible = false;
+      }
+      if(visible){
+          showProduct(productHandle);
+      }
+      else{
+          hideProduct(productHandle);
+      }
+    }
+    updateFilterCount();
+  }
   function hideProduct(handle){
     const wrapper = document.getElementById(handle)?.closest('.productMainDiv');
     if(wrapper) wrapper.setAttribute("hidden","hidden");
@@ -1076,45 +2126,10 @@ function processData(allText) {
     if(wrapper) wrapper.removeAttribute("hidden");
   }
 
-
-  
-  function checkStroke(minStroke, maxStroke){
-	
-	 let Strokes = [];
-    
-     for (var i = 0; i < lines.length; i++) {
-      let productHandle = lines[i][6]; 
-      let betweenMinMax = false; 
-      Strokes = lines[i][0].split('_');
-      
-       for (var x = 0; x < Strokes.length; x++){
-
-         if (~~Strokes[x] >= ~~minStroke && ~~Strokes[x] <= ~~maxStroke){
-           
-           betweenMinMax = true;
-		   break
-         }
-       }
-       if(betweenMinMax == false){
-         hideProduct(productHandle);
-       }
-      }
-
-    
-  }
-  
-  
-  function submitFunction(id){
-   	for(var z=0; z<filter_IDs.length; z++){
-    	//alert(filter_IDs[z] + " " + $(filter_IDs[z]).is(":checked"));
-        filter();
-     }
+  function submitFunction(){
+    filter();
   }
 
-  
-  
-  
-  
 </script>
 <script>
 var count = 0;
@@ -1176,14 +2191,6 @@ function convertToInches(strokeText) {
 }
 
 
-
-
-function getVisibleCards() {
-  const cards = document.querySelectorAll('.js-card-filter');
-  const visibleCards = Array.from(cards).filter(card => !card.hasAttribute('hidden'));
-  return visibleCards;
-}
-
 document.querySelectorAll('.dropdownOption').forEach(option => {
   option.addEventListener('click', function() {
     document.querySelectorAll('.dropdownOption.activeOption').forEach(active => {
@@ -1244,43 +2251,68 @@ function changeSort(sort){
   });
 
   elements.forEach(element => container.appendChild(element));
+
+  document.querySelectorAll('.dropdown-content-sort').forEach(function(dropdown) {
+    dropdown.style.display = 'none';
+    dropdown.classList.remove('fg-open');
+  });
 }
 
 
 
 
 
-document.querySelector('.sortButtonClass').addEventListener('click', function() {
-  var dropdown = document.getElementById('dropdownMenu');
-  dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-});
-document.querySelector('.sortButtonClassSidebar').addEventListener('click', function() {
-  var dropdown = document.getElementById('dropdownMenuSidebar');
-  dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-});
-
-
-// Optional: Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.sortButtonClass, .sortButtonClass *')) {
-    var dropdown = document.getElementById('dropdownMenu');
-    if (dropdown.style.display === 'block') {
+(function(){
+  function closeAllSortDropdowns() {
+    document.querySelectorAll('.dropdown-content-sort').forEach(function(dropdown){
       dropdown.style.display = 'none';
-    }
+      dropdown.classList.remove('fg-open');
+    });
   }
-  if (!event.target.matches('.sortButtonClassSidebar, .sortButtonClassSidebar *')) {
-    var dropdown = document.getElementById('dropdownMenuSidebar');
-    if (dropdown.style.display === 'block') {
-      dropdown.style.display = 'none';
-    }
+
+  function getDropdownContainer(button) {
+    return button.closest('#sortButtonSidebar') || button.closest('#sortButton') || button.parentElement;
   }
-  if (!event.target.matches('#sidebar, #sidebar *') && !event.target.matches('.svgImage, .svgImage *')){
-    var dropdown = document.getElementById('sidebar');
-    if (dropdown.classList.contains('active')) {
-      dropdown.classList.remove('active');
+
+  document.querySelectorAll('.sortButtonClass, .sortButtonClassSidebar').forEach(function(btn) {
+    var container = getDropdownContainer(btn);
+    var dropdown = container ? container.querySelector('.dropdown-content-sort') : null;
+    if (!dropdown) return;
+
+    function syncWidth() {
+      dropdown.style.width = btn.getBoundingClientRect().width + 'px';
     }
-  }
-};
+    syncWidth();
+    window.addEventListener('resize', syncWidth);
+
+    btn.addEventListener('click', function(event) {
+      event.stopPropagation();
+      var isOpen = dropdown.style.display === 'block';
+      if (isOpen) {
+        dropdown.style.display = 'none';
+        dropdown.classList.remove('fg-open');
+      } else {
+        closeAllSortDropdowns();
+        syncWidth();
+        dropdown.style.display = 'block';
+        dropdown.classList.add('fg-open');
+      }
+    });
+
+    dropdown.addEventListener('click', function(event) {
+      event.stopPropagation();
+    });
+  });
+
+  document.addEventListener('click', function() {
+    closeAllSortDropdowns();
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeAllSortDropdowns();
+  });
+})();
+
 document.querySelectorAll('.dropdown').forEach(function(dropdown) {
   dropdown.addEventListener('click', function() {
     const arrow = this.querySelector('.DropdownArrow');
@@ -1298,26 +2330,132 @@ document.querySelectorAll('.dropdownSidebar').forEach(function(dropdown) {
   });
 });
 
-document.getElementById('closeSidebar').addEventListener('click', function() {
-  document.getElementById('sidebar').classList.remove('active');
-});
-document.getElementsByClassName('svgImage')[0].addEventListener('click', function() {
-  document.getElementById('sidebar').classList.toggle('active');
-});
+function syncSliders(ids){
 
-</script>
-<script>
-  function toggleDropdown(dropdownId, btnElement) {
-    var dropdownContent = document.getElementById(dropdownId);
-    dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
-    
-    var parent = btnElement.parentElement;
+ const sliders = ids
+ .map(id => document.getElementById(id))
+ .filter(slider => slider && slider.noUiSlider);
 
-    // Toggle the arrow rotation by toggling the 'open' class on the parent
-    parent.querySelector('.dropdown-filter-item').classList.toggle("open");
+ let syncing = false;
+
+ sliders.forEach(source => {
+
+   source.noUiSlider.on('update', values => {
+
+     if(syncing) return;
+
+     syncing = true;
+
+     sliders.forEach(target => {
+
+       if(target !== source){
+         target.noUiSlider.set(values, false);
+       }
+
+     });
+
+     syncing = false;
+
+   });
+
+ });
+
+}
+
+syncSliders([
+'StrokeSlider',
+'StickyStrokeSlider',
+'MobileStrokeSlider'
+]);
+
+syncSliders([
+'SidebarForceSlider',
+'StickyForceSlider',
+'MobileForceSlider'
+]);
+
+function updateFilterCount(){
+
+  let count = 0;
+
+  function anyCheckedInGroup(group){
+    return group.some(function(selectors){
+      return isChecked.apply(null, selectors);
+    });
   }
-</script>
 
+  // Checkbox filter groups (count once per filter column)
+  if(anyCheckedInGroup([
+      ['#Sidebar12v', '#Sticky12v', '#Mobile12v'],
+      ['#Sidebar24v', '#Sticky24v', '#Mobile24v']
+    ])) count++;
+
+  if(anyCheckedInGroup([
+      ['#SidebarRod', '#StickyRod', '#MobileRod'],
+      ['#SidebarTrack', '#StickyTrack', '#MobileTrack'],
+      ['#SidebarColumn', '#StickyColumn', '#MobileColumn']
+    ])) count++;
+
+  if(anyCheckedInGroup([
+      ['#SidebarYes', '#StickyYes', '#MobileYes'],
+      ['#SidebarNo', '#StickyNo', '#MobileNo']
+    ])) count++;
+
+  // Stroke slider
+  const strokeSlider =
+    document.getElementById('StrokeSlider') ||
+    document.getElementById('StickyStrokeSlider') ||
+    document.getElementById('MobileStrokeSlider');
+
+  if(strokeSlider){
+
+    const values = strokeSlider.noUiSlider.get().map(Number);
+
+    if(values[0] !== 0 || values[1] !== 60){
+      count++;
+    }
+  }
+
+  // Force slider
+  const forceSlider =
+    document.getElementById('SidebarForceSlider') ||
+    document.getElementById('StickyForceSlider') ||
+    document.getElementById('MobileForceSlider');
+
+  if(forceSlider){
+
+    const values = forceSlider.noUiSlider.get().map(Number);
+
+    if(values[0] !== 0 || values[1] !== 2200){
+      count++;
+    }
+  }
+
+  document.querySelectorAll('.stickyFilterSummary').forEach(function(el){
+
+    el.textContent =
+      count + (count === 1 ? ' Filter Applied' : ' Filters Applied');
+
+  });
+
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  updateFilterCount();
+  if(lines.length){
+    filter();
+  }
+});
+
+
+
+
+
+
+
+
+
+</script>
 
 {% comment %}
 {% for product in collection.products %}
