@@ -1546,10 +1546,7 @@ mobileOverlay.addEventListener(
     if(!stickyBar){
       return;
     }
-    if(window.scrollY > 980 && window.innerWidth <= 562 && !collectionOptionsAtTop){
-      stickyBar.classList.add('visible');
-    }
-    else if(window.scrollY > 880 && !collectionOptionsAtTop){
+    if(window.scrollY > 880 && !collectionOptionsAtTop){
       stickyBar.classList.add('visible');
     }  
     else {
@@ -1606,8 +1603,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if(hide){
       stickyDock.classList.remove('visible');
-    } else if(window.scrollY > 980 && window.innerWidth <= 562 && !collectionOptionsAtTop){
-      stickyDock.classList.add('visible');
     }
     else if(window.scrollY > 880){
       stickyDock.classList.add('visible');
