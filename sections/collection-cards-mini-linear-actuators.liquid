@@ -1546,10 +1546,13 @@ mobileOverlay.addEventListener(
     if(!stickyBar){
       return;
     }
-
-    if(window.scrollY > 880 && !collectionOptionsAtTop){
+    if(window.scrollY > 940 && window.innerWidth <= 562 && !collectionOptionsAtTop){
       stickyBar.classList.add('visible');
-    } else {
+    }
+    else if(window.scrollY > 880 && !collectionOptionsAtTop){
+      stickyBar.classList.add('visible');
+    }  
+    else {
       stickyBar.classList.remove('visible');
     }
   });
