@@ -160,6 +160,8 @@ body.template-index #footer.fg-footer-redesign .fg-footer-main {
   width: 100%;
   max-width: 330px;
   height: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 #footer.fg-footer-redesign .fg-social-icon-row {
