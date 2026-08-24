@@ -231,5 +231,20 @@
 {% include 'script-location' %}  
 {% include 'OrganizationSchema' %}
 <script src="{{ 'searchBarBrandFix.js' | asset_url }}"></script>
+
+{% comment %} FIRGELLI products mega menu start {% endcomment %}
+<script>
+  window.FIRGELLI_MEGA_MENU_STATIC_ICONS = {
+    actuator: {{ 'firgelli-mega-menu-linear-actuators.jpg' | asset_url | json }},
+    rotary: {{ 'firgelli-mega-menu-rotary-actuator.jpg' | asset_url | json }},
+    control: {{ 'firgelli-mega-menu-controller.jpg' | asset_url | json }},
+    slides: {{ 'firgelli-mega-menu-bearing-slides.jpg' | asset_url | json }},
+    lift: {{ 'firgelli-mega-menu-tv-lift.jpg' | asset_url | json }},
+    bracket: {{ 'firgelli-mega-menu-bracket.png' | asset_url | json }},
+    motor: {{ 'firgelli-mega-menu-robotics.jpg' | asset_url | json }}
+  };
+</script>
+<script src="{{ 'firgelli-products-mega-menu.js' | asset_url }}" defer></script>
+{% comment %} FIRGELLI products mega menu end {% endcomment %}
 </body>
 </html>
