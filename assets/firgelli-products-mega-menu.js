@@ -115,7 +115,7 @@
       ]),
       "</div>",
       '<div class="firgelli-mega-column">',
-      section("lift", "Lifts & Motion Systems", "/collections/lifts", [
+      section("lift", "Lifts & Motion Systems", "/collections/tv-lifts", [
         link("TV Lifts", "/collections/tv-lifts"),
         link("Outdoor TV Lift Cabinets", "/products/outdoor-tv-lift-cabinet"),
         link("Standing Desks", "/collections/sit-stand-desks")
