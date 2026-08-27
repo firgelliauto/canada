@@ -84,17 +84,13 @@
       section("actuator", "Linear Actuators", "/collections/linear-actuators", [
         link("All Linear Actuators", "/collections/linear-actuators"),
         link("Super Duty Actuators", "/products/super-duty-actuators"),
-        link("Classic Rod Actuators", "/collections/linear-actuators-classic-performance-enhanced-design"),
+        link("Classic Rod Actuator", "/products/light-duty-rod-actuator"),
         link("Bullet Actuators", "/collections/bullet-actuators"),
-        link("Micro Actuators", "/collections/micro-linear-actuators"),
+        link("Micro Utility Actuator", "/products/micro-utility-actuator"),
         link("Feedback Actuators", "/collections/feedback-actuators"),
-        link("Track Actuators", "/collections/track-linear-actuators"),
-        link("Industrial Actuators", "/collections/industrial-actuators"),
-        link("Column Lifts", "/products/electric-column-lift"),
-        link("IP66 Actuators", "/collections/ip66-linear-actuators")
-      ]),
-      section("rotary", "Rotary Actuators", "/collections/rotary-actuators", [
-        link("Rotary Actuators", "/collections/rotary-actuators")
+        link("Track Actuators", "/collections/track-actuators"),
+        link("Industrial Actuator", "/products/industrial-heavy-duty-linear-actuators"),
+        link("Column Lifts", "/products/electric-column-lift")
       ]),
       "</div>",
       '<div class="firgelli-mega-column">',
@@ -102,13 +98,12 @@
         link("Actuator Controls", "/collections/actuator-switches-remotes-relays-timers-controllers-power-supplies"),
         link("Switches and Joysticks", "/collections/switches"),
         link("Remote Controls", "/collections/remotes"),
-        link("Control Boxes", "/collections/control-systems-and-remotes"),
         link("Arduino Controllers", "/collections/arduino"),
-        link("Relays", "/collections/relays"),
-        link("Power Supplies", "/collections/power-supplies")
+        link("Relays", "/collections/controls-relays-remotes"),
+        link("Power Supplies", "/collections/linear-actuator-power-supplies")
       ]),
-      section("bracket", "Mounting & Accessories", "/collections/accessories", [
-        link("Mounting Brackets", "/collections/mounting-brackets"),
+      section("bracket", "Mounting & Accessories", "/collections/brackets", [
+        link("Mounting Brackets", "/collections/brackets"),
         link("Actuator Accessories", "/collections/accessories"),
         link("Linear Bearing Slide Rails", "/collections/slide-rails"),
         link("Drawer Slides", "/collections/drawer-slides")
@@ -118,7 +113,7 @@
       section("lift", "Lifts & Motion Systems", "/collections/tv-lifts", [
         link("TV Lifts", "/collections/tv-lifts"),
         link("Outdoor TV Lift Cabinets", "/products/outdoor-tv-lift-cabinet"),
-        link("Standing Desks", "/collections/sit-stand-desks")
+        link("Standing Desks", "/collections/desk-lifts")
       ]),
       section("slides", "Bearing Slides", "/collections/slide-rails", [
         link("All Bearing Slides", "/collections/slide-rails")
