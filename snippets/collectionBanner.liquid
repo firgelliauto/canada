@@ -240,9 +240,205 @@ g path {
 {% assign fg_ca_rollout_profile = '' %}
 {% assign fg_ca_rollout_stock = 'false' %}
 {% case collection.handle %}
+  {% when '100-pound-force-actuators' %}
+    {% capture fg_ca_rollout_h2 %}100 lb linear actuators for controlled lifting, pushing and positioning. Compare stroke, speed, voltage and feedback options.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when '1000-pound-force-actuators' %}
+    {% capture fg_ca_rollout_h2 %}1,000 lb linear actuators for extreme-force lifting and positioning. Built for demanding industrial and automation applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when '200-pound-force-actuators' %}
+    {% capture fg_ca_rollout_h2 %}200 lb linear actuators for powerful lifting, pushing and positioning. Compare stroke, speed, voltage and feedback options.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when '400-pound-force-actuators' %}
+    {% capture fg_ca_rollout_h2 %}400 lb linear actuators for high-force automation and heavy loads. Compare stroke, speed, voltage and mounting requirements.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'actuator-switches-remotes-relays-timers-controllers-power-supplies' %}
+    {% capture fg_ca_rollout_h2 %}Linear actuator controls for precise extend, retract and position control. Control single or multiple electric actuators.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'actuators' %}
+    {% capture fg_ca_rollout_h2 %}Electric linear actuators for automation, robotics and industrial applications. Choose by force, stroke, speed and feedback.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'all-linear-motors' %}
+    {% capture fg_ca_rollout_h2 %}Electric linear motors and actuators for automated linear motion. Explore compact, high-force and precision motion solutions.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'aluminum-extrusion-modular-framing' %}
+    {% capture fg_ca_rollout_h2 %}Aluminum framing for modular automation, machinery and structural assemblies. Build custom frames, supports and motion systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'false' %}
+  {% when 'arduino' %}
+    {% capture fg_ca_rollout_h2 %}Arduino microcontrollers for programmable actuator and automation control. Build custom robotics and motion control systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'brackets' %}
+    {% capture fg_ca_rollout_h2 %}Linear actuator mounting brackets for secure, reliable installation. Clevis and body-mount options designed for FIRGELLI actuators.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'bullet-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Compact Bullet linear actuators for powerful, space-saving motion. IP66 rated options from 20 to over 1,000 lb of force.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'clevis' %}
+    {% capture fg_ca_rollout_h2 %}Clevis mounting brackets for linear actuators and motion systems. Secure pivoting mounts for reliable actuator installation.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'false' %}
+  {% when 'column-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Electric column actuators for stable vertical lifting and height adjustment. Ideal for desks, workstations and automated equipment.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'column-lifts' %}
+    {% capture fg_ca_rollout_h2 %}Electric column actuators for stable vertical lifting and height adjustment. Ideal for desks, workstations and automated equipment.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'control-systems' %}
+    {% capture fg_ca_rollout_h2 %}Control boxes and controllers for linear actuator automation. Options for position control, feedback and synchronized motion.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'controls-relays-remotes' %}
+    {% capture fg_ca_rollout_h2 %}Electrical relays for linear actuator switching and automation control. Control higher-current loads from switches, controllers and low-power signals.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'deluxe-rod-linear-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Deluxe rod linear actuators for dependable electric push-pull motion. Ideal for automation, positioning and custom applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'drawer-slides' %}
+    {% capture fg_ca_rollout_h2 %}Heavy-duty drawer slides and telescopic rails for smooth linear movement. High load capacities and long extension options available.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'drop-down-tv-lift-mechanisms' %}
+    {% capture fg_ca_rollout_h2 %}Drop-down TV lifts hide screens overhead and lower them when needed. Motorized ceiling TV lifts with remote control.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'drop-down-tv-lifts' %}
+    {% capture fg_ca_rollout_h2 %}Drop-down TV lifts hide screens overhead and lower them when needed. Motorized ceiling TV lifts with remote control.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'electronics' %}
+    {% capture fg_ca_rollout_h2 %}Electronics for linear actuator, robotics and automation projects. Control, power and integrate electric motion systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'false' %}
+  {% when 'feedback-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Feedback linear actuators for precise position sensing and closed-loop control. Ideal for synchronized and automated motion systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'gear-motors' %}
+    {% capture fg_ca_rollout_h2 %}Rotary actuators and DC gear motors for controlled rotational motion. Ideal for robotics, automation and motorized mechanisms.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'rotary' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'heavy-duty-rails' %}
+    {% capture fg_ca_rollout_h2 %}Heavy-duty linear rails for high-load sliding and guided motion. Built for equipment, machinery and demanding installations.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'industrial-heavy-duty-linear-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Heavy-duty industrial linear actuators for high-force lifting, pushing and positioning. Built for demanding automation applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'lifts' %}
+    {% capture fg_ca_rollout_h2 %}Electric lift mechanisms for TVs, cabinets, appliances and custom automation. Smooth powered lifting for residential and commercial applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'linear-actuator-power-supplies' %}
+    {% capture fg_ca_rollout_h2 %}12V and 24V DC power supplies for linear actuators and automation systems. Reliable power for actuator and motion-control applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
   {% when 'linear-actuators' %}
     {% capture fg_ca_rollout_h2 %}FIRGELLI electric linear actuators provide reliable push-and-pull motion for automation, robotics, furniture, automotive and industrial applications{% endcapture %}
     {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'linear-ball-bearings' %}
+    {% capture fg_ca_rollout_h2 %}Linear ball bearings for smooth, low-friction linear motion. Ideal for precision guides, machinery and automation systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'linear-potentiometers' %}
+    {% capture fg_ca_rollout_h2 %}Linear potentiometers provide position feedback for automation and motion control. Measure linear travel for precise position monitoring.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'micro-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Micro linear actuators for compact robotics, automation and product design. Precise linear motion where space and weight are limited.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'false' %}
+  {% when 'mini-linear-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Mini linear actuators for compact automation, robotics and small mechanisms. Small size with reliable push-and-pull motion.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'mini-rails' %}
+    {% capture fg_ca_rollout_h2 %}Mini linear rails for compact guided-motion applications. Smooth, precise movement for robotics, automation and small mechanisms.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'mini-track-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Mini track actuators provide compact linear motion without an extending rod. Ideal for space-limited automation and positioning applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'outdoor-tv-lift-cabinets' %}
+    {% capture fg_ca_rollout_h2 %}Outdoor TV lift cabinets hide and protect your TV when not in use. Motorized lifting creates a clean outdoor entertainment space.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'pop-up-tv-lifts' %}
+    {% capture fg_ca_rollout_h2 %}Motorized TV lifts for pop-up, drop-down and hidden TV installations. Quiet electric lift systems for cabinets, ceilings and custom projects.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'premium-linear-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Premium linear actuators for precise, reliable electric motion control. Multiple force, stroke and feedback options for automation projects.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'remotes' %}
+    {% capture fg_ca_rollout_h2 %}Wireless remote controls for linear actuators and automation systems. Convenient remote operation for single and multiple actuator applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'robot-electronics' %}
+    {% capture fg_ca_rollout_h2 %}Electronics for linear actuator, robotics and automation projects. Control, power and integrate electric motion systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'false' %}
+  {% when 'robotics' %}
+    {% capture fg_ca_rollout_h2 %}Robotics components and motion-control parts for building automated systems. Linear motion hardware for robots, prototypes and machines.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'rocker-switches' %}
+    {% capture fg_ca_rollout_h2 %}Rocker switches for simple linear actuator extend-and-retract control. Easy manual control for 12V and 24V actuator systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'rod-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Rod-style linear actuators for reliable push-and-pull automation. Choose from multiple force, stroke, speed and feedback options.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'slide-rails' %}
+    {% capture fg_ca_rollout_h2 %}Linear slide rails and guides for smooth, supported linear motion. Ideal for automation, machinery and load-guiding applications.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'switches' %}
+    {% capture fg_ca_rollout_h2 %}Linear actuator switches for simple extend-and-retract control. Manual control options for 12V and 24V actuator systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'swivel-tv-lifts' %}
+    {% capture fg_ca_rollout_h2 %}Motorized swivel TV lifts combine vertical movement with powered rotation. Ideal for hidden TVs and multi-angle viewing.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'toggle-switches' %}
+    {% capture fg_ca_rollout_h2 %}Toggle switches for simple linear actuator direction control. Reliable manual switching for DC automation systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'controls' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'track-actuators' %}
+    {% capture fg_ca_rollout_h2 %}Track linear actuators deliver controlled motion without an extending rod. Ideal for compact automation and positioning systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'tv-brackets' %}
+    {% capture fg_ca_rollout_h2 %}TV lift brackets and mounting hardware for secure motorized installations. Designed for hidden and automated TV systems.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'tv-lifts' %}
+    {% capture fg_ca_rollout_h2 %}Motorized TV lifts for pop-up, drop-down and hidden TV installations. Quiet electric lift systems for cabinets, ceilings and custom projects.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+  {% when 'tv-mounts' %}
+    {% capture fg_ca_rollout_h2 %}Motorized TV mounts and brackets for wall, ceiling and hidden installations. Solutions for flip-down, swivel and automated TV movement.{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'tv' %}
     {% assign fg_ca_rollout_stock = 'true' %}
 {% endcase %}
 {% if fg_ca_rollout_h2 != blank %}
