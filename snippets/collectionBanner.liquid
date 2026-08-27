@@ -235,6 +235,331 @@ g path {
 
 
 
+{% comment %} FIRGELLI CA collection H2 rollout 20260826. Approved CA collections only. {% endcomment %}
+{% assign fg_ca_rollout_h2 = '' %}
+{% assign fg_ca_rollout_profile = '' %}
+{% assign fg_ca_rollout_stock = 'false' %}
+{% case collection.handle %}
+  {% when 'linear-actuators' %}
+    {% capture fg_ca_rollout_h2 %}FIRGELLI electric linear actuators provide reliable push-and-pull motion for automation, robotics, furniture, automotive and industrial applications{% endcapture %}
+    {% assign fg_ca_rollout_profile = 'animated' %}
+    {% assign fg_ca_rollout_stock = 'true' %}
+{% endcase %}
+{% if fg_ca_rollout_h2 != blank %}
+<style>
+/* FIRGELLI CA collection banner H2 rollout 20260826. Scoped to approved handles only. */
+#fg-ca-rollout-banner {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 229px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  isolation: isolate;
+  background: #225f9d !important;
+  visibility: hidden !important;
+}
+
+html.fg-ca-banner-positioned #fg-ca-rollout-banner {
+  visibility: visible !important;
+}
+
+html.fg-ca-banner-positioned #MainContent > .fg-collection-header.collectionbanner,
+html.fg-ca-banner-positioned #MainContent .firgelli-mobile-collection-hero {
+  display: none !important;
+}
+
+#fg-ca-rollout-banner .fg-ca-rollout-banner__background {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  z-index: 0 !important;
+}
+
+#fg-ca-banner-copy {
+  position: absolute !important;
+  inset: 0 auto 0 0 !important;
+  z-index: 5 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 13px !important;
+  width: 61% !important;
+  max-width: 61% !important;
+  height: 229px !important;
+  margin: 0 !important;
+  padding: 18px 24px 18px 40px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  pointer-events: none;
+}
+
+html body.template-collection #fg-ca-banner-copy #bannertext.bannertext,
+html body.template-collection #fg-ca-banner-copy h1 {
+  position: static !important;
+  inset: auto !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  font-size: 46px !important;
+  line-height: 1.08 !important;
+  font-weight: 900 !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+html body.template-collection #fg-ca-rollout-banner.fg-ca-rollout-banner--long-title #fg-ca-banner-copy h1 {
+  font-size: 36px !important;
+}
+
+html body.template-collection #fg-ca-banner-copy h2.fg-ca-banner-h2,
+html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
+  position: static !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  text-align: left !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+html body.template-collection #fg-ca-banner-copy h2.fg-ca-banner-h2 {
+  font-size: 17px !important;
+  line-height: 1.32 !important;
+  font-weight: 400 !important;
+}
+
+html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
+  font-size: 14px !important;
+  line-height: 1.25 !important;
+  font-weight: 700 !important;
+}
+
+#fg-ca-rollout-banner #lottie {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 229px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  transform: none !important;
+  translate: none !important;
+  scale: 1 !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+#fg-ca-rollout-banner #lottie svg {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+  translate: none !important;
+  scale: 1 !important;
+}
+
+#fg-ca-rollout-banner #lottie svg text,
+#fg-ca-rollout-banner #lottie text {
+  display: none !important;
+}
+
+@media (min-width: 960px) {
+  #fg-ca-rollout-banner.fg-ca-rollout-banner--tv #lottie svg {
+    transform: translateY(-25px) scale(0.82) !important;
+    transform-origin: center center !important;
+  }
+}
+
+@media (max-width: 959px) {
+  #fg-ca-rollout-banner {
+    height: 300px !important;
+  }
+
+  #fg-ca-banner-copy {
+    inset: 0 0 auto 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 150px !important;
+    padding: 10px 16px !important;
+  }
+
+  html body.template-collection #fg-ca-banner-copy #bannertext.bannertext,
+  html body.template-collection #fg-ca-banner-copy h1 {
+    font-size: 28px !important;
+    line-height: 1.08 !important;
+    text-align: center !important;
+  }
+
+  html body.template-collection #fg-ca-rollout-banner.fg-ca-rollout-banner--long-title #fg-ca-banner-copy h1 {
+    font-size: 23px !important;
+  }
+
+  html body.template-collection #fg-ca-banner-copy h2.fg-ca-banner-h2 {
+    max-width: 590px !important;
+    font-size: 13px !important;
+    line-height: 1.28 !important;
+    text-align: center !important;
+  }
+
+  html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
+    max-width: 590px !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+  }
+
+  #fg-ca-rollout-banner #lottie {
+    inset: 132px auto auto -28% !important;
+    width: 100% !important;
+    height: 168px !important;
+  }
+}
+
+@media (max-width: 450px) {
+  #fg-ca-banner-copy {
+    gap: 7px !important;
+    padding: 9px 14px !important;
+  }
+
+  html body.template-collection #fg-ca-banner-copy #bannertext.bannertext,
+  html body.template-collection #fg-ca-banner-copy h1 {
+    font-size: 22px !important;
+  }
+
+  html body.template-collection #fg-ca-rollout-banner.fg-ca-rollout-banner--long-title #fg-ca-banner-copy h1 {
+    font-size: 18px !important;
+  }
+
+  html body.template-collection #fg-ca-banner-copy h2.fg-ca-banner-h2 {
+    font-size: 12px !important;
+  }
+
+  html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 350px) {
+  html body.template-collection #fg-ca-banner-copy #bannertext.bannertext,
+  html body.template-collection #fg-ca-banner-copy h1 {
+    font-size: 19px !important;
+  }
+
+  html body.template-collection #fg-ca-rollout-banner.fg-ca-rollout-banner--long-title #fg-ca-banner-copy h1 {
+    font-size: 16px !important;
+  }
+}
+</style>
+
+{% assign fg_ca_title_length = title | size %}
+<section id="fg-ca-rollout-banner" class="fg-ca-rollout-banner fg-ca-rollout-banner--{{ fg_ca_rollout_profile }}{% if fg_ca_title_length > 34 %} fg-ca-rollout-banner--long-title{% endif %}" aria-labelledby="bannertext">
+  <img class="fg-ca-rollout-banner__background" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="" role="presentation" fetchpriority="high">
+  <div id="fg-ca-banner-copy" class="fg-ca-banner-copy">
+    <h1 id="bannertext" class="bannertext">{{ title }}</h1>
+    <h2 class="fg-ca-banner-h2">{{ fg_ca_rollout_h2 }}</h2>
+    {% if fg_ca_rollout_stock == 'true' %}
+      <p class="fg-ca-banner-stock">Available now from FIRGELLI Canada</p>
+    {% endif %}
+  </div>
+  <div id="lottie" aria-hidden="true"></div>
+</section>
+
+<script>
+(function () {
+  function positionFirgelliCaBanner(attempt) {
+    var banner = document.getElementById('fg-ca-rollout-banner');
+    var header = document.querySelector('header.bannerHeight') || document.querySelector('header');
+    if (banner && header && header.parentNode) {
+      header.insertAdjacentElement('afterend', banner);
+      document.documentElement.classList.add('fg-ca-banner-positioned');
+      return;
+    }
+    if (attempt < 120) {
+      window.requestAnimationFrame(function () { positionFirgelliCaBanner(attempt + 1); });
+      return;
+    }
+    document.documentElement.classList.add('fg-ca-banner-positioned');
+  }
+
+  function loadFirgelliCaBanner() {
+    if (document.documentElement.dataset.fgCaBannerLoaded === 'true') return;
+    document.documentElement.dataset.fgCaBannerLoaded = 'true';
+    var bannerScript = document.createElement('script');
+    {% if fg_ca_rollout_profile == 'controls' %}
+    bannerScript.src = "{{ 'svg-banner-script-controls.js' | asset_url }}";
+    {% elsif fg_ca_rollout_profile == 'rotary' %}
+    bannerScript.src = "{{ 'svg-banner-script-rotary.js' | asset_url }}";
+    {% elsif fg_ca_rollout_profile == 'tv' %}
+    bannerScript.src = "{{ 'svg-banner-script-tv-lifts.js' | asset_url }}";
+    {% else %}
+    bannerScript.src = "{{ 'svg-banner-script.js' | asset_url }}";
+    {% endif %}
+    bannerScript.onload = function () {
+      var animationScript = document.createElement('script');
+      {% if fg_ca_rollout_profile == 'controls' %}
+      animationScript.src = "{{ 'svg-animation-script-controls.js' | asset_url }}";
+      {% elsif fg_ca_rollout_profile == 'rotary' %}
+      animationScript.src = "{{ 'svg-animation-script-rotary.js' | asset_url }}";
+      {% elsif fg_ca_rollout_profile == 'tv' %}
+      animationScript.src = "{{ 'svg-animation-script-tv-lifts.js' | asset_url }}";
+      {% else %}
+      animationScript.src = "{{ 'svg-animation-script.js' | asset_url }}";
+      {% endif %}
+      document.body.appendChild(animationScript);
+    };
+    document.body.appendChild(bannerScript);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { positionFirgelliCaBanner(0); }, { once: true });
+  } else {
+    positionFirgelliCaBanner(0);
+  }
+  if (document.readyState === 'complete') loadFirgelliCaBanner();
+  else window.addEventListener('load', loadFirgelliCaBanner, { once: true });
+})();
+</script>
+{% else %}
 {% if collection.handle == 'linear-actuators' or collection.handle == 'column-lifts' or collection.handle == 'mini-linear-actuators' or collection.handle == 'linear-actuators-classic-performance-enhanced-design' or collection.handle == 'industrial-actuators' or collection.handle == 'track-linear-actuators' or collection.handle == 'feedback-actuators' or collection.handle == 'rod-actuators' or collection.handle == 'bullet-actuators' or collection.handle == 'premium-linear-actuators' or collection.handle == 'micro-linear-actuators' %}
 
 <picture>
@@ -411,6 +736,8 @@ window.addEventListener('load', function () {
 </picture>
 {% endif %}
 
+
+{% endif %}
 
 {% if collection.handle == 'linear-actuators' %}
   <link rel="stylesheet" href="{{ 'linear-actuators.css' | asset_url }}">
