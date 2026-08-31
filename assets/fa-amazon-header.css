@@ -1,11 +1,5 @@
 /* Amazon-style header: static at top; hide on down; show immediately on up. */
 
-.fa-amz-header-spacer {
-    display: none;
-    height: 0;
-    pointer-events: none;
-}
-
 header.bannerHeight.fa-amz-header--pinned {
     position: fixed;
     top: 0;
