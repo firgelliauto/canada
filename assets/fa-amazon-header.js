@@ -38,20 +38,28 @@
     if (pinned) return;
     setSpacer(true);
     header.classList.add("fa-amz-header--pinned");
-    // Move fg-ca-rollout-banner out of the fixed header context
+    // Make fg-ca-rollout-banner fixed when header is pinned
     var banner = document.getElementById("fg-ca-rollout-banner");
-    if (banner && banner.parentNode === header) {
-      header.parentNode.insertBefore(banner, header.nextSibling);
+    if (banner) {
+      banner.style.position = "fixed";
+      banner.style.top = header.offsetHeight + "px";
+      banner.style.left = "0";
+      banner.style.right = "0";
+      banner.style.zIndex = "999";
     }
     pinned = true;
   }
 
   function unpin() {
     header.classList.remove("fa-amz-header--pinned", "fa-amz-header--hidden");
-    // Move fg-ca-rollout-banner back into the header if it's not already
+    // Restore fg-ca-rollout-banner to normal positioning
     var banner = document.getElementById("fg-ca-rollout-banner");
-    if (banner && banner.parentNode !== header) {
-      header.insertBefore(banner, header.firstChild);
+    if (banner) {
+      banner.style.position = "";
+      banner.style.top = "";
+      banner.style.left = "";
+      banner.style.right = "";
+      banner.style.zIndex = "";
     }
     setSpacer(false);
     pinned = false;
