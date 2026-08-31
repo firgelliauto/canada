@@ -1,16 +1,15 @@
 (function () {
   "use strict";
+
   var header = document.querySelector(".fg-header > header.bannerHeight");
   if (!header) return;
 
   var spacer = document.createElement("div");
-  /*spacer.className = "fa-amz-header-spacer";
-  spacer.setAttribute("aria-hidden", "true");*/
-  header.parentNode.insertBefore(spacer, header.nextSibling);
 
-  var lastY = window.pageYOffset || 0;
+  // IMPORTANT: spacer must occupy the header's original position
+  header.parentNode.insertBefore(spacer, header);
+
   var pinned = false;
-  var hidden = false;
   var ticking = false;
 
   function yPos() {
@@ -18,9 +17,23 @@
   }
 
   function uiLocked() {
-    if (document.body.classList.contains("uk-offcanvas-page") || document.documentElement.classList.contains("uk-offcanvas-page")) return true;
-    if (document.querySelector(".uk-offcanvas.uk-open, .uk-modal.uk-open, .uk-navbar-dropdown.uk-open")) return true;
-    if (document.querySelector(".fg-search-form__input:focus, input:focus, textarea:focus")) return true;
+    if (
+      document.body.classList.contains("uk-offcanvas-page") ||
+      document.documentElement.classList.contains("uk-offcanvas-page")
+    ) return true;
+
+    if (
+      document.querySelector(
+        ".uk-offcanvas.uk-open, .uk-modal.uk-open, .uk-navbar-dropdown.uk-open"
+      )
+    ) return true;
+
+    if (
+      document.querySelector(
+        ".fg-search-form__input:focus, input:focus, textarea:focus"
+      )
+    ) return true;
+
     return false;
   }
 
@@ -36,50 +49,38 @@
 
   function pin() {
     if (pinned) return;
+
     setSpacer(true);
     header.classList.add("fa-amz-header--pinned");
     pinned = true;
   }
 
   function unpin() {
-    header.classList.remove("fa-amz-header--pinned", "fa-amz-header--hidden");
+    header.classList.remove(
+      "fa-amz-header--pinned",
+      "fa-amz-header--hidden"
+    );
+
     setSpacer(false);
     pinned = false;
-    hidden = false;
   }
 
-  function hide() {
-    if (!pinned || hidden) return;
-    header.classList.add("fa-amz-header--hidden");
-    hidden = true;
-  }
+  function apply() {
+    ticking = false;
 
-  function show() {
-    if (!hidden && pinned) return;
+    var y = yPos();
+
+    if (y <= 0) {
+      unpin();
+      return;
+    }
+
+    if (uiLocked()) {
+      return;
+    }
+
     pin();
-    header.classList.remove("fa-amz-header--hidden");
-    hidden = false;
   }
-
-function apply() {
-  ticking = false;
-  var y = yPos();
-
-  if (y <= 0) {
-    unpin();
-    lastY = 0;
-    return;
-  }
-
-  if (uiLocked()) {
-    lastY = y;
-    return;
-  }
-
-  pin();
-
-  lastY = y;
-}
 
   function onScroll() {
     if (!ticking) {
@@ -89,7 +90,10 @@ function apply() {
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
+
   window.addEventListener("resize", function () {
-    if (pinned) setSpacer(true);
+    if (pinned) {
+      setSpacer(true);
+    }
   });
 })();
