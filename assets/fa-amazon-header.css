@@ -21,3 +21,9 @@
   pointer-events: none;
   box-shadow: none;
 }
+/* Ensure fg-ca-rollout-banner never goes sticky when header is pinned */
+.fg-header.fa-amz-header--pinned #fg-ca-rollout-banner {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+}
