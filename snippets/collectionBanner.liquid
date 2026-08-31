@@ -690,7 +690,7 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
 
 {% assign fg_ca_title_length = title | size %}
 <section id="fg-ca-rollout-banner" class="fg-ca-rollout-banner fg-ca-rollout-banner--{{ fg_ca_rollout_profile }}{% if fg_ca_title_length > 34 %} fg-ca-rollout-banner--long-title{% endif %}" aria-labelledby="bannertext">
-  <img class="fg-ca-rollout-banner__background" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="" role="presentation">
+  <img class="fg-ca-rollout-banner__background" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="" role="presentation" fetchpriority="high">
   <div id="fg-ca-banner-copy" class="fg-ca-banner-copy">
     <h1 id="bannertext" class="bannertext">{{ title }}</h1>
     <h2 class="fg-ca-banner-h2">{{ fg_ca_rollout_h2 }}</h2>
