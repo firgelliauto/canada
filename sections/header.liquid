@@ -20,19 +20,18 @@
     max-height: 55px;
 }
 
- .fg-header {
-  position: sticky !important;
-  top: 0 !important;
-  width: 100% !important;
-  z-index: 1000 !important;
-  background: #fefefe !important;
-}
 header.bannerHeight {
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
   z-index: 1000;
-  background: #fefefe; /* opaque background so content doesn't show through underneath */
+  background: #fefefe;
+}
+
+.fg-header {
+  position: static !important; /* let the header itself handle fixing, not this wrapper */
 }
 </style>
 
@@ -55,6 +54,7 @@ header.bannerHeight {
     </div>
   </nav>
 </section>
+<div id="header-fixed-spacer"></div>
 <section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header" style="position: sticky; top: 0; z-index: 10000;">
   <header class="bannerHeight" role="banner">
     {% include 'nav-topper' %}
@@ -84,7 +84,18 @@ header.bannerHeight {
   </header>
 </section>
 
-
+<script>
+  function syncHeaderSpacer() {
+  var header = document.querySelector('header.bannerHeight');
+  var spacer = document.getElementById('header-fixed-spacer');
+    if (header && spacer) {
+      spacer.style.height = header.offsetHeight + 'px';
+    }
+  }
+  window.addEventListener('load', syncHeaderSpacer);
+  window.addEventListener('resize', syncHeaderSpacer);
+  document.addEventListener('DOMContentLoaded', syncHeaderSpacer);
+</script>
 
 {% schema %}
   {
