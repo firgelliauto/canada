@@ -109,8 +109,9 @@
     }
   });
 </script>
-
-
+{% if template contains 'collection' %}
+  {% include 'collectionBanner' %}
+{% endif %}
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {{ style_mod }}" data-curr-format="{{shop.money_format}}" data-curr-code="{{shop.currency}}" >
   
