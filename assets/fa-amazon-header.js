@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var header = document.querySelector(".fg-header");
+  var header = document.querySelector(".fg-header > header.bannerHeight");
   if (!header) return;
 
   var spacer = document.createElement("div");

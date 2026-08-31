@@ -23,12 +23,10 @@
 
   /* FIRGELLI Amazon header: hide-down on scroll down, show-up immediately on scroll up (not always-visible sticky, no scroll-to-top) */
   header.bannerHeight {
-    position: sticky;
-    top: 0;
     z-index: 1000;
     will-change: transform;
     transition: transform 0.22s ease;
-  }
+}
   header.bannerHeight.fa-header-hide-down {
     transform: translateY(-100%);
     pointer-events: none;
