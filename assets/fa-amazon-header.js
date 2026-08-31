@@ -4,8 +4,8 @@
   if (!header) return;
 
   var spacer = document.createElement("div");
-  spacer.className = "fa-amz-header-spacer";
-  /*spacer.setAttribute("aria-hidden", "true");*/
+  /*spacer.className = "fa-amz-header-spacer";
+  spacer.setAttribute("aria-hidden", "true");*/
   header.parentNode.insertBefore(spacer, header.nextSibling);
 
   var lastY = window.pageYOffset || 0;
