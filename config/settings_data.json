@@ -182,7 +182,7 @@
               "sub_title": "Explore The Industry's Largest Selection",
               "section_text": "",
               "text_align": "uk-text-center",
-              "text_color_2": "White !important",
+              "text_color_2": "var(--fg-ca-home-hero-color, White) !important",
               "padding_right": "0%",
               "padding_left": "0%",
               "text_width": "100%",
