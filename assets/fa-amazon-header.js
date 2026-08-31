@@ -3,11 +3,7 @@
   var header = document.querySelector(".fg-header > header.bannerHeight");
   if (!header) return;
 
-  var spacer = document.createElement("div");
-  spacer.className = "fa-amz-header-spacer";
-  spacer.setAttribute("aria-hidden", "true");
-  header.parentNode.insertBefore(spacer, header.nextSibling);
-
+  
   var lastY = window.pageYOffset || 0;
   var pinned = false;
   var hidden = false;
