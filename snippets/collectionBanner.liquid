@@ -457,7 +457,6 @@ g path {
   box-sizing: border-box !important;
   isolation: isolate;
   background: #225f9d !important;
-  visibility: hidden !important;
 }
 
 html.fg-ca-banner-positioned #fg-ca-rollout-banner {
@@ -686,11 +685,26 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
     font-size: 16px !important;
   }
 }
+#header-fixed-spacer {
+  height: 170px; /* match your typical fixed header height on desktop */
+}
+
+@media (max-width: 790px) {
+  #header-fixed-spacer {
+    height: 222px; /* match mobile header height, since nav-topper/mobile nav differ */
+  }
+}
+
+@media (max-width: 639px) {
+  #header-fixed-spacer {
+    height: 136px; /* adjust to your actual mobile-collapsed height */
+  }
+}
 </style>
 
 {% assign fg_ca_title_length = title | size %}
 <section id="fg-ca-rollout-banner" class="fg-ca-rollout-banner fg-ca-rollout-banner--{{ fg_ca_rollout_profile }}{% if fg_ca_title_length > 34 %} fg-ca-rollout-banner--long-title{% endif %}" aria-labelledby="bannertext">
-  <img class="fg-ca-rollout-banner__background" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" alt="" role="presentation" fetchpriority="high">
+  <img class="fg-ca-rollout-banner__background" src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211" fetchpriority="high">
   <div id="fg-ca-banner-copy" class="fg-ca-banner-copy">
     <h1 id="bannertext" class="bannertext">{{ title }}</h1>
     <h2 class="fg-ca-banner-h2">{{ fg_ca_rollout_h2 }}</h2>
