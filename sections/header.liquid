@@ -19,29 +19,21 @@
     max-height: 55px;
   }
 
-html,
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+  .fg-header {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 10000 !important;
+    background: #fefefe !important;
+  }
 
-.fg-header {
-  position: sticky !important;
-  top: 0 !important;
-  left: auto !important;
-  right: auto !important;
-  width: 100% !important;
-  z-index: 10000 !important;
-  background: #fefefe !important;
-}
-
-.fg-header > header.bannerHeight {
-  position: relative !important;
-  top: auto !important;
-  left: auto !important;
-  width: 100% !important;
-  transform: none !important;
-}
+  .fg-header > header.bannerHeight {
+    position: relative !important;
+    width: 100% !important;
+    top: auto !important;
+    transform: none !important;
+  }
 </style>
 
 
@@ -63,7 +55,7 @@ body {
     </div>
   </nav>
 </section>
-<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header">
+<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header" style="position: sticky; top: 0; z-index: 10000;">
   <header class="bannerHeight" role="banner">
     {% include 'nav-topper' %}
     {% include 'nav-topper-mobile' %}

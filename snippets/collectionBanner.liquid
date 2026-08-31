@@ -1,10 +1,8 @@
 
 <style>
- html,
-body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+  body {
+    overflow: scroll; /* Show scrollbars */
+  }
   @media (min-width: 1042px){
   .bannertext{
     font-size: 72px ;
@@ -685,7 +683,7 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
   }
 
   html body.template-collection #fg-ca-rollout-banner.fg-ca-rollout-banner--long-title #fg-ca-banner-copy h1 {
-    font-size: 16px !important;that 
+    font-size: 16px !important;
   }
 }
 </style>
@@ -706,24 +704,19 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
 <script>
 (function () {
   function positionFirgelliCaBanner(attempt) {
-  var banner = document.getElementById('fg-ca-rollout-banner');
-  var headerSection = document.querySelector('.fg-header');
-
-  if (banner && headerSection && headerSection.parentNode) {
-    headerSection.insertAdjacentElement('afterend', banner);
+    var banner = document.getElementById('fg-ca-rollout-banner');
+    var header = document.querySelector('header.bannerHeight') || document.querySelector('header');
+    if (banner && header && header.parentNode) {
+      header.insertAdjacentElement('afterend', banner);
+      document.documentElement.classList.add('fg-ca-banner-positioned');
+      return;
+    }
+    if (attempt < 120) {
+      window.requestAnimationFrame(function () { positionFirgelliCaBanner(attempt + 1); });
+      return;
+    }
     document.documentElement.classList.add('fg-ca-banner-positioned');
-    return;
   }
-
-  if (attempt < 120) {
-    window.requestAnimationFrame(function () {
-      positionFirgelliCaBanner(attempt + 1);
-    });
-    return;
-  }
-
-  document.documentElement.classList.add('fg-ca-banner-positioned');
-}
 
   function loadFirgelliCaBanner() {
     if (document.documentElement.dataset.fgCaBannerLoaded === 'true') return;
