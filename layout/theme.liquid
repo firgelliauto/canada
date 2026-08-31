@@ -8,6 +8,8 @@
 {% render 'script-header-favicon' %}  
 {% if template contains 'index' %}
 {% include 'IndexBanner' %}
+{% elsif template contains 'collection' %}
+{% include 'collectionBanner' %}
 {% endif %}
   {% if template contains 'product' %}
 
@@ -111,9 +113,7 @@
 
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {{ style_mod }}" data-curr-format="{{shop.money_format}}" data-curr-code="{{shop.currency}}" >
-   {% if template contains 'collection' %}
-{% include 'collectionBanner' %}
-{% endif %}
+  
   {{ 'styles.css' | asset_url | stylesheet_tag }}
 
   {% if template contains 'collection' %}
