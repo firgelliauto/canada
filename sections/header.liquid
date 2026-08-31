@@ -34,6 +34,19 @@
     top: auto !important;
     transform: none !important;
   }
+  .fg-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10000 !important;
+  width: 100% !important;
+  background: #fefefe !important;
+}
+
+.fg-header > .bannerHeight {
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+}
 </style>
 
 
@@ -55,7 +68,7 @@
     </div>
   </nav>
 </section>
-<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header" style="position: sticky; top: 0; z-index: 10000;">
+<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header">
   <header class="bannerHeight" role="banner">
     {% include 'nav-topper' %}
     {% include 'nav-topper-mobile' %}
