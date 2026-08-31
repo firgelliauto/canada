@@ -61,20 +61,25 @@
     hidden = false;
   }
 
-  function apply() {
-    ticking = false;
-    var y = yPos();
-    if (y <= 0) {
-      unpin();
-      lastY = 0;
-      return;
-    }
-    if (uiLocked()) {
-      lastY = y;
-      return;
-    }
-    lastY = y;
+function apply() {
+  ticking = false;
+  var y = yPos();
+
+  if (y <= 0) {
+    unpin();
+    lastY = 0;
+    return;
   }
+
+  if (uiLocked()) {
+    lastY = y;
+    return;
+  }
+
+  pin();
+
+  lastY = y;
+}
 
   function onScroll() {
     if (!ticking) {
