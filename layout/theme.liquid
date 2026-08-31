@@ -116,13 +116,7 @@
   {% if template contains 'collection' %}
   {% include 'collectionBanner' %}
   {% endif %}
-  {% if template contains 'collection' %}
-    <script>
-      
-        document.getElementById("bannertext").style.visibility = "visible";
-
-	</script>
-  {% endif %}
+  
 
   {% section 'header' %}
 
@@ -179,7 +173,13 @@
   
   
 
+{% if template contains 'collection' %}
+    <script>
+      
+        document.getElementById("bannertext").style.visibility = "visible";
 
+	</script>
+  {% endif %}
   {% include 'script-search' %}
   <script src="{{ 'scripts.js' | asset_url }}" async></script>
 
