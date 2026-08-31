@@ -1,5 +1,3 @@
-{{ 'fa-amazon-header.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'fa-amazon-header.js' | asset_url }}" defer></script>
 
 <style>
   .itg--nav{
@@ -21,20 +19,13 @@
     max-height: 55px;
 }
 
-  /* FIRGELLI Amazon header: hide-down on scroll down, show-up immediately on scroll up (not always-visible sticky, no scroll-to-top) */
-  header.bannerHeight {
-    z-index: 1000;
-    will-change: transform;
-    transition: transform 0.22s ease;
+ header.bannerHeight {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fefefe;
 }
-  header.bannerHeight.fa-header-hide-down {
-    transform: translateY(-100%);
-    pointer-events: none;
-  }
-  header.bannerHeight.fa-header-show-up {
-    transform: translateY(0);
-    pointer-events: auto;
-  }
 </style>
 
 
@@ -84,43 +75,7 @@
     </div>
   </header>
 </section>
-
-<script> //navigation bar
-  $("#banner").css('visibility', 'visible');
-</script>
-
-
-<script>
-/* FIRGELLI header hide-down / show-up: hide on scroll down; slide back immediately on any scroll up, anywhere on the page. */
-(function () {
-  var header = document.querySelector('header.bannerHeight');
-  if (!header) return;
-  var lastY = window.pageYOffset || 0;
-  var ticking = false;
-  function apply() {
-    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var dy = y - lastY;
-    if (y <= 8) {
-      header.classList.remove('fa-header-hide-down');
-      header.classList.add('fa-header-show-up');
-    } else if (dy > 0) {
-      header.classList.add('fa-header-hide-down');
-      header.classList.remove('fa-header-show-up');
-    } else if (dy < 0) {
-      header.classList.remove('fa-header-hide-down');
-      header.classList.add('fa-header-show-up');
-    }
-    lastY = y;
-    ticking = false;
-  }
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      ticking = true;
-      window.requestAnimationFrame(apply);
-    }
-  }, { passive: true });
-})();
-</script>
+ 
 
 {% schema %}
   {
