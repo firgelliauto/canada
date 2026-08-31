@@ -685,6 +685,21 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
     font-size: 16px !important;
   }
 }
+#header-fixed-spacer {
+  height: 229px; /* match your typical fixed header height on desktop */
+}
+
+@media (max-width: 958px) {
+  #header-fixed-spacer {
+    height: 280px; /* match mobile header height, since nav-topper/mobile nav differ */
+  }
+}
+
+@media (max-width: 639px) {
+  #header-fixed-spacer {
+    height: 250px; /* adjust to your actual mobile-collapsed height */
+  }
+}
 </style>
 
 {% assign fg_ca_title_length = title | size %}
