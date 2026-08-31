@@ -73,11 +73,6 @@
       lastY = y;
       return;
     }
-    if (y > lastY) {
-      if (pinned) hide();
-    } else if (y < lastY) {
-      show();
-    }
     lastY = y;
   }
 
