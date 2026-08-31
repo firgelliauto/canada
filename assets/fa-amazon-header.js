@@ -37,7 +37,7 @@
   function pin() {
     if (pinned) return;
     setSpacer(true);
-    /*header.classList.add("fa-amz-header--pinned");*/
+    header.classList.add("fa-amz-header--pinned");
     pinned = true;
   }
 
