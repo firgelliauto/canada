@@ -38,11 +38,21 @@
     if (pinned) return;
     setSpacer(true);
     header.classList.add("fa-amz-header--pinned");
+    // Move fg-ca-rollout-banner out of the fixed header context
+    var banner = document.getElementById("fg-ca-rollout-banner");
+    if (banner && banner.parentNode === header) {
+      header.parentNode.insertBefore(banner, header.nextSibling);
+    }
     pinned = true;
   }
 
   function unpin() {
     header.classList.remove("fa-amz-header--pinned", "fa-amz-header--hidden");
+    // Move fg-ca-rollout-banner back into the header if it's not already
+    var banner = document.getElementById("fg-ca-rollout-banner");
+    if (banner && banner.parentNode !== header) {
+      header.insertBefore(banner, header.firstChild);
+    }
     setSpacer(false);
     pinned = false;
     hidden = false;
