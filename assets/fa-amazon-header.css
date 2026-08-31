@@ -1,20 +1,7 @@
-/* Amazon-style header: static at top; hide on down; show immediately on up. */
-
-header.bannerHeight.fa-amz-header--pinned {
-    position: fixed;
+header.bannerHeight {
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     width: 100%;
     z-index: 1000;
-    transform: translate3d(0, 0, 0);
-    transition: transform 180ms ease;
     background: #fefefe;
-    will-change: transform;
-}
-
-header.bannerHeight.fa-amz-header--pinned.fa-amz-header--hidden {
-    /*transform: translate3d(0, -100%, 0);*/
-    pointer-events: none;
-    box-shadow: none;
 }
