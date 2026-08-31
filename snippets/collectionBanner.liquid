@@ -704,19 +704,24 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
 <script>
 (function () {
   function positionFirgelliCaBanner(attempt) {
-    var banner = document.getElementById('fg-ca-rollout-banner');
-    var header = document.querySelector('header.bannerHeight') || document.querySelector('header');
-    if (banner && header && header.parentNode) {
-      header.insertAdjacentElement('afterend', banner);
-      document.documentElement.classList.add('fg-ca-banner-positioned');
-      return;
-    }
-    if (attempt < 120) {
-      window.requestAnimationFrame(function () { positionFirgelliCaBanner(attempt + 1); });
-      return;
-    }
+  var banner = document.getElementById('fg-ca-rollout-banner');
+  var headerSection = document.querySelector('.fg-header');
+
+  if (banner && headerSection && headerSection.parentNode) {
+    headerSection.insertAdjacentElement('afterend', banner);
     document.documentElement.classList.add('fg-ca-banner-positioned');
+    return;
   }
+
+  if (attempt < 120) {
+    window.requestAnimationFrame(function () {
+      positionFirgelliCaBanner(attempt + 1);
+    });
+    return;
+  }
+
+  document.documentElement.classList.add('fg-ca-banner-positioned');
+}
 
   function loadFirgelliCaBanner() {
     if (document.documentElement.dataset.fgCaBannerLoaded === 'true') return;
