@@ -56,34 +56,45 @@ header.bannerHeight {
   </nav>
 </section>
 <div id="header-fixed-spacer"></div>
-<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header" style="position: sticky; top: 0; z-index: 10000;">
+<!-- codex-ca-approved-header-20260912:start -->
+<section class="fg-header" data-section-id="{{ section.id }}" data-section-type="header">
   <header class="bannerHeight" role="banner">
-    {% include 'nav-topper' %}
-    {% include 'nav-topper-mobile' %}
-    <div id="banner" class="fg-navbar-container uk-navbar-container">
-      <nav role="navigation" class="fg-nav uk-container uk-flex-middle" uk-navbar style="place-content: space-between; display: flex">
-        <div style="display: flex;">
-        <div class="uk-navbar uk-flex-column fg-logo-container">
-          {% include 'logo' %}
+    <div class="ca-utility" role="region" aria-label="FIRGELLI contact information">
+      <div class="ca-utility__inner">
+        <span class="ca-utility__message"><span class="ca-utility__desktop-message">Precision Linear Actuators for practical solutions</span></span>
+        <div class="ca-utility__links">
+          <a href="/pages/contact-us">Contact us</a><span class="ca-utility__divider" aria-hidden="true"></span>
+          <a href="tel:+18662260465" aria-label="Call FIRGELLI at 866-226-0465"><span uk-icon="icon: receiver; ratio: .72" aria-hidden="true"></span><span>866-226-0465</span></a>
+          <ul class="ca-utility__country">{% include 'nav-country-links' %}</ul>
         </div>
-        
-      <a style="padding-left: 50px; place-self: center;" class="selectorButton" href="https://www.firgelliauto.ca/pages/linear-actuator-selector"><button class="widgetButton"><div style="float: left;
-        width: 25px"><img alt="linear actuator calculator image" src="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/screwdriver.png?v=1633383820" width="40" height="45"></div>
-     <span style="color: white; font-size: 14px; text-decoration: none; width: 110px;">Linear Actuator 
-     Calculator Tool</span></button></a>
-      
-      <a style="padding-left: 10px; place-self: center;" class="selectorButton" href="https://www.firgelliauto.com/pages/engineering-library" target="_blank" rel="noopener noreferrer"><button class="widgetButton" style="background: white; background-image: none; border: 2px solid #0e91eb; padding: 9px 12px;"><div style="float: left;
-        width: 25px"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="45" viewBox="0 0 24 24" fill="none" stroke="#0e91eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9 12 5 2 9l10 4 10-4v6"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-     <span style="color: #0e91eb; font-size: 14px; text-decoration: none; width: 90px;">Engineering 
-     Library</span></button></a>
+      </div>
     </div>
-		{% include 'header-desktop-megamenu' %}
-        {% include 'responsive-header-mobile' %}
-        <!-- End Custom Menu -->
-      </nav>
+    <div class="ca-middle">
+      <div class="ca-middle__inner">
+        <div class="ca-middle__logo">{% include 'logo' %}</div>
+        <div class="ca-middle__search">{% include 'form-search' %}</div>
+        <div class="ca-middle__actions">
+          <a class="ca-middle__action" href="/account/login"><span uk-icon="icon: user; ratio: 1.18" aria-hidden="true"></span><span class="ca-middle__label">Account</span></a>
+          <a class="ca-middle__action js-veiw-cart_nav" href="/cart"><span uk-icon="icon: cart; ratio: 1.18" aria-hidden="true"></span><span class="ca-middle__label">Cart</span>{% if cart.item_count > 0 %}<span class="uk-badge js-cart-item-count">{{ cart.item_count }}</span>{% endif %}</a>
+          <a class="ca-middle__menu" href="#offcanvas-nav-primary" uk-toggle="target: #offcanvas-nav-primary" aria-label="Open navigation menu"><span uk-icon="icon: menu; ratio: 1.2" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+    <div id="banner" class="ca-primary fg-navbar-container uk-navbar-container">
+      {% include 'header-desktop-megamenu' %}
+      {% include 'responsive-header-mobile' %}
     </div>
   </header>
 </section>
+<style id="codex-ca-approved-header-css">
+  html,body{overflow-x:hidden!important}
+  header.bannerHeight{position:fixed;inset:0 0 auto;width:100%;z-index:10000;background:#fff}.fg-header{position:static!important}
+  .ca-utility{height:36px;background:#063653;color:#fff}.ca-utility__inner{height:100%;max-width:1240px;margin:auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;box-sizing:border-box}.ca-utility__message,.ca-utility a{color:#fff!important;font-size:12px;text-decoration:none!important}.ca-utility__links{display:flex;align-items:center;gap:12px;height:100%}.ca-utility__links>a{display:flex;align-items:center;gap:7px}.ca-utility__divider{height:14px;width:1px;background:rgba(255,255,255,.48)}.ca-utility__country{display:flex;align-items:center;list-style:none;margin:0;padding:0}.ca-utility__country>li{list-style:none}.ca-utility__country .uk-dropdown{z-index:10020}
+  .ca-middle{height:83px;border-bottom:1px solid #e4e9ef;background:#fff}.ca-middle__inner{height:100%;max-width:1240px;margin:auto;padding:0 24px;display:grid;grid-template-columns:245px minmax(260px,1fr) 210px;align-items:center;gap:28px;box-sizing:border-box}.ca-middle__logo,.ca-middle__logo .fg-logo-image{display:block;width:220px;max-width:100%}.ca-middle__logo .fg-logo-image__svg{width:100%;height:auto}.ca-middle__search .fg-search-form{position:relative;margin:0;width:100%}.ca-middle__search .fg-search-form__input{height:44px!important;width:100%;padding:0 46px 0 48px!important;border:1px solid #d3deea!important;border-radius:7px!important;background:#f6f8fb!important;color:#082b57!important;font-size:15px!important;box-sizing:border-box}.ca-middle__search .fg-search-button{position:absolute!important;left:16px;right:auto!important;top:50%;transform:translateY(-50%);color:#001b4d}.ca-middle__actions{display:flex;align-items:center;justify-content:flex-end;gap:24px}.ca-middle__action,.ca-middle__menu{display:flex;align-items:center;gap:7px;color:#001b4d!important;font-weight:700;text-decoration:none!important;position:relative}.ca-middle__action:hover,.ca-middle__menu:hover{color:#087ff5!important}.ca-middle__menu{display:none}.ca-primary{height:50px;background:#fff;border-bottom:1px solid #dce5ed;position:relative}.ca-primary:before,.ca-primary:after{display:none!important;pointer-events:none!important}
+  @media(max-width:959px){.ca-utility{height:32px}.ca-utility__inner{padding:0 12px}.ca-utility__desktop-message{font-size:0}.ca-utility__desktop-message:before{content:'Linear Actuator solutions';font-size:10px}.ca-utility__links{gap:8px}.ca-utility__links a{font-size:10px}.ca-utility__country{display:none}.ca-middle{height:102px}.ca-middle__inner{padding:8px 14px;grid-template-columns:minmax(120px,1fr) auto;grid-template-rows:46px 40px;gap:0 12px}.ca-middle__logo,.ca-middle__logo .fg-logo-image{width:165px}.ca-middle__search{grid-column:1/-1;grid-row:2}.ca-middle__actions{gap:13px}.ca-middle__label{display:none}.ca-middle__menu{display:flex}.ca-middle__search .fg-search-form__input{height:38px!important;font-size:13px!important}.ca-primary{height:0;border:0}.ca-primary>nav{display:none!important}}
+  @media(max-width:340px){.ca-utility__desktop-message:before{content:'Linear Actuators'}.ca-middle__logo,.ca-middle__logo .fg-logo-image{width:142px}.ca-middle__actions{gap:8px}}
+</style>
+<!-- codex-ca-approved-header-20260912:end -->
 
 <script>
   function syncHeaderSpacer() {
