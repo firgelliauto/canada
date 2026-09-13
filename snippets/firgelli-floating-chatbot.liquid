@@ -1,0 +1,630 @@
+{% assign advisor_endpoint = endpoint | default: 'https://firgelli-actuator-advisor.firgelliwidgets.workers.dev/api/actuator-advisor/chat' %}
+
+<div id="firgelli-floating-chatbot-{{ section.id | default: 'embed' }}" class="firgelli-floating-chatbot" data-endpoint="{{ advisor_endpoint | escape }}">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["SoftwareApplication", "WebApplication"],
+      "@id": "https://www.firgelliauto.com/#firgelli-advisor",
+      "name": "FIRGELLI Advisor",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://www.firgelliauto.com",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.firgelliauto.com/#organization",
+        "name": "FIRGELLI Automations",
+        "url": "https://www.firgelliauto.com"
+      },
+      "description": "FIRGELLI Advisor helps customers find FIRGELLI actuator products, controllers, calculators, technical articles, ordering information, shipping details, warranty information, and support resources.",
+      "featureList": [
+        "Actuator product guidance",
+        "Controller and accessory guidance",
+        "Engineering calculator guidance",
+        "FIRGELLI article and resource discovery",
+        "Ordering, shipping, warranty, and support guidance"
+      ],
+      "isAccessibleForFree": true
+    }
+  </script>
+
+  <style>
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} {
+      --ff-blue: #58b7e8;
+      --ff-blue-dark: #0075c9;
+      --ff-text: #152432;
+      --ff-muted: #667789;
+      --ff-line: #d9e4ee;
+      --ff-panel: #ffffff;
+      position: fixed;
+      right: 22px;
+      bottom: 50%;
+      transform: translateY(50%);
+      z-index: 2147483000;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-launcher {
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #62c4f0, #1687ce);
+      color: #ffffff;
+      box-shadow: 0 14px 34px rgba(0, 70, 130, 0.28);
+      cursor: pointer;
+      font-size: 30px;
+      font-weight: 900;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-launcher-label {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--ff-text);
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
+      box-shadow: 0 10px 28px rgba(10, 28, 45, 0.22);
+      border: 1px solid rgba(0, 117, 201, 0.18);
+      cursor: pointer;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-window {
+      display: none;
+      width: min(430px, calc(100vw - 28px));
+      height: min(640px, calc(100vh - 36px));
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--ff-panel);
+      box-shadow: 0 24px 70px rgba(10, 28, 45, 0.36);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }}.is-open .ff-window { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }}.is-open .ff-launcher,
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }}.is-open .ff-launcher-label { display: none; }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, #78cdf2, #42aee3);
+      color: var(--ff-text);
+      box-shadow: 0 8px 24px rgba(0, 117, 201, 0.18);
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-bot {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--ff-blue-dark);
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-title {
+      flex: 1;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      background: transparent;
+      color: var(--ff-text);
+      cursor: pointer;
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-clear {
+      min-width: 56px;
+      height: 34px;
+      border: 1px solid rgba(12, 45, 71, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ff-text);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-thread {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 22px 18px;
+      overflow: auto;
+      background: #ffffff;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-link-tray {
+      display: none;
+      width: min(430px, calc(100vw - 28px));
+      margin: 10px 0 0 auto;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 190px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 12px;
+      background: #ffffff;
+      border: 1px solid var(--ff-line);
+      border-radius: 18px;
+      box-shadow: 0 18px 44px rgba(10, 28, 45, 0.24);
+      box-sizing: border-box;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }}.is-open .ff-link-tray.has-links {
+      display: flex;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-link-title {
+      color: var(--ff-muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 0 2px;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-row.user {
+      justify-content: flex-end;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-mini-bot {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      border-radius: 50%;
+      color: var(--ff-blue-dark);
+      background: #e8f6fc;
+      font-size: 17px;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-bubble {
+      max-width: 82%;
+      padding: 13px 15px;
+      border-radius: 22px;
+      color: var(--ff-text);
+      font-size: 15px;
+      line-height: 1.35;
+      white-space: pre-wrap;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-row.assistant .ff-bubble {
+      background: #f0f1f3;
+      border-bottom-left-radius: 8px;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-row.user .ff-bubble {
+      background: linear-gradient(135deg, #45aee0, #1687ce);
+      color: #ffffff;
+      border-bottom-right-radius: 8px;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-actions,
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-left: 36px;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-links {
+      display: none;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-chip,
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-product-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 117, 201, 0.58);
+      background: #ffffff;
+      color: var(--ff-blue-dark);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.15;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-link-tray .ff-product-link {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      justify-content: flex-start;
+      min-height: 42px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #f7fbff;
+      box-shadow: none;
+      text-align: left;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: normal;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-product-link.primary {
+      background: var(--ff-blue-dark);
+      color: #ffffff;
+      border-color: var(--ff-blue-dark);
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-composer {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      padding: 15px;
+      border-top: 1px solid var(--ff-line);
+      background: #ffffff;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-input {
+      min-height: 46px;
+      resize: none;
+      border: 1px solid var(--ff-line);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+
+    #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-send {
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #62c4f0, #1687ce);
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    @media (max-width: 640px) {
+      #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} {
+        top: auto;
+        right: 10px;
+        bottom: max(10px, env(safe-area-inset-bottom));
+        left: 10px;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        max-height: calc(100vh - 20px);
+        max-height: calc(100dvh - 20px);
+      }
+      #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-window {
+        width: 100%;
+        height: min(620px, calc(100vh - 20px));
+        height: min(620px, calc(100dvh - 20px));
+        max-height: calc(100vh - 20px);
+        max-height: calc(100dvh - 20px);
+        border-radius: 20px;
+      }
+      #firgelli-floating-chatbot-{{ section.id | default: 'embed' }}.is-open:has(.ff-link-tray.has-links) .ff-window {
+        height: clamp(300px, calc(100vh - 156px), 620px);
+        height: clamp(300px, calc(100dvh - 156px), 620px);
+      }
+      #firgelli-floating-chatbot-{{ section.id | default: 'embed' }} .ff-link-tray {
+        width: 100%;
+        margin-right: 0;
+        max-height: 116px;
+        flex: 0 0 auto;
+      }
+      
+    }
+    #firgelli-floating-chatbot-embed .ff-launcher-label {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+#firgelli-floating-chatbot-embed:hover .ff-launcher-label {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease, visibility 0s;
+}
+  </style>
+
+  <button type="button" class="ff-launcher" data-ff-open aria-label="Open FIRGELLI Advisor">🤖</button>
+  <button type="button" class="ff-launcher-label" data-ff-open aria-label="Open FIRGELLI Advisor">FIRGELLI Advisor</button>
+
+  <div class="ff-window" role="dialog" aria-label="FIRGELLI Advisor">
+    <div class="ff-header">
+      <div class="ff-bot" aria-hidden="true">🤖</div>
+      <div class="ff-title">FIRGELLI Advisor</div>
+      <button type="button" class="ff-clear" data-ff-clear aria-label="Clear chat">Clear</button>
+      <button type="button" class="ff-close" data-ff-close aria-label="Close">×</button>
+    </div>
+
+    <div class="ff-thread" data-ff-thread></div>
+
+    <form class="ff-composer" data-ff-form>
+      <textarea class="ff-input" data-ff-input rows="1" placeholder="Type your message..."></textarea>
+      <button type="submit" class="ff-send" aria-label="Send">➤</button>
+    </form>
+  </div>
+  <div class="ff-link-tray" data-ff-link-tray aria-label="Recommended links"></div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("firgelli-floating-chatbot-{{ section.id | default: 'embed' }}");
+      if (!root || root.dataset.ready) return;
+      root.dataset.ready = "true";
+
+      var endpoint = root.getAttribute("data-endpoint");
+      var fallbackEndpoint = "https://firgelli-actuator-advisor.firgelliwidgets.workers.dev/api/actuator-advisor/chat";
+      var openButtons = root.querySelectorAll("[data-ff-open]");
+      var close = root.querySelector("[data-ff-close]");
+      var clear = root.querySelector("[data-ff-clear]");
+      var thread = root.querySelector("[data-ff-thread]");
+      var linkTray = root.querySelector("[data-ff-link-tray]");
+      var form = root.querySelector("[data-ff-form]");
+      var input = root.querySelector("[data-ff-input]");
+      var answers = {};
+      var messages = [];
+      var sessionKey = "firgelli_ai_helper_session_id";
+      var stateKey = "firgelli_ai_helper_chat_state_v1";
+      var currentLinks = [];
+      var sessionId = "ff_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
+      if (window.localStorage) {
+        try {
+          window.localStorage.removeItem(sessionKey);
+          window.localStorage.removeItem(stateKey);
+        } catch (error) {}
+      }
+
+      function escapeHtml(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[char];
+        });
+      }
+
+      function cleanText(value) {
+        return String(value || "")
+          .replace(/\*\*/g, "")
+          .replace(/#{1,6}\s*/g, "")
+          .replace(/https?:\/\/[^\s),.;]+[^\s),.;]*/g, "")
+          .replace(/\(\s*\)/g, "")
+          .replace(/[ \t]{2,}/g, " ")
+          .trim();
+      }
+
+      function readSavedState() {
+        if (!window.localStorage) return null;
+        try {
+          return JSON.parse(window.localStorage.getItem(stateKey) || "null");
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function saveState() {
+        return;
+      }
+
+      function productLinks(response) {
+        if (response.productLinks && response.productLinks.length) {
+          return response.productLinks.slice(0, 10).map(function (link, index) {
+            return {
+              label: link.label || "View product",
+              url: link.url,
+              primary: index === 0
+            };
+          }).filter(function (link) { return link.url; });
+        }
+
+        var recs = response.recommendations || [];
+        return recs.filter(function (rec) {
+          return rec && rec.productUrl && rec.modelName;
+        }).slice(0, 3).map(function (rec, index) {
+          return {
+            label: rec.modelName,
+            url: rec.productUrl,
+            primary: index === 0
+          };
+        });
+      }
+
+      function renderLinks(links) {
+        if (!linkTray) return;
+        if (!links || !links.length) {
+          currentLinks = [];
+          linkTray.classList.remove("has-links");
+          linkTray.innerHTML = "";
+          saveState();
+          return;
+        }
+        currentLinks = links.slice(0, 10);
+        linkTray.classList.add("has-links");
+        linkTray.innerHTML = "<div class=\"ff-link-title\">Recommended links</div>" + currentLinks.map(function (link) {
+          return "<a class=\"ff-product-link" + (link.primary ? " primary" : "") + "\" href=\"" + escapeHtml(link.url) + "\" target=\"_blank\" rel=\"noopener\">" + escapeHtml(link.label) + "</a>";
+        }).join("");
+        saveState();
+      }
+
+      function addMessage(role, text, links, options) {
+        options = options || {};
+        var row = document.createElement("div");
+        row.className = "ff-row " + role;
+        var html = role === "assistant" ? "<div class=\"ff-mini-bot\">🤖</div>" : "";
+        html += "<div class=\"ff-bubble\">" + escapeHtml(cleanText(text)) + "</div>";
+        row.innerHTML = html;
+        thread.appendChild(row);
+
+        if (links) renderLinks(links);
+        if (options.persist !== false) {
+          messages.push({ role: role, content: cleanText(text) });
+          saveState();
+        }
+
+        thread.scrollTop = thread.scrollHeight;
+      }
+
+      function restoreState() {
+        var saved = readSavedState();
+        if (!saved || !saved.messages || !saved.messages.length) return false;
+        messages = saved.messages.filter(function (message) {
+          return message && (message.role === "user" || message.role === "assistant") && message.content;
+        }).slice(-30);
+        answers = saved.answers || answers;
+        messages.forEach(function (message) {
+          addMessage(message.role, message.content, null, { persist: false });
+        });
+        if (saved.links && saved.links.length) renderLinks(saved.links);
+        return messages.length > 0;
+      }
+
+      function newSessionId() {
+        return "ff_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2);
+      }
+
+      function resetConversation() {
+        messages = [];
+        answers = {};
+        currentLinks = [];
+        sessionId = newSessionId();
+        if (window.localStorage) {
+          try {
+            window.localStorage.removeItem(sessionKey);
+            window.localStorage.removeItem(stateKey);
+          } catch (error) {}
+        }
+        thread.innerHTML = "";
+        renderLinks([]);
+        addMessage("assistant", "Hello! Welcome to FIRGELLI. How can I help with your actuator project today?");
+        addQuickActions();
+      }
+
+      function addQuickActions() {
+        var actions = document.createElement("div");
+        actions.className = "ff-actions";
+        actions.innerHTML = [
+          ["Actuator Calculator", "https://www.firgelliauto.com/pages/about-linear-actuator-calculator"],
+          ["Linear Actuators", "https://www.firgelliauto.com/collections/linear-actuators"]
+        ].map(function (item) {
+          return "<a class=\"ff-chip\" href=\"" + escapeHtml(item[1]) + "\" target=\"_blank\" rel=\"noopener\">" + escapeHtml(item[0]) + "</a>";
+        }).join("");
+        thread.appendChild(actions);
+      }
+
+      async function sendMessage(message) {
+        if (!message.trim()) return;
+        addMessage("user", message);
+        input.value = "";
+
+        addMessage("assistant", "One moment...", null, { persist: false });
+        var loading = thread.lastChild;
+        var payload = {
+          sessionId: sessionId,
+          message: message,
+          answers: answers,
+          messages: messages,
+          pageUrl: window.location.href,
+          referrer: document.referrer || ""
+        };
+
+        async function postToAdvisor(url) {
+          var response = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          if (!response.ok) throw new Error("Advisor backend returned " + response.status);
+          return response.json();
+        }
+
+        try {
+          var data;
+          try {
+            data = await postToAdvisor(endpoint || fallbackEndpoint);
+          } catch (primaryError) {
+            if ((endpoint || "").replace(/\/$/, "") === fallbackEndpoint.replace(/\/$/, "")) throw primaryError;
+            data = await postToAdvisor(fallbackEndpoint);
+          }
+          if (data.sessionId && data.sessionId !== sessionId) {
+            sessionId = data.sessionId;
+            if (window.localStorage) window.localStorage.setItem(sessionKey, sessionId);
+          }
+          answers = data.answers || answers;
+          loading.remove();
+          addMessage("assistant", data.assistantMessage || "Tell me a little more about what you are trying to move.", productLinks(data));
+        } catch (error) {
+          loading.remove();
+          addMessage("assistant", "I could not reach the advisor backend. Please try again in a moment.");
+        }
+      }
+
+      function openAdvisor() {
+        root.classList.add("is-open");
+        if (!messages.length && !restoreState()) {
+        addMessage("assistant", "Hello! Welcome to FIRGELLI. How can I help with your actuator project today?");
+          addQuickActions();
+        }
+        setTimeout(function () { input.focus(); }, 50);
+      }
+
+      openButtons.forEach(function (button) {
+        button.addEventListener("click", openAdvisor);
+      });
+
+      close.addEventListener("click", function () {
+        root.classList.remove("is-open");
+      });
+
+      if (clear) {
+        clear.addEventListener("click", resetConversation);
+      }
+
+      thread.addEventListener("click", function (event) {
+        var button = event.target.closest("[data-message]");
+        if (button) sendMessage(button.getAttribute("data-message"));
+      });
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        sendMessage(input.value);
+      });
+
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          sendMessage(input.value);
+        }
+      });
+    })();
+  </script>
+</div>
