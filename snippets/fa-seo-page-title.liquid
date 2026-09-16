@@ -17,7 +17,7 @@
 {%- else -%}
   {%- case rootTemplate -%}
     {%- when 'index' -%}
-      {%- assign defaultPageTitle = ['shop']['name'] -%}
+      {%- assign defaultPageTitle = shop.name -%}
       {%- assign pageTitleTemplate = settings.pluginseo_pageTitleIndexTemplate -%}
       {%- assign pTFTemp = '-te_ix' -%}
     {%- when 'page' -%}
@@ -59,7 +59,7 @@
   {%- endcase -%}
 
   {%- capture defaultPageTitle -%}{{ defaultPageTitle | truncate: 70, "" | strip_html }}{%- endcapture -%}
-  {%- capture escapedPageUnderscoreTitle -%}{{ [pageUnderscoreTitle] | escape }}{%- endcapture -%}
+  {%- capture escapedPageUnderscoreTitle -%}{{ self[pageUnderscoreTitle] | escape }}{%- endcapture -%}
   {%- if escapedPageUnderscoreTitle == blank or escapedPageUnderscoreTitle == nil or escapedPageUnderscoreTitle == defaultPageTitle  -%}
     {%- assign pageTitleManuallyEntered = false -%}
   {%- endif -%}
@@ -114,3 +114,16 @@
   {%- endif -%}
   {% comment %}<title>{{ pageTitle | strip_html | strip_newlines }}</title>{% endcomment %}
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- assign defaultPageTitle = ['shop']['name'] -%}"
+  to: "{%- assign defaultPageTitle = shop.name -%}"
+  position: 822..865
+- from: "{{ [pageUnderscoreTitle] | escape }}"
+  to: "{{ self[pageUnderscoreTitle] | escape }}"
+  position: 2901..2941
+{% endcomment %}

@@ -4,7 +4,7 @@
       {% if collection.image != blank or collection.products.first != blank %}
         {%- assign image_object = collection.image | default: collection.products.first.featured_image -%}
         <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: title }}">
-          {% include 'responsive-card-image' with image: image_object, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height: 1024 %}
+          {% include 'responsive-card-image' with image, image: image_object, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height: 1024 %}
         </a>
       {% else %}
       <img src="{{ 'collection-group-actuator.png' | asset_img_url: '800x' }}" alt="placeholder image of actuators">
@@ -20,3 +20,17 @@
     </div>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% include ''responsive-card-image'' with image: image_object, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height:
+    1024 %}'
+  to: '{% include ''responsive-card-image'' with image, image: image_object, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height:
+    1024 %}'
+  position: 491..657
+{% endcomment %}

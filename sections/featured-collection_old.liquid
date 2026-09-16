@@ -19,11 +19,7 @@
     <a href="{{ product.url | within: collection }}" class="featured-collection-item">
       {% if product.featured_image != blank %}
         <div class="featured-collection__image">
-          {% include 'responsive-image' with
-            image: product.featured_image,
-            max_width: 480,
-            max_height: 480
-          %}
+          {% include 'responsive-image' with image, image: product.featured_image, max_width: 480, max_height: 480 %}
         </div>
       {% endif %}
 
@@ -84,3 +80,19 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                image: product.featured_image,
+                max_width: 480,
+                max_height: 480
+              %}
+  to: "{% include 'responsive-image' with image, image: product.featured_image, max_width:
+    480, max_height: 480 %}"
+  position: 803..910
+{% endcomment %}

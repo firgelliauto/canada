@@ -16,7 +16,7 @@
     <div class="fg-card-media-top__collection uk-align-center">
       <a href="{{ product.url | collection }}">
         {%- assign image_object = product.image | default: product.featured_image -%}
-        {% include 'responsive-card-image' with image: image_object, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height: 1024 %}
+        {% include 'responsive-card-image' with image, image: image_object, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height: 1024 %}
       </a>
     </div>
     <div class="fg-card__footer uk-padding-remove-left">
@@ -64,3 +64,17 @@
     </div>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% include ''responsive-card-image'' with image: image_object, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height:
+    1024 %}'
+  to: '{% include ''responsive-card-image'' with image, image: image_object, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1024, max_height:
+    1024 %}'
+  position: 597..763
+{% endcomment %}

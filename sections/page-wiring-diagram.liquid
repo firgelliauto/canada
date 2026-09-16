@@ -177,7 +177,7 @@
               {% assign productList = productList | append: ',' %}
             {% endif %}
             <div class="js-recommended-product uk-animation-fade uk-grid-margin uk-width-1-2@s uk-width-1-3@m" data-handle="{{card_item.handle}}" style="display:none;">
-              {% include 'card-product-content' with buy_now_text: 'LEARN MORE' %}
+              {% include 'card-product-content' with buy_now_text, buy_now_text: 'LEARN MORE' %}
             </div>
           {% endfor %}
         </div>
@@ -305,4 +305,14 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'card-product-content' with buy_now_text: 'LEARN MORE' %}"
+  to: "{% include 'card-product-content' with buy_now_text, buy_now_text: 'LEARN MORE'
+    %}"
+  position: 9993..10075
+{%- endcomment -%}
