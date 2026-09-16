@@ -104,12 +104,12 @@
         {% include 'custom-fields-product-content-counter' %}
         {% if number_of_resources > 1 %}
           <div class="fg-product-additional-content">
-            {% render 'custom-fields-product-content' with product_tab_list: product_tab_list %}
-            {% render 'custom-fields-product-content-mobile' with product_tab_list: product_tab_list %}
+            {% render 'custom-fields-product-content' with product_tab_list, product_tab_list: product_tab_list %}
+            {% render 'custom-fields-product-content-mobile' with product_tab_list, product_tab_list: product_tab_list %}
           </div>
         {% elsif  number_of_resources == 1 %}
           <div class="uk-container-small uk-margin-top uk-margin-auto-left uk-margin-auto-right">
-            {% render 'custom-fields-product-content-single' with product_tab_list: product_tab_list %}
+            {% render 'custom-fields-product-content-single' with product_tab_list, product_tab_list: product_tab_list %}
           </div>
         {% endif %}
       <script>
@@ -220,3 +220,25 @@
   
 </script>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'custom-fields-product-content' with product_tab_list: product_tab_list
+    %}"
+  to: "{% render 'custom-fields-product-content' with product_tab_list, product_tab_list:
+    product_tab_list %}"
+  position: 3713..3815
+- from: "{% render 'custom-fields-product-content-mobile' with product_tab_list: product_tab_list
+    %}"
+  to: "{% render 'custom-fields-product-content-mobile' with product_tab_list, product_tab_list:
+    product_tab_list %}"
+  position: 3828..3937
+- from: "{% render 'custom-fields-product-content-single' with product_tab_list: product_tab_list
+    %}"
+  to: "{% render 'custom-fields-product-content-single' with product_tab_list, product_tab_list:
+    product_tab_list %}"
+  position: 4111..4220
+{% endcomment %}

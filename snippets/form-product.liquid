@@ -113,7 +113,7 @@
     </div>
   </fieldset>
 </form>
-{% render 'form-link-wiring-diagram' with tags: product.tags, class_name: 'uk-hidden@m' %}
+{% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name: 'uk-hidden@m' %}
 
 <script>
 
@@ -132,4 +132,15 @@
 
 
 
-</script>
+</script>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'form-link-wiring-diagram' with tags: product.tags, class_name:
+    'uk-hidden@m' %}"
+  to: "{% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name:
+    'uk-hidden@m' %}"
+  position: 6138..6234
+{%- endcomment -%}

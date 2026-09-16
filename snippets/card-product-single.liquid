@@ -2,7 +2,7 @@
   <div class="uk-card-media-top">
     {% if product.featured_image != blank %}
       <a href="{{ product.url }}">
-      {% include 'responsive-card-image' with image: product.featured_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500 %}
+      {% include 'responsive-card-image' with image, image: product.featured_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500 %}
       </a>
     {% endif %}
   </div>
@@ -30,3 +30,17 @@
   </div>
 </div>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% include ''responsive-card-image'' with image: product.featured_image,
+    image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500,
+    max_height: 500 %}'
+  to: '{% include ''responsive-card-image'' with image, image: product.featured_image,
+    image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500,
+    max_height: 500 %}'
+  position: 225..399
+{% endcomment %}

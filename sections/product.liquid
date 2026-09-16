@@ -12,7 +12,7 @@
                   hide
                 {%- endunless -%}
               {% endcapture %}
-              {% include 'responsive-product-image' with image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500 %}
+              {% include 'responsive-product-image' with image, image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500 %}
             {% endfor %}
           </div>
           {% if product.images.size > 1 %}
@@ -110,3 +110,17 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% include ''responsive-product-image'' with image: product_image, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500
+    %}'
+  to: '{% include ''responsive-product-image'' with image, image: product_image, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 500, max_height: 500
+    %}'
+  position: 612..780
+{% endcomment %}

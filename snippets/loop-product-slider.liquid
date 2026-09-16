@@ -19,14 +19,14 @@
           hide
         {%- endunless -%}
       {% endcapture %}
-      {% include 'responsive-product-image' with image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
+      {% include 'responsive-product-image' with image, image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
     {% endfor %}
   </div>
   {% comment %} Resource links desktop {% endcomment %}
   <div class="js-product-downloads-container fg-product-downloads-container uk-width-4-5@m uk-grid">
-    {% render 'form-link-wiring-diagram' with tags: product.tags, class_name: 'uk-visible@m' %}
+    {% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name: 'uk-visible@m' %}
     {% if  product.metafields.custom_fields['display_custom_product_tabs'] > 0 %}
-      {% render 'custom-fields-product-resources' with custom_class: 'uk-visible@m' %}
+      {% render 'custom-fields-product-resources' with custom_class, custom_class: 'uk-visible@m' %}
     {% else %}
       <div>
         <ul class="fg-product-downloads js-product-tutorials"></ul>
@@ -93,3 +93,27 @@
 
   })(jQuery);
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% include ''responsive-product-image'' with image: product_image, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height:
+    1600 %}'
+  to: '{% include ''responsive-product-image'' with image, image: product_image, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height:
+    1600 %}'
+  position: 856..1026
+- from: "{% render 'form-link-wiring-diagram' with tags: product.tags, class_name:
+    'uk-visible@m' %}"
+  to: "{% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name:
+    'uk-visible@m' %}"
+  position: 1214..1311
+- from: "{% render 'custom-fields-product-resources' with custom_class: 'uk-visible@m'
+    %}"
+  to: "{% render 'custom-fields-product-resources' with custom_class, custom_class:
+    'uk-visible@m' %}"
+  position: 1400..1494
+{% endcomment %}

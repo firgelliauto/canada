@@ -1,12 +1,12 @@
 <div>
   <div class="fg-card uk-flex uk-flex-column">
-    {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+    {% render 'card-search-type' with search_types, search_types: search_types, card_item: card_item %}
     <div class="uk-card-media-top">
 {% comment %} -----| card_item.image = {{ card_item.image }}|---------
 -----| card_item.image.src = {{ card_item.images.src }}|--------- {% endcomment %}
     {% comment %} card_item.image >>>> {{ card_item.image }} {% endcomment %}
       {% if card_item.image != blank %}
-        {% render 'responsive-card-image' with image_src: card_item.image, index_first: index_first %}
+        {% render 'responsive-card-image' with image_src, image_src: card_item.image, index_first: index_first %}
       {% endif %}
       <div class="fg-card__body_article">
         <a class=" fg-card__blog-title 
@@ -34,3 +34,20 @@
   </div>
 </div>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-search-type' with search_types: search_types, card_item:
+    card_item %}"
+  to: "{% render 'card-search-type' with search_types, search_types: search_types,
+    card_item: card_item %}"
+  position: 57..156
+- from: "{% render 'responsive-card-image' with image_src: card_item.image, index_first:
+    index_first %}"
+  to: "{% render 'responsive-card-image' with image_src, image_src: card_item.image,
+    index_first: index_first %}"
+  position: 473..578
+{% endcomment %}

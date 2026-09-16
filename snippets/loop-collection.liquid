@@ -62,7 +62,7 @@
           {% endif %}
           {% comment %} {% include 'card-product' %} {% endcomment %}
           <div id={{product.handle}} class="{{ js_card_filter }}">
-            {% render 'card-product-content' with card_item: card_item index_first: card_item_first %}
+            {% render 'card-product-content' with card_item, card_item: card_item, index_first: card_item_first %}
           </div>
         {%- endif -%}
       {% else %}
@@ -94,3 +94,15 @@
     var collectionsJson = {{ collection.products | json}};
   </script>
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-product-content' with card_item: card_item index_first: card_item_first
+    %}"
+  to: "{% render 'card-product-content' with card_item, card_item: card_item, index_first:
+    card_item_first %}"
+  position: 2788..2890
+{% endcomment %}
