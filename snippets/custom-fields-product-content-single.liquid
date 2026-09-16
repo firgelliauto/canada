@@ -1,4 +1,4 @@
-{% render 'custom-fields-product-resources' with custom_class: 'uk-hidden@m' %}
+{% render 'custom-fields-product-resources' with custom_class, custom_class: 'uk-hidden@m' %}
 
 {% for tab in product_tab_list %}
   {% assign tab_title_default  = tab | split: '_' %}
@@ -29,3 +29,15 @@
   {% endif %}
 {% endfor %}
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'custom-fields-product-resources' with custom_class: 'uk-hidden@m'
+    %}"
+  to: "{% render 'custom-fields-product-resources' with custom_class, custom_class:
+    'uk-hidden@m' %}"
+  position: 0..93
+{% endcomment %}

@@ -1,10 +1,10 @@
 {% if card_item.object_type == 'article' %}
   <div>
-    {% render 'card-article' with card_item: card_item, search_types: search_types %}
+    {% render 'card-article' with card_item, card_item: card_item, search_types: search_types %}
   </div>
 {% elsif card_item.object_type == 'product' %}
   <div class="">
-    {% render 'card-product-content' with card_item: card_item, search_types: search_types %}
+    {% render 'card-product-content' with card_item, card_item: card_item, search_types: search_types %}
   </div>
 {% elsif card_item.object_type == 'page' %}
   <div>
@@ -20,3 +20,20 @@
   </div>
 
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-article' with card_item: card_item, search_types: search_types
+    %}"
+  to: "{% render 'card-article' with card_item, card_item: card_item, search_types:
+    search_types %}"
+  position: 56..148
+- from: "{% render 'card-product-content' with card_item: card_item, search_types:
+    search_types %}"
+  to: "{% render 'card-product-content' with card_item, card_item: card_item, search_types:
+    search_types %}"
+  position: 226..326
+{% endcomment %}

@@ -11,9 +11,9 @@
 
 
     {% if card_item.image != blank %}
-        {% render 'new-responsive-card-image' with image_src: card_item.image, index_first: index_first %}
+        {% render 'new-responsive-card-image' with image_src, image_src: card_item.image, index_first: index_first %}
       {% endif %}
-    {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+    {% render 'card-search-type' with search_types, search_types: search_types, card_item: card_item %}
     
     <div class="uk-card-media-top">
       
@@ -60,3 +60,20 @@
 </div>
 </a>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'new-responsive-card-image' with image_src: card_item.image, index_first:
+    index_first %}"
+  to: "{% render 'new-responsive-card-image' with image_src, image_src: card_item.image,
+    index_first: index_first %}"
+  position: 278..387
+- from: "{% render 'card-search-type' with search_types: search_types, card_item:
+    card_item %}"
+  to: "{% render 'card-search-type' with search_types, search_types: search_types,
+    card_item: card_item %}"
+  position: 410..509
+{% endcomment %}

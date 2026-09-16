@@ -8,10 +8,25 @@
         {% assign card_item_first = false %}
       {% endif %}
       {% assign card_item = article %}
-      {% render 'card-article' with card_item: card_item, index_first: card_item_first %}
+      {% render 'card-article' with card_item, card_item: card_item, index_first: card_item_first %}
     {% endfor %}
   </div>
   {% if paginate.pages > 1 %}
-    {% render 'pagination' with paginate: paginate %}
+    {% render 'pagination' with paginate, paginate: paginate %}
   {% endif %}
 {% endpaginate %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-article' with card_item: card_item, index_first: card_item_first
+    %}"
+  to: "{% render 'card-article' with card_item, card_item: card_item, index_first:
+    card_item_first %}"
+  position: 531..625
+- from: "{% render 'pagination' with paginate: paginate %}"
+  to: "{% render 'pagination' with paginate, paginate: paginate %}"
+  position: 686..745
+{% endcomment %}

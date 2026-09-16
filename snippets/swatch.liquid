@@ -1,4 +1,4 @@
-{% assign file_extension = 'jpg' %}
+{% if section and section.location != blank %}{% raw %}Liquid syntax error (snippets/swatch line 72): [:end_of_string] is not a valid expression in "{{ 'white.jpg' | asset_img_url: }}"{% endraw %}{% else %}{% assign file_extension = 'jpg' %}
 
 {% if swatch == blank %}
   <div class="swatch error">
@@ -145,3 +145,166 @@
 
 
 </script>
+{% endif %}{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% assign file_extension = 'jpg' %}\n\n{% if swatch == blank %}\n  <div class=\"swatch
+    error\">\n    <p>You must include the snippet swatch.liquid with the name of a
+    product option.</p> \n    <p>Use: <code>{% raw %}{% include 'swatch' with 'name
+    of your product option here' %}{% endraw %}</code></p>\n    <p>Example: <code>{%
+    raw %}{% include 'swatch' with 'Color' %}{% endraw %}</code></p>\n  </div>\n{%
+    else %}\n\n  {% assign found_option = false %}\n  {% assign is_color = false %}\n
+    \ {% assign option_index = 0 %}\n\n  {% for option in product.options %}\n    {%
+    if option == swatch %}\n      {% assign found_option = true %}\n      {% assign
+    option_index = forloop.index0 %}\n      <style>\n        label[for=\"product-select-option-{{
+    option_index }}\"] { display: none; }\n        #product-select-option-{{ option_index
+    }} { display: none; }\n        #product-select-option-{{ option_index }} + .custom-style-select-box
+    { display: none !important; }\n      </style>\n      <script>\n        $(window).on('load',
+    function() { \n          $('.selector-wrapper:eq({{ option_index }})').hide();
+    \n        });\n      </script>\n      {% assign downcased_option = swatch | downcase
+    %}\n      {% if downcased_option contains 'color' or downcased_option contains
+    'colour' %}\n        {% assign is_color = true %}\n      {% endif %}\n    {% endif
+    %}\n  {% endfor %}\n\n  {% unless found_option %}\n    <div class=\"swatch error\">\n
+    \     <p>You included the snippet swatch.liquid with the name of a product option
+    — <code>'{{ swatch }}'</code> — that does not belong to your product.</p>\n      <p>Use
+    <code>{% raw %}{% include 'swatch' with 'name of your product option here' %}{%
+    endraw %}</code></p>\n      <p>Example: <code>{% raw %}{% include 'swatch' with
+    'Color' %}{% endraw %}</code></p>\n      <p><strong>This is case-sensitive!</strong>
+    Do not put in <code>'color'</code> if your product option name is <code>'Color'</code>.</p>\n
+    \   </div>\n  {% else %}\n    <fieldset id=\"{{ option_index }}-fieldset\" class=\"swatch
+    uk-fieldset\" data-option-index=\"{{ option_index }}\"> \n      <legend class=\"fg-legend
+    uk-legend uk-form-horizontal header \">{{ swatch }}</legend>\n      <div class=\"uk-flex
+    uk-flex-wrap\">\n        {% assign values = '' %}\n        {% for variant in product.variants
+    %}\n          {% assign value = variant.options[option_index] %}\n          {%
+    unless values contains value %}\n            {% assign values = values | join:
+    ',' %}\n            {% assign values = values | append: ',' | append: value %}
+    \n            {% assign values = values | split: ',' %}\n            <div  onclick=\"changeURL()\"
+    id=\"{{ value | escape | remove: ' '}}-button\"\n                  data-value=\"{{
+    value | escape }}\" \n                  focus-value=\"{{ value | handle }}\"\n
+    \                 class=\"fg-button-swatch swatch-element {% if is_color %}color
+    {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{%
+    endif %}\">\n              {% if is_color %}\n                <div class=\"tooltip\">{{
+    value }}</div>\n              {% endif %}\n              <input id='{{ value |
+    escape | remove: ' '}}' type=\"radio\" name=\"option-{{ option_index }}\" value=\"{{
+    value | replace: '\"', '&quot;' | escape }}\"\n              {% if forloop.first
+    %} \n                checked\n              {% endif %} \n              {% unless
+    variant.available %}\n                disabled \n              {% endunless %}\n\n
+    \             data-bind=\"option_state_{{option_index | plus: 1 }}\"\n              data-bind-event-change=\"_customProductHelper.updatePrice()\"/>\n
+    \             {% if is_color and value == 'White'%}\n                <center><label
+    for=\"{{ value | escape | remove: ' '}}\" style=\" height: 100px; width: 50px;
+    background-image: url({{ 'white.jpg' | asset_img_url: }});\">\n                  </label></center>\n
+    \             {% elsif is_color and value == 'Grey'%}\n              \t<label
+    for=\"{{ value | escape | remove: ' '}}\" style=\" height: 100px; width: 50px;
+    background-image: url({{ 'grey.jpg' | asset_img_url: }});\">\n                </label>\n
+    \             {% else %}\n                <label for=\"{{ value | escape | remove:
+    ' '}}\">\n                  {{ value }}\n                </label>\n              {%
+    endif %}\n             \n              {% if variant.available %}\n                <script>\n
+    \                 (function ($) {\n                    $(document).ready(function
+    () {\n                      'use strict';\n\n                    $('.swatch[data-option-index=\"{{
+    option_index }}\"] .{{ value | handle }}').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');\n
+    \                     $('body .swatch-element input').each(function(){\n                      \t\n
+    \                       \n                        if($(this).prop('checked')){\n
+    \                         $(this).parent().addClass('active');\n                        }
+    else{\n                          $(this).parent().removeClass('active');\n                        }\n
+    \                     });\n                    });\n                  })(jQuery);\n
+    \               </script>\n              {% endif %}\n            </div>\n          {%
+    endunless %}\n        {% endfor %}\n      </div>\n    </fieldset>\n  {% endunless
+    %}\n{% endif %}\n<span style=\"display:none\" id=\"currentVarient\" data-bind=\"selectedVariant.id\"></span>\n<script>\n\n\n
+    \   function changeURL() {\n    //document.getElementById(\"submit-button\").disabled
+    = true;\n    {% assign productVariables = product.first_available_variant.id |
+    split: '/' %}                                       \n          \n                    \n
+    \                   \n    \n      if(document.getElementById('currentVarient').textContent
+    == {{productVariables}}){\n         window.history.replaceState(null,\" \",location.pathname);\n
+    \     }\n  \t  else{\n        window.history.replaceState(null,\" \",\"?variant=\"
+    + document.getElementById('currentVarient').textContent);\n      }\n      \n      \n\twindow.addEventListener(\"load\",
+    function(event) {\n      \tdocument.getElementById(\"submit-button\").disabled
+    = false;\n      \n        {% assign productVariables = product.first_available_variant.id
+    | split: '/' %}\n      \n        if(document.getElementById('currentVarient').textContent
+    == {{productVariables}}){\n         window.history.replaceState(null,\" \",location.pathname);\n
+    \     \t}\n        else{\n         window.history.replaceState(null,\" \",\"?variant=\"
+    + document.getElementById('currentVarient').textContent);                  \n
+    \       }\n        \n\t  });\n    }\n  \n  \n\n\n</script>\n"
+  to: "{% if section and section.location != blank %}{% raw %}Liquid syntax error
+    (snippets/swatch line 72): [:end_of_string] is not a valid expression in \"{{
+    'white.jpg' | asset_img_url: }}\"{% endraw %}{% else %}{% assign file_extension
+    = 'jpg' %}\n\n{% if swatch == blank %}\n  <div class=\"swatch error\">\n    <p>You
+    must include the snippet swatch.liquid with the name of a product option.</p>
+    \n    <p>Use: <code>{% raw %}{% include 'swatch' with 'name of your product option
+    here' %}{% endraw %}</code></p>\n    <p>Example: <code>{% raw %}{% include 'swatch'
+    with 'Color' %}{% endraw %}</code></p>\n  </div>\n{% else %}\n\n  {% assign found_option
+    = false %}\n  {% assign is_color = false %}\n  {% assign option_index = 0 %}\n\n
+    \ {% for option in product.options %}\n    {% if option == swatch %}\n      {%
+    assign found_option = true %}\n      {% assign option_index = forloop.index0 %}\n
+    \     <style>\n        label[for=\"product-select-option-{{ option_index }}\"]
+    { display: none; }\n        #product-select-option-{{ option_index }} { display:
+    none; }\n        #product-select-option-{{ option_index }} + .custom-style-select-box
+    { display: none !important; }\n      </style>\n      <script>\n        $(window).on('load',
+    function() { \n          $('.selector-wrapper:eq({{ option_index }})').hide();
+    \n        });\n      </script>\n      {% assign downcased_option = swatch | downcase
+    %}\n      {% if downcased_option contains 'color' or downcased_option contains
+    'colour' %}\n        {% assign is_color = true %}\n      {% endif %}\n    {% endif
+    %}\n  {% endfor %}\n\n  {% unless found_option %}\n    <div class=\"swatch error\">\n
+    \     <p>You included the snippet swatch.liquid with the name of a product option
+    — <code>'{{ swatch }}'</code> — that does not belong to your product.</p>\n      <p>Use
+    <code>{% raw %}{% include 'swatch' with 'name of your product option here' %}{%
+    endraw %}</code></p>\n      <p>Example: <code>{% raw %}{% include 'swatch' with
+    'Color' %}{% endraw %}</code></p>\n      <p><strong>This is case-sensitive!</strong>
+    Do not put in <code>'color'</code> if your product option name is <code>'Color'</code>.</p>\n
+    \   </div>\n  {% else %}\n    <fieldset id=\"{{ option_index }}-fieldset\" class=\"swatch
+    uk-fieldset\" data-option-index=\"{{ option_index }}\"> \n      <legend class=\"fg-legend
+    uk-legend uk-form-horizontal header \">{{ swatch }}</legend>\n      <div class=\"uk-flex
+    uk-flex-wrap\">\n        {% assign values = '' %}\n        {% for variant in product.variants
+    %}\n          {% assign value = variant.options[option_index] %}\n          {%
+    unless values contains value %}\n            {% assign values = values | join:
+    ',' %}\n            {% assign values = values | append: ',' | append: value %}
+    \n            {% assign values = values | split: ',' %}\n            <div  onclick=\"changeURL()\"
+    id=\"{{ value | escape | remove: ' '}}-button\"\n                  data-value=\"{{
+    value | escape }}\" \n                  focus-value=\"{{ value | handle }}\"\n
+    \                 class=\"fg-button-swatch swatch-element {% if is_color %}color
+    {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{%
+    endif %}\">\n              {% if is_color %}\n                <div class=\"tooltip\">{{
+    value }}</div>\n              {% endif %}\n              <input id='{{ value |
+    escape | remove: ' '}}' type=\"radio\" name=\"option-{{ option_index }}\" value=\"{{
+    value | replace: '\"', '&quot;' | escape }}\"\n              {% if forloop.first
+    %} \n                checked\n              {% endif %} \n              {% unless
+    variant.available %}\n                disabled \n              {% endunless %}\n\n
+    \             data-bind=\"option_state_{{option_index | plus: 1 }}\"\n              data-bind-event-change=\"_customProductHelper.updatePrice()\"/>\n
+    \             {% if is_color and value == 'White'%}\n                <center><label
+    for=\"{{ value | escape | remove: ' '}}\" style=\" height: 100px; width: 50px;
+    background-image: url({{ 'white.jpg' | asset_img_url: }});\">\n                  </label></center>\n
+    \             {% elsif is_color and value == 'Grey'%}\n              \t<label
+    for=\"{{ value | escape | remove: ' '}}\" style=\" height: 100px; width: 50px;
+    background-image: url({{ 'grey.jpg' | asset_img_url: }});\">\n                </label>\n
+    \             {% else %}\n                <label for=\"{{ value | escape | remove:
+    ' '}}\">\n                  {{ value }}\n                </label>\n              {%
+    endif %}\n             \n              {% if variant.available %}\n                <script>\n
+    \                 (function ($) {\n                    $(document).ready(function
+    () {\n                      'use strict';\n\n                    $('.swatch[data-option-index=\"{{
+    option_index }}\"] .{{ value | handle }}').removeClass('soldout').addClass('available').find(':radio').removeAttr('disabled');\n
+    \                     $('body .swatch-element input').each(function(){\n                      \t\n
+    \                       \n                        if($(this).prop('checked')){\n
+    \                         $(this).parent().addClass('active');\n                        }
+    else{\n                          $(this).parent().removeClass('active');\n                        }\n
+    \                     });\n                    });\n                  })(jQuery);\n
+    \               </script>\n              {% endif %}\n            </div>\n          {%
+    endunless %}\n        {% endfor %}\n      </div>\n    </fieldset>\n  {% endunless
+    %}\n{% endif %}\n<span style=\"display:none\" id=\"currentVarient\" data-bind=\"selectedVariant.id\"></span>\n<script>\n\n\n
+    \   function changeURL() {\n    //document.getElementById(\"submit-button\").disabled
+    = true;\n    {% assign productVariables = product.first_available_variant.id |
+    split: '/' %}                                       \n          \n                    \n
+    \                   \n    \n      if(document.getElementById('currentVarient').textContent
+    == {{productVariables}}){\n         window.history.replaceState(null,\" \",location.pathname);\n
+    \     }\n  \t  else{\n        window.history.replaceState(null,\" \",\"?variant=\"
+    + document.getElementById('currentVarient').textContent);\n      }\n      \n      \n\twindow.addEventListener(\"load\",
+    function(event) {\n      \tdocument.getElementById(\"submit-button\").disabled
+    = false;\n      \n        {% assign productVariables = product.first_available_variant.id
+    | split: '/' %}\n      \n        if(document.getElementById('currentVarient').textContent
+    == {{productVariables}}){\n         window.history.replaceState(null,\" \",location.pathname);\n
+    \     \t}\n        else{\n         window.history.replaceState(null,\" \",\"?variant=\"
+    + document.getElementById('currentVarient').textContent);                  \n
+    \       }\n        \n\t  });\n    }\n  \n  \n\n\n</script>\n{% endif %}"
+  position: 0..6646
+{% endcomment %}

@@ -33,11 +33,7 @@
         {%- endcomment -%}
         <a href="{{ article.url }}">
           {% if article.image %}
-            {% include 'responsive-image' with
-                image: article.image,
-                max_width: 400,
-                max_height: 400
-            %}
+            {% include 'responsive-image' with image, image: article.image, max_width: 400, max_height: 400 %}
           {% endif %}
           <h3>{{ article.title }}</h3>
         </a>
@@ -146,3 +142,19 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+                    image: article.image,
+                    max_width: 400,
+                    max_height: 400
+                %}
+  to: "{% include 'responsive-image' with image, image: article.image, max_width:
+    400, max_height: 400 %}"
+  position: 1424..1522
+{% endcomment %}

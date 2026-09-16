@@ -77,7 +77,7 @@
             {% for search_item in search_results %}
             {% unless search_item.handle contains 'resources' %}
               {% assign card_item = search_item %}
-              {% render 'card-search' with card_item: card_item, search_types: search_types, search_terms: search.terms %}
+              {% render 'card-search' with card_item, card_item: card_item, search_types: search_types, search_terms: search.terms %}
             {% endunless%}
             {% endfor %}
           </div>
@@ -90,3 +90,15 @@
   </div>
 </section>
 {% endpaginate %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-search' with card_item: card_item, search_types: search_types,
+    search_terms: search.terms %}"
+  to: "{% render 'card-search' with card_item, card_item: card_item, search_types:
+    search_types, search_terms: search.terms %}"
+  position: 3470..3589
+{% endcomment %}

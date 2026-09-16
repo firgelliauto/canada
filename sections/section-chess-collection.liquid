@@ -22,10 +22,7 @@
         <div class="fg-section-chess__content uk-flex uk-flex-middle uk-child-width-1-2@s" uk-grid
           uk-scrollspy="target: > div; cls: uk-animation-fade; delay: 150">
           <div class="fg-section-chess__image">
-            {%  include 'responsive-chess-image' with
-                image_caption: block.settings.image_caption,
-                image_url: block.settings.image_link_url,
-                image_url_title: block.settings.image_link_url_title %}
+            {% include 'responsive-chess-image' with image_caption, image_caption: block.settings.image_caption, image_url: block.settings.image_link_url, image_url_title: block.settings.image_link_url_title %}
           </div>
           <div class="fg-section-chess__content-inner {{first_order}}">
             {% if block.settings.title != blank%}
@@ -147,3 +144,19 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%  include 'responsive-chess-image' with
+                    image_caption: block.settings.image_caption,
+                    image_url: block.settings.image_link_url,
+                    image_url_title: block.settings.image_link_url_title %}
+  to: "{% include 'responsive-chess-image' with image_caption, image_caption: block.settings.image_caption,
+    image_url: block.settings.image_link_url, image_url_title: block.settings.image_link_url_title
+    %}"
+  position: 971..1169
+{% endcomment %}
