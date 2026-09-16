@@ -110,9 +110,9 @@
         {%- endunless -%}
       {% endcapture %}
       {% unless product.tags contains 'imageHiddenCommentedOut'%}
-        {% include 'responsive-product-image' with image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
+        {% include 'responsive-product-image' with image, image: product_image, image_class: "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
       {% else %}
-        {% include 'responsive-product-image' with image: product_image, image_class: "productImageHidden", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
+        {% include 'responsive-product-image' with image, image: product_image, image_class: "productImageHidden", wrapper_class: "wrapper-css-class", max_width: 1600, max_height: 1600 %}
         {% break %}
       {% endunless %}
         
@@ -120,9 +120,9 @@
   </div>
   {% comment %} Resource links desktop {% endcomment %}
   <div class="js-product-downloads-container fg-product-downloads-container uk-width-4-5@m uk-grid" style="visibility: none">
-    {% render 'form-link-wiring-diagram' with tags: product.tags, class_name: 'uk-visible@m' %}
+    {% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name: 'uk-visible@m' %}
     {% if  product.metafields.custom_fields['display_custom_product_tabs'] > 0 %}
-      {% render 'custom-fields-product-resources' with custom_class: 'uk-visible@m' %}
+      {% render 'custom-fields-product-resources' with custom_class, custom_class: 'uk-visible@m' %}
     {% else %}
       <div>
         <ul class="fg-product-downloads js-product-tutorials"></ul>
@@ -329,3 +329,34 @@ function slideClicked(){
 
   
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% include ''responsive-product-image'' with image: product_image, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height:
+    1600 %}'
+  to: '{% include ''responsive-product-image'' with image, image: product_image, image_class:
+    "css-class", wrapper_class: "wrapper-css-class", max_width: 1600, max_height:
+    1600 %}'
+  position: 3635..3805
+- from: '{% include ''responsive-product-image'' with image: product_image, image_class:
+    "productImageHidden", wrapper_class: "wrapper-css-class", max_width: 1600, max_height:
+    1600 %}'
+  to: '{% include ''responsive-product-image'' with image, image: product_image, image_class:
+    "productImageHidden", wrapper_class: "wrapper-css-class", max_width: 1600, max_height:
+    1600 %}'
+  position: 3831..4010
+- from: "{% render 'form-link-wiring-diagram' with tags: product.tags, class_name:
+    'uk-visible@m' %}"
+  to: "{% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name:
+    'uk-visible@m' %}"
+  position: 4274..4371
+- from: "{% render 'custom-fields-product-resources' with custom_class: 'uk-visible@m'
+    %}"
+  to: "{% render 'custom-fields-product-resources' with custom_class, custom_class:
+    'uk-visible@m' %}"
+  position: 4460..4554
+{% endcomment %}

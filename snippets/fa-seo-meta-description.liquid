@@ -16,7 +16,7 @@
 {%- else -%}
   {%- case rootTemplate -%}
     {%- when 'index' -%}
-      {%- assign defaultMetaDescription = ['shop']['description'] -%}
+      {%- assign defaultMetaDescription = shop.description -%}
       {%- assign metaDescriptionTemplate = settings.pluginseo_metaDescriptionIndexTemplate -%}
       {%- assign mDFTemp = '-te_ix' -%}
     {%- when 'page' -%}
@@ -24,7 +24,7 @@
       {%- assign metaDescriptionTemplate = settings.pluginseo_metaDescriptionPageTemplate -%}
       {%- assign mDFTemp = '-te_pg' -%}
     {%- when 'search' -%}
-      {%- assign defaultMetaDescription = ['shop']['description'] -%}
+      {%- assign defaultMetaDescription = shop.description -%}
       {%- assign metaDescriptionTemplate = settings.pluginseo_metaDescriptionSearchTemplate -%}
       {%- assign mDFTemp = '-te_se' -%}
     {%- when 'product' -%}
@@ -52,7 +52,7 @@
     {%- else -%}
   {%- endcase -%}
 
-  {%- capture pageUnderscoreDescriptionForCompare -%}{{ [pageUnderscoreDescription] | replace: ' ','' }}{%- endcapture -%}
+  {%- capture pageUnderscoreDescriptionForCompare -%}{{ self[pageUnderscoreDescription] | replace: ' ', '' }}{%- endcapture -%}
   {%- capture truncateLength -%}{{ pageUnderscoreDescriptionForCompare | size }}{%- endcapture -%}
   {%- capture defaultMetaDescriptionForCompare -%}{{ defaultMetaDescription | replace: ' ','' | strip_newlines | strip_html | escape | truncate: truncateLength, '' }}{%- endcapture -%}
 
@@ -61,7 +61,7 @@
     <!-- defaultMetaDescriptionForCompare   : {{- defaultMetaDescriptionForCompare -}} -->
   {%- endif -%}
 
-  {%- if [pageUnderscoreDescription] == blank or [pageUnderscoreDescription] == nil or pageUnderscoreDescriptionForCompare == defaultMetaDescriptionForCompare -%}
+  {%- if self[pageUnderscoreDescription] == blank or self[pageUnderscoreDescription] == nil or pageUnderscoreDescriptionForCompare == defaultMetaDescriptionForCompare -%}
     {%- assign metaDescriptionManuallyEntered = false -%}
   {%- endif -%}
 
@@ -76,11 +76,11 @@
       {%- capture metaDescription -%}{% include 'fa-seo-parse' template:metaDescriptionTemplate %}{%- endcapture -%}
     {%- else -%}
       {%- assign mDF = mDF | append: '-me' -%}
-      {%- capture metaDescription -%}{% include 'fa-seo-parse' template:[pageUnderscoreDescription] %}{%- endcapture -%}
+      {%- capture metaDescription -%}{% include 'fa-seo-parse', template: self[pageUnderscoreDescription] %}{%- endcapture -%}
     {%- endif -%}
   {%- else -%}
     {%- assign mDF = mDF | append: '-me' -%}
-    {%- capture metaDescription -%}{% include 'fa-seo-parse' template:[pageUnderscoreDescription] %}{%- endcapture -%}
+    {%- capture metaDescription -%}{% include 'fa-seo-parse', template: self[pageUnderscoreDescription] %}{%- endcapture -%}
   {%- endif -%}
 
   {%- if settings.pluginseo_metaDescriptionTruncateChars != blank -%}
@@ -99,3 +99,32 @@
     {% comment %}<meta name="description" content="{{ metaDescription | strip_newlines }}" />{% endcomment %}
   {%- endif -%}
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- assign defaultMetaDescription = ['shop']['description'] -%}"
+  to: "{%- assign defaultMetaDescription = shop.description -%}"
+  position: 868..924
+- from: "{%- assign defaultMetaDescription = ['shop']['description'] -%}"
+  to: "{%- assign defaultMetaDescription = shop.description -%}"
+  position: 1309..1365
+- from: "{{ [pageUnderscoreDescription] | replace: ' ','' }}"
+  to: "{{ self[pageUnderscoreDescription] | replace: ' ', '' }}"
+  position: 2784..2840
+- from: "{%- if [pageUnderscoreDescription] == blank or [pageUnderscoreDescription]
+    == nil or pageUnderscoreDescriptionForCompare == defaultMetaDescriptionForCompare
+    -%}"
+  to: "{%- if self[pageUnderscoreDescription] == blank or self[pageUnderscoreDescription]
+    == nil or pageUnderscoreDescriptionForCompare == defaultMetaDescriptionForCompare
+    -%}"
+  position: 3386..3554
+- from: "{% include 'fa-seo-parse' template:[pageUnderscoreDescription] %}"
+  to: "{% include 'fa-seo-parse', template: self[pageUnderscoreDescription] %}"
+  position: 4290..4361
+- from: "{% include 'fa-seo-parse' template:[pageUnderscoreDescription] %}"
+  to: "{% include 'fa-seo-parse', template: self[pageUnderscoreDescription] %}"
+  position: 4493..4564
+{% endcomment %}

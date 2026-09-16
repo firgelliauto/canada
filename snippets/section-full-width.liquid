@@ -1,7 +1,7 @@
 {% if section_revert == true %}
   {% assign section_style = '' %}
 {% else %}
-    {% if section_style = '' %}
+    {% if true %}{% elsif false %}
       {% assign section_style = 'uk-section uk-background-muted' %}
     {% endif %}
 {% endif %}
@@ -36,3 +36,13 @@
     </div>
   </div>
 </section>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% if section_style = '' %}"
+  to: "{% if true %}{% elsif false %}"
+  position: 81..111
+{% endcomment %}

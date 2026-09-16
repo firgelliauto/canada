@@ -239,12 +239,12 @@
           	
           
             <div class="fg-card js-card" id="{{ card_item.url }}" hidden="hidden" style="margin: 10px 30px">
-            {% render 'card-search-type' with search_types: search_types, card_item: card_item %}
+            {% render 'card-search-type' with search_types, search_types: search_types, card_item: card_item %}
             <div class="fg-card-media-top">
             
             {% if card_item.featured_image != blank %}
               <a class="fg-card__image_url" href="{{ card_item.url }}">
-                {% render 'responsive-card-image' with image_src: card_item.featured_image, index_first: index_first %}
+                {% render 'responsive-card-image' with image_src, image_src: card_item.featured_image, index_first: index_first %}
               </a>
             {% endif %}  
               
@@ -262,7 +262,7 @@
             </div>
             <div class="fg-card__footer">
               {% assign device_type = 'uk-visible@s' %}
-              {% render 'card-price' with card_item: card_item, device_type: device_type %}
+              {% render 'card-price' with card_item, card_item: card_item, device_type: device_type %}
               
             </div>  
             </div>
@@ -655,4 +655,25 @@ img :not(.uk-preserve) {
     ]
    
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-search-type' with search_types: search_types, card_item:
+    card_item %}"
+  to: "{% render 'card-search-type' with search_types, search_types: search_types,
+    card_item: card_item %}"
+  position: 8876..8975
+- from: "{% render 'responsive-card-image' with image_src: card_item.featured_image,
+    index_first: index_first %}"
+  to: "{% render 'responsive-card-image' with image_src, image_src: card_item.featured_image,
+    index_first: index_first %}"
+  position: 9176..9290
+- from: "{% render 'card-price' with card_item: card_item, device_type: device_type
+    %}"
+  to: "{% render 'card-price' with card_item, card_item: card_item, device_type: device_type
+    %}"
+  position: 9870..9958
+{%- endcomment -%}

@@ -369,7 +369,7 @@
           {% comment %} {% include 'card-product' %} {% endcomment %}
            <div class="productMainDiv">
             <div id={{product.handle}} class="{{ js_card_filter }}" style="flex: 1;">
-              {% render 'card-product-content' with card_item: card_item index_first: card_item_first %}
+              {% render 'card-product-content' with card_item, card_item: card_item, index_first: card_item_first %}
             </div>
             {% if compare_collections contains collection.handle %}
             <div class="compareMainDiv">
@@ -696,3 +696,15 @@ $(window).on("pageshow", function () {
 
 </script>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'card-product-content' with card_item: card_item index_first: card_item_first
+    %}"
+  to: "{% render 'card-product-content' with card_item, card_item: card_item, index_first:
+    card_item_first %}"
+  position: 8263..8365
+{% endcomment %}
