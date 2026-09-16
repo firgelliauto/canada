@@ -3,7 +3,7 @@
 		$(document).ready(function () {
 			'use strict';
 			var resourceJson = {{ blogs.Resources.articles | json }};
-			var resource3dContent = `{% include 'resource-3d-model' | json  %}`;
+			var resource3dContent = `{% include 'resource-3d-model' %}`;
 			var index3d = resourceJson.findIndex(function(el){
 				return el.handle === '3d-files'
 			})
@@ -173,3 +173,13 @@
 		});
 	})(jQuery);
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% include 'resource-3d-model' | json  %}"
+  to: "{% include 'resource-3d-model' %}"
+  position: 166..199
+{% endcomment %}

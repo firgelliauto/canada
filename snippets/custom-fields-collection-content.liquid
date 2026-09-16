@@ -42,7 +42,7 @@
 
               {{ open_url }}
             {% endif %}
-              {% render 'responsive-collection-image' with image_src: featured_image_src, image_alt: featured_image_alt,  lazy_load_images: lazy_load_images %}
+              {% render 'responsive-collection-image' with image_src, image_src: featured_image_src, image_alt: featured_image_alt, lazy_load_images: lazy_load_images %}
             {% if featured_image_url != blank %}
               </a>
             {% endif %}
@@ -62,3 +62,15 @@
     </div>
   {% endif %}
 {% endfor %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'responsive-collection-image' with image_src: featured_image_src,
+    image_alt: featured_image_alt,  lazy_load_images: lazy_load_images %}"
+  to: "{% render 'responsive-collection-image' with image_src, image_src: featured_image_src,
+    image_alt: featured_image_alt, lazy_load_images: lazy_load_images %}"
+  position: 2219..2374
+{% endcomment %}

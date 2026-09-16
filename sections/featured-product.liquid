@@ -18,14 +18,7 @@
       {%- endunless -%}
     {% endcapture %}
 
-    {% include 'responsive-image' with
-      image: image,
-      max_width: 700,
-      max_height: 800,
-      image_attributes: "data-product-featured-image",
-      wrapper_class: wrapper_class,
-      wrapper_attributes: "data-product-image-wrapper",
-    %}
+    {% include 'responsive-image' with image, image: image, max_width: 700, max_height: 800, image_attributes: "data-product-featured-image", wrapper_class: wrapper_class, wrapper_attributes: "data-product-image-wrapper" %}
   {% endfor %}
 
   {% if product.images.size > 1 %}
@@ -217,3 +210,23 @@
 }
 console.log("product page");
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% include 'responsive-image' with
+          image: image,
+          max_width: 700,
+          max_height: 800,
+          image_attributes: "data-product-featured-image",
+          wrapper_class: wrapper_class,
+          wrapper_attributes: "data-product-image-wrapper",
+        %}
+  to: '{% include ''responsive-image'' with image, image: image, max_width: 700, max_height:
+    800, image_attributes: "data-product-featured-image", wrapper_class: wrapper_class,
+    wrapper_attributes: "data-product-image-wrapper" %}'
+  position: 645..864
+{% endcomment %}
