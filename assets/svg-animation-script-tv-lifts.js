@@ -12,4 +12,3 @@ var animationData = {"v":"5.9.1","fr":30,"ip":0,"op":246,"w":1920,"h":250,"nm":"
 
     var anim;
     anim = lottie.loadAnimation(params);
-    anim.setSpeed(2); // FIRGELLI collection banner animation speed 2x
