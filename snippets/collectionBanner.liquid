@@ -771,6 +771,17 @@ html body.template-collection #fg-ca-banner-copy p.fg-ca-banner-stock {
 </script>
 {% else %}
 {% if collection.handle == 'linear-actuators' or collection.handle == 'linear-actuator-12v' or collection.handle == '24v-linear-actuators' or collection.handle == 'column-lifts' or collection.handle == 'mini-linear-actuators' or collection.handle == 'linear-actuators-classic-performance-enhanced-design' or collection.handle == 'industrial-actuators' or collection.handle == 'track-linear-actuators' or collection.handle == 'feedback-actuators' or collection.handle == 'rod-actuators' or collection.handle == 'bullet-actuators' or collection.handle == 'premium-linear-actuators' or collection.handle == 'micro-linear-actuators' %}
+{% if collection.handle == 'linear-actuator-12v' or collection.handle == '24v-linear-actuators' %}
+<style>
+/* FIRGELLI CA voltage collection mobile SVG position fix 20260926 */
+@media (max-width: 639px) {
+  html body.template-collection #lottie {
+    margin-top: 170px !important;
+  }
+}
+</style>
+{% endif %}
+
 
 <picture>
 
