@@ -39,7 +39,7 @@
         <div class="ca-middle__search">{% include 'form-search' %}</div>
         <div class="ca-middle__actions">
           <a class="ca-middle__action" href="/account/login"><span uk-icon="icon: user; ratio: 1.18" aria-hidden="true"></span><span class="ca-middle__label">Account</span></a>
-          <a class="ca-middle__action js-veiw-cart_nav" href="/cart"><span uk-icon="icon: cart; ratio: 1.18" aria-hidden="true"></span><span class="ca-middle__label">Cart</span>{% if cart.item_count > 0 %}<span class="uk-badge js-cart-item-count">{{ cart.item_count }}</span>{% endif %}</a>
+          <a class="ca-middle__action js-veiw-cart_nav" href="/cart"><span uk-icon="icon: cart; ratio: 1.18" aria-hidden="true"></span><span class="ca-middle__label">Cart</span><span class="uk-badge js-cart-item-count"{% if cart.item_count == 0 %} hidden style="display:none"{% endif %}>{{ cart.item_count }}</span></a>
           <a class="ca-middle__menu" href="#offcanvas-nav-primary" uk-toggle="target: #offcanvas-nav-primary" aria-label="Open navigation menu"><span uk-icon="icon: menu; ratio: 1.2" aria-hidden="true"></span></a>
         </div>
       </div>
