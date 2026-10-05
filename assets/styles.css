@@ -171,3 +171,14 @@ body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .d
 body#super-duty-actuators-up-to-450lbs-of-force-firgelli .section-tabs-tables .dropdown-panel:first-child .dropdown-details table tr > th:nth-child(3) {
   width: 37% !important;
 }
+
+/* Match the country selector text and hover treatment used across FIRGELLI stores. */
+.fg-header .uk-navbar-dropdown.fg-country-option .uk-nav > li > a,
+.fg-header .uk-navbar-dropdown.fg-country-option .uk-nav > li > .fg-country-option__label {
+  color: #0b1948 !important;
+  transition: color 0.25s;
+}
+
+.fg-header .uk-navbar-dropdown.fg-country-option .uk-nav > li:hover > a {
+  color: #0d90e8 !important;
+}

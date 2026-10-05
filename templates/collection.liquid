@@ -100,7 +100,6 @@
 {% endif %}
   {% assign background_image = collection_image.src | img_url: '1920x'  %}
   {% assign title = collection.title %}
-{% include 'section-header-collection' %}
 {% section 'collection-cards' %}
 {% assign section_collection_description_image = false %}
 {%- include 'section-description-collection' -%}

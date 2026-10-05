@@ -6,12 +6,21 @@
 
   
 {% render 'script-header-favicon' %}  
-{% if template contains 'index' %}
-{% include 'IndexBanner' %}
-{% endif %}
+  {% if template contains 'index' %}
+    <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/FIRGELLI_Banner.png?v=1768850530" media="(min-width: 640px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://cdn.shopify.com/s/files/1/0615/2193/products/IMG_6437.jpg?v=1765172401" media="(max-width: 639px)" fetchpriority="high">
+  {% endif %}
   {% if template contains 'product' %}
 
 	{% include 'CustomProductSEO' %}
+
+    {% if product.featured_image %}
+      <link rel="preload" as="image"
+        href="{{ product.featured_image | img_url: '960x' }}"
+        imagesrcset="{{ product.featured_image | img_url: '540x' }} 540w, {{ product.featured_image | img_url: '700x' }} 700w, {{ product.featured_image | img_url: '800x' }} 800w, {{ product.featured_image | img_url: '960x' }} 960w, {{ product.featured_image | img_url: '1024x' }} 1024w, {{ product.featured_image | img_url: '1280x' }} 1280w"
+        imagesizes="(max-width: 600px) 100vw, 50vw"
+        fetchpriority="high">
+    {% endif %}
 
     <script src="{{ 'uikit.min.js' | asset_url }}"></script>
   {% else if template contains 'collection' %}
@@ -20,6 +29,19 @@
   {% else %}
     <script async src="{{ 'uikit.min.js' | asset_url }}"></script>
     
+  {% endif %}
+
+  {% if template contains 'collection' %}
+    <link rel="preload" as="image"
+      href="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1920"
+      imagesrcset="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=800 800w, https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1200 1200w, https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1600 1600w, https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1920 1920w"
+      imagesizes="100vw"
+      fetchpriority="high">
+  {% endif %}
+
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {% if template contains 'collection' %}
+    {{ 'nouislider.css' | asset_url | stylesheet_tag }}
   {% endif %}
   {% unless template == 'index' %}
   {{ 'header-all.js' | asset_url | script_tag }}
@@ -111,14 +133,18 @@
 
 
 <body id="{{ page_title | handle }}" class="template-{{ template.name | handle }} {{ style_mod }}" data-curr-format="{{shop.money_format}}" data-curr-code="{{shop.currency}}" >
-  
-  {{ 'styles.css' | asset_url | stylesheet_tag }}
-  
-  
-
   {% section 'header' %}
+
+  {% if template contains 'product' %}
+    {{ 'slick.min.js' | asset_url | script_tag }}
+  {% endif %}
+
   {% if template contains 'collection' %}
-  {% include 'collectionBanner' %}
+    {% render 'collectionBanner' %}
+  {% endif %}
+
+  {% if template contains 'index' %}
+    {% include 'IndexBanner' %}
   {% endif %}
   
 
@@ -130,8 +156,7 @@
   
   
   {% if template contains 'collection' %}
-      <link rel="stylesheet" type="text/css" href="{{ 'nouislider.css' | asset_url }}" >
-      <script src="{{ 'nouislider.js' | asset_url }}"></script>  
+      <script src="{{ 'nouislider.js' | asset_url }}"></script>
   {% endif %}
   
   
@@ -159,7 +184,7 @@
 
   {% if template contains 'collection' %}
   	
-    {{ 'collections.min.js' | asset_url | script_tag }}
+    <script src="{{ 'collections.min.js' | asset_url }}" defer></script>
   	
   	
   {% endif %}

@@ -1,0 +1,89 @@
+{% assign banner_subtext = 'FIRGELLI electric linear actuators provide reliable push-and-pull motion for automation, robotics, furniture, automotive and industrial applications' %}
+
+{% case collection.handle %}
+  {% when 'linear-actuators-classic-performance-enhanced-design' %}
+    {% assign banner_subtext = 'Classic and C-Series linear actuators for reliable automation and positioning. Choose from multiple force and stroke options.' %}
+  {% when 'bullet-actuators' %}
+    {% assign banner_subtext = 'Compact Bullet linear actuators for powerful, space-saving motion. IP66 rated options from 20 to over 1,000lb of force.' %}
+  {% when 'micro-linear-actuators' %}
+    {% assign banner_subtext = 'Micro linear actuators for compact robotics, automation and product design. Precise linear motion where space and weight are limited.' %}
+  {% when 'feedback-actuators' %}
+    {% assign banner_subtext = 'Feedback linear actuators for precise position sensing and closed-loop control. Ideal for synchronized and automated motion systems.' %}
+  {% when 'track-linear-actuators' %}
+    {% assign banner_subtext = 'Track linear actuators deliver controlled motion without an extending rod. Ideal for compact automation and positioning systems.' %}
+  {% when 'industrial-actuators' %}
+    {% assign banner_subtext = 'Heavy-duty industrial linear actuators for high-force lifting, pushing and positioning. Built for demanding automation applications.' %}
+  {% when 'ip66-linear-actuators' %}
+    {% assign banner_subtext = 'IP66 linear actuators protected against dust and powerful water jets. Built for outdoor and demanding automation applications.' %}
+  {% when 'rotary-actuators' %}
+    {% assign banner_subtext = 'Rotary actuators and DC gear motors for controlled rotational motion. Ideal for robotics, automation and motorized mechanisms.' %}
+  {% when 'actuator-switches-remotes-relays-timers-controllers-power-supplies' %}
+    {% assign banner_subtext = 'Linear actuator controls for precise extend, retract and position control. Control single or multiple electric actuators.' %}
+  {% when 'switches' %}
+    {% assign banner_subtext = 'Linear actuator switches for simple extend-and-retract control. Manual control options for 12V and 24V actuator systems.' %}
+  {% when 'remotes' %}
+    {% assign banner_subtext = 'Wireless remote controls for linear actuators and automated systems. Convenient remote operation for single and multiple actuator applications.' %}
+  {% when 'control-systems-and-remotes' %}
+    {% assign banner_subtext = 'Linear actuator control systems and wireless remotes for automated motion. Control single or multiple actuator applications.' %}
+  {% when 'arduino' %}
+    {% assign banner_subtext = 'Arduino microcontrollers for programmable actuator and automation control. Build custom robotics and motion control systems.' %}
+  {% when 'relays' %}
+    {% assign banner_subtext = 'Electrical relays for linear actuator switching and automation controls. Control higher-current loads from switches, controllers and low-power signals.' %}
+  {% when 'power-supplies' %}
+    {% assign banner_subtext = '12V and 24V DC power supplies for linear actuators and automation systems. Reliable power for actuator and motion-control applications.' %}
+  {% when 'accessories' %}
+    {% assign banner_subtext = '' %}
+  {% when 'mounting-brackets' %}
+    {% assign banner_subtext = 'Linear actuator mounting brackets for secure, reliable installation. Clevis and body-mount options designed for FIRGELLI actuators.' %}
+  {% when 'slide-rails' %}
+    {% assign banner_subtext = 'Linear slide rails and guides for smooth, supported linear motion. Ideal for automation, machinery and load-guiding applications.' %}
+  {% when 'drawer-slides' %}
+    {% assign banner_subtext = 'Heavy-duty drawer slides and telescopic rails for smooth linear movement. High load capacities and long extension options available.' %}
+  {% when 'tv-lifts' %}
+    {% assign banner_subtext = 'Motorized TV lifts for pop-up, drop-down and hidden TV installations. Quiet electric lift systems for cabinets, ceilings and custom projects.' %}
+  {% when 'sit-stand-desks' %}
+    {% assign banner_subtext = '' %}
+  {% when 'robotics' %}
+    {% assign banner_subtext = 'Robotics components and motion-control parts for building automated systems. Linear motion hardware for robots, prototypes and machines.' %}
+  {% when 'micro-motors' %}
+    {% assign banner_subtext = '' %}
+{% endcase %}
+
+<picture class="collectionBannerPicture">
+  <img
+    class="collectionBanner"
+    width="1920"
+    height="229"
+    fetchpriority="high"
+    loading="eager"
+    alt=""
+    src="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1920"
+    srcset="https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=800 800w, https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1200 1200w, https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1600 1600w, https://cdn.shopify.com/s/files/1/0615/2193/files/firgelliBanner.jpg?v=1690217211&width=1920 1920w"
+    sizes="100vw">
+  <div class="uk-container bannerTextContainer">
+    <h1 id="collectionBannerText" class="bannerText">{{ collection.title }}</h1>
+    <p class="bannerSubText">{{ banner_subtext }}</p>
+  </div>
+  <div id="lottie" aria-hidden="true"></div>
+</picture>
+
+<style>
+  .collectionBannerPicture { position: relative; display: block; }
+  .collectionBanner { display: block; width: 100%; height: 229px; object-fit: cover; }
+  .bannerTextContainer { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; justify-content: center; }
+  .bannerText { padding: 0; margin: 0; color: white !important; text-transform: uppercase; font-size: 3.5rem; max-width: 90%; }
+  .bannerSubText { color: white !important; margin: 0; max-width: 50%; }
+  #lottie { position: absolute; inset: 0; }
+
+  @media (max-width: 959px) {
+    .bannerText { font-size: 3rem; }
+  }
+
+  @media (max-width: 639px) {
+    .collectionBanner { height: 300px; }
+    .bannerTextContainer { text-align: center; justify-content: flex-start; padding-top: 30px; }
+    .bannerText { font-size: 2rem; }
+    .bannerSubText { padding-top: 5px; font-size: 13px; margin-left: auto; margin-right: auto; max-width: 70%; }
+    #lottie { transform: translate(-24%, 23%); }
+  }
+</style>

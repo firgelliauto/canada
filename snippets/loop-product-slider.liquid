@@ -56,7 +56,7 @@
 </style>
 <style>
 .fg-product-downloads-container{
-  visibility: hidden !important;
+  z-index: 1000000;
 }
 .fadedArrow{
   opacity: 0.3;
@@ -67,9 +67,18 @@
 .sliderImagePaddingHidden{
   padding: 0 !important;
 }
+#Slider .product-single__thumbnail-image {
+  aspect-ratio: 1;
+  object-fit: contain;
+}
 .focusedSliderImage{
   border-color: red !important;
   box-shadow: 0 0 16px 4px rgb(236 2 2 / 66%);
+}
+
+/* Keep a usable hero image visible even when the slider fails to initialize. */
+#featuredImage:not(.slick-initialized) > .responsive-image__wrapper:not(:first-child) {
+  display: none;
 }
 
 </style>
@@ -77,32 +86,32 @@
   
   {% if product.images.size > 1 %}
   {% assign i = 0 %}
-  <div id="Slider" hidden class="fg-slick-nav productImagePadding" style="align-self: center; display: flex;{% if product.handle contains 'super-duty-actuators234' or product.handle contains 'c-series-actuators234'  %}visibility: hidden; {% endif %}">
+  <div id="Slider" class="fg-slick-nav productImagePadding" style="align-self: center; display: flex;">
     <span onclick="sliderArrowClick('left')" class="js-prev-arrow fadedArrow" uk-icon="icon: chevron-left; ratio: 2" style="align-self: center; scale: 1.7; padding-right: 5px;"></span>
       {% for image in product.images limit:1 %}
         <a data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail class="thumbnailSize sliderImagePadding">
-          <img id='product-slider-image-{{i}}' onclick="linkSliderImages({{i}})" value="{{i}}" class="product-single__thumbnail-image productSliderImage focusedSliderImage" src="{{ image.src | img_url: '250x' }}" alt="{{ image.alt | escape }}" uk-img>
+          <img id='product-slider-image-{{i}}' onclick="return window.linkSliderImages({{i}})" value="{{i}}" class="product-single__thumbnail-image productSliderImage focusedSliderImage" src="{{ image.src | img_url: '250x' }}" width="250" height="250" alt="{{ image.alt | escape }}">
         </a>
         {% assign i = i | plus:1 %}
 
       {% endfor %}
       {% for image in product.images limit:4 offset:1 %}
         <a data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail class="thumbnailSize sliderImagePadding">
-          <img id='product-slider-image-{{i}}' onclick="linkSliderImages({{i}})" value="{{i}}" class="product-single__thumbnail-image productSliderImage" src="{{ image.src | img_url: '250x' }}" alt="{{ image.alt | escape }}" uk-img>
+          <img id='product-slider-image-{{i}}' onclick="return window.linkSliderImages({{i}})" value="{{i}}" class="product-single__thumbnail-image productSliderImage" src="{{ image.src | img_url: '250x' }}" width="250" height="250" alt="{{ image.alt | escape }}">
         </a>
         {% assign i = i | plus:1 %}
 
       {% endfor %}
       {% for image in product.images offset:5 %}
         <a data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail class="thumbnailSize sliderImagePaddingHidden">
-          <img id='product-slider-image-{{i}}' onclick="linkSliderImages({{i}})" value="{{i}}" class="product-single__thumbnail-image productSliderImageHidden" src="{{ image.src | img_url: '250x' }}" alt="{{ image.alt | escape }}" uk-img>
+          <img id='product-slider-image-{{i}}' onclick="return window.linkSliderImages({{i}})" value="{{i}}" class="product-single__thumbnail-image productSliderImageHidden" src="{{ image.src | img_url: '250x' }}" width="250" height="250" alt="{{ image.alt | escape }}">
         </a>
         {% assign i = i | plus:1 %}
       {% endfor %}
     <span onclick="sliderArrowClick('right')" class="js-next-arrow" uk-icon="icon: chevron-right; ratio: 2" style="align-self: center; scale: 1.7; padding-left: 5px;"></span>
   </div>
   {% endif %}
-  <div id="featuredImage" hidden class="fg-slick-image js-slider-for uk-width-4-5@m productCenterImage">
+  <div id="featuredImage" class="fg-slick-image js-slider-for uk-width-4-5@m productCenterImage">
     {% for product_image in product.images %}
       {% capture wrapper_class %}
         {%- unless featured_image == image -%}
@@ -117,20 +126,6 @@
       {% endunless %}
         
     {% endfor %}
-  </div>
-  {% comment %} Resource links desktop {% endcomment %}
-  <div class="js-product-downloads-container fg-product-downloads-container uk-width-4-5@m uk-grid" style="visibility: none">
-    {% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name: 'uk-visible@m' %}
-    {% if  product.metafields.custom_fields['display_custom_product_tabs'] > 0 %}
-      {% render 'custom-fields-product-resources' with custom_class, custom_class: 'uk-visible@m' %}
-    {% else %}
-      <div>
-        <ul class="fg-product-downloads js-product-tutorials"></ul>
-      </div>
-      <div style="height: 73px">
-        <ul class="fg-product-downloads js-product-downloads"></ul>
-      </div>
-    {% endif %}
   </div>
 <script>
 
@@ -172,76 +167,64 @@
   }
 
 
-  function linkSliderImages(index){
-    var arrowFaded = false;
-    var sliderImages = document.getElementsByClassName('product-single__thumbnail-image');
-    var sliderParents = document.getElementsByClassName('thumbnailSize');
-    let sliderLength = sliderImages.length;
-    let withinRange = 2;
-    if((1 == index) || (index == (sliderLength - 2))){
-      withinRange = 3;
-    }
-    for(var i = 0; i < sliderLength; i++){
-      if(index == i){
-          sliderImages[i].classList.add('focusedSliderImage');
-        }
-      else{
-        sliderImages[i].classList.remove('focusedSliderImage');
-      }
-    }
-    //sliderLength-1 = total length
-    if((0 < index) && (index < sliderLength - 1)){
-      for(var i = 0; i < sliderLength; i++){
-        if(Math.abs(index - i) > withinRange){
-          sliderImages[i].classList.add('productSliderImageHidden');
-          sliderParents[i].classList.add('sliderImagePaddingHidden');
-          sliderImages[i].classList.remove('productSliderImage');
-          sliderParents[i].classList.remove('sliderImagePadding');
-        }
-        else{
-          sliderImages[i].classList.remove('productSliderImageHidden');
-          sliderParents[i].classList.remove('sliderImagePaddingHidden');
-          sliderImages[i].classList.add('productSliderImage');
-          sliderParents[i].classList.add('sliderImagePadding');
-          
-          if(i == 0){
-            document.getElementsByClassName('js-prev-arrow')[0].classList.add('fadedArrow');
-            arrowFaded = true;
-          }
-          else if(i == (sliderLength - 1)){
-            document.getElementsByClassName('js-next-arrow')[0].classList.add('fadedArrow');
-            arrowFaded = true;
-          }
-          else if(!arrowFaded){
-            document.getElementsByClassName('js-prev-arrow')[0].classList.remove('fadedArrow');
-            document.getElementsByClassName('js-next-arrow')[0].classList.remove('fadedArrow');
-          }
-        }
+  window.linkSliderImages = function(index){
+    var thumbnailSlider = document.getElementById('Slider');
+    var featuredSlider = document.getElementById('featuredImage');
+    if (!thumbnailSlider || !featuredSlider) return false;
+
+    var sliderImages = thumbnailSlider.querySelectorAll('.product-single__thumbnail-image');
+    var sliderParents = thumbnailSlider.querySelectorAll('.thumbnailSize');
+    var sliderLength = sliderImages.length;
+    index = Number(index);
+    if (!Number.isInteger(index) || index < 0 || index >= sliderLength) return false;
+
+    var visibleCount = Math.min(5, sliderLength);
+    var visibleStart = Math.max(0, Math.min(index - 2, sliderLength - visibleCount));
+    var visibleEnd = visibleStart + visibleCount;
+
+    for (var imageIndex = 0; imageIndex < sliderLength; imageIndex++) {
+      var isSelected = imageIndex === index;
+      var isVisible = imageIndex >= visibleStart && imageIndex < visibleEnd;
+      sliderImages[imageIndex].classList.toggle('focusedSliderImage', isSelected);
+      sliderImages[imageIndex].classList.toggle('productSliderImage', isVisible);
+      sliderImages[imageIndex].classList.toggle('productSliderImageHidden', !isVisible);
+      if (sliderParents[imageIndex]) {
+        sliderParents[imageIndex].classList.toggle('sliderImagePadding', isVisible);
+        sliderParents[imageIndex].classList.toggle('sliderImagePaddingHidden', !isVisible);
       }
     }
 
-    document.getElementsByClassName('slick-active')[0].style.opacity = "0";
-    document.getElementsByClassName('slick-active')[0].style.zIndex = "998";
-    document.getElementsByClassName('slick-active')[0].classList.remove('slick-active');
-    document.getElementsByClassName('slick-slide')[index].classList.add('slick-active');
-    document.getElementsByClassName('slick-slide')[index].style.opacity = "1";
-    document.getElementsByClassName('slick-slide')[index].style.zIndex = "999";
-  }
+    var previousArrow = thumbnailSlider.querySelector('.js-prev-arrow');
+    var nextArrow = thumbnailSlider.querySelector('.js-next-arrow');
+    if (previousArrow) previousArrow.classList.toggle('fadedArrow', visibleStart === 0);
+    if (nextArrow) nextArrow.classList.toggle('fadedArrow', visibleEnd >= sliderLength);
 
+    var imageId = sliderImages[index].parentElement.getAttribute('data-thumbnail-id');
+    var featuredImages = featuredSlider.querySelectorAll('.responsive-image__wrapper');
+    for (var featuredIndex = 0; featuredIndex < featuredImages.length; featuredIndex++) {
+      var featuredImage = featuredImages[featuredIndex];
+      var featuredIsSelected = imageId
+        ? featuredImage.getAttribute('data-image-id') === imageId
+        : featuredIndex === index;
 
-  $('#featuredImage').removeAttr('hidden');
-  $('#Slider').removeAttr('hidden');
-  window.addEventListener('DOMContentLoaded', (event) => {
-    document.getElementsByClassName('fg-product-downloads-container')[0].style.visibility = "initial";
-  });
+      if (featuredSlider.classList.contains('slick-initialized')) {
+        featuredImage.classList.toggle('slick-current', featuredIsSelected);
+        featuredImage.classList.toggle('slick-active', featuredIsSelected);
+        featuredImage.style.opacity = featuredIsSelected ? '1' : '0';
+        featuredImage.style.zIndex = featuredIsSelected ? '999' : '998';
+        featuredImage.setAttribute('aria-hidden', featuredIsSelected ? 'false' : 'true');
+      } else {
+        featuredImage.style.display = featuredIsSelected ? 'block' : 'none';
+      }
+    }
+
+    return false;
+  };
   
 </script>
 <script>
   (function ($) {
-    $('.js-slider-for').on('init', function(slick){
-      $('.js-slick-container').removeClass('fg-transparent');
-    });
-
+    if (typeof $.fn.slick !== 'function') return;
     $('.js-slider-for').slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -291,43 +274,6 @@
     }); {% endcomment %}
 
   })(jQuery);
-
-
-
-  $(document).ready(function() {
-    var partentImage = document.getElementsByClassName('product-single__thumbnail-image');
-    var totalImages = document.getElementsByClassName('productImage');
-    var totalImagesLength = Math.floor(document.getElementsByClassName('productImage').length/2)+1;
-
-      for(i = 0; i < totalImages.length; i++){
-        partentImage[totalImagesLength + i].parentNode.setAttribute('imageNumber', i);
-        partentImage[totalImagesLength + i + totalImages.length].parentNode.setAttribute('imageNumber', i);
-      }
-      for(i = 1; i < (totalImagesLength+1); i++){
-        //console.log(partentImage[totalImagesLength - i].parentNode);
-        //console.log(totalImages[totalImages.length - i]);
-        partentImage[totalImagesLength - i].parentNode.setAttribute('imageNumber', totalImages.length - i);
-      }
-      document.getElementsByClassName('productImagePadding')[0].addEventListener("click", function() {
-        slideClicked();
-      });
-    });
-
-function slideClicked(){
-  var allMainImages = document.getElementsByClassName('productImage');
-  var currentItems = document.getElementsByClassName('slick-current');
-  var imageToHide = document.getElementsByClassName('slick-current')[0];
-  var imageToShow = allMainImages[currentItems[1].getAttribute('imageNumber')];
- 
-  imageToHide.classList.remove('slick-current');
-  imageToHide.classList.add('notActive');
-  //imageToShow.style.display = "initial";
-  imageToShow.classList.add('slick-current');
-  imageToShow.classList.remove('notActive');
-}
-
-
-  
 </script>
 {% comment %}
 
