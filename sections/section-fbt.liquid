@@ -203,11 +203,29 @@
     font-size: 1rem;
     line-height: 50px;
     background: linear-gradient(to left, rgb(13, 144, 232) 50%, #00daff 50%) right;
-    transition: .5s ease-out;
+    transition: background-position .5s ease-out, transform .14s ease, box-shadow .14s ease;
     background-size: 250%;
   }
   .FBTAddToCart:hover{
     background-position: left;
+  }
+  .FBTAddToCart.is-pressing {
+    animation: fbt-button-press .32s ease-out;
+  }
+  .FBTAddToCart.is-added {
+    background: #18864b !important;
+    box-shadow: 0 7px 18px rgba(24, 134, 75, .28);
+  }
+  .FBTAddToCart.is-error {
+    background: #c53b32 !important;
+  }
+  @keyframes fbt-button-press {
+    0% { transform: scale(1); }
+    45% { transform: scale(.96); box-shadow: inset 0 3px 8px rgba(0, 0, 0, .22); }
+    100% { transform: scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .FBTAddToCart.is-pressing { animation: none; }
   }
 
   .FBTButtonText{
@@ -280,7 +298,7 @@
       <span class="spanTotalPrice">Total Price: </span>
       <span class="FBTSpanPrice" id="totalprice"></span>
     </div>
-    <button id="cartButton" class="FBTAddToCart" onclick="addFBTToCart()">
+    <button id="cartButton" class="FBTAddToCart" type="button" onclick="addFBTToCart()">
       <span id="cartText">ADD SELECTED TO CART</span>
     </button>
   </div>
@@ -444,8 +462,12 @@ function extractNumber(value) {
 }
 
 function addFBTToCart(){
+  var cartButton = document.getElementById('cartButton');
+  var cartText = document.getElementById('cartText');
+  if (!cartButton || cartButton.disabled) return;
+
   var currentChecked = {
-    'items': [] 
+    'items': []
   };
   for (var i=0; i<productIDs.length; i++) {
     if(document.getElementById(productIDs[i]).checked){
@@ -455,39 +477,88 @@ function addFBTToCart(){
       });
     }
   }
+
+  if (currentChecked.items.length === 0) return;
+
+  cartButton.disabled = true;
+  cartButton.classList.remove('is-added', 'is-error');
+  cartButton.classList.remove('is-pressing');
+  void cartButton.offsetWidth;
+  cartButton.classList.add('is-pressing');
+
   fetch(window.Shopify.routes.root + 'cart/add.js', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     },
+    credentials: 'same-origin',
     body: JSON.stringify(currentChecked)
   })
   .then(response => {
+    if (!response.ok) {
+      throw new Error('Unable to add selected products to the cart.');
+    }
     return response.json();
   })
-  .then(data => {
-    updateCartFrontend(currentChecked);
-    updateAddToCartButton();
+  .then(() => {
+    var addedQuantity = currentChecked.items.reduce(function(total, item) {
+      return total + item.quantity;
+    }, 0);
+
+    updateCartFrontend(cartCount + addedQuantity);
+    updateAddToCartButton('success');
+
+    return fetch(window.Shopify.routes.root + 'cart.js', {
+      headers: { 'Accept': 'application/json' },
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (!response.ok) return null;
+      return response.json();
+    })
+    .catch(error => {
+      console.warn('Cart count reconciliation failed:', error);
+      return null;
+    });
+  })
+  .then(cart => {
+    if (cart && typeof cart.item_count === 'number') {
+      updateCartFrontend(cart.item_count);
+    }
   })
   .catch((error) => {
     console.error('Error:', error);
+    updateAddToCartButton('error');
   });
 }
-function updateCartFrontend(currentChecked){
-  cartCount += currentChecked.items.length;
-  document.getElementById('cart').innerHTML = cartCount;
+function updateCartFrontend(nextCartCount){
+  cartCount = nextCartCount;
+
+  document.querySelectorAll('.js-cart-item-count, .js-cart-item-count_form').forEach(function(badge) {
+    badge.textContent = cartCount;
+    badge.hidden = cartCount < 1;
+    badge.style.display = cartCount > 0 ? '' : 'none';
+  });
+
+  var legacyCartCount = document.getElementById('cart');
+  if (legacyCartCount) legacyCartCount.textContent = cartCount;
 }
-function updateAddToCartButton(){
+function updateAddToCartButton(state){
   var cartButton = document.getElementById('cartButton');
   var cartText = document.getElementById('cartText');
-  cartButton.disabled = true;
-  cartText.innerHTML = 'THANKYOU';
-  cartButton.classList.add('disableButton');
+  if (!cartButton || !cartText) return;
+
+  cartButton.classList.remove('is-pressing');
+  cartButton.classList.toggle('is-added', state === 'success');
+  cartButton.classList.toggle('is-error', state === 'error');
+  cartText.textContent = state === 'success' ? 'ADDED TO CART' : 'PLEASE TRY AGAIN';
+
   setTimeout(function () {
-    cartButton.classList.remove('disableButton');
-    cartText.innerHTML = 'ADD SELECTED TO CART';
+    cartButton.classList.remove('is-added', 'is-error');
+    cartText.textContent = 'ADD SELECTED TO CART';
     cartButton.disabled = false;
-  }, 1000); // 1000 milliseconds = 1 second
+  }, state === 'success' ? 1400 : 2000);
 }
 
 </script>

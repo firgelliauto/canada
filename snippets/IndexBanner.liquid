@@ -1,4 +1,3 @@
-{{ 'jquery.min.js' | asset_url | script_tag }}
 <style>
 
   @media only screen and (max-width:972px){
@@ -21,16 +20,22 @@
    		/*visibility: hidden;*/
   	}
   }
-  @media (min-width: 730px) and (max-width: 1033px) {  
+  @media only screen and (max-width: 959px) {
     .mobileBanner{
-   		margin-top: 191px !important;
+		margin-top: 135px !important;
   	}
   }
-  
-  @media (min-width: 640px) and (max-width: 730px) {  
-    .mobileBanner{
-   		margin-top: 222px !important;
-  	}
+
+  @media (min-width: 450px) and (max-width: 639px) {
+    .fg-responsive-font.uk-h1 {
+      font-size: 2.5vw !important;
+    }
+  }
+
+  @media (min-width: 972px) {
+    .fg-responsive-font.uk-h1 {
+      font-size: 2vw !important;
+    }
   }
   
 </style>
@@ -68,27 +73,7 @@
   </style>
   <!-- codex-ca-homepage-mobile-hero-20260831:end -->
 <picture class="firstSliderPrint" style="z-index: 1000000" id="firstSliderID">
-    <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/FIRGELLI_Banner.png?v=1768850530">
+    <source media="(min-width: 640px)" srcset="https://cdn.shopify.com/s/files/1/0554/0567/4694/files/FIRGELLI_Banner.png?v=1768850530" width="2483" height="500">
 
-    <img class="mobileBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/products/IMG_6437.jpg?v=1765172401" alt="Two FIRGELLI Super Duty linear actuators, retracted and extended" style="position: absolute; width: 100%; height: auto; margin-top: 170px; left: 0; top: 0">
+    <img class="mobileBanner" src="https://cdn.shopify.com/s/files/1/0615/2193/products/IMG_6437.jpg?v=1765172401" width="900" height="900" loading="eager" fetchpriority="high" decoding="async" alt="Two FIRGELLI Super Duty linear actuators, retracted and extended" style="position: absolute; width: 100%; height: auto; margin-top: 170px; left: 0; top: 0">
 </picture>
-
-<script>
-
-
-
-
- //temporary
-  if ($(window).width() < 640) {
-  
-  $( window ).on( "load", function() {
-
-
-  // document.getElementById("firstSliderID").style.display = 'none';
-  });
-
-  
-  
-  }
-
-</script>
