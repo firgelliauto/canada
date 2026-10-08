@@ -1,0 +1,14 @@
+<style>
+  .clearance-heading { padding: 36px 0 24px; background: #f4f7fa; border-bottom: 1px solid #dbe3eb; }
+  .clearance-heading h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; margin: 0 0 16px; }
+  .clearance-heading h2 { font-size: clamp(20px, 3vw, 28px); line-height: 1.3; color: #92251d; margin: 0 0 12px; }
+  .clearance-heading p { font-size: 18px; line-height: 1.6; margin: 0; }
+  #collection-grid-section .firgelli-mobile-collection-hero, #collection-grid-section .collectionDescription { display: none !important; }
+</style>
+<section class="clearance-heading" aria-labelledby="clearance-title">
+  <div class="uk-container">
+    <h1 id="clearance-title">{{ collection.title | escape }}</h1>
+    {{ collection.description }}
+  </div>
+</section>
+{% section 'collection-cards' %}
