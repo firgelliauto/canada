@@ -83,9 +83,9 @@
       '<div class="firgelli-mega-column">',
       section("actuator", "Linear Actuators", "/collections/linear-actuators", [
         link("All Linear Actuators", "/collections/linear-actuators"),
-        link("Super Duty Actuators", "/products/super-duty-actuators"),
         link("12V Linear Actuators", "/collections/linear-actuator-12v"),
         link("24V Linear Actuators", "/collections/24v-linear-actuators"),
+        link("Super Duty Actuators", "/products/super-duty-actuators"),
         link("Classic Rod Actuator", "/products/light-duty-rod-actuator"),
         link("Bullet Actuators", "/collections/bullet-actuators"),
         link("Micro Utility Actuator", "/products/micro-utility-actuator"),
