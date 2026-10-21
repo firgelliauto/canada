@@ -1,3 +1,15 @@
+{% if product.handle == 'utility-linear-actuators' %}
+<style id="utility-gallery-aspect-ratio-20261021">
+  #featuredImage img.productOriginalImage,
+  .productAndSliderDiv img.fg-responsive-image__image,
+  img.productImage,
+  .productAndSliderDiv img.productSliderImage {
+    object-fit: contain !important;
+    object-position: center center !important;
+  }
+</style>
+{% endif %}
+
 <style>
   .fg-responsive-image__image {
     object-fit: initial;
