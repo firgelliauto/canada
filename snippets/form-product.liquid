@@ -336,7 +336,7 @@
           <a href="{{ shop.url | append: '/cart' }}" class="js-veiw-cart uk-button uk-button-default" style="width: 100%; height: 100%; display: inline-grid; border-radius: 10px;">
             <div style="position: relative;">
               <span uk-icon="cart" style="padding-top: 23px; scale: 1.5;"></span>
-              <span id="cartTwo" class="amountPosition uk-badge"></span>
+              <span id="cartTwo" class="amountPosition uk-badge js-cart-item-count">{{ cart.item_count }}</span>
             </div>
             <div style="line-height: 19px;">View Cart</div>
           </a>
@@ -351,22 +351,6 @@
 {% comment %}</form>{% endcomment %}
 {% endform %}
 {% render 'form-link-wiring-diagram' with tags, tags: product.tags, class_name: 'uk-hidden@m' %}
-
-<script>
-
-    
-document.addEventListener('DOMContentLoaded', () => {
-  const targetNode = document.getElementById("navbarCart");
-  document.getElementById('cartTwo').innerHTML = targetNode.innerHTML;
-  const observer = new MutationObserver(() => {
-      document.getElementById('cartTwo').innerHTML = targetNode.innerHTML;
-  });
-  const config = { childList: true, subtree: true };
-  observer.observe(targetNode, config);
-});
-                                                                     
- </script>
-
 
 <script>
 
@@ -529,10 +513,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateCartCountUI(count) {
-    const el1 = document.getElementById('cartCount');
-    const el2 = document.getElementById('cart');
-    if (el1) el1.innerHTML = count;
-    if (el2) el2.innerHTML = count;
+    document.querySelectorAll('.js-cart-item-count, .js-cart-item-count_form').forEach(function (badge) {
+      badge.innerHTML = count;
+    });
   }
 
   function changeWarrantyPrice(direction){
