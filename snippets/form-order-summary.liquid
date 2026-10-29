@@ -1,17 +1,64 @@
-<div rv-show="cart.item_count | gt 0">
-  <legend class="uk-h3"><span rv-html="cart.item_count"></span> Total Items</legend>
+<style>
+#checkoutButton {
+  position: relative;
+  transition: transform .06s ease, box-shadow .06s ease, filter .06s ease, opacity .2s ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,.18), 0 6px 12px rgba(0,0,0,.10); /* raised look */
+}
+input[type="submit"]#checkoutButton.uk-button.uk-button-primary,
+input[type="submit"]#checkoutButton.uk-button.uk-button-primary:active,
+input[type="submit"]#checkoutButton.uk-button.uk-button-primary:focus {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Hide any visible selection paint if a UA still allows it */
+input[type="submit"]#checkoutButton::selection,
+input[type="submit"]#checkoutButton::-moz-selection {
+  background: transparent;
+  color: inherit;
+}
+/* Pressed-in effect (mouse/touch) */
+#checkoutButton:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 4px 8px rgba(0,0,0,.25), inset 0 -1px 0 rgba(255,255,255,.25);
+  filter: brightness(.96);
+}
+/* Optional: similar feel when using keyboard (Enter/Space) */
+#checkoutButton:focus-visible {
+  transform: translateY(1px);
+  box-shadow: inset 0 3px 6px rgba(0,0,0,.22), inset 0 -1px 0 rgba(255,255,255,.25);
+}
+/* Keep disabled state clear */
+#checkoutButton:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+/* Visual feedback on click/submit */
+#checkoutButton:active,
+#checkoutButton:focus {
+  opacity: 0.65;
+  cursor: progress;
+}
+</style>
+<div class="fg-cart-summary" rv-show="cart.item_count | gt 0">
+  <legend class="uk-h3"><span class="fg-cart-summary-item-count" rv-html="cart.item_count"></span> Total Items</legend>
   <table class="uk-table uk-table-small uk-table-justify uk-table-striped">
     <thead>
       <th class="uk-form-label">Item</th>
       <th class="uk-form-label uk-float-right">Quantity</th>
     </thead>
     <tbody>
-      <tr rv-each-item="cart.items">
+      <tr class="fg-cart-summary-item" rv-each-item="cart.items" rv-data-cart-key="item.key">
         <td>
           <p rv-text="item.title"></p>
         </td>
         <td>
-          <strong class="uk-float-right">
+          <strong class="uk-float-right fg-cart-summary-quantity">
             { item.quantity }
           </strong>
         </td>
@@ -23,7 +70,7 @@
           </strong>
         </td>
         <td class="uk-float-right">
-          <strong rv-html="cart.total_weight | weight_to_lb "></strong>
+          <strong class="fg-cart-summary-weight" rv-html="cart.total_weight | weight_to_lb "></strong>
         </td>
       </tr>
       <tr class="uk-text-bold">
@@ -33,12 +80,12 @@
           </strong>
         </td>
         <td class="uk-float-right">
-          <strong rv-html="cart.original_total_price | money Currency.currentCurrency"></strong>
+          <strong id="subtotalPrice" rv-html="cart.original_total_price | money Currency.currentCurrency"></strong>
         </td>
       </tr>
-      <tr class="uk-text-bold" rv-show="cart.total_discount | gt 0">
+      <tr class="uk-text-bold fg-cart-total-discount-row" rv-show="cart.total_discount | gt 0">
         <td class="uk-text-primary">Total Discount: </td>
-        <td class="uk-float-right uk-text-primary" rv-html="cart.total_discount | money Currency.currentCurrency">
+        <td id="totalDiscount" class="uk-float-right uk-text-primary" rv-html="cart.total_discount | money Currency.currentCurrency">
         </td>
       </tr>
     </tbody>
@@ -46,7 +93,7 @@
       <tr class="uk-h3">
         <td>Total Price: </td>
         <td class="uk-float-right">
-          <strong rv-html="cart.total_price | money Currency.currentCurrency"></strong>
+          <strong id="totalPrice" rv-html="cart.total_price | money Currency.currentCurrency"></strong>
         </td>
       </tr>
     </tfoot>
@@ -56,6 +103,6 @@
   {% else %}
     {% assign checkout_label = 'checkout now' %}
   {% endif %}
-  <input class="fg-button uk-button uk-button-primary uk-margin-small" type="submit" value="{{ checkout_label }}" name="checkout"/>
+  <input id="checkoutButton" class="fg-button uk-button uk-button-primary uk-margin-small" type="submit" value="{{ checkout_label }}" name="checkout"/>
   <i class="uk-display-block">{{ settings.checkout_submit_footer_note }}</i>
 </div>

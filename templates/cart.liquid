@@ -1,10 +1,8 @@
 {% if cart.item_count > 0 %}
   {% include 'form-cart' %}
-  {% comment %} {% include 'script-cart' %} {% endcomment %}
 {% else %}
 <section class="uk-section">
   <div class="uk-container">
-    
     <h1>{{ 'cart.general.title' | t }}</h1>
     {% comment %}
     Cart empty state
@@ -13,7 +11,6 @@
       <p>{{ 'cart.general.empty' | t }}</p>
       <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
     </div>
-
     {% comment %}
     Cart no cookies state
     ---------------------
