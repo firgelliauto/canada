@@ -1,0 +1,33 @@
+<script>
+(function(){
+  function init(){
+    const header=document.querySelector('.fg-header > header[role="banner"]');
+    const dock=document.getElementById('stickyFilterDock');
+    const grid=document.getElementById('fg-collection-grid');
+    if(!header||!dock||!grid)return;
+    let frame=0;
+    function sync(){
+      frame=0;
+      const headerBottom=Math.max(0,header.getBoundingClientRect().bottom);
+      const gridRect=grid.getBoundingClientRect();
+      const pastGrid=gridRect.bottom<=headerBottom;
+      window.collectionOptionsAtTop=pastGrid;
+      dock.style.setProperty('--fg-sticky-filter-top',headerBottom+'px');
+      dock.classList.toggle('visible',window.scrollY>540&&!pastGrid);
+    }
+    function schedule(){
+      if(!frame)frame=requestAnimationFrame(sync);
+    }
+    sync();
+    if('ResizeObserver'in window){
+      const observer=new ResizeObserver(schedule);
+      observer.observe(header);
+      observer.observe(grid);
+    }
+    window.addEventListener('resize',schedule);
+    window.addEventListener('scroll',schedule,{passive:true});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+})();
+</script>
