@@ -1,0 +1,17 @@
+<script>
+(function () {
+  const slider = document.getElementById({{ slider_id | json }});
+  if (!slider || slider.noUiSlider) return;
+  const force = slider.id.includes('Force');
+  const maximum = force ? 2200 : 60;
+  noUiSlider.create(slider, {
+    start: [0, maximum],
+    connect: true,
+    range: {min: 0, max: maximum, '10%': [force ? 20 : 1], '50%': [force ? 350 : 10]},
+    pips: {mode: 'count', values: 4}
+  });
+  const container = slider.closest('.custom-range-slider');
+  container.querySelector('.custom-range-slider__input--from').value = 0;
+  container.querySelector('.custom-range-slider__input--to').value = maximum;
+})();
+</script>
