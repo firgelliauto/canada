@@ -1,0 +1,81 @@
+.fg-actuator-guide {
+  padding: 42px 0;
+  background: #f3f8fc;
+}
+
+.fg-actuator-guide a {
+  color: #154b75;
+}
+
+.fg-actuator-guide h2 {
+  margin: 0 0 10px;
+}
+
+.fg-actuator-guide__models {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.fg-actuator-guide__models li {
+  padding: 18px;
+  border: 1px solid #dce6ee;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.fg-actuator-guide__models .fg-actuator-guide__featured {
+  border-color: #80b4d7;
+}
+
+.fg-actuator-guide__models h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.fg-actuator-guide__badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #e4f1fa;
+  color: #154b75;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.fg-actuator-guide__models p {
+  margin: 0 0 8px;
+}
+
+.fg-actuator-guide__models p:last-child {
+  margin-bottom: 0;
+}
+
+.fg-actuator-guide__steps li + li {
+  margin-top: 8px;
+}
+
+.fg-actuator-guide__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 0;
+}
+
+@media (max-width: 959px) {
+  .fg-actuator-guide__models {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .fg-actuator-guide__models {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
