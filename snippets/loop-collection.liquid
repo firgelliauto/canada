@@ -409,7 +409,33 @@
 {% endpaginate %}
 {% if show_filter == true %}
   <script>
-    var collectionsJson = {{ collection.products | json}};
+    {% if collection.handle == 'linear-actuators' %}
+      {% comment %} The filter only reads id, title, option names and variant option values. {% endcomment %}
+      var collectionsJson = (function () {
+        function variantOptions(firstOptions, secondOptions, thirdOptions) {
+          return firstOptions.map(function (value, index) {
+            return { option1: value, option2: secondOptions[index], option3: thirdOptions[index] };
+          });
+        }
+
+        return [
+          {% for filter_product in collection.products %}
+            {
+              id: {{ filter_product.id | json }},
+              title: {{ filter_product.title | json }},
+              options: {{ filter_product.options | json }},
+              variants: variantOptions(
+                {{ filter_product.variants | map: 'option1' | json }},
+                {{ filter_product.variants | map: 'option2' | json }},
+                {{ filter_product.variants | map: 'option3' | json }}
+              )
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ];
+      })();
+    {% else %}
+      var collectionsJson = {{ collection.products | json }};
+    {% endif %}
   </script>
 {% endif %}
 

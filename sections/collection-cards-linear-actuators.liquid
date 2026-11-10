@@ -682,6 +682,9 @@
                                                                             </div>
                                       {% endcomment %}
   <div class="uk-container">
+    {% if collection.handle == 'linear-actuators' and current_tags == blank and current_page == 1 %}
+      {% render 'linear-actuator-buying-guide', part: 'intro' %}
+    {% else %}
     <div class="collectionDescription">
       {% assign productDescription = collection.description | split: "<!--SEO-->" %}
       {% if collection.description contains '<!--SEO-->' %}
@@ -689,6 +692,7 @@
       {% endif %}
     {%comment%}{{ collection.description | truncate: 320 }}{%endcomment%}
     </div>
+    {% endif %}
     <div class="collection-filter-bar">
       <div class="filter-title">
         Filters

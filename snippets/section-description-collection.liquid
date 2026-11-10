@@ -1,4 +1,7 @@
-{% if collection.metafields.custom_fields["display_collections_content"]  > 0 %}
+{% if collection.handle == 'linear-actuators' and current_tags == blank and current_page == 1 %}
+  <script>var renderCollectionDescription = false;</script>
+  {% render 'linear-actuator-buying-guide', part: 'guide' %}
+{% elsif collection.metafields.custom_fields["display_collections_content"]  > 0 %}
   <script>
     var renderCollectionDescription = false;
   </script>
