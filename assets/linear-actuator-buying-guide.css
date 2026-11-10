@@ -61,7 +61,20 @@
 }
 
 #actuator-buying-guide {
-  scroll-margin-top: 184px;
+  scroll-margin-top: 150px;
+}
+
+@media (min-width: 900px) {
+  #actuator-buying-guide {
+    /* Clear the fixed storefront header and collection filter dock. */
+    scroll-margin-top: 248px;
+  }
+}
+
+#comparisonModal {
+  /* Keep the dialog title and close control above the storefront header. */
+  z-index: 10001;
+  overflow-y: auto;
 }
 
 .fg-actuator-guide h2 {
