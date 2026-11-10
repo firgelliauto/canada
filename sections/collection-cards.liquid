@@ -1,9 +1,6 @@
 <section id="collection-grid-section" class="uk-section uk-background-muted">
   <div class="uk-container">
     
-    {% if collection.handle == 'linear-actuators' and current_tags == blank and current_page == 1 %}
-      {% render 'linear-actuator-buying-guide', part: 'intro' %}
-    {% else %}
     <div class="collectionDescription">
       {% assign productDescription = collection.description | split:"<!--SEO-->"%}
      
@@ -13,7 +10,6 @@
       
       {%comment%}{{ collection.description | truncate: 320 }}{%endcomment%}
     </div>
-    {% endif %}
     
     <style>
       .collectionDescription {

@@ -61,14 +61,8 @@
   
 
   {% endif %}
-  {% if request.page_type == 'collection' and collection.handle == 'linear-actuators' and current_tags == blank and current_page == 1 %}
-    <title>Electric Linear Actuators in Canada | 12V &amp; 24V | FIRGELLI</title>
-    <meta name="description" content="Shop 12V and 24V electric linear actuators in Canada. Compare rod, track, feedback and heavy-duty models by force, stroke and speed. Prices in CAD.">
-    {{ 'linear-actuator-buying-guide.css' | asset_url | stylesheet_tag }}
-  {% else %}
-    <title>{{ page_title }}</title>
-    <meta name="description" content="{{ page_description }}">
-  {% endif %}
+  <title>{{ page_title }}</title>
+  <meta name="description" content="{{ page_description }}">
   <meta name="referrer" content="origin">
   
   {%- comment -%} Using fa-seo for Canada/Australia retail sites {%- endcomment -%}
