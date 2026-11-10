@@ -68,6 +68,14 @@
   margin: 0;
 }
 
+.fg-actuator-guide__outdoor {
+  margin-top: 32px;
+}
+
+.fg-actuator-guide__outdoor p {
+  margin: 0;
+}
+
 @media (max-width: 959px) {
   .fg-actuator-guide__models {
     grid-template-columns: repeat(2, minmax(0, 1fr));
