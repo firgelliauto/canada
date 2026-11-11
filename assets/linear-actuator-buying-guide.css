@@ -5,6 +5,12 @@
 
 .fg-actuator-guide a {
   color: #154b75;
+  transition: opacity 160ms ease;
+}
+
+.fg-actuator-guide a:hover,
+.fg-actuator-guide a:focus-visible {
+  opacity: 0.68;
 }
 
 .fg-actuator-guide h2 {
@@ -109,8 +115,14 @@
   margin-top: 0;
 }
 
-.fg-actuator-fit__copy a {
+.fg-actuator-fit__copy a:not(.fg-actuator-fit__button) {
   color: #154b75;
+  transition: opacity 160ms ease;
+}
+
+.fg-actuator-fit__copy a:not(.fg-actuator-fit__button):hover,
+.fg-actuator-fit__copy a:not(.fg-actuator-fit__button):focus-visible {
+  opacity: 0.68;
 }
 
 .fg-actuator-fit__actions {
